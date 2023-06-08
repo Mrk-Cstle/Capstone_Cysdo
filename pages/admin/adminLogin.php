@@ -86,6 +86,7 @@
     </style>
 </head>
 
+
 <body>
     <div id="Main">
         <div class="header">
@@ -100,11 +101,17 @@
                 <input type="text" id="UserName" name="userName" />
                 <label for="Password">Password</label>
                 <input type="password" id="Password" name="password" />
+                <?php
+                if (isset($_GET['error']) && $_GET['error'] == 1) {
+                    echo "<h4>Invalid login. Please try again.</h4>";
+                }
+                ?>
                 <div class="BtnDiv">
                     <a href="../../index.php">Back</a>
                     <input type="submit" value="Submit" />
                 </div>
             </form>
+
         </div>
     </div>
 </body>

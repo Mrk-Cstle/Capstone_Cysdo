@@ -370,6 +370,23 @@
           <li><a href="createStaffList.php">List Of Staff</a></li>
 
         </ul>
+
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection'></i>
+            <span class="link_name">Manage Admins</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Manage Staff</a></li>
+          <li><a href="createAdmin.php">Add Admin</a></li>
+          <li><a href="createStaffList.php">List Of Staff</a></li>
+
+        </ul>
+
       </li>
       <li>
         <div class="iocn-link">

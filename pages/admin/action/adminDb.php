@@ -2,31 +2,35 @@
 session_start();
 include '../../include/dbConnection.php';
 
+
+
+
+
 $userName = $_POST['userName'];
 $password = $_POST['password'];
 
-
-
-
-$loginQuery = "SELECT * FROM  admin WHERE user='$userName' AND password='$password' ";
-
+// Retrieve the hashed password from the database based on the given username
+$loginQuery = "SELECT * FROM admin WHERE user='$userName'";
 $result = mysqli_query($conn, $loginQuery);
 
 if (mysqli_num_rows($result) == 1) {
-    // set session variables
     $row = mysqli_fetch_assoc($result);
-    $_SESSION['user_id'] = $row['id'];
-    $_SESSION['user'] = $row['user'];
-    $_SESSION['logged_in'] = true;
+    $storedPassword = $row['password'];
 
-    if (isset($_SESSION['logged_in'])  == true) {
-        // user is logged in
-        header("location:../adminHome.php");
-    } else {
-        // redirect to login page
-        header("location:../adminLogin.php");
+    // Verify the entered password against the stored hashed password
+    if (password_verify($password, $storedPassword)) {
+        // Password is correct
+        // Set session variables
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['user'] = $row['user'];
+        $_SESSION['logged_in'] = true;
+
+        // Redirect to the appropriate page
+        header("Location: ../adminHome.php");
+        exit();
     }
-} else {
-    // handle invalid login
-    header("location:../adminLogin.php");
 }
+
+// Invalid login
+header("Location: ../adminLogin.php?error=1");
+exit();
