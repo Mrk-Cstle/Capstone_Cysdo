@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2023 at 04:46 PM
+-- Generation Time: Jun 08, 2023 at 06:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -28,16 +28,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `user` varchar(200) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `admin_id` int(200) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `contact_number` int(100) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`user`, `password`) VALUES
-('qwe', 'qwe');
+INSERT INTO `admin` (`admin_id`, `full_name`, `contact_number`, `email`, `address`, `image`, `user`, `password`) VALUES
+(7, 'qaz, qaz qaz', 1, 'qaz@qaz', 'qazqaz', '', 'qaz@qaz', '$2y$10$/BO97my/UJbzFStoBQ/IAOFw5h3nbz1ZTEAloEV21Urv7YqMXZss2'),
+(8, 'qwe, qwe qwe', 123, 'qwe@qwe', 'qwe', '', 'qwe@qwe', '$2y$10$gwvIEogUgo6ccv5I9x/sje8uP89iJelsmLqM70WU1BR4WG7STKDn.');
 
 -- --------------------------------------------------------
 
@@ -57,8 +64,7 @@ CREATE TABLE `announcements` (
 --
 
 INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader`) VALUES
-(15, '2023-04-22', 'qweqweqwe', 'qwe'),
-(17, '2023-04-24', 'asdasdwqe', 'qwe');
+(15, '2023-04-22', 'qweqweqwe', 'qwe');
 
 -- --------------------------------------------------------
 
@@ -148,7 +154,8 @@ CREATE TABLE `staff` (
 INSERT INTO `staff` (`staffId`, `fullName`, `position`, `user`, `password`, `contactNum`, `address`, `email`, `image`) VALUES
 (3, 'asdas, dasda sdasda', 'sdasdas', 'asdas@qweqweq', 'sdasda', 123123123, 'asdasdasdasd', 'asdas@qweqweq', ''),
 (4, 'asdasdas, dasdasd asdasd', 'asdasdasd', 'asdasd@asdasdasd', 'asdasd', 123123123, 'asdasdasdasd', 'asdasd@asdasdasd', ''),
-(5, 'qweqwe, weqwe qweqew', 'asdawd', 'asdas@qweqweqwe', 'qweqew', 123123, 'asdwqweqwedasd', 'asdas@qweqweqwe', '');
+(5, 'qweqwe, weqwe qweqew', 'asdawd', 'asdas@qweqweqwe', 'qweqew', 123123, 'asdwqweqwedasd', 'asdas@qweqweqwe', ''),
+(6, 'qweqwe, weqwe qweqew', '', 'asdas@qweqwe', '$2y$10$uw6ET.jhv6SLLWd1dlk.S.VAf/hoV189PX9CttzXn7AhIEOj04C12', 123123123, 'asdasdasdasd', 'asdas@qweqwe', '');
 
 --
 -- Indexes for dumped tables
@@ -158,7 +165,7 @@ INSERT INTO `staff` (`staffId`, `fullName`, `position`, `user`, `password`, `con
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`user`);
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `announcements`
@@ -185,16 +192,22 @@ ALTER TABLE `staff`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
