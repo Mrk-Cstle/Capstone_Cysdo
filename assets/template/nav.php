@@ -1,6 +1,9 @@
 <?php
 
 ?>
+<?php
+include('include/session.php');
+?>
 <!DOCTYPE html>
 <!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
@@ -272,11 +275,13 @@
     .home-section {
       position: relative;
       background: #E4E9F7;
-      margin-left: 50px;
+      margin-left: 30px;
+
       left: 260px;
       width: calc(100% - 260px);
       transition: all 0.5s ease;
       padding: 12px;
+      padding-right: 50px;
     }
 
     .sidebar.close~.home-section {
@@ -366,7 +371,7 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Manage Staff</a></li>
-          <li><a href="createStaff.php">Add Staff</a></li>
+          <li><a href="addStaff.php">Add Staff</a></li>
           <li><a href="createStaffList.php">List Of Staff</a></li>
 
         </ul>
