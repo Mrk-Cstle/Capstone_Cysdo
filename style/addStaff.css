@@ -1,0 +1,133 @@
+.backRound {
+    background-color: pink;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.searchBar {
+    padding: 5px;   
+    width: 400px;
+}
+
+.btnAddStaff {
+    padding: 10px;
+    height: 45px;
+    margin-bottom: 8px;
+    margin-left: 40px;
+}
+
+.btnSearch {
+    padding: 10px;
+    height: 45px;
+    margin-bottom: 8px;
+    margin-left: 5px;
+}
+
+tr, th {
+        column-gap: 40px;
+        border: 1px solid black;
+        text-align: center;
+        justify-content: center;
+    }
+
+    td {
+        padding-top: 20px;
+        font-family: 'poppins', sans-serif;
+        border: 1px solid black;
+        text-align: center;
+        justify-content: center;
+    }
+
+.overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.8);
+	transition: opacity 300ms;
+	visibility: hidden;
+	opacity: 0;
+}
+.overlay:target {
+	visibility: visible;
+	opacity: 1;
+}
+.wrapper {
+	margin: 100px auto;
+	padding: 30px;
+	background: #e7e7e7;
+	border-radius: 5px;
+	width: 50%;
+	position: relative;
+	transition: all 5s ease-in-out;
+}
+.wrapper h2 {
+	margin-top: 0;
+	color: #333;
+}
+.wrapper .close {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	transition: all 200ms;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #333;
+}
+.wrapper .close:hover {
+	color: #06D85F;
+}
+.wrapper .content {
+	max-height: 100%;
+	overflow: auto;
+}
+
+.insPic {
+    padding: 8px;
+}
+
+.entCont{
+    margin-bottom: 5px;
+}
+.entContact {
+    margin-bottom: 16px;
+    width: 180px;
+    height: 30px;
+}
+
+/*form*/
+
+.container {
+	border-radius: 5px;
+	background-color: #e7e7e7;
+	padding: 20px 0;
+}
+form label {
+	text-transform: uppercase;
+	font-weight: 500;
+	letter-spacing: 1px;
+}
+input[type=text], select, textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
+}
+input[type="submit"] {
+	color: #fff;
+	padding: 15px 50px;
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
