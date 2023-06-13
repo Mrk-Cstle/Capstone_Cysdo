@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 06:37 PM
+-- Generation Time: Jun 13, 2023 at 01:58 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -138,6 +138,9 @@ INSERT INTO `registration` (`fullName`, `lastName`, `firstName`, `middleName`, `
 CREATE TABLE `staff` (
   `staffId` int(11) NOT NULL,
   `fullName` varchar(100) NOT NULL,
+  `last_name` varchar(200) NOT NULL,
+  `first_name` varchar(200) NOT NULL,
+  `middle_name` varchar(200) NOT NULL,
   `position` varchar(100) NOT NULL,
   `user` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
@@ -151,11 +154,8 @@ CREATE TABLE `staff` (
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`staffId`, `fullName`, `position`, `user`, `password`, `contactNum`, `address`, `email`, `image`) VALUES
-(3, 'asdas, dasda sdasda', 'sdasdas', 'asdas@qweqweq', 'sdasda', 123123123, 'asdasdasdasd', 'asdas@qweqweq', ''),
-(4, 'asdasdas, dasdasd asdasd', 'asdasdasd', 'asdasd@asdasdasd', 'asdasd', 123123123, 'asdasdasdasd', 'asdasd@asdasdasd', ''),
-(5, 'qweqwe, weqwe qweqew', 'asdawd', 'asdas@qweqweqwe', 'qweqew', 123123, 'asdwqweqwedasd', 'asdas@qweqweqwe', ''),
-(6, 'qweqwe, weqwe qweqew', '', 'asdas@qweqwe', '$2y$10$uw6ET.jhv6SLLWd1dlk.S.VAf/hoV189PX9CttzXn7AhIEOj04C12', 123123123, 'asdasdasdasd', 'asdas@qweqwe', '');
+INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_name`, `position`, `user`, `password`, `contactNum`, `address`, `email`, `image`) VALUES
+(20, 'qweqwe, weqwe qweqew', 'qweqwe', 'weqwe', 'qweqew', 'QWE', '', '', 132123, '', 'asdas@qweqwe123123', '');
 
 --
 -- Indexes for dumped tables
@@ -207,7 +207,7 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
