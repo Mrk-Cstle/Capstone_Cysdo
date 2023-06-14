@@ -168,7 +168,7 @@
                     <label for="editPostText">Edit Post Announcements</label><br>
                     <textarea id="editPostText" name="postText" rows="5" cols="50"></textarea><br>
                     <div id="editSubmitBtn">
-                        <button type="submit">Save</button>
+                    <button type="button" id="editSaveBtn">Save</button>
                         <button type="button" class="close-modal">Cancel</button>
                     </div>
                 </form>
@@ -229,7 +229,7 @@ $('#submitBtn button[type="submit"]').click(function(e) {
             });
         });
 
-        <!-- Edit button click event -->
+
 $('.edit-btn').click(function(e) {
     e.preventDefault();
     var postId = $(this).data('id');
@@ -245,7 +245,7 @@ $('.close, .close-modal').click(function() {
 });
 
 // Edit form submission
-$('#editForm').submit(function(e) {
+$('#editSaveBtn').click(function(e) {
     e.preventDefault();
     var postId = $('#editPostId').val();
     var newPostText = $('#editPostText').val();
@@ -260,8 +260,10 @@ $('#editForm').submit(function(e) {
         success: function(response) {
             // Handle the response from the server
             console.log('Post updated successfully');
-            // Redirect to the postUpdate.php page
-            window.location.href = 'postUpdate.php';
+            // Close the edit modal
+            $('#editModal').css('display', 'none');
+            // Update the post content in the DOM
+            $('.edit-btn[data-id="' + postId + '"]').closest('.postFormat').find('main p').text(newPostText);
         },
         error: function(xhr, status, error) {
             // Handle any errors
@@ -269,6 +271,7 @@ $('#editForm').submit(function(e) {
         }
     });
 });
+
 
     </script>
 </body>
