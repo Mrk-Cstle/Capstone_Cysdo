@@ -115,6 +115,17 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .alert {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+}
+
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -198,6 +209,9 @@ $('#submitBtn button[type="submit"]').click(function(e) {
             $('#manageStyle').append(postFormat);
             // Reset the form
             $('#postText').val('');
+            
+            // Show success message
+            showMessage('Successfully Submitted');
         },
         error: function(xhr, status, error) {
             // Handle any errors
@@ -206,29 +220,29 @@ $('#submitBtn button[type="submit"]').click(function(e) {
     });
 });
 
-
-
-        // Delete button click event
-        $('.delete-btn').click(function(e) {
-            e.preventDefault();
-            var postId = $(this).data('id');
-            // Perform your Ajax request here to handle the delete functionality
-            $.ajax({
-                type: 'POST',
-                url: 'postDelete.php?id=' + postId,
-                success: function(response) {
-                    // Handle the response from the server
-                    console.log('Post deleted successfully');
-                    // Remove the deleted post from the DOM
-                    $('.delete-btn[data-id="' + postId + '"]').closest('.postFormat').remove();
-                },
-                error: function(xhr, status, error) {
-                    // Handle any errors
-                    console.error('Error deleting post:', error);
-                }
-            });
-        });
-
+// Delete button click event
+$('.delete-btn').click(function(e) {
+    e.preventDefault();
+    var postId = $(this).data('id');
+    // Perform your Ajax request here to handle the delete functionality
+    $.ajax({
+        type: 'POST',
+        url: 'postDelete.php?id=' + postId,
+        success: function(response) {
+            // Handle the response from the server
+            console.log('Post deleted successfully');
+            // Remove the deleted post from the DOM
+            $('.delete-btn[data-id="' + postId + '"]').closest('.postFormat').remove();
+            
+            // Show success message
+            showMessage('Successfully Deleted');
+        },
+        error: function(xhr, status, error) {
+            // Handle any errors
+            console.error('Error deleting post:', error);
+        }
+    });
+});
 
 $('.edit-btn').click(function(e) {
     e.preventDefault();
@@ -237,11 +251,6 @@ $('.edit-btn').click(function(e) {
     $('#editPostId').val(postId);
     $('#editPostText').val(postText);
     $('#editModal').css('display', 'block');
-});
-
-// Close modal
-$('.close, .close-modal').click(function() {
-    $('#editModal').css('display', 'none');
 });
 
 // Edit form submission
@@ -264,6 +273,9 @@ $('#editSaveBtn').click(function(e) {
             $('#editModal').css('display', 'none');
             // Update the post content in the DOM
             $('.edit-btn[data-id="' + postId + '"]').closest('.postFormat').find('main p').text(newPostText);
+            
+            // Show success message
+            showMessage('Successfully Edited');
         },
         error: function(xhr, status, error) {
             // Handle any errors
@@ -272,7 +284,15 @@ $('#editSaveBtn').click(function(e) {
     });
 });
 
-
+// Show alert message
+function showMessage(message) {
+    var alertDiv = $('<div>').text(message);
+    alertDiv.addClass('alert');
+    $('body').append(alertDiv);
+    setTimeout(function() {
+        alertDiv.remove();
+    }, 2000);
+}
     </script>
 </body>
 
