@@ -89,107 +89,39 @@
     ?>
     <section class="home-section">
 
-        <form id="announcementForm" method="POST" action="postUpdateDb.php">
-            <label for="postText">Post Announcements</label><br>
-            <textarea id="postText" name="postText" rows="5" cols="50"></textarea><br>
+
+        <form method="POST" action="postUpdateDb.php">
+
+            <label for="postText">Post Announcements</label></br>
+            <textarea id="postText" name="postText" rows="5" cols="50"></textarea></br>
 
             <div id="submitBtn">
-                <button type="button" id="submitPostBtn">Submit</button>
+                <button type="submit">Submit</button>
                 <button type="reset">Reset</button>
             </div>
+
+
         </form>
+
 
         <div id="manageStyle">
             <h1>Manage Post</h1>
 
             <?php
             if ($resultGetPost->num_rows > 0) {
+
                 while ($row = $resultGetPost->fetch_assoc()) {
                     echo "<div class='postFormat'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main>" ?>
-                    <footer>
-                        <a class="aBtn edit-btn" href="#" data-id="<?php echo $row['uploadId']; ?>">Edit</a>
-                        <a class="aBtn delete-btn" href="#" data-id="<?php echo $row['uploadId']; ?>">Delete</a>
+                    <footer><a class="aBtn" href="postEdit.php?id=<?php echo $row['uploadId']; ?>">Edit</a>
+                        <a class="aBtn" href="postDelete.php?id=<?php echo $row['uploadId']; ?>">Delete</a>
                     </footer>
-                    </div> <?php
+        </div> <?php
+
                 }
             }
-            ?>
-        </div>
+                ?>
+</div>
     </section>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        
-
-        $(document).ready(function() {
-        // Submit button click event
-        $('#submitPostBtn').click(function(e) {
-            e.preventDefault();
-            var form = $('#announcementForm');
-            var postData = form.serialize();
-            // Perform your Ajax request here to handle the submission
-            $.ajax({
-                type: 'POST',
-                url: form.attr('action'),
-                data: postData,
-                success: function(response) {
-                    // Handle the response from the server
-                    console.log('Announcement posted successfully');
-                    // Reload the updated announcement section
-                    $('#manageStyle').load('postUpdate.php');
-                },
-                error: function(xhr, status, error) {
-                    // Handle any errors
-                    console.error('Error posting announcement:', error);
-                }
-            });
-        });
-    });
-
-            // Edit button click event
-            $('.edit-btn').click(function(e) {
-                e.preventDefault();
-                var postId = $(this).data('id');
-                // Perform your Ajax request here to handle the edit functionality
-                $.ajax({
-                    type: 'POST',
-                    url: 'postEditDB.php?id=' + postId,
-                    success: function(response) {
-                        // Handle the response from the server
-                        console.log('Post edited successfully');
-                        // Do something with the response if needed
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle any errors
-                        console.error('Error editing post:', error);
-                    }
-                });
-            });
-
-            // Delete button click event
-            $('.delete-btn').click(function(e) {
-                e.preventDefault();
-                var postId = $(this).data('id');
-                // Perform your Ajax request here to handle the delete functionality
-                $.ajax({
-                    type: 'POST',
-                    url: 'postDelete.php?id=' + postId,
-                    success: function(response) {
-                        // Handle the response from the server
-                        console.log('Post deleted successfully');
-                        // Remove the deleted post from the DOM
-                        $('.delete-btn[data-id="' + postId + '"]').closest('.postFormat').remove();
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle any errors
-                        console.error('Error deleting post:', error);
-                    }
-                });
-            });
-        
-    </script>
 </body>
-
-
 
 </html>
