@@ -79,21 +79,58 @@
             gap: 20px;
             margin: 20px;
         }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
     <?php
-    include 'include/nav.php';
-    include 'include/selectDb.php';
+    include '../../assets/template/nav.php';
+    include '../include/selectDb.php';
     ?>
     <section class="home-section">
 
 
         <form method="POST" action="postUpdateDb.php">
 
-            <label for="postText">Post Announcements</label></br>
-            <textarea id="postText" name="postText" rows="5" cols="50"></textarea></br>
+            <label for="postText">Post Announcements</label><br>
+            <textarea id="postText" name="postText" rows="5" cols="50"></textarea><br>
 
             <div id="submitBtn">
                 <button type="submit">Submit</button>
@@ -112,16 +149,128 @@
 
                 while ($row = $resultGetPost->fetch_assoc()) {
                     echo "<div class='postFormat'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main>" ?>
-                    <footer><a class="aBtn" href="postEdit.php?id=<?php echo $row['uploadId']; ?>">Edit</a>
-                        <a class="aBtn" href="postDelete.php?id=<?php echo $row['uploadId']; ?>">Delete</a>
+                    <footer>
+                        <a class="aBtn edit-btn" href="#" data-id="<?php echo $row['uploadId']; ?>">Edit</a>
+                        <a class="aBtn delete-btn" href="#" data-id="<?php echo $row['uploadId']; ?>">Delete</a>
                     </footer>
-        </div> <?php
-
+                </div> <?php
                 }
             }
-                ?>
-</div>
+            ?>
+        </div>
+
+        <!-- Edit Post Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="editForm" method="POST" action="postEditDb.php">
+                    <input type="hidden" id="editPostId" name="postId" value="">
+                    <label for="editPostText">Edit Post Announcements</label><br>
+                    <textarea id="editPostText" name="postText" rows="5" cols="50"></textarea><br>
+                    <div id="editSubmitBtn">
+                        <button type="submit">Save</button>
+                        <button type="button" class="close-modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </section>
+
+    <script>
+// Submit button click event
+$('#submitBtn button[type="submit"]').click(function(e) {
+    e.preventDefault();
+    var postText = $('#postText').val();
+    // Perform your Ajax request here to handle the submit functionality
+    $.ajax({
+        type: 'POST',
+        url: 'postUpdateDb.php',
+        data: {
+            postText: postText
+        },
+        dataType: 'json',
+        success: function(response) {
+            // Handle the response from the server
+            console.log('Post submitted successfully');
+            // Add the new post to the DOM dynamically
+            var postFormat = '<div class="postFormat"><section><h3>Uploader: ' + response.uploader + '</h3><h3>Upload Date: ' + response.uploadDate + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="aBtn edit-btn" href="#" data-id="' + response.uploadId + '">Edit</a><a class="aBtn delete-btn" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
+            $('#manageStyle').append(postFormat);
+            // Reset the form
+            $('#postText').val('');
+        },
+        error: function(xhr, status, error) {
+            // Handle any errors
+            console.error('Error submitting post:', error);
+        }
+    });
+});
+
+
+
+        // Delete button click event
+        $('.delete-btn').click(function(e) {
+            e.preventDefault();
+            var postId = $(this).data('id');
+            // Perform your Ajax request here to handle the delete functionality
+            $.ajax({
+                type: 'POST',
+                url: 'postDelete.php?id=' + postId,
+                success: function(response) {
+                    // Handle the response from the server
+                    console.log('Post deleted successfully');
+                    // Remove the deleted post from the DOM
+                    $('.delete-btn[data-id="' + postId + '"]').closest('.postFormat').remove();
+                },
+                error: function(xhr, status, error) {
+                    // Handle any errors
+                    console.error('Error deleting post:', error);
+                }
+            });
+        });
+
+        <!-- Edit button click event -->
+$('.edit-btn').click(function(e) {
+    e.preventDefault();
+    var postId = $(this).data('id');
+    var postText = $(this).closest('.postFormat').find('main p').text();
+    $('#editPostId').val(postId);
+    $('#editPostText').val(postText);
+    $('#editModal').css('display', 'block');
+});
+
+// Close modal
+$('.close, .close-modal').click(function() {
+    $('#editModal').css('display', 'none');
+});
+
+// Edit form submission
+$('#editForm').submit(function(e) {
+    e.preventDefault();
+    var postId = $('#editPostId').val();
+    var newPostText = $('#editPostText').val();
+    // Perform your Ajax request here to handle the edit functionality
+    $.ajax({
+        type: 'POST',
+        url: 'postEditDb.php?id=' + postId,
+        data: {
+            postId: postId,
+            postText: newPostText
+        },
+        success: function(response) {
+            // Handle the response from the server
+            console.log('Post updated successfully');
+            // Redirect to the postUpdate.php page
+            window.location.href = 'postUpdate.php';
+        },
+        error: function(xhr, status, error) {
+            // Handle any errors
+            console.error('Error updating post:', error);
+        }
+    });
+});
+
+    </script>
 </body>
 
 </html>

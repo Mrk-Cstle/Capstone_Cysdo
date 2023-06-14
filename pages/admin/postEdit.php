@@ -1,6 +1,7 @@
 <?php
 
-include 'include/dbConnection.php';
+include '../include/dbConnection.php';
+include 'include/session.php';
 
 $id = $_GET['id'];
 $editPostQuery = mysqli_query($conn, "SELECT * FROM announcements WHERE uploadId='$id'");
