@@ -1,7 +1,7 @@
 <?php
 
-include '../include/dbConnection.php';
-include 'include/session.php';
+include '../../include/dbConnection.php';
+include '../include/session.php';
 
 $newPost = $_POST['postText'];
 $uploader = $_SESSION['user'];
@@ -22,5 +22,3 @@ if (mysqli_query($conn, $uploadQuery)) {
     // Handle the case where the insertion fails
     echo "Error inserting post: " . mysqli_error($conn);
 }
-
-?>

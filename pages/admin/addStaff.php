@@ -8,6 +8,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <link rel="stylesheet" href="../../style/addStaff.css">
   <title>Document</title>
+  <style>
+    .hidden-cell {
+      display: none;
+    }
+  </style>
 </head>
 <?php
 include '../../assets/template/nav.php';
@@ -25,9 +30,10 @@ include '../../assets/template/nav.php';
           <input class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
           <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Staff</a>
-          <p id="response"></p> //@david ayaw malagyan css pre.
+          <p id="response"></p>
         </form>
       </nav>
+
       <div class="table-responsive">
         <table class="table table-bordered">
           <tr>
@@ -40,30 +46,24 @@ include '../../assets/template/nav.php';
             <th scope="col">Action</th>
           </tr>
 
-      <tr>
 
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>David</td>
-            <td>mdc</td>
-            <td>mdc</td>
-            <td>mdc</td>
-            <td>
-              <a class="btn btn-sm btn-primary" href="#btnEdit">Edit</a>
-              <a class="btn btn-sm btn-danger" href="">Delete</a>
-              <a class="btn btn-sm btn-dark" href="">Reset Password</a>
-            </td>
-      </tr>
+
+          <tbody id="tableData">
+
+
+
+          </tbody>
+
 
         </table>
       </div>
       <div class="overlay" id="btnAdd">
         <div class="wrapper">
+
           <h2>Please Fill up The Form</h2><a class="close" href="#">&times;</a>
           <div class="content">
             <div class="container">
-              <form>
+              <form id="addForm">
                 <label class="d-flex">Last Name</label>
                 <input class="d-flex" placeholder="Enter Last Name" type="text" id="lastName">
                 <label class="d-flex">First Name</label>
@@ -76,6 +76,7 @@ include '../../assets/template/nav.php';
                 <input class="entContact d-flex" placeholder="Enter Contact no." type="number" id="contactNumber">
                 <label class="d-flex">E-mail</label>
                 <input class="d-flex" placeholder="Enter E-mail" type="text" id="email">
+                <p id="response"></p>
                 <input class="btn btn-success" value="Submit" onclick="submitData('insert')">
               </form>
             </div>
@@ -83,25 +84,27 @@ include '../../assets/template/nav.php';
         </div>
       </div>
 
-      <div class="overlay" id="btnEdit">
-        <div class="wrapper">
+      <div class="modal" id="editModal">
+        <div class="modal-dialog">
           <h2>Edit Details</h2><a class="close" href="#">&times;</a>
-          <div class="content">
+          <div class="modal-content">
             <div class="container">
               <form>
+
                 <label class="d-flex">Last Name</label>
-                <input class="d-flex" placeholder="Enter New Last Name" type="text" id="lastName">
+                <input class="d-flex" placeholder="Enter New Last Name" type="text" id="editlastName">
                 <label class="d-flex">First Name</label>
-                <input class="d-flex" placeholder="Enter New Full Name" type="text" id="firstName">
+                <input class="d-flex" placeholder="Enter New Full Name" type="text" id="editfirstName">
                 <label class="d-flex">Middle Name</label>
-                <input class="d-flex" placeholder="Enter New Middle Name" type="text" id="middleName">
+                <input class="d-flex" placeholder="Enter New Middle Name" type="text" id="editmiddleName">
                 <label class="d-flex">Position</label>
-                <input class="d-flex" placeholder="Enter New Position" type="text" id="position">
+                <input class="d-flex" placeholder="Enter New Position" type="text" id="editposition">
                 <label class="entCont d-flex">Contact #</label>
-                <input class="entContact d-flex" placeholder="Enter New Contact no." type="number" id="contactNumber">
+                <input class="entContact d-flex" placeholder="Enter New Contact no." type="number" id="editcontactNumber">
                 <label class="d-flex">E-mail</label>
-                <input class="d-flex" placeholder="Enter New E-mail" type="text" id="email">
-                <input class="btn btn-success" value="Submit">
+                <input class="d-flex" placeholder="Enter New E-mail" type="text" id="editemail">
+                <input type="hidden" id="editstaffId" name="postId" value="">
+                <input class="btn btn-success" id="editSaveBtn" value="Submit">
               </form>
             </div>
           </div>
@@ -112,39 +115,157 @@ include '../../assets/template/nav.php';
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
+      $(document).ready(function() {
+
+        $(document).on('click', '.editButton', function() {
+
+          var staffId = $(this).data('id');
+          var $row = $(this).closest('tr');
+          var fullName = $row.find('td:nth-child(2)').text();
+          var position = $row.find('td:nth-child(3)').text();
+          var contactNumber = $row.find('td:nth-child(4)').text();
+          var address = $row.find('td:nth-child(5)').text();
+          var email = $row.find('td:nth-child(6)').text();
+          var lastName = $row.find('td:nth-child(7)').text();
+          var firstName = $row.find('td:nth-child(8)').text();
+          var middleName = $row.find('td:nth-child(9)').text();
+
+          $('#editstaffId').val(staffId);
+          $('#editlastName').val(lastName);
+          $('#editfirstName').val(firstName);
+          $('#editmiddleName').val(middleName);
+          $('#editposition').val(position);
+          $('#editcontactNumber').val(contactNumber);
+          $('#editaddress').val(address);
+          $('#editemail').val(email);
+          console.log(staffId, firstName, firstName, contactNumber, address, email);
+          $('#editModal').modal('show');
+        });
+      });
+      $('#editSaveBtn').click(function(e) {
+        e.preventDefault();
+        var staffId = $('#editstaffId').val();
+        var editlastName = $('#editlastName').val();
+        var editfirstName = $('#editfirstName').val();
+        var editmiddleName = $('#editmiddleName').val();
+        var editposition = $('#editposition').val();
+        var editcontactNumber = $('#editcontactNumber').val();
+        var editaddress = $('#editaddress').val();
+        var editemail = $('#editemail').val();
+        console.log(staffId);
+        // Perform your Ajax request here to handle the edit functionality
+        $.ajax({
+          type: 'POST',
+          url: 'action/addStaffEdit.php?id=' + staffId,
+          data: {
+            staffId: staffId,
+            editlastName: editlastName,
+            editfirstName: editfirstName,
+            editmiddleName: editmiddleName,
+            editposition: editposition,
+            editcontactNumber: editcontactNumber,
+            editaddress: editaddress,
+            editemail: editemail,
+
+          },
+          success: function(response) {
+            // Handle the response from the server
+            console.log('Post updated successfully');
+            // Close the edit modal
+            $('#response').text(response);
+            $('#editModal').modal('hide');
+            addData();
+
+
+
+          },
+          error: function(xhr, status, error) {
+            // Handle any errors
+            console.error('Error updating post:', error);
+          }
+        });
+      });
+
       function submitData(action) {
-        $(document).ready(function() {
+        event.preventDefault();
+        var data = {
+          action: action,
+          lastName: $("#lastName").val(),
+          firstName: $("#firstName").val(),
+          middleName: $("#middleName").val(),
+          position: $("#position").val(),
+          contact: $("#contactNumber").val(),
+          email: $("#email").val(),
+        };
+
+        $.ajax({
+          url: 'action/addStaffDb.php',
+          type: 'POST',
+          data: data,
+          success: function(response) {
+            $('#response').text(response);
+            addData();
 
 
-
-          var data = {
-            action: action,
-            lastName: $("#lastName").val(),
-            firstName: $("#firstName").val(),
-            middleName: $("#middleName").val(),
-            position: $("#position").val(),
-            contact: $("#contactNumber").val(),
-            email: $("#email").val(),
-          };
-
-          $.ajax({
-            url: 'action/addStaffDb.php',
-            type: 'POST',
-            data: data,
-            success: function(response) {
-              $('#response').text(response);
-              $('#btnAdd').hide();
-              swal({
-                title: "Success!",
-                text: "Form submitted successfully",
-                icon: "success",
-                button: "OK",
-              });
+            $('#btnAdd').prop('disabled', true); // Disable the button temporarily
+            swal({
+              title: "Success!",
+              text: "Form submitted successfully",
+              icon: "success",
+              button: "OK",
+            }).then(function() {
+              $('#btnAdd').prop('disabled', false);
+              $("#lastName").val("");
+              $("#firstName").val("");
+              $("#middleName").val("");
+              $("#position").val("");
+              $("#contactNumber").val("");
+              $("#email").val("");
+              // Enable the button again
+              // Additional code if needed
+            });
+            if (response == "Staff Info Deleted") {
+              $("#" + action).css("display", "none");
             }
-          });
-
+          }
         });
       }
+
+
+
+
+      function addData() {
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableData").innerHTML = this.responseText;
+
+          }
+        };
+
+        xhttp.open("GET", "action/addStaffList.php", true);
+        xhttp.send();
+      }
+
+
+
+      function loadDoc() {
+        setInterval(function() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("tableData").innerHTML = this.responseText;
+
+              // Add any additional logic here to handle the edit button if necessary
+              // For example, you can bind event handlers or perform further DOM manipulation
+            }
+          };
+          xhttp.open("GET", "action/addStaffList.php", true);
+          xhttp.send();
+        }, 1000);
+      }
+      loadDoc()
     </script>
   </section>
 </body>
