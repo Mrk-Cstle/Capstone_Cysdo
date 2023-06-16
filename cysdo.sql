@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2023 at 01:58 PM
+-- Generation Time: Jun 16, 2023 at 10:40 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -64,7 +64,32 @@ CREATE TABLE `announcements` (
 --
 
 INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader`) VALUES
-(15, '2023-04-22', 'qweqweqwe', 'qwe');
+(15, '2023-04-22', 'qweqweqwe', 'qwe'),
+(22, '2023-06-14', 'qweqwesda', ''),
+(23, '2023-06-14', 'qweqweqwe', ''),
+(24, '2023-06-14', 'qweqweqwe', 'qaz@qaz'),
+(25, '2023-06-14', 'qweqweqwe', 'qaz@qaz'),
+(26, '2023-06-14', 'qwe', 'qaz@qaz'),
+(27, '2023-06-14', 'asdasd', 'qaz@qaz'),
+(32, '2023-06-14', 'qwe', 'qaz@qaz'),
+(35, '2023-06-14', 'sasdasd', 'qaz@qaz'),
+(38, '2023-06-14', 's', 'qaz@qaz'),
+(39, '2023-06-14', 'z', 'qaz@qaz'),
+(40, '2023-06-14', 'z', 'qaz@qaz'),
+(41, '2023-06-14', 'qweqwe', 'qaz@qaz'),
+(42, '2023-06-14', 'qwe', 'qaz@qaz'),
+(43, '2023-06-14', 'qweqsdasdqwe', 'qaz@qaz'),
+(45, '2023-06-14', 'asdawqd', 'qaz@qaz'),
+(46, '2023-06-14', 'dsawda123', 'qaz@qaz'),
+(50, '2023-06-15', 'asdasd', 'qaz@qaz'),
+(51, '2023-06-15', '1a', 'qaz@qaz'),
+(52, '2023-06-15', 'qwe', 'qaz@qaz'),
+(53, '2023-06-15', 'qwe', ''),
+(54, '2023-06-15', 'qwe', ''),
+(55, '2023-06-15', 'qwe', ''),
+(56, '2023-06-15', 'qwe', ''),
+(57, '2023-06-15', 'qweqwe', 'qaz@qaz'),
+(58, '2023-06-15', 'qwe', 'qaz@qaz');
 
 -- --------------------------------------------------------
 
@@ -155,7 +180,12 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_name`, `position`, `user`, `password`, `contactNum`, `address`, `email`, `image`) VALUES
-(20, 'qweqwe, weqwe qweqew', 'qweqwe', 'weqwe', 'qweqew', 'QWE', '', '', 132123, '', 'asdas@qweqwe123123', '');
+(125, 'castillo, mark david', 'castillo', 'mark', 'david', 'qwe', 'qwe', '$2y$10$Zib3yIC1HIaVReUodsRinONQY2Jbi2CB3SEYLOJ4t/oASAlh1Pkey', 123, '', 'qwea', ''),
+(136, ',  ', '', '', '', '', 'qw', '$2y$10$oi.LbMhkmmwwlxgGatQIqunIFEN//wfpgJsIB9MjgBbKav197YEoi', 0, '', 'qw', ''),
+(139, ',  ', '', '', '', '', 'qwe', '$2y$10$Wjl.ClU7USZgJ4rP9hYBX.bWMl7LRnJCJ3.2zlLGtV/3eTX/5cbr6', 0, '', 'qwe', ''),
+(153, ',  ', '', '', '', '', 'asdas@qweqwe', '$2y$10$8hcNwH6/c2IhnsS9ZvA0YOVnUj5NuzCideuSyos1S2W7jrnVuL76W', 0, '', 'asdas@qweqwe', ''),
+(155, ',  qwe', '', '', 'qwe', '', 'qwe@qwe', '$2y$10$epGXl08dcN5JkSSGs.Kb0eoy2z8qiiz96vfdY3mc3Jh5zWtKTjeVG', 0, '', 'qwe@qwe', ''),
+(156, ',  asdasd', '', '', 'asdasd', '', 'asd@asd', '$2y$10$nGxyykK0T9m59lsq1vZ3pun8oA2/fpqlHzR2/fWERAk0iREbGovsu', 0, '', 'asd@asd', '');
 
 --
 -- Indexes for dumped tables
@@ -201,13 +231,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
