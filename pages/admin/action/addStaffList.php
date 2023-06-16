@@ -24,10 +24,17 @@
         <td>
           <a class="editButton btn btn-sm btn-primary " data-id="<?php echo $row['staffId']; ?>">Edit</a>
           <a class=" btn btn-sm btn-danger" href="" onclick="submitData('<?php echo $row['staffId']; ?>')">Delete</a>
-          <a class="btn btn-sm btn-dark" href="">Reset Password</a>
+          <a class="resetPassword btn btn-sm btn-dark" data-id="<?php echo $row['staffId']; ?>" href="">Reset Password</a>
         </td>
       </tr>
-  <?php
+    <?php
     }
+  } else {
+    ?>
+    <tr>
+      <td colspan="7">No data available</td>
+    </tr>
+
+  <?php
   }
   ?>

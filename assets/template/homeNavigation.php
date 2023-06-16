@@ -134,6 +134,7 @@
                 <button class="DropDownBtn"><a>Login</a></button>
                 <div class="DropDownContent">
                     <a href="pages/admin/adminLogin.php">Admin</a>
+                    <a href="pages/admin/staffLogin.php">Staff</a>
                     <a href="ScholarLogin.php">Scholar</a>
                     <a href="termsRegistration.php">Registration</a>
                 </div>

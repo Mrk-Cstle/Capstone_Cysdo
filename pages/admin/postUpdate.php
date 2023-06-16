@@ -132,8 +132,16 @@
 
 <body>
     <?php
-    include '../../assets/template/nav.php';
+
     include '../include/selectDb.php';
+    ?>
+    <?php
+    include 'include/session.php';
+    if ($_SESSION['role'] === 'admin') {
+        include '../../assets/template/nav.php';
+    } elseif ($_SESSION['role'] === 'staff') {
+        include '../../assets/template/staffNav.php';
+    }
     ?>
     <section class="home-section">
 

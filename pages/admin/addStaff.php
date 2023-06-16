@@ -15,8 +15,12 @@
   </style>
 </head>
 <?php
-include '../../assets/template/nav.php';
-
+include 'include/session.php';
+if ($_SESSION['role'] === 'admin') {
+  include '../../assets/template/nav.php';
+} elseif ($_SESSION['role'] === 'staff') {
+  include '../../assets/template/staffNav.php';
+}
 ?>
 
 
@@ -115,8 +119,67 @@ include '../../assets/template/nav.php';
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-      $(document).ready(function() {
+      // Clear the response after 3 seconds (3000 milliseconds)
 
+
+
+      $(document).ready(function() {
+        $(document).on('click', '.resetPassword', function(e) {
+          e.preventDefault();
+          var staffId = $(this).data('id');
+          var $row = $(this).closest('tr');
+          var resetPassword = $row.find('td:nth-child(9)').text();
+          console.log(resetPassword);
+          $.ajax({
+            type: 'POST',
+            url: 'action/addStaffReset.php?id=' + staffId,
+            data: {
+              staffId: staffId,
+              resetPassword: resetPassword,
+
+
+            },
+            success: function(response) {
+
+              if (response === 'Reset Password Successfully') {
+                $('#response').text(response);
+
+                $('#editModal').modal('hide');
+                addData();
+                swal({
+                  title: "Success!",
+                  text: "Reset Password Successfully",
+                  icon: "success",
+                  button: "OK",
+                });
+              } else {
+                $('#response').text(response);
+                swal({
+                  title: "Error!",
+                  text: "No changes were made",
+                  icon: "error",
+                  button: "OK",
+                });
+              }
+              // Handle the response from the server
+              console.log('Password Reset successfully');
+              // Close the edit modal
+              $('#response').text(response);
+
+              addData();
+
+
+
+            },
+            error: function(xhr, status, error) {
+              // Handle any errors
+              console.error('Error updating post:', error);
+            }
+          });
+
+
+
+        });
         $(document).on('click', '.editButton', function() {
 
           var staffId = $(this).data('id');
@@ -170,11 +233,28 @@ include '../../assets/template/nav.php';
           },
           success: function(response) {
             // Handle the response from the server
-            console.log('Post updated successfully');
+            if (response === 'Save Changes Successfully') {
+              $('#response').text(response);
+              $('#editModal').modal('hide');
+              addData();
+              swal({
+                title: "Success!",
+                text: "Inserted Successfully",
+                icon: "success",
+                button: "OK",
+              });
+            } else {
+              $('#response').text(response);
+              swal({
+                title: "Error!",
+                text: "No changes were made",
+                icon: "error",
+                button: "OK",
+              });
+            }
+
             // Close the edit modal
-            $('#response').text(response);
-            $('#editModal').modal('hide');
-            addData();
+
 
 
 
@@ -203,30 +283,43 @@ include '../../assets/template/nav.php';
           type: 'POST',
           data: data,
           success: function(response) {
-            $('#response').text(response);
-            addData();
 
+            if (response === 'Inserted Successfully' || response === 'Staff Info Deleted') {
+              $('#response').text(response);
+              addData();
 
-            $('#btnAdd').prop('disabled', true); // Disable the button temporarily
-            swal({
-              title: "Success!",
-              text: "Form submitted successfully",
-              icon: "success",
-              button: "OK",
-            }).then(function() {
-              $('#btnAdd').prop('disabled', false);
-              $("#lastName").val("");
-              $("#firstName").val("");
-              $("#middleName").val("");
-              $("#position").val("");
-              $("#contactNumber").val("");
-              $("#email").val("");
-              // Enable the button again
-              // Additional code if needed
-            });
-            if (response == "Staff Info Deleted") {
-              $("#" + action).css("display", "none");
+              $('#btnAdd').prop('disabled', true); // Disable the button temporarily
+              swal({
+                title: "Success!",
+                text: "Inserted Successfully",
+                icon: "success",
+                button: "OK",
+              }).then(function() {
+                $('#btnAdd').prop('disabled', false);
+                $("#lastName").val("");
+                $("#firstName").val("");
+                $("#middleName").val("");
+                $("#position").val("");
+                $("#contactNumber").val("");
+                $("#email").val("");
+                // Enable the button again
+
+                // Additional code if needed
+              });
+
+              if (response === "Staff Info Deleted") {
+                $("#" + action).css("display", "none");
+              }
+            } else {
+              $('#response').text(response);
+              swal({
+                title: "Error!",
+                text: "An error occurred",
+                icon: "error",
+                button: "OK",
+              });
             }
+
           }
         });
       }

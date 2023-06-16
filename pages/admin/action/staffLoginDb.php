@@ -10,7 +10,7 @@ $userName = $_POST['userName'];
 $password = $_POST['password'];
 
 // Retrieve the hashed password from the database based on the given username
-$loginQuery = "SELECT * FROM admin WHERE user='$userName'";
+$loginQuery = "SELECT * FROM staff WHERE user='$userName'";
 $result = mysqli_query($conn, $loginQuery);
 
 if (mysqli_num_rows($result) == 1) {
@@ -23,15 +23,15 @@ if (mysqli_num_rows($result) == 1) {
         // Set session variables
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['user'] = $row['user'];
-        $_SESSION['role'] = 'admin';
+        $_SESSION['role'] = 'staff';
         $_SESSION['logged_in'] = true;
 
         // Redirect to the appropriate page
-        header("Location: ../adminHome.php");
+        header("Location: ../staffHome.php");
         exit();
     }
 }
 
 // Invalid login
-header("Location: ../adminLogin.php?error=1");
+header("Location: ../staffLogin.php?error=1");
 exit();
