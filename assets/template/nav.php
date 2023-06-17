@@ -363,49 +363,19 @@
         <div class="iocn-link">
           <a href="#">
             <i class='bx bx-collection'></i>
-            <span class="link_name">Manage Staff</span>
+            <span class="link_name">Manage Users</span>
           </a>
           <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Manage Staff</a></li>
-          <li><a href="addStaff.php">Add Staff</a></li>
+
+          <li><a href="addStaff.php">Manage Staff</a></li>
           <li><a href="createStaffList.php">List Of Staff</a></li>
 
         </ul>
 
       </li>
-      <li>
-        <div class="iocn-link">
-          <a href="#">
-            <i class='bx bx-collection'></i>
-            <span class="link_name">Manage Admins</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow'></i>
-        </div>
-        <ul class="sub-menu">
-          <li><a class="link_name" href="#">Manage Staff</a></li>
-          <li><a href="createAdmin.php">Add Admin</a></li>
-          <li><a href="createStaffList.php">List Of Staff</a></li>
 
-        </ul>
-
-      </li>
-      <li>
-        <div class="iocn-link">
-          <a href="#">
-            <i class='bx bx-collection'></i>
-            <span class="link_name">Manage Scholar</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow'></i>
-        </div>
-        <ul class="sub-menu">
-          <li><a class="link_name" href="#">Manage Scholar</a></li>
-          <li><a href="manageScholar.php">Add Scholar</a></li>
-          <li><a href="manageScholarList.php">List Of Scholar</a></li>
-
-        </ul>
-      </li>
       <li>
         <div class="iocn-link">
           <a href="#">

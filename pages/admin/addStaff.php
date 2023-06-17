@@ -350,8 +350,7 @@ if ($_SESSION['role'] === 'admin') {
             if (this.readyState == 4 && this.status == 200) {
               document.getElementById("tableData").innerHTML = this.responseText;
 
-              // Add any additional logic here to handle the edit button if necessary
-              // For example, you can bind event handlers or perform further DOM manipulation
+
             }
           };
           xhttp.open("GET", "action/addStaffList.php", true);
