@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2023 at 10:40 AM
+-- Generation Time: Jun 19, 2023 at 07:21 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -56,40 +56,20 @@ CREATE TABLE `announcements` (
   `uploadId` int(11) NOT NULL,
   `uploadDate` date NOT NULL DEFAULT current_timestamp(),
   `announcement` longtext NOT NULL,
-  `uploader` varchar(50) NOT NULL
+  `uploader` varchar(50) NOT NULL,
+  `category` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `announcements`
 --
 
-INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader`) VALUES
-(15, '2023-04-22', 'qweqweqwe', 'qwe'),
-(22, '2023-06-14', 'qweqwesda', ''),
-(23, '2023-06-14', 'qweqweqwe', ''),
-(24, '2023-06-14', 'qweqweqwe', 'qaz@qaz'),
-(25, '2023-06-14', 'qweqweqwe', 'qaz@qaz'),
-(26, '2023-06-14', 'qwe', 'qaz@qaz'),
-(27, '2023-06-14', 'asdasd', 'qaz@qaz'),
-(32, '2023-06-14', 'qwe', 'qaz@qaz'),
-(35, '2023-06-14', 'sasdasd', 'qaz@qaz'),
-(38, '2023-06-14', 's', 'qaz@qaz'),
-(39, '2023-06-14', 'z', 'qaz@qaz'),
-(40, '2023-06-14', 'z', 'qaz@qaz'),
-(41, '2023-06-14', 'qweqwe', 'qaz@qaz'),
-(42, '2023-06-14', 'qwe', 'qaz@qaz'),
-(43, '2023-06-14', 'qweqsdasdqwe', 'qaz@qaz'),
-(45, '2023-06-14', 'asdawqd', 'qaz@qaz'),
-(46, '2023-06-14', 'dsawda123', 'qaz@qaz'),
-(50, '2023-06-15', 'asdasd', 'qaz@qaz'),
-(51, '2023-06-15', '1a', 'qaz@qaz'),
-(52, '2023-06-15', 'qwe', 'qaz@qaz'),
-(53, '2023-06-15', 'qwe', ''),
-(54, '2023-06-15', 'qwe', ''),
-(55, '2023-06-15', 'qwe', ''),
-(56, '2023-06-15', 'qwe', ''),
-(57, '2023-06-15', 'qweqwe', 'qaz@qaz'),
-(58, '2023-06-15', 'qwe', 'qaz@qaz');
+INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader`, `category`) VALUES
+(62, '2023-06-19', 'asdasdasd', 'qaz@qaz', 'scholar'),
+(63, '2023-06-19', 'qweasczxc', 'qaz@qaz', 'applicant'),
+(71, '2023-06-19', 'asdzxczxc', 'qaz@qaz', 'applicant'),
+(74, '2023-06-19', 'zxcqdasd', 'qaz@qaz', 'applicant'),
+(75, '2023-06-19', 'qweasd', 'qaz@qaz', 'scholar');
 
 -- --------------------------------------------------------
 
@@ -231,7 +211,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `staff`
