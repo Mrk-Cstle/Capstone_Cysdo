@@ -370,7 +370,7 @@
         <ul class="sub-menu">
 
           <li><a href="addStaff.php">Manage Staff</a></li>
-          <li><a href="createStaffList.php">List Of Staff</a></li>
+          <li><a href="addAdmin.php">Manage Admin</a></li>
 
         </ul>
 
