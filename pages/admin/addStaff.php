@@ -284,7 +284,7 @@ if ($_SESSION['role'] === 'admin') {
           data: data,
           success: function(response) {
 
-            if (response === 'Inserted Successfully' || response === 'Staff Info Deleted') {
+            if (response === 'Inserted Successfully') {
               $('#response').text(response);
               addData();
 
@@ -307,9 +307,15 @@ if ($_SESSION['role'] === 'admin') {
                 // Additional code if needed
               });
 
-              if (response === "Staff Info Deleted") {
-                $("#" + action).css("display", "none");
-              }
+
+            } else if (response === "Staff Info Deleted") {
+              swal({
+                title: "Success!",
+                text: "Deleted Successfully",
+                icon: "success",
+                button: "OK",
+              })
+              $("#" + action).css("display", "none");
             } else {
               $('#response').text(response);
               swal({
