@@ -88,13 +88,15 @@ if ($_SESSION['role'] === 'admin') {
         </div>
       </div>
 
-      <div class="modal" id="editModal">
-        <div class="modal-dialog">
-          <h2>Edit Details</h2><a class="close" href="#">&times;</a>
+      <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
           <div class="modal-content">
-            <div class="container">
+            <div class="container-fluid">
+              <a type="button" class="btn-close mt-3 float-end" data-bs-dismiss="modal" aria-label="Close"></a>
+            </div>
+            <div class="modal-body">
               <form>
-
+              
                 <label class="d-flex">Last Name</label>
                 <input class="d-flex" placeholder="Enter New Last Name" type="text" id="editlastName">
                 <label class="d-flex">First Name</label>
