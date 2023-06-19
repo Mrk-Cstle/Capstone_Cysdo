@@ -218,33 +218,50 @@
         $(document).ready(function() {
         // Submit button click event
         $('#postForm').submit(function(e) {
-            e.preventDefault();
-            var postText = $('#postText').val();
-            // Perform your Ajax request here to handle the submit functionality
-            $.ajax({
-                type: 'POST',
-                url: 'action/postUpdateDb.php',
-                data: {
-                    postText: postText,
-                    category: $('#category').val() // Add the category value to the data object
-                },
-                dataType: 'json',
-                success: function(response) {
-                    // Handle the response from the server
-                    console.log('Post submitted successfully');
-                    // Add the new post to the DOM dynamically
-                    var postFormat = '<div class="postFormat"><section><h3>Uploader: ' + response.uploader + '</h3><h3>Upload Date: ' + response.uploadDate + '</h3><h3>Category: ' + response.category + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="aBtn edit-btn" href="#" data-id="' + response.uploadId + '">Edit</a><a class="aBtn delete-btn" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
-                    $('#manageStyle').append(postFormat);
-                    // Reset the form
-                    $('#postText').val('');
-                    $('#category').val(''); // Clear the category input field
-                },
-                error: function(xhr, status, error) {
-                    // Handle any errors
-                    console.error('Error submitting post:', error);
-                }
-            });
-        });
+    e.preventDefault();
+    var postText = $('#postText').val();
+    var category = $('#category').val();
+
+    // Perform your Ajax request here to handle the submit functionality
+    $.ajax({
+        type: 'POST',
+        url: 'action/postUpdateDb.php',
+        data: {
+            postText: postText,
+            category: category
+        },
+        dataType: 'json',
+        success: function(response) {
+            // Handle the response from the server
+            console.log('Post submitted successfully');
+
+            // Add the new category button dynamically
+            if (!$('.category-btn[data-category="' + category + '"]').length) {
+                var newCategoryButton = $('<button>')
+                    .addClass('category-btn')
+                    .attr('data-category', category)
+                    .text(category.charAt(0).toUpperCase() + category.slice(1) + ' Announcements');
+                $('#categoryButtons').append(newCategoryButton);
+            }
+
+            // Add the new post to the DOM dynamically
+            var postFormat = '<div class="postFormat ' + category + '"><section><h3>Uploader: ' + response.uploader + '</h3><h3>Upload Date: ' + response.uploadDate + '</h3><h3>Category: ' + response.category + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="aBtn edit-btn" href="#" data-id="' + response.uploadId + '">Edit</a><a class="aBtn delete-btn" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
+            $('#manageStyle').append(postFormat);
+
+            // Reset the form
+            $('#postText').val('');
+            $('#category').val('');
+
+            // Show success message
+            showMessage('Successfully Submitted');
+        },
+        error: function(xhr, status, error) {
+            // Handle any errors
+            console.error('Error submitting post:', error);
+        }
+    });
+});
+
 
             // Delete button click event
             $(document).on('click', '.delete-btn', function(e) {
