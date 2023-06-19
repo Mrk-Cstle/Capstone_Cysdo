@@ -161,6 +161,13 @@
             </div>
         </form>
 
+                <!-- New Category Button -->
+                <div id="categoryButtons">
+            <button class="category-btn" data-category="scholar">Scholar Announcements</button>
+            <button class="category-btn" data-category="applicant">Applicant Announcements</button>
+            <!-- Add more category buttons as needed -->
+        </div>
+
         <div id="manageStyle">
             <h1>Manage Post</h1>
 
@@ -330,6 +337,18 @@
                 }, 3000);
             }
         });
+
+          // Show or hide announcements based on category button click
+          $('.category-btn').click(function() {
+                var selectedCategory = $(this).data('category');
+                $('.postFormat').each(function() {
+                    if ($(this).hasClass(selectedCategory)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
     </script>
 </body>
 
