@@ -63,7 +63,6 @@ if ($_SESSION['role'] === 'admin') {
             </div>
             <div class="overlay" id="btnAdd">
                 <div class="wrapper">
-
                     <h2>Please Fill up The Form</h2><a class="close" href="#">&times;</a>
                     <div class="content">
                         <div class="container">
@@ -87,11 +86,16 @@ if ($_SESSION['role'] === 'admin') {
                 </div>
             </div>
 
-            <div class="modal" id="editModal">
-                <div class="modal-dialog">
-                    <h2>Edit Details</h2><a class="close" href="#">&times;</a>
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
-                        <div class="container">
+                        <div class="container-fluid">
+                        <a type="button" class="btn-close mt-3 float-end" data-bs-dismiss="modal" aria-label="Close"></a>
+                            <hr class="mb-3 mt-3 opacity-0">
+                            <h2>Edit Details</h2>
+                        </div>
+                            <div class="modal-body">
+    
                             <form>
 
                                 <label class="d-flex">Last Name</label>
@@ -108,7 +112,7 @@ if ($_SESSION['role'] === 'admin') {
                                 <input type="hidden" id="editstaffId" name="postId" value="">
                                 <input class="btn btn-success" id="editSaveBtn" value="Submit">
                             </form>
-                        </div>
+                            </div>
                     </div>
                 </div>
             </div>
