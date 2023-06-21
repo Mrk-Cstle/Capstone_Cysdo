@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2023 at 10:40 AM
+-- Generation Time: Jun 21, 2023 at 10:42 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -30,6 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `admin_id` int(200) NOT NULL,
   `full_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `first_name` varchar(200) NOT NULL,
+  `middle_name` varchar(200) NOT NULL,
   `contact_number` int(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
@@ -42,9 +45,9 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_id`, `full_name`, `contact_number`, `email`, `address`, `image`, `user`, `password`) VALUES
-(7, 'qaz, qaz qaz', 1, 'qaz@qaz', 'qazqaz', '', 'qaz@qaz', '$2y$10$/BO97my/UJbzFStoBQ/IAOFw5h3nbz1ZTEAloEV21Urv7YqMXZss2'),
-(8, 'qwe, qwe qwe', 123, 'qwe@qwe', 'qwe', '', 'qwe@qwe', '$2y$10$gwvIEogUgo6ccv5I9x/sje8uP89iJelsmLqM70WU1BR4WG7STKDn.');
+INSERT INTO `admin` (`admin_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `address`, `image`, `user`, `password`) VALUES
+(7, 'qaz, qaz qaz', 'qaz', 'qaz', 'qaz', 1, 'qaz@qaz', 'qazqaz', '', 'qaz@qaz', '$2y$10$LudrsmGWjTQfFGxYiaesOeV4WVk426Yh1KmupaDaIc6wc7xjeCJyW'),
+(8, 'qwe, qwe qwe', 'qwe', 'qwe', 'qwe', 123, 'qwe@qwe', 'qwe', '', 'qwe@qwe', '$2y$10$7saD//.m2q76MrhnG4nSrO8SogkaowdaQ.nQK1Y6YxNkrvRBJx2Ee');
 
 -- --------------------------------------------------------
 
@@ -82,14 +85,7 @@ INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader
 (45, '2023-06-14', 'asdawqd', 'qaz@qaz'),
 (46, '2023-06-14', 'dsawda123', 'qaz@qaz'),
 (50, '2023-06-15', 'asdasd', 'qaz@qaz'),
-(51, '2023-06-15', '1a', 'qaz@qaz'),
-(52, '2023-06-15', 'qwe', 'qaz@qaz'),
-(53, '2023-06-15', 'qwe', ''),
-(54, '2023-06-15', 'qwe', ''),
-(55, '2023-06-15', 'qwe', ''),
-(56, '2023-06-15', 'qwe', ''),
-(57, '2023-06-15', 'qweqwe', 'qaz@qaz'),
-(58, '2023-06-15', 'qwe', 'qaz@qaz');
+(51, '2023-06-15', '1a', 'qaz@qaz');
 
 -- --------------------------------------------------------
 
@@ -151,6 +147,7 @@ INSERT INTO `registration` (`fullName`, `lastName`, `firstName`, `middleName`, `
 ('asd, asdasd asd', 'asd', 'asdasd', 'asd', 'approved', 'male', 'single', 'yes', '2023-04-17', 'dqwe', 'wqeqwe', '', 'asdasd', 'dqwe', 'qweqw', 123123, 123123, '', '', 'asdasd', 'asdasd', 'public', 'asdasd', 'als', 'asdasd', 'alive', 'asdasd', 123123, 'asdasd', 'asdasd', 'asdasd', 'alive', 'wqeqwe', 123123, 'qsdasd', 'asdasd', '', '', 0, '', '', 123123, 123123),
 ('asd, asdwq qwe', 'asd', 'asdwq', 'qwe', '', 'male', 'single', 'yes', '2023-04-04', 'sadqwe', 'qweqwe', '', 'asdqwe', 'asdwqe', 'asdawd', 123123, 123123123, '', '', 'qweqweqw', 'eqweqwe', 'public', 'qwe12', 'als', 'qweq2e', 'alive', 'qweq', 2123, 'eqwe', 'qweqwe', 'qweqwe', 'alive', 'qweqwe', 3123, 'qweqwe', 'qweqwe', 'qweqwe', 'qweqwe', 123123, 'qweq2', 'qweqwe', 12312, 213123123),
 ('qwe, asdwq  asdqw', 'qwe', 'asdwq ', 'asdqw', 'undefined', 'male', 'single', 'yes', '2023-04-23', 'asd', 'asdw', '', 'wqdqe', 'asd', 'awqe', 123123, 123123, '', '', 'qweqweqw', 'qweqweqe', 'public', 'qwe', 'als', 'eqweqwe', 'alive', 'qwe21', 3123123, 'qweqwe', 'qweqwe', 'eqweqwe', 'alive', 'qweqwe', 123123, 'qweqwe', 'qweqwe', '', '', 0, '', '', 123123, 123123),
+('qweqw, eqweqwe qweqwe', 'qweqw', 'eqweqwe', 'qweqwe', 'undefined', 'male', 'single', 'yes', '2023-06-07', 'qweqwe', 'qweqwe', '', 'qweq', 'qwe', 'qwe', 123123, 123123, '', '', 'qweqwe', 'qweqwe', 'public', 'qweqwe', 'als', 'qweqwe', 'alive', 'qweqwe', 1231, '123123', '123123', 'qweqwe', 'alive', 'qweqwe', 123123, '123123', '1231', 'qweqwe', 'qweq', 123123, '123123', '123123', 123123, 123123),
 ('qweqw, weqwe qweqwe', 'qweqw', 'weqwe', 'qweqwe', 'undefined', 'male', 'single', 'yes', '2023-04-24', 'qweqwe', 'qweqwe', '', 'qweqwe', 'qwe', 'qweqwe', 1231231, 123123123, '', '', 'qweqwe', 'qweqweqw', 'public', '123123', 'highSchoolGrad', 'qweqwe', 'alive', 'qweqwe', 123123, 'weqweqwe', 'qweqwe', 'qweqwe', 'alive', 'qweqwe', 123123, 'qweqweqwe', 'qweqwe', 'qweqwe', '', 0, '', '', 123123, 12312312),
 ('qwqw, qwqw qwqw', 'qwqw', 'qwqw', 'qwqw', 'denied', 'male', 'single', 'yes', '2023-03-18', 'qwqwqw', 'qwqwqw', '', 'qwqqw', 'qwqwqw', 'qwqwqw', 12123, 123123123, 0x43617374696c6c6f28327832292e6a706567, 0x5350494d53204c4f474f2e706e67, 'qweqwe', 'qweqwe', 'public', 'qweqwe', 'als', 'qweqwe', 'alive', 'qweqwe', 123123, 'qwe', 'qweqwe', 'qweqweqwe', 'alive', 'qweqweqwe', 123, 'qweqwe', 'qweqweqwe', 'qweqweqwe', 'qweqweqwe', 123123, 'qweqwe', 'qweqweqwe', 213123, 12121212);
 
@@ -180,12 +177,8 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_name`, `position`, `user`, `password`, `contactNum`, `address`, `email`, `image`) VALUES
-(125, 'castillo, mark david', 'castillo', 'mark', 'david', 'qwe', 'qwe', '$2y$10$Zib3yIC1HIaVReUodsRinONQY2Jbi2CB3SEYLOJ4t/oASAlh1Pkey', 123, '', 'qwea', ''),
-(136, ',  ', '', '', '', '', 'qw', '$2y$10$oi.LbMhkmmwwlxgGatQIqunIFEN//wfpgJsIB9MjgBbKav197YEoi', 0, '', 'qw', ''),
-(139, ',  ', '', '', '', '', 'qwe', '$2y$10$Wjl.ClU7USZgJ4rP9hYBX.bWMl7LRnJCJ3.2zlLGtV/3eTX/5cbr6', 0, '', 'qwe', ''),
-(153, ',  ', '', '', '', '', 'asdas@qweqwe', '$2y$10$8hcNwH6/c2IhnsS9ZvA0YOVnUj5NuzCideuSyos1S2W7jrnVuL76W', 0, '', 'asdas@qweqwe', ''),
-(155, ',  qwe', '', '', 'qwe', '', 'qwe@qwe', '$2y$10$epGXl08dcN5JkSSGs.Kb0eoy2z8qiiz96vfdY3mc3Jh5zWtKTjeVG', 0, '', 'qwe@qwe', ''),
-(156, ',  asdasd', '', '', 'asdasd', '', 'asd@asd', '$2y$10$nGxyykK0T9m59lsq1vZ3pun8oA2/fpqlHzR2/fWERAk0iREbGovsu', 0, '', 'asd@asd', '');
+(160, ',  ', '', '', '', '', 'asdasdasdasdasdasd', '$2y$10$QTcLC/BCbV1FM63BFLVGKOmwj7gPT0WihA2juDn4QnfEKuJIGu2JC', 0, '', 'asdasdasdasdasdasd', ''),
+(165, 'asdasd,  ', 'asdasd', '', '', '', 'QASs', '$2y$10$VO3drbm7hfKF/byFJ9SLieskVGEOWSCFrL3ny0b8QFxQQhIPSXXOq', 0, '', 'QASs', '');
 
 --
 -- Indexes for dumped tables
@@ -195,7 +188,8 @@ INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_n
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`);
+  ADD PRIMARY KEY (`admin_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `announcements`
@@ -225,19 +219,19 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `admin_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
