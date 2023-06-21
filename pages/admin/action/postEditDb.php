@@ -9,4 +9,4 @@ $newPost = $_POST['postText'];
 mysqli_query($conn, "UPDATE announcements SET announcement='$newPost' WHERE uploadId = '$id'");
 
 // Redirect to the postUpdate.php page
-header('location:postUpdate.php');
+header('location:../postUpdate.php');
