@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2023 at 07:21 PM
+-- Generation Time: Jun 21, 2023 at 01:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -66,10 +66,15 @@ CREATE TABLE `announcements` (
 
 INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader`, `category`) VALUES
 (62, '2023-06-19', 'asdasdasd', 'qaz@qaz', 'scholar'),
-(63, '2023-06-19', 'qweasczxc', 'qaz@qaz', 'applicant'),
-(71, '2023-06-19', 'asdzxczxc', 'qaz@qaz', 'applicant'),
-(74, '2023-06-19', 'zxcqdasd', 'qaz@qaz', 'applicant'),
-(75, '2023-06-19', 'qweasd', 'qaz@qaz', 'scholar');
+(75, '2023-06-19', 'qweasd', 'qaz@qaz', 'scholar'),
+(76, '2023-06-20', 'asdasd', 'qaz@qaz', 'applicant'),
+(83, '2023-06-20', 'HAHAHAHAHA', 'qaz@qaz', 'applicant'),
+(86, '2023-06-20', 'adsdzxc', 'qaz@qaz', 'applicant'),
+(87, '2023-06-20', 'Halluuuu', 'qaz@qaz', 'applicant'),
+(88, '2023-06-20', 'qweasdqwe', 'qaz@qaz', ''),
+(89, '2023-06-20', 'hgfhjgjghj', 'qaz@qaz', 'scholar'),
+(90, '2023-06-20', 'dasdwadsd', 'qaz@qaz', 'scholar'),
+(91, '2023-06-21', 'Hwahdhwadahsdwads', 'qaz@qaz', 'scholar');
 
 -- --------------------------------------------------------
 
@@ -211,7 +216,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `staff`
