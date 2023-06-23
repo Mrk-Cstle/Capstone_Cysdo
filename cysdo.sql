@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2023 at 04:44 PM
+-- Generation Time: Jun 23, 2023 at 07:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -62,6 +62,17 @@ CREATE TABLE `announcements` (
   `uploader` varchar(50) NOT NULL,
   `category` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `announcements`
+--
+
+INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader`, `category`) VALUES
+(1, '2023-06-23', 'qweqwe', 'qaz@qaz', 'applicant'),
+(2, '2023-06-23', 'qweqasd', 'qaz@qaz', 'scholar'),
+(3, '2023-06-23', 'asdwadsd', 'qaz@qaz', 'scholar'),
+(4, '2023-06-23', 'asdasdzxc', 'qaz@qaz', ''),
+(5, '2023-06-23', 'asdasdzxc', 'qaz@qaz', 'applicant');
 
 -- --------------------------------------------------------
 
@@ -157,6 +168,28 @@ INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_n
 (165, 'asdasd,  ', 'asdasd', '', '', '', 'QASs', '$2y$10$VO3drbm7hfKF/byFJ9SLieskVGEOWSCFrL3ny0b8QFxQQhIPSXXOq', 0, '', 'QASs', ''),
 (166, ',  asd', '', '', 'asd', '', 'asd', '$2y$10$Ze5h8a/n.MJeuQ650sJ/m.r30W.ICZxKb.v6crisHbSbqT58cX08e', 0, '', 'asd', '');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `todos`
+--
+
+CREATE TABLE `todos` (
+  `id` int(11) NOT NULL,
+  `todo_text` varchar(255) NOT NULL,
+  `completed` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `todos`
+--
+
+INSERT INTO `todos` (`id`, `todo_text`, `completed`, `created_at`) VALUES
+(3, 'asdasd', 0, '2023-06-23 05:27:59'),
+(4, 'gatdog', 0, '2023-06-23 05:28:22'),
+(6, 'sdadzxc', 0, '2023-06-23 05:40:27');
+
 --
 -- Indexes for dumped tables
 --
@@ -189,6 +222,12 @@ ALTER TABLE `staff`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `todos`
+--
+ALTER TABLE `todos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -202,13 +241,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
   MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+
+--
+-- AUTO_INCREMENT for table `todos`
+--
+ALTER TABLE `todos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
