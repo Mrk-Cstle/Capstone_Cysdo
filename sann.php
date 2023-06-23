@@ -2,7 +2,6 @@
 include 'pages/include/dbConnection.php';
 include 'pages/admin/include/session.php';
 
-
 // Assuming you already have a valid database connection and session
 
 $query = "SELECT * FROM announcements WHERE category = 'scholar'";
@@ -100,28 +99,28 @@ $resultGetPost = mysqli_query($conn, $query);
     <?php include 'assets/template/homeNavigation.php'; ?>
 
     <div id="manageStyle">
-
         <h2>Scholar Announcements</h2>
         <?php
-        if ($resultGetPost->num_rows > 0) {
-            while ($row = $resultGetPost->fetch_assoc()) {
-                echo "<div class='postFormat scholar'>
-                          <section>
-                          <h3>Upload Date: " . $row['uploadDate'] . "</h3>
-                          </section>
-                          <main>
-                              <p>" . $row['announcement'] . "</p>
-                          </main>
-                      </div>";
+        if ($resultGetPost) {
+            if ($resultGetPost->num_rows > 0) {
+                while ($row = $resultGetPost->fetch_assoc()) {
+                    echo "<div class='postFormat scholar'>
+                              <section>
+                              <h3>Upload Date: " . $row['uploadDate'] . "</h3>
+                              </section>
+                              <main>
+                                  <p>" . $row['announcement'] . "</p>
+                              </main>
+                          </div>";
+                }
+            } else {
+                echo "No scholar announcements found.";
             }
         } else {
-            echo "No scholar announcements found.";
+            echo "An error occurred while retrieving announcements.";
         }
         ?>
     </div>
-
-
-
 </body>
 
 </html>

@@ -130,6 +130,13 @@
             border: 1px solid #d6e9c6;
             border-radius: 4px;
         }
+        .tab {
+        display: none;
+    }
+
+    .tab.active {
+        display: block;
+    }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -169,9 +176,11 @@
         </div>
 
         <div id="manageStyle">
-            <h1>Manage Post</h1>
+        <h1>Manage Post</h1>
 
+        <div class="tab scholar active">
             <h2>Scholar Announcements</h2>
+            <!-- Display scholar announcements here -->
             <?php
             if ($resultGetPost->num_rows > 0) {
                 while ($row = $resultGetPost->fetch_assoc()) {
@@ -181,8 +190,11 @@
                 }
             }
             ?>
+        </div>
 
+        <div class="tab applicant">
             <h2>Applicant Announcements</h2>
+            <!-- Display applicant announcements here -->
             <?php
             // Reset the internal pointer of the result set
             mysqli_data_seek($resultGetPost, 0);
@@ -196,6 +208,7 @@
             }
             ?>
         </div>
+    </div>
 
         <!-- Edit Post Modal -->
         <div id="editModal" class="modal">
@@ -366,6 +379,26 @@
                     }
                 });
             });
+
+            $(document).ready(function () {
+        // Show the default tab on page load
+        $('.tab').first().addClass('active');
+
+        // Handle tab button click
+        $('.category-btn').click(function () {
+            var category = $(this).data('category');
+
+            // Remove active class from all tabs and buttons
+            $('.category-btn').removeClass('active');
+            $('.tab').removeClass('active');
+
+            // Add active class to the clicked button
+            $(this).addClass('active');
+
+            // Show the corresponding tab
+            $('.tab.' + category).addClass('active');
+        });
+    });
     </script>
 </body>
 

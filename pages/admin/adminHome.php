@@ -150,35 +150,44 @@
                     </table>
                 </div> -->
                 <div class="todo">
-                    <div class="head">
-                        <h3>Todos</h3>
-                        <i class='bx bx-plus'></i>
-                        <i class='bx bx-filter'></i>
-                    </div>
-                    <ul class="todo-list">
-                        <li class="completed">
-                            <p>Todo List</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="completed">
-                            <p>Todo List</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="not-completed">
-                            <p>Todo List</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="completed">
-                            <p>Todo List</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="not-completed">
-                            <p>Todo List</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="head">
+            <h3>Todos</h3>
+            <i class='bx bx-plus'></i>
+            <i class='bx bx-filter'></i>
+        </div>
+        <ul class="todo-list">
+            <li class="completed">
+                <p>Todo List</p>
+                <i class='bx bx-dots-vertical-rounded'></i>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Add a new todo
+            $('.head i.bx-plus').click(function() {
+                var todoText = prompt('Enter a new todo:');
+                if (todoText) {
+                    var newTodo = $('<li>').addClass('not-completed')
+                        .append($('<p>').text(todoText))
+                        .append($('<i>').addClass('bx bx-dots-vertical-rounded'));
+                    $('.todo-list').append(newTodo);
+                }
+            });
+
+            // Toggle todo completion
+            $('.todo-list').on('click', 'li', function() {
+                $(this).toggleClass('completed not-completed');
+            });
+
+            // Filter todos
+            $('.head i.bx-filter').click(function() {
+                $('.todo-list li').toggle();
+            });
+        });
+    </script>
         </main>
     </section>
 
