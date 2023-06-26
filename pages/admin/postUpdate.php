@@ -176,39 +176,44 @@
         </div>
 
         <div id="manageStyle">
-        <h1>Manage Post</h1>
+    <h1>Manage Post</h1>
 
-        <div class="tab scholar active">
-            <h2>Scholar Announcements</h2>
-            <!-- Display scholar announcements here -->
-            <?php
-            if ($resultGetPost->num_rows > 0) {
-                while ($row = $resultGetPost->fetch_assoc()) {
-                    if ($row['category'] === 'scholar') {
-                        echo "<div class='postFormat scholar'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
-                    }
+    <div class="tab scholar active">
+        <h2>Scholar Announcements</h2>
+        <!-- Display scholar announcements here -->
+        <?php
+        if ($resultGetPost->num_rows > 0) {
+            while ($row = $resultGetPost->fetch_assoc()) {
+                if ($row['category'] === 'scholar') {
+                    echo "<div class='postFormat scholar'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
                 }
             }
-            ?>
-        </div>
-
-        <div class="tab applicant">
-            <h2>Applicant Announcements</h2>
-            <!-- Display applicant announcements here -->
-            <?php
-            // Reset the internal pointer of the result set
-            mysqli_data_seek($resultGetPost, 0);
-
-            if ($resultGetPost->num_rows > 0) {
-                while ($row = $resultGetPost->fetch_assoc()) {
-                    if ($row['category'] === 'applicant') {
-                        echo "<div class='postFormat applicant'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
-                    }
-                }
-            }
-            ?>
-        </div>
+        } else {
+            echo "No scholar announcements found.";
+        }
+        ?>
     </div>
+
+    <div class="tab applicant">
+        <h2>Applicant Announcements</h2>
+        <!-- Display applicant announcements here -->
+        <?php
+        // Reset the internal pointer of the result set
+        mysqli_data_seek($resultGetPost, 0);
+
+        if ($resultGetPost->num_rows > 0) {
+            while ($row = $resultGetPost->fetch_assoc()) {
+                if ($row['category'] === 'applicant') {
+                    echo "<div class='postFormat applicant'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
+                }
+            }
+        } else {
+            echo "No applicant announcements found.";
+        }
+        ?>
+    </div>
+</div>
+
 
         <!-- Edit Post Modal -->
         <div id="editModal" class="modal">

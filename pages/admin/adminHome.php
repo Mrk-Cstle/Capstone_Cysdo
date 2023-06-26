@@ -193,21 +193,6 @@
         $password = "";
         $db = "cysdo";
 
-        $conn = new mysqli($server, $username, $password, $db);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        if (isset($_POST['delete'])) {
-            $todoId = $_POST['delete'];
-            $deleteSql = "DELETE FROM todos WHERE id = $todoId";
-            if ($conn->query($deleteSql) === TRUE) {
-                echo "Todo deleted successfully.";
-            } else {
-                echo "Error deleting todo: " . $conn->error;
-            }
-        }
-
         $sql = "SELECT * FROM todos";
         $result = $conn->query($sql);
 
@@ -248,7 +233,7 @@
             var todoText = prompt('Enter a new todo:');
             if (todoText) {
                 $.ajax({
-                    url: 'add_todo.php',
+                    url: 'addTodo.php',
                     type: 'POST',
                     data: { todo_text: todoText },
                     dataType: 'json', // Added to expect JSON response
@@ -275,7 +260,7 @@
             var todoId = $(this).data('id');
             $(this).toggleClass('completed not-completed');
             $.ajax({
-                url: 'update_todo.php',
+                url: 'updateTodo.php',
                 type: 'POST',
                 data: { todo_id: todoId },
                 success: function(response) {
@@ -312,6 +297,27 @@
             // Perform the necessary AJAX request or update the database as needed
             // Remove the todo from the list
             $('#popup-' + todoId).closest('li').remove();
+        }
+    }
+
+    function deleteTodoAjax(todoId) {
+        if (confirm('Are you sure you want to delete this task?')) {
+            $.ajax({
+                url: 'deleteTodo.php',
+                type: 'POST',
+                data: {
+                    delete: todoId
+                },
+                success: function(response) {
+                    // Todo deleted successfully
+                    // You can update the UI or perform any other actions
+                    $('#popup-' + todoId).closest('li').remove();
+                },
+                error: function(xhr, status, error) {
+                    // Error deleting todo
+                    console.log(xhr.responseText);
+                }
+            });
         }
     }
 </script>
