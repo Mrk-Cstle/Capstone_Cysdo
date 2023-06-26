@@ -43,12 +43,18 @@ $guardianOccupation = $_POST['guardianOccupation'];
 $gEducAttainment = $_POST['gEducAttainment'];
 $sizeFamily = $_POST['sizeFamily'];
 $familyIncome = $_POST['familyIncome'];
+$sibling1 = $_POST['sibling1'];
+$sibling2 = $_POST['sibling2'];
+$sibling3 = $_POST['sibling3'];
+$sibling4 = $_POST['sibling4'];
+$sibling5 = $_POST['sibling5'];
+$sibling6 = $_POST['sibling6'];
 $status = "undefined";
 
 $fullName =  $lastName . ", " . $firstName . ' ' . $middleName;
 $fullAddress = $addressNum . " " . $addressStreet . " " . $addressBarangay;
 
-$query = "INSERT INTO registration (fullName, lastName, firstName,middleName,gender, civilStatus, voter, birthDate,birthPlace, citizenship, houseAddress, streetAddress, barangayAddress, contactNum1, contactNum2, 2x2Pic, signaturePic, schoolName, schoolAddress, schoolType, course, yearLevel, fatherName, fatherStatus,fatherAddress, fatherContact, fatherOccupation, fatherEduc, motherName, motherStatus, motherAddress, motherContact, motherOccupation, motherEduc, guardianName, guardianAddress, guardianContact, guardianOccupation, guardianEduc, sizeFamily, annualGross, status ) VALUES ( '$fullName','$lastName' , '$firstName', '$middleName', '$gender', '$civilStatus', '$registeredVoter', '$birthDate','$birthPlace', '$citizenship', '$addressNum', '$addressStreet', '$addressBarangay', '$contactNumber1', '$contactNumber2', '$picture', '$signPic', '$schoolName', '$schoolAddress', '$schoolType', '$course', '$currentLevel', '$fatherName', '$father', '$fatherAddress', '$fatherNumber', '$fatherOccupation',  '$fEducAttainment', '$motherName', '$mother', '$motherAddress', '$motherNumber', '$motherOccupation', '$mEducAttainment', '$guardianName', '$guardianAddress', '$guardianNumber', '$guardianOccupation', '$gEducAttainment', '$sizeFamily', '$familyIncome', '$status')";
+$query = "INSERT INTO registration (fullName, lastName, firstName,middleName,gender, civilStatus, voter, birthDate,birthPlace, citizenship, houseAddress, streetAddress, barangayAddress, contactNum1, contactNum2, 2x2Pic, signaturePic, schoolName, schoolAddress, schoolType, course, yearLevel, fatherName, fatherStatus,fatherAddress, fatherContact, fatherOccupation, fatherEduc, motherName, motherStatus, motherAddress, motherContact, motherOccupation, motherEduc, guardianName, guardianAddress, guardianContact, guardianOccupation, guardianEduc, sizeFamily, annualGross, status, sibling1,sibling2,sibling3,sibling4,sibling5,sibling6 ) VALUES ( '$fullName','$lastName' , '$firstName', '$middleName', '$gender', '$civilStatus', '$registeredVoter', '$birthDate','$birthPlace', '$citizenship', '$addressNum', '$addressStreet', '$addressBarangay', '$contactNumber1', '$contactNumber2', '$picture', '$signPic', '$schoolName', '$schoolAddress', '$schoolType', '$course', '$currentLevel', '$fatherName', '$father', '$fatherAddress', '$fatherNumber', '$fatherOccupation',  '$fEducAttainment', '$motherName', '$mother', '$motherAddress', '$motherNumber', '$motherOccupation', '$mEducAttainment', '$guardianName', '$guardianAddress', '$guardianNumber', '$guardianOccupation', '$gEducAttainment', '$sizeFamily', '$familyIncome', '$status','$sibling1', '$sibling2', '$sibling3', '$sibling4', '$sibling5', '$sibling6')";
 
 $insert = mysqli_query($conn, $query);
 ?>
@@ -209,28 +215,28 @@ $insert = mysqli_query($conn, $query);
                 <td colspan="3"><?php echo "$fullName"; ?></td>
                 <!-- <td></td>
                 <td></td> -->
-                <td><?php echo "$birthDate" ?></td>
+                <td colspan="2"><?php echo "$birthDate" ?></td>
             </tr>
             <tr>
                 <!-- <td></td> -->
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Middle Name</th>
-                <th>Birth date</th>
+                <th colspan="2">Birth date</th>
             </tr>
             <tr>
                 <th rowspan="2">Complete Address:</th>
                 <td colspan="3"><?php echo "$fullAddress" ?></td>
                 <!-- <td></td>
                 <td></td> -->
-                <td><?php echo "$birthPlace" ?></td>
+                <td colspan="2"><?php echo "$birthPlace" ?></td>
             </tr>
             <tr>
                 <!-- <td></td> -->
                 <th>House No.</th>
                 <th>Block/Lot</th>
                 <th>Street/Phase/Section</th>
-                <th>Place of Birth</th>
+                <th colspan="2">Place of Birth</th>
             </tr>
             <tr>
                 <td><?php echo "$gender" ?></td>
@@ -275,12 +281,12 @@ $insert = mysqli_query($conn, $query);
             <tr>
                 <td><?php echo "$course" ?></td>
 
-                <td><?php echo "$currentLevel" ?></td>
+                <td colspan="2"><?php echo "$currentLevel" ?></td>
             </tr>
             <tr>
 
                 <td>Course/Strand</td>
-                <td rowspan="2">Current Year Level</td>
+                <td colspan="2">Current Year Level</td>
 
             </tr>
         </table>
@@ -299,7 +305,7 @@ $insert = mysqli_query($conn, $query);
                 <td><?php echo "$fatherName" ?></td>
                 <td><?php echo "$motherName" ?></td>
                 <td><?php echo "$guardianName" ?></td>
-                <td></td>
+                <td><?php echo "$sibling1" ?></td>
 
             </tr>
             <tr>
@@ -307,14 +313,14 @@ $insert = mysqli_query($conn, $query);
                 <td><?php echo "$fatherAddress" ?></td>
                 <td><?php echo "$motherAddress" ?></td>
                 <td><?php echo "$guardianAddress" ?></td>
-                <td></td>
+                <td><?php echo "$sibling2" ?></td>
             </tr>
             <tr>
                 <th>Contact No.</th>
                 <td><?php echo "$fatherNumber" ?></td>
                 <td><?php echo "$motherNumber" ?></td>
                 <td><?php echo "$guardianNumber" ?></td>
-                <td></td>
+                <td><?php echo "$sibling3" ?></td>
 
             </tr>
             <tr>
@@ -322,7 +328,7 @@ $insert = mysqli_query($conn, $query);
                 <td><?php echo "$fatherOccupation" ?></td>
                 <td><?php echo "$motherOccupation" ?></td>
                 <td><?php echo "$guardianOccupation" ?></td>
-                <td></td>
+                <td><?php echo "$sibling4" ?></td>
 
             </tr>
             <tr>
@@ -330,12 +336,13 @@ $insert = mysqli_query($conn, $query);
                 <td><?php echo "$fEducAttainment" ?></td>
                 <td><?php echo "$mEducAttainment" ?></td>
                 <td><?php echo "$gEducAttainment" ?></td>
-                <td></td>
+                <td><?php echo "$sibling5" ?></td>
 
             </tr>
             <tr>
-                <th colspan="3">Total Parents Annual Gross Income<?php echo "$familyIncome" ?></th>
+                <th colspan="2">Total Parents Annual Gross Income<?php echo "$familyIncome" ?></th>
                 <th colspan="2">Size of Family<?php echo "$sizeFamily" ?></th>
+                <td><?php echo "$sibling6" ?></td>
 
 
             </tr>
