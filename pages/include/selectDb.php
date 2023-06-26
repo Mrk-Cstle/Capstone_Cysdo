@@ -14,3 +14,5 @@ $getPost = "SELECT * FROM announcements ORDER BY uploadId DESC ";
 $resultGetPost = mysqli_query($conn, $getPost);
 
 //end of announcement
+$getApplicantList = "SELECT * FROM registration ORDER BY applicant_id DESC";
+$resultApplicantList = mysqli_query($conn, $getApplicantList);

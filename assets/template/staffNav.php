@@ -351,7 +351,7 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="staffHome.php">
+                <a href="adminHome.php">
                     <i class='bx bx-grid-alt'></i>
                     <span class="link_name">Dashboard</span>
                 </a>
