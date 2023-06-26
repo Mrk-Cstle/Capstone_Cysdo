@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2023 at 03:45 PM
+-- Generation Time: Jun 23, 2023 at 07:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -68,12 +68,11 @@ CREATE TABLE `announcements` (
 --
 
 INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader`, `category`) VALUES
+(1, '2023-06-23', 'qweqwe', 'qaz@qaz', 'applicant'),
+(2, '2023-06-23', 'qweqasd', 'qaz@qaz', 'scholar'),
+(3, '2023-06-23', 'asdwadsd', 'qaz@qaz', 'scholar'),
 (4, '2023-06-23', 'asdasdzxc', 'qaz@qaz', ''),
-(6, '2023-06-26', 'asdzsczx', 'qaz@qaz', 'applicant'),
-(7, '2023-06-26', 'qweasd', 'qaz@qaz', 'scholar'),
-(8, '2023-06-26', 'qweasd', 'qaz@qaz', 'applicant'),
-(9, '2023-06-26', 'dasdzxc', 'qaz@qaz', ''),
-(10, '2023-06-26', 'asdzxc', 'qaz@qaz', 'scholar');
+(5, '2023-06-23', 'asdasdzxc', 'qaz@qaz', 'applicant');
 
 -- --------------------------------------------------------
 
@@ -187,8 +186,9 @@ CREATE TABLE `todos` (
 --
 
 INSERT INTO `todos` (`id`, `todo_text`, `completed`, `created_at`) VALUES
-(6, 'sdadzxc', 0, '2023-06-23 05:40:27'),
-(8, 'qweqweqwe', 0, '2023-06-26 07:58:18');
+(3, 'asdasd', 0, '2023-06-23 05:27:59'),
+(4, 'gatdog', 0, '2023-06-23 05:28:22'),
+(6, 'sdadzxc', 0, '2023-06-23 05:40:27');
 
 --
 -- Indexes for dumped tables
@@ -241,7 +241,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -253,7 +253,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `todos`
 --
 ALTER TABLE `todos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
