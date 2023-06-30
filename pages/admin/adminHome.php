@@ -8,33 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style/dashboard.css">
+    <link rel="stylesheet" href="../../style/adminTodo.css">
 
-    <style>
-    .popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        padding: 20px;
-        border: 1px solid #ccc;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        z-index: 9999;
-    }
-
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 9998;
-    }
-</style>
 </head>
 
 <body>
@@ -173,7 +150,7 @@
                         </tbody>
                     </table>
                 </div> -->
-                <div class="todo">
+<div class="todo">
     <div class="head">
         <h3>Todos</h3>
         <i class="bx bx-plus"></i>
@@ -209,8 +186,8 @@
                     <p><?php echo $todoText; ?></p>
                     <i class="bx bx-dots-vertical-rounded" onclick="openPopup(<?php echo $todoId; ?>)"></i>
                     <div id="popup-<?php echo $todoId; ?>" class="popup">
-                        <button onclick="markAsDone(<?php echo $todoId; ?>)">Mark as Done</button>
-                        <button onclick="deleteTodoAjax(<?php echo $todoId; ?>)">Delete</button>
+                        <button class="btn btn-success btn-sm" onclick="markAsDone(<?php echo $todoId; ?>)">Mark as Done</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteTodoAjax(<?php echo $todoId; ?>)">Delete</button>
                     </div>
                     <div id="overlay-<?php echo $todoId; ?>" class="overlay" onclick="closePopup(<?php echo $todoId; ?>)"></div>
                 </li>

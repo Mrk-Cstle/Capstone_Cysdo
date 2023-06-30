@@ -5,139 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="include/nav.css">
+    <link rel="stylesheet" href="../../style/managePost.css">
     <title>Manage Post</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0px;
-            padding: 0px;
-        }
-
-        form {
-            margin: 2px;
-            padding: 10px;
-            border: 1px solid black;
-            display: flex;
-            width: 90%;
-            justify-content: flex-end;
-            flex-direction: column;
-        }
-
-        textarea {
-            padding: 10px;
-        }
-
-        #submitBtn {
-            margin-top: 10px;
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: flex-start;
-            gap: 20px;
-        }
-
-        button {
-            width: 100px;
-            height: 30px;
-            border: 1px solid black;
-            margin-bottom: 5px;
-        }
-
-        .postFormat {
-            border: 1px solid black;
-            margin-top: 20px;
-            height: auto;
-            width: 90%;
-        }
-
-        .postFormat section {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin: 10px 20px;
-        }
-
-        .postFormat.scholar {
-            background-color: lightblue; /* Adjust the styling for scholar announcements */
-        }
-
-        .postFormat.applicant {
-            background-color: lightgreen; /* Adjust the styling for applicant announcements */
-        }
-
-        main {
-            margin: 10px 20px;
-        }
-
-        .aBtn {
-            border: 1px solid black;
-            width: 20%;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        footer {
-            margin-top: 10px;
-            display: flex;
-            justify-content: flex-end;
-            gap: 20px;
-            margin: 20px;
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .alert {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            padding: 10px;
-            background-color: #dff0d8;
-            color: #3c763d;
-            border: 1px solid #d6e9c6;
-            border-radius: 4px;
-        }
-        .tab {
-        display: none;
-    }
-
-    .tab.active {
-        display: block;
-    }
-    </style>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -153,86 +25,103 @@
     ?>
     <section class="home-section">
         <form id="postForm" method="POST" action="postUpdateDb.php">
-            <label for="postText">Post Announcements</label><br>
+            <label for="postText" class="bold">Post Announcements</label><br>
             <textarea id="postText" name="postText" rows="5" cols="50"></textarea><br>
 
-            <label for="category">Category:</label>
+            <div class="col-md-5">
+            <label for="category" class="bold dropDown">Category:&nbsp;</label>
             <select id="category" name="category">
                 <option value="applicant">Applicant</option>
                 <option value="scholar">Scholar</option>
             </select>
-
+            </div>
             <div id="submitBtn">
-                <button type="submit">Submit</button>
-                <button type="reset">Reset</button>
+                <button class="btn btn-outline-success" type="submit">Submit</button>
+                <button class="btn btn-outline-dark" type="reset">Reset</button>
             </div>
         </form>
 
-                <!-- New Category Button -->
-                <div id="categoryButtons">
-            <button class="category-btn" data-category="scholar">Scholar Announcements</button>
-            <button class="category-btn" data-category="applicant">Applicant Announcements</button>
-            <!-- Add more category buttons as needed -->
+        <div class="portlet-title tabbable-line mt-3">
+                <div class="caption caption-md">
+                    <span class="caption-name font-color bold text-uppercase">Manage Post</span>
+                </div>
+            <ul class="portletNav nav nav-tabs mt-1" id="categoryButtons" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="category-btn" data-bs-toggle="tab" data-bs-target="#scholar" type="button" role="tab" aria-controls="scholarTab" aria-selected="true">Scholar</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="category-btn-2" data-bs-toggle="tab" data-bs-target="#applicant" type="button" role="tab" aria-controls="ApplicantTab" aria-selected="false">Applicant</button>
+                    </li>
+                    
+            </ul>
         </div>
+    <div class="container">
+        <div class="tab-content">
+            <div class="tab-pane active" id="scholar">
+                    <div id="manageStyle">
 
-        <div id="manageStyle">
-    <h1>Manage Post</h1>
-
-    <div class="tab scholar active">
-        <h2>Scholar Announcements</h2>
         <!-- Display scholar announcements here -->
-        <?php
-        if ($resultGetPost->num_rows > 0) {
-            while ($row = $resultGetPost->fetch_assoc()) {
-                if ($row['category'] === 'scholar') {
-                    echo "<div class='postFormat scholar'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
-                }
-            }
-        } else {
-            echo "No scholar announcements found.";
-        }
-        ?>
-    </div>
-
-    <div class="tab applicant">
-        <h2>Applicant Announcements</h2>
+                    <?php
+                    if ($resultGetPost->num_rows > 0) {
+                        while ($row = $resultGetPost->fetch_assoc()) {
+                    if ($row['category'] === 'scholar') {
+                        echo "<div class='postFormat scholar'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
+                        }
+                    }
+                    } else {
+                        echo "No scholar announcements found.";
+                    }
+                    ?>
+    
+                    </div>
+            </div>
+            <div class="tab-pane" id="applicant">
+                <div id="manageStyle">
+    
         <!-- Display applicant announcements here -->
-        <?php
+                        <?php
         // Reset the internal pointer of the result set
-        mysqli_data_seek($resultGetPost, 0);
+                            mysqli_data_seek($resultGetPost, 0);
 
-        if ($resultGetPost->num_rows > 0) {
-            while ($row = $resultGetPost->fetch_assoc()) {
-                if ($row['category'] === 'applicant') {
-                    echo "<div class='postFormat applicant'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
-                }
-            }
-        } else {
-            echo "No applicant announcements found.";
-        }
-        ?>
+                        if ($resultGetPost->num_rows > 0) {
+                            while ($row = $resultGetPost->fetch_assoc()) {
+                        if ($row['category'] === 'applicant') {
+                            echo "<div class='postFormat applicant'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
+                            }
+                        }
+                        } else {
+                            echo "No applicant announcements found.";
+                        }
+                        ?>
+   
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
 
         <!-- Edit Post Modal -->
         <div id="editModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <a class="close">&times;</a>
                 <form id="editForm" method="POST" action="postEditDb.php">
                     <input type="hidden" id="editPostId" name="postId" value="">
                     <label for="editPostText">Edit Post Announcements</label><br>
                     <textarea id="editPostText" name="postText" rows="5" cols="50"></textarea><br>
                     <div id="editSubmitBtn">
-                        <button type="button" id="editSaveBtn">Save</button>
-                        <button type="button" class="close-modal">Cancel</button>
+                        <button class="btn btn-outline-success m-lg-2" type="button" id="editSaveBtn">Save</button>
+                        <button type="button" class="close-modal btn btn-outline-dark">Cancel</button>
                     </div>
                 </form>
             </div>
         </div>
-
+    
+    
+    
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script>
+
         $(document).ready(function() {
         // Submit button click event
         $('#postForm').submit(function(e) {
@@ -259,7 +148,6 @@
                     .addClass('category-btn')
                     .attr('data-category', category)
                     .text(category.charAt(0).toUpperCase() + category.slice(1) + ' Announcements');
-                $('#categoryButtons').append(newCategoryButton);
             }
 
             // Add the new post to the DOM dynamically
