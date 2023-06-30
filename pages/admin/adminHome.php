@@ -228,34 +228,63 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
-        // Add a new todo
-        $('.head i.bx-plus').click(function() {
-            var todoText = prompt('Enter a new todo:');
-            if (todoText) {
-                $.ajax({
-                    url: 'addTodo.php',
-                    type: 'POST',
-                    data: { todo_text: todoText },
-                    dataType: 'json', // Added to expect JSON response
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            var newTodo = $('<li>').addClass('not-completed')
-                                .data('id', response.todo_id) // Store the todo ID as data attribute
-                                .append($('<p>').text(todoText))
-                                .append($('<i>').addClass('bx bx-dots-vertical-rounded'));
-                            $('.todo-list').append(newTodo);
-                        } else {
-                            console.log(response.message);
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.log('Error: ' + error);
-                    }
-                });
-            }
+$(document).ready(function() {
+    // Function to initialize event handlers
+    function initializeEventHandlers() {
+        // Add click event handler to the dots icon
+        $('.todo-list').on('click', '.bx-dots-vertical-rounded', function() {
+            var todoId = $(this).closest('li').data('id');
+            openPopup(todoId);
         });
+    }
+
+    // Add a new todo
+    $('.head i.bx-plus').click(function() {
+        var todoText = prompt('Enter a new todo:');
+        if (todoText) {
+            $.ajax({
+                url: 'addTodo.php',
+                type: 'POST',
+                data: { todo_text: todoText },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        var todoId = response.todo_id;
+                        var newTodo = $('<li>').addClass('not-completed')
+                            .data('id', todoId)
+                            .append($('<p>').text(todoText))
+                            .append(
+                                $('<i>').addClass('bx bx-dots-vertical-rounded').attr('onclick', 'openPopup(' + todoId + ')')
+                            )
+                            .append(
+                                $('<div>').attr('id', 'popup-' + todoId).addClass('popup')
+                                    .append(
+                                        $('<button>').text('Mark as Done').attr('onclick', 'markAsDone(' + todoId + ')')
+                                    )
+                                    .append(
+                                        $('<button>').text('Delete').attr('onclick', 'deleteTodoAjax(' + todoId + ')')
+                                    )
+                            )
+                            .append(
+                                $('<div>').attr('id', 'overlay-' + todoId).addClass('overlay').attr('onclick', 'closePopup(' + todoId + ')')
+                            );
+                        $('.todo-list').append(newTodo);
+                        initializeEventHandlers(); // Re-initialize event handlers for the new todo
+                    } else {
+                        console.log(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error: ' + error);
+                }
+            });
+        }
     });
+
+    // Initialize event handlers
+    initializeEventHandlers();
+});
+
 
     function openPopup(todoId) {
         $('#popup-' + todoId).show();
