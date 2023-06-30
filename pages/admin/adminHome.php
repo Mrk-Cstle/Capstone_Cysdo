@@ -34,11 +34,6 @@
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 9998;
     }
-
-    .completed {
-        text-decoration: line-through;
-        color: #888;
-    }
 </style>
 </head>
 
@@ -181,29 +176,28 @@
                 <div class="todo">
     <div class="head">
         <h3>Todos</h3>
-        <i class='bx bx-plus'></i>
-        <i class='bx bx-filter'></i>
+        <i class="bx bx-plus"></i>
+        <i class="bx bx-filter" onclick="toggleTodoList()"></i>
     </div>
     <ul class="todo-list">
         <?php
         // Fetch todos from the database
-
         $server = "localhost";
-$username = "root";
-$password = "";
-$db = "cysdo";
+        $username = "root";
+        $password = "";
+        $db = "cysdo";
 
-// Create a database connection
-$conn = new mysqli($server, $username, $password, $db);
+        // Create a database connection
+        $conn = new mysqli($server, $username, $password, $db);
 
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+        // Check the connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-// SQL query to fetch todos
-$sql = "SELECT * FROM todos";
-$result = $conn->query($sql);
+        // SQL query to fetch todos
+        $sql = "SELECT * FROM todos";
+        $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -213,13 +207,10 @@ $result = $conn->query($sql);
         ?>
                 <li class="<?php echo $completed; ?>">
                     <p><?php echo $todoText; ?></p>
-                    <i class='bx bx-dots-vertical-rounded' onclick="openPopup(<?php echo $todoId; ?>)"></i>
+                    <i class="bx bx-dots-vertical-rounded" onclick="openPopup(<?php echo $todoId; ?>)"></i>
                     <div id="popup-<?php echo $todoId; ?>" class="popup">
                         <button onclick="markAsDone(<?php echo $todoId; ?>)">Mark as Done</button>
-                        <form method="post" style="display:inline;">
-                            <input type="hidden" name="delete" value="<?php echo $todoId; ?>">
-                            <button type="submit" onclick="return confirm('Are you sure you want to delete this task?')">Delete</button>
-                        </form>
+                        <button onclick="deleteTodoAjax(<?php echo $todoId; ?>)">Delete</button>
                     </div>
                     <div id="overlay-<?php echo $todoId; ?>" class="overlay" onclick="closePopup(<?php echo $todoId; ?>)"></div>
                 </li>
@@ -233,6 +224,7 @@ $result = $conn->query($sql);
         ?>
     </ul>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -263,25 +255,6 @@ $result = $conn->query($sql);
                 });
             }
         });
-
-        // Toggle todo completion
-        $('.todo-list').on('click', 'li', function() {
-            var todoId = $(this).data('id');
-            $(this).toggleClass('completed not-completed');
-            $.ajax({
-                url: 'updateTodo.php',
-                type: 'POST',
-                data: { todo_id: todoId },
-                success: function(response) {
-                    console.log(response);
-                }
-            });
-        });
-
-        // Filter todos
-        $('.head i.bx-filter').click(function() {
-            $('.todo-list li').toggle();
-        });
     });
 
     function openPopup(todoId) {
@@ -295,19 +268,48 @@ $result = $conn->query($sql);
     }
 
     function markAsDone(todoId) {
-        alert('Task marked as done!');
-        $('#popup-' + todoId).closest('li').addClass('completed');
-        closePopup(todoId);
+    // Update the UI immediately
+    var listItem = $('#popup-' + todoId).closest('li');
+    var isCompleted = listItem.hasClass('completed');
+
+    if (isCompleted) {
+        listItem.removeClass('completed');
+        listItem.addClass('not-completed');
+    } else {
+        listItem.removeClass('not-completed');
+        listItem.addClass('completed');
     }
 
-    function deleteTodo(todoId) {
-        if (confirm('Are you sure you want to delete this task?')) {
-            alert('Task deleted!');
-            // Perform the necessary AJAX request or update the database as needed
-            // Remove the todo from the list
-            $('#popup-' + todoId).closest('li').remove();
+    closePopup(todoId);
+
+    // Send AJAX request to update the completed status in the database
+    $.ajax({
+        url: 'updateTodo.php',
+        type: 'POST',
+        data: { todo_id: todoId, completed: isCompleted ? 0 : 1 }, // Toggle the completed status
+        success: function(response) {
+            // Todo status updated successfully
+            // You can perform any other actions if needed
+        },
+        error: function(xhr, status, error) {
+            // Error updating todo status
+            console.log(xhr.responseText);
+            // Revert the UI back to the original state if an error occurs
+            if (isCompleted) {
+                listItem.removeClass('not-completed');
+                listItem.addClass('completed');
+            } else {
+                listItem.removeClass('completed');
+                listItem.addClass('not-completed');
+            }
         }
+    });
+}
+
+function toggleTodoList() {
+        $('.todo-list').toggle();
     }
+
 
     function deleteTodoAjax(todoId) {
         if (confirm('Are you sure you want to delete this task?')) {
@@ -330,6 +332,7 @@ $result = $conn->query($sql);
         }
     }
 </script>
+
         </main>
     </section>
 
