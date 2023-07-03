@@ -65,7 +65,7 @@
                     if ($resultGetPost->num_rows > 0) {
                         while ($row = $resultGetPost->fetch_assoc()) {
                     if ($row['category'] === 'scholar') {
-                        echo "<div class='postFormat scholar'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
+                        echo "<div class='postFormat scholar'><section><h3 class='d-block me-3'>Uploader: " . $row['uploader'] . "</h3><h3 class='d-block me-3'>Upload Date: " . $row['uploadDate'] . "</h3><h3 class='d-block'>Category: " . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='edit-btn btn btn-primary mt-3' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='delete-btn btn btn-danger mt-3' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
                         }
                     }
                     } else {
@@ -86,7 +86,7 @@
                         if ($resultGetPost->num_rows > 0) {
                             while ($row = $resultGetPost->fetch_assoc()) {
                         if ($row['category'] === 'applicant') {
-                            echo "<div class='postFormat applicant'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
+                            echo "<div class='postFormat applicant'><section class='formatAppli'><h3 class='d-block me-3'>Uploader: " . $row['uploader'] . "</h3><h3 class='d-block me-3'>Upload Date: " . $row['uploadDate'] . "</h3><h3 class='d-block me-3'>Category: " . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='edit-btn btn btn-primary mt-3' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='delete-btn btn btn-danger mt-3' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
                             }
                         }
                         } else {
@@ -151,7 +151,7 @@
             }
 
             // Add the new post to the DOM dynamically
-            var postFormat = '<div class="postFormat ' + category + '"><section><h3>Uploader: ' + response.uploader + '</h3><h3>Upload Date: ' + response.uploadDate + '</h3><h3>Category: ' + response.category + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="aBtn edit-btn" href="#" data-id="' + response.uploadId + '">Edit</a><a class="aBtn delete-btn" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
+            var postFormat = '<div class="postFormat ' + category + '"><section><h3 class="d-block me-3">Uploader: ' + response.uploader + '</h3><h3 class="d-block me-3">Upload Date: ' + response.uploadDate + '</h3><h3 class="d-block me-3">Category: ' + response.category + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="edit-btn btn btn-primary mt-3" href="#" data-id="' + response.uploadId + '">Edit</a><a class="delete-btn btn btn-danger mt-3" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
             $('#manageStyle').append(postFormat);
 
             // Reset the form
