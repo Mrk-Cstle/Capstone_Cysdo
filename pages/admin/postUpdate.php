@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,7 @@
     <link rel="stylesheet" href="include/nav.css">
     <link rel="stylesheet" href="../../style/managePost.css">
     <title>Manage Post</title>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -63,19 +62,9 @@
                 <?php
                 $scholarAnnouncements = mysqli_query($conn, "SELECT * FROM announcements WHERE category = 'scholar'");
 
-<<<<<<< HEAD
                 if (mysqli_num_rows($scholarAnnouncements) > 0) {
                     while ($row = mysqli_fetch_assoc($scholarAnnouncements)) {
-                        echo "<div class='postFormat scholar'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
-=======
-        <!-- Display scholar announcements here -->
-                    <?php
-                    if ($resultGetPost->num_rows > 0) {
-                        while ($row = $resultGetPost->fetch_assoc()) {
-                    if ($row['category'] === 'scholar') {
-                        echo "<div class='postFormat scholar'><section><h3 class='d-block me-3'>Uploader: " . $row['uploader'] . "</h3><h3 class='d-block me-3'>Upload Date: " . $row['uploadDate'] . "</h3><h3 class='d-block'>Category: " . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='edit-btn btn btn-primary mt-3' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='delete-btn btn btn-danger mt-3' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
-                        }
->>>>>>> ad37fd29c1b824fb897ca640057425e6fa4ef47c
+                        echo "<div class='postFormat scholar'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn btn btn-primary' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn btn btn-danger' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
                     }
                 } else {
                     echo "No scholar announcements found.";
@@ -89,35 +78,18 @@
                 <?php
                 $applicantAnnouncements = mysqli_query($conn, "SELECT * FROM announcements WHERE category = 'applicant'");
 
-<<<<<<< HEAD
                 if (mysqli_num_rows($applicantAnnouncements) > 0) {
                     while ($row = mysqli_fetch_assoc($applicantAnnouncements)) {
-                        echo "<div class='postFormat applicant'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
+                        echo "<div class='postFormat applicant'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn btn btn-primary' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn btn btn-danger' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
                     }
                 } else {
                     echo "No applicant announcements found.";
                 }
                 ?>
-=======
-                        if ($resultGetPost->num_rows > 0) {
-                            while ($row = $resultGetPost->fetch_assoc()) {
-                        if ($row['category'] === 'applicant') {
-                            echo "<div class='postFormat applicant'><section class='formatAppli'><h3 class='d-block me-3'>Uploader: " . $row['uploader'] . "</h3><h3 class='d-block me-3'>Upload Date: " . $row['uploadDate'] . "</h3><h3 class='d-block me-3'>Category: " . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='edit-btn btn btn-primary mt-3' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='delete-btn btn btn-danger mt-3' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
-                            }
-                        }
-                        } else {
-                            echo "No applicant announcements found.";
-                        }
-                        ?>
-   
-                </div>
->>>>>>> ad37fd29c1b824fb897ca640057425e6fa4ef47c
             </div>
         </div>
     </div>
 </div>
-
-
 
 
         <!-- Edit Post Modal -->
@@ -162,18 +134,12 @@
                     console.log('Post submitted successfully');
 
                     // Add the new post to the DOM dynamically
-                    var postFormat = '<div class="postFormat ' + category + '"><section><h3>Uploader: ' + response.uploader + '</h3><h3>Upload Date: ' + response.uploadDate + '</h3><h3>Category: ' + response.category + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="aBtn edit-btn" href="#" data-id="' + response.uploadId + '">Edit</a><a class="aBtn delete-btn" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
+                                        var postFormat = '<div class="postFormat ' + category + '"><section><h3>Uploader: ' + response.uploader + '</h3><h3>Upload Date: ' + response.uploadDate + '</h3><h3>Category: ' + response.category + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="aBtn edit-btn btn btn-primary" href="#" data-id="' + response.uploadId + '">Edit</a><a class="aBtn delete-btn btn btn-danger" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
                     $('#' + category + 'AnnouncementsContainer').prepend(postFormat);
 
-<<<<<<< HEAD
                     // Reset the form
                     $('#postText').val('');
                     $('#category').val('');
-=======
-            // Add the new post to the DOM dynamically
-            var postFormat = '<div class="postFormat ' + category + '"><section><h3 class="d-block me-3">Uploader: ' + response.uploader + '</h3><h3 class="d-block me-3">Upload Date: ' + response.uploadDate + '</h3><h3 class="d-block me-3">Category: ' + response.category + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="edit-btn btn btn-primary mt-3" href="#" data-id="' + response.uploadId + '">Edit</a><a class="delete-btn btn btn-danger mt-3" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
-            $('#manageStyle').append(postFormat);
->>>>>>> ad37fd29c1b824fb897ca640057425e6fa4ef47c
 
                     // Show success message
                     showMessage('Successfully Submitted');
