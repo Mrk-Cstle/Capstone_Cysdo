@@ -52,49 +52,26 @@ textarea {
 }
 
 .postFormat section {
-    display: flex;
+    display: block;
     flex-direction: row;
     justify-content: space-between;
     margin: 20px;
 }
 
 .postFormat.scholar {
-    background-color: lightblue; /* Adjust the styling for scholar announcements */
+    background-color: #add8e6; /* Adjust the styling for scholar announcements */
     margin-top: 20px;
     display: block;
 }
 
 .postFormat.applicant {
-    background-color: lightgreen; /* Adjust the styling for applicant announcements */
+    background-color: #90ee90; /* Adjust the styling for applicant announcements */
+    display: block;
 }
 
 main {
     margin: 10px 20px;
     display: block;
-}
-
-.aBtn {
-    border: none;
-    color: white;
-    padding: 8px 26px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
-      
-.aBtn {
-    background-color: white;
-    color: black;
-    border: 1px solid #000000;
-    border-radius: 5px;
-}
-      
-.aBtn:hover {
-    background-color: #4CAF50;
-    color: white;
 }
 
 footer {
@@ -136,6 +113,7 @@ footer {
 	font-weight: bold;
 	text-decoration: none;
 	color: #333;
+    
 }
 .modal-content .close:hover {
 	color: #cc100a;
@@ -236,4 +214,3 @@ display: block;
     border: 1px solid #ddd;
     border-bottom-color: transparent;
 }
-
