@@ -174,70 +174,98 @@
             });
         });
 
-        // Edit button click event
-        $(document).on('click', '.edit-btn', function(e) {
-            e.preventDefault();
-            var postId = $(this).data('id');
-            var postText = $(this).closest('.postFormat').find('main p').text();
-            $('#editPostId').val(postId);
-            $('#editPostText').val(postText);
-            $('#editModal').css('display', 'block');
-        });
+        var isEditModalDirty = false; // Flag to track if the edit modal is dirty (i.e., changes have been made)
 
-        // Edit form submission
-        $('#editSaveBtn').click(function(e) {
-            e.preventDefault();
-            var postId = $('#editPostId').val();
-            var newPostText = $('#editPostText').val();
-            // Perform your Ajax request here to handle the edit functionality
-            $.ajax({
-                type: 'POST',
-                url: 'action/postEditDb.php?id=' + postId,
-                data: {
-                    postId: postId,
-                    postText: newPostText
-                },
-                success: function(response) {
-                    // Handle the response from the server
-                    console.log('Post updated successfully');
-                    // Close the edit modal
-                    $('#editModal').css('display', 'none');
-                    // Update the post content in the DOM
-                    $('.edit-btn[data-id="' + postId + '"]').closest('.postFormat').find('main p').text(newPostText);
-                    // Show success message
-                    showMessage('Successfully Edited');
-                },
-                error: function(xhr, status, error) {
-                    // Handle any errors
-                    console.error('Error updating post:', error);
-                }
-            });
-        });
+    // ...
 
-        // Close modal on close button click
-        $('.close-modal').click(function() {
-            $('#editModal').css('display', 'none');
-        });
+    // Edit button click event
+    $(document).on('click', '.edit-btn', function(e) {
+        e.preventDefault();
+        var postId = $(this).data('id');
+        var postText = $(this).closest('.postFormat').find('main p').text();
+        $('#editPostId').val(postId);
+        $('#editPostText').val(postText);
+        $('#editModal').css('display', 'block');
+        isEditModalDirty = false; // Reset the dirty flag when opening the edit modal
+    });
 
-        // Close modal when clicking outside the modal content
-        $(window).click(function(e) {
-            if (e.target == $('#editModal')[0]) {
+    // Edit form submission
+    $('#editSaveBtn').click(function(e) {
+        e.preventDefault();
+        var postId = $('#editPostId').val();
+        var newPostText = $('#editPostText').val();
+        // Perform your Ajax request here to handle the edit functionality
+        $.ajax({
+            type: 'POST',
+            url: 'action/postEditDb.php?id=' + postId,
+            data: {
+                postId: postId,
+                postText: newPostText
+            },
+            success: function(response) {
+                // Handle the response from the server
+                console.log('Post updated successfully');
+                // Close the edit modal
                 $('#editModal').css('display', 'none');
+                // Update the post content in the DOM
+                $('.edit-btn[data-id="' + postId + '"]').closest('.postFormat').find('main p').text(newPostText);
+                // Show success message
+                showMessage('Successfully Edited');
+            },
+            error: function(xhr, status, error) {
+                // Handle any errors
+                console.error('Error updating post:', error);
             }
         });
+    });
 
-        // Show alert message
-        function showMessage(message) {
-            var alertDiv = $('<div>').text(message);
-            alertDiv.addClass('alert');
-            $('body').append(alertDiv);
-            setTimeout(function() {
-                alertDiv.fadeOut('slow', function() {
-                    alertDiv.remove();
-                });
-            }, 3000);
+    // Close modal on close button click
+    $('.close-modal').click(function() {
+        if (isEditModalDirty) {
+            // Prompt the editor to save or discard changes before closing the modal
+            var confirmDiscard = confirm('You have unsaved changes. Do you want to discard them?');
+            if (confirmDiscard) {
+                $('#editModal').css('display', 'none');
+            }
+        } else {
+            $('#editModal').css('display', 'none');
         }
     });
+
+    // Close modal when clicking outside the modal content
+    $(window).click(function(e) {
+        if (e.target == $('#editModal')[0]) {
+            if (isEditModalDirty) {
+                // Prompt the editor to save or discard changes before closing the modal
+                var confirmDiscard = confirm('You have unsaved changes. Do you want to discard them?');
+                if (confirmDiscard) {
+                    $('#editModal').css('display', 'none');
+                }
+            } else {
+                $('#editModal').css('display', 'none');
+            }
+        }
+    });
+
+    // Edit form input change event
+    $('#editForm :input').change(function() {
+        isEditModalDirty = true; // Set the dirty flag when changes are made in the edit modal
+    });
+
+    // ...
+
+    // Show alert message
+    function showMessage(message) {
+        var alertDiv = $('<div>').text(message);
+        alertDiv.addClass('alert');
+        $('body').append(alertDiv);
+        setTimeout(function() {
+            alertDiv.fadeOut('slow', function() {
+                alertDiv.remove();
+            });
+        }, 3000);
+    }
+});
 
     // Show or hide announcements based on category button click
     $('.category-btn').click(function() {
