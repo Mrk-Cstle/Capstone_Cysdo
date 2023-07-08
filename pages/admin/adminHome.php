@@ -1,20 +1,15 @@
-<!DOCTYPE html>
 <html lang="en">
-
-
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style/dashboard.css">
     <link rel="stylesheet" href="../../style/adminTodo.css">
+    <title>Home</title>
 
 </head>
-
-<body>
     <?php
     include 'include/session.php';
     if ($_SESSION['role'] === 'admin') {
@@ -24,6 +19,8 @@
     }
     ?>
 
+
+<body>
     <section id="content" class="home-section">
         <main>
             <div class="head-title">
@@ -91,69 +88,35 @@
             </ul>
 
 
-            <div class="table-data">
-                <!-- <div class="order">
-                    <div class="head">
-                        <h3>Recent Orders</h3>
-                        <i class='bx bx-search'></i>
-                        <i class='bx bx-filter'></i>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>User</th>
-                                <th>Date Order</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status completed">Completed</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status process">Process</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status completed">Completed</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> -->
-<div class="todo">
+<div class="table-data">
+                
+    <div class="todo">
     <div class="head">
         <h3>Todos</h3>
-        <i class="bx bx-plus"></i>
+
+        <a class="btnAddTodo bx bx-plus dropdown-toggle-split text-black" type="button" data-bs-target="#addTodo" data-bs-toggle="modal" data-bs-whatever="@addTo-do"></a>
+        <div class="modal fade" id="addTodo" aria-labelledby="addTodoLabel" aria-expanded="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="addTodoLabel">New Todo</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="message-text" class="col-form-label">Enter Text Here: </label>
+                                    <textarea class="form-control" id="addNew"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Add</button>
+                        </div>
+                </div>
+            </div>
+        </div>
         <i class="bx bx-filter" onclick="toggleTodoList()"></i>
     </div>
     <ul class="todo-list">
@@ -182,15 +145,20 @@
                 $todoId = $row['id'];
                 $todoText = $row['todo_text'];
         ?>
-                <li class="<?php echo $completed; ?>">
-                    <p><?php echo $todoText; ?></p>
-                    <i class="bx bx-dots-vertical-rounded" onclick="openPopup(<?php echo $todoId; ?>)"></i>
-                    <div id="popup-<?php echo $todoId; ?>" class="popup">
-                        <button class="btn btn-success btn-sm" onclick="markAsDone(<?php echo $todoId; ?>)">Mark as Done</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteTodoAjax(<?php echo $todoId; ?>)">Delete</button>
-                    </div>
-                    <div id="overlay-<?php echo $todoId; ?>" class="overlay" onclick="closePopup(<?php echo $todoId; ?>)"></div>
-                </li>
+                
+            <li class="<?php echo $completed; ?>">
+                <p><?php echo $todoText; ?></p>
+                <div class="dropdown-center">
+                    <a class="bx bx-dots-vertical-rounded text-black" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <button class="dropdown-item" type="button">Mark As Done</button>
+                        <button class="dropdown-item" type="button">Delete</button>
+                    </ul>
+                </div>
+            </li>
+            
         <?php
             }
         } else {
@@ -201,7 +169,28 @@
         ?>
     </ul>
 </div>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+    const exampleModal = document.getElementById('addTodo')
+if (exampleModal) {
+  exampleModal.addEventListener('show.bs.modal', event => {
+    // Button that triggered the modal
+    const button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    const recipient = button.getAttribute('data-bs-whatever')
+    // If necessary, you could initiate an Ajax request here
+    // and then do the updating in a callback.
+
+    // Update the modal's content.
+    const modalTitle = exampleModal.querySelector('.modal-title')
+    const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+    modalTitle.textContent = `New message to ${recipient}`
+    modalBodyInput.value = recipient
+  })
+}
+</script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -340,8 +329,8 @@ function toggleTodoList() {
     }
 </script>
 
-        </main>
-    </section>
+</main>
+</section>
 
 </body>
 
