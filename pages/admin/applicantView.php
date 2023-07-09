@@ -46,7 +46,9 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style/tabbing.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Application Form</title>
+
 </head>
 
 <body>
@@ -57,10 +59,20 @@ if (isset($_GET['id'])) {
                     <img src="sample2x2.jpg" class="img-responsive">
                 </div>
                 <div class="profile-usertab">
-                    <div class="profile-user-name text-uppercase">John Martin M. Mendoza</div>
+
+                    <div class="profile-user-name text-uppercase"><?php echo $fullName ?>
+                        <h1></h1>
+                    </div>
                     <div class="actionBtn">
-                        <button type="button" class="btnAccept btn btn-success btn-sm">Accept</button>
-                        <button type="button" class="btnDeny btn btn-danger btn-sm">Deny</button>
+
+                        <?php if ($status == 'done') {
+                        } else { ?>
+                            <button type="button" id="approveBtn" class="btnApprove btn btn-success btn-sm" onclick="sendAction('<?php echo $applicantId; ?>', 'approve')">Approve</button>
+                            <button type="button" id="declineBtn" class="btnDecline btn btn-danger btn-sm" onclick="sendAction('<?php echo $applicantId; ?>', 'decline')">Decline</button>
+                        <?php }
+                        ?>
+
+
                     </div>
                     <hr class="mb-2 mt-5 opacity-0">
                 </div>
@@ -478,7 +490,48 @@ if (isset($_GET['id'])) {
 
         const triggerFirstTabEl = document.querySelector('#myTab li:first-child button')
         bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
+
+        $(document).on('click', '#acceptBtn', function() {
+
+            var data = {
+                applicantId = <?php echo $applicant_id ?>,
+
+            };
+            console.log($applicantId);
+        });
     </script>
+    <script>
+        function sendAction(applicantId, action) {
+            // Create an AJAX request
+            $.ajax({
+                type: 'POST', // You can use 'GET' if preferred
+                url: 'action/applicantApprove.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
+                data: {
+                    id: applicantId,
+                    action: action
+                },
+                success: function(response) {
+                    // Handle the response from the server if needed
+                    $('h1').text(response);
+                    // For example, you can display a success message or update the UI
+                    if (action === 'approve') {
+                        alert('Applicant approved successfully!');
+                        $('#approveBtn').hide();
+                        $('#declineBtn').hide();
+                    } else if (action === 'decline') {
+                        alert('Applicant declined successfully!');
+                        $('#approveBtn').hide();
+                        $('#declineBtn').hide();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle the error if the request fails
+                    console.error('Error sending action:', error);
+                }
+            });
+        }
+    </script>
+
 </body>
 
 </html>
