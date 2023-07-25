@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,17 +11,9 @@
   <style>
     /* Main */
     main {
-      display: flex;
+      display: block;
       width: 100%;
-      justify-content: flex-start;
-      align-items: center;
-      flex-direction: row;
-      background-image: url("assets/image/s.jpg");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: scroll;
-      background-size: cover;
-      min-height: 100vh;
+     
     }
 
     #about {
@@ -62,7 +53,7 @@
     }
 
     #aboutPic img {
-      width: 600px;
+      width: 100%;
       height: auto;
 
     }
@@ -149,8 +140,8 @@
     .contactIcon {
       height: 100px;
       width: 5%;
+      margin-right: 20px;
       height: auto;
-      border: 1px solid black;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -163,10 +154,12 @@
     }
 
     .contactText {
+      display: inline-block;
       height: 100px;
       width: 95%;
       border: 1px solid black;
-      padding: 20px;
+      border-radius: 5px;
+      padding: 15px;
     }
 
   </style>
@@ -177,7 +170,7 @@
   ?>
   <main>
     <div class="1">
-
+    <img src="assets/image/s.jpg" class="img-fluid">
     </div>
 
     <div id="2"></div>
@@ -259,7 +252,7 @@
             <div class="accordion-body">
                 <p>Ang lokal na pamahalaan ng Lungsod ng San Jose Del Monte ay patuloy na naghahatid ng programang pang-edukasyon sa mga kabataang San Joseños na mas kilala bilang City Educational Assistance Program (CEAP). Itinataguyod nito ang layunin na makapagbigay ng tulong pinansiyal sa mga kabataan upang makapagtapos ng pag-aaral.</p>
 
-                <h4>QUALIFICATIONS:</h4>
+                <h5><strong>QUALIFICATIONS:</strong></h5>
                 <ol>
                   <li>Filipino, may asawa o wala, at naninirahan sa Lungsod ng San Jose Del Monte sa loob ng tatlo (3) o mahigit pang taon, nakapagtapos ng sekondarya sa alin mang paaralan sa Lungsod, pribado man o pampubliko. Kung hindi naman nakapagtapos sa Lungsod ay kinakailangang residente nito sa nakalipas na limang (5) taon.</li>
                   <li>Hindi lalagpas ng 30 taon ang edad sa araw ng paghahain ng aplikasyon.</li>
@@ -276,7 +269,7 @@
                   <li>Tinatangkilik lamang ang magulang na may pinagsamang kita na hindi hihigit sa P25,000.00 kada buwan o P300,000.00 bawat taon.</li>
                   <li>Isa lamang sa bawat pamilya ang maaaring mabigyan ng Educational Assistance, sa pasubali na kung nakatapos na sa kolehiyo ang isang iskolar ay doon pa lang maaaring magkaroon ng pagkakataon na maging iskolar ang isa sa kanyang kapatid, maliban din naman kung kambal o triplet o quadruplet ay bibigyan ng exemption sa aytem na ito.</li>
                   <li>Walang tinatanggap na educational assistance o scholarship sa kahit anong ahensya o organisasyon ng Gobyerno at iba pang Lokal na Pamahalaan.</li>
-                  <li>Ang mga mag-aaral ng City College of San Jose Del Monte (CCSJDM) at Bulacan State University-Sarmiento Campus (BSU-SC) o kahit anong State University o College sa loob ng Lungsod ng San Jose Del Monte na sumasailalim sa UNIFAST – Free Higher Education Program ay HINDI NA maaring maging benepisyaryo ng City Educational Assistance Program (CEAP).</li>
+                  <li>Ang mga mag-aaral ng City College of San Jose Del Monte <strong>(CCSJDM)</strong> at Bulacan State University-Sarmiento Campus <strong>(BSU-SC)</strong> o kahit anong State University o College sa loob ng Lungsod ng San Jose Del Monte na sumasailalim sa <strong>UNIFAST</strong> – Free Higher Education Program ay HINDI NA maaring maging benepisyaryo ng City Educational Assistance Program (CEAP).</li>
                 </ol>            
             </div>
           </div>
@@ -290,7 +283,7 @@
             </h2>
             <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
               <div class="accordion-body">
-                <p> PAALALA:</p>
+                <p class="fs-5"><strong>PAALALA:</strong></p>
                 <ul>
                   <li>Ang LAHAT NG REQUIREMENTS na ito ay IPAPALIWANAG SA ARAW NG ORIENTATION.</li>
                   <li>Kung hindi makakarating sa araw ng orientation ang aplikante, maaaring ang PARENT O GUARDIAN ang dumalo.</li>
@@ -298,7 +291,7 @@
                   <li>Ang initial requirements ay kinakailangang MAKUMPLETO upang payagang makapag-exam ang aplikante.</li>
                 </ul>
                 <ol>
-                  <li>FOR APPLICANTS:</li>
+                  <li><strong>FOR APPLICANTS:</strong></li>
                   <ol>
                     <li>Birth Certificate (PSA);</li>
                     <li>Cedula ng aplikante na may edad 18 taon pataas;</li>
@@ -308,7 +301,7 @@
                     <li>Litrato ng permanenteng tirahan (labas at loob);</li>
                     <li>Voter's Stub/Certification (Kung wala pa nito ay kinakailangang magpa-rehistro sa COMELEC kapag nag-resume na ang registration).</li>
                   </ol>
-                  <li>FOR PARENT/GUARDIAN:</li>
+                  <li><strong>FOR PARENT/GUARDIAN:</strong></li>
                   <ol>
                     <li>Cedula</li>
                     <li>Indigency Certificate from Barangay</li>
@@ -316,7 +309,7 @@
                     <li>Notarized Guardianship Certificate from Barangay</li>
                   </ol>
                 </ol>
-                <p> Kung kayo ay MAKAKAPASA sa QUALIFYING EXAMINATION, narito ang FINAL REQUIREMENTS na kailangang asikasuhin:</p>
+                <p class="fs-5"> Kung kayo ay MAKAKAPASA sa QUALIFYING EXAMINATION, narito ang FINAL REQUIREMENTS na kailangang asikasuhin:</p>
                 <ol>
                   <li>Katunayan ng taunang pinagsamang kita ng magulang:</li>
                   <ol>
@@ -368,11 +361,11 @@
                   </ol>
                 </details>
                 <details>
-                  <summary>Issuance of Examination Stub</summary>
+                  <summary><strong>Issuance of Examination Stub</strong></summary>
                   <p>Upon submission of the Application Form during the Orientation, Examination Stub will be released to the applicants.</p>
                 </details>
                 <details>
-                  <summary>Announcement of Qualifiers</summary>
+                  <summary><strong>Announcement of Qualifiers</strong></summary>
                   <p>List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>              
               </div>
             </div>
@@ -420,7 +413,7 @@
         </div>
         <div class="contactText">
           <h5>Facebook Page</h5>
-          <a href="https://www.facebook.com/CEAP.CYSDO ">https://www.facebook.com/CEAP.CYSDO(City Youth and Sports Development Office – CSJDM)</a>
+          <a class="text-break lh-sm text-decoration-underline" href="https://www.facebook.com/CEAP.CYSDO">https://www.facebook.com/CEAP.CYSDO(City Youth and Sports Development Office – CSJDM)</a>
         </div>
       </div>
       <div class="contactFormat">
@@ -429,7 +422,7 @@
         </div>
         <div class="contactText">
           <h5>Email</h5>
-          <a href="csjdm.cysdo1@gmail.com ">csjdm.cysdo1@gmail.com</a>
+          <a class="text-break text-decoration-underline" href="csjdm.cysdo1@gmail.com">csjdm.cysdo1@gmail.com</a>
         </div>
       </div>
       <div class="contactFormat">
@@ -438,7 +431,7 @@
         </div>
         <div class="contactText">
           <h5>Contact No.</h5>
-          <p>(639)905-603-7218</p>
+          <p class="text-break lh-sm">(639)905-603-7218</p>
         </div>
       </div>
       <div class="contactFormat">
@@ -447,7 +440,7 @@
         </div>
         <div class="contactText">
           <h5>Address</h5>
-          <p>Productivity Complex, Barangay Sapang Palay Proper, City of San Jose del Monte, Bulacan</p>
+          <p class="text-break lh-sm">Productivity Complex, Barangay Sapang Palay Proper, City of San Jose del Monte, Bulacan</p>
         </div>
       </div>
     </div>

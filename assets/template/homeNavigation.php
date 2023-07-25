@@ -114,7 +114,7 @@
 }
         /* Responsiveness */
 
-        @media(max-width: 1402px) {
+        @media(max-width: 1250px) {
             .header .links,
             .header .action {
                 display: none;
@@ -133,12 +133,18 @@
 
             .dropdown_menu {
                 left: 2rem;
-                width: unset;
+                width: 80%;
+            }
+
+            #headImg {
+                display: none;
+            }
+
+            #pic {
+                margin-left: 20px;
             }
 
         }
-
-
 
         /* Hover */
 
@@ -196,7 +202,7 @@
             display: none;
             position: absolute;
             background-color: #f9f9f9;
-            min-width: 160px;
+            
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
@@ -209,8 +215,8 @@
     <header>
     <div class="header">
         <div id="pic">
-            <img src="../image/CysdoLogo.png"/>
-            <img id="headImg" src="../image/CYSDOHeader.png"/>
+            <img src="assets/image/CysdoLogo.png" class="img-fluid"/>
+            <img id="headImg" src="assets/image/CYSDOHeader.png" class="img-fluid"/>
         </div>
         <div id="menu">
         <ul class="links">
@@ -242,7 +248,7 @@
             <li><a href="index.php#contact">Contact</a></li>
             <li><a href="announcementTab.php">News & Upadates</a></li>
             <div class="DropDownMenu">
-
+            
             <li><a class="DropDownBtn">Login</a></li>
                 <div class="DropDownContent">
                     <a href="pages/admin/adminLogin.php">Admin</a>
