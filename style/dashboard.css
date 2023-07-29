@@ -20,6 +20,7 @@ li {
 
 	--light: #F9F9F9;
 	--blue: #3C91E6;
+	--green: #3ce64a;
 	--light-blue: #CFE8FF;
 	--grey: #eee;
 	--dark-grey: #AAAAAA;
@@ -272,7 +273,7 @@ body {
 }
 
 #content main .table-data .todo .todo-list li.completed {
-	border-left: 10px solid var(--blue);
+	border-left: 10px solid var(--green);
 }
 
 #content main .table-data .todo .todo-list li.not-completed {

@@ -150,7 +150,7 @@ if ($_SESSION['role'] === 'admin') {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="editButton">Save Changes</button>
+                <button type="button" class="btn btn-success" id="editButton">Save Changes</button>
             </div>
         </div>
     </div>
