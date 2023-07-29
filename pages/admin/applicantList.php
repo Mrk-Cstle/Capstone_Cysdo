@@ -36,7 +36,7 @@ if ($_SESSION['role'] === 'admin') {
             <nav class="navbar navbar-light bg-light d-flex">
                 <form class="form-inline m-lg-3">
                     <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
+
                     <a class="btnRefresh btn btn-outline-primary" href="">Refresh</a>
                     <p id="response"></p>
                 </form>
