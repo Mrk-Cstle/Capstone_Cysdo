@@ -29,6 +29,13 @@
       justify-items: center;
     }
 
+    @media (max-width: 700px){
+      #aboutPic {
+        display: none;
+      }
+    }
+      
+
     #aboutInfo {
       width: 60%;
       display: flex;
@@ -66,6 +73,15 @@
       padding: 0px 80px;
       margin: 0px;
       line-height: 1.8;
+    }
+
+    @media (max-width: 700px){
+      li{
+        font-size: 14px;
+      }
+      p{
+        font-size: 14px;
+      }
     }
 
     #faqs h3 {
@@ -183,27 +199,25 @@
     <div id="aboutInfo">
       <div class="aboutFormat">
         <h3>MANDATE</h3>
-        <p>Assist the City Mayor in the implementation of the Constitutional Provisions
+        <li>Assist the City Mayor in the implementation of the Constitutional Provisions
           relative to youth development through promotion of its youth welfare
           enhancement, sport, and education programs and become a progressive
-          community with competent youth thriving in a vibrant economy.</p>
+          community with competent youth thriving in a vibrant economy.</li>
       </div>
       <div class="aboutFormat">
         <h3>VISION</h3>
-        <p>A highly efficient office who caters comprehensively to the needs of the youth
+        <li>A highly efficient office who caters comprehensively to the needs of the youth
           sector integral to the over-all enhancement and relevant social transformation of
-          San Joseños.</p>
+          San Joseños.</li>
       </div>
       <div class="aboutFormat">
         <h3>MISSION</h3>
-        <ol>
           <li>Provide quality service to young clientele.</li>
           <li>Promote holistic development both in-school and out-of-school youth.</li>
           <li>Strengthen the capacity level of young people to make them competitive in the
             National and Global Market.
           </li>
           <li>Empower the youth sector to become dynamic leaders.</li>
-        </ol>
       </div>
     </div>
   </div>
@@ -361,11 +375,11 @@
                   </ol>
                 </details>
                 <details>
-                  <summary><strong>Issuance of Examination Stub</strong></summary>
+                  <summary class="dropdown-toggle"><strong>Issuance of Examination Stub</strong></summary>
                   <p>Upon submission of the Application Form during the Orientation, Examination Stub will be released to the applicants.</p>
                 </details>
                 <details>
-                  <summary><strong>Announcement of Qualifiers</strong></summary>
+                  <summary class="dropdown-toggle"><strong>Announcement of Qualifiers</strong></summary>
                   <p>List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>              
               </div>
             </div>
@@ -431,7 +445,7 @@
         </div>
         <div class="contactText">
           <h5>Contact No.</h5>
-          <p class="text-break lh-sm">(639)905-603-7218</p>
+          <li class="text-break lh-sm">(639)905-603-7218</li>
         </div>
       </div>
       <div class="contactFormat">
@@ -440,7 +454,7 @@
         </div>
         <div class="contactText">
           <h5>Address</h5>
-          <p class="text-break lh-sm">Productivity Complex, Barangay Sapang Palay Proper, City of San Jose del Monte, Bulacan</p>
+          <li class="text-break lh-sm">Productivity Complex, Barangay Sapang Palay Proper, City of San Jose del Monte, Bulacan</li>
         </div>
       </div>
     </div>
