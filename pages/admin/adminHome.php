@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Home</title>
+
     <link rel="stylesheet" href="../../style/dashboard.css">
     <link rel="stylesheet" href="../../style/adminTodo.css">
     <style>
@@ -28,17 +30,25 @@
     <title>Home</title>
 
 </head>
-<?php
-include 'include/session.php';
-if ($_SESSION['role'] === 'admin') {
-    include '../../assets/template/nav.php';
-} elseif ($_SESSION['role'] === 'staff') {
-    include '../../assets/template/staffNav.php';
-}
-?>
+
 
 
 <body>
+    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
+    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
+    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
+    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
+    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
+    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
+    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
+    <?php
+    include 'include/session.php';
+    if ($_SESSION['role'] === 'admin') {
+        include '../../assets/template/nav.php';
+    } elseif ($_SESSION['role'] === 'staff') {
+        include '../../assets/template/staffNav.php';
+    }
+    ?>
     <section id="content" class="home-section">
         <?php
 
