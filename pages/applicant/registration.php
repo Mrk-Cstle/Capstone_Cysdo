@@ -180,6 +180,21 @@
           <input type="text" id="gEducAttainment" name="gEducAttainment" />
         </div>
       </div>
+      <div id="siblingInput">
+        <label for="sibling1">Sibling 1</label>
+        <input type="text" id="sibling1" name="sibling1">
+        <label for="sibling2">Sibling 2</label>
+        <input type="text" id="sibling2" name="sibling2">
+        <label for="sibling3">Sibling 3</label>
+        <input type="text" id="sibling3" name="sibling3">
+        <label for="sibling4">Sibling 4</label>
+        <input type="text" id="sibling4" name="sibling4">
+        <label for="sibling5">Sibling 5</label>
+        <input type="text" id="sibling5" name="sibling5">
+        <label for="sibling1">Sibling 6</label>
+        <input type="text" id="sibling1" name="sibling6">
+
+      </div>
       <div class="formLayout">
         <div class="labelInput">
           <label for="sizeFamily">Size of the Family : </label>

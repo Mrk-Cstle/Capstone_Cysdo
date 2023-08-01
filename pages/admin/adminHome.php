@@ -7,23 +7,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style/dashboard.css">
     <link rel="stylesheet" href="../../style/adminTodo.css">
-    <style>#editTodo .modal-dialog {
-    max-width: 400px;
-}
+    <style>
+        #editTodo .modal-dialog {
+            max-width: 400px;
+        }
 
-#editTodo .modal-body {
-    padding: 10px;
-}
+        #editTodo .modal-body {
+            padding: 10px;
+        }
 
-#editTodo .modal-footer {
-    padding: 10px;
-}
+        #editTodo .modal-footer {
+            padding: 10px;
+        }
 
-#editTodo .modal-title {
-    font-size: 18px;
-    font-weight: bold;
-}
-</style>
+        #editTodo .modal-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
     <title>Home</title>
 
 </head>
@@ -39,72 +40,75 @@ if ($_SESSION['role'] === 'admin') {
 
 <body>
     <section id="content" class="home-section">
-        <main>
-            <div class="head-title">
-                <div class="left">
-                    <h1>Dashboard</h1>
-                    <ul class="breadcrumb">
-                        <li>
-                            <a href="#">Dashboard</a>
-                        </li>
-                        <li><i class='bx bx-chevron-right'></i></li>
-                        <li>
-                            <a class="active" href="#">Home</a>
-                        </li>
-                    </ul>
+        <?php
+
+        if ($_SESSION['role'] === 'admin') {
+        ?> <main>
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Dashboard</h1>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#">Dashboard</a>
+                            </li>
+                            <li><i class='bx bx-chevron-right'></i></li>
+                            <li>
+                                <a class="active" href="#">Home</a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
 
-            </div>
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-calendar-check'></i>
+                        <span class="text">
+                            <h3>1020</h3>
+                            <p>Total No. of Scholars</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-dollar-circle'></i>
+                        <span class="text">
+                            <h3>2543</h3>
+                            <p>Active Scholars</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-group'></i>
+                        <span class="text">
+                            <h3>2834</h3>
+                            <p>Inactive Scholars</p>
+                        </span>
+                    </li>
 
-            <ul class="box-info">
-                <li>
-                    <i class='bx bxs-calendar-check'></i>
-                    <span class="text">
-                        <h3>1020</h3>
-                        <p>Total No. of Scholars</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-dollar-circle'></i>
-                    <span class="text">
-                        <h3>2543</h3>
-                        <p>Active Scholars</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-group'></i>
-                    <span class="text">
-                        <h3>2834</h3>
-                        <p>Inactive Scholars</p>
-                    </span>
-                </li>
+                </ul>
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-calendar-check'></i>
+                        <span class="text">
+                            <h3>1020</h3>
+                            <p>Number Of Approved Applicants</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-group'></i>
+                        <span class="text">
+                            <h3>2834</h3>
+                            <p>Number Of Denied Applicants</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-dollar-circle'></i>
+                        <span class="text">
+                            <h3>2543</h3>
+                            <p>Unrenewed Scholars</p>
+                        </span>
+                    </li>
+                </ul>
 
-            </ul>
-            <ul class="box-info">
-                <li>
-                    <i class='bx bxs-calendar-check'></i>
-                    <span class="text">
-                        <h3>1020</h3>
-                        <p>Number Of Approved Applicants</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-group'></i>
-                    <span class="text">
-                        <h3>2834</h3>
-                        <p>Number Of Denied Applicants</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-dollar-circle'></i>
-                    <span class="text">
-                        <h3>2543</h3>
-                        <p>Unrenewed Scholars</p>
-                    </span>
-                </li>
-            </ul>
-
-
+            <?php } ?>
             <div class="table-data">
                 <div class="todo">
                     <div class="head">
@@ -134,27 +138,27 @@ if ($_SESSION['role'] === 'admin') {
                         </div>
 
                         <div class="modal fade" id="editTodo" aria-labelledby="editTodoLabel" aria-expanded="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title fs-5" id="editTodoLabel">Edit Todo</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="editNew" class="col-form-label">Edit Text Here: </label>
-                        <textarea class="form-control" id="editNew"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" id="editButton">Save Changes</button>
-            </div>
-        </div>
-    </div>
-</div>
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title fs-5" id="editTodoLabel">Edit Todo</h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="editNew" class="col-form-label">Edit Text Here: </label>
+                                                <textarea class="form-control" id="editNew"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-success" id="editButton">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <i class="bx bx-filter" onclick="toggleTodoList()"></i>
                     </div>
@@ -360,43 +364,43 @@ if ($_SESSION['role'] === 'admin') {
                 }
 
                 function openEditModal(todoId, todoText) {
-        // Populate the edit modal with the existing todo text
-        $('#editNew').val(todoText);
+                    // Populate the edit modal with the existing todo text
+                    $('#editNew').val(todoText);
 
-        // Show the edit modal
-        $('#editTodo').modal('show');
+                    // Show the edit modal
+                    $('#editTodo').modal('show');
 
-        // Update the todo when the edit button is clicked
-        $('#editButton').off('click').on('click', function() {
-            var updatedTodoText = $('#editNew').val().trim();
-            if (updatedTodoText !== '') {
-                $.ajax({
-                    url: 'editTodo.php',
-                    type: 'POST',
-                    data: {
-                        todo_id: todoId,
-                        todo_text: updatedTodoText
-                    },
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            // Update the UI with the new todo text
-                            $('li[data-id="' + todoId + '"] p').text(updatedTodoText);
-                            // Hide the edit modal
-                            $('#editTodo').modal('hide');
-                        } else {
-                            console.log(response.message);
+                    // Update the todo when the edit button is clicked
+                    $('#editButton').off('click').on('click', function() {
+                        var updatedTodoText = $('#editNew').val().trim();
+                        if (updatedTodoText !== '') {
+                            $.ajax({
+                                url: 'editTodo.php',
+                                type: 'POST',
+                                data: {
+                                    todo_id: todoId,
+                                    todo_text: updatedTodoText
+                                },
+                                dataType: 'json',
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        // Update the UI with the new todo text
+                                        $('li[data-id="' + todoId + '"] p').text(updatedTodoText);
+                                        // Hide the edit modal
+                                        $('#editTodo').modal('hide');
+                                    } else {
+                                        console.log(response.message);
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.log('Error: ' + error);
+                                }
+                            });
                         }
-                    },
-                    error: function(xhr, status, error) {
-                        console.log('Error: ' + error);
-                    }
-                });
-            }
-        });
-    }
+                    });
+                }
             </script>
-        </main>
+            </main>
     </section>
 </body>
 

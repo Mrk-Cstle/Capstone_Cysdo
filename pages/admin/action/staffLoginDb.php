@@ -27,7 +27,7 @@ if (mysqli_num_rows($result) == 1) {
         $_SESSION['logged_in'] = true;
 
         // Redirect to the appropriate page
-        header("Location: ../staffHome.php");
+        header("Location: ../adminHome.php");
         exit();
     }
 }
