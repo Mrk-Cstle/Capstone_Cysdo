@@ -39,7 +39,7 @@ if ($_SESSION['role'] === 'admin') {
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <tr>
-                        <th scope="col">Image</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Full Name</th>
 
                         <th scope="col">Contact #</th>

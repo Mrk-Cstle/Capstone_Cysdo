@@ -44,7 +44,7 @@
     <?php
     include 'include/session.php';
     if ($_SESSION['role'] === 'admin') {
-        include '../../assets/template/nav.php';
+        include '../../assets/template/profileNav.php';
     } elseif ($_SESSION['role'] === 'staff') {
         include '../../assets/template/staffNav.php';
     }

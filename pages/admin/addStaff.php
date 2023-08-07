@@ -28,10 +28,10 @@ if ($_SESSION['role'] === 'admin') {
 
 <body>
   <section id="content" class="home-section">
-    <div class="backRound">
-      <nav class="navbar navbar-light bg-light d-flex">
+    
+      <nav class="navbar navbar-light bg-light d-inline">
         <form class="form-inline m-lg-3">
-          <input class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
           <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Staff</a>
           <p id="response"></p>
@@ -41,7 +41,7 @@ if ($_SESSION['role'] === 'admin') {
       <div class="table-responsive">
         <table class="table table-bordered">
           <tr>
-            <th scope="col">Image</th>
+            <th scope="col">ID</th>
             <th scope="col">Full Name</th>
             <th scope="col">Position</th>
             <th scope="col">Contact #</th>
