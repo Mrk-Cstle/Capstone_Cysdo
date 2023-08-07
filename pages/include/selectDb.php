@@ -18,5 +18,7 @@ $getApplicantList = "SELECT * FROM registration  ORDER BY applicant_id DESC ";
 $resultApplicantList = mysqli_query($conn, $getApplicantList);
 
 
+
+
 // $getApplicantList = "SELECT * FROM registration WHERE status != 'done' ORDER BY applicant_id DESC";
 // $resultApplicantList = mysqli_query($conn, $getApplicantList);
