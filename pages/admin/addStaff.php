@@ -29,38 +29,30 @@ if ($_SESSION['role'] === 'admin') {
 <body>
   <section id="content" class="home-section">
     
-      <nav class="navbar navbar-light bg-light d-inline">
-        <form class="form-inline m-lg-3">
-          <input class="form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
-          <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Staff</a>
-          <p id="response"></p>
-        </form>
-      </nav>
+  <nav class="navbar navbar-light bg-light d-inline">
+  <form class="form-inline m-lg-3" id="searchForm"> <!-- Added an ID to the form -->
+    <input class="form-control-lg mr-sm-2" type="search" id="searchInput" placeholder="Search" aria-label="Search">
+    <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
+    <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Staff</a>
+    <a class="btnRefresh btn btn-outline-primary" href="">Refresh</a>
+    <p id="response"></p>
+  </form>
+</nav>
 
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">Position</th>
-            <th scope="col">Contact #</th>
-            <th scope="col">Address</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Action</th>
-          </tr>
-
-
-
-          <tbody id="tableData">
-
-
-
-          </tbody>
-
-
-        </table>
-      </div>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Position</th>
+      <th scope="col">Contact #</th>
+      <th scope="col">Address</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Action</th>
+    </tr>
+    <tbody id="tableData"></tbody>
+  </table>
+</div>
       <div class="overlay" id="btnAdd">
         <div class="wrapper">
 
@@ -336,36 +328,69 @@ if ($_SESSION['role'] === 'admin') {
 
 
       function addData() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("tableData").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "action/addStaffList.php", true);
+  xhttp.send();
+}
 
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
-
-          }
-        };
-
-        xhttp.open("GET", "action/addStaffList.php", true);
-        xhttp.send();
+function loadDoc() {
+  var searchInput = document.getElementById("searchInput");
+  if (searchInput.value === "") {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("tableData").innerHTML = this.responseText;
       }
+    };
+    xhttp.open("GET", "action/addStaffList.php", true);
+    xhttp.send();
+  }
+}
+loadDoc();
 
 
+function filterTable(searchQuery) {
+  var rows = document.querySelectorAll("#tableData tr");
+  searchQuery = searchQuery.toLowerCase();
 
-      function loadDoc() {
-        setInterval(function() {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("tableData").innerHTML = this.responseText;
+  rows.forEach(function(row) {
+    var fullName = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+    if (fullName.includes(searchQuery)) {
+      row.style.display = "table-row";
+    } else {
+      row.style.display = "none";
+    }
+  });
+}
 
+document.addEventListener("DOMContentLoaded", function() {
+  var searchForm = document.getElementById("searchForm");
+  searchForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    var searchInput = document.getElementById("searchInput");
+    var searchQuery = searchInput.value;
+    filterTable(searchQuery);
+  });
+});
 
-            }
-          };
-          xhttp.open("GET", "action/addStaffList.php", true);
-          xhttp.send();
-        }, 1000);
-      }
-      loadDoc()
+function refreshList() {
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("tableData").innerHTML = this.responseText;
+
+    }
+};
+
+xhttp.open("GET", "action/addStaffList.php", true);
+xhttp.send();
+}
     </script>
   </section>
 </body>

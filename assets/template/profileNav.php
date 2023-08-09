@@ -189,7 +189,7 @@
         <a class="sub-btn"><i class="fas fa-table"></i>Manage Users<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
           <a href="addStaff.php" class="sub-item">Manage Staff</a>
-          <a href="addStaff.php" class="sub-item">Manage Admin</a>
+          <a href="addAdmin.php" class="sub-item">Manage Admin</a>
         </div>
       </div>
       <div class="item">

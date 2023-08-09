@@ -26,39 +26,32 @@ if ($_SESSION['role'] === 'admin') {
 
 <body>
     <section id="content" class="home-section">
-        <div class="backRound">
-            <nav class="navbar navbar-light bg-light d-flex">
-                <form class="form-inline m-lg-3">
-                    <input class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
-                    <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Admin</a>
-                    <p id="response"></p>
-                </form>
-            </nav>
 
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Full Name</th>
+        <nav class="navbar navbar-light bg-light d-inline">
+  <form class="form-inline m-lg-3" id="searchForm"> <!-- Added an ID to the form -->
+    <input class="form-control-lg mr-sm-2" type="search" id="searchInput" placeholder="Search" aria-label="Search">
+    <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
+    <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Admin</a>
+    <a class="btnRefresh btn btn-outline-primary" href="">Refresh</a>
+    <p id="response"></p>
+  </form>
+</nav>
 
-                        <th scope="col">Contact #</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">Action</th>
-                    </tr>
-
-
-
-                    <tbody id="tableData">
-
-
-
-                    </tbody>
-
-
-                </table>
-            </div>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Contact #</th>
+      <th scope="col">Address</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Action</th>
+    </tr>
+    <tbody id="tableData">
+      <!-- Data will be populated here -->
+    </tbody>
+  </table>
+</div>
             <div class="overlay" id="btnAdd">
                 <div class="wrapper">
                     <h2>Please Fill up The Form</h2><a class="close" href="#">&times;</a>
@@ -328,38 +321,64 @@ if ($_SESSION['role'] === 'admin') {
 
 
 
-
             function addData() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("tableData").innerHTML = this.responseText;
+    }
+  };
 
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById("tableData").innerHTML = this.responseText;
+  xhttp.open("GET", "action/addAdminList.php", true);
+  xhttp.send();
+}
 
-                    }
-                };
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("tableData").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "action/addAdminList.php", true);
+  xhttp.send();
+}
 
-                xhttp.open("GET", "action/addAdminList.php", true);
-                xhttp.send();
-            }
+loadDoc();
 
+// Search functionality
+document.getElementById("searchForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
 
+  const searchInput = document.getElementById("searchInput").value.toLowerCase();
+  const tableRows = document.querySelectorAll("#tableData tr");
 
-            function loadDoc() {
-                setInterval(function() {
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById("tableData").innerHTML = this.responseText;
+  tableRows.forEach(function(row) {
+    const fullNameCell = row.querySelector("td:nth-child(2)");
+    if (fullNameCell) {
+      const fullName = fullNameCell.textContent.toLowerCase();
+      if (fullName.includes(searchInput)) {
+        row.style.display = "";
+      } else {
+        row.style.display = "none";
+      }
+    }
+  });
+});
 
+function refreshList() {
 
-                        }
-                    };
-                    xhttp.open("GET", "action/addAdminList.php", true);
-                    xhttp.send();
-                }, 1000);
-            }
-            loadDoc()
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("tableData").innerHTML = this.responseText;
+
+    }
+};
+
+xhttp.open("GET", "action/addAdminList.php", true);
+xhttp.send();
+}
         </script>
     </section>
 </body>
