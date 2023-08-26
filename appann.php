@@ -1,14 +1,3 @@
-<?php
-include 'pages/include/dbConnection.php';
-include 'pages/admin/include/session.php';
-
-// Assuming you already have a valid database connection and session
-
-$query = "SELECT * FROM announcements WHERE category = 'applicant'";
-$resultGetPost = mysqli_query($conn, $query);
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -95,7 +84,15 @@ $resultGetPost = mysqli_query($conn, $query);
 </head>
 
 <body>
-    <?php include 'assets/template/homeNavigation.php'; ?>
+    <?php include 'assets/template/homeNavigation.php';
+    include 'pages/include/dbConnection.php';
+    
+    // Assuming you already have a valid database connection and session
+    
+    $query = "SELECT * FROM announcements WHERE category = 'applicant'";
+    $resultGetPost = mysqli_query($conn, $query);
+    ?>
+    
 
     <div id="manageStyle">
 

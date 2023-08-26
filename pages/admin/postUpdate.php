@@ -1,136 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="include/nav.css">
+    <link rel="stylesheet" href="../../style/managePost.css">
     <title>Manage Post</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0px;
-            padding: 0px;
-        }
 
-        form {
-            margin: 2px;
-            padding: 10px;
-            border: 1px solid black;
-            display: flex;
-            width: 90%;
-            justify-content: flex-end;
-            flex-direction: column;
-        }
-
-        textarea {
-            padding: 10px;
-        }
-
-        #submitBtn {
-            margin-top: 10px;
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: flex-start;
-            gap: 20px;
-        }
-
-        button {
-            width: 100px;
-            height: 30px;
-            border: 1px solid black;
-            margin-bottom: 5px;
-        }
-
-        .postFormat {
-            border: 1px solid black;
-            margin-top: 20px;
-            height: auto;
-            width: 90%;
-        }
-
-        .postFormat section {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin: 10px 20px;
-        }
-
-        .postFormat.scholar {
-            background-color: lightblue; /* Adjust the styling for scholar announcements */
-        }
-
-        .postFormat.applicant {
-            background-color: lightgreen; /* Adjust the styling for applicant announcements */
-        }
-
-        main {
-            margin: 10px 20px;
-        }
-
-        .aBtn {
-            border: 1px solid black;
-            width: 20%;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        footer {
-            margin-top: 10px;
-            display: flex;
-            justify-content: flex-end;
-            gap: 20px;
-            margin: 20px;
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .alert {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            padding: 10px;
-            background-color: #dff0d8;
-            color: #3c763d;
-            border: 1px solid #d6e9c6;
-            border-radius: 4px;
-        }
-    </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -139,234 +17,288 @@
     include '../include/selectDb.php';
     include 'include/session.php';
     if ($_SESSION['role'] === 'admin') {
-        include '../../assets/template/nav.php';
+        include '../../assets/template/profileNav.php';
     } elseif ($_SESSION['role'] === 'staff') {
         include '../../assets/template/staffNav.php';
     }
     ?>
     <section class="home-section">
         <form id="postForm" method="POST" action="postUpdateDb.php">
-            <label for="postText">Post Announcements</label><br>
+            <label for="postText" class="bold">Post Announcements</label><br>
             <textarea id="postText" name="postText" rows="5" cols="50"></textarea><br>
 
-            <label for="category">Category:</label>
+            <div class="col-md-5">
+            <label for="category" class="bold dropDown">Category:&nbsp;</label>
             <select id="category" name="category">
                 <option value="applicant">Applicant</option>
                 <option value="scholar">Scholar</option>
             </select>
-
+            </div>
             <div id="submitBtn">
-                <button type="submit">Submit</button>
-                <button type="reset">Reset</button>
+                <button class="btn btn-outline-success" type="submit">Submit</button>
+                <button class="btn btn-outline-dark" type="reset">Reset</button>
             </div>
         </form>
 
-                <!-- New Category Button -->
-                <div id="categoryButtons">
-            <button class="category-btn" data-category="scholar">Scholar Announcements</button>
-            <button class="category-btn" data-category="applicant">Applicant Announcements</button>
-            <!-- Add more category buttons as needed -->
+        <div class="portlet-title tabbable-line mt-3">
+                <div class="caption caption-md">
+                    <span class="caption-name font-color bold text-uppercase">Manage Post</span>
+                </div>
+            <ul class="portletNav nav nav-tabs mt-1" id="categoryButtons" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="category-btn" data-bs-toggle="tab" data-bs-target="#scholar" type="button" role="tab" aria-controls="scholarTab" aria-selected="true">Scholar</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="category-btn-2" data-bs-toggle="tab" data-bs-target="#applicant" type="button" role="tab" aria-controls="ApplicantTab" aria-selected="false">Applicant</button>
+                    </li>
+                    
+            </ul>
         </div>
+        <div class="container">
+    <div class="tab-content">
+        <div class="tab-pane active" id="scholar">
+            <div id="scholarAnnouncementsContainer">
+                <!-- Display scholar announcements here -->
+                <?php
+                $scholarAnnouncements = mysqli_query($conn, "SELECT * FROM announcements WHERE category = 'scholar'");
 
-        <div id="manageStyle">
-            <h1>Manage Post</h1>
-
-            <h2>Scholar Announcements</h2>
-            <?php
-            if ($resultGetPost->num_rows > 0) {
-                while ($row = $resultGetPost->fetch_assoc()) {
-                    if ($row['category'] === 'scholar') {
-                        echo "<div class='postFormat scholar'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
+                if (mysqli_num_rows($scholarAnnouncements) > 0) {
+                    while ($row = mysqli_fetch_assoc($scholarAnnouncements)) {
+                        echo "<div class='postFormat scholar'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn btn btn-primary' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn btn btn-danger' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
                     }
+                } else {
+                    echo "No scholar announcements found.";
                 }
-            }
-            ?>
-
-            <h2>Applicant Announcements</h2>
-            <?php
-            // Reset the internal pointer of the result set
-            mysqli_data_seek($resultGetPost, 0);
-
-            if ($resultGetPost->num_rows > 0) {
-                while ($row = $resultGetPost->fetch_assoc()) {
-                    if ($row['category'] === 'applicant') {
-                        echo "<div class='postFormat applicant'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
-                    }
-                }
-            }
-            ?>
+                ?>
+            </div>
         </div>
+        <div class="tab-pane" id="applicant">
+            <div id="applicantAnnouncementsContainer">
+                <!-- Display applicant announcements here -->
+                <?php
+                $applicantAnnouncements = mysqli_query($conn, "SELECT * FROM announcements WHERE category = 'applicant'");
+
+                if (mysqli_num_rows($applicantAnnouncements) > 0) {
+                    while ($row = mysqli_fetch_assoc($applicantAnnouncements)) {
+                        echo "<div class='postFormat applicant'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn btn btn-primary' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn btn btn-danger' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
+                    }
+                } else {
+                    echo "No applicant announcements found.";
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+
 
         <!-- Edit Post Modal -->
         <div id="editModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <a class="close">&times;</a>
                 <form id="editForm" method="POST" action="postEditDb.php">
                     <input type="hidden" id="editPostId" name="postId" value="">
                     <label for="editPostText">Edit Post Announcements</label><br>
                     <textarea id="editPostText" name="postText" rows="5" cols="50"></textarea><br>
                     <div id="editSubmitBtn">
-                        <button type="button" id="editSaveBtn">Save</button>
-                        <button type="button" class="close-modal">Cancel</button>
+                        <button class="btn btn-outline-success m-lg-2" type="button" id="editSaveBtn">Save</button>
+                        <button type="button" class="close-modal btn btn-outline-dark">Cancel</button>
                     </div>
                 </form>
             </div>
         </div>
-
+    
+    
+    
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function() {
+    $(document).ready(function() {
         // Submit button click event
         $('#postForm').submit(function(e) {
-    e.preventDefault();
-    var postText = $('#postText').val();
-    var category = $('#category').val();
+            e.preventDefault();
+            var postText = $('#postText').val();
+            var category = $('#category').val();
 
-    // Perform your Ajax request here to handle the submit functionality
-    $.ajax({
-        type: 'POST',
-        url: 'action/postUpdateDb.php',
-        data: {
-            postText: postText,
-            category: category
-        },
-        dataType: 'json',
-        success: function(response) {
-            // Handle the response from the server
-            console.log('Post submitted successfully');
+            // Perform your Ajax request here to handle the submit functionality
+            $.ajax({
+                type: 'POST',
+                url: 'action/postUpdateDb.php',
+                data: {
+                    postText: postText,
+                    category: category
+                },
+                dataType: 'json',
+                success: function(response) {
+                    // Handle the response from the server
+                    console.log('Post submitted successfully');
 
-            // Add the new category button dynamically
-            if (!$('.category-btn[data-category="' + category + '"]').length) {
-                var newCategoryButton = $('<button>')
-                    .addClass('category-btn')
-                    .attr('data-category', category)
-                    .text(category.charAt(0).toUpperCase() + category.slice(1) + ' Announcements');
-                $('#categoryButtons').append(newCategoryButton);
-            }
+                    // Add the new post to the DOM dynamically
+                                        var postFormat = '<div class="postFormat ' + category + '"><section><h3>Uploader: ' + response.uploader + '</h3><h3>Upload Date: ' + response.uploadDate + '</h3><h3>Category: ' + response.category + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="aBtn edit-btn btn btn-primary" href="#" data-id="' + response.uploadId + '">Edit</a><a class="aBtn delete-btn btn btn-danger" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
+                    $('#' + category + 'AnnouncementsContainer').prepend(postFormat);
 
-            // Add the new post to the DOM dynamically
-            var postFormat = '<div class="postFormat ' + category + '"><section><h3>Uploader: ' + response.uploader + '</h3><h3>Upload Date: ' + response.uploadDate + '</h3><h3>Category: ' + response.category + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="aBtn edit-btn" href="#" data-id="' + response.uploadId + '">Edit</a><a class="aBtn delete-btn" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
-            $('#manageStyle').append(postFormat);
+                    // Reset the form
+                    $('#postText').val('');
+                    $('#category').val('');
 
-            // Reset the form
-            $('#postText').val('');
-            $('#category').val('');
-
-            // Show success message
-            showMessage('Successfully Submitted');
-        },
-        error: function(xhr, status, error) {
-            // Handle any errors
-            console.error('Error submitting post:', error);
-        }
-    });
-});
-
-
-            // Delete button click event
-            $(document).on('click', '.delete-btn', function(e) {
-                e.preventDefault();
-                var postId = $(this).data('id');
-                // Perform your Ajax request here to handle the delete functionality
-                $.ajax({
-                    type: 'POST',
-                    url: 'action/postDelete.php?id=' + postId,
-                    success: function(response) {
-                        // Handle the response from the server
-                        console.log('Post deleted successfully');
-                        // Remove the deleted post from the DOM
-                        $('.delete-btn[data-id="' + postId + '"]').closest('.postFormat').remove();
-                        // Show success message
-                        showMessage('Successfully Deleted');
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle any errors
-                        console.error('Error deleting post:', error);
-                    }
-                });
-            });
-
-            $(document).on('click', '.edit-btn', function(e) {
-                e.preventDefault();
-                var postId = $(this).data('id');
-                var postText = $(this).closest('.postFormat').find('main p').text();
-                $('#editPostId').val(postId);
-                $('#editPostText').val(postText);
-                $('#editModal').css('display', 'block');
-            });
-
-            // Edit form submission
-            $('#editSaveBtn').click(function(e) {
-                e.preventDefault();
-                var postId = $('#editPostId').val();
-                var newPostText = $('#editPostText').val();
-                // Perform your Ajax request here to handle the edit functionality
-                $.ajax({
-                    type: 'POST',
-                    url: 'action/postEditDb.php?id=' + postId,
-                    data: {
-                        postId: postId,
-                        postText: newPostText
-                    },
-                    success: function(response) {
-                        // Handle the response from the server
-                        console.log('Post updated successfully');
-                        // Close the edit modal
-                        $('#editModal').css('display', 'none');
-                        // Update the post content in the DOM
-                        $('.edit-btn[data-id="' + postId + '"]').closest('.postFormat').find('main p').text(newPostText);
-                        // Show success message
-                        showMessage('Successfully Edited');
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle any errors
-                        console.error('Error updating post:', error);
-                    }
-                });
-            });
-
-            // Close modal on close button click
-            $('.close').click(function() {
-                $('#editModal').css('display', 'none');
-            });
-
-            // Close modal on cancel button click
-            $('.close-modal').click(function() {
-                $('#editModal').css('display', 'none');
-            });
-
-            // Close modal when clicking outside the modal content
-            $(window).click(function(e) {
-                if (e.target == $('#editModal')[0]) {
-                    $('#editModal').css('display', 'none');
+                    // Show success message
+                    showMessage('Successfully Submitted');
+                },
+                error: function(xhr, status, error) {
+                    // Handle any errors
+                    console.error('Error submitting post:', error);
                 }
             });
-
-            // Show alert message
-            function showMessage(message) {
-                var alertDiv = $('<div>').text(message);
-                alertDiv.addClass('alert');
-                $('body').append(alertDiv);
-                setTimeout(function() {
-                    alertDiv.fadeOut('slow', function() {
-                        alertDiv.remove();
-                    });
-                }, 3000);
-            }
         });
 
-          // Show or hide announcements based on category button click
-          $('.category-btn').click(function() {
-                var selectedCategory = $(this).data('category');
-                $('.postFormat').each(function() {
-                    if ($(this).hasClass(selectedCategory)) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
+        // Delete button click event
+        $(document).on('click', '.delete-btn', function(e) {
+            e.preventDefault();
+            var postId = $(this).data('id');
+            // Perform your Ajax request here to handle the delete functionality
+            $.ajax({
+                type: 'POST',
+                url: 'action/postDelete.php?id=' + postId,
+                success: function(response) {
+                    // Handle the response from the server
+                    console.log('Post deleted successfully');
+                    // Remove the deleted post from the DOM
+                    $('.delete-btn[data-id="' + postId + '"]').closest('.postFormat').remove();
+                    // Show success message
+                    showMessage('Successfully Deleted');
+                },
+                error: function(xhr, status, error) {
+                    // Handle any errors
+                    console.error('Error deleting post:', error);
+                }
             });
-    </script>
+        });
+
+        var isEditModalDirty = false; // Flag to track if the edit modal is dirty (i.e., changes have been made)
+
+    // ...
+
+    // Edit button click event
+    $(document).on('click', '.edit-btn', function(e) {
+        e.preventDefault();
+        var postId = $(this).data('id');
+        var postText = $(this).closest('.postFormat').find('main p').text();
+        $('#editPostId').val(postId);
+        $('#editPostText').val(postText);
+        $('#editModal').css('display', 'block');
+        isEditModalDirty = false; // Reset the dirty flag when opening the edit modal
+    });
+
+    // Edit form submission
+    $('#editSaveBtn').click(function(e) {
+        e.preventDefault();
+        var postId = $('#editPostId').val();
+        var newPostText = $('#editPostText').val();
+        // Perform your Ajax request here to handle the edit functionality
+        $.ajax({
+            type: 'POST',
+            url: 'action/postEditDb.php?id=' + postId,
+            data: {
+                postId: postId,
+                postText: newPostText
+            },
+            success: function(response) {
+                // Handle the response from the server
+                console.log('Post updated successfully');
+                // Close the edit modal
+                $('#editModal').css('display', 'none');
+                // Update the post content in the DOM
+                $('.edit-btn[data-id="' + postId + '"]').closest('.postFormat').find('main p').text(newPostText);
+                // Show success message
+                showMessage('Successfully Edited');
+            },
+            error: function(xhr, status, error) {
+                // Handle any errors
+                console.error('Error updating post:', error);
+            }
+        });
+    });
+
+    // Close modal on close button click
+    $('.close-modal').click(function() {
+        if (isEditModalDirty) {
+            // Prompt the editor to save or discard changes before closing the modal
+            var confirmDiscard = confirm('You have unsaved changes. Do you want to discard them?');
+            if (confirmDiscard) {
+                $('#editModal').css('display', 'none');
+            }
+        } else {
+            $('#editModal').css('display', 'none');
+        }
+    });
+
+    // Close modal when clicking outside the modal content
+    $(window).click(function(e) {
+        if (e.target == $('#editModal')[0]) {
+            if (isEditModalDirty) {
+                // Prompt the editor to save or discard changes before closing the modal
+                var confirmDiscard = confirm('You have unsaved changes. Do you want to discard them?');
+                if (confirmDiscard) {
+                    $('#editModal').css('display', 'none');
+                }
+            } else {
+                $('#editModal').css('display', 'none');
+            }
+        }
+    });
+
+    // Edit form input change event
+    $('#editForm :input').change(function() {
+        isEditModalDirty = true; // Set the dirty flag when changes are made in the edit modal
+    });
+
+    // ...
+
+    // Show alert message
+    function showMessage(message) {
+        var alertDiv = $('<div>').text(message);
+        alertDiv.addClass('alert');
+        $('body').append(alertDiv);
+        setTimeout(function() {
+            alertDiv.fadeOut('slow', function() {
+                alertDiv.remove();
+            });
+        }, 3000);
+    }
+});
+
+    // Show or hide announcements based on category button click
+    $('.category-btn').click(function() {
+        var selectedCategory = $(this).data('category');
+        $('.postFormat').each(function() {
+            if ($(this).hasClass(selectedCategory)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        // Show the default tab on page load
+        $('.tab').first().addClass('active');
+
+        // Handle tab button click
+        $('.category-btn').click(function() {
+            var category = $(this).data('category');
+
+            // Remove active class from all tabs and buttons
+            $('.category-btn').removeClass('active');
+            $('.tab').removeClass('active');
+
+            // Add active class to the clicked button
+            $(this).addClass('active');
+
+            // Show the corresponding tab
+            $('.tab.' + category).addClass('active');
+        });
+    });
+</script>
 </body>
 
 </html>
