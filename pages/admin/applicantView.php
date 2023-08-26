@@ -524,7 +524,7 @@ if (isset($_GET['id'])) {
             // Create an AJAX request
             $.ajax({
                 type: 'POST', // You can use 'GET' if preferred
-                url: 'action/applicantApprove.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
+                url: 'action/applicantViewDb.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
                 data: {
                     id: applicantId,
                     action: action
