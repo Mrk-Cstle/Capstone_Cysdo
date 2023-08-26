@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
             echo "No row found with the specified ID.";
         }
     } else {
-        echo "Error executing the query: " . mysqli_error($connection);
+        echo "Error executing the query: " . mysqli_error($conn);
     }
 } else {
     echo "No ID parameter found in the URL.";
@@ -66,6 +66,25 @@ if (isset($_GET['id'])) {
                     <div class="actionBtn">
 
                         <?php if ($status == 'done') {
+                            $status_sql = "SELECT * FROM registration_approval WHERE application_id = '$applicantId'";
+                            $status_result = mysqli_query($conn, $status_sql);
+                            if ($status_result) {
+                                // Fetch the result row
+                                $row = mysqli_fetch_assoc($status_result);
+
+                                // Check if a row was found
+                                if ($row) {
+                                    $action = $row['action_type'];
+                                    echo "Applicant Status: $action";
+                                } else {
+                                    echo "No action found for applicant with ID $applicantId";
+                                }
+
+                                // Free the result set
+                                mysqli_free_result($status_result);
+                            } else {
+                                echo "Error executing the query: " . mysqli_error($conn);
+                            }
                         } else { ?>
                             <button type="button" id="approveBtn" class="btnApprove btn btn-success btn-sm" onclick="sendAction('<?php echo $applicantId; ?>', 'approve')">Approve</button>
                             <button type="button" id="declineBtn" class="btnDecline btn btn-danger btn-sm" onclick="sendAction('<?php echo $applicantId; ?>', 'decline')">Decline</button>
