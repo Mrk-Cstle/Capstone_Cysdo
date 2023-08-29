@@ -44,7 +44,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     justify-content: end;
-    
+
   }
 
   .navProfile {
@@ -75,7 +75,7 @@
   }
 
   .side-bar .menu .item a:hover {
-    background: #CD6688;
+    background: #c8577b;
     transition: 0.3s ease;
   }
 
