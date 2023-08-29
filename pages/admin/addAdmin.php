@@ -26,7 +26,6 @@ if ($_SESSION['role'] === 'admin') {
 
 <body>
     <section id="content" class="home-section">
-        <div class="backRound">
             <nav class="navbar navbar-light bg-light d-flex">
                 <form class="form-inline m-lg-3">
                     <input class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
