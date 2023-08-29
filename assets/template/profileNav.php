@@ -40,7 +40,7 @@
 
   .navBar {
     background: #FBA1B7;
-    margin-left: 290px;
+    
     padding-top: 10px;
     padding-bottom: 10px;
     justify-content: end;

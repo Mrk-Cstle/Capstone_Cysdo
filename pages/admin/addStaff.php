@@ -29,9 +29,9 @@ if ($_SESSION['role'] === 'admin') {
 <body>
   <section id="content" class="home-section">
     
-      <nav class="navbar navbar-light bg-light d-inline">
+      <nav class="navbar navbar-light bg-light d-flex">
         <form class="form-inline m-lg-3">
-          <input class="form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
           <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Staff</a>
           <p id="response"></p>
