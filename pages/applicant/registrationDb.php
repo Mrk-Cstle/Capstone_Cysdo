@@ -233,9 +233,8 @@ $insert = mysqli_query($conn, $query);
             </tr>
             <tr>
                 <!-- <td></td> -->
-                <th>House No.</th>
-                <th>Block/Lot</th>
-                <th>Street/Phase/Section</th>
+                <th colspan="3">House No./Block/Lot/Street/Phase/Section/barangay</th>
+
                 <th colspan="2">Place of Birth</th>
             </tr>
             <tr>
@@ -286,7 +285,7 @@ $insert = mysqli_query($conn, $query);
             <tr>
 
                 <td>Course/Strand</td>
-                <td colspan="2">Current Year Level</td>
+                <th colspan="2">Current Year Level</th>
 
             </tr>
         </table>
@@ -340,8 +339,8 @@ $insert = mysqli_query($conn, $query);
 
             </tr>
             <tr>
-                <th colspan="2">Total Parents Annual Gross Income<?php echo "$familyIncome" ?></th>
-                <th colspan="2">Size of Family<?php echo "$sizeFamily" ?></th>
+                <th colspan="2">Total Parents Annual Gross Income: <?php echo "$familyIncome" ?></th>
+                <th colspan="2">Size of Family: <?php echo "$sizeFamily" ?></th>
                 <td><?php echo "$sibling6" ?></td>
 
 

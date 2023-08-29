@@ -1,6 +1,5 @@
  /* Registration Style */
  * {
-     box-sizing: border-box;
      margin: 0px;
      padding: 0px;
  }
@@ -14,37 +13,10 @@
      margin: 10px 0px;
  }
 
- body {
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
-/* Forms Layout */
- form {
-     margin-top: 50px;
-     display: flex;
-     flex-direction: column;
-     width: 50%;
-     min-width: 100vh;
- }
-
- input,
- select {
+ input {
      width: 100%;
      margin-top: 5px;
      margin-bottom: 10px;
- }
-
- .formContainer {
-     border-bottom: 1px solid black;
-     padding-bottom: 20px;
-     width: 100%;
- }
-
- #parentForm {
-     display: flex;
-     flex-direction: row;
-     gap: 20px;
  }
 
  .formLayout {
@@ -64,8 +36,9 @@ margin-top: 10px;
  /* End Registration Style */
 
  /* Terms Registration Style */
- li{
-    margin: 10px 0px;
+ .alignment{
+    text-align: center;
+    
  }
  .listLayout{
     margin: 5px 30px;
@@ -81,7 +54,5 @@ margin-top: 10px;
  }
  #agreementInput input {
      width: 50px;
-   
-     
-
  }
+ 
