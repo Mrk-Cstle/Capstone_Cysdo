@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style/addStaff.css">
-    <title>Document</title>
+    <title>Denied Applicants</title>
     <style>
         .hidden-cell {
             display: none;
@@ -31,7 +31,10 @@ if ($_SESSION['role'] === 'admin') {
 
 
 <body>
+
     <section id="content" class="home-section">
+        <h1>Denied Applicant List</h1>
+        <div class="backRound">
             <nav class="navbar navbar-light bg-light d-flex">
                 <form class="form-inline m-lg-3">
                     <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -45,7 +48,7 @@ if ($_SESSION['role'] === 'admin') {
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">Image</th>
+                            <th scope="col">Applicant Id</th>
                             <th scope="col">Full Name</th>
                             <th scope="col">Contact 1</th>
                             <th scope="col">Contact 2</th>
@@ -79,7 +82,7 @@ if ($_SESSION['role'] === 'admin') {
                             }
                         }
                     };
-                    xhr.open('GET', 'action/getApplicant.php?page=' + page, true);
+                    xhr.open('GET', 'action/applicantDeniedDb.php?page=' + page, true);
                     xhr.send();
                 }
 
@@ -94,7 +97,7 @@ if ($_SESSION['role'] === 'admin') {
                             }
                         }
                     };
-                    xhr.open('GET', 'action/getApplicant.php?search=' + searchValue, true);
+                    xhr.open('GET', 'action/applicantDeniedDb.php?search=' + searchValue, true);
                     xhr.send();
                 }
 
@@ -131,7 +134,7 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     };
 
-                    xhttp.open("GET", "action/getApplicant.php", true);
+                    xhttp.open("GET", "action/applicantDeniedDb.php", true);
                     xhttp.send();
                 }
             </script>
