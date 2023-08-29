@@ -35,15 +35,7 @@ if ($_SESSION['role'] === 'admin') {
             </form>
         </nav>
 
-        <nav class="navbar navbar-light bg-light d-inline">
-            <form class="form-inline m-lg-3" id="searchForm"> <!-- Added an ID to the form -->
-                <input class="form-control-lg mr-sm-2" type="search" id="searchInput" placeholder="Search" aria-label="Search">
-                <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
-                <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Admin</a>
-                <a class="btnRefresh btn btn-outline-primary" href="">Refresh</a>
-                <p id="response"></p>
-            </form>
-        </nav>
+
 
         <div class="table-responsive">
             <table class="table table-bordered">
