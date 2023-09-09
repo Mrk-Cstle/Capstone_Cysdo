@@ -188,6 +188,7 @@
 
     $query = "SELECT * FROM announcements WHERE category = 'scholar'";
     $resultGetPost = mysqli_query($conn, $query);
+    $postCounter = 0;
 
 
     ?>
@@ -199,18 +200,16 @@
     if ($resultGetPost) {
         if ($resultGetPost->num_rows > 0) {
             while ($row = $resultGetPost->fetch_assoc()) {
-                // echo "<div class='postFormat scholar'>
-                //           <section>
-                //           <h3>Upload Date: " . $row['uploadDate'] . "</h3>
-                //           </section>
-                //           <main>
-                //               <p>" . $row['announcement'] . "</p>
-                //           </main>
-                //       </div>";
+                $postCounter++;
 
+                if ($postCounter <= 5) {
+                    echo '<div class="textBody">';
+                } else {
+                    echo '<div class="textBody" style="display: none;">';
+                }
                 echo "
 
-        <div class='textBody'>
+      
             <ul class='box-info justify-content-center'>
                 <li class='responsive'>
                     <img src='./assets/image/CysdoLogo.png' style='height: 50px; width: 50px;' class='sideLogo'><i class='caption'>City Youth Sports Development Office</i></a>
@@ -222,13 +221,17 @@
                     <hr class='mb-3 mt-3'>
 
                     <div>
-                        <p id='uploaderPost' class='Post lh-lg'>" . $row['announcement'] . "
+                        <p id='uploaderPost' class='Post lh-lg'>" . nl2br($row['announcement']) . "
                         </p>
                     </div>
                 </li>
 
             </ul>
-        </div>";
+             </div>
+       ";
+            }
+            if ($postCounter > 5) {
+                echo '<div class="see-more-container"><button class="see-more-btn btn btn-primary">See more</button></div>';
             }
         } else {
             echo "No scholar announcements found.";
@@ -239,7 +242,7 @@
     ?>
 
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -249,6 +252,25 @@
                 $(this).find('.dropdown').toggleClass('rotate');
             });
 
+        });
+
+        $(document).ready(function() {
+            var displayedAnnouncements = 5; // Initial number of displayed announcements
+            var totalAnnouncements = <?php echo mysqli_num_rows($resultGetPost); ?>; // Total number of announcements
+
+            // Handle "See more" button click
+            $('.see-more-btn').click(function() {
+                var hiddenAnnouncements = $('.textBody:hidden');
+                var nextAnnouncements = hiddenAnnouncements.slice(0, 5);
+
+                nextAnnouncements.slideDown();
+                displayedAnnouncements += nextAnnouncements.length;
+
+                // Hide the "See more" button when all announcements are displayed
+                if (displayedAnnouncements >= totalAnnouncements) {
+                    $('.see-more-container').hide();
+                }
+            });
         });
     </script>
 </body>
