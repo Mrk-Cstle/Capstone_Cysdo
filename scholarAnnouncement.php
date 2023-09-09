@@ -191,7 +191,7 @@
         $query = "SELECT * FROM announcements WHERE category = '$pageCheck'";
         $resultGetPost = mysqli_query($conn, $query);
         $postCounter = 0;
-        echo 'Value matches the desired value';
+
     ?>
         <div class='textAlign'>
             <p style="text-transform: capitalize;" class='bold'><a href='newsTab.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a>
@@ -236,19 +236,11 @@
                     echo '<div class="see-more-container"><button class="see-more-btn btn btn-primary">See more</button></div>';
                 }
             } else {
-                echo "No scholar announcements found.";
+                echo "No announcements found.";
             }
         } else {
             echo "An error occurred while retrieving announcements.";
         }
-
-
-        // for applicant announcement
-
-
-        // Assuming you already have a valid database connection and session
-
-
     }
 
     ?>
@@ -268,6 +260,7 @@
 
         });
 
+        //see more function
         $(document).ready(function() {
             var displayedAnnouncements = 5; // Initial number of displayed announcements
             var totalAnnouncements = <?php echo mysqli_num_rows($resultGetPost); ?>; // Total number of announcements
