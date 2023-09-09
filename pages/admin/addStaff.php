@@ -28,94 +28,85 @@ if ($_SESSION['role'] === 'admin') {
 
 <body>
   <section id="content" class="home-section">
-    
-      <nav class="navbar navbar-light bg-light d-flex">
-        <form class="form-inline m-lg-3">
-          <input class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
-          <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Staff</a>
-          <p id="response"></p>
-        </form>
-      </nav>
-
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">Position</th>
-            <th scope="col">Contact #</th>
-            <th scope="col">Address</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Action</th>
-          </tr>
-
-
-
-          <tbody id="tableData">
-
-
-
-          </tbody>
-
-
-        </table>
-      </div>
-      <div class="overlay" id="btnAdd">
-        <div class="wrapper">
-
-          <h2>Please Fill up The Form</h2><a class="close" href="#">&times;</a>
-          <div class="content">
-            <div class="container">
-              <form id="addForm">
-                <label class="d-flex">Last Name</label>
-                <input class="d-flex" placeholder="Enter Last Name" type="text" id="lastName">
-                <label class="d-flex">First Name</label>
-                <input class="d-flex" placeholder="Enter Full Name" type="text" id="firstName">
-                <label class="d-flex">Middle Name</label>
-                <input class="d-flex" placeholder="Enter Middle Name" type="text" id="middleName">
-                <label class="d-flex">Position</label>
-                <input class="d-flex" placeholder="Enter Position" type="text" id="position">
-                <label class="entCont d-flex">Contact #</label>
-                <input class="entContact d-flex" placeholder="Enter Contact no." type="number" id="contactNumber">
-                <label class="d-flex">E-mail</label>
-                <input class="d-flex" placeholder="Enter E-mail" type="text" id="email">
+  <nav class="navbar navbar-light bg-light d-flex">
+            <form id="searchForm" class="form-inline m-lg-3">
+                <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
+                <button id="refreshButton" class="btn btn-outline-secondary" type="button">Refresh</button>
+                <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Staff</a>
                 <p id="response"></p>
-                <input class="btn btn-success" value="Submit" onclick="submitData('insert')">
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+            </form>
+        </nav>
 
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-          <div class="modal-content">
-            <div class="container-fluid">
-              <a type="button" class="btn-close mt-3 float-end" data-bs-dismiss="modal" aria-label="Close"></a>
-            </div>
-            <div class="modal-body">
-              <form>
-              
-                <label class="d-flex">Last Name</label>
-                <input class="d-flex" placeholder="Enter New Last Name" type="text" id="editlastName">
-                <label class="d-flex">First Name</label>
-                <input class="d-flex" placeholder="Enter New Full Name" type="text" id="editfirstName">
-                <label class="d-flex">Middle Name</label>
-                <input class="d-flex" placeholder="Enter New Middle Name" type="text" id="editmiddleName">
-                <label class="d-flex">Position</label>
-                <input class="d-flex" placeholder="Enter New Position" type="text" id="editposition">
-                <label class="entCont d-flex">Contact #</label>
-                <input class="entContact d-flex" placeholder="Enter New Contact no." type="number" id="editcontactNumber">
-                <label class="d-flex">E-mail</label>
-                <input class="d-flex" placeholder="Enter New E-mail" type="text" id="editemail">
-                <input type="hidden" id="editstaffId" name="postId" value="">
-                <input class="btn btn-success" id="editSaveBtn" value="Submit">
-              </form>
-            </div>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Position</th>
+          <th scope="col">Contact #</th>
+          <th scope="col">Address</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Action</th>
+        </tr>
+        <tbody id="tableData"></tbody>
+      </table>
+    </div>
+    <div class="overlay" id="btnAdd">
+      <div class="wrapper">
+
+        <h2>Please Fill up The Form</h2><a class="close" href="#">&times;</a>
+        <div class="content">
+          <div class="container">
+            <form id="addForm">
+              <label class="d-flex">Last Name</label>
+              <input class="d-flex" placeholder="Enter Last Name" type="text" id="lastName">
+              <label class="d-flex">First Name</label>
+              <input class="d-flex" placeholder="Enter Full Name" type="text" id="firstName">
+              <label class="d-flex">Middle Name</label>
+              <input class="d-flex" placeholder="Enter Middle Name" type="text" id="middleName">
+              <label class="d-flex">Position</label>
+              <input class="d-flex" placeholder="Enter Position" type="text" id="position">
+              <label class="entCont d-flex">Contact #</label>
+              <input class="entContact d-flex" placeholder="Enter Contact no." type="number" id="contactNumber">
+              <label class="d-flex">E-mail</label>
+              <input class="d-flex" placeholder="Enter E-mail" type="text" id="email">
+              <p id="response"></p>
+              <input class="btn btn-success" value="Submit" onclick="submitData('insert')">
+            </form>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="container-fluid">
+            <a type="button" class="btn-close mt-3 float-end" data-bs-dismiss="modal" aria-label="Close"></a>
+          </div>
+          <div class="modal-body">
+            <form>
+
+              <label class="d-flex">Last Name</label>
+              <input class="d-flex" placeholder="Enter New Last Name" type="text" id="editlastName">
+              <label class="d-flex">First Name</label>
+              <input class="d-flex" placeholder="Enter New Full Name" type="text" id="editfirstName">
+              <label class="d-flex">Middle Name</label>
+              <input class="d-flex" placeholder="Enter New Middle Name" type="text" id="editmiddleName">
+              <label class="d-flex">Position</label>
+              <input class="d-flex" placeholder="Enter New Position" type="text" id="editposition">
+              <label class="entCont d-flex">Contact #</label>
+              <input class="entContact d-flex" placeholder="Enter New Contact no." type="number" id="editcontactNumber">
+              <label class="d-flex">E-mail</label>
+              <input class="d-flex" placeholder="Enter New E-mail" type="text" id="editemail">
+              <input type="hidden" id="editstaffId" name="postId" value="">
+              <input class="btn btn-success" id="editSaveBtn" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
@@ -336,36 +327,71 @@ if ($_SESSION['role'] === 'admin') {
 
 
       function addData() {
-
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableData").innerHTML = this.responseText;
-
           }
         };
-
         xhttp.open("GET", "action/addStaffList.php", true);
         xhttp.send();
       }
 
-
-
       function loadDoc() {
-        setInterval(function() {
+        var searchInput = document.getElementById("searchInput");
+        if (searchInput.value === "") {
           var xhttp = new XMLHttpRequest();
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
               document.getElementById("tableData").innerHTML = this.responseText;
-
-
             }
           };
           xhttp.open("GET", "action/addStaffList.php", true);
           xhttp.send();
-        }, 1000);
+        }
       }
-      loadDoc()
+      loadDoc();
+
+
+      function filterTable(searchQuery) {
+        var rows = document.querySelectorAll("#tableData tr");
+        searchQuery = searchQuery.toLowerCase();
+
+        rows.forEach(function(row) {
+          var fullName = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+          if (fullName.includes(searchQuery)) {
+            row.style.display = "table-row";
+          } else {
+            row.style.display = "none";
+          }
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        var searchForm = document.getElementById("searchForm");
+        searchForm.addEventListener("submit", function(event) {
+          event.preventDefault();
+          var searchInput = document.getElementById("searchInput");
+          var searchQuery = searchInput.value;
+          filterTable(searchQuery);
+        });
+      });
+
+      document.getElementById("refreshButton").addEventListener("click", function() {
+    refreshList(); // Call the refreshList() function to refresh the content
+});
+
+function refreshList() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableData").innerHTML = this.responseText;
+        }
+    };
+
+    xhttp.open("GET", "action/addStaffList.php", true);
+    xhttp.send();
+}
     </script>
   </section>
 </body>

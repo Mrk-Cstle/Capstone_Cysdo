@@ -61,7 +61,7 @@
         <div class="newsFormat">
             <img src="assets/image/No_Image_Available.jpg" />
             <h2>Scholar Announcement</h2>
-            <a href="sann.php">View</a>
+            <a href="scholarAnnouncement.php">View</a>
         </div>
         <div class="newsFormat">
             <img src="assets/image/No_Image_Available.jpg" />

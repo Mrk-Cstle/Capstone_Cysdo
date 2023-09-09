@@ -57,36 +57,88 @@
         <div class="container">
     <div class="tab-content">
         <div class="tab-pane active" id="scholar">
-            <div id="scholarAnnouncementsContainer">
-                <!-- Display scholar announcements here -->
-                <?php
-                $scholarAnnouncements = mysqli_query($conn, "SELECT * FROM announcements WHERE category = 'scholar'");
+        <!-- For Scholar Announcements -->
+        <div id="scholarAnnouncementsContainer">
+    <!-- Display scholar announcements here -->
+    <?php
+    $scholarAnnouncements = mysqli_query($conn, "SELECT * FROM announcements WHERE category = 'scholar'");
+    $postCounter = 0; // Initialize a post counter for scholar announcements
 
-                if (mysqli_num_rows($scholarAnnouncements) > 0) {
-                    while ($row = mysqli_fetch_assoc($scholarAnnouncements)) {
-                        echo "<div class='postFormat scholar'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn btn btn-primary' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn btn btn-danger' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
-                    }
-                } else {
-                    echo "No scholar announcements found.";
-                }
-                ?>
-            </div>
+    if (mysqli_num_rows($scholarAnnouncements) > 0) {
+        while ($row = mysqli_fetch_assoc($scholarAnnouncements)) {
+            $postCounter++;
+
+            if ($postCounter <= 5) {
+                echo '<div class="postFormat scholar">';
+            } else {
+                echo '<div class="postFormat scholar" style="display: none;">';
+            }
+
+            echo "<section>";
+            echo "<h3>Uploader: " . $row['uploader'] . "</h3>";
+            echo "<h3>Upload Date: " . $row['uploadDate'] . "</h3>";
+            echo "<h3>Category: " . $row['category'] . "</h3>";
+            echo "</section>";
+            echo "<main><p>" . nl2br($row['announcement']) . "</p></main>";
+            echo "<footer>";
+            echo "<a class='aBtn edit-btn btn btn-primary' href='#' data-id='" . $row['uploadId'] . "'>Edit</a>";
+            echo "<a class='aBtn delete-btn btn btn-danger' href='#' data-id='" . $row['uploadId'] . "'>Delete</a>";
+            echo "</footer></div>";
+        }
+
+        // Show the "See more" button after displaying the first 5 announcements
+        if ($postCounter > 5) {
+            echo '<div class="see-more-container"><button class="see-more-btn btn btn-primary">See more</button></div>';
+        }
+    } else {
+        echo "No scholar announcements found.";
+    }
+    ?>
+</div>
+
+
         </div>
         <div class="tab-pane" id="applicant">
-            <div id="applicantAnnouncementsContainer">
-                <!-- Display applicant announcements here -->
-                <?php
-                $applicantAnnouncements = mysqli_query($conn, "SELECT * FROM announcements WHERE category = 'applicant'");
+<!-- For Applicant Announcements -->
+<div id="applicantAnnouncementsContainer">
+    <!-- Display applicant announcements here -->
+    <?php
+    $applicantAnnouncements = mysqli_query($conn, "SELECT * FROM announcements WHERE category = 'applicant'");
+    $postCounter = 0; // Initialize a post counter for applicant announcements
 
-                if (mysqli_num_rows($applicantAnnouncements) > 0) {
-                    while ($row = mysqli_fetch_assoc($applicantAnnouncements)) {
-                        echo "<div class='postFormat applicant'><section><h3>Uploader:" . $row['uploader'] . "</h3><h3>Upload Date:" . $row['uploadDate'] . "</h3><h3>Category:" . $row['category'] . "</h3></section><main><p>" . $row['announcement'] . "</p></main><footer><a class='aBtn edit-btn btn btn-primary' href='#' data-id='" . $row['uploadId'] . "'>Edit</a><a class='aBtn delete-btn btn btn-danger' href='#' data-id='" . $row['uploadId'] . "'>Delete</a></footer></div>";
-                    }
-                } else {
-                    echo "No applicant announcements found.";
-                }
-                ?>
-            </div>
+    if (mysqli_num_rows($applicantAnnouncements) > 0) {
+        while ($row = mysqli_fetch_assoc($applicantAnnouncements)) {
+            $postCounter++;
+
+            if ($postCounter <= 5) {
+                echo '<div class="postFormat applicant">';
+            } else {
+                echo '<div class="postFormat applicant" style="display: none;">';
+            }
+
+            echo "<section>";
+            echo "<h3>Uploader: " . $row['uploader'] . "</h3>";
+            echo "<h3>Upload Date: " . $row['uploadDate'] . "</h3>";
+            echo "<h3>Category: " . $row['category'] . "</h3>";
+            echo "</section>";
+            echo "<main><p>" . nl2br($row['announcement']) . "</p></main>";
+            echo "<footer>";
+            echo "<a class='aBtn edit-btn btn btn-primary' href='#' data-id='" . $row['uploadId'] . "'>Edit</a>";
+            echo "<a class='aBtn delete-btn btn btn-danger' href='#' data-id='" . $row['uploadId'] . "'>Delete</a>";
+            echo "</footer></div>";
+        }
+
+        // Show the "See more" button after displaying the first 5 announcements
+        if ($postCounter > 5) {
+            echo '<div class="applicant-see-more-container"><button class="applicant-see-more-btn btn btn-primary">See more</button></div>';
+        }
+    } else {
+        echo "No applicant announcements found.";
+    }
+    ?>
+</div>
+
+
         </div>
     </div>
 </div>
@@ -218,6 +270,48 @@
             }
         });
     });
+
+    $(document).ready(function() {
+    var displayedAnnouncements = 5; // Initial number of displayed announcements
+    var totalAnnouncements = <?php echo mysqli_num_rows($scholarAnnouncements); ?>; // Total number of announcements
+
+    // Handle "See more" button click
+    $('.see-more-btn').click(function() {
+        var hiddenAnnouncements = $('.postFormat.scholar:hidden');
+        var nextAnnouncements = hiddenAnnouncements.slice(0, 5);
+
+        nextAnnouncements.slideDown();
+        displayedAnnouncements += nextAnnouncements.length;
+
+        // Hide the "See more" button when all announcements are displayed
+        if (displayedAnnouncements >= totalAnnouncements) {
+            $('.see-more-container').hide();
+        }
+    });
+});
+
+
+$(document).ready(function() {
+    var displayedApplicantAnnouncements = 5; // Initial number of displayed applicant announcements
+    var totalApplicantAnnouncements = <?php echo mysqli_num_rows($applicantAnnouncements); ?>; // Total number of applicant announcements
+
+    // Handle "See more" button click for applicant announcements
+    $('.applicant-see-more-btn').click(function() {
+        var hiddenAnnouncements = $('.postFormat.applicant:hidden');
+        var nextAnnouncements = hiddenAnnouncements.slice(0, 5);
+
+        nextAnnouncements.slideDown();
+        displayedApplicantAnnouncements += nextAnnouncements.length;
+
+        // Hide the "See more" button for applicant announcements when all announcements are displayed
+        if (displayedApplicantAnnouncements >= totalApplicantAnnouncements) {
+            $('.applicant-see-more-container').hide();
+        }
+    });
+});
+
+
+
 
     // Close modal on close button click
     $('.close-modal').click(function() {
