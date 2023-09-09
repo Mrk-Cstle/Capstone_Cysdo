@@ -183,31 +183,33 @@
       </div> -->
     <?php
     include 'pages/include/dbConnection.php';
+    if (isset($_GET['page'])) {
 
-    // Assuming you already have a valid database connection and session
-
-    $query = "SELECT * FROM announcements WHERE category = 'scholar'";
-    $resultGetPost = mysqli_query($conn, $query);
-    $postCounter = 0;
+        $pageCheck = $_GET['page'];
 
 
+        $query = "SELECT * FROM announcements WHERE category = '$pageCheck'";
+        $resultGetPost = mysqli_query($conn, $query);
+        $postCounter = 0;
+        echo 'Value matches the desired value';
     ?>
-
-    <div class='textAlign'>
-        <p class='bold'><a href='scholarann.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a>Scholar Announcements</p>
-    </div>
+        <div class='textAlign'>
+            <p style="text-transform: capitalize;" class='bold'><a href='newsTab.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a>
+                <?php echo $pageCheck; ?> Announcements
+            </p>
+        </div>
     <?php
-    if ($resultGetPost) {
-        if ($resultGetPost->num_rows > 0) {
-            while ($row = $resultGetPost->fetch_assoc()) {
-                $postCounter++;
+        if ($resultGetPost) {
+            if ($resultGetPost->num_rows > 0) {
+                while ($row = $resultGetPost->fetch_assoc()) {
+                    $postCounter++;
 
-                if ($postCounter <= 5) {
-                    echo '<div class="textBody">';
-                } else {
-                    echo '<div class="textBody" style="display: none;">';
-                }
-                echo "
+                    if ($postCounter <= 5) {
+                        echo '<div class="textBody">';
+                    } else {
+                        echo '<div class="textBody" style="display: none;">';
+                    }
+                    echo "
 
       
             <ul class='box-info justify-content-center'>
@@ -229,17 +231,29 @@
             </ul>
              </div>
        ";
-            }
-            if ($postCounter > 5) {
-                echo '<div class="see-more-container"><button class="see-more-btn btn btn-primary">See more</button></div>';
+                }
+                if ($postCounter > 5) {
+                    echo '<div class="see-more-container"><button class="see-more-btn btn btn-primary">See more</button></div>';
+                }
+            } else {
+                echo "No scholar announcements found.";
             }
         } else {
-            echo "No scholar announcements found.";
+            echo "An error occurred while retrieving announcements.";
         }
-    } else {
-        echo "An error occurred while retrieving announcements.";
+
+
+        // for applicant announcement
+
+
+        // Assuming you already have a valid database connection and session
+
+
     }
+
     ?>
+
+
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
