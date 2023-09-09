@@ -3,8 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2023 at 01:44 PM
--- Generation Time: Jun 26, 2023 at 04:58 PM
+-- Generation Time: Sep 09, 2023 at 05:47 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -69,7 +68,7 @@ CREATE TABLE `announcements` (
 --
 
 INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader`, `category`) VALUES
-(4, '2023-06-26', 'sdfsdf', 'qaz@qaz', ''),
+(4, '2023-06-26', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus cum corporis unde porro, aliquam deserunt, id necessitatibus modi vero, cupiditate placeat itaque maiores! Deleniti fugiat corporis illo alias ipsum. Nihil maxime adipisci exercitationem illo placeat debitis quis cupiditate doloremque et commodi sapiente numquam dolorum unde fugiat recusandae, porro hic architecto provident autem assumenda tempora? Labore, accusantium? Similique consequuntur quos quas at doloribus molestias perferendis qui expedita fugiat libero. Ipsum tempore vel blanditiis magni accusantium fuga debitis nobis consequatur fugiat sapiente! Soluta illum ducimus natus laboriosam voluptatem magnam dolorem optio, ex, numquam animi itaque consectetur sunt esse aliquid corrupti quis autem.', 'qaz@qaz', 'scholar'),
 (5, '2023-06-26', 'sdfsdf', 'qaz@qaz', ''),
 (8, '2023-06-26', 'asd', 'qaz@qaz', ''),
 (9, '2023-06-26', 'asd', 'qaz@qaz', ''),
@@ -99,7 +98,10 @@ INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader
 (37, '2023-08-01', 'qwe', 'qaz@qaz', 'applicant'),
 (38, '2023-08-01', '123123', 'qaz@qaz', 'scholar'),
 (39, '2023-08-01', 'qweqwe', 'qaz@qaz', 'applicant'),
-(41, '2023-08-01', 'q', 'qaz@qaz', 'applicant');
+(41, '2023-08-01', 'q', 'qaz@qaz', 'applicant'),
+(42, '2023-09-08', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus cum corporis unde porro, aliquam deserunt, id necessitatibus modi vero, cupiditate placeat itaque maiores! Deleniti fugiat corporis illo alias ipsum. Nihil maxime adipisci exercitationem illo placeat debitis quis cupiditate doloremque et commodi sapiente numquam dolorum unde fugiat recusandae, porro hic architecto provident autem assumenda tempora? Labore, accusantium? Similique consequuntur quos quas at doloribus molestias perferendis qui expedita fugiat libero. Ipsum tempore vel blanditiis magni accusantium fuga debitis nobis consequatur fugiat sapiente! Soluta illum ducimus natus laboriosam voluptatem magnam dolorem optio, ex, numquam animi itaque consectetur sunt esse aliquid corrupti quis autem.', 'qaz, qaz qaz', 'scholar'),
+(43, '2023-09-08', 'Lorem: \n ipsum dolor sit amet\n\n consectetur adipisicing elit. Possimus cum corporis unde porro, aliquam deserunt, id necessitatibus modi vero, cupiditate placeat itaque maiores! Deleniti fugiat corporis illo alias ipsum. Nihil maxime adipisci exercitationem illo placeat debitis quis cupiditate doloremque et commodi sapiente numquam dolorum unde fugiat recusandae, porro hic architecto provident autem assumenda tempora? Labore, accusantium? Similique consequuntur quos quas at doloribus molestias perferendis qui expedita fugiat libero. Ipsum tempore vel blanditiis magni accusantium fuga debitis nobis consequatur fugiat sapiente! Soluta illum ducimus natus laboriosam voluptatem magnam dolorem optio, ex, numquam animi itaque consectetur sunt esse aliquid corrupti quis autem.', 'qaz, qaz qaz', 'applicant'),
+(44, '2023-09-08', 'Lorem]\n\n ipsum dolor sit amet consectetur adipisicing elit. Possimus cum corporis unde porro, aliquam deserunt, id necessitatibus modi vero, cupiditate placeat itaque maiores! Deleniti fugiat corporis illo alias ipsum. Nihil maxime adipisci exercitationem illo placeat debitis quis cupiditate doloremque et commodi sapiente numquam dolorum unde fugiat recusandae, porro hic architecto provident autem assumenda tempora? Labore, accusantium? Similique consequuntur quos\n\n\n quas at doloribus molestias perferendis qui expedita fugiat libero. Ipsum tempore vel blanditiis magni accusantium fuga debitis nobis consequatur fugiat sapiente! Soluta illum ducimus natus laboriosam voluptatem magnam dolorem optio, ex, numquam animi itaque consectetur sunt esse aliquid corrupti quis autem.', 'qaz, qaz qaz', 'scholar');
 
 -- --------------------------------------------------------
 
@@ -126,8 +128,8 @@ CREATE TABLE `registration` (
   `barangayAddress` varchar(100) NOT NULL,
   `contactNum1` int(20) NOT NULL,
   `contactNum2` int(20) NOT NULL,
-  `2x2Pic` longblob NOT NULL,
-  `signaturePic` longblob NOT NULL,
+  `2x2Pic` varchar(255) NOT NULL,
+  `signaturePic` varchar(255) NOT NULL,
   `schoolName` varchar(100) NOT NULL,
   `schoolAddress` varchar(100) NOT NULL,
   `schoolType` varchar(10) NOT NULL,
@@ -239,13 +241,40 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_name`, `position`, `user`, `password`, `contactNum`, `address`, `email`, `image`) VALUES
 (160, ',  ', '', '', '', '', 'asdasdasdasdasdasd', '$2y$10$QTcLC/BCbV1FM63BFLVGKOmwj7gPT0WihA2juDn4QnfEKuJIGu2JC', 0, '', 'asdasdasdasdasdasd', ''),
-(165, 'asdasd,  ', 'asdasd', '', '', '', 'QASs', '$2y$10$VO3drbm7hfKF/byFJ9SLieskVGEOWSCFrL3ny0b8QFxQQhIPSXXOq', 0, '', 'QASs', ''),
-<<<<<<<<< Temporary merge branch 1
-(166, ',  asd', '', '', 'asd', '', 'asd', '$2y$10$Ze5h8a/n.MJeuQ650sJ/m.r30W.ICZxKb.v6crisHbSbqT58cX08e', 0, '', 'asd', '');
-=========
+(165, 'asdasd,  ', 'asdasd', '', '', '', 'QASs', '$2y$10$mLDbCbU8xgKOwMk.9Z.Fse8kJfE9rTUKaFKyloFd5YXHuwQiSvgD2', 12312312, '', 'QASs', ''),
 (166, ',  asd', '', '', 'asd', '', 'asd', '$2y$10$Ze5h8a/n.MJeuQ650sJ/m.r30W.ICZxKb.v6crisHbSbqT58cX08e', 0, '', 'asd', ''),
 (167, 'qwem,  ', 'qwem', '', '', '', 'qweqweqweqwe', '$2y$10$8qmU/eYjAALSYcgRCLZU5eNiDkoCpCtqr0skiWBwUC30VloS9Ne66', 0, '', 'qweqweqweqweqwe', '');
->>>>>>>>> Temporary merge branch 2
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `todos`
+--
+
+CREATE TABLE `todos` (
+  `id` int(11) NOT NULL,
+  `todo_text` varchar(255) NOT NULL,
+  `completed` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `todos`
+--
+
+INSERT INTO `todos` (`id`, `todo_text`, `completed`, `created_at`) VALUES
+(20, '123123q', 0, '2023-07-29 12:04:35'),
+(22, '234234', 1, '2023-07-29 12:05:41'),
+(24, '1231231', 1, '2023-08-01 14:27:31'),
+(25, 'q', 0, '2023-08-01 14:32:20'),
+(26, 'q', 0, '2023-08-01 14:32:55'),
+(28, 'q', 0, '2023-08-01 14:47:56'),
+(29, '1', 0, '2023-08-01 14:48:01'),
+(30, 'q', 0, '2023-08-01 14:49:51'),
+(31, '123123123123', 0, '2023-08-01 14:49:56'),
+(32, 'Q', 0, '2023-08-01 14:51:25'),
+(33, 'Q', 0, '2023-08-01 14:53:50'),
+(34, 'q', 0, '2023-08-01 14:59:14');
 
 --
 -- Indexes for dumped tables
@@ -304,27 +333,41 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-<<<<<<<<< Temporary merge branch 1
-  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT;
-=========
-  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
->>>>>>>>> Temporary merge branch 2
+  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `registration_approval`
+--
+ALTER TABLE `registration_approval`
+  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-<<<<<<<<< Temporary merge branch 1
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
-=========
   MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
->>>>>>>>> Temporary merge branch 2
+
+--
+-- AUTO_INCREMENT for table `todos`
+--
+ALTER TABLE `todos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `registration_approval`
+--
+ALTER TABLE `registration_approval`
+  ADD CONSTRAINT `registration_approval_ibfk_1` FOREIGN KEY (`application_id`) REFERENCES `registration` (`applicant_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

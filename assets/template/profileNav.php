@@ -40,7 +40,7 @@
 
   .navBar {
     background: #FBA1B7;
-    margin-left: 290px;
+
     padding-top: 10px;
     padding-bottom: 10px;
     justify-content: end;
@@ -165,7 +165,7 @@
   <div class="navBar">
     <ul class="navProfile nav nav-pills justify-content-end">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../image/CysdoLogo.png" style="height: 40px; width: 40px;">John Martin M</a>
+        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../image/CysdoLogo.png" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Profile</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>

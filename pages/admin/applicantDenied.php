@@ -34,7 +34,7 @@ if ($_SESSION['role'] === 'admin') {
 
     <section id="content" class="home-section">
         <h1>Denied Applicant List</h1>
-        <div class="backRound">
+        
             <nav class="navbar navbar-light bg-light d-flex">
                 <form class="form-inline m-lg-3">
                     <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -138,7 +138,6 @@ if ($_SESSION['role'] === 'admin') {
                     xhttp.send();
                 }
             </script>
-        </div>
     </section>
 </body>
 
