@@ -52,6 +52,8 @@ if ($_SESSION['role'] === 'admin') {
         <tbody id="tableData"></tbody>
       </table>
     </div>
+    <div id="paginationContainer" class="pagination-container"></div>
+
     <div class="overlay" id="btnAdd">
       <div class="wrapper">
 
@@ -392,6 +394,48 @@ function refreshList() {
     xhttp.open("GET", "action/addStaffList.php", true);
     xhttp.send();
 }
+
+// Add this function to handle pagination and update table data
+function loadPage(page) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("tableData").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "action/addStaffList.php?page=" + page, true);
+  xhttp.send();
+}
+
+// Add this event listener to handle pagination button clicks
+document.addEventListener("click", function (e) {
+  if (e.target && e.target.classList.contains("pagination-button")) {
+    e.preventDefault();
+    var page = e.target.getAttribute("data-page");
+    loadPage(page);
+  }
+});
+
+// Add this function to initialize pagination when the page loads
+function initializePagination() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("tableData").innerHTML = this.responseText;
+      // Initialize pagination links
+      loadPage(1);
+    }
+  };
+  xhttp.open("GET", "action/addStaffList.php", true);
+  xhttp.send();
+}
+
+// Call the initializePagination function when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  initializePagination();
+});
+
+
     </script>
   </section>
 </body>
