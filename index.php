@@ -13,13 +13,16 @@
     main {
       display: block;
       width: 100%;
-     
+    }
+
+    .homeimg {
+      margin-top: 65px;
     }
 
     #about {
       display: flex;
       flex-direction: row;
-      padding: 10px 40px;
+      padding: 10px 10px;
       background-color: whitesmoke;
     }
 
@@ -29,18 +32,11 @@
       justify-items: center;
     }
 
-    @media (max-width: 700px){
-      #aboutPic {
-        display: none;
-      }
-    }
-      
-
     #aboutInfo {
       width: 60%;
       display: flex;
       flex-direction: column;
-
+      margin-left: 60px;
     }
 
     .aboutFormat {
@@ -50,13 +46,28 @@
     .aboutFormat p,
     li {
       font-size: 20px;
-      text-align: justify;
       line-height: 1.8;
     }
 
     .aboutFormat h3 {
       font-size: 40px;
       margin-bottom: 20px;
+    }
+
+    #FontSize {
+      font-size: 40px;
+      font-weight: 600px;
+      text-align: justify;
+    }
+
+    @media (max-width: 850px){
+      #aboutPic {
+        display: none;
+      }
+      .aboutFormat li, h3 {
+      font-size: 14px;
+      margin-left: 50px;
+    }
     }
 
     #aboutPic img {
@@ -73,15 +84,6 @@
       padding: 0px 80px;
       margin: 0px;
       line-height: 1.8;
-    }
-
-    @media (max-width: 700px){
-      li{
-        font-size: 14px;
-      }
-      p{
-        font-size: 14px;
-      }
     }
 
     #faqs h3 {
@@ -113,9 +115,23 @@
       line-height: 1.8;
     }
 
+    #Fontsizes {
+      font-size: 40px;
+      font-weight: 600px;
+      text-align: justify;
+    }
+
+    @media (max-width: 850px){
+      #Fontsizes {
+      font-size: 30px;
+      text-align: center;
+      margin-top: 10px;
+      }
+    }
+
     #contactHeader {
       width: 100%;
-      margin-top: 100px;
+      margin-top: 0px;
     }
 
     #contactHeader h3 {
@@ -136,10 +152,6 @@
       background-color: #d2c8c1;
     }
 
-    .contactText h5 {
-      font-size: 20px;
-    }
-
     .contactText a,
     p {
       font-size: 15px;
@@ -150,7 +162,6 @@
       flex-direction: row;
       gap: 10px;
       margin-top: 50px;
-
     }
 
     .contactIcon {
@@ -178,6 +189,20 @@
       padding: 15px;
     }
 
+    #FontSize {
+      font-size: 40px;
+      font-weight: 600px;
+      text-align: justify;
+    }
+
+    @media (max-width: 850px){
+      #FontSize {
+      font-size: 30px;
+      text-align: center;
+      margin-top: 10px;
+      }
+    }
+
   </style>
 
 <body>
@@ -186,7 +211,7 @@
   ?>
   <main>
     <div class="1">
-    <img src="assets/image/s.jpg" class="img-fluid">
+    <img src="assets/image/s.jpg" class="img-fluid homeimg">
     </div>
 
     <div id="2"></div>
@@ -198,20 +223,20 @@
 
     <div id="aboutInfo">
       <div class="aboutFormat">
-        <h3>MANDATE</h3>
+        <p id="FontSize">MANDATE</p>
         <li>Assist the City Mayor in the implementation of the Constitutional Provisions
           relative to youth development through promotion of its youth welfare
           enhancement, sport, and education programs and become a progressive
           community with competent youth thriving in a vibrant economy.</li>
       </div>
       <div class="aboutFormat">
-        <h3>VISION</h3>
+      <p id="FontSize">VISION</p>
         <li>A highly efficient office who caters comprehensively to the needs of the youth
           sector integral to the over-all enhancement and relevant social transformation of
           San Joseños.</li>
       </div>
       <div class="aboutFormat">
-        <h3>MISSION</h3>
+      <p id="FontSize">MISSION</p>
           <li>Provide quality service to young clientele.</li>
           <li>Promote holistic development both in-school and out-of-school youth.</li>
           <li>Strengthen the capacity level of young people to make them competitive in the
@@ -223,7 +248,7 @@
   </div>
   <div id="faqs">
     <div id="faqsHeader">
-      <h3 class="mb-3 mt-3">Frequently Asked Questions</h3>
+    <p id="FontSize">Frequently Asked Questions</p>
 
     <div class="container-sm mb-5">
       <div class="accordion" id="accordionFaqs">
@@ -415,10 +440,9 @@
     </div>
   </div>
   <div id="contact">
+  <p id="Fontsizes">Contact & Address</p>
     <div id="contactHeader">
-      <h3>Contact & Address</h3>
-      <p>You can contact us through the following;
-      </p>
+      <p>You can contact us through the following:</p>
     </div>
     <div id="contactDetails">
       <div class="contactFormat">

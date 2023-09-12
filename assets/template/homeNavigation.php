@@ -33,6 +33,7 @@ header {
     background: #FF5F9E;
     padding: 0 20px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -109,7 +110,7 @@ header ul li ul li {
 @media (max-width: 1002px) {
     .log {
     padding: 15px 90px;
-}
+    }
 }
 
 @media (max-width: 928px) {
@@ -120,13 +121,14 @@ header ul li ul li {
 
 }
 
-@media (max-width: 900px)
+@media (max-width: 931px)
 {
     header {
         padding: 10px 20px;
     }
     header nav {
         position: absolute;
+        z-index: 10;
         width: 300px;
         right: 0;
         top: 80px;
@@ -155,6 +157,7 @@ header ul li ul li {
 
     .menuToggle {
         position: relative;
+        z-index: 10;
         width: 30px;
         height: 40px;
         cursor: pointer;
