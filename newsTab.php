@@ -61,12 +61,12 @@
         <div class="newsFormat">
             <img src="assets/image/No_Image_Available.jpg" />
             <h2>Scholar Announcement</h2>
-            <a href="sann.php">View</a>
+            <a href="scholarAnnouncement.php?page=scholar">View</a>
         </div>
         <div class="newsFormat">
             <img src="assets/image/No_Image_Available.jpg" />
             <h2>Applicant Announcement</h2>
-            <a href="appann.php">View</a>
+            <a href="scholarAnnouncement.php?page=applicant">View</a>
         </div>
     </div>
 </body>
