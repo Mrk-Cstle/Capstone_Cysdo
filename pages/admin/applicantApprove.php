@@ -37,8 +37,7 @@ if ($_SESSION['role'] === 'admin') {
             <nav class="navbar navbar-light bg-light d-flex">
                 <form class="form-inline m-lg-3">
                     <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-
-                    <a class="btnRefresh btn btn-outline-primary" href="">Refresh</a>
+                    <button id="refreshButton" class="btn btn-outline-secondary" type="button">Refresh</button>
                     <p id="response"></p>
                 </form>
             </nav>
@@ -70,73 +69,75 @@ if ($_SESSION['role'] === 'admin') {
             <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script>
-                function loadTableData(page) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState === 4) {
-                            if (xhr.status === 200) {
-                                document.getElementById('tableData').innerHTML = xhr.responseText;
-                            } else {
-                                console.error('Error:', xhr.status);
-                            }
-                        }
-                    };
-                    xhr.open('GET', 'action/applicantApproveDb.php?page=' + page, true);
-                    xhr.send();
-                }
+    function loadTableData(page) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                document.getElementById('tableData').innerHTML = xhr.responseText;
+            } else {
+                console.error('Error:', xhr.status);
+            }
+        }
+    };
+    xhr.open('GET', 'action/applicantApproveDb.php?page=' + page, true);
+    xhr.send();
+}
 
-                function searchTableData(searchValue) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState === 4) {
-                            if (xhr.status === 200) {
-                                document.getElementById('tableData').innerHTML = xhr.responseText;
-                            } else {
-                                console.error('Error:', xhr.status);
-                            }
-                        }
-                    };
-                    xhr.open('GET', 'action/applicantApproveDb.php?search=' + searchValue, true);
-                    xhr.send();
-                }
+function searchTableData(searchValue) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                document.getElementById('tableData').innerHTML = xhr.responseText;
+            } else {
+                console.error('Error:', xhr.status);
+            }
+        }
+    };
+    xhr.open('GET', 'action/applicantApproveDb.php?search=' + searchValue, true);
+    xhr.send();
+}
 
-                document.addEventListener('DOMContentLoaded', function() {
-                    var currentPage = 1;
+function refreshList() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("tableData").innerHTML = xhr.responseText;
+        }
+    };
 
-                    loadTableData(currentPage);
+    xhr.open("GET", "action/applicantApproveDb.php", true);
+    xhr.send();
+}
 
-                    document.addEventListener('click', function(event) {
-                        if (event.target.classList.contains('pagination-button')) {
-                            event.preventDefault();
-                            var page = event.target.dataset.page;
-                            if (page !== currentPage) {
-                                loadTableData(page);
-                                currentPage = page;
-                            }
-                        }
-                    });
+document.addEventListener('DOMContentLoaded', function() {
+    var currentPage = 1;
 
-                    document.getElementById('searchInput').addEventListener('input', function(event) {
-                        var searchValue = event.target.value.trim();
-                        searchTableData(searchValue);
-                    });
-                });
+    loadTableData(currentPage);
 
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('pagination-button')) {
+            event.preventDefault();
+            var page = event.target.dataset.page;
+            if (page !== currentPage) {
+                loadTableData(page);
+                currentPage = page;
+            }
+        }
+    });
 
-                function refreshList() {
+    document.getElementById('searchInput').addEventListener('input', function(event) {
+        var searchValue = event.target.value.trim();
+        searchTableData(searchValue);
+    });
 
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById("tableData").innerHTML = this.responseText;
+    document.getElementById('refreshButton').addEventListener('click', function() {
+        refreshList();
+    });
+});
 
-                        }
-                    };
-
-                    xhttp.open("GET", "action/applicantApproveDb.php", true);
-                    xhttp.send();
-                }
-            </script>
+</script>
     </section>
 </body>
 

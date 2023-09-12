@@ -44,23 +44,7 @@ function insert()
         echo "An error occurred";
     }
 }
-// function edit()
-// {
-//     global $conn;
-//     $id = $_POST["id"];
-//     $firstName = $_POST["firstName"];
-//     $lastName = $_POST["lastName"];
-//     $middleName = $_POST["middleName"];
-//     $position = $_POST["position"];
-//     $contactNumber = $_POST["contact"];
-//     $email = $_POST["email"];
 
-//     $fullName = $lastName . ", " . $firstName . " " . $middleName;
-
-//     $editQuery = "UPDATE staff SET fullName = '$fullName', last_name = '$lastName', first_name = ' $firstName ', middle_name = '$middleName', position = ' $position' WHERE staffId = '$id' )";
-//     mysqli_query($conn, $editQuery);
-//     echo "Updated Successfully";
-// }
 
 function delete()
 {
