@@ -28,15 +28,15 @@ if ($_SESSION['role'] === 'admin') {
 
 <body>
   <section id="content" class="home-section">
-  <nav class="navbar navbar-light bg-light d-flex">
-            <form id="searchForm" class="form-inline m-lg-3">
-                <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
-                <button id="refreshButton" class="btn btn-outline-secondary" type="button">Refresh</button>
-                <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Staff</a>
-                <p id="response"></p>
-            </form>
-        </nav>
+    <nav class="navbar navbar-light bg-light d-flex">
+      <form id="searchForm" class="form-inline m-lg-3">
+        <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
+        <button id="refreshButton" class="btn btn-outline-secondary" type="button">Refresh</button>
+        <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Staff</a>
+        <p id="response"></p>
+      </form>
+    </nav>
 
     <div class="table-responsive">
       <table class="table table-bordered">
@@ -51,6 +51,7 @@ if ($_SESSION['role'] === 'admin') {
         </tr>
         <tbody id="tableData"></tbody>
       </table>
+
     </div>
     <div id="paginationContainer" class="pagination-container"></div>
 
@@ -380,62 +381,60 @@ if ($_SESSION['role'] === 'admin') {
       });
 
       document.getElementById("refreshButton").addEventListener("click", function() {
-    refreshList(); // Call the refreshList() function to refresh the content
-});
+        refreshList(); // Call the refreshList() function to refresh the content
+      });
 
-function refreshList() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+      function refreshList() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableData").innerHTML = this.responseText;
+          }
+        };
+
+        xhttp.open("GET", "action/addStaffList.php", true);
+        xhttp.send();
+      }
+
+      // Add this function to handle pagination and update table data
+      function loadPage(page) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableData").innerHTML = this.responseText;
+          }
+        };
+        xhttp.open("GET", "action/addStaffList.php?page=" + page, true);
+        xhttp.send();
+      }
+
+      // Add this event listener to handle pagination button clicks
+      document.addEventListener("click", function(e) {
+        if (e.target && e.target.classList.contains("pagination-button")) {
+          e.preventDefault();
+          var page = e.target.getAttribute("data-page");
+          loadPage(page);
         }
-    };
+      });
 
-    xhttp.open("GET", "action/addStaffList.php", true);
-    xhttp.send();
-}
+      // Add this function to initialize pagination when the page loads
+      function initializePagination() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableData").innerHTML = this.responseText;
+            // Initialize pagination links
+            loadPage(1);
+          }
+        };
+        xhttp.open("GET", "action/addStaffList.php", true);
+        xhttp.send();
+      }
 
-// Add this function to handle pagination and update table data
-function loadPage(page) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("tableData").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "action/addStaffList.php?page=" + page, true);
-  xhttp.send();
-}
-
-// Add this event listener to handle pagination button clicks
-document.addEventListener("click", function (e) {
-  if (e.target && e.target.classList.contains("pagination-button")) {
-    e.preventDefault();
-    var page = e.target.getAttribute("data-page");
-    loadPage(page);
-  }
-});
-
-// Add this function to initialize pagination when the page loads
-function initializePagination() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("tableData").innerHTML = this.responseText;
-      // Initialize pagination links
-      loadPage(1);
-    }
-  };
-  xhttp.open("GET", "action/addStaffList.php", true);
-  xhttp.send();
-}
-
-// Call the initializePagination function when the page loads
-document.addEventListener("DOMContentLoaded", function () {
-  initializePagination();
-});
-
-
+      // Call the initializePagination function when the page loads
+      document.addEventListener("DOMContentLoaded", function() {
+        initializePagination();
+      });
     </script>
   </section>
 </body>
