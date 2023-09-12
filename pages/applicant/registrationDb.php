@@ -2,61 +2,97 @@
 
 include '../include/dbConnection.php';
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-$lastName = $_POST['lastName'];
-$firstName = $_POST['firstName'];
-$middleName = $_POST['middleName'];
-$gender = $_POST['gender'];
-$civilStatus = $_POST['civilStatus'];
-$registeredVoter = $_POST['registeredVoter'];
-$birthDate = $_POST['birthDate'];
-$birthPlace = $_POST['birthPlace'];
-$citizenship = $_POST['citizenship'];
-$addressNum = $_POST['addressNum'];
-$addressStreet = $_POST['addressStreet'];
-$addressBarangay = $_POST['addressBarangay'];
-$contactNumber1 = $_POST['contactNumber1'];
-$contactNumber2 = $_POST['contactNumber2'];
-$picture = $_POST['2x2Pic'];
-$signPic = $_POST['signPic'];
-$schoolName = $_POST['schoolName'];
-$schoolAddress = $_POST['schoolAddress'];
-$schoolType = $_POST['schoolType'];
-$course = $_POST['course'];
-$currentLevel = $_POST['currentLevel'];
-$fatherName = $_POST['fatherName'];
-$father = $_POST['father'];
-$fatherAddress = $_POST['fatherAddress'];
-$fatherNumber = $_POST['fatherNumber'];
-$fatherOccupation = $_POST['fatherOccupation'];
-$fEducAttainment = $_POST['fEducAttainment'];
-$motherName = $_POST['motherName'];
-$mother = $_POST['mother'];
-$motherAddress = $_POST['motherAddress'];
-$motherNumber = $_POST['motherNumber'];
-$motherOccupation = $_POST['motherOccupation'];
-$mEducAttainment = $_POST['mEducAttainment'];
-$guardianName = $_POST['guardianName'];
-$guardianAddress = $_POST['guardianAddress'];
-$guardianNumber = $_POST['guardianNumber'];
-$guardianOccupation = $_POST['guardianOccupation'];
-$gEducAttainment = $_POST['gEducAttainment'];
-$sizeFamily = $_POST['sizeFamily'];
-$familyIncome = $_POST['familyIncome'];
-$sibling1 = $_POST['sibling1'];
-$sibling2 = $_POST['sibling2'];
-$sibling3 = $_POST['sibling3'];
-$sibling4 = $_POST['sibling4'];
-$sibling5 = $_POST['sibling5'];
-$sibling6 = $_POST['sibling6'];
+    $lastName = $_POST['lastName'];
+    $firstName = $_POST['firstName'];
+    $middleName = $_POST['middleName'];
+    $gender = $_POST['gender'];
+    $civilStatus = $_POST['civilStatus'];
+    $registeredVoter = $_POST['registeredVoter'];
+    $birthDate = $_POST['birthDate'];
+    $birthPlace = $_POST['birthPlace'];
+    $citizenship = $_POST['citizenship'];
+    $addressNum = $_POST['addressNum'];
+    $addressStreet = $_POST['addressStreet'];
+    $addressBarangay = $_POST['addressBarangay'];
+    $contactNumber1 = $_POST['contactNumber1'];
+    $contactNumber2 = $_POST['contactNumber2'];
+    $schoolName = $_POST['schoolName'];
+    $schoolAddress = $_POST['schoolAddress'];
+    $schoolType = $_POST['schoolType'];
+    $course = $_POST['course'];
+    $currentLevel = $_POST['currentLevel'];
+    $fatherName = $_POST['fatherName'];
+    $father = $_POST['father'];
+    $fatherAddress = $_POST['fatherAddress'];
+    $fatherNumber = $_POST['fatherNumber'];
+    $fatherOccupation = $_POST['fatherOccupation'];
+    $fEducAttainment = $_POST['fEducAttainment'];
+    $motherName = $_POST['motherName'];
+    $mother = $_POST['mother'];
+    $motherAddress = $_POST['motherAddress'];
+    $motherNumber = $_POST['motherNumber'];
+    $motherOccupation = $_POST['motherOccupation'];
+    $mEducAttainment = $_POST['mEducAttainment'];
+    $guardianName = $_POST['guardianName'];
+    $guardianAddress = $_POST['guardianAddress'];
+    $guardianNumber = $_POST['guardianNumber'];
+    $guardianOccupation = $_POST['guardianOccupation'];
+    $gEducAttainment = $_POST['gEducAttainment'];
+    $sizeFamily = $_POST['sizeFamily'];
+    $familyIncome = $_POST['familyIncome'];
+    $sibling1 = $_POST['sibling1'];
+    $sibling2 = $_POST['sibling2'];
+    $sibling3 = $_POST['sibling3'];
+    $sibling4 = $_POST['sibling4'];
+    $sibling5 = $_POST['sibling5'];
+    $sibling6 = $_POST['sibling6'];
 
 
-$fullName =  $lastName . ", " . $firstName . ' ' . $middleName;
-$fullAddress = $addressNum . " " . $addressStreet . " " . $addressBarangay;
+    $fullName =  $lastName . ", " . $firstName . ' ' . $middleName;
+    $fullAddress = $addressNum . " " . $addressStreet . " " . $addressBarangay;
 
-$query = "INSERT INTO registration (fullName, lastName, firstName,middleName,gender, civilStatus, voter, birthDate,birthPlace, citizenship, houseAddress, streetAddress, barangayAddress, contactNum1, contactNum2, 2x2Pic, signaturePic, schoolName, schoolAddress, schoolType, course, yearLevel, fatherName, fatherStatus,fatherAddress, fatherContact, fatherOccupation, fatherEduc, motherName, motherStatus, motherAddress, motherContact, motherOccupation, motherEduc, guardianName, guardianAddress, guardianContact, guardianOccupation, guardianEduc, sizeFamily, annualGross,  sibling1,sibling2,sibling3,sibling4,sibling5,sibling6 ) VALUES ( '$fullName','$lastName' , '$firstName', '$middleName', '$gender', '$civilStatus', '$registeredVoter', '$birthDate','$birthPlace', '$citizenship', '$addressNum', '$addressStreet', '$addressBarangay', '$contactNumber1', '$contactNumber2', '$picture', '$signPic', '$schoolName', '$schoolAddress', '$schoolType', '$course', '$currentLevel', '$fatherName', '$father', '$fatherAddress', '$fatherNumber', '$fatherOccupation',  '$fEducAttainment', '$motherName', '$mother', '$motherAddress', '$motherNumber', '$motherOccupation', '$mEducAttainment', '$guardianName', '$guardianAddress', '$guardianNumber', '$guardianOccupation', '$gEducAttainment', '$sizeFamily', '$familyIncome', '$sibling1', '$sibling2', '$sibling3', '$sibling4', '$sibling5', '$sibling6')";
+    // Generate a unique random number
+    $uniqueNumber = uniqid();
 
-$insert = mysqli_query($conn, $query);
+    // Get the original file extension
+    $extension2x2 = pathinfo($_FILES["2x2Pic"]["name"], PATHINFO_EXTENSION);
+    $extensionSign = pathinfo($_FILES["signPic"]["name"], PATHINFO_EXTENSION);
+
+    // Construct the new file name
+    $newFileName2x2 = $lastName . "_" . $uniqueNumber . "_2x2image." . $extension2x2;
+    $newFileNameSign = $lastName . "_" . $uniqueNumber . "_Signature." . $extensionSign;
+
+
+    // Image upload paths
+    $uploadDir = "../../uploads/applicant/2x2/";
+    $picturePath = $uploadDir . $newFileName2x2;
+    $signPicPath = $uploadDir . $newFileNameSign;
+    $imageName = $newFileName2x2;
+    $signName = $newFileNameSign;
+
+
+
+
+    // Check if the file uploads were successful
+    if (
+        move_uploaded_file($_FILES["2x2Pic"]["tmp_name"], $picturePath) &&
+        move_uploaded_file($_FILES["signPic"]["tmp_name"], $signPicPath)
+    ) {
+        // Both images were successfully uploaded
+        echo "Both images were successfully uploaded.";
+
+
+        $query = "INSERT INTO registration (fullName, lastName, firstName,middleName,gender, civilStatus, voter, birthDate,birthPlace, citizenship, houseAddress, streetAddress, barangayAddress, contactNum1, contactNum2, 2x2Pic, signaturePic, schoolName, schoolAddress, schoolType, course, yearLevel, fatherName, fatherStatus,fatherAddress, fatherContact, fatherOccupation, fatherEduc, motherName, motherStatus, motherAddress, motherContact, motherOccupation, motherEduc, guardianName, guardianAddress, guardianContact, guardianOccupation, guardianEduc, sizeFamily, annualGross,  sibling1,sibling2,sibling3,sibling4,sibling5,sibling6 ) VALUES ( '$fullName','$lastName' , '$firstName', '$middleName', '$gender', '$civilStatus', '$registeredVoter', '$birthDate','$birthPlace', '$citizenship', '$addressNum', '$addressStreet', '$addressBarangay', '$contactNumber1', '$contactNumber2', '$imageName', '$signName', '$schoolName', '$schoolAddress', '$schoolType', '$course', '$currentLevel', '$fatherName', '$father', '$fatherAddress', '$fatherNumber', '$fatherOccupation',  '$fEducAttainment', '$motherName', '$mother', '$motherAddress', '$motherNumber', '$motherOccupation', '$mEducAttainment', '$guardianName', '$guardianAddress', '$guardianNumber', '$guardianOccupation', '$gEducAttainment', '$sizeFamily', '$familyIncome', '$sibling1', '$sibling2', '$sibling3', '$sibling4', '$sibling5', '$sibling6')";
+
+        $insert = mysqli_query($conn, $query);
+    } else {
+        echo "Sorry, there was an error uploading your images.";
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -193,7 +229,18 @@ $insert = mysqli_query($conn, $query);
         </div>
 
         <div id="picture2x2">
-            <img src="Images/No_Image_Available.jpg" alt="Picture 2x2" />
+            <?php
+            $pictureName = $imageName; // Replace with the actual image name
+            $picturePath = $uploadDir . $pictureName;
+
+            // Check if the image file exists
+            if (file_exists($picturePath)) {
+                echo '<img src="' . $picturePath . '" alt="2x2 Picture">';
+            } else {
+                echo '2x2 Picture not found.';
+            }
+            ?>
+
         </div>
 
 

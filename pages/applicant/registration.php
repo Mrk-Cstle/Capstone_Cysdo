@@ -41,7 +41,7 @@
 </style>
 
 <body>
-  <form method="POST" action="registrationDb.php">
+  <form method="POST" action="registrationDb.php" enctype="multipart/form-data">
     <div class="container mt-4">
       <h1>APPLICATION FORM</h1>
       <h2 class="form-section bold font">Personal Information</h2>
