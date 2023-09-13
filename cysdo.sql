@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2023 at 05:47 PM
+-- Generation Time: Sep 13, 2023 at 07:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -46,8 +46,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `address`, `image`, `user`, `password`) VALUES
-(7, 'qaz, qaz qaz', 'qaz', 'qaz', 'qaz', 1, 'qaz@qaz', 'qazqaz', '', 'qaz@qaz', '$2y$10$LudrsmGWjTQfFGxYiaesOeV4WVk426Yh1KmupaDaIc6wc7xjeCJyW'),
-(8, 'qwea, qwe qwe', 'qwea', 'qwe', 'qwe', 123, 'qwe@qwe', 'qwe', '', 'qwe@qwe', '$2y$10$rwj3q8rJCZsaVp9QRGnXhe3CqCv/m.vyZrn3hnayq51R1b2zj/QrS');
+(8, 'qwea, qwe qwe', 'qwea', 'qwe', 'qwe', 123, 'qwe@qwe', 'qwe', '', 'qwe@qwe', '$2y$10$rwj3q8rJCZsaVp9QRGnXhe3CqCv/m.vyZrn3hnayq51R1b2zj/QrS'),
+(24, 'qaz, qaz qaz', 'qaz', 'qaz', 'qaz', 0, 'qaz@qaz', '', '', 'qaz', '$2y$10$Wcg1Pa6JuZ0TY/cp/jLjsuZnnGz6SnsHa8EdWw1wwtecMvgk7j5Cy');
 
 -- --------------------------------------------------------
 
@@ -69,31 +69,12 @@ CREATE TABLE `announcements` (
 
 INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader`, `category`) VALUES
 (4, '2023-06-26', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus cum corporis unde porro, aliquam deserunt, id necessitatibus modi vero, cupiditate placeat itaque maiores! Deleniti fugiat corporis illo alias ipsum. Nihil maxime adipisci exercitationem illo placeat debitis quis cupiditate doloremque et commodi sapiente numquam dolorum unde fugiat recusandae, porro hic architecto provident autem assumenda tempora? Labore, accusantium? Similique consequuntur quos quas at doloribus molestias perferendis qui expedita fugiat libero. Ipsum tempore vel blanditiis magni accusantium fuga debitis nobis consequatur fugiat sapiente! Soluta illum ducimus natus laboriosam voluptatem magnam dolorem optio, ex, numquam animi itaque consectetur sunt esse aliquid corrupti quis autem.', 'qaz@qaz', 'scholar'),
-(5, '2023-06-26', 'sdfsdf', 'qaz@qaz', ''),
-(8, '2023-06-26', 'asd', 'qaz@qaz', ''),
-(9, '2023-06-26', 'asd', 'qaz@qaz', ''),
-(10, '2023-06-26', 'asd', 'qaz@qaz', ''),
-(11, '2023-06-26', 'asd', 'qaz@qaz', ''),
-(12, '2023-06-26', 'asd', 'qaz@qaz', ''),
-(13, '2023-06-26', 'asd', 'qaz@qaz', ''),
-(14, '2023-06-26', 'asd', 'qaz@qaz', ''),
 (17, '2023-07-06', 'asdasd', 'qaz@qaz', 'applicant'),
-(18, '2023-07-06', 'asdasd', 'qaz@qaz', ''),
 (19, '2023-07-06', 'asdasd', 'qaz@qaz', 'applicant'),
-(20, '2023-07-06', 'asdasdasdasd', 'qaz@qaz', ''),
-(21, '2023-07-06', 'asdasdasdasd', 'qaz@qaz', ''),
-(22, '2023-07-06', 'asdasdasdasd', 'qaz@qaz', ''),
-(25, '2023-07-06', 'asdasdad', 'qaz@qaz', ''),
-(26, '2023-07-06', 'asdasdad', 'qaz@qaz', ''),
-(27, '2023-07-06', 'asdasdad', 'qaz@qaz', ''),
 (28, '2023-07-08', 'asdawd', 'qaz@qaz', 'applicant'),
-(29, '2023-07-08', 'asdasd', 'qaz@qaz', ''),
-(30, '2023-07-08', 'asdasdq', 'qaz@qaz', 'scholar'),
-(31, '2023-07-08', 'asdasd', 'qaz@qaz', ''),
 (32, '2023-07-08', 'aweqweqwe', 'qaz@qaz', 'applicant'),
 (33, '2023-07-08', 'sdfwsew', 'qaz@qaz', 'scholar'),
 (34, '2023-07-08', 'sdfsewr', 'qaz@qaz', 'applicant'),
-(35, '2023-07-08', 'sdfewr', 'qaz@qaz', ''),
 (36, '2023-07-08', 'sdfwserf', 'qaz@qaz', 'scholar'),
 (37, '2023-08-01', 'qwe', 'qaz@qaz', 'applicant'),
 (38, '2023-08-01', '123123', 'qaz@qaz', 'scholar'),
@@ -101,7 +82,8 @@ INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader
 (41, '2023-08-01', 'q', 'qaz@qaz', 'applicant'),
 (42, '2023-09-08', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus cum corporis unde porro, aliquam deserunt, id necessitatibus modi vero, cupiditate placeat itaque maiores! Deleniti fugiat corporis illo alias ipsum. Nihil maxime adipisci exercitationem illo placeat debitis quis cupiditate doloremque et commodi sapiente numquam dolorum unde fugiat recusandae, porro hic architecto provident autem assumenda tempora? Labore, accusantium? Similique consequuntur quos quas at doloribus molestias perferendis qui expedita fugiat libero. Ipsum tempore vel blanditiis magni accusantium fuga debitis nobis consequatur fugiat sapiente! Soluta illum ducimus natus laboriosam voluptatem magnam dolorem optio, ex, numquam animi itaque consectetur sunt esse aliquid corrupti quis autem.', 'qaz, qaz qaz', 'scholar'),
 (43, '2023-09-08', 'Lorem: \n ipsum dolor sit amet\n\n consectetur adipisicing elit. Possimus cum corporis unde porro, aliquam deserunt, id necessitatibus modi vero, cupiditate placeat itaque maiores! Deleniti fugiat corporis illo alias ipsum. Nihil maxime adipisci exercitationem illo placeat debitis quis cupiditate doloremque et commodi sapiente numquam dolorum unde fugiat recusandae, porro hic architecto provident autem assumenda tempora? Labore, accusantium? Similique consequuntur quos quas at doloribus molestias perferendis qui expedita fugiat libero. Ipsum tempore vel blanditiis magni accusantium fuga debitis nobis consequatur fugiat sapiente! Soluta illum ducimus natus laboriosam voluptatem magnam dolorem optio, ex, numquam animi itaque consectetur sunt esse aliquid corrupti quis autem.', 'qaz, qaz qaz', 'applicant'),
-(44, '2023-09-08', 'Lorem]\n\n ipsum dolor sit amet consectetur adipisicing elit. Possimus cum corporis unde porro, aliquam deserunt, id necessitatibus modi vero, cupiditate placeat itaque maiores! Deleniti fugiat corporis illo alias ipsum. Nihil maxime adipisci exercitationem illo placeat debitis quis cupiditate doloremque et commodi sapiente numquam dolorum unde fugiat recusandae, porro hic architecto provident autem assumenda tempora? Labore, accusantium? Similique consequuntur quos\n\n\n quas at doloribus molestias perferendis qui expedita fugiat libero. Ipsum tempore vel blanditiis magni accusantium fuga debitis nobis consequatur fugiat sapiente! Soluta illum ducimus natus laboriosam voluptatem magnam dolorem optio, ex, numquam animi itaque consectetur sunt esse aliquid corrupti quis autem.', 'qaz, qaz qaz', 'scholar');
+(45, '2023-09-10', 'qweq', '', 'scholar'),
+(46, '2023-09-10', 'qweq', '', 'scholar');
 
 -- --------------------------------------------------------
 
@@ -176,7 +158,29 @@ INSERT INTO `registration` (`applicant_id`, `fullName`, `lastName`, `firstName`,
 (23, 'qwe', '', '', '', 'done', '', '', '', '0000-00-00', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 0, 0),
 (24, 'a', '', '', '', 'done', '', '', '', '0000-00-00', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 0, 0),
 (25, 'a', '', '', '', 'done', '', '', '', '0000-00-00', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 0, 0),
-(26, 'q', '', '', '', 'done', '', '', '', '0000-00-00', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 0, 0);
+(26, 'q', '', '', '', 'done', '', '', '', '0000-00-00', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 0, 0),
+(27, 'eqweasdasdad, qweqwe qeqe', 'eqweasdasdad', 'qweqwe', 'qeqe', NULL, 'male', 'single', 'yes', '2023-09-04', 'qweqe', 'American-', '', 'easeqwe', 'qweqw', 'Assumption', 123123, 2147483647, 'CysdoLogo.jpg', 'callIcon.png', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', 'qwe', 'Living', 'qwe', 123, 'qwe', 'qwe', 'qwe', 'Living', 'qwe', 123, 'eqwe', 'qwe', 'qwe', 'qwe', 123, 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123, 123),
+(28, 'asd, asd asd', 'asd', 'asd', 'asd', 'done', 'male', 'single', 'yes', '2023-09-10', 'asd', 'Filipino-C', '', 'asdasd', 'qweqwe', 'San Martin II', 123123123, 123123, '16943582172179088735958047778217.jpg', '16943582271153413013204315484875.jpg', 'qwe', 'qwe', 'Private', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123),
+(29, 'qwe, qe qwe', 'qwe', 'qe', 'qwe', NULL, 'male', 'single', 'yes', '2023-09-22', 'qweqe', 'Arabic-', '', 'qweqwe', 'qweqwe', 'Assumption', 123123, 123123, '', '', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123),
+(30, 'qwe, qe qwe', 'qwe', 'qe', 'qwe', NULL, 'male', 'single', 'yes', '2023-09-22', 'qweqe', 'Arabic-', '', 'qweqwe', 'qweqwe', 'Assumption', 123123, 123123, 'Array', 'Array', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123),
+(31, 'qwe, qe qwe', 'qwe', 'qe', 'qwe', NULL, 'male', 'single', 'yes', '2023-09-22', 'qweqe', 'Arabic-', '', 'qweqwe', 'qweqwe', 'Assumption', 123123, 123123, 'CysdoBg.jpg', 'fbIcon.png', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123),
+(32, 'qwe, qe qwe', 'qwe', 'qe', 'qwe', NULL, 'male', 'single', 'yes', '2023-09-22', 'qweqe', 'Arabic-', '', 'qweqwe', 'qweqwe', 'Assumption', 123123, 123123, 'CysdoBg.jpg', 'fbIcon.png', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123),
+(33, 'qwe, qe qwe', 'qwe', 'qe', 'qwe', NULL, 'male', 'single', 'yes', '2023-09-22', 'qweqe', 'Arabic-', '', 'qweqwe', 'qweqwe', 'Assumption', 123123, 123123, 'CysdoBg.jpg', 'fbIcon.png', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123),
+(34, 'qwe, qe qwe', 'qwe', 'qe', 'qwe', NULL, 'male', 'single', 'yes', '2023-09-22', 'qweqe', 'Arabic-', '', 'qweqwe', 'qweqwe', 'Assumption', 123123, 123123, 'CysdoBg.jpg', 'fbIcon.png', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123),
+(35, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, '1x1.jpg', 'CYSDOHeader.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(36, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_65002d9d98440_2x2image.jpg', 'CYSDOHeader.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(37, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_65002dc69fe8a_2x2image.jpg', 'CYSDOHeader.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(38, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_65002f0681782_2x2image.jpg', 'Castillo_65002f0681782_2x2image.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(39, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_65002f1365b54_2x2image.jpg', 'Castillo_65002f1365b54_2x2image.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(40, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_65002f19c4057_2x2image.jpg', 'Castillo_65002f19c4057_2x2image.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(41, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_6500312a1fc8d_2x2image.jpg', 'Castillo_6500312a1fc8d_Signature.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(42, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_6500316f68566_2x2image.jpg', 'Castillo_6500316f68566_Signature.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(43, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_650031a0339d4_2x2image.jpg', 'Castillo_650031a0339d4_Signature.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(44, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_650031b316e1f_2x2image.jpg', 'Castillo_650031b316e1f_Signature.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(45, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_650031d263ec9_2x2image.jpg', 'Castillo_650031d263ec9_Signature.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(46, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_6500351972772_2x2image.jpg', 'Castillo_6500351972772_Signature.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(47, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', NULL, 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', 123123123, 123123123, 'Castillo_650035ee9f307_2x2image.jpg', 'Castillo_650035ee9f307_Signature.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123),
+(48, 'asdasd, sdfsdf sdfsdf', 'asdasd', 'sdfsdf', 'sdfsdf', NULL, 'male', 'single', 'yes', '2023-09-12', 'qweqe', 'American-', '', '123123', '123123', 'Bagong Buhay II', 123123, 123123, 'asdasd_650079ea3b686_2x2image.jpg', 'asdasd_650079ea3b686_Signature.png', 'asdasd', 'asdasd', 'Public', 'asdasd', 'ALS Graduate', 'asdasd', 'Living', 'asdasd', 123123, '3123', '123123', 'asdasd', 'Living', 'asdasd', 8, 'asdasdas', 'asdasdasd', 'qweqwe', 'qweqwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qweqwe', 'qweqwe', 'qweqwe', 123123, 123123);
 
 -- --------------------------------------------------------
 
@@ -212,7 +216,8 @@ INSERT INTO `registration_approval` (`action_id`, `application_id`, `action_type
 (14, 2, 'approve', '2023-07-09 19:58:10'),
 (15, 24, 'decline', '2023-07-09 22:25:05'),
 (16, 25, 'decline', '2023-07-09 23:25:06'),
-(17, 26, 'decline', '2023-08-02 00:18:45');
+(17, 26, 'decline', '2023-08-02 00:18:45'),
+(18, 28, 'approve', '2023-09-10 23:05:58');
 
 -- --------------------------------------------------------
 
@@ -243,7 +248,8 @@ INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_n
 (160, ',  ', '', '', '', '', 'asdasdasdasdasdasd', '$2y$10$QTcLC/BCbV1FM63BFLVGKOmwj7gPT0WihA2juDn4QnfEKuJIGu2JC', 0, '', 'asdasdasdasdasdasd', ''),
 (165, 'asdasd,  ', 'asdasd', '', '', '', 'QASs', '$2y$10$mLDbCbU8xgKOwMk.9Z.Fse8kJfE9rTUKaFKyloFd5YXHuwQiSvgD2', 12312312, '', 'QASs', ''),
 (166, ',  asd', '', '', 'asd', '', 'asd', '$2y$10$Ze5h8a/n.MJeuQ650sJ/m.r30W.ICZxKb.v6crisHbSbqT58cX08e', 0, '', 'asd', ''),
-(167, 'qwem,  ', 'qwem', '', '', '', 'qweqweqweqwe', '$2y$10$8qmU/eYjAALSYcgRCLZU5eNiDkoCpCtqr0skiWBwUC30VloS9Ne66', 0, '', 'qweqweqweqweqwe', '');
+(167, 'qwem,  ', 'qwem', '', '', '', 'qweqweqweqwe', '$2y$10$8qmU/eYjAALSYcgRCLZU5eNiDkoCpCtqr0skiWBwUC30VloS9Ne66', 0, '', 'qweqweqweqweqwe', ''),
+(168, 'zxczxc, qweqwe asdqw', 'zxczxc', 'qweqwe', 'asdqw', '123', 'qeqwe@asd', '$2y$10$6TeFjAsvRkqIu6B3WnwU..oEA.ic/T3XDPEE9sJmNhQIPmct/lD/G', 123123, '', 'qeqwe@asd', '');
 
 -- --------------------------------------------------------
 
@@ -327,31 +333,31 @@ ALTER TABLE `todos`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `admin_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `registration_approval`
 --
 ALTER TABLE `registration_approval`
-  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- AUTO_INCREMENT for table `todos`
