@@ -191,7 +191,7 @@
         $pageCheck = $_GET['page'];
 
 
-        $query = "SELECT * FROM announcements WHERE category = '$pageCheck'";
+        $query = "SELECT * FROM announcements WHERE category = '$pageCheck' ORDER BY uploadDate DESC ";
         $resultGetPost = mysqli_query($conn, $query);
         $postCounter = 0;
 

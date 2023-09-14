@@ -56,7 +56,18 @@ if (isset($_GET['id'])) {
         <div class="profileBar">
             <div class="portlet light profileBar-portlet">
                 <div class="profile-pic">
-                    <img src="sample2x2.jpg" class="img-responsive">
+                    <?php
+                    $signaturePicPath = "../../uploads/applicant/2x2/" . $pic2x2;
+
+                    // Check if the image file exists
+                    if (file_exists($signaturePicPath)) {
+                        // Display the image
+                        echo '<img src="' . $signaturePicPath . '" class="img-responsive">';
+                    } else {
+                        // Display a default image or a placeholder image
+                        echo '<img src="../../uploads/applicant/2x2/No_Image_Available.jpg" class="img-responsive" alt="Default Image">';
+                    }
+                    ?>
                 </div>
                 <div class="profile-usertab">
 
