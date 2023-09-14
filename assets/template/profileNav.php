@@ -30,7 +30,7 @@
   }
 
   .side-bar {
-    background: #FBA1B7;
+    background: #FF5F9E;
     width: 290px;
     height: 100%;
     position: fixed;
@@ -39,7 +39,7 @@
   }
 
   .navBar {
-    background: #FBA1B7;
+    background: #FF5F9E;
 
     padding-top: 10px;
     padding-bottom: 10px;
@@ -75,7 +75,7 @@
   }
 
   .side-bar .menu .item a:hover {
-    background: #c8577b;
+    background: #C23373;
     transition: 0.3s ease;
   }
 
