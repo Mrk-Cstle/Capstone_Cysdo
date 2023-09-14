@@ -59,7 +59,7 @@ header ul li {
 header ul li a {
     color: #fff;
     font-size: 1.1rem;
-    padding: 15px 20px;
+    padding: 20px 20px;
     text-decoration: none;
     display: flex;
     justify-content: space-between;
@@ -68,7 +68,7 @@ header ul li a {
 
 
 header ul li a:hover {
-    background: #F06292;
+    background: #C23373;
 }
 
 header ul li ul {

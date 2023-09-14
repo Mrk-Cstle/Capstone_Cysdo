@@ -55,13 +55,12 @@
     }
 
     .textAlign {
-        background: #FBA1B7;
         padding-top: 20px;
         padding-bottom: 10px;
         display: block;
         text-align: center;
         font-size: 24px;
-        display: block;
+        width: 100%;
     }
 
     .bold {
@@ -81,7 +80,6 @@
         grid-gap: 24px;
         margin-top: 36px;
         padding: 20px;
-
     }
 
     .box-info li {
@@ -98,6 +96,8 @@
     .box-info li {
         font-size: 24px;
         font-weight: 500;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+        width: 1300px;
     }
 
     .textCap {
@@ -119,6 +119,9 @@
         .date {
             display: block;
         }
+        .box-info li {
+            width: 100%;
+        }
     }
 
     @media (max-width: 770px) {
@@ -128,6 +131,18 @@
 
         .Post {
             font-size: 14px;
+        }
+
+        .box-info li {
+            width: 100%;
+        }
+
+        .caption {
+            font-size: 16px;
+        }
+
+        .date {
+            font-size: 16px;
         }
     }
 
@@ -141,11 +156,25 @@
         }
 
         .textAlign {
-            font-size: 14px;
+            font-size: 18px;
             background-color: whitesmoke;
         }
 
+        .box-info li {
+            width: 100%;
+        }
+
+        .caption {
+            font-size: 12px;
+        }
+
+        .date {
+            font-size: 12px;
+        }
     }
+
+    }
+
 </style>
 
 <body>
@@ -213,7 +242,6 @@
                         echo '<div class="textBody" style="display: none;">';
                     }
                     echo "
-
       
             <ul class='box-info justify-content-center'>
                 <li class='responsive'>
@@ -230,7 +258,6 @@
                         </p>
                     </div>
                 </li>
-
             </ul>
              </div>
        ";
@@ -245,7 +272,7 @@
             echo "An error occurred while retrieving announcements.";
         }
     }
-
+    
     ?>
 
 
