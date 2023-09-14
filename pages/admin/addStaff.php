@@ -312,6 +312,7 @@ if ($_SESSION['role'] === 'admin') {
                 button: "OK",
               })
               $("#" + action).css("display", "none");
+              loadDoc();
             } else {
               $('#response').text(response);
               swal({
