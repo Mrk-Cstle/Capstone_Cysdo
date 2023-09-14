@@ -1,0 +1,231 @@
+body {
+    
+    background-color: #eee;
+}
+  
+.font-color {
+      color: #36c6d3;
+      font-size: 20px;
+}
+  
+.bold {
+      font-weight: 600!important;
+}
+  
+li {
+      display: list-item;
+}
+
+div {
+    display: block;
+}
+
+.profileBar {
+    display: block;
+    width: 100%;
+}
+
+.profileBar-portlet {
+    padding: 10px 0 0 0 !important;
+}
+
+.profile-pic img {
+    float: none;
+    margin: 0;
+    width: 25%;
+    height: 25%;
+    border-radius: 50% !important;
+}
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.profile-usertab {
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.profile-user-name {
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.actionBtn {
+    float: right;
+    margin-right: 20px;
+}
+
+.portlet {
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    border-radius: 4px;
+}
+
+.portlet-title.caption.caption-md {
+    font-size: 16px;
+}
+
+.portlet-title {
+    border-bottom: 1px solid #eee;
+    padding: 0;
+    margin-bottom: 10px;
+    min-height: 66px;
+    border-radius: 4px 4px 0 0;
+}
+
+.portlet-title {
+    padding: 0;
+    min-height: 48px;
+}
+
+.portlet-title .portletNav li button {
+    background: 0 0;
+    margin: 5px 0 0 1px;
+    border: 0;
+    padding: 8px 10px;
+    color: #080808;
+}
+
+.portlet-title .portletNav li button {
+    margin: 0;
+    padding: 12px 13px 13px;
+    font-size: 16px;
+    color: #666;
+}
+
+.tabbable-line .portletNav {
+    margin: 0;
+}
+
+.tabbable-line .portletNav li .active {
+    background: 0 0;
+    border-bottom: 4px solid #36c6d3;
+    position: relative;
+}
+
+.tabbable-line .portletNav li .open, .tabbable-line .portletNav li :hover {
+    background: 0 0;
+    border-bottom: 4px solid #9fe4ea;
+}
+
+.tabbable-line .portletNav li .active button {
+    border: 0;
+    color: #333;
+}
+
+.tabbable-line .portletNav li a {
+    background: 0 0!important;
+    border: 0;
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #737373;
+}
+
+.portletNav li.active button
+, .portletNav li.active button :hover
+, .portletNav li.active button :focus {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+.portlet.light {
+    padding: 12px 20px 15px;
+    background-color: #fff;
+}
+
+form .form-section{
+    margin: 30px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e7ecf1;
+}
+
+.portletForm {
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding: 0;
+    border-radius: 4px;
+}
+
+.portletForm.light {
+    padding: 12px 20px 15px;
+    background-color: #fff;
+}
+
+.portletForm.light.bg-inverse {
+    background: #f1f4f7;
+}
+
+.portletForm.light .portlet-body {
+    padding-top: 8px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.control-label {
+    margin-top: 1px;
+    font-weight: 400;
+}
+
+.font {
+    font-size: 22px;
+}
+
+.font-xs {
+    font-size: 14px;
+}
+
+.form-control {
+    outline: 0!important;
+}
+
+.form-control {
+    box-shadow: none!important;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.right {
+    text-align: right !important;
+}
