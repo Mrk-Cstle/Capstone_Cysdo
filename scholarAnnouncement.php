@@ -84,8 +84,6 @@
 
     }
 
-
-
     .box-info li {
         padding: 80px;
         border-radius: 20px;
@@ -142,6 +140,11 @@
             display: block;
         }
 
+        .textAlign {
+            font-size: 14px;
+            background-color: whitesmoke;
+        }
+
     }
 </style>
 
@@ -194,7 +197,7 @@
 
     ?>
         <div class='textAlign'>
-            <p style="text-transform: capitalize;" class='bold'><a href='newsTab.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a>
+            <p style="text-transform: capitalize;" class='bold d-block w-auto'><a href='newsTab.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a>
                 <?php echo $pageCheck; ?> Announcements
             </p>
         </div>
@@ -215,14 +218,14 @@
             <ul class='box-info justify-content-center'>
                 <li class='responsive'>
                     <img src='./assets/image/CysdoLogo.png' style='height: 50px; width: 50px;' class='sideLogo'><i class='caption'>City Youth Sports Development Office</i></a>
-                    <i id='uploadDate' class='date'>" . $row['uploadDate'] . "</i>
+                    <i id='uploadDate' class='date p-3'>" . $row['uploadDate'] . "</i>
                     <div>
                         <i id='uploaderName' class='textCap text-black-50 ms-5'>" . $row['uploader'] . "</i>
                     </div>
 
                     <hr class='mb-3 mt-3'>
 
-                    <div>
+                    <div class='content w-100'>
                         <p id='uploaderPost' class='Post lh-lg'>" . nl2br($row['announcement']) . "
                         </p>
                     </div>
@@ -233,7 +236,7 @@
        ";
                 }
                 if ($postCounter > 5) {
-                    echo '<div class="see-more-container"><button class="see-more-btn btn btn-primary">See more</button></div>';
+                    echo '<div class="see-more-container float-end me-5 mb-3"><a class="see-more-btn btn btn-primary">See more</a></div>';
                 }
             } else {
                 echo "No announcements found.";
