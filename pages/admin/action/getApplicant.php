@@ -1,24 +1,21 @@
 <?php
+
 include '../../include/dbConnection.php';
 
 $pageSize = 5; // Number of rows to display per page
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; // Get current page number
+$searchTerm = isset($_GET['search']) ? $_GET['search'] : ''; // Get the search term
 
 $offset = ($page - 1) * $pageSize; // Calculate the offset for the query
 
-// Initialize search parameters
-$searchQuery = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
-$searchCondition = '';
-
-// If a search query is provided, add a WHERE clause to the query
-if (!empty($searchQuery)) {
-    $searchCondition = "WHERE fullName LIKE '%$searchQuery%' OR contactNum1 LIKE '%$searchQuery%' OR contactNum2 LIKE '%$searchQuery%' OR fullAddress LIKE '%$searchQuery%'";
+// Construct the search query
+$searchQuery = "SELECT * FROM registration";
+if (!empty($searchTerm)) {
+    $searchQuery .= " WHERE fullName LIKE '%$searchTerm%'";
 }
+$searchQuery .= " ORDER BY applicant_id ASC LIMIT $offset, $pageSize";
 
-// Construct the query to fetch data with or without search
-$query = "SELECT * FROM registration $searchCondition ORDER BY applicant_id ASC LIMIT $offset, $pageSize";
-
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($conn, $searchQuery);
 
 $tableHTML = '';
 if (mysqli_num_rows($result) > 0) {
@@ -46,8 +43,8 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '</tr>';
     }
 
-    // Calculate total number of rows based on the search
-    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM registration $searchCondition"));
+    // Calculate total number of rows
+    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM registration"));
 
     // Calculate total number of pages
     $totalPages = ceil($totalRows / $pageSize);
@@ -70,4 +67,3 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 exit;
-?>
