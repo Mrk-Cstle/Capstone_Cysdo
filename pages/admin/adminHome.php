@@ -8,7 +8,6 @@
     <title>Home</title>
 
     <link rel="stylesheet" href="../../style/dashboard.css">
-    <link rel="stylesheet" href="../../style/adminTodo.css">
     <style>
         #editTodo .modal-dialog {
             max-width: 400px;
@@ -34,13 +33,6 @@
 
 
 <body>
-    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
-    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
-    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
-    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
-    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
-    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
-    <!-- PA CHECK ERROR DITO PAG NILALAGAY YUNG BAGONG NAV AYAW NA GUMANA TODO -->
     <?php
     include 'include/session.php';
     if ($_SESSION['role'] === 'admin') {
@@ -117,8 +109,10 @@
                         </span>
                     </li>
                 </ul>
+        </main>
 
             <?php } ?>
+            <main>
             <div class="table-data">
                 <div class="todo">
                     <div class="head">

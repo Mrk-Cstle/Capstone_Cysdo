@@ -173,8 +173,6 @@
         }
     }
 
-    }
-
 </style>
 
 <body>
@@ -251,10 +249,10 @@
                         <i id='uploaderName' class='textCap text-black-50 ms-5'>" . $row['uploader'] . "</i>
                     </div>
 
-                    <hr class='mb-3 mt-3'>
+                    <hr class='mb-3 mt-4'>
 
                     <div class='content w-100'>
-                        <p id='uploaderPost' class='Post lh-lg'>" . nl2br($row['announcement']) . "
+                        <p id='uploaderPost' class='Post lh-base'>" . nl2br($row['announcement']) . "
                         </p>
                     </div>
                 </li>
