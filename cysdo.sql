@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2023 at 07:48 PM
+-- Generation Time: Sep 15, 2023 at 10:18 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,9 +33,13 @@ CREATE TABLE `admin` (
   `last_name` varchar(255) NOT NULL,
   `first_name` varchar(200) NOT NULL,
   `middle_name` varchar(200) NOT NULL,
+  `birth_date` date DEFAULT NULL,
   `contact_number` int(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
+  `gender` varchar(100) NOT NULL,
+  `civil_status` varchar(100) NOT NULL,
+  `citizenship` varchar(100) NOT NULL,
   `image` varchar(255) NOT NULL,
   `user` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
@@ -45,9 +49,9 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `address`, `image`, `user`, `password`) VALUES
-(8, 'qwea, qwe qwe', 'qwea', 'qwe', 'qwe', 123, 'qwe@qwe', 'qwe', '', 'qwe@qwe', '$2y$10$rwj3q8rJCZsaVp9QRGnXhe3CqCv/m.vyZrn3hnayq51R1b2zj/QrS'),
-(24, 'qaz, qaz qaz', 'qaz', 'qaz', 'qaz', 0, 'qaz@qaz', '', '', 'qaz', '$2y$10$Wcg1Pa6JuZ0TY/cp/jLjsuZnnGz6SnsHa8EdWw1wwtecMvgk7j5Cy');
+INSERT INTO `admin` (`admin_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `birth_date`, `contact_number`, `email`, `address`, `gender`, `civil_status`, `citizenship`, `image`, `user`, `password`) VALUES
+(8, 'qwea, qwe qwe', 'qwea', 'qwe', 'qwe', NULL, 123, 'qwe@qwe', 'qwe', '', '', '', '', 'qwe@qwe', '$2y$10$rwj3q8rJCZsaVp9QRGnXhe3CqCv/m.vyZrn3hnayq51R1b2zj/QrS'),
+(24, 'qaz, qaz qaz', 'qaz', 'qaz', 'qaz', '2023-09-13', 0, 'qaz@qaz', 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd', '', '', 'qwe', '', 'qaz', '$2y$10$Wcg1Pa6JuZ0TY/cp/jLjsuZnnGz6SnsHa8EdWw1wwtecMvgk7j5Cy');
 
 -- --------------------------------------------------------
 

@@ -1,4 +1,5 @@
 <?php
+
 // Your database connection code here...
 include '../include/dbConnection.php';
 include 'include/session.php';
@@ -65,12 +66,12 @@ if ($result) {
                 <div class="portlet light profileBar-portlet">
                     <div class="profile-pic">
                         <?php
-                        $signaturePicPath = "../../uploads/applicant/2x2/" . $pic2x2;
+                        $signaturePicPath = "../../uploads/applicant/2x2/" . $image;
 
                         // Check if the image file exists
                         if (file_exists($signaturePicPath)) {
                             // Display the image
-                            echo '<img src="' . $signaturePicPath . '" class="img-responsive">';
+                            echo '<img src="' . $signaturePicPath . '" class="img-responsive" alt="image">';
                         } else {
                             // Display a default image or a placeholder image
                             echo '<img src="../../uploads/applicant/2x2/No_Image_Available.jpg" class="img-responsive" alt="Default Image">';
@@ -98,11 +99,12 @@ if ($result) {
                             <button class="nav-link active" id="person-info" data-bs-toggle="tab" data-bs-target="#personInfo" type="button" role="tab" aria-controls="p-info" aria-selected="true">Personal Information</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="educ-bg" data-bs-toggle="tab" data-bs-target="#educBg" type="button" role="tab" aria-controls="e-background" aria-selected="false">Educational Background</button>
+                            <button class="nav-link" id="educ-bg" data-bs-toggle="tab" data-bs-target="#educBg" type="button" role="tab" aria-controls="e-background" aria-selected="false">Account Information</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="family-bg" data-bs-toggle="tab" data-bs-target="#familyBg" type="button" role="tab" aria-controls="f-background" aria-selected="false">Family Background</button>
+                            <button class="nav-link" id="family-bg" data-bs-toggle="tab" data-bs-target="#familyBg" type="button" role="tab" aria-controls="f-background" aria-selected="false">Profile Image</button>
                         </li>
+
                     </ul>
                 </div>
                 <!-- Tab panes -->
@@ -135,7 +137,8 @@ if ($result) {
                                             <div class="form-group">
                                                 <label class="control-label bold font-xs">Birth date</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" name="b-date" id="b-date" value="<?php echo $birthDate ?> " readonly>
+
+                                                    <input type="text" class="form-control datepicker" name="b-date" id="b-date" value="<?php echo $birth_date ?> ">
                                                 </div>
                                             </div>
                                         </div>
@@ -144,68 +147,96 @@ if ($result) {
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label class="control-label bold font-xs">House No.</label>
-                                                <input type="text" class="form-control" name="add-ress" id="add-ress" value="<?php echo $houseAddress ?> " readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-5">
-                                            <div class="form-group">
-                                                <label class="control-label bold font-xs">Block/Lot/Street</label>
-                                                <input type="text" class="form-control" name="block-lot" id="block-lot" value="<?php echo $streetAddress ?> " readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-5">
-                                            <div class="form-group">
-                                                <label class="control-label bold font-xs">Barangay</label>
-                                                <input type="text" class="form-control" name="street" id="street" value="<?php echo $barangayAddress ?> " readonly>
+                                                <label class="control-label bold font-xs">Address</label>
+                                                <input type="text" class="form-control" name="add-ress" id="add-ress" value="<?php echo $address ?> ">
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label bold font-xs">Place of Birth</label>
-                                                <input type="text" class="form-control" name="place-birth" id="place-birth" value="<?php echo $birthPlace ?> " readonly>
-                                            </div>
-                                        </div>
                                     </div>
                                     <h4 class="form-section bold font">Status</h4>
                                     <div class="row">
                                         <div class="col-md-2 col-sm-3">
                                             <div class="form-group">
                                                 <label class="control-label bold font-xs">Gender</label>
-                                                <input type="text" class="form-control" name="place-birth" id="place-birth" value="<?php echo $gender ?> " readonly>
+                                                <select class="form-control" name="gender" id="gender">
+                                                    <option value="<?php echo $gender ?>"><?php echo $gender ?></option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+
                                             </div>
                                         </div>
                                         <div class="col-md-2 col-sm-3">
                                             <div class="form-group">
                                                 <label class="control-label bold font-xs">Civil Status</label>
-                                                <input type="text" class="form-control" name="place-birth" id="place-birth" value="<?php echo $civilStatus ?> " readonly>
+                                                <select class="form-control" name="civilStatus" id="civilStatus">
+                                                    <option value="<?php echo $civil_status ?>"><?php echo $civil_status ?></option>
+                                                    <option value="single">Single</option>
+                                                    <option value="married">Married</option>
+                                                </select>
+
                                             </div>
                                         </div>
                                         <div class="col-md-3 col-sm-4">
                                             <div class="form-group">
                                                 <label class="control-label bold font-xs">Citizenship</label>
-                                                <input type="text" class="form-control" name="place-birth" id="place-birth" value="<?php echo $citizenship ?> " readonly>
+                                                <select class="form-control" name="citizenship" id="citizenship">
+                                                    <option value="<?php echo $citizenship ?>"><?php echo $citizenship ?></option>
+                                                    <option value="American-">American</option>
+                                                    <option value="Arabic-">Arabic</option>
+                                                    <option value="Australian-">Australian</option>
+                                                    <option value="Belgian-">Belgian</option>
+                                                    <option value="Brazilian-">Brazilian</option>
+                                                    <option value="British-">British</option>
+                                                    <option value="Burmese-">Burmese</option>
+                                                    <option value="Canadian-">Canadian</option>
+                                                    <option value="Chinese-">Chinese</option>
+                                                    <option value="Dutch-">Dutch</option>
+                                                    <option value="Dutch-">Dutch</option>
+                                                    <option value="Egyptian-">Egyptian</option>
+                                                    <option value="Filipino-">Filipino</option>
+                                                    <option value="Filipino-Chinese">Filipino-Chinese</option>
+                                                    <option value="French-">French</option>
+                                                    <option value="German-">German</option>
+                                                    <option value="Greek-">Greek</option>
+                                                    <option value="Indian-">Indian</option>
+                                                    <option value="Indonesian-">Indonesian</option>
+                                                    <option value="Iranian-">Iranian</option>
+                                                    <option value="Iraqui-">Iraqui</option>
+                                                    <option value="Irish-">Irish</option>
+                                                    <option value="Israeli-">Israeli</option>
+                                                    <option value="Italian-">Italian</option>
+                                                    <option value="Japanese-">Japanese</option>
+                                                    <option value="Korean-">Korean</option>
+                                                    <option value="Mexican-">Mexican</option>
+                                                    <option value="Nigerian-">Nigerian</option>
+                                                    <option value="Polish-">Polish</option>
+                                                    <option value="Russian-">Russian</option>
+                                                    <option value="Singaporean-">Singaporean</option>
+                                                    <option value="Spanish-">Spanish</option>
+                                                    <option value="Sudanese-">Sudanese</option>
+                                                    <option value="Swiss-">Swiss</option>
+                                                    <option value="Taiwanese-">Taiwanese</option>
+                                                    <option value="Thai-">Thai</option>
+                                                    <option value="Turkish-">Turkish</option>
+
+                                                </select>
+
                                             </div>
                                         </div>
                                         <div class="col-md-3 col-sm-4">
                                             <div class="form-group">
-                                                <label class="control-label bold font-xs">Contact Number 1</label>
-                                                <input type="text" class="form-control" name="contactNum" id="contactNum" value="<?php echo $contactNum1 ?> " readonly>
+                                                <label class="control-label bold font-xs">Contact Number</label>
+                                                <input type="text" class="form-control" name="contactNum" id="contactNum" title="Please enter a valid numeric contact number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="<?php echo $contact_number ?>">
                                             </div>
                                         </div>
-                                        <div class="col-md-3 col-sm-4">
+                                        <div class=" col-md-3 col-sm-4">
                                             <div class="form-group">
-                                                <label class="control-label bold font-xs">Contact Number 2</label>
-                                                <input type="text" class="form-control" name="contactNum2" id="contactNum2" value="<?php echo $contactNum2 ?> " readonly>
+                                                <label class="control-label bold font-xs">Email</label>
+                                                <input type="text" class="form-control" name="email" id="email" value="<?php echo $email ?> ">
                                             </div>
                                         </div>
-                                        <div class="col-md-2 col-sm-3">
-                                            <div class="form-group">
-                                                <label class="control-label bold font-xs">Registered Voter?</label>
-                                                <input type="text" class="form-control" name="contactNum2" id="contactNum2" value="<?php echo $voter ?> " readonly>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +244,7 @@ if ($result) {
                             <div class="form-actions right">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="button" style="float: right;" class="btnUpdate-peronalInfo btn btn-success btn-sm">Update</button>
+                                        <button type="submit" style="float: right;" class="btnUpdate-peronalInfo btn btn-success btn-sm">Update</button>
                                     </div>
                                 </div>
                             </div>
@@ -223,39 +254,24 @@ if ($result) {
                         <form class="educ-info-form" role="form" autocomplete="off">
                             <div class="portletForm light bg-inverse">
                                 <div class="portlet-body form">
-                                    <h4 class="form-section bold font">School Details</h4>
+                                    <h4 class="form-section bold font">Account</h4>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-5 col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="control-label bold font-xs">School Name (Current School)</label>
-                                                        <input type="text" class="form-control" name="school-name" id="school-name" value="<?php echo $schoolName ?> " readonly>
+                                                        <label class="control-label bold font-xs">User</label>
+                                                        <input type="text" class="form-control" name="user" id="user" value="<?php echo $user ?> ">
                                                     </div>
                                                 </div>
+
+
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-md-5 col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="control-label bold font-xs">School Address</label>
-                                                        <input type="text" class="form-control" name="school-name" id="school-name" value="<?php echo $schoolAddress ?> " readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-4">
-                                                    <div class="form-group">
-                                                        <label class="control-label bold font-xs">School Type</label>
-                                                        <input type="text" class="form-control" name="school-name" id="school-name" value="<?php echo $schoolType ?> " readonly>
-                                                    </div>
-                                                </div>
-                                                <h4></h4>
-                                                <div class="col-md-4 col-sm-5">
-                                                    <div class="form-group">
-                                                        <label class="control-label bold font-xs">Course</label>
-                                                        <input type="text" class="form-control" name="school-name" id="school-name" value="<?php echo $course ?> " readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-4">
-                                                    <div class="form-group">
-                                                        <label class="control-label bold font-xs">Current Year Level</label>
-                                                        <input type="text" class="form-control" name="school-name" id="school-name" value="<?php echo $yearLevel ?> " readonly>
+                                                        <label class="control-label bold font-xs">Password</label>
+                                                        <input type="password" class="form-control" name="password" id="password">
                                                     </div>
                                                 </div>
                                             </div>
@@ -274,217 +290,61 @@ if ($result) {
                         </form>
                     </div>
                     <div class="tab-pane" id="familyBg">
-                        <form class="educ-info-form" role="form" autocomplete="on">
+                        <form class="educ-info-form" role="form" autocomplete="off">
                             <div class="portletForm light bg-inverse">
                                 <div class="portlet-body form">
-                                    <h4 class="form-section bold font">Father</h4>
+                                    <h4 class="form-section bold font">Account</h4>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-2 col-sm-3">
-                                                    <div class="form-group">
-                                                        <label class="control-label bold font-xs">Father Status</label>
-                                                        <input type="text" class="form-control" name="school-name" id="school-name" value="<?php echo $fatherStatus ?> " readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-4">
-                                                    <div class="form-group">
-                                                        <label class="control-label bold font-xs">Father Name</label>
-                                                        <input type="text" class="form-control" name="fl-name" id="fl-name" value="<?php echo $fatherName ?> " readonly>
-                                                    </div>
-                                                </div>
-
-                                                <h4 class="form-section bold font">Address</h4>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label class="control-label bold font-xs">Father Address</label>
-                                                        <input type="text" class="form-control" name="fadd-ress" id="fadd-ress" value="<?php echo $fatherAddress ?> " readonly>
-                                                    </div>
-                                                </div>
-
-
-                                                <h4 class="form-section bold font">Other Information</h4>
-                                                <div class="col-md-3 col-sm-4">
-                                                    <div class="form-group">
-                                                        <label class="control-label bold font-xs">Contact Number</label>
-                                                        <input type="text" class="form-control" name="contactNumf" id="contactNumf" value="<?php echo $fatherContact ?> " readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-4">
-                                                    <div class="form-group">
-                                                        <label class="control-label bold font-xs">Occupation</label>
-                                                        <input type="text" class="form-control" name="f-occupation" id="f-occupation" value="<?php echo $fatherOccupation ?> " readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-4">
-                                                    <div class="form-group">
-                                                        <label class="control-label bold font-xs">Educational Attainment</label>
-                                                        <input type="text" class="form-control" name="f-educ-attainment" id="f-educ-attainment" value="<?php echo $fatherEduc ?> " readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h4 class="form-section bold font">Mother</h4>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="row">
-                                                        <div class="col-md-2 col-sm-3">
+                                                        <div class="col-md-5 col-sm-6">
                                                             <div class="form-group">
-                                                                <label class="control-label bold font-xs">Mother Status</label>
-                                                                <input type="text" class="form-control" name="school-name" id="school-name" value="<?php echo $motherStatus ?> " readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-sm-4">
-                                                            <div class="form-group">
-                                                                <label class="control-label bold font-xs">Mother Name</label>
-                                                                <input type="text" class="form-control" name="fl-name" id="fl-name" value="<?php echo $motherName ?> " readonly>
-                                                            </div>
-                                                        </div>
-
-                                                        <h4 class="form-section bold font">Address</h4>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label bold font-xs">Mother Address</label>
-                                                                <input type="text" class="form-control" name="fadd-ress" id="fadd-ress" value="<?php echo $motherAddress ?> " readonly>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <h4 class="form-section bold font">Other Information</h4>
-                                                        <div class="col-md-3 col-sm-4">
-                                                            <div class="form-group">
-                                                                <label class="control-label bold font-xs">Contact Number</label>
-                                                                <input type="text" class="form-control" name="contactNumf" id="contactNumf" value="<?php echo $motherContact ?> " readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-sm-4">
-                                                            <div class="form-group">
-                                                                <label class="control-label bold font-xs">Occupation</label>
-                                                                <input type="text" class="form-control" name="f-occupation" id="f-occupation" value="<?php echo $motherOccupation ?> " readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-sm-4">
-                                                            <div class="form-group">
-                                                                <label class="control-label bold font-xs">Educational Attainment</label>
-                                                                <input type="text" class="form-control" name="f-educ-attainment" id="f-educ-attainment" value="<?php echo $motherEduc ?> " readonly>
+                                                                <label class="control-label bold font-xs">Image</label>
+                                                                <input type="file" class="form-control" name="school-name" id="school-name" accept="image/jpeg">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <h4 class="form-section bold font">Guardian (if not living with parent/s)</h4>
-
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row">
-
-                                                            <div class="col-md-3 col-sm-4">
-                                                                <div class="form-group">
-                                                                    <label class="control-label bold font-xs">Guardian Name</label>
-                                                                    <input type="text" class="form-control" name="fl-name" id="fl-name" value="<?php echo $guardianName ?> " readonly>
-                                                                </div>
-                                                            </div>
-
-                                                            <h4 class="form-section bold font">Address</h4>
-                                                            <div class="col-md-2">
-                                                                <div class="form-group">
-                                                                    <label class="control-label bold font-xs">Guardian Address</label>
-                                                                    <input type="text" class="form-control" name="fadd-ress" id="fadd-ress" value="<?php echo $guardianAddress ?> " readonly>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <h4 class="form-section bold font">Other Information</h4>
-                                                            <div class="col-md-3 col-sm-4">
-                                                                <div class="form-group">
-                                                                    <label class="control-label bold font-xs">Contact Number</label>
-                                                                    <input type="text" class="form-control" name="contactNumf" id="contactNumf" value="<?php echo $guardianContact ?> " readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-3 col-sm-4">
-                                                                <div class="form-group">
-                                                                    <label class="control-label bold font-xs">Occupation</label>
-                                                                    <input type="text" class="form-control" name="f-occupation" id="f-occupation" value="<?php echo $guardianOccupation ?> " readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-3 col-sm-4">
-                                                                <div class="form-group">
-                                                                    <label class="control-label bold font-xs">Educational Attainment</label>
-                                                                    <input type="text" class="form-control" name="f-educ-attainment" id="f-educ-attainment" value="<?php echo $guardianEduc ?> " readonly>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <h4 class="form-section bold font">Income</h4>
-                                                    <div class="col-md-4 col-sm-5">
-                                                        <div class="form-group">
-                                                            <label class="control-label bold font-xs">Total Parent/s or Guardian/s Annual Gross Income</label>
-                                                            <input type="text" class="form-control" name="total-income" id="total-income" value="<?php echo $annualGross ?> " readonly>
-                                                        </div>
-                                                    </div>
-                                                    <h4 class="form-section bold font">Family Size</h4>
-                                                    <div class="col-md-2 col-sm-3">
-                                                        <div class="form-group">
-                                                            <label class="control-label bold font-xs">Size of the Family (person)</label>
-                                                            <input type="text" class="form-control" name="fam-size" id="fam-size" value="<?php echo $sizeFamily ?> " readonly>
-                                                        </div>
-                                                    </div>
-                                                    <h4 class="form-section bold font">Name of Siblings (if any)</h4>
-                                                    <div class="col-md-3 col-sm-4">
-                                                        <div class="form-group">
-                                                            <label class="control-label bold font-xs"></label>
-                                                            <input type="text" class="form-control" name="sibling-1" id="sibling-1" value="<?php echo $sibling1 ?> " readonly>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-4">
-                                                        <div class="form-group">
-                                                            <label class="control-label bold font-xs"></label>
-                                                            <input type="text" class="form-control" name="sibling-2" id="sibling-2" value="<?php echo $sibling2 ?> " readonly>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-4">
-                                                        <div class="form-group">
-                                                            <label class="control-label bold font-xs"></label>
-                                                            <input type="text" class="form-control" name="sibling-3" id="sibling-3" value="<?php echo $sibling3 ?> " readonly>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-4">
-                                                        <div class="form-group">
-                                                            <label class="control-label bold font-xs"></label>
-                                                            <input type="text" class="form-control" name="sibling-4" id="sibling-4" value="<?php echo $sibling4 ?> " readonly>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-4">
-                                                        <div class="form-group">
-                                                            <label class="control-label bold font-xs"></label>
-                                                            <input type="text" class="form-control" name="sibling-5" id="sibling-5" value="<?php echo $sibling5 ?> " readonly>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-4">
-                                                        <div class="form-group">
-                                                            <label class="control-label bold font-xs"></label>
-                                                            <input type="text" class="form-control" name="sibling-6" id="sibling-6" value="<?php echo $sibling6 ?> " readonly>
-                                                        </div>
-                                                    </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="mb-3 mt-3">
-                                <div class="form-actions right">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <button type="button" style="float: right;" class="btnUpdate-famBg btn btn-success btn-sm">Update</button>
-                                        </div>
+                            </div>
+                            <hr class="mb-3 mt-3">
+                            <div class="form-actions right">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" style="float: right;" class="btnUpdate-educBg btn btn-success btn-sm">Update</button>
                                     </div>
                                 </div>
+                            </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
+    <!-- di ma click nav pag nakalagay script src jquery -->
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+    <!-- Include Bootstrap Datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Initialize the Datepicker -->
+    <script>
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                format: 'yyyy/mm/dd',
+                autoclose: true
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script>
         const triggerTabList = document.querySelectorAll('#myTab button')
