@@ -2,30 +2,29 @@
 include '../../include/selectDb.php';
 include '../../include/dbConnection.php';
 
-
 $pageSize = 5; // Number of rows to display per page
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; // Get current page number
-$searchTerm = isset($_GET['search']) ? $_GET['search'] : ''; // Get the search term
 
 $offset = ($page - 1) * $pageSize; // Calculate the offset for the query
 
-// Construct the search query
-$searchQuery =
+$searchQuery = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+$searchCondition = '';
+
+// If a search query is provided, add a WHERE clause to the query
+if (!empty($searchQuery)) {
+    $searchCondition = "AND (fullName LIKE '%$searchQuery%' OR contactNum1 LIKE '%$searchQuery%' OR contactNum2 LIKE '%$searchQuery%' OR fullAddress LIKE '%$searchQuery%')";
+}
+
+$query =
     "SELECT registration_approval.*, registration.*
     FROM registration_approval
     JOIN registration ON registration.applicant_id = registration_approval.application_id
-    WHERE registration_approval.action_type = 'approve' ";
-
-// Add the search term condition (if provided)
-if (!empty($searchTerm)) {
-    $searchQuery .= "AND registration.fullName LIKE '%$searchTerm%' ";
-}
-
-// Continue with the rest of the query for data retrieval
-$searchQuery .= "ORDER BY registration.applicant_id ASC LIMIT $offset, $pageSize";
+    WHERE registration_approval.action_type = 'approve'
+    $searchCondition
+    ORDER BY registration.applicant_id ASC LIMIT $offset, $pageSize";
 
 // Execute the SQL query for data retrieval
-$result = mysqli_query($conn, $searchQuery);
+$result = mysqli_query($conn, $query);
 
 $tableHTML = '';
 if (mysqli_num_rows($result) > 0) {
@@ -51,7 +50,7 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '</tr>';
     }
 
-    // Calculate total number of rows from the registration_approval table where action_type is 'decline'
+    // Calculate total number of rows from the registration_approval table where action_type is 'approve'
     $countQuery = "SELECT COUNT(*) AS totalRows FROM registration_approval WHERE action_type = 'approve'";
     $countResult = mysqli_query($conn, $countQuery);
     if ($countResult) {
@@ -84,3 +83,4 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 exit;
+?>

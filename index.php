@@ -10,6 +10,13 @@
 
   <style>
     /* Main */
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
     main {
       display: block;
       width: 100%;
@@ -84,6 +91,22 @@
       padding: 0px 80px;
       margin: 0px;
       line-height: 1.8;
+    }
+
+    #collapseTwo p {
+      font-size: 18px;
+    }
+
+    #collapseThree p {
+      font-size: 18px;
+    }
+
+    #collapseSix p {
+      font-size: 18px;
+    }
+
+    #collapseSeven p {
+      font-size: 18px;
     }
 
     #faqs h3 {
@@ -251,7 +274,7 @@
     <p id="FontSize">Frequently Asked Questions</p>
 
     <div class="container-sm mb-5">
-      <div class="accordion" id="accordionFaqs">
+      <div class="accordion accordion-flush" id="accordionFaqs">
         <div class="accordion-item" id="accordItem">
           <h2 class="accordion-header">
             <button class="accordion-button" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -276,7 +299,7 @@
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
             <div class="accordion-body">
-                <p>Online application usually happens on the 1st quarter of every year. The online application will be posted on our FB Page: <strong> City Youth and Sports Development Office - CSJDM.</strong></p>
+                <p class="ms-4">Online application usually happens on the 1st quarter of every year. The online application will be posted on our FB Page: <strong> City Youth and Sports Development Office - CSJDM.</strong></p>
             </div>
           </div>
         </div>
@@ -289,7 +312,7 @@
           </h2>
           <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
             <div class="accordion-body">
-                <p>Ang lokal na pamahalaan ng Lungsod ng San Jose Del Monte ay patuloy na naghahatid ng programang pang-edukasyon sa mga kabataang San Joseños na mas kilala bilang City Educational Assistance Program (CEAP). Itinataguyod nito ang layunin na makapagbigay ng tulong pinansiyal sa mga kabataan upang makapagtapos ng pag-aaral.</p>
+                <p class="ms-3">Ang lokal na pamahalaan ng Lungsod ng San Jose Del Monte ay patuloy na naghahatid ng programang pang-edukasyon sa mga kabataang San Joseños na mas kilala bilang City Educational Assistance Program (CEAP). Itinataguyod nito ang layunin na makapagbigay ng tulong pinansiyal sa mga kabataan upang makapagtapos ng pag-aaral.</p>
 
                 <h5><strong>QUALIFICATIONS:</strong></h5>
                 <ol>
@@ -401,11 +424,11 @@
                 </details>
                 <details>
                   <summary class="dropdown-toggle"><strong>Issuance of Examination Stub</strong></summary>
-                  <p>Upon submission of the Application Form during the Orientation, Examination Stub will be released to the applicants.</p>
+                  <p class="fs-5">Upon submission of the Application Form during the Orientation, Examination Stub will be released to the applicants.</p>
                 </details>
                 <details>
                   <summary class="dropdown-toggle"><strong>Announcement of Qualifiers</strong></summary>
-                  <p>List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>              
+                  <p class="fs-5">List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>              
               </div>
             </div>
         </div>
@@ -418,7 +441,7 @@
             </h2>
             <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
               <div class="accordion-body">
-                <p>Upon submission of the Application Form during the Orientation, Examination Stub will be released to the applicants.</p>   
+                <p class="ms-4">Upon submission of the Application Form during the Orientation, Examination Stub will be released to the applicants.</p>   
               </div>
             </div>
         </div>
@@ -431,7 +454,7 @@
             </h2>
             <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
               <div class="accordion-body">
-                <p>List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>              
+                <p class="ms-4">List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>              
               </div>
             </div>
         </div>
@@ -484,7 +507,6 @@
     </div>
   </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
 </html>

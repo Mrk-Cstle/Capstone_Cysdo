@@ -30,7 +30,7 @@
   }
 
   .side-bar {
-    background: #FBA1B7;
+    background: #FF5F9E;
     width: 290px;
     height: 100%;
     position: fixed;
@@ -39,7 +39,8 @@
   }
 
   .navBar {
-    background: #FBA1B7;
+    background: #FF5F9E;
+
     padding-top: 10px;
     padding-bottom: 10px;
     justify-content: end;
@@ -74,7 +75,7 @@
   }
 
   .side-bar .menu .item a:hover {
-    background: #c8577b;
+    background: #C23373;
     transition: 0.3s ease;
   }
 
@@ -166,7 +167,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../image/CysdoLogo.png" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li>
