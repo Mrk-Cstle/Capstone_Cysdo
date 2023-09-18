@@ -68,76 +68,95 @@ if ($_SESSION['role'] === 'admin') {
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            function loadTableData(page) {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4) {
-                        if (xhr.status === 200) {
-                            document.getElementById('tableData').innerHTML = xhr.responseText;
-                        } else {
-                            console.error('Error:', xhr.status);
-                        }
-                    }
-                };
-                xhr.open('GET', 'action/getApplicant.php?page=' + page, true);
-                xhr.send();
+    // Function to get the current page from local storage
+    function getCurrentPage() {
+        var currentPage = localStorage.getItem('currentPage');
+        return currentPage ? parseInt(currentPage) : 1;
+    }
+
+    // Function to save the current page to local storage
+    function setCurrentPage(page) {
+        localStorage.setItem('currentPage', page);
+    }
+
+    var currentPage = getCurrentPage(); // Get the current page from local storage
+
+    function loadTableData(page) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    document.getElementById('tableData').innerHTML = xhr.responseText;
+                    setCurrentPage(page); // Save the current page to local storage
+                } else {
+                    console.error('Error:', xhr.status);
+                }
             }
+        };
+        xhr.open('GET', 'action/getApplicant.php?page=' + page, true);
+        xhr.send();
+    }
 
-            function searchTableData(searchValue) {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4) {
-                        if (xhr.status === 200) {
-                            document.getElementById('tableData').innerHTML = xhr.responseText;
-                        } else {
-                            console.error('Error:', xhr.status);
-                        }
-                    }
-                };
-                xhr.open('GET', 'action/getApplicant.php?search=' + searchValue, true);
-                xhr.send();
+    function searchTableData(searchValue, page) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    document.getElementById('tableData').innerHTML = xhr.responseText;
+                    setCurrentPage(page); // Save the current page to local storage
+                } else {
+                    console.error('Error:', xhr.status);
+                }
             }
+        };
+        xhr.open('GET', 'action/getApplicant.php?search=' + searchValue + '&page=' + page, true);
+        xhr.send();
+    }
 
-            function refreshList() {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById("tableData").innerHTML = xhr.responseText;
-                    }
-                };
-
-                xhr.open("GET", "action/getApplicant.php", true);
-                xhr.send();
+    function refreshList() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById("tableData").innerHTML = xhr.responseText;
+                setCurrentPage(currentPage); // Save the current page to local storage
             }
+        };
 
-            document.addEventListener('DOMContentLoaded', function () {
-                var currentPage = 1;
+        xhr.open("GET", "action/getApplicant.php?page=" + currentPage, true); // Pass the current page
+        xhr.send();
+    }
 
-                loadTableData(currentPage);
+    document.addEventListener('DOMContentLoaded', function () {
+        loadTableData(currentPage);
 
-                document.addEventListener('click', function (event) {
-                    if (event.target.classList.contains('pagination-button')) {
-                        event.preventDefault();
-                        var page = event.target.dataset.page;
-                        if (page !== currentPage) {
-                            loadTableData(page);
-                            currentPage = page;
-                        }
+        document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('pagination-button')) {
+                event.preventDefault();
+                var page = event.target.dataset.page;
+                if (page !== currentPage) {
+                    if (document.getElementById('searchInput').value.trim() !== '') {
+                        // If search is active, use the searchTableData function
+                        searchTableData(document.getElementById('searchInput').value.trim(), page);
+                    } else {
+                        loadTableData(page);
                     }
-                });
+                    currentPage = page;
+                }
+            }
+        });
 
-                document.getElementById('searchForm').addEventListener('submit', function (event) {
-                    event.preventDefault();
-                    var searchInput = document.getElementById("searchInput");
-                    var searchQuery = searchInput.value.trim();
-                    searchTableData(searchQuery);
-                });
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var searchInput = document.getElementById("searchInput");
+            var searchQuery = searchInput.value.trim();
+            searchTableData(searchQuery, 1); // Reset to page 1 when performing a search
+        });
 
-                document.getElementById('refreshButton').addEventListener('click', function () {
-                    refreshList();
-                });
-            });
-        </script>
+        document.getElementById('refreshButton').addEventListener('click', function () {
+            refreshList();
+        });
+    });
+</script>
     </section>
 </body>
 
