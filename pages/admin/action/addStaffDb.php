@@ -62,6 +62,8 @@ function insert()
 //     echo "Updated Successfully";
 // }
 
+// ... (Your existing code)
+
 function delete()
 {
     global $conn;
@@ -71,8 +73,10 @@ function delete()
     $deleteQuery = "DELETE FROM staff WHERE staffId = $id";
     mysqli_query($conn, $deleteQuery);
     if (mysqli_affected_rows($conn) > 0) {
+        // Set the current page to the current page before the delete action
         echo "Staff Info Deleted";
     } else {
         echo 'No records were deleted';
     }
 }
+

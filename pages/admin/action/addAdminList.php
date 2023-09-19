@@ -34,23 +34,29 @@ if (mysqli_num_rows($result) > 0) {
   // Calculate total number of rows from the "admin" table
   $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM admin"));
 
-  // Calculate total number of pages
-  $totalPages = ceil($totalRows / $recordsPerPage);
+    // Calculate total number of pages
+    $totalPages = ceil($totalRows / $recordsPerPage);
 
-  $paginationHTML = '';
-  if ($totalPages > 1) {
-    $paginationHTML .= '<ul class="pagination">';
-    $paginationHTML .= '<li class="page-item ' . ($page == 1 ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page - 1) . '">Previous</a></li>';
-    for ($i = 1; $i <= $totalPages; $i++) {
-      $activeClass = ($i === $page) ? 'active' : '';
-      $paginationHTML .= '<li class="page-item ' . $activeClass . '"><a class="page-link pagination-button" href="#" data-page="' . $i . '">' . $i . '</a></li>';
+    $paginationHTML = '';
+    if ($totalPages > 1) {
+        $paginationHTML .= '<ul class="pagination">';
+        $paginationHTML .= '<li class="page-item ' . ($page == 1 ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page - 1) . '">Previous</a></li>';
+
+        // Add the current page count
+        $paginationHTML .= '<li class="page-item disabled"><span class="page-link">Page ' . $page . ' of ' . $totalPages . '</span></li>';
+
+        for ($i = 1; $i <= $totalPages; $i++) {
+            $activeClass = ($i === $page) ? 'active' : '';
+            $paginationHTML .= '<li class="page-item ' . $activeClass . '"><a class="page-link pagination-button" href="#" data-page="' . $i . '">' . $i . '</a></li>';
+        }
+        $paginationHTML .= '<li class="page-item ' . ($page == $totalPages ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page + 1) . '">Next</a></li>';
+        $paginationHTML .= '</ul>';
     }
-    $paginationHTML .= '<li class="page-item ' . ($page == $totalPages ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page + 1) . '">Next</a></li>';
-    $paginationHTML .= '</ul>';
-  }
+    echo $paginationHTML;
 } else {
-  echo '<tr><td colspan="7">No data available</td></tr>';
+    echo '<tr><td colspan="10">No data available</td></tr>';
 }
-echo $paginationHTML;
-mysqli_close($conn);
+
+exit;
+?>
 ?>
