@@ -77,14 +77,14 @@
         display: grid;
         grid-gap: 24px;
         margin-top: 36px;
-        padding: 20px;
+        padding: 10px;
     }
     
     .box-info li {
-        padding: 80px;
+        padding: 30px;
         border-radius: 20px;
         border: 1px solid black;
-        display: block;
+        display: flex;
         align-items: center;
         grid-gap: 24px;
         height: 100%;
@@ -110,7 +110,7 @@
     .Post {
         font-size: 18px;
         text-align: justify;
-        margin-top: 60px;
+        margin-top: 20px;
     }
     
     @media (max-width: 1015px) {
@@ -161,6 +161,18 @@
             font-size: 12px;
         }
     }
+
+    @media (max-width: 450px) {
+        .box-info li {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 350px) {
+        .box-info li {
+            width: 100%;
+        }
+    }
 </style>
 
 <body>
@@ -172,21 +184,63 @@
     <div class="textBody">
         <ul class="box-info justify-content-center">
             <li class="responsive">
-                <img src="./assets/image/CysdoLogo.png" style="height: 50px; width: 50px;" class="sideLogo"><i class="caption">City Youth Sports Development Office</i></a>
-                <i id="uploadDate" class="date">Date : 08/30/23</i>
-                <div>
-                    <i id="uploaderName" class="textCap text-black-50 ms-5">Martin Mendoza</i>
-                </div>
 
-                <hr class="mb-3 mt-4">
+                <div class="contactIcon">
+                    <img src="/assets/image/fbIcon.png" class="container-fluid" style="width: 120px; height: 100%;" />
+                  </div>
+                <div class="d-flex" style="height: 100%;">
+                    <div class="vr"></div>
+                  </div>
 
                 <div>
-                    <p id="uploaderPost" class="Post lh-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus cum corporis unde porro, aliquam deserunt, id necessitatibus modi vero, cupiditate placeat itaque maiores! Deleniti fugiat corporis illo alias ipsum. Nihil maxime adipisci
-                        exercitationem illo placeat debitis quis cupiditate doloremque et commodi sapiente numquam dolorum unde fugiat recusandae, porro hic architecto provident autem assumenda tempora? Labore, accusantium? Similique consequuntur quos
-                        quas at doloribus molestias perferendis qui expedita fugiat libero. Ipsum tempore vel blanditiis magni accusantium fuga debitis nobis consequatur fugiat sapiente! Soluta illum ducimus natus laboriosam voluptatem magnam dolorem
-                        optio, ex, numquam animi itaque consectetur sunt esse aliquid corrupti quis autem.
+                    <p id="uploaderPost" class="Post lh-base"><a class="text-decoration-underline" href="https://www.facebook.com/CEAP.CYSDO">https://www.facebook.com/CEAP.CYSDO(City Youth and Sports Development Office – CSJDM)</a>
                     </p>
                 </div>
+
+            </li>
+            <li class="responsive">
+
+                <div class="contactIcon">
+                    <img src="/assets/image/gmailIcon.png" class="container-fluid" style="width: 120px; height: 100%;" />
+                  </div>
+                <div class="d-flex" style="height: 100%;">
+                    <div class="vr"></div>
+                  </div>
+
+                <div>
+                    <p id="uploaderPost" class="Post lh-base"><a class="text-decoration-underline" href="csjdm.cysdo1@gmail.com">csjdm.cysdo1@gmail.com</a>
+                    </p>
+                </div>
+
+            </li>
+
+            <li class="responsive">
+
+                <div class="contactIcon">
+                    <img src="/assets/image/telephone.svg" class="container-fluid" style="width: 120px; height: 100%;" />
+                  </div>
+                <div class="d-flex" style="height: 100%;">
+                    <div class="vr"></div>
+                  </div>
+
+                <div>
+                    <p id="uploaderPost" class="Post lh-base ">(639)905-603-7218</p>
+                </div>
+
+            </li>
+            <li class="responsive">
+
+                <div class="contactIcon">
+                    <img src="/assets/image/locationIcon.png" class="container-fluid" style="width: 120px; height: 100%;" />
+                  </div>
+                <div class="d-flex" style="height: 100%;">
+                    <div class="vr"></div>
+                  </div>
+
+                <div>
+                    <p id="uploaderPost" class="Post lh-base">Productivity Complex, Barangay Sapang Palay Proper, City of San Jose del Monte, Bulacan</p>
+                </div>
+
             </li>
 
         </ul>

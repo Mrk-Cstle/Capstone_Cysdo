@@ -102,8 +102,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Registration</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+        }
+
         table,
         th,
         td {
@@ -111,10 +121,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border: 1px solid black;
             padding: 20px;
             text-align: center;
+        }
 
+        .headerz {
+            text-align: center;
+            font-weight: 700;
+            flex-direction: column;
         }
 
         table {
+            width: 100%;
+        }
+
+        .tablez {
             width: 100%;
         }
 
@@ -124,32 +143,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 10px;
         }
 
-        * {
-            box-sizing: border-box;
-
-        }
-
         body {
 
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-
-        }
-
-        main {
-
-            width: 80%;
+            width: 100%;
         }
 
         header {
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
+            justify-content: space-between;
             width: 100%;
-
-
         }
 
         #headerLogo {
@@ -157,39 +164,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             flex-direction: row;
             height: auto;
             gap: 30px;
+            width: 100%;
         }
 
 
         #headerLogo img {
             width: 100px;
             height: 100px;
-
-
+            align-items: start;
         }
 
         #picture2x2 img {
-
-            width: 150px;
+            width: 120px;
             height: auto;
-
-
-
         }
 
         #headerLogo,
         #picture2x2 {
-
+            display: block;
             width: auto;
-
-
-
-
         }
 
         #headerCenter {
             display: flex;
             text-align: center;
-
             justify-content: center;
         }
 
@@ -204,21 +202,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             align-items: flex-start;
             width: 70%;
         }
+
+        @media (max-width: 710px) {
+            
+            .tablez {
+            width: 50%;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <p>CYSDO E-1 Form</p>
+<div class="container">
     <header>
 
 
         <div id="headerLogo">
-            <img src="Images/San-Jose-del-Monte-Official-Seal.png" alt="San Jose Logo" />
-            <img src="Images/CysdoLogo.png" alt="CYSDO LOGO" />
+            <img src="../../assets/image/San-Jose-del-Monte-Official-Seal.png" alt="San Jose Logo" />
+            <img src="../../assets/image/CysdoLogo.png" alt="CYSDO LOGO" />
         </div>
 
         <div id="headerCenter">
-            <p>Province of Bulacan<br />
+            <p>CYSDO E-1 Form <br />
+                Province of Bulacan<br />
                 City of San Jose del Monte<br />
                 Office of the City Mayor<br />
                 CITY YOUTH AND SPORTS DEVELOPMENT OFFICE<br />
@@ -251,14 +257,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Please read the General and Documentary Requirements. Fill the required information.
             Do not leave an item blank. If item is not applicable, indicate "N/A".
         </p>
-        <p>CONTROL NUMBER: ______________</p>
+        <p><strong> CONTROL NUMBER: ______________ </strong></p>
     </div>
 
-    <main>
+    <div class="tablez">
         <table>
-            <caption>PERSONAL INFO</caption>
+            <td colspan="6" class="headerz">PERSONAL INFO</td>
             <tr>
-                <td rowspan="2">Full Name</td>
+                <th rowspan="2">Full Name</th>
                 <td colspan="3"><?php echo "$fullName"; ?></td>
                 <!-- <td></td>
                 <td></td> -->
@@ -303,12 +309,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </tr>
         </table>
         <table>
-            <caption>EDUCATIONAL BACKGROUND</caption>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+        <td colspan="6" class="headerz">EDUCATIONAL BACKGROUND</td>
             <tr>
                 <th>School Name</th>
                 <th>School Address</th>
@@ -331,13 +332,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </tr>
             <tr>
 
-                <td>Course/Strand</td>
+                <th>Course/Strand</th>
                 <th colspan="2">Current Year Level</th>
 
             </tr>
         </table>
         <table>
-            <caption>FAMILY BACKGROUND</caption>
+        <td colspan="6" class="headerz">FAMILY BACKGROUND</td>
             <tr>
                 <td></td>
                 <th>Father: <?php echo "$father" ?></th>
@@ -389,12 +390,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <th colspan="2">Total Parents Annual Gross Income: <?php echo "$familyIncome" ?></th>
                 <th colspan="2">Size of Family: <?php echo "$sizeFamily" ?></th>
                 <td><?php echo "$sibling6" ?></td>
-
-
             </tr>
-
         </table>
-    </main>
+    </div>
+</div>
 </body>
 
 </html>
