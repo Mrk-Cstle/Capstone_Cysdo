@@ -216,7 +216,7 @@ if ($result) {
 
   <div class="side-bar">
     <div>
-      <a class="sideHead nav-link text-black" role="none" aria-expanded="false"><img src="../image/CysdoLogo.png" style="height: 50px; width: 50px;" class="sideLogo"><i class="caption">CYSDO</i></a>
+      <a class="sideHead nav-link text-black" role="none" aria-expanded="false"><img src="../../assets/image/CysdoLogo.png" style="height: 50px; width: 50px;" class="sideLogo"><i class="caption">CYSDO</i></a>
     </div>
     <div class="menu">
       <div class="item"><a href="adminHome.php"><i class="fas fa-desktop"></i>Dashboard</a></div>
