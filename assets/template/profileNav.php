@@ -1,5 +1,40 @@
 <?php
 
+// Your database connection code here...
+include '../include/dbConnection.php';
+
+// Get the applicant ID from the URL
+$adminId = $_SESSION['user'];
+
+// Step 2: Construct and execute the SQL query to select the row with the specified ID
+$sql = "SELECT * FROM admin WHERE full_name = '$adminId'";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+  // Step 3: Check if the row exists
+  if (mysqli_num_rows($result) > 0) {
+    // Step 4: Fetch the row
+    $row = mysqli_fetch_assoc($result);
+
+    // Step 5: Access the values of the row
+    extract($row);
+    // ...
+
+    // Process the retrieved row as needed
+    // For example, you can display the values or perform any other operations
+
+    // Free the result set
+    mysqli_free_result($result);
+  } else {
+    echo "No row found with the specified ID.";
+  }
+} else {
+  echo "Error executing the query: " . mysqli_error($conn);
+}
+
+
+// // Close the database connection and perform any other necessary cleanup...
+// 
 ?>
 
 <html lang="en" dir="ltr">
@@ -165,7 +200,7 @@
   <div class="navBar">
     <ul class="navProfile nav nav-pills justify-content-end">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../../assets/image/1x1.jpg" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
+        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img id="profileImage" src="../../uploads/admin/<?php echo $image ?>" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="profile.php">Profile</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>

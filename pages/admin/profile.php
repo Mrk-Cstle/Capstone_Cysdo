@@ -66,15 +66,15 @@ if ($result) {
                 <div class="portlet light profileBar-portlet">
                     <div class="profile-pic">
                         <?php
-                        $signaturePicPath = "../../uploads/applicant/2x2/" . $image;
+                        $signaturePicPath = "../../uploads/admin/" . $image;
 
                         // Check if the image file exists
                         if (file_exists($signaturePicPath)) {
-                            // Display the image
-                            echo '<img src="' . $signaturePicPath . '" class="img-responsive" alt="image">';
+                            // Display the image with an id
+                            echo '<img id="profilePicImage" src="' . $signaturePicPath . '" class="img-responsive" alt="image">';
                         } else {
-                            // Display a default image or a placeholder image
-                            echo '<img src="../../uploads/applicant/2x2/No_Image_Available.jpg" class="img-responsive" alt="Default Image">';
+                            // Display a default image or a placeholder image with an id
+                            echo '<img id="profilePicImage" src="../../uploads/applicant/2x2/No_Image_Available.jpg" class="img-responsive" alt="Default Image">';
                         }
                         ?>
                     </div>
@@ -93,7 +93,11 @@ if ($result) {
                 <div class="portlet-title tabbable-line">
                     <div class="caption caption-md">
                         <span class="caption-name font-color bold text-uppercase">Application Form</span>
+
                     </div>
+
+                    <p id="response"></p>
+
                     <ul class="portletNav nav nav-tabs justify-content-end" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="person-info" data-bs-toggle="tab" data-bs-target="#personInfo" type="button" role="tab" aria-controls="p-info" aria-selected="true">Personal Information</button>
@@ -251,7 +255,7 @@ if ($result) {
                         </form>
                     </div>
                     <div class="tab-pane" id="educBg">
-                        <form class="educ-info-form" role="form" autocomplete="off">
+                        <form class="updateImageForm" role="form" autocomplete="off">
                             <div class="portletForm light bg-inverse">
                                 <div class="portlet-body form">
                                     <h4 class="form-section bold font">Account</h4>
@@ -290,7 +294,7 @@ if ($result) {
                         </form>
                     </div>
                     <div class="tab-pane" id="familyBg">
-                        <form class="educ-info-form" role="form" autocomplete="off">
+                        <form id="imageUpdateForm" class="educ-info-form" role="form" autocomplete="off" enctype="multipart/form-data">
                             <div class="portletForm light bg-inverse">
                                 <div class="portlet-body form">
                                     <h4 class="form-section bold font">Account</h4>
@@ -302,7 +306,8 @@ if ($result) {
                                                         <div class="col-md-5 col-sm-6">
                                                             <div class="form-group">
                                                                 <label class="control-label bold font-xs">Image</label>
-                                                                <input type="file" class="form-control" name="school-name" id="school-name" accept="image/jpeg">
+                                                                <input type="file" class="form-control" name="imageUpdate" id="imageUpdate" accept="image/jpeg">
+                                                                <input type="text" class="form-control" name="userid" id="userid" value="<?php echo $_SESSION['user_id']; ?> ">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -316,7 +321,7 @@ if ($result) {
                             <div class="form-actions right">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="button" style="float: right;" class="btnUpdate-educBg btn btn-success btn-sm">Update</button>
+                                        <button type="submit" style="float: right;" class="btnUpdate-educBg btn btn-success btn-sm">Update</button>
                                     </div>
                                 </div>
                             </div>
@@ -327,6 +332,46 @@ if ($result) {
             </div>
         </div>
     </section>
+
+    <!--script for image update-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#imageUpdateForm").submit(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                var formData = new FormData(this); // Create a FormData object to handle file upload
+
+                $.ajax({
+                    url: "action/updateProfile.php", // Replace with your server-side script to handle the request
+                    type: "POST",
+                    data: formData,
+                    contentType: false, // Set content type to false for FormData
+                    processData: false, // Prevent automatic data processing for FormData
+                    success: function(response) {
+                        // Handle the success response here
+                        $('#response').text(response);
+                        var image = '<?php echo $image ?>';
+                        var timestamp = new Date().getTime();
+                        var imagePath = '../../uploads/admin/' + image + '?timestamp=' + timestamp;
+
+                        // Update the src attribute of the image with the new image path
+                        $('#profilePicImage').attr('src', imagePath);
+                        $('#profileImage').attr('src', imagePath);
+
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // Handle any errors here
+                        $('#response').text(response);
+                        console.error("Error: " + textStatus, errorThrown);
+                    }
+                });
+            });
+        });
+    </script>
+
+
     <!-- di ma click nav pag nakalagay script src jquery -->
 
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
