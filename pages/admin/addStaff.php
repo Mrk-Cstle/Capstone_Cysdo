@@ -397,45 +397,119 @@ if ($_SESSION['role'] === 'admin') {
         xhttp.send();
       }
 
-      // Add this function to handle pagination and update table data
-      function loadPage(page) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
-          }
-        };
-        xhttp.open("GET", "action/addStaffList.php?page=" + page, true);
-        xhttp.send();
-      }
+// Modify the loadPage function to include the search query and page number
+function loadPage(page) {
+  var searchInput = document.getElementById("searchInput");
+  var searchQuery = searchInput.value;
 
-      // Add this event listener to handle pagination button clicks
-      document.addEventListener("click", function(e) {
-        if (e.target && e.target.classList.contains("pagination-button")) {
-          e.preventDefault();
-          var page = e.target.getAttribute("data-page");
-          loadPage(page);
-        }
-      });
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("tableData").innerHTML = this.responseText;
+      // Store the current page in localStorage
+      setCurrentPage(page);
+    }
+  };
+  xhttp.open("GET", "action/addStaffList.php?page=" + page + "&searchQuery=" + searchQuery, true);
+  xhttp.send();
+}
 
-      // Add this function to initialize pagination when the page loads
-      function initializePagination() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
-            // Initialize pagination links
-            loadPage(1);
-          }
-        };
-        xhttp.open("GET", "action/addStaffList.php", true);
-        xhttp.send();
-      }
+function refreshTable() {
+  var searchInput = document.getElementById("searchInput");
+  var searchQuery = searchInput.value;
+  var page = getCurrentPage();
+  filterTable(searchQuery);
+  loadPage(page);
+}
 
-      // Call the initializePagination function when the page loads
-      document.addEventListener("DOMContentLoaded", function() {
-        initializePagination();
-      });
+// Add this event listener to handle pagination button clicks
+document.addEventListener("click", function (e) {
+  if (e.target && e.target.classList.contains("pagination-button")) {
+    e.preventDefault();
+    var page = e.target.getAttribute("data-page");
+    loadPage(page); // Load the page
+
+    // Store the current page in localStorage
+    setCurrentPage(page);
+  }
+});
+
+// Add this function to initialize pagination when the page loads
+function initializePagination() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("tableData").innerHTML = this.responseText;
+      // Initialize pagination links
+      loadPage(1);
+    }
+  };
+  xhttp.open("GET", "action/addStaffList.php", true);
+  xhttp.send();
+}
+
+// Call the initializePagination function when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  initializePagination();
+});
+
+// Add this function to set the current page in localStorage
+function setCurrentPage(page) {
+  localStorage.setItem('currentPage', page);
+}
+
+// Add this function to get the current page from localStorage
+function getCurrentPage() {
+  return parseInt(localStorage.getItem('currentPage')) || 1; // Default to page 1 if not found
+}
+
+
+// ...
+
+// Add this function to load the current page from localStorage
+function loadCurrentPage() {
+  var currentPage = getCurrentPage();
+  loadPage(currentPage);
+}
+
+// ...
+
+// Add this event listener to handle pagination button clicks and store the current page
+document.addEventListener("click", function (e) {
+  if (e.target && e.target.classList.contains("pagination-button")) {
+    e.preventDefault();
+    var page = e.target.getAttribute("data-page");
+    loadPage(page);
+
+    // Store the current page in localStorage
+    setCurrentPage(page);
+  }
+});
+
+// Call the loadCurrentPage function to load the current page from localStorage
+loadCurrentPage();
+
+// Add this function to initialize pagination when the page loads
+function initializePagination() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("tableData").innerHTML = this.responseText;
+      // Initialize pagination links
+      loadCurrentPage(); // Load the current page from localStorage
+    }
+  };
+  xhttp.open("GET", "action/addStaffList.php", true);
+  xhttp.send();
+}
+
+// Call the initializePagination function when the page loads
+document.addEventListener("DOMContentLoaded", function() {
+  initializePagination();
+});
+
+
+      
     </script>
   </section>
 </body>
