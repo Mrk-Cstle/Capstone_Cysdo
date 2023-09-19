@@ -19,7 +19,7 @@ include 'include/session.php';
 if ($_SESSION['role'] === 'admin') {
   include '../../assets/template/profileNav.php';
 } elseif ($_SESSION['role'] === 'staff') {
-  include '../../assets/template/staffNav.php';
+  include '../../assets/template/staffNavi.php';
 }
 ?>
 
