@@ -114,13 +114,14 @@ if ($result) {
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane active" id="personInfo">
-                        <form class="profile-form" role="form" autocomplete="on">
+                        <form id="profileForm" class="profile-form" role="form" autocomplete="on">
                             <div class="portletForm light bg-inverse">
                                 <div class="portlet-body form">
                                     <h4 class="form-section bold font">Full Name</h4>
                                     <div class="row">
                                         <div class="col-md-3 col-sm-4">
                                             <div class="form-group">
+                                                <input type="hidden" class="form-control" name="userid" id="userid" value="<?php echo $_SESSION['user_id']; ?> ">
                                                 <label class="control-label bold font-xs">Last Name</label>
                                                 <input type="text" class="form-control" name="l-name" id="l-name" value="<?php echo $last_name ?> " readonly>
                                             </div>
@@ -255,7 +256,7 @@ if ($result) {
                         </form>
                     </div>
                     <div class="tab-pane" id="educBg">
-                        <form class="updateImageForm" role="form" autocomplete="off">
+                        <form id="updateAccount" class="updateImageForm" role="form" autocomplete="off">
                             <div class="portletForm light bg-inverse">
                                 <div class="portlet-body form">
                                     <h4 class="form-section bold font">Account</h4>
@@ -264,6 +265,7 @@ if ($result) {
                                             <div class="row">
                                                 <div class="col-md-5 col-sm-6">
                                                     <div class="form-group">
+                                                        <input type="hidden" class="form-control" name="userid" id="userid" value="<?php echo $_SESSION['user_id']; ?> ">
                                                         <label class="control-label bold font-xs">User</label>
                                                         <input type="text" class="form-control" name="user" id="user" value="<?php echo $user ?> ">
                                                     </div>
@@ -287,7 +289,7 @@ if ($result) {
                             <div class="form-actions right">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="button" style="float: right;" class="btnUpdate-educBg btn btn-success btn-sm">Update</button>
+                                        <button type="submit" style="float: right;" class="btnUpdate-educBg btn btn-success btn-sm">Update</button>
                                     </div>
                                 </div>
                             </div>
@@ -307,7 +309,7 @@ if ($result) {
                                                             <div class="form-group">
                                                                 <label class="control-label bold font-xs">Image</label>
                                                                 <input type="file" class="form-control" name="imageUpdate" id="imageUpdate" accept="image/jpeg">
-                                                                <input type="text" class="form-control" name="userid" id="userid" value="<?php echo $_SESSION['user_id']; ?> ">
+                                                                <input type="hidden" class="form-control" name="userid" id="userid" value="<?php echo $_SESSION['user_id']; ?> ">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -358,6 +360,65 @@ if ($result) {
                         // Update the src attribute of the image with the new image path
                         $('#profilePicImage').attr('src', imagePath);
                         $('#profileImage').attr('src', imagePath);
+
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // Handle any errors here
+                        $('#response').text(response);
+                        console.error("Error: " + textStatus, errorThrown);
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $("#profileForm").submit(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                var formData = new FormData(this); // Create a FormData object to handle file upload
+
+                $.ajax({
+                    url: "action/updateProfilePersonalInfo.php", // Replace with your server-side script to handle the request
+                    type: "POST",
+                    data: formData,
+                    contentType: false, // Set content type to false for FormData
+                    processData: false, // Prevent automatic data processing for FormData
+                    success: function(response) {
+                        // Handle the success response here
+                        $('#response').text(response);
+
+
+
+
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // Handle any errors here
+                        $('#response').text(response);
+                        console.error("Error: " + textStatus, errorThrown);
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $("#updateAccount").submit(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                var formData = new FormData(this); // Create a FormData object to handle file upload
+
+                $.ajax({
+                    url: "action/updateProfileAccount.php", // Replace with your server-side script to handle the request
+                    type: "POST",
+                    data: formData,
+                    contentType: false, // Set content type to false for FormData
+                    processData: false, // Prevent automatic data processing for FormData
+                    success: function(response) {
+                        // Handle the success response here
+                        $('#response').text(response);
+
+
+
+
 
 
                     },
