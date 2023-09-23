@@ -71,16 +71,18 @@ if ($_SESSION['role'] === 'admin') {
             <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script>
-   // Function to get the current page from local storage
-   function getCurrentPage() {
-        var currentPage = localStorage.getItem('currentPage');
-        return currentPage ? parseInt(currentPage) : 1;
-    }
+    var myNamespace = 'appDen';
 
-    // Function to save the current page to local storage
-    function setCurrentPage(page) {
-        localStorage.setItem('currentPage', page);
-    }
+// Function to get the current page from session storage
+function getCurrentPage() {
+    var currentPage = sessionStorage.getItem(myNamespace + 'currentPage');
+    return currentPage ? parseInt(currentPage) : 1;
+}
+
+// Function to save the current page to session storage
+function setCurrentPage(page) {
+    sessionStorage.setItem(myNamespace + 'currentPage', page);
+}
 
     var currentPage = getCurrentPage(); // Get the current page from local storage
 

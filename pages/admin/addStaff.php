@@ -453,18 +453,19 @@ document.addEventListener("DOMContentLoaded", function () {
   initializePagination();
 });
 
-// Add this function to set the current page in localStorage
-function setCurrentPage(page) {
-  localStorage.setItem('currentPage', page);
-}
+var myNamespace = 'addStaff';
 
-// Add this function to get the current page from localStorage
+// Function to get the current page from session storage
 function getCurrentPage() {
-  return parseInt(localStorage.getItem('currentPage')) || 1; // Default to page 1 if not found
+    var currentPage = sessionStorage.getItem(myNamespace + 'currentPage');
+    return currentPage ? parseInt(currentPage) : 1;
 }
 
+// Function to save the current page to session storage
+function setCurrentPage(page) {
+    sessionStorage.setItem(myNamespace + 'currentPage', page);
+}
 
-// ...
 
 // Add this function to load the current page from localStorage
 function loadCurrentPage() {
@@ -472,7 +473,6 @@ function loadCurrentPage() {
   loadPage(currentPage);
 }
 
-// ...
 
 // Add this event listener to handle pagination button clicks and store the current page
 document.addEventListener("click", function (e) {
