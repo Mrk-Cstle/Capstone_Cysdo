@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include '../../include/dbConnection.php';
 if (isset($_POST['id']) && isset($_POST['action'])) {
     $applicantId = $_POST['id'];
@@ -22,16 +22,18 @@ if (isset($_POST['id']) && isset($_POST['action'])) {
 
             // Free the result set
             mysqli_free_result($result);
+            $user =
+                $_SESSION['user'];
         }
 
         if ($_POST["action"] == "approve") {
-            approve($contactNum1, $fullName);
+            approve($contactNum1, $fullName, $user);
         }
         // else if ($_POST["action"] == "edit") {
         //     edit();
         // } 
         else if ($_POST["action"] == "decline") {
-            decline($contactNum1, $fullName);
+            decline($contactNum1, $fullName, $user);
         } else {
             echo "error";
         }
@@ -45,7 +47,7 @@ if (isset($_POST['id']) && isset($_POST['action'])) {
     }
 }
 
-function approve($contactNum1, $fullName)
+function approve($contactNum1, $fullName, $user)
 {
     global $conn;
 
@@ -59,13 +61,13 @@ function approve($contactNum1, $fullName)
     if ($result) {
 
         echo "Scholar Approve";
-        send_sms("You Have been accpeted, " .  $fullName, $contactNum1);
+        send_sms("We are pleased to inform you " . $fullName . " that your CYSDO Scholarship application has been accepted. You will receive further details regarding the examination date in the near future. Please stay updated by regularly checking of facebook page and our official website. Congratulations on your selection, and feel free to reach out if you have any questions.  " . "\n\n-CYSDO CSJDM-", $contactNum1);
     } else {
         echo "Insert Failed: " . mysqli_error($conn);
     }
 }
 
-function decline($contactNum1, $fullName)
+function decline($contactNum1, $fullName, $user)
 {
     global $conn;
 
@@ -78,7 +80,7 @@ function decline($contactNum1, $fullName)
         $insertQuery = "INSERT INTO registration_approval (application_id,action_type ) VALUES ('$applicantId', '$action')";
         $result = mysqli_query($conn, $insertQuery);
         if ($result) {
-            send_sms("You Have been accpeted, " .  $fullName, $contactNum1);
+            send_sms("We regret to inform you " . $fullName . " that your CYSDO Scholarship application has not been accepted. We appreciate your interest in the scholarship program and encourage you to consider other opportunities in the future. If you have any questions or require feedback, please do not hesitate to reach out.\n\n-CYSDO CSJDM-", $contactNum1);
             echo "Scholar Declined";
         } else {
             echo "Insert Failed: " . mysqli_error($conn);
@@ -96,7 +98,7 @@ function send_sms($message, $contactNum1)
     // API key and other parameters
     $params = [
         "key" => "57048235d40a3b216bd64e2e6efed7cf380a39f9",
-        "phone" => "09928957901",
+        "phone" => $contactNum1,
         "message" => $message,
         "device" => "505",
         "sim" => "1",
@@ -106,9 +108,9 @@ function send_sms($message, $contactNum1)
     // Send the SMS
     $response = file_get_contents($url . '?' . http_build_query($params));
 
-    if ($response === "OK") {
-        echo "SMS sent successfully!";
-    } else {
-        echo "Failed to send SMS. Response: " . $response;
-    }
+    // if ($response === "OK") {
+    //     echo "SMS sent successfully!";
+    // } else {
+    //     echo "Failed to send SMS. Response: " . $response;
+    // }
 }
