@@ -269,6 +269,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 14;
         }
 
+        .paalala {
+            word-spacing: 0;
+            line-height: 1;
+            justify-content: start;
+            text-align: start;
+        }
+
         @media print {
             #headerCenter p {
             font-size: 10px;
@@ -509,7 +516,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       <table>
       <div class="row">
-        <td rowspan="6" colspan="6">(Student's Copy)<br/><p class="text-danger"> MGA PAALALA: </p><br/><p>1. Filipino, may asawa o wala at kailangang naninirahan sa Lungsod ng San Jose Del Monte sa loob ng tatlo (3) o mahigit pang taon, nakapagtapos ng sekondarya sa alin mang paaralan sa Lungsod, pribado man o pampubliko. Kung hindi naman nakapagtapos sa Lungsod ay kinakailangang residente nito sa nakalipas na limang (5) taon. <br/></p>
+        <td class="paalala" rowspan="6" colspan="6">(Student's Copy)<br/><p class="text-danger"> MGA PAALALA: </p><br/><p>1. Filipino, may asawa o wala at kailangang naninirahan sa Lungsod ng San Jose Del Monte sa loob ng tatlo (3) o mahigit pang taon, nakapagtapos ng sekondarya sa alin mang paaralan sa Lungsod, pribado man o pampubliko. Kung hindi naman nakapagtapos sa Lungsod ay kinakailangang residente nito sa nakalipas na limang (5) taon. <br/></p>
             <p>2. Hindi lalagpas ng 30 taon ang edad sa araw ng paghahain ng aplikasyon.<br/><p>
             <p>3. Hindi bababa sa 76% (passing grade) ang general average sa huling taon sa Senior High School.<br/></p>
             <p>4. Kailangang mapanatili ang 15 enrolled units lakip ang Curriculum or SYLLABUS per semester maliban sa mga magtatapos o graduating students.<br/></p>
