@@ -40,6 +40,7 @@ if ($_SESSION['role'] === 'admin') {
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
                     <button id="refreshButton" class="btn btn-outline-secondary" type="button">Refresh</button>
+                    <button id="deleteAllButton" class="btn btn-danger" type="button">Delete All</button>
                     <p id="response"></p>
                 </form>
             </nav>
@@ -161,6 +162,65 @@ function setCurrentPage(page) {
             refreshList();
         });
     });
+
+    document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('deleteApplicant')) {
+        event.preventDefault();
+        var applicantId = event.target.getAttribute('data-applicant-id');
+        deleteApplicant(applicantId);
+    }
+});
+
+function deleteApplicant(applicantId) {
+    var confirmation = confirm('Are you sure you want to delete this applicant?');
+    if (confirmation) {
+        // Perform the delete operation here, for example, using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    // Refresh the table after successful deletion
+                    refreshList();
+                    // Show a success message (you can customize this)
+                    alert(xhr.responseText);
+                } else {
+                    // Handle errors, e.g., show an error message
+                    alert("Error deleting applicant: " + xhr.status);
+                }
+            }
+        };
+
+        xhr.open("GET", "action/deleteApplicant.php?applicant_id=" + applicantId, true);
+        xhr.send();
+    }
+}
+
+
+document.getElementById('deleteAllButton').addEventListener('click', function () {
+    var confirmation = confirm('Are you sure you want to delete all applicants? This action cannot be undone.');
+    if (confirmation) {
+        // Perform the delete all operation here, for example, using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    // Refresh the table after successful deletion
+                    refreshList();
+                    // Show a success message (you can customize this)
+                    alert(xhr.responseText);
+                } else {
+                    // Handle errors, e.g., show an error message
+                    alert("Error deleting all applicants: " + xhr.status);
+                }
+            }
+        };
+
+        xhr.open("GET", "action/deleteAllApplicants.php", true); // Create a PHP script to handle the delete all operation
+        xhr.send();
+    }
+});
+
+
             </script>
     </section>
 </body>

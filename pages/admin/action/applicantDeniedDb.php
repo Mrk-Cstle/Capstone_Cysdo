@@ -46,6 +46,7 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['middleName']) . '</td>';
         $tableHTML .= '<td>';
         $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">View</a>';
+        $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" data-applicant-id="' . htmlspecialchars($row['applicant_id']) . '">Delete</button>';
         $tableHTML .= '</td>';
         $tableHTML .= '</tr>';
     }
