@@ -33,10 +33,8 @@ if ($_SESSION['role'] === 'admin') {
 <body>
 
     <section id="content" class="home-section">
-        <h1>Approved Applicant List</h1>
+        <h1>Examiners List</h1>
         <nav class="navbar navbar-light bg-light d-flex">
-            <a class="btn btn-outline-success" href="applicantList.php">All Applicant</a>
-            <a class="btn btn-outline-success" href="applicantDenied.php">Denied Applicant</a>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
@@ -49,14 +47,14 @@ if ($_SESSION['role'] === 'admin') {
             <table class="table table-bordered">
                 <thead>
                     <tr>
+
                         <th scope="col">Image</th>
                         <th scope="col">Applicant Id</th>
-
                         <th scope="col">Full Name</th>
                         <th scope="col">Contact 1</th>
                         <th scope="col">Contact 2</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Exam Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -99,7 +97,7 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     }
                 };
-                xhr.open('GET', 'action/applicantApproveDb.php?page=' + page, true);
+                xhr.open('GET', 'action/applicantExaminerDb.php?page=' + page, true);
                 xhr.send();
             }
 
@@ -115,7 +113,7 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     }
                 };
-                xhr.open('GET', 'action/applicantApproveDb.php?search=' + searchValue + '&page=' + page, true);
+                xhr.open('GET', 'action/applicantExaminerDb.php?search=' + searchValue + '&page=' + page, true);
                 xhr.send();
             }
 
@@ -128,7 +126,7 @@ if ($_SESSION['role'] === 'admin') {
                     }
                 };
 
-                xhr.open("GET", "action/applicantApproveDb.php?page=" + currentPage, true); // Pass the current page
+                xhr.open("GET", "action/applicantExaminerDb.php?page=" + currentPage, true); // Pass the current page
                 xhr.send();
             }
 

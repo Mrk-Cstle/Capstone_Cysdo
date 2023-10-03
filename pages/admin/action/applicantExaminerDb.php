@@ -1,4 +1,5 @@
 <?php
+include '../../include/selectDb.php';
 include '../../include/dbConnection.php';
 
 $pageSize = 5; // Number of rows to display per page
@@ -6,18 +7,23 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1; // Get current page nu
 
 $offset = ($page - 1) * $pageSize; // Calculate the offset for the query
 
-// Initialize search parameters
 $searchQuery = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 $searchCondition = '';
 
 // If a search query is provided, add a WHERE clause to the query
 if (!empty($searchQuery)) {
-    $searchCondition = "WHERE fullName LIKE '%$searchQuery%' OR contactNum1 LIKE '%$searchQuery%' OR contactNum2 LIKE '%$searchQuery%' OR fullAddress LIKE '%$searchQuery%'";
+    $searchCondition = "AND (fullName LIKE '%$searchQuery%' OR contactNum1 LIKE '%$searchQuery%' OR contactNum2 LIKE '%$searchQuery%' OR fullAddress LIKE '%$searchQuery%')";
 }
 
-// Construct the query to fetch data with or without search
-$query = "SELECT * FROM registration $searchCondition ORDER BY applicant_id ASC LIMIT $offset, $pageSize";
+$query =
+    "SELECT registration_approval.*, registration.*
+    FROM registration_approval
+    JOIN registration ON registration.applicant_id = registration_approval.application_id
+    WHERE registration_approval.action_type = 'approve'
+    $searchCondition
+    ORDER BY registration.applicant_id ASC LIMIT $offset, $pageSize";
 
+// Execute the SQL query for data retrieval
 $result = mysqli_query($conn, $query);
 
 $tableHTML = '';
@@ -27,15 +33,14 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '<tr>';
         $tableHTML .= '<td>' . '<img src="../../uploads/applicant/2x2/' . $row['pic2x2']  . '"alt="image"style="height: 80px; width: 80px;"><?></td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['applicant_id']) . '</td>';
+
         $tableHTML .= '<td>' . htmlspecialchars($row['fullName']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum1']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum2']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['fullAddress']) . '</td>';
         $tableHTML .= '<td>';
-        if ($row['status'] === 'done') {
-            $tableHTML .= '<span class="badge bg-success">Done</span>';
-        } else {
-            $tableHTML .= '<span class="badge bg-danger">For Review</span>';
+        if ($row['action_type'] === 'approve') {
+            $tableHTML .= '<a class="resetPassword btn btn-sm btn-success" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">Pass</a>' . ' | ' . '<a class="resetPassword btn btn-sm btn-danger" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '"> Failed</a>';
         }
         $tableHTML .= '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['lastName']) . '</td>';
@@ -47,8 +52,17 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '</tr>';
     }
 
-    // Calculate total number of rows based on the search
-    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM registration $searchCondition"));
+    // Calculate total number of rows from the registration_approval table where action_type is 'approve'
+    $countQuery = "SELECT COUNT(*) AS totalRows FROM registration_approval WHERE action_type = 'approve'";
+    $countResult = mysqli_query($conn, $countQuery);
+    if ($countResult) {
+        $totalRowsData = mysqli_fetch_assoc($countResult);
+        $totalRows = $totalRowsData['totalRows'];
+    } else {
+        // Handle the case where the query was not successful
+        echo "Error executing the SQL query: " . mysqli_error($conn);
+        exit();
+    }
 
     // Calculate total number of pages
     $totalPages = ceil($totalRows / $pageSize);

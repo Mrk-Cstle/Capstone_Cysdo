@@ -230,9 +230,9 @@ if ($result) {
       <div class="item">
         <a class="sub-btn"><i class="bi bi-person-lines-fill"></i></i>Manage Applicants<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
-          <a href="applicantApprove.php" class="sub-item">List of Approve</a>
-          <a href="applicantDenied.php" class="sub-item">List of Denied</a>
-          <a href="applicantList.php" class="sub-item">List of Applicants</a>
+
+          <a href="applicantList.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>List of Applicants</a>
+          <a href="applicantExaminers.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>List of Examiners</a>
         </div>
       </div>
       <div class="item"><a href="postUpdate.php"><i class="bi bi-file-earmark-ppt-fill"></i></i>Manage Post</a></div>
