@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         td {
             border-collapse: collapse;
             border: 1px solid black;
-            padding: 12px;
+            padding: 6px;
             text-align: center;
         }
 
@@ -187,16 +187,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 page-break-before: always;
             }
             body{
-                font-size: 10px;
+                font-size: 12px;
                 font-family: Arial, sans-serif;
             }
 
             td, tr, th {
-                font-size: 10px;
+                font-size: 12px;
             }
 
             .headerz {
-                font-size: 10px;
+                font-size: 12px;
             }
 
             #instruction {
@@ -236,7 +236,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 100px;
             height: 100px;
             align-items: start;
-            margin-top: 5px;
+            margin-right: 30px;
+            margin-top: 15px;
         }
 
         #picture2x2 img {
@@ -258,6 +259,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         #headerCenter p {
             font-size: 14px;
+            margin-right: 30px;
         }
 
         #instruction {
@@ -271,20 +273,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         .paalala {
             word-spacing: 0;
-            line-height: 1;
+            line-height: 1.5;
             justify-content: start;
             text-align: start;
         }
 
         @media print {
             #headerCenter p {
-            font-size: 10px;
+            font-size: 12px;
             }
 
             #instruction {
                 margin: 0;
                 padding: 0;
-                font-size: 10px;
+                font-size: 12px;
             }
 
             #picture2x2 img {
@@ -495,7 +497,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <td><?php echo "$sibling6" ?></td>
             </tr>
       </div>
-      <div class="row">
+      <div class="row border-0">
       <td colspan="6" class="headerz">I/We hereby certify that the information above are true and correct.</td>
             <tr>
                 <td class="signature" rowspan="4" colspan="2">____________________________<br/>Applicant's Signature over Printed Name  </td>
@@ -509,13 +511,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <td colspan="6" class="headerz">(Note: Fully accomplished form must be submitted to CYSDO.)</td>
             </tr>
             <tr>
-                <td colspan="6">_______________________________________________________________________________________________________________________________________ <br/>
+                <td colspan="6">___________________________________________________________________________________________________________________________ <br/>
                 Cut Here
                 </td>
             </tr>
       </div>
       <table>
-      <div class="row">
+      <div class="row border-0">
         <td class="paalala" rowspan="6" colspan="6">(Student's Copy)<br/><p class="text-danger"> MGA PAALALA: </p><br/><p>1. Filipino, may asawa o wala at kailangang naninirahan sa Lungsod ng San Jose Del Monte sa loob ng tatlo (3) o mahigit pang taon, nakapagtapos ng sekondarya sa alin mang paaralan sa Lungsod, pribado man o pampubliko. Kung hindi naman nakapagtapos sa Lungsod ay kinakailangang residente nito sa nakalipas na limang (5) taon. <br/></p>
             <p>2. Hindi lalagpas ng 30 taon ang edad sa araw ng paghahain ng aplikasyon.<br/><p>
             <p>3. Hindi bababa sa 76% (passing grade) ang general average sa huling taon sa Senior High School.<br/></p>
@@ -531,7 +533,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       </table>
       <table>
-      <div class="row">
+      <div class="row border-0">
+        <tr>
+            <td colspan="6">___________________________________________________________________________________________________________________________ <br/>
+            Cut Here
+            </td>
+        </tr>
         <th colspan="2" rowspan="3"><img src="../../assets/image/1x1.jpg" style="width: 200px; height: auto;"></th>
         <td colspan="3"><img src="../../assets/image/examStub.png" style="width: 400px; height: auto; space-between: none;"></td>
         
