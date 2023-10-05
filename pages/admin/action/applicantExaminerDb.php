@@ -39,9 +39,28 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum2']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['fullAddress']) . '</td>';
         $tableHTML .= '<td>';
-        if ($row['action_type'] === 'approve') {
-            $tableHTML .= '<a class="resetPassword btn btn-sm btn-success" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">Pass</a>' . ' | ' . '<a class="resetPassword btn btn-sm btn-danger" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '"> Failed</a>';
+        if ($row['exam_status'] === 'done') {
+            $id = $row['action_id'];
+            $querystatus = "SELECT * FROM examination WHERE  action_id = $id";
+            $statusresult = mysqli_query($conn, $querystatus);
+
+            if ($statusresult) {
+                // Check if the query was successful
+                $examinationData = mysqli_fetch_assoc($statusresult);
+                if ($examinationData) {
+                    // Assuming you have a 'result' column in the 'examination' table
+                    $resultValue = $examinationData['result'];
+                    if ($resultValue == "pass") {
+                        $tableHTML .= '<span class="badge bg-success">' . $resultValue . '</span>';
+                    } else {
+                        $tableHTML .= '<span class="badge bg-danger">' . $resultValue . '</span>';
+                    }
+                }
+            }
+        } else {
+            $tableHTML .= '<a class="resetPassword btn btn-sm btn-success" onclick="sendAction(\'' . $row['action_id'] . '\', \'pass\')">' . 'Pass</a>' . ' | ' . '<a class="resetPassword btn btn-sm btn-danger" onclick="sendAction(\'' . $row['action_id'] . '\', \'failed\')">' . ' Failed</a>';
         }
+
         $tableHTML .= '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['lastName']) . '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['firstName']) . '</td>';
