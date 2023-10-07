@@ -20,15 +20,15 @@
 }
 
 body {
-  padding: 5%;
+  padding: 2%;
   background-color: #F5F5F5;
 }
 
 .container {
-  padding:0;
+  padding: 0;
   background-color: #FFF; 
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  height: 700px;
+  height: 800px;
 }
 
 .textAlign {
@@ -41,7 +41,7 @@ body {
 
 .discussions {
   width: 35%;
-  height: 700px;
+  height: 800px;
   box-shadow: 0px 8px 10px rgba(0,0,0,0.20);
   overflow: hidden;
   background-color: #FF5F9E;
@@ -274,21 +274,12 @@ body {
   color:#fff;
   background-color: #4f6ebd;
   position: absolute;
-  right: 20px;
+  right: 40px;
   padding: 12px 12px 12px 12px;
   border-radius: 50px;
   font-size: 14pt;
 }
 
-.chat .footer-chat .send2 {
-  color:#fff;
-  background-color: #4f6ebd;
-  position: absolute;
-  padding: 12px 12px 12px 12px;
-  border-radius: 50px;
-  right: 80px;
-  font-size: 14pt;
-}
 
 .chat .footer-chat .name {
   margin: 0 0 0 20px;
@@ -382,23 +373,14 @@ body {
     color:#fff;
     background-color: #4f6ebd;
     position: absolute;
-    right: 1px;
+    right: 4px;
     padding: 12px 12px 12px 12px;
     border-radius: 50px;
     font-size: 12pt;
   }
-
-  .chat .footer-chat .send2 {
-    color:#fff;
-    background-color: #4f6ebd;
-    position: absolute;
-    padding: 12px 12px 12px 12px;
-    border-radius: 50px;
-    right: 45px;
-    font-size: 12pt;
-  }
+  
   .write-message {
-    width: 50%;
+    width: 70%;
     margin-left: 0;
     padding: 10px;
     font-size: 14px;
@@ -425,13 +407,29 @@ body {
     font-size: 20px;
   }
 }
+/* Add styles for sent messages */
+/* Style for sent messages */
+.chat .messages-chat .message.sent {
+  justify-content: flex-end; /* Align sent messages to the right */
+  text-align: right; /* Align text in sent messages to the right */
+  margin-left: auto; /* Push sent messages to the right */
+  color: #fff; /* White text for sent messages */
+}
+
+/* Style for received messages */
+.chat .messages-chat .message.received {
+  justify-content: flex-start; /* Align received messages to the left */
+  text-align: left; /* Align text in received messages to the left */
+  margin-right: auto; /* Push received messages to the left */
+  color: #000; /* Black text for received messages */
+}
 
 </style>
 <body>
 <!-- partial:index.partial.html -->
 <body>
   <div class='textAlign'>
-    <p style="text-transform: capitalize;" class='bold d-block w-auto'><a href='#' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
+    <p style="text-transform: capitalize;" class='bold d-block w-auto'><a href='adminHome.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
   </div>
   <div class="container">
     <div class="row">
@@ -450,7 +448,7 @@ body {
             <p class="name font-weight-bold">Mark David</p>
             <p class="message">9 pm at the bar if possible 😳</p>
           </div>
-          <div class="timer">12 sec</div>
+          
         </div>
 
         <div class="discussion">
@@ -461,7 +459,7 @@ body {
             <p class="name font-weight-bold">Rosemarie</p>
             <p class="message">Let's meet for a coffee or something today ?</p>
           </div>
-          <div class="timer">3 min</div>
+          
         </div>
 
         <div class="discussion">
@@ -471,7 +469,7 @@ body {
             <p class="name font-weight-bold">Jeremiah</p>
             <p class="message">I've sent you the annual report</p>
           </div>
-          <div class="timer">42 min</div>
+          
         </div>
 
         <div class="discussion">
@@ -482,7 +480,7 @@ body {
             <p class="name font-weight-bold">John Martin</p>
             <p class="message">See you tomorrow ! 🙂</p>
           </div>
-          <div class="timer">2 hour</div>
+          
         </div>
 
         <div class="discussion">
@@ -492,7 +490,7 @@ body {
             <p class="name font-weight-bold">Andrei</p>
             <p class="message">What the f**k is going on ?</p>
           </div>
-          <div class="timer">1 day</div>
+          
         </div>
 
         <div class="discussion">
@@ -502,7 +500,7 @@ body {
             <p class="name font-weight-bold">Ron Russel</p>
             <p class="message">Ahahah 😂</p>
           </div>
-          <div class="timer">4 days</div>
+          
         </div>
 
         <div class="discussion">
@@ -513,7 +511,18 @@ body {
             <p class="name font-weight-bold">Paul</p>
             <p class="message">You can't see me</p>
           </div>
-          <div class="timer">1 week</div>
+          
+        </div>
+
+        <div class="discussion">
+          <div class="photo" style="background-image: 5">
+            <div class="online"></div>
+          </div>
+          <div class="desc-contact">
+            <p class="name font-weight-bold">Bris</p>
+            <p class="message">Loooooooooool</p>
+          </div>
+          
         </div>
       </section>
       <section class="chat" style="display: none;">
@@ -530,16 +539,26 @@ body {
             </div>
           </i>
         </div>
-        <div class="messages-chat">
-          <div class="message">
-              <h3>Welcome to Cysdo Chatting System</h3>
+       <div class="messages-chat">
+    <!-- Add a class "sent" to sent messages and "received" to received messages -->
+          <div class="message sent">
+            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+              <div class="online"></div>
             </div>
-        </div>
+              <p class="text">This is a sent message.</p>
+          </div>
+    <!-- Add a class "received" to received messages -->
+          <div class="message received">
+            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+              <div class="online"></div>
+            </div>
+              <p class="text">This is a received message.</p>
+          </div>
+       </div>
         <div class="footer-chat">
           <input type="text" class="write-message" id="messageInput" placeholder="Type your message here"></input>
           <input type="file" id="imageInput" accept="image/*" style="display: none;"></input>
           <i id="sendMessageButton" class="icon send1 fa fa-paper-plane-o clickable" aria-hidden="true"></i>
-          <i id="sendImageButton" class="icon send2 fa fa-image clickable" aria-hidden="true"></i>
           
         </div>
       </section>
@@ -550,48 +569,12 @@ body {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
   <script>
-  // Get a reference to the send message button and image button
-    const sendMessageButton = document.getElementById("sendMessageButton");
-    const sendImageButton = document.getElementById("sendImageButton");
+  // Get a reference to the send message button
+const sendMessageButton = document.getElementById("sendMessageButton");
+const messageInput = document.getElementById("messageInput");
 
-  // Get the input element for text message and image input
-    const messageInput = document.getElementById("messageInput");
-    const imageInput = document.getElementById("imageInput");
-
-  // Add a click event listener to the send message button
-    sendMessageButton.addEventListener("click", sendMessage);
-
-  // Add a click event listener to the send image button
-    sendImageButton.addEventListener("click", function () {
-  // Trigger the file input when the image button is clicked
-    imageInput.click();
-  });
-
-  // Add an event listener to handle the selected image
-    imageInput.addEventListener("change", function () {
-    const selectedImage = imageInput.files[0];
-
-  if (selectedImage) {
-    // Create a new image message element
-    const newImageMessage = document.createElement("div");
-    newImageMessage.className = "message";
-    newImageMessage.innerHTML = `
-      <div class="photo" style="background-image: url(${URL.createObjectURL(selectedImage)});">
-        <div class="online"></div>
-      </div>
-      <img src="${URL.createObjectURL(selectedImage)}" alt="Sent Image" class="text-only">
-    `;
-
-    // Get the messages chat container
-    const messagesChat = document.querySelector(".messages-chat");
-
-    // Append the new image message to the chat container
-    messagesChat.appendChild(newImageMessage);
-
-    // Clear the image input field
-    imageInput.value = "";
-  }
-});
+// Add a click event listener to the send message button
+sendMessageButton.addEventListener("click", sendMessage);
 
 // Add an event listener for Enter key press in the message input field
 messageInput.addEventListener("keydown", function (event) {
@@ -609,25 +592,77 @@ function sendMessage() {
 
   // Check if the message is not empty
   if (messageText.trim() !== "") {
-    // Create a new text message element
-    const newTextMessage = document.createElement("div");
-    newTextMessage.className = "message";
-    newTextMessage.innerHTML = `
-      <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-        <div class="online"></div>
-      </div>
-      <p class="text">${messageText}</p>
-    `;
+    // Create a new text message element for sent messages
+    const newTextMessage = createMessageElement(messageText, "sent");
 
     // Get the messages chat container
     const messagesChat = document.querySelector(".messages-chat");
 
     // Append the new text message to the chat container
     messagesChat.appendChild(newTextMessage);
+    
 
     // Clear the message input field
     messageInput.value = "";
+
+    // Simulate receiving a message (for testing purposes)
+    setTimeout(function () {
+      receiveMessage("This is a received message.");
+    }, 1000); // Simulate receiving a message after 1 second (you can replace this with actual received messages)
   }
+}
+
+// Function to create a message element
+function createMessageElement(messageText, messageType) {
+  // Create a new message element
+  const newMessage = document.createElement("div");
+  newMessage.className = `message ${messageType}`;
+
+  
+
+  // Create a new message content element
+  const messageContent = document.createElement("p");
+  messageContent.className = "text";
+  messageContent.textContent = messageText;
+
+  if (messageType === "sent") {
+    messageContent.style.backgroundColor = "#007bff";
+  }
+
+  if (messageType === "received") {
+    messageContent.style.backgroundColor = "#f6f6f6";
+  }
+
+  // Create a photo element (you can customize the photo for sent and received messages)
+  const photoElement = document.createElement("div");
+  photoElement.className = "photo";
+  photoElement.style.backgroundImage =
+    'url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)';
+
+  // Create an online status element (you can customize the online status)
+  const onlineStatusElement = document.createElement("div");
+  onlineStatusElement.className = "online";
+
+  // Append the photo and online status to the message element
+  photoElement.appendChild(onlineStatusElement);
+  newMessage.appendChild(photoElement);
+
+  // Append the message content to the message element
+  newMessage.appendChild(messageContent);
+
+  return newMessage;
+}
+
+// Function to receive a text message
+function receiveMessage(messageText) {
+  // Create a new text message element for received messages
+  const newReceivedMessage = createMessageElement(messageText, "received");
+
+  // Get the messages chat container
+  const messagesChat = document.querySelector(".messages-chat");
+  
+  // Append the new received message to the chat container
+  messagesChat.appendChild(newReceivedMessage);
 }
 </script>
 
@@ -697,6 +732,11 @@ function sendMessage() {
       footerChat.style.display = "none";
     }
   });
+  
+</script>
+
+<script>
+ 
 </script>
 
 </body>

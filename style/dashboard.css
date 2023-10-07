@@ -52,8 +52,6 @@ body {
     width: 100%;
     padding: 36px 24px;
     font-family: var(--poppins);
-    max-height: calc(100vh - 56px);
-    overflow-y: auto;
     padding-right: 100px;
 }
 

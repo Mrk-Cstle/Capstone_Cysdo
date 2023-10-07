@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" size="legal">
 
 <head>
     <meta charset="UTF-8">
@@ -167,11 +167,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         @media print {
             @page {
                 size: Legal;
-                margin: 5px;
+                margin: 0.3in;
             }
-
-
-
 
             body {
                 margin: 0;
@@ -534,7 +531,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <td colspan="6" class="headerz">(Note: Fully accomplished form must be submitted to CYSDO.)</td>
                 </tr>
                 <tr>
-                    <td colspan="6">___________________________________________________________________________________________________________________________ <br />
+                    <td colspan="6">____________________________________________________________________________________________________________________ <br />
                         Cut Here
                     </td>
                 </tr>
