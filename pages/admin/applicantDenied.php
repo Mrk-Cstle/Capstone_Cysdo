@@ -215,10 +215,11 @@ document.getElementById('deleteAllButton').addEventListener('click', function ()
             }
         };
 
-        xhr.open("GET", "action/deleteAllApplicants.php", true); // Create a PHP script to handle the delete all operation
+        xhr.open("GET", "action/deleteAllApplicants.php", true); // Use the correct URL for your PHP script
         xhr.send();
     }
 });
+
 
 
             </script>

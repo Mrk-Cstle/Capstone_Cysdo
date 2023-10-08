@@ -5,21 +5,40 @@ include '../../include/dbConnection.php';
 if (isset($_GET['applicant_id'])) {
     $applicantId = mysqli_real_escape_string($conn, $_GET['applicant_id']); // Sanitize the input
 
-    // Perform the delete operation on the registration_approval table
-    $deleteQuery = "DELETE FROM registration_approval WHERE application_id = '$applicantId'";
+    // Start a database transaction
+    mysqli_begin_transaction($conn);
 
-    if (mysqli_query($conn, $deleteQuery)) {
-        // Return a success response (you can customize the response as needed)
-        echo "Applicant deleted successfully.";
+    // Define the delete query for the 'registration' table
+    $deleteRegistrationQuery = "DELETE FROM registration WHERE applicant_id = '$applicantId'";
+
+    // Define the delete query for the 'registration_approval' table
+    $deleteApprovalQuery = "DELETE FROM registration_approval WHERE application_id = '$applicantId'";
+
+    $success = true;
+
+    // Execute the first delete query
+    if (!mysqli_query($conn, $deleteRegistrationQuery)) {
+        $success = false;
+    }
+
+    // Execute the second delete query
+    if (!mysqli_query($conn, $deleteApprovalQuery)) {
+        $success = false;
+    }
+
+    // Commit the transaction if both delete queries were successful, otherwise, roll back
+    if ($success) {
+        mysqli_commit($conn);
+        echo "Applicant deleted successfully from both tables.";
     } else {
-        // Return an error response if the delete operation fails
+        mysqli_rollback($conn);
         echo "Error deleting applicant: " . mysqli_error($conn);
     }
+
+    // Close the database connection
+    mysqli_close($conn);
 } else {
     // Handle the case where 'applicant_id' is not provided in the GET request
     echo "No 'applicant_id' provided in the request.";
 }
-
-// Close the database connection
-mysqli_close($conn);
 ?>
