@@ -1,5 +1,4 @@
 <?php
-include '../../include/selectDb.php';
 include '../../include/dbConnection.php';
 
 $pageSize = 5; // Number of rows to display per page
@@ -50,8 +49,10 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '</tr>';
     }
 
-    // Calculate total number of rows from the registration_approval table where action_type is 'approve'
-    $countQuery = "SELECT COUNT(*) AS totalRows FROM registration_approval WHERE action_type = 'approve'";
+    // Calculate the total number of rows based on the search condition
+    $countQuery = "SELECT COUNT(*) AS totalRows FROM registration_approval
+                   JOIN registration ON registration.applicant_id = registration_approval.application_id
+                   WHERE registration_approval.action_type = 'approve' $searchCondition";
     $countResult = mysqli_query($conn, $countQuery);
     if ($countResult) {
         $totalRowsData = mysqli_fetch_assoc($countResult);

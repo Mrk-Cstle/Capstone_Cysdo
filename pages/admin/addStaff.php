@@ -53,7 +53,9 @@ if ($_SESSION['role'] === 'admin') {
       </table>
 
     </div>
-    <div id="paginationContainer" class="pagination-container"></div>
+            <div id="paginationButtons">
+                <!-- Pagination buttons will be dynamically populated here -->
+            </div>
 
     <div class="overlay" id="btnAdd">
       <div class="wrapper">
@@ -357,11 +359,11 @@ if ($_SESSION['role'] === 'admin') {
       loadDoc();
 
 
-      function filterTable(searchQuery) {
-        var rows = document.querySelectorAll("#tableData tr");
-        searchQuery = searchQuery.toLowerCase();
+function filterTable(searchQuery) {
+  var rows = document.querySelectorAll("#tableData tr");
+  searchQuery = searchQuery.toLowerCase();
 
-        rows.forEach(function(row) {
+  rows.forEach(function(row) {
           var fullName = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
           if (fullName.includes(searchQuery)) {
             row.style.display = "table-row";
@@ -369,17 +371,22 @@ if ($_SESSION['role'] === 'admin') {
             row.style.display = "none";
           }
         });
-      }
 
-      document.addEventListener("DOMContentLoaded", function() {
-        var searchForm = document.getElementById("searchForm");
-        searchForm.addEventListener("submit", function(event) {
-          event.preventDefault();
-          var searchInput = document.getElementById("searchInput");
-          var searchQuery = searchInput.value;
-          filterTable(searchQuery);
-        });
-      });
+  // Call loadPage with the search query
+  loadPage(1);
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var searchForm = document.getElementById("searchForm");
+  searchForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    var searchInput = document.getElementById("searchInput");
+    var searchQuery = searchInput.value;
+    filterTable(searchQuery);
+  });
+});
+
 
       document.getElementById("refreshButton").addEventListener("click", function() {
         refreshList(); // Call the refreshList() function to refresh the content
@@ -422,7 +429,6 @@ function refreshTable() {
   loadPage(page);
 }
 
-// Add this event listener to handle pagination button clicks
 document.addEventListener("click", function (e) {
   if (e.target && e.target.classList.contains("pagination-button")) {
     e.preventDefault();
@@ -433,6 +439,7 @@ document.addEventListener("click", function (e) {
     setCurrentPage(page);
   }
 });
+
 
 // Add this function to initialize pagination when the page loads
 function initializePagination() {
