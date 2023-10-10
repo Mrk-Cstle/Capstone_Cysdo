@@ -40,16 +40,31 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum1']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum2']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['fullAddress']) . '</td>';
+
         $tableHTML .= '<td>';
         if ($row['result'] === 'pass') {
             $tableHTML .= '<span class="badge bg-success">' . $row['result'] . '</span>';
+        }
+        $tableHTML .= '</td>';
+        $tableHTML .= '<td>';
+        if ($row['requirements_status'] == null) {
+            $tableHTML .= '<span class="badge bg-success">Pending Requirements</span>';
+        } else if ($row['requirements_status'] === 'Approve') {
+            $tableHTML .= '<span class="badge bg-success">' . $row['requirements_status'] . '</span>';
+        } else {
+            $tableHTML .= '<span class="badge bg-danger">' . $row['requirements_status'] . '</span>';
         }
         $tableHTML .= '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['lastName']) . '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['firstName']) . '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['middleName']) . '</td>';
         $tableHTML .= '<td>';
-        $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">View</a>';
+        if ($row['requirements_status'] == null) {
+            $tableHTML .=   '<a class="resetPassword btn btn-sm btn-success" onclick="sendAction(\'' . $row['examination_id'] . '\', \'approve\')">' . ' Approve to Scholar</a>' . ' || ' . '<a class="resetPassword btn btn-sm btn-danger" onclick="sendAction(\'' . $row['examination_id'] . '\', \'denied\')">' . ' Failed  Requirements</a>' . ' || ' .  '<a class="resetPassword btn btn-sm btn-dark" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">View Applicant Detail</a>';
+        } else {
+            $tableHTML .=   '<a class="resetPassword btn btn-sm btn-dark" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">View Applicant Detail</a>';
+        }
+
         $tableHTML .= '</td>';
         $tableHTML .= '</tr>';
     }

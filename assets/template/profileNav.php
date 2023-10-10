@@ -228,6 +228,13 @@ if ($result) {
         </div>
       </div>
       <div class="item">
+        <a class="sub-btn"><i class="fas fa-table"></i>Manage Scholar<i class="fas fa-angle-right dropdown"></i></a>
+        <div class="sub-menu">
+          <a href="scholar.php" class="sub-item">Scholar List</a>
+
+        </div>
+      </div>
+      <div class="item">
         <a class="sub-btn"><i class="bi bi-person-lines-fill"></i></i>Manage Applicants<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
 
