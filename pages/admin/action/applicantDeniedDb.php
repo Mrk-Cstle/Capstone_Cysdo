@@ -1,5 +1,4 @@
 <?php
-include '../../include/selectDb.php';
 include '../../include/dbConnection.php';
 
 $pageSize = 5; // Number of rows to display per page
@@ -47,12 +46,15 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['middleName']) . '</td>';
         $tableHTML .= '<td>';
         $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">View</a>';
+        $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" data-applicant-id="' . htmlspecialchars($row['applicant_id']) . '">Delete</button>';
         $tableHTML .= '</td>';
         $tableHTML .= '</tr>';
     }
 
-    // Calculate total number of rows from the registration_approval table where action_type is 'decline'
-    $countQuery = "SELECT COUNT(*) AS totalRows FROM registration_approval WHERE action_type = 'decline'";
+    // Calculate the total number of rows based on the search condition
+    $countQuery = "SELECT COUNT(*) AS totalRows FROM registration_approval
+                   JOIN registration ON registration.applicant_id = registration_approval.application_id
+                   WHERE registration_approval.action_type = 'decline' $searchCondition";
     $countResult = mysqli_query($conn, $countQuery);
     if ($countResult) {
         $totalRowsData = mysqli_fetch_assoc($countResult);

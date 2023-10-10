@@ -23,7 +23,7 @@ include 'include/session.php';
 if ($_SESSION['role'] === 'admin') {
     include '../../assets/template/profileNav.php';
 } elseif ($_SESSION['role'] === 'staff') {
-    include '../../assets/template/staffNavi.php';
+    include '../../assets/template/staffNav.php';
 }
 ?>
 
@@ -32,10 +32,7 @@ if ($_SESSION['role'] === 'admin') {
 
 <body>
     <section id="content" class="home-section">
-        <h1>Applicant List</h1>
         <nav class="navbar navbar-light bg-light d-flex">
-            <a class="btn btn-outline-success" href="applicantApprove.php">Approve Applicant</a>
-            <a class="btn btn-outline-success" href="applicantDenied.php">Denied Applicant</a>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
@@ -49,7 +46,6 @@ if ($_SESSION['role'] === 'admin') {
                 <thead>
                     <tr>
                         <th scope="col">Image</th>
-                        <th scope="col">Applicant Id</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Contact 1</th>
                         <th scope="col">Contact 2</th>
@@ -72,95 +68,97 @@ if ($_SESSION['role'] === 'admin') {
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            // Function to get the current page from local storage
-            function getCurrentPage() {
-                var currentPage = localStorage.getItem('currentPage');
-                return currentPage ? parseInt(currentPage) : 1;
+    var myNamespace = 'appList';
+
+// Function to get the current page from session storage
+function getCurrentPage() {
+    var currentPage = sessionStorage.getItem(myNamespace + 'currentPage');
+    return currentPage ? parseInt(currentPage) : 1;
+}
+
+// Function to save the current page to session storage
+function setCurrentPage(page) {
+    sessionStorage.setItem(myNamespace + 'currentPage', page);
+}
+
+    var currentPage = getCurrentPage(); // Get the current page from local storage
+
+    function loadTableData(page) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    document.getElementById('tableData').innerHTML = xhr.responseText;
+                    setCurrentPage(page); // Save the current page to local storage
+                } else {
+                    console.error('Error:', xhr.status);
+                }
             }
+        };
+        xhr.open('GET', 'action/getApplicant.php?page=' + page, true);
+        xhr.send();
+    }
 
-            // Function to save the current page to local storage
-            function setCurrentPage(page) {
-                localStorage.setItem('currentPage', page);
+    function searchTableData(searchValue, page) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    document.getElementById('tableData').innerHTML = xhr.responseText;
+                    setCurrentPage(page); // Save the current page to local storage
+                } else {
+                    console.error('Error:', xhr.status);
+                }
             }
+        };
+        xhr.open('GET', 'action/getApplicant.php?search=' + searchValue + '&page=' + page, true);
+        xhr.send();
+    }
 
-            var currentPage = getCurrentPage(); // Get the current page from local storage
+    function refreshList() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById("tableData").innerHTML = xhr.responseText;
+                setCurrentPage(currentPage); // Save the current page to local storage
+            }
+        };
 
-            function loadTableData(page) {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4) {
-                        if (xhr.status === 200) {
-                            document.getElementById('tableData').innerHTML = xhr.responseText;
-                            setCurrentPage(page); // Save the current page to local storage
-                        } else {
-                            console.error('Error:', xhr.status);
-                        }
+        xhr.open("GET", "action/getApplicant.php?page=" + currentPage, true); // Pass the current page
+        xhr.send();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        loadTableData(currentPage);
+
+        document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('pagination-button')) {
+                event.preventDefault();
+                var page = event.target.dataset.page;
+                if (page !== currentPage) {
+                    if (document.getElementById('searchInput').value.trim() !== '') {
+                        // If search is active, use the searchTableData function
+                        searchTableData(document.getElementById('searchInput').value.trim(), page);
+                    } else {
+                        loadTableData(page);
                     }
-                };
-                xhr.open('GET', 'action/getApplicant.php?page=' + page, true);
-                xhr.send();
+                    currentPage = page;
+                }
             }
+        });
 
-            function searchTableData(searchValue, page) {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4) {
-                        if (xhr.status === 200) {
-                            document.getElementById('tableData').innerHTML = xhr.responseText;
-                            setCurrentPage(page); // Save the current page to local storage
-                        } else {
-                            console.error('Error:', xhr.status);
-                        }
-                    }
-                };
-                xhr.open('GET', 'action/getApplicant.php?search=' + searchValue + '&page=' + page, true);
-                xhr.send();
-            }
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var searchInput = document.getElementById("searchInput");
+            var searchQuery = searchInput.value.trim();
+            searchTableData(searchQuery, 1); // Reset to page 1 when performing a search
+        });
 
-            function refreshList() {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById("tableData").innerHTML = xhr.responseText;
-                        setCurrentPage(currentPage); // Save the current page to local storage
-                    }
-                };
-
-                xhr.open("GET", "action/getApplicant.php?page=" + currentPage, true); // Pass the current page
-                xhr.send();
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-                loadTableData(currentPage);
-
-                document.addEventListener('click', function(event) {
-                    if (event.target.classList.contains('pagination-button')) {
-                        event.preventDefault();
-                        var page = event.target.dataset.page;
-                        if (page !== currentPage) {
-                            if (document.getElementById('searchInput').value.trim() !== '') {
-                                // If search is active, use the searchTableData function
-                                searchTableData(document.getElementById('searchInput').value.trim(), page);
-                            } else {
-                                loadTableData(page);
-                            }
-                            currentPage = page;
-                        }
-                    }
-                });
-
-                document.getElementById('searchForm').addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    var searchInput = document.getElementById("searchInput");
-                    var searchQuery = searchInput.value.trim();
-                    searchTableData(searchQuery, 1); // Reset to page 1 when performing a search
-                });
-
-                document.getElementById('refreshButton').addEventListener('click', function() {
-                    refreshList();
-                });
-            });
-        </script>
+        document.getElementById('refreshButton').addEventListener('click', function () {
+            refreshList();
+        });
+    });
+</script>
     </section>
 </body>
 

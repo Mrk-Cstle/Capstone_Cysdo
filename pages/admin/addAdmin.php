@@ -325,7 +325,7 @@ if ($_SESSION['role'] === 'admin') {
 
 
 
-      function addData() {
+            function addData() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
@@ -352,11 +352,11 @@ if ($_SESSION['role'] === 'admin') {
       loadDoc();
 
 
-      function filterTable(searchQuery) {
-        var rows = document.querySelectorAll("#tableData tr");
-        searchQuery = searchQuery.toLowerCase();
+function filterTable(searchQuery) {
+  var rows = document.querySelectorAll("#tableData tr");
+  searchQuery = searchQuery.toLowerCase();
 
-        rows.forEach(function(row) {
+  rows.forEach(function(row) {
           var fullName = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
           if (fullName.includes(searchQuery)) {
             row.style.display = "table-row";
@@ -364,17 +364,22 @@ if ($_SESSION['role'] === 'admin') {
             row.style.display = "none";
           }
         });
-      }
 
-      document.addEventListener("DOMContentLoaded", function() {
-        var searchForm = document.getElementById("searchForm");
-        searchForm.addEventListener("submit", function(event) {
-          event.preventDefault();
-          var searchInput = document.getElementById("searchInput");
-          var searchQuery = searchInput.value;
-          filterTable(searchQuery);
-        });
-      });
+  // Call loadPage with the search query
+  loadPage(1);
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var searchForm = document.getElementById("searchForm");
+  searchForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    var searchInput = document.getElementById("searchInput");
+    var searchQuery = searchInput.value;
+    filterTable(searchQuery);
+  });
+});
+
 
       document.getElementById("refreshButton").addEventListener("click", function() {
         refreshList(); // Call the refreshList() function to refresh the content
@@ -417,7 +422,6 @@ function refreshTable() {
   loadPage(page);
 }
 
-// Add this event listener to handle pagination button clicks
 document.addEventListener("click", function (e) {
   if (e.target && e.target.classList.contains("pagination-button")) {
     e.preventDefault();
@@ -428,6 +432,7 @@ document.addEventListener("click", function (e) {
     setCurrentPage(page);
   }
 });
+
 
 // Add this function to initialize pagination when the page loads
 function initializePagination() {
@@ -448,18 +453,19 @@ document.addEventListener("DOMContentLoaded", function () {
   initializePagination();
 });
 
-// Add this function to set the current page in localStorage
-function setCurrentPage(page) {
-  localStorage.setItem('currentPage', page);
-}
+var myNamespace = 'addAdmin';
 
-// Add this function to get the current page from localStorage
+// Function to get the current page from session storage
 function getCurrentPage() {
-  return parseInt(localStorage.getItem('currentPage')) || 1; // Default to page 1 if not found
+    var currentPage = sessionStorage.getItem(myNamespace + 'currentPage');
+    return currentPage ? parseInt(currentPage) : 1;
 }
 
+// Function to save the current page to session storage
+function setCurrentPage(page) {
+    sessionStorage.setItem(myNamespace + 'currentPage', page);
+}
 
-// ...
 
 // Add this function to load the current page from localStorage
 function loadCurrentPage() {
@@ -467,7 +473,6 @@ function loadCurrentPage() {
   loadPage(currentPage);
 }
 
-// ...
 
 // Add this event listener to handle pagination button clicks and store the current page
 document.addEventListener("click", function (e) {

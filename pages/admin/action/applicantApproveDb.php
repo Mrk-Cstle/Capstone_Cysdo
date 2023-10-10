@@ -1,5 +1,4 @@
 <?php
-include '../../include/selectDb.php';
 include '../../include/dbConnection.php';
 
 $pageSize = 5; // Number of rows to display per page
@@ -31,13 +30,11 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         // Build table rows dynamically
         $tableHTML .= '<tr>';
-        $tableHTML .= '<td>' . '<img src="../../uploads/applicant/2x2/' . $row['pic2x2']  . '"alt="image"style="height: 80px; width: 80px;"><?></td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['applicant_id']) . '</td>';
-
         $tableHTML .= '<td>' . htmlspecialchars($row['fullName']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum1']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum2']) . '</td>';
-        $tableHTML .= '<td>' . htmlspecialchars($row['fullAddress']) . '</td>';
+        $tableHTML .= '<td>' . htmlspecialchars($row['action_type']) . '</td>';
         $tableHTML .= '<td>';
         if ($row['action_type'] === 'approve') {
             $tableHTML .= '<span class="badge bg-success">Approve</span>';
@@ -52,8 +49,10 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '</tr>';
     }
 
-    // Calculate total number of rows from the registration_approval table where action_type is 'approve'
-    $countQuery = "SELECT COUNT(*) AS totalRows FROM registration_approval WHERE action_type = 'approve'";
+    // Calculate the total number of rows based on the search condition
+    $countQuery = "SELECT COUNT(*) AS totalRows FROM registration_approval
+                   JOIN registration ON registration.applicant_id = registration_approval.application_id
+                   WHERE registration_approval.action_type = 'approve' $searchCondition";
     $countResult = mysqli_query($conn, $countQuery);
     if ($countResult) {
         $totalRowsData = mysqli_fetch_assoc($countResult);
@@ -71,10 +70,10 @@ if (mysqli_num_rows($result) > 0) {
     if ($totalPages > 1) {
         $paginationHTML .= '<ul class="pagination">';
         $paginationHTML .= '<li class="page-item ' . ($page == 1 ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page - 1) . '">Previous</a></li>';
-
+        
         // Add the current page count
         $paginationHTML .= '<li class="page-item disabled"><span class="page-link">Page ' . $page . ' of ' . $totalPages . '</span></li>';
-
+        
         for ($i = 1; $i <= $totalPages; $i++) {
             $activeClass = ($i === $page) ? 'active' : '';
             $paginationHTML .= '<li class="page-item ' . $activeClass . '"><a class="page-link pagination-button" href="#" data-page="' . $i . '">' . $i . '</a></li>';
@@ -82,10 +81,12 @@ if (mysqli_num_rows($result) > 0) {
         $paginationHTML .= '<li class="page-item ' . ($page == $totalPages ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page + 1) . '">Next</a></li>';
         $paginationHTML .= '</ul>';
     }
-
+    
     echo $tableHTML . $paginationHTML;
+    
 } else {
     echo '<tr><td colspan="10">No data available</td></tr>';
 }
 
 exit;
+?>
