@@ -386,16 +386,19 @@ document.addEventListener("DOMContentLoaded", function() {
       });
 
       function refreshList() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableData").innerHTML = this.responseText;
-          }
-        };
 
-        xhttp.open("GET", "action/addAdminList.php", true);
-        xhttp.send();
-      }
+            // Reset the pagination to page 1
+            loadPage(1);
+        }
+    };
+
+    xhttp.open("GET", "action/addAdminList.php", true);
+    xhttp.send();
+}
 
 // Modify the loadPage function to include the search query and page number
 function loadPage(page) {
