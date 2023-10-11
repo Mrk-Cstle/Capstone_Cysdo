@@ -370,20 +370,39 @@ function filterTable(searchQuery) {
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  var searchForm = document.getElementById("searchForm");
-  searchForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    var searchInput = document.getElementById("searchInput");
-    var searchQuery = searchInput.value;
-    filterTable(searchQuery);
-  });
+function refreshTable(searchQuery = "") {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableData").innerHTML = this.responseText;
+            // Update the search input with the provided query
+            document.getElementById("searchInput").value = searchQuery;
+        }
+    };
+    xhttp.open("GET", "action/addAdminList.php?searchQuery=" + searchQuery, true);
+    xhttp.send();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize the table and pagination on page load
+    refreshTable(); // Initially, no search query
+
+    // Event handler for the search form submission
+    var searchForm = document.getElementById("searchForm");
+    searchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var searchInput = document.getElementById("searchInput");
+        var searchQuery = searchInput.value;
+        refreshTable(searchQuery); // Refresh the table with the search query
+    });
+
+    // Event handler for the refresh button
+    var refreshButton = document.getElementById("refreshButton");
+    refreshButton.addEventListener("click", function () {
+        refreshTable(); // Refresh the table without clearing the search query
+    });
 });
 
-
-      document.getElementById("refreshButton").addEventListener("click", function() {
-        refreshList(); // Call the refreshList() function to refresh the content
-      });
 
       function refreshList() {
     var xhttp = new XMLHttpRequest();
@@ -417,13 +436,7 @@ function loadPage(page) {
   xhttp.send();
 }
 
-function refreshTable() {
-  var searchInput = document.getElementById("searchInput");
-  var searchQuery = searchInput.value;
-  var page = getCurrentPage();
-  filterTable(searchQuery);
-  loadPage(page);
-}
+
 
 document.addEventListener("click", function (e) {
   if (e.target && e.target.classList.contains("pagination-button")) {
