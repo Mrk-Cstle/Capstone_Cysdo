@@ -122,20 +122,6 @@ if ($_SESSION['role'] === 'admin') {
                 xhr.send();
             }
 
-            function refreshList() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
-
-            // Reset the pagination to page 1
-            loadPage(1);
-        }
-    };
-
-    xhttp.open("GET", "action/applicantDeniedDb.php", true);
-    xhttp.send();
-}
 
             document.addEventListener('DOMContentLoaded', function() {
                 loadTableData(currentPage);
@@ -199,6 +185,21 @@ if ($_SESSION['role'] === 'admin') {
                     xhr.send();
                 }
             }
+
+            function refreshList() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableData").innerHTML = this.responseText;
+
+            // Reset the pagination to page 1
+            loadPage(1);
+        }
+    };
+
+    xhttp.open("GET", "action/applicantDeniedDb.php", true);
+    xhttp.send();
+}
 
 
             document.getElementById('deleteAllButton').addEventListener('click', function() {
