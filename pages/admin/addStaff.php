@@ -277,56 +277,54 @@ if ($_SESSION['role'] === 'admin') {
         };
 
         $.ajax({
-          url: 'action/addStaffDb.php',
-          type: 'POST',
-          data: data,
-          success: function(response) {
+  url: 'action/addStaffDb.php',
+  type: 'POST',
+  data: data,
+  success: function (response) {
+    if (response === 'Inserted Successfully') {
+      // Code for inserting staff data
+      $('#response').text(response);
+      addData();
+      // Additional code if needed
 
-            if (response === 'Inserted Successfully') {
-              $('#response').text(response);
-              addData();
-
-              $('#btnAdd').prop('disabled', true); // Disable the button temporarily
-              swal({
-                title: "Success!",
-                text: "Inserted Successfully",
-                icon: "success",
-                button: "OK",
-              }).then(function() {
-                $('#btnAdd').prop('disabled', false);
-                $("#lastName").val("");
-                $("#firstName").val("");
-                $("#middleName").val("");
-                $("#position").val("");
-                $("#contactNumber").val("");
-                $("#email").val("");
-                // Enable the button again
-
-                // Additional code if needed
-              });
-
-
-            } else if (response === "Staff Info Deleted") {
-              swal({
-                title: "Success!",
-                text: "Deleted Successfully",
-                icon: "success",
-                button: "OK",
-              })
-              $("#" + action).css("display", "none");
-              loadDoc();
-            } else {
-              $('#response').text(response);
-              swal({
-                title: "Error!",
-                text: "An error occurred",
-                icon: "error",
-                button: "OK",
-              });
-            }
-
-          }
-        });
+      $('#btnAdd').prop('disabled', true); // Disable the button temporarily
+      swal({
+        title: "Success!",
+        text: "Inserted Successfully",
+        icon: "success",
+        button: "OK",
+      }).then(function () {
+        $('#btnAdd').prop('disabled', false);
+        $("#lastName").val("");
+        $("#firstName").val("");
+        $("#middleName").val("");
+        $("#position").val("");
+        $("#contactNumber").val("");
+        $("#email").val("");
+        // Enable the button again
+        // Additional code if needed
+      });
+    } else if (response === "Staff Info Deleted") {
+      $('#response').text(response);
+      swal({
+        title: "Success!",
+        text: "Deleted Successfully",
+        icon: "success",
+        button: "OK",
+      });
+      // Reload the table after deleting data
+      refreshTable();
+    } else {
+      $('#response').text(response);
+      swal({
+        title: "Error!",
+        text: "An error occurred",
+        icon: "error",
+        button: "OK",
+      });
+    }
+  }
+});
       }
 
 
