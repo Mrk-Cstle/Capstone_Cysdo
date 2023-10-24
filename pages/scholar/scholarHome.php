@@ -353,12 +353,14 @@ img {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 40px;
  }
 
  .content-section .card {
   flex: 1;
   width: 200px;
-  margin: 20px 20px;
+  padding: 20px;
+  margin: 30px 20px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
  }
 
@@ -461,25 +463,54 @@ img {
                     <div class="card">
                       <h2>Status:</h2>
                      <div class="card-body">
-                      <p>Ongoing</p>
+                      <p class="text-danger">Ongoing</p>
                      </div>
                     </div>
                     <div class="card">
                       <h2>Status:</h2>
                      <div class="card-body">
-                      <p>Ongoing</p>
+                      <p class="text-success">Ongoing</p>
                      </div>
                     </div>
                     <div class="card">
                       <h2>Status:</h2>
                      <div class="card-body">
-                      <p>Ongoing</p>
+                      <p class="text-danger">Ongoing</p>
                      </div>
                     </div>
                     <div class="card">
                       <h2>Status:</h2>
                      <div class="card-body">
-                      <p>Ongoing</p>
+                      <p class="text-success">Ongoing</p>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="container">
+                  <div class="content-section">
+                    <div class="card">
+                      <h2>Status:</h2>
+                     <div class="card-body">
+                      <p class="text-success">Ongoing</p>
+                     </div>
+                    </div>
+                    <div class="card">
+                      <h2>Status:</h2>
+                     <div class="card-body">
+                      <p class="text-danger">Ongoing</p>
+                     </div>
+                    </div>
+                    <div class="card">
+                      <h2>Status:</h2>
+                     <div class="card-body">
+                      <p class="text-success">Ongoing</p>
+                     </div>
+                    </div>
+                    <div class="card">
+                      <h2>Status:</h2>
+                     <div class="card-body">
+                      <p class="text-danger">Ongoing</p>
                      </div>
                     </div>
                   </div>
