@@ -98,7 +98,7 @@ if ($result) {
 
                     <p id="response"></p>
 
-                    <ul class="portletNav nav nav-tabs justify-content-end" id="myTab" role="tablist">
+                    <ul class="portletNavi nav nav-tabs justify-content-end" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="person-info" data-bs-toggle="tab" data-bs-target="#personInfo" type="button" role="tab" aria-controls="p-info" aria-selected="true">Personal Information</button>
                         </li>

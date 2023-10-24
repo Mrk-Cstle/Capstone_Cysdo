@@ -10,7 +10,7 @@ if (isset($_POST["action"])) {
     //     edit();
     // } 
     else {
-        delete();
+        // delete();
     }
 }
 
@@ -63,6 +63,3 @@ function insert()
 // }
 
 // ... (Your existing code)
-
-
-

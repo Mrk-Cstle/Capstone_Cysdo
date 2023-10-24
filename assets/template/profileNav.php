@@ -241,9 +241,9 @@ if ($result) {
         <a class="sub-btn"><i class="bi bi-person-lines-fill"></i></i>Manage Applicants<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
 
-          <a href="applicantList.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>List of Applicants</a>
-          <a href="applicantExaminers.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>List of Examiners</a>
-          <a href="applicantScholar.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>List of New Scholar</a>
+          <a href="applicantList.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 1 </br>List of Applicants</a>
+          <a href="applicantExaminers.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 2 </br>List of Examiners</a>
+          <a href="applicantScholar.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 3 </br>List of New Scholar</a>
         </div>
       </div>
       <div class="item"><a href="postUpdate.php"><i class="bi bi-file-earmark-ppt-fill"></i></i>Manage Post</a></div>

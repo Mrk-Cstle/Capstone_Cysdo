@@ -59,10 +59,12 @@ function approve($contactNum1, $applicant_id, $lastName, $firstName, $middleName
     global $conn;
 
     $applicantId = $_POST['id'];
-
+    $user = $lastName;
+    $password = $contactNum1;
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     mysqli_query($conn, "UPDATE examination SET requirements_status = 'Approve'  WHERE examination_id = '$applicantId'");
-    $insertQuery = "INSERT INTO scholar (contact_num1, applicant_id,last_name, first_name,middle_name, full_name ) VALUES ('$contactNum1', '$applicant_id', '$lastName', '$firstName', '$middleName', '$fullName')";
+    $insertQuery = "INSERT INTO scholar (contact_num1, applicant_id,last_name, first_name,middle_name, full_name, user, password ) VALUES ('$contactNum1', '$applicant_id', '$lastName', '$firstName', '$middleName', '$fullName','$user', '$hashedPassword')";
     $result = mysqli_query($conn, $insertQuery);
     if ($result) {
 
