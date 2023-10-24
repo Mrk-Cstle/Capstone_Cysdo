@@ -225,7 +225,7 @@ header ul li ul li {
                     <ul>
                         <li><a class="log" href="pages/admin/adminLogin.php">Admin</a></li>
                         <li><a class="log" href="pages/admin/staffLogin.php">Staff</a></li>
-                        <li><a class="log" href="ScholarLogin.php">Scholar</a></li>
+                        <li><a class="log" href="pages/scholar/ScholarLogin.php">Scholar</a></li>
                         <li><a class="log" href="pages/applicant/termsRegistration.php">Registration</a></li>
                     </ul>
                 </li>
