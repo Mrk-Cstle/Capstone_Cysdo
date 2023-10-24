@@ -122,18 +122,6 @@ if ($_SESSION['role'] === 'admin') {
                 xhr.send();
             }
 
-            function refreshList() {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById("tableData").innerHTML = xhr.responseText;
-                        setCurrentPage(currentPage); // Save the current page to local storage
-                    }
-                };
-
-                xhr.open("GET", "action/applicantDeniedDb.php?page=" + currentPage, true); // Pass the current page
-                xhr.send();
-            }
 
             document.addEventListener('DOMContentLoaded', function() {
                 loadTableData(currentPage);
@@ -175,27 +163,45 @@ if ($_SESSION['role'] === 'admin') {
             });
 
             function deleteApplicant(applicantId) {
-                var confirmation = confirm('Are you sure you want to delete this applicant?');
-                if (confirmation) {
-                    // Perform the delete operation here, for example, using AJAX
-                    var xhr = new XMLHttpRequest();
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState == 4) {
-                            if (xhr.status == 200) {
-                                // Refresh the table after successful deletion
-                                refreshList();
-                                // Show a success message (you can customize this)
-                                alert(xhr.responseText);
-                            } else {
-                                // Handle errors, e.g., show an error message
-                                alert("Error deleting applicant: " + xhr.status);
-                            }
-                        }
-                    };
-
-                    xhr.open("GET", "action/deleteApplicant.php?applicant_id=" + applicantId, true);
-                    xhr.send();
+    var confirmation = confirm('Are you sure you want to delete this applicant?');
+    if (confirmation) {
+        // Perform the delete operation here, for example, using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    // Get the total number of pages from the last pagination button
+                    var lastPage = document.querySelector('.pagination-button:last-child').getAttribute('data-page');
+                    // Refresh the table after successful deletion
+                    refreshList();
+                    // Show a success message (you can customize this)
+                    alert(xhr.responseText);
+                    // Load the data for the last page
+                    loadPage(lastPage);
+                } else {
+                    // Handle errors, e.g., show an error message
+                    alert("Error deleting applicant: " + xhr.status);
                 }
+            }
+        };
+
+        xhr.open("GET", "action/deleteApplicant.php?applicant_id=" + applicantId, true);
+        xhr.send();
+    }
+}
+
+
+function refreshList() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById("tableData").innerHTML = xhr.responseText;
+                        setCurrentPage(currentPage); // Save the current page to local storage
+                    }
+                };
+
+                xhr.open("GET", "action/applicantDeniedDb.php?page=" + currentPage, true); // Pass the current page
+                xhr.send();
             }
 
 

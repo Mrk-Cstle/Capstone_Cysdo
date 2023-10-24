@@ -43,6 +43,7 @@ if ($_SESSION['role'] === 'admin') {
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
                 <button id="refreshButton" class="btn btn-outline-secondary" type="button">Refresh</button>
+                <button id="deleteAllButton" class="btn btn-danger">Delete All Examinees</button>
                 <p id="response"></p>
             </form>
         </nav>
@@ -75,18 +76,22 @@ if ($_SESSION['role'] === 'admin') {
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            // Function to get the current page from local storage
-            function getCurrentPage() {
-                var currentPage = localStorage.getItem('currentPage');
-                return currentPage ? parseInt(currentPage) : 1;
-            }
 
-            // Function to save the current page to local storage
-            function setCurrentPage(page) {
-                localStorage.setItem('currentPage', page);
-            }
+var myNamespace = 'appExamF';
 
-            var currentPage = getCurrentPage(); // Get the current page from local storage
+// Function to get the current page from session storage
+function getCurrentPage() {
+    var currentPage = sessionStorage.getItem(myNamespace + 'currentPage');
+    return currentPage ? parseInt(currentPage) : 1;
+}
+
+// Function to save the current page to session storage
+function setCurrentPage(page) {
+    sessionStorage.setItem(myNamespace + 'currentPage', page);
+}
+
+var currentPage = getCurrentPage(); // Get the current page from local storage
+
 
             function loadTableData(page) {
                 var xhr = new XMLHttpRequest();
@@ -120,19 +125,6 @@ if ($_SESSION['role'] === 'admin') {
                 xhr.send();
             }
 
-            function refreshList() {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById("tableData").innerHTML = xhr.responseText;
-                        setCurrentPage(currentPage); // Save the current page to local storage
-                    }
-                };
-
-                xhr.open("GET", "action/applicantDeniedDb.php?page=" + currentPage, true); // Pass the current page
-                xhr.send();
-            }
-
             document.addEventListener('DOMContentLoaded', function() {
                 loadTableData(currentPage);
 
@@ -163,6 +155,84 @@ if ($_SESSION['role'] === 'admin') {
                     refreshList();
                 });
             });
+
+            document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('deleteApplicant')) {
+        var applicantId = event.target.getAttribute('data-applicant-id');
+        var confirmation = confirm('Are you sure you want to delete this examinee?');
+        if (confirmation) {
+            // Perform the delete operation here, for example, using AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        // Show a success message (you can customize this)
+                        alert(xhr.responseText);
+                        // Check if there are no more rows left on the current page
+                        if (document.querySelectorAll('#tableData tr').length === 1) {
+                            // Get the total number of pages from the last pagination button
+                            var lastPage = document.querySelector('.pagination-button:last-child').getAttribute('data-page');
+                            // Load the data for the last page
+                            loadTableData(lastPage);
+                        } else {
+                            // Refresh the table after successful deletion
+                            refreshList();
+                        }
+                    } else {
+                        // Handle errors, e.g., show an error message
+                        alert("Error deleting examinee: " + xhr.status);
+                    }
+                }
+            };
+
+            xhr.open("GET", "action/deleteExaminer.php?applicant_id=" + applicantId, true);
+            xhr.send();
+        }
+    }
+});
+
+
+function refreshList() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById("tableData").innerHTML = xhr.responseText;
+                        setCurrentPage(currentPage); // Save the current page to local storage
+                    }
+                };
+
+                xhr.open("GET", "action/applicantExaminerFailedDb.php?page=" + currentPage, true); // Pass the current page
+                xhr.send();
+            }
+
+            document.getElementById('deleteAllButton').addEventListener('click', function() {
+    var confirmation = confirm('Are you sure you want to delete all examinees? This action cannot be undone.');
+    if (confirmation) {
+        // Perform the delete all operation here, for example, using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    // Show a success message (you can customize this)
+                    alert(xhr.responseText);
+                    // Get the total number of pages from the last pagination button
+                    var lastPage = document.querySelector('.pagination-button:last-child').getAttribute('data-page');
+                    // Load the data for the last page
+                    loadTableData(lastPage);
+                } else {
+                    // Handle errors, e.g., show an error message
+                    alert("Error deleting all examinees: " + xhr.status);
+                }
+            }
+        };
+
+        xhr.open("GET", "action/deleteAllExamineesFailed.php", true); // Use the correct URL for your PHP script
+        xhr.send();
+    }
+});
+
+
+
         </script>
     </section>
 </body>

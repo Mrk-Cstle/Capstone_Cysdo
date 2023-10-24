@@ -119,18 +119,20 @@ if ($_SESSION['role'] === 'admin') {
                 xhr.send();
             }
 
-            function refreshList() {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById("tableData").innerHTML = xhr.responseText;
-                        setCurrentPage(currentPage); // Save the current page to local storage
-                    }
-                };
+      function refreshList() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableData").innerHTML = this.responseText;
 
-                xhr.open("GET", "action/getApplicant.php?page=" + currentPage, true); // Pass the current page
-                xhr.send();
-            }
+            // Reset the pagination to page 1
+            loadPage(1);
+        }
+    };
+
+    xhttp.open("GET", "action/getApplicant.php", true);
+    xhttp.send();
+}
 
             document.addEventListener('DOMContentLoaded', function() {
                 loadTableData(currentPage);

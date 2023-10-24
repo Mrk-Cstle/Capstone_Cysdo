@@ -45,18 +45,3 @@ function insert()
     }
 }
 
-
-function delete()
-{
-    global $conn;
-
-    $id = $_POST["action"];
-
-    $deleteQuery = "DELETE FROM admin WHERE admin_id = $id";
-    mysqli_query($conn, $deleteQuery);
-    if (mysqli_affected_rows($conn) > 0) {
-        echo "Admin Info Deleted";
-    } else {
-        echo 'No records were deleted';
-    }
-}

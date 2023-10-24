@@ -27,7 +27,7 @@ if (mysqli_num_rows($result) > 0) {
     <td class="hidden-cell"><?php echo $row['middle_name']; ?></td>
     <td>
         <a class="editButton btn btn-sm btn-primary " data-id="<?php echo $row['admin_id']; ?>">Edit</a>
-        <a class=" btn btn-sm btn-danger" href="" onclick="submitData('<?php echo $row['admin_id']; ?>')">Delete</a>
+        <a class="btn btn-sm btn-danger" href="javascript:void(0);" onclick="deleteAdmin(<?php echo $row['admin_id']; ?>)">Delete</a>
         <a class="resetPassword btn btn-sm btn-dark" data-id="<?php echo $row['admin_id']; ?>" href="">Reset Password</a>
     </td>
     </tr>
