@@ -199,10 +199,18 @@ var currentPage = getCurrentPage(); // Get the current page from local storage
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     if (xhr.status == 200) {
-                        // Refresh the table after successful deletion
-                        refreshList();
                         // Show a success message (you can customize this)
                         alert(xhr.responseText);
+                        // Check if there are no more rows left on the current page
+                        if (document.querySelectorAll('#tableData tr').length === 1) {
+                            // Get the total number of pages from the last pagination button
+                            var lastPage = document.querySelector('.pagination-button:last-child').getAttribute('data-page');
+                            // Load the data for the last page
+                            loadTableData(lastPage);
+                        } else {
+                            // Refresh the table after successful deletion
+                            refreshList();
+                        }
                     } else {
                         // Handle errors, e.g., show an error message
                         alert("Error deleting examinee: " + xhr.status);
@@ -215,6 +223,7 @@ var currentPage = getCurrentPage(); // Get the current page from local storage
         }
     }
 });
+
 
 function refreshList() {
                 var xhr = new XMLHttpRequest();

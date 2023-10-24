@@ -64,19 +64,5 @@ function insert()
 
 // ... (Your existing code)
 
-function delete()
-{
-    global $conn;
 
-    $id = $_POST["action"];
-
-    $deleteQuery = "DELETE FROM staff WHERE staffId = $id";
-    mysqli_query($conn, $deleteQuery);
-    if (mysqli_affected_rows($conn) > 0) {
-        // Set the current page to the current page before the delete action
-        echo "Staff Info Deleted";
-    } else {
-        echo 'No records were deleted';
-    }
-}
 

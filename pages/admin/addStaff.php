@@ -304,28 +304,33 @@ if ($_SESSION['role'] === 'admin') {
         // Enable the button again
         // Additional code if needed
       });
-    } else if (response === "Staff Info Deleted") {
-      $('#response').text(response);
-      swal({
-        title: "Success!",
-        text: "Deleted Successfully",
-        icon: "success",
-        button: "OK",
-      });
-      // Reload the table after deleting data
-      refreshTable();
-    } else {
-      $('#response').text(response);
-      swal({
-        title: "Error!",
-        text: "An error occurred",
-        icon: "error",
-        button: "OK",
-      });
-    }
+    } 
   }
 });
+
       }
+
+
+      function deleteStaff(staffId) {
+    if (confirm("Are you sure you want to delete this staff record?")) {
+        $.ajax({
+            type: "POST",
+            url: "action/deleteStaff.php",
+            data: { staffId: staffId },
+            success: function (data) {
+                alert(data); // Display the response message
+                if (data === "Staff record deleted successfully.") {
+                    // Update the table after successful deletion
+                    refreshTable(); // Refresh the table without clearing the search query
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX request failed: " + error);
+            }
+        });
+    }
+}
+
 
 
 
@@ -378,17 +383,24 @@ function filterTable(searchQuery) {
 
 
 function refreshTable(searchQuery = "") {
+    var searchInput = document.getElementById("searchInput").value;
+    var currentPage = getCurrentPage(); // Get the current page from session storage
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableData").innerHTML = this.responseText;
             // Update the search input with the provided query
             document.getElementById("searchInput").value = searchQuery;
+
+            // Load the current page after refreshing the table
+            loadPage(currentPage);
         }
     };
-    xhttp.open("GET", "action/addStaffList.php?searchQuery=" + searchQuery, true);
+    xhttp.open("GET", "action/addStaffList.php?page=" + currentPage + "&searchQuery=" + searchQuery, true);
     xhttp.send();
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
     // Initialize the table and pagination on page load

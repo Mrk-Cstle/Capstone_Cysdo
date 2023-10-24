@@ -270,59 +270,64 @@ if ($_SESSION['role'] === 'admin') {
                 };
 
                 $.ajax({
-                    url: 'action/addAdminDb.php',
-                    type: 'POST',
-                    data: data,
-                    success: function(response) {
+    url: 'action/addAdminDb.php',
+    type: 'POST',
+    data: data,
+    success: function(response) {
 
-                        if (response === 'Inserted Successfully') {
-                            $('#response').text(response);
-                            addData();
+        if (response === 'Inserted Successfully') {
+            $('#response').text(response);
+            addData();
 
-                            $('#btnAdd').prop('disabled', true); // Disable the button temporarily
-                            swal({
-                                title: "Success!",
-                                text: "Inserted Successfully",
-                                icon: "success",
-                                button: "OK",
-                            }).then(function() {
-                                $('#btnAdd').prop('disabled', false);
-                                $("#lastName").val("");
-                                $("#firstName").val("");
-                                $("#middleName").val("");
-                                $("#position").val("");
-                                $("#contactNumber").val("");
-                                $("#email").val("");
-                                // Enable the button again
+            $('#btnAdd').prop('disabled', true); // Disable the button temporarily
+            swal({
+                title: "Success!",
+                text: "Inserted Successfully",
+                icon: "success",
+                button: "OK",
+            }).then(function() {
+                $('#btnAdd').prop('disabled', false);
+                $("#lastName").val("");
+                $("#firstName").val("");
+                $("#middleName").val("");
+                $("#position").val("");
+                $("#contactNumber").val("");
+                $("#email").val("");
+                // Enable the button again
 
-                                // Additional code if needed
-                            });
+                // Additional code if needed
+            });
+        } 
+    }
+});
 
-
-                        } else if (response === "Admin Info Deleted") {
-                            swal({
-                                title: "Success!",
-                                text: "Deleted Successfully",
-                                icon: "success",
-                                button: "OK",
-                            })
-                            $("#" + action).css("display", "none");
-                            loadDoc();
-                        } else {
-                            $('#response').text(response);
-                            swal({
-                                title: "Error!",
-                                text: "An error occurred",
-                                icon: "error",
-                                button: "OK",
-                            });
-                        }
-
-                    }
-                });
             }
 
 
+            function deleteAdmin(adminId, searchQuery) {
+    if (confirm("Are you sure you want to delete this admin record?")) {
+        $.ajax({
+            type: "POST",
+            url: "action/deleteAdmin.php", // Adjust the path to your delete script
+            data: { admin_id: adminId },
+            success: function (data) {
+                // Handle the response from the server
+                alert(data); // You can replace this with your preferred handling method
+
+                if (data === "Admin record deleted successfully.") {
+                    // Remove the row from the table without a page refresh
+                    $("#row_" + adminId).remove();
+
+                    // Refresh the table data with the current search query
+                    refreshTable(searchQuery);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX request failed: " + error);
+            }
+        });
+    }
+}
 
 
             function addData() {
@@ -371,15 +376,21 @@ function filterTable(searchQuery) {
 
 
 function refreshTable(searchQuery = "") {
+    var searchInput = document.getElementById("searchInput").value;
+    var currentPage = getCurrentPage(); // Get the current page from session storage
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableData").innerHTML = this.responseText;
             // Update the search input with the provided query
             document.getElementById("searchInput").value = searchQuery;
+
+            // Load the current page after refreshing the table
+            loadPage(currentPage);
         }
     };
-    xhttp.open("GET", "action/addAdminList.php?searchQuery=" + searchQuery, true);
+    xhttp.open("GET", "action/addAdminList.php?page=" + currentPage + "&searchQuery=" + searchQuery, true);
     xhttp.send();
 }
 
