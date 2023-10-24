@@ -198,7 +198,7 @@ if ($result) {
 <body>
 
   <div class="navBar">
-    <div class="messageBtn me-2"> 
+    <div class="messageBtn me-2">
       <a class="msgBtn bi bi-chat-dots-fill text-black fs-4" href="chattingSystem.php"></a>
     </div>
     <ul class="navProfile nav nav-pills justify-content-end">
@@ -243,6 +243,7 @@ if ($result) {
 
           <a href="applicantList.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>List of Applicants</a>
           <a href="applicantExaminers.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>List of Examiners</a>
+          <a href="applicantScholar.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>List of New Scholar</a>
         </div>
       </div>
       <div class="item"><a href="postUpdate.php"><i class="bi bi-file-earmark-ppt-fill"></i></i>Manage Post</a></div>
