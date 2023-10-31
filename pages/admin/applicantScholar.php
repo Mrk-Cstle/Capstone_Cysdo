@@ -33,7 +33,7 @@ if ($_SESSION['role'] === 'admin') {
 <body>
 
     <section id="content" class="home-section">
-        <h1>New Approve Scholar List</h1>
+        <h1 class="mb-5">New Approve Scholar List</h1>
 
         <nav class="navbar navbar-light bg-light d-flex">
 
