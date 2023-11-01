@@ -20,7 +20,7 @@
 }
 
 body {
-  padding: 2%;
+  padding: 3%;
   background-color: #F5F5F5;
 }
 
@@ -28,7 +28,8 @@ body {
   padding: 0;
   background-color: #FFF; 
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  height: 800px;
+  height: 850px;
+  width: 100%;
 }
 
 .textAlign {
@@ -40,8 +41,8 @@ body {
 /* === CONVERSATIONS === */
 
 .discussions {
-  width: 35%;
-  height: 800px;
+  width: 25%;
+  height: 850px;
   box-shadow: 0px 8px 10px rgba(0,0,0,0.20);
   overflow: hidden;
   background-color: #FF5F9E;
@@ -69,9 +70,10 @@ body {
 .discussions .search .searchbar {
   height: 40px;
   background-color: #FFF;
-  width: 70%;
+  width: 80%;
   padding-left: 15px;
   border-radius: 50px;
+  margin-right: 20px;
   border: 1px solid #EEEEEE;
   display:flex;
   align-items: center;
@@ -135,7 +137,7 @@ body {
 
 .desc-contact {
   height: 43px;
-  width:50%;
+  width: 50%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -172,9 +174,9 @@ body {
 
 .header-chat {
   background-color: #FFF;
-  width: 100%;
+  width: 110%;
   height: 90px;
-  box-shadow: 0px 3px 2px rgba(0,0,0,0.100);
+  box-shadow: 0px 2px 0px rgba(0,0,0,0.100);
   display: flex;
   align-items: center;
 }
@@ -238,6 +240,11 @@ body {
   margin-left: 85px;
 }
 
+.mouse {
+  margin-right: 60px;
+  margin-top: 5px;
+}
+
 .response-time {
   float: right;
   margin-right: 40px !important;
@@ -254,7 +261,7 @@ body {
 }
 
 .footer-chat {
-  width: 60%;
+  width: 74.5%;
   height: 80px;
   display:flex;
   align-items: center;
@@ -274,7 +281,7 @@ body {
   color:#fff;
   background-color: #4f6ebd;
   position: absolute;
-  right: 40px;
+  right: 100px;
   padding: 12px 12px 12px 12px;
   border-radius: 50px;
   font-size: 14pt;
@@ -296,7 +303,7 @@ body {
 
 .write-message {
   border:none !important;
-  width:60%;
+  width: 60%;
   height: 50px;
   margin-left: 20px;
   padding: 10px;
@@ -337,7 +344,7 @@ body {
   }
 
   .discussions {
-    max-height: 800px; /* Set a maximum height for chat messages */
+    max-height: 1000px; /* Set a maximum height for chat messages */
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
   }
   .messages-chat {
@@ -424,17 +431,18 @@ body {
   color: #000; /* Black text for received messages */
 }
 
+
 </style>
 <body>
 <!-- partial:index.partial.html -->
 <body>
-  <div class='textAlign'>
-    <p style="text-transform: capitalize;" class='bold d-block w-auto'><a href='scholarHome.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
-  </div>
   <div class="container">
     <div class="row">
       <section class="discussions">
         <div class="discussion search">
+        <div class='textAlign'>
+          <p style="text-transform: capitalize;" class='bold d-block mt-3'><a href='scholarHome.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
+        </div>
           <div class="searchbar">
             <i class="fa fa-search" aria-hidden="true"></i>
             <input type="text" placeholder="Search..."></input>

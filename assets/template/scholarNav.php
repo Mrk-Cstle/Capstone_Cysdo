@@ -98,7 +98,6 @@ include 'include/session.php'; ?>
 
     .header__container {
         display: block;
-
         justify-content: space-between;
     }
 
@@ -145,7 +144,7 @@ include 'include/session.php'; ?>
     }
 
     /*========== NAV ==========*/
-    .nav {
+    .Navi {
         position: fixed;
         top: 1;
         left: -100%;
@@ -269,10 +268,6 @@ include 'include/session.php'; ?>
         left: 0;
     }
 
-    /*===== Active link =====*/
-    .active {
-        color: var(--first-color);
-    }
 
     /* ========== MEDIA QUERIES ==========*/
     @media screen and (min-width: 768px) {
@@ -304,7 +299,7 @@ include 'include/session.php'; ?>
             height: 40px;
         }
 
-        .nav {
+        .Navi {
             left: 0;
             padding: 1.2rem 1.5rem 0;
             width: 68px;
@@ -329,28 +324,28 @@ include 'include/session.php'; ?>
         }
 
         /* Navbar expanded */
-        .nav:hover {
+        .Navi:hover {
             width: var(--nav-width);
         }
 
         /* Visible elements */
-        .nav:hover .nav__logo-name {
+        .Navi:hover .nav__logo-name {
             opacity: 1;
         }
 
-        .nav:hover .nav__subtitle {
+        .Navi:hover .nav__subtitle {
             opacity: 1;
         }
 
-        .nav:hover .nav__name {
+        .Navi:hover .nav__name {
             opacity: 1;
         }
 
-        .nav:hover .nav__dropdown-icon {
+        .Navi:hover .nav__dropdown-icon {
             opacity: 1;
         }
 
-        .nav:hover .nav__link.nav__logo .sideLogo {
+        .Navi:hover .nav__link.nav__logo .sideLogo {
             display: flex;
         }
     }
@@ -424,7 +419,7 @@ include 'include/session.php'; ?>
     </header>
 
     <!--========== NAV ==========-->
-    <div class="nav" id="navbar">
+    <div class="Navi" id="navbar">
         <nav class="nav__container">
             <div>
                 <a href="#" class="nav__link nav__logo">

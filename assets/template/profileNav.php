@@ -75,10 +75,11 @@ if ($result) {
 
   .navBar {
     background: #FF5F9E;
-
+    margin-top: -25px;
     padding-top: 10px;
     padding-bottom: 10px;
     justify-content: end;
+    position: relative;
 
   }
 
