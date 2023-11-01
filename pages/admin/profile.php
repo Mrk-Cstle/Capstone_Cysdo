@@ -69,7 +69,7 @@ if ($result) {
                         $signaturePicPath = "../../uploads/admin/" . $image;
 
                         // Check if the image file exists
-                        if (file_exists($signaturePicPath)) {
+                        if (!empty($image) && file_exists($signaturePicPath)) {
                             // Display the image with an id
                             echo '<img id="profilePicImage" src="' . $signaturePicPath . '" class="img-responsive" alt="image">';
                         } else {

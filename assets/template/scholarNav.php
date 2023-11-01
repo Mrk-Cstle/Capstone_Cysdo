@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-include 'include/session.php'; ?>
+
 
 <head>
     <meta charset="UTF-8">
