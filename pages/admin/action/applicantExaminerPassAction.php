@@ -26,7 +26,7 @@ WHERE examination_id  = $applicantId";
             // For example, you can display the values or perform any other operations
 
             // Free the result set
-
+            $_SESSION['globalData'] = $row;
             $user =
                 $_SESSION['user'];
         }
@@ -58,13 +58,27 @@ function approve($contactNum1, $applicant_id, $lastName, $firstName, $middleName
 
     global $conn;
 
+    $globalData = $_SESSION['globalData'];
+    $gender = $globalData['gender'];
+
+    $contactnum2 = $globalData['contactNum2'];
+    $voter = $globalData['voter'];
+    $full_address = $globalData['fullAddress'];
+    $barangay = $globalData['barangayAddress'];
+    $course = $globalData['course'];
+    $school_address = $globalData['schoolAddress'];
+    $school_name = $globalData['schoolName'];
+    $current_yr = $globalData['yearLevel'];
+
     $applicantId = $_POST['id'];
+
+
     $user = $lastName;
     $password = $contactNum1;
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     mysqli_query($conn, "UPDATE examination SET requirements_status = 'Approve'  WHERE examination_id = '$applicantId'");
-    $insertQuery = "INSERT INTO scholar (contact_num1, applicant_id,last_name, first_name,middle_name, full_name, user, password ) VALUES ('$contactNum1', '$applicant_id', '$lastName', '$firstName', '$middleName', '$fullName','$user', '$hashedPassword')";
+    $insertQuery = "INSERT INTO scholar (contact_num1,contact_num2, applicant_id,last_name, first_name,middle_name, full_name, user, password, gender,  voter, full_address, barangay, course, school_address, school_name, current_yr ) VALUES ('$contactNum1', '$contactnum2','$applicant_id', '$lastName', '$firstName', '$middleName', '$fullName','$user', '$hashedPassword', '$gender', '$voter', '$full_address', '$barangay' , '$course', '$school_address', '$school_name', '$current_yr')";
     $result = mysqli_query($conn, $insertQuery);
     if ($result) {
 
@@ -72,6 +86,7 @@ function approve($contactNum1, $applicant_id, $lastName, $firstName, $middleName
         echo "" . $fullName . " Official Scholar";
 
         send_sms(" We are pleased to announce that you " . $fullName . " that you have been selected as a scholar by CYSDO. This is in recognition of your excellent academic achievements and dedication. This letter marks the beginning of your scholarship journey with us. In the upcoming weeks, we will provide you with more information about your scholarship benefits and any necessary announcement. Please bear with us as we finalize these details. If you have any questions or need assistance, please feel free to contact us . Additionally, we encourage you to connect with us on our official Facebook page: City Youth and Sports Development Office - CSJDM . You can send us a message there if you have any questions or if there is anything specific you like to discuss. Congratulations on this achievement, and we look forward to supporting your academic pursuits as an official scholar.  " . "\n\n-CYSDO CSJDM-", $contactNum1);
+        unset($_SESSION['globalData']);
     } else {
         echo "Insert Failed: " . mysqli_error($conn);
     }
