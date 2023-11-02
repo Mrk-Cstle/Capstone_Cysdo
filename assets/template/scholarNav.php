@@ -1,3 +1,37 @@
+<?php
+
+// Your database connection code here...
+include '../include/dbConnection.php';
+
+// Get the applicant ID from the URL
+$scholarId = $_SESSION['user'];
+
+// Step 2: Construct and execute the SQL query to select the row with the specified ID
+$sql = "SELECT * FROM scholar WHERE full_name = '$scholarId'";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    // Step 3: Check if the row exists
+    if (mysqli_num_rows($result) > 0) {
+        // Step 4: Fetch the row
+        $row = mysqli_fetch_assoc($result);
+
+        // Step 5: Access the values of the row
+        extract($row);
+        // ...
+
+        // Process the retrieved row as needed
+        // For example, you can display the values or perform any other operations
+
+        // Free the result set
+        mysqli_free_result($result);
+    } else {
+        echo "No row found with the specified ID.";
+    }
+} else {
+    echo "Error executing the query: " . mysqli_error($conn);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -396,7 +430,8 @@
     <!--========== HEADER ==========-->
     <header class="header">
         <div class="header__container">
-            <a class="navProfile nav-link dropdown-toggle text-black" type="button" data-bs-toggle="dropdown" href="#" aria-expanded="false"><img src="../../assets/image/1x1.jpg" class="header__img"><?php echo $_SESSION['user']; ?></a>
+            <a class="navProfile nav-link dropdown-toggle text-black" type="button" data-bs-toggle="dropdown" href="#" aria-expanded="false">
+                <img src="../../uploads/scholar/<?php echo $image?>" class="header__img"><?php echo $_SESSION['user']; ?></a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -444,10 +479,7 @@
                             <span class="nav__name">Renewal</span>
                         </a>
 
-                        <a href="#" class="nav__link">
-                            <i class='bx bx-cog nav__icon'></i>
-                            <span class="nav__name">Community Service</span>
-                        </a>
+                      
 
                         <a href="scholarAnnouncement.php" class="nav__link">
                             <i class='bx bx-news nav__icon'></i>

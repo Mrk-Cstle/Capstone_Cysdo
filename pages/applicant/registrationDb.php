@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     $fullName =  $lastName . ", " . $firstName . ' ' . $middleName;
-    $fullAddress = $addressNum . " " . $addressStreet . " " . $addressBarangay;
+    $fullAddress = $addressNum . "  " . $addressStreet . "  " . $addressBarangay;
 
     // Generate a unique random number
     $uniqueNumber = uniqid();

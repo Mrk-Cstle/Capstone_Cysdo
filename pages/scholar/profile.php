@@ -60,12 +60,13 @@ if ($result) {
     ?>
 
     <section id="content" class="home-section">
+        
         <div class="container">
             <div class="profileBar">
                 <div class="portlet light profileBar-portlet">
                     <div class="profile-pic">
                         <?php
-                        $signaturePicPath = "../../uploads/admin/" . $image;
+                        $signaturePicPath = "../../uploads/scholar/" . $image;
 
 
                         // Check if the image file exists
@@ -122,19 +123,19 @@ if ($result) {
                                                 <div class="form-group">
                                                     <input type="hidden" class="form-control" name="userid" id="userid" value="<?php echo $_SESSION['user_id']; ?> ">
                                                     <label class="control-label bold font-xs">Last Name</label>
-                                                    <input type="text" class="form-control" name="l-name" id="l-name" value="<?php echo $last_name ?> " readonly>
+                                                    <input type="text" class="form-control" name="l-name" id="l-name" value="<?php echo $last_name ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-4">
                                                 <div class="form-group">
                                                     <label class="control-label bold font-xs">First Name</label>
-                                                    <input type="text" class="form-control" name="f-name" id="f-name" value="<?php echo $first_name ?> " readonly>
+                                                    <input type="text" class="form-control" name="f-name" id="f-name" value="<?php echo $first_name ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-4">
                                                 <div class="form-group">
                                                     <label class="control-label bold font-xs">Middle Name</label>
-                                                    <input type="text" class="form-control" name="m-name" id="m-name" value="<?php echo $middle_name ?> " readonly>
+                                                    <input type="text" class="form-control" name="m-name" id="m-name" value="<?php echo $middle_name ?>" readonly>
                                                 </div>
                                             </div>
 
@@ -146,19 +147,19 @@ if ($result) {
                                             <div class="col-md-3 col-sm-4">
                                                 <div class="form-group">
                                                     <label class="control-label bold font-xs">Gender</label>
-                                                    <input type="text" class="form-control" name="gender" id="gender" value="<?php echo $gender ?> " readonly>
+                                                    <input type="text" class="form-control" name="gender" id="gender" value="<?php echo $gender ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-4">
                                                 <div class="form-group">
                                                     <label class="control-label bold font-xs">Voter</label>
-                                                    <input type="text" class="form-control" name="voter" id="voter" value="<?php echo $voter ?> " readonly>
+                                                    <input type="text" class="form-control" name="voter" id="voter" value="<?php echo $voter ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-4">
                                                 <div class="form-group">
                                                     <label class="control-label bold font-xs">Age</label>
-                                                    <input type="text" class="form-control" name="age" id="age" value="<?php echo $age ?> ">
+                                                    <input type="text" class="form-control" name="age" id="age" value="<?php echo $age ?>">
                                                 </div>
                                             </div>
 
@@ -167,14 +168,14 @@ if ($result) {
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="control-label bold font-xs">Address</label>
-                                                        <input type="text" class="form-control" name="add-ress" id="add-ress" value="<?php echo $full_address ?> ">
+                                                        <input type="text" class="form-control" name="add-ress" id="add-ress" value="<?php echo $full_address ?>">
                                                     </div>
 
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label class="control-label bold font-xs">Barangay</label>
-                                                        <input type="text" class="form-control" name="barangay" id="barangay" value="<?php echo $barangay ?> ">
+                                                        <input type="text" class="form-control" name="barangay" id="barangay" value="<?php echo $barangay ?>">
                                                     </div>
 
                                                 </div>
@@ -213,13 +214,13 @@ if ($result) {
                                             <div class=" col-md-3 col-sm-4">
                                                 <div class="form-group">
                                                     <label class="control-label bold font-xs">Facebook</label>
-                                                    <input type="text" class="form-control" name="facebook" id="facebook" value="<?php echo $facebook ?> ">
+                                                    <input type="text" class="form-control" name="facebook" id="facebook" value="<?php echo $facebook ?>">
                                                 </div>
                                             </div>
                                             <div class=" col-md-3 col-sm-4">
                                                 <div class="form-group">
                                                     <label class="control-label bold font-xs">Telegram</label>
-                                                    <input type="text" class="form-control" name="telegram" id="telegram" value="<?php echo $telegram ?> ">
+                                                    <input type="text" class="form-control" name="telegram" id="telegram" value="<?php echo $telegram ?>">
                                                 </div>
                                             </div>
 
@@ -247,9 +248,9 @@ if ($result) {
                                                 <div class="row">
                                                     <div class="col-md-5 col-sm-6">
                                                         <div class="form-group">
-                                                            <input type="hidden" class="form-control" name="userid" id="userid" value="<?php echo $_SESSION['user_id']; ?> ">
+                                                            <input type="hidden" class="form-control" name="userid" id="userid" value="<?php echo $_SESSION['user_id'];?>">
                                                             <label class="control-label bold font-xs">User</label>
-                                                            <input type="text" class="form-control" name="user" id="user" value="<?php echo $user ?> ">
+                                                            <input type="text" class="form-control" name="user" id="user" value="<?php echo $user ?>">
                                                         </div>
                                                     </div>
 
