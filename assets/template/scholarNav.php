@@ -474,7 +474,7 @@ if ($result) {
                             <span class="nav__name">Messages</span>
                         </a>
 
-                        <a href="#" class="nav__link">
+                        <a href="scholarRenewal.php" class="nav__link">
                             <i class="bi bi-arrow-clockwise nav__icon"></i>
                             <span class="nav__name">Renewal</span>
                         </a>
