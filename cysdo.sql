@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2023 at 05:07 PM
+-- Generation Time: Nov 03, 2023 at 05:00 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,7 +52,9 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`admin_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `birth_date`, `contact_number`, `email`, `address`, `gender`, `civil_status`, `citizenship`, `image`, `user`, `password`) VALUES
 (8, 'qwea, qwe qwe', 'qwea', 'qwe', 'qwe', NULL, 123, 'qwe@qwe', 'qwe', '', '', '', '', 'qwe@qwe', '$2y$10$rwj3q8rJCZsaVp9QRGnXhe3CqCv/m.vyZrn3hnayq51R1b2zj/QrS'),
 (24, 'qaz, qaz qaz', 'qaz', 'qaz', 'qaz', '2023-07-30', 1233425345, 'qaz@qaz1  ', 'zxc  ', 'male', 'married', 'French-', 'qaz_profile.jpg', 'qaz', '$2y$10$QRNUQdpxahNTCd9efiQ2Ruoyv/rKs19gBbbA15A5Q4LHRI1gR93x2'),
-(25, 'Castillo, Mark David S.', 'Castillo', 'Mark David', 'S.', '2002-02-11', 2147483647, ' markdavid.castillo.s@bulsu.edu.ph', '    Marilao Bulacan', 'male', 'single', 'Filipino-', 'Castillo_profile.jpeg', '', '$2y$10$eSn1oqf8j8DfjifsaDPOQ.qNpyP1J6VZwB1tzmDB1mjr59oZKIeL6');
+(25, 'Castillo, Mark David S.', 'Castillo', 'Mark David', 'S.', '2002-02-11', 2147483647, ' markdavid.castillo.s@bulsu.edu.ph', '    Marilao Bulacan', 'male', 'single', 'Filipino-', 'Castillo_profile.jpeg', '', '$2y$10$eSn1oqf8j8DfjifsaDPOQ.qNpyP1J6VZwB1tzmDB1mjr59oZKIeL6'),
+(26, 'qweqw, eqweqwe qweqwe', 'qweqw', 'eqweqwe', 'qweqwe', NULL, 13123, 'qweqwe', '', '', '', '', '', 'qweqwe', '$2y$10$upTHZF.td3dgiI1lEXAmbe1vFbNYU/.vaYSfK/EO.8IWBwhF/1Cnm'),
+(41, ',  ', '', '', '', NULL, 0, '', '', '', '', '', '', '', '$2y$10$p02i.3DO/t2Hvl7klwKPf.PEeQ5RC.y1ray9WDMbsmoWHkR.4JEHi');
 
 -- --------------------------------------------------------
 
@@ -311,6 +313,83 @@ INSERT INTO `registration_approval` (`action_id`, `application_id`, `action_type
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `renewal`
+--
+
+CREATE TABLE `renewal` (
+  `renewal_id` int(100) NOT NULL,
+  `scholar_id` int(100) NOT NULL,
+  `semester` varchar(100) NOT NULL,
+  `academic_year` varchar(255) NOT NULL,
+  `renewal_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(255) NOT NULL,
+  `current_yr` varchar(100) NOT NULL,
+  `form` varchar(255) NOT NULL,
+  `previous_cor` varchar(255) NOT NULL,
+  `cog` varchar(255) NOT NULL,
+  `atm` varchar(255) NOT NULL,
+  `current_cor` varchar(255) NOT NULL,
+  `dtr` varchar(255) NOT NULL,
+  `e3_form` varchar(100) NOT NULL,
+  `curriculum` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `renewal`
+--
+
+INSERT INTO `renewal` (`renewal_id`, `scholar_id`, `semester`, `academic_year`, `renewal_date`, `status`, `current_yr`, `form`, `previous_cor`, `cog`, `atm`, `current_cor`, `dtr`, `e3_form`, `curriculum`) VALUES
+(25, 9, '', '', '2023-11-03 15:18:01', '', '', '', '', '', '', '', '', '', ''),
+(26, 9, '', '', '2023-11-03 15:18:17', '', '', '', '', '', '', '', '', '', ''),
+(27, 9, '', '', '2023-11-03 15:18:19', '', '', '', '', '', '', '', '', '', ''),
+(28, 9, '', '', '2023-11-03 15:25:19', '', '', '', 'qwe, qwe qwe_9_654510df654f3.jpeg', '9_654510df654ed_654510df65634.jpg', '9_654510df654ed_654510df65a0f.jpg', '9_654510df654ed_654510df656f3.jpg', '9_654510df654ed_654510df65919.jpeg', '9_654510df654ed_654510df65ada.jpg', '9_654510df654ed_654510df657b7.jpeg'),
+(29, 9, '1stYr,2ndSem', '', '2023-11-03 15:31:57', '', '', '', '', '', '', '', '', '', ''),
+(30, 9, '1stYr,2ndSem', '2023-2024', '2023-11-03 15:32:38', '', '', '', '1stYr,2ndSem_qwe, qwe qwe_9_6545129697a29.jpg', '1stYr,2ndSem_9_6545129697a23_6545129697b3d.jpg', '1stYr,2ndSem_9_6545129697a23_6545129697ed0.jpeg', '1stYr,2ndSem_9_6545129697a23_6545129697c04.jpeg', '1stYr,2ndSem_9_6545129697a23_6545129697d97.jpg', '1stYr,2ndSem_9_6545129697a23_6545129697f95.jpeg', '1stYr,2ndSem_9_6545129697a23_6545129697cc9.jpg'),
+(31, 9, '1stYr,2ndSem', '2023-2024', '2023-11-03 15:35:41', '', '', '', '1stYr,2ndSem_qwe, qwe qwe_9_6545134d30ec9.jpg', '1stYr,2ndSem_9_6545134d30ec3_6545134d30fed.jpg', '1stYr,2ndSem_9_6545134d30ec3_6545134d313a9.jpeg', '1stYr,2ndSem_9_6545134d30ec3_6545134d310b3.jpeg', '1stYr,2ndSem_9_6545134d30ec3_6545134d31243.jpg', '1stYr,2ndSem_9_6545134d30ec3_6545134d31483.jpeg', '1stYr,2ndSem_9_6545134d30ec3_6545134d31186.jpg'),
+(32, 9, '1stYr,2ndSem', '2023-2024', '2023-11-03 15:39:06', '', '', '', '1stYr,2ndSem_qwe, qwe qwe_9_6545141a243de.jpg', '1stYr,2ndSem_9_6545141a243d8_6545141a244e6.jpg', '1stYr,2ndSem_9_6545141a243d8_6545141a24810.jpeg', '1stYr,2ndSem_9_6545141a243d8_6545141a245c4.jpeg', '1stYr,2ndSem_9_6545141a243d8_6545141a24747.jpg', '1stYr,2ndSem_9_6545141a243d8_6545141a248cb.jpeg', '1stYr,2ndSem_9_6545141a243d8_6545141a24687.jpg'),
+(33, 9, '1stYr,2ndSem', '2023-2024', '2023-11-03 15:47:47', '', '', '', '1stYr,2ndSem_qwe, qwe qwe_9_654516239a9b4.jpg', '1stYr,2ndSem_9_654516239a9ae_654516239abde.jpg', '1stYr,2ndSem_9_654516239a9ae_654516239b373.jpeg', '1stYr,2ndSem_9_654516239a9ae_654516239ada2.jpeg', '1stYr,2ndSem_9_654516239a9ae_654516239b1ba.jpg', '1stYr,2ndSem_9_654516239a9ae_654516239b50e.jpeg', '1stYr,2ndSem_9_654516239a9ae_654516239af56.jpg'),
+(34, 9, '1stYr,2ndSem', '2023-2024', '2023-11-03 15:48:24', '', '', '', '1stYr,2ndSem_qwe, qwe qwe_9_65451648ca823.jpg', '1stYr,2ndSem_9_65451648ca81c_65451648caa56.jpg', '1stYr,2ndSem_9_65451648ca81c_65451648cb233.jpeg', '1stYr,2ndSem_9_65451648ca81c_65451648cad20.jpeg', '1stYr,2ndSem_9_65451648ca81c_65451648cb08a.jpg', '1stYr,2ndSem_9_65451648ca81c_65451648cb3dd.jpeg', '1stYr,2ndSem_9_65451648ca81c_65451648caee6.jpg'),
+(35, 9, '1stYr,2ndSem', '2023-2024', '2023-11-03 15:48:40', '', '', '', '1stYr,2ndSem_qwe, qwe qwe_9_6545165813c08.jpg', '1stYr,2ndSem_9_6545165813c02_6545165813e23.jpg', '1stYr,2ndSem_9_6545165813c02_6545165814597.jpeg', '1stYr,2ndSem_9_6545165813c02_6545165813ff3.jpeg', '1stYr,2ndSem_9_6545165813c02_65451658143e8.jpg', '1stYr,2ndSem_9_6545165813c02_654516581473a.jpeg', '1stYr,2ndSem_9_6545165813c02_6545165814218.jpg'),
+(36, 9, '1stYr,2ndSem', '2023-2024', '2023-11-03 15:49:51', '', '', '', '1stYr,2ndSem_qwe, qwe qwe_9_6545169fba2cb.jpg', '1stYr,2ndSem_9_6545169fba2c4_6545169fba511.jpg', '1stYr,2ndSem_9_6545169fba2c4_6545169fbad22.jpeg', '1stYr,2ndSem_9_6545169fba2c4_6545169fba725.jpeg', '1stYr,2ndSem_9_6545169fba2c4_6545169fbab46.jpg', '1stYr,2ndSem_9_6545169fba2c4_6545169fbaec1.jpeg', '1stYr,2ndSem_9_6545169fba2c4_6545169fba910.jpg'),
+(37, 9, '1stYr,1stSem', '', '2023-11-03 15:50:21', '', '', '', '', '', '', '', '', '', ''),
+(38, 9, '1stYr,1stSem', '', '2023-11-03 15:50:48', '', '', '', '', '', '', '', '', '', ''),
+(39, 9, 'renew_1stYr_1stSem', '', '2023-11-03 15:52:35', '', '', '', '', '', '', '', '', '', ''),
+(40, 9, 'renew_1stYr_1stSem', '', '2023-11-03 15:55:04', '', '', '', '', '', '', '', '', '', ''),
+(41, 9, 'renew_1stYr_1stSem', 'asdas', '2023-11-03 15:55:16', '', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_654517e44cb82.jpg', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `renewal_process`
+--
+
+CREATE TABLE `renewal_process` (
+  `process_id` int(255) NOT NULL,
+  `renewal_id` int(255) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `comment` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `renewal_process`
+--
+
+INSERT INTO `renewal_process` (`process_id`, `renewal_id`, `status`, `comment`) VALUES
+(1, 31, '0', '0'),
+(2, 32, '', ''),
+(3, 33, '', ''),
+(4, 34, '', ''),
+(5, 35, '', ''),
+(6, 36, '', ''),
+(7, 37, '', ''),
+(8, 38, '', ''),
+(9, 39, '', ''),
+(10, 40, '', ''),
+(11, 41, '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `scholar`
 --
 
@@ -372,9 +451,15 @@ INSERT INTO `scholar` (`scholar_id`, `image`, `status`, `status_lastsem`, `user`
 (6, '', '', '', '', '$2y$10$Re3aBJLAqKnhlQitMhFZ9OIk.hi7tbzwYDxtIU3/03SVb.BrotWSS', 0, '', '', '', '', 0, 'male', 'yes', '', '', '', '', '', '', '0', 'asdasdad', 0, 'ALS Graduate', NULL, 'qweas', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-31'),
 (7, '', '', '', '', '$2y$10$fwqeJnsjTIpWXzODr90GkO/5xMl7I6fsxGY4wN7oMuC8OEW1UaB8e', 0, '', '', '', '', 0, 'male', 'yes', '', '123123123', '', 'Assumption', '', '', '0', 'asdasdad', 0, 'ALS Graduate', NULL, 'qweas', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-31'),
 (8, '', '', '', 'Castillo', '$2y$10$JDNdYweMlJLOKWqzCDEOMOexkNBSDuv/thFKhlbXsPtHZ031lGh1G', 87, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 0, 'male', 'yes', '123123123', '123123123', '', 'Assumption', '', '', '0', 'asdasdad', 0, 'ALS Graduate', NULL, 'qweas', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-31'),
-(9, '', '', '', 'qwe', '$2y$10$bmuvoFNCxgEMQCZcEtN7PuBVdGUZYuSFNWqfRjss0T4XCF.z1k11m', 20, 'qwe, qwe qwe', 'qwe', 'qwe', 'qwe', 0, 'male', 'yes', '123123123', '123123', 'qweqweqweqweqweqweqweqwe', 'qweqweqwe', '', '', '0', 'qweqweqweqweqwe', 0, 'als', NULL, 'qweqwe', 'qweqwe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-31'),
+(9, '', '', '', 'qwe', '$2y$10$bmuvoFNCxgEMQCZcEtN7PuBVdGUZYuSFNWqfRjss0T4XCF.z1k11m', 20, 'qwe, qwe qwe', 'qwe', 'qwe', 'qwe', 0, 'male', 'yes', '123123123', '123123', 'qweqweqweqweqweqweqweqwe', 'qweqweqwe', '', '', '0', 'qweqweqweqweqwe', 0, 'als', NULL, 'qweqwe', 'qweqwe', 'uploaded', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-31'),
 (10, '', '', '', 'Castillo', '$2y$10$s.f.F7QG9Heali32u6M3o.1ooA.rRK2gQ6irOmOea43Fya4/q4LMu', 78, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 0, 'male', 'yes', '123123123', '123123123', '', 'Assumption', '', '', '0', 'asdasdad', 0, 'ALS Graduate', NULL, 'qweas', 'dasdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-31'),
-(11, '', '', '', 'Castillo', '$2y$10$sgoEd/9lhfXUyG1OIf9y..gLr4h.UrBL.HD0oNZCeBu19pvAca1aa', 78, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 0, 'male', 'yes', '123123123', '123123123', '', 'Assumption', '', '', '0', 'asdasdad', 0, 'ALS Graduate', NULL, 'qweas', 'dasdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-31');
+(11, '', '', '', 'Castillo', '$2y$10$sgoEd/9lhfXUyG1OIf9y..gLr4h.UrBL.HD0oNZCeBu19pvAca1aa', 78, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 0, 'male', 'yes', '123123123', '123123123', '', 'Assumption', '', '', '0', 'asdasdad', 0, 'ALS Graduate', NULL, 'qweas', 'dasdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-31'),
+(12, '', '', '', 'CVB', '$2y$10$PuzKNDWprIeM4PeNC16OUelTYMVSR0zr0xjJUZGzzHVEw35i8oVFC', 0, 'CVB, CVB CVB', 'CVB', 'CVB', 'CVB', 0, '', '', '23456', '', '', '', '', '', '', '', 0, '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-03'),
+(13, '', '', '', 'ASDSDF', '$2y$10$NSEuUqYru8VbNjloEN0df.hVQ1QpGEDq6xCIDgKnlC2OSjEl7BEWq', 0, 'ASDSDF, XCVSDF SDFXCV', 'ASDSDF', 'XCVSDF', 'SDFXCV', 0, '', '', '235345', '', '', '', '', '', '', '', 0, '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-03'),
+(14, '', '', '', 'ASDSDF', '$2y$10$/3TOohNGpQJIFJoJCV68du9ufANFd0jZV.uSQ3FQpKcJulmWxUHG6', 0, 'ASDSDF, XCVSDF SDFXCV', 'ASDSDF', 'XCVSDF', 'SDFXCV', 0, '', '', '235345', '', '', '', '', '', '', '', 0, '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-03'),
+(15, '', '', '', '', '$2y$10$c5C63R9geQKcUikcd2apbOaszN5iYSuoHs.C6LYxZT/9jkR8QcQeS', 0, ',  ', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-03'),
+(19, '', '', '', '', '$2y$10$8Q/d3AEG1Ikq0lfoB8P.gezL9hKAUiuzDxL4RCxqGi9oPyos0I2rq', 0, ',  ', '', '', '', 0, '', '', '123', '', '', '', '', '', '', '', 0, '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-03'),
+(20, '', '', '', '', '$2y$10$UoRNbzGqzYy9OQhOOAHHD.HpNMkfRKYmlf..ImBLQc9QB0vMn3y/y', 0, ',  ', '', '', '', 0, '', '', '123123', '', '', '', '', '', '', '', 0, '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-03');
 
 -- --------------------------------------------------------
 
@@ -406,8 +491,7 @@ INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_n
 (167, 'qwem,  ', 'qwem', '', '', '', 'qweqweqweqwe', '$2y$10$8qmU/eYjAALSYcgRCLZU5eNiDkoCpCtqr0skiWBwUC30VloS9Ne66', 0, '', 'qweqweqweqweqwe', ''),
 (168, 'zxczxc, qweqwe asdqw', 'zxczxc', 'qweqwe', 'asdqw', '123', 'qeqwe@asd', '$2y$10$6TeFjAsvRkqIu6B3WnwU..oEA.ic/T3XDPEE9sJmNhQIPmct/lD/G', 123123, '', 'qeqwe@asd', ''),
 (175, 'asd, qwe asd', 'asd', 'qwe', 'asd', '', '', '$2y$10$tedEnHfW6SKyYFFQ12eQdODBl0EJhY9NeaD2HtznBIN4UAhfJhB.O', 0, '', '', ''),
-(176, ', xacsdQWEZXC AS', '', 'xacsdQWEZXC', 'AS', '', 'zxfaewdasd@asdzxc', '$2y$10$bvNGuatyaGaIUR/la71rYu/.Br5jFsYZ1tTKpZqPKfhc7i4mizZ6K', 0, '', 'zxfaewdasd@asdzxc', ''),
-(181, 'asd, qwe qwe', 'asd', 'qwe', 'qwe', 'qwe', 'qwe', '$2y$10$UaS6A4YGJ40KzXKqWqJdAeqmgETmI1VWG7l1I6HX/l/YhaOh7JVDa', 0, '', 'qwe', '');
+(176, ', xacsdQWEZXC AS', '', 'xacsdQWEZXC', 'AS', '', 'zxfaewdasd@asdzxc', '$2y$10$bvNGuatyaGaIUR/la71rYu/.Br5jFsYZ1tTKpZqPKfhc7i4mizZ6K', 0, '', 'zxfaewdasd@asdzxc', '');
 
 -- --------------------------------------------------------
 
@@ -486,6 +570,20 @@ ALTER TABLE `registration_approval`
   ADD KEY `registration_approval_ibfk_1` (`application_id`);
 
 --
+-- Indexes for table `renewal`
+--
+ALTER TABLE `renewal`
+  ADD PRIMARY KEY (`renewal_id`),
+  ADD KEY `FK_Renewal` (`scholar_id`);
+
+--
+-- Indexes for table `renewal_process`
+--
+ALTER TABLE `renewal_process`
+  ADD PRIMARY KEY (`process_id`),
+  ADD KEY `FK_Renewal_Process` (`renewal_id`);
+
+--
 -- Indexes for table `scholar`
 --
 ALTER TABLE `scholar`
@@ -512,7 +610,7 @@ ALTER TABLE `todos`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `admin_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `announcements`
@@ -545,16 +643,28 @@ ALTER TABLE `registration_approval`
   MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
+-- AUTO_INCREMENT for table `renewal`
+--
+ALTER TABLE `renewal`
+  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `renewal_process`
+--
+ALTER TABLE `renewal_process`
+  MODIFY `process_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `scholar`
 --
 ALTER TABLE `scholar`
-  MODIFY `scholar_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `scholar_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
 
 --
 -- AUTO_INCREMENT for table `todos`
@@ -583,6 +693,18 @@ ALTER TABLE `examination_requirements`
 --
 ALTER TABLE `registration_approval`
   ADD CONSTRAINT `registration_approval_ibfk_1` FOREIGN KEY (`application_id`) REFERENCES `registration` (`applicant_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `renewal`
+--
+ALTER TABLE `renewal`
+  ADD CONSTRAINT `FK_Renewal` FOREIGN KEY (`scholar_id`) REFERENCES `scholar` (`scholar_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `renewal_process`
+--
+ALTER TABLE `renewal_process`
+  ADD CONSTRAINT `FK_Renewal_Process` FOREIGN KEY (`renewal_id`) REFERENCES `renewal` (`renewal_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
