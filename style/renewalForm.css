@@ -84,42 +84,41 @@ div {
     min-height: 48px;
 }
 
-.portlet-title .portletNav li button {
+.portlet-title .portletNavi li button {
     background: 0 0;
     margin: 5px 0 0 1px;
-    border: 0;
     padding: 8px 10px;
     color: #080808;
 }
 
-.portlet-title .portletNav li button {
+.portlet-title .portletNavi li button {
     margin: 0;
     padding: 12px 13px 13px;
     font-size: 16px;
     color: #666;
 }
 
-.tabbable-line .portletNav {
+.tabbable-line .portletNavi {
     margin: 0;
 }
 
-.tabbable-line .portletNav li .active {
+.tabbable-line .portletNavi li .active {
     background: 0 0;
     border-bottom: 4px solid #36c6d3;
     position: relative;
 }
 
-.tabbable-line .portletNav li .open, .tabbable-line .portletNav li :hover {
+.tabbable-line .portletNavi li .open, .tabbable-line .portletNavi li :hover {
     background: 0 0;
     border-bottom: 4px solid #9fe4ea;
 }
 
-.tabbable-line .portletNav li .active button {
+.tabbable-line .portletNavi li .active button {
     border: 0;
     color: #333;
 }
 
-.tabbable-line .portletNav li a {
+.tabbable-line .portletNavi li a {
     background: 0 0!important;
     border: 0;
     margin: 0;
@@ -128,9 +127,9 @@ div {
     color: #737373;
 }
 
-.portletNav li.active button
-, .portletNav li.active button :hover
-, .portletNav li.active button :focus {
+.portletNavi li.active button
+, .portletNavi li.active button :hover
+, .portletNavi li.active button :focus {
     color: #555;
     cursor: default;
     background-color: #fff;
