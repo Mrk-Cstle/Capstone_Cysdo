@@ -2,14 +2,14 @@
 include '../../include/selectDb.php';
 include '../../include/dbConnection.php';
 
-$recordsPerPage = 10; // Change this to your desired value
+$recordsPerPage = 5; // Change this to your desired value
 
 // Initialize page number
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $start = ($page - 1) * $recordsPerPage;
 
 $searchQuery = isset($_GET['searchQuery']) ? mysqli_real_escape_string($conn, $_GET['searchQuery']) : '';
-$sql = "SELECT * FROM scholar WHERE full_name LIKE '%$searchQuery%' LIMIT $start, $recordsPerPage"; // Changed 'fullName' to 'full_name'
+$sql = "SELECT * FROM scholar WHERE full_name LIKE '%$searchQuery%' LIMIT $start, $recordsPerPage";
 
 $result = mysqli_query($conn, $sql);
 
@@ -22,17 +22,23 @@ if (mysqli_num_rows($result) > 0) {
             <td><?php echo $row['contact_num1']; ?></td>
             <td><?php echo $row['contact_num2']; ?></td>
             <td><?php echo $row['approve_date']; ?></td>
-            <td></td>
+
 
             <td class="hidden-cell"><?php echo $row['last_name']; ?></td>
             <td class="hidden-cell"><?php echo $row['first_name']; ?></td>
             <td class="hidden-cell"><?php echo $row['middle_name']; ?></td>
+
+            <td>
+
+                <a class="btn btn-sm btn-danger" href="javascript:void(0);" onclick="deleteAdmin(<?php echo $row['scholar_id']; ?>)">Delete</a>
+                <a class="resetPassword btn btn-sm btn-dark" data-id="<?php echo $row['scholar_id']; ?>" href="">Reset Password</a>
+            </td>
         </tr>
 <?php
     }
 
     // Calculate total number of rows for the search query
-    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM scholar WHERE full_name LIKE '%$searchQuery%'")); // Changed 'fullName' to 'full_name'
+    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM scholar WHERE full_name LIKE '%$searchQuery%'"));
 
     // Calculate total number of pages based on the search results
     $totalPages = ceil($totalRows / $recordsPerPage);

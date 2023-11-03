@@ -19,7 +19,7 @@ include 'include/session.php';
 if ($_SESSION['role'] === 'admin') {
     include '../../assets/template/profileNav.php';
 } elseif ($_SESSION['role'] === 'staff') {
-    include '../../assets/template/staffNav.php';
+    include '../../assets/template/staffNavi.php';
 }
 ?>
 
@@ -30,9 +30,8 @@ if ($_SESSION['role'] === 'admin') {
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
-                <button id="refreshButton" class="btn btn-outline-secondary" type="button">Refresh</button>
+                <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
                 <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Scholar</a>
-
                 <p id="response"></p>
             </form>
         </nav>
@@ -70,8 +69,7 @@ if ($_SESSION['role'] === 'admin') {
 
                             <label class="entCont d-flex">Contact #</label>
                             <input class="entContact d-flex" placeholder="Enter Contact no." type="number" id="contactNumber">
-                            <label class="d-flex">E-mail</label>
-                            <input class="d-flex" placeholder="Enter E-mail" type="text" id="email">
+
                             <p id="response"></p>
                             <input class="btn btn-success" value="Submit" onclick="submitData('insert')">
                         </form>
@@ -271,7 +269,7 @@ if ($_SESSION['role'] === 'admin') {
                 };
 
                 $.ajax({
-                    url: 'action/addAdminDb.php',
+                    url: 'action/scholarAdd.php',
                     type: 'POST',
                     data: data,
                     success: function(response) {
@@ -298,232 +296,245 @@ if ($_SESSION['role'] === 'admin') {
 
                                 // Additional code if needed
                             });
-
-
-                        } else if (response === "Admin Info Deleted") {
-                            swal({
-                                title: "Success!",
-                                text: "Deleted Successfully",
-                                icon: "success",
-                                button: "OK",
-                            })
-                            $("#" + action).css("display", "none");
-                            loadDoc();
-                        } else {
-                            $('#response').text(response);
-                            swal({
-                                title: "Error!",
-                                text: "An error occurred",
-                                icon: "error",
-                                button: "OK",
-                            });
                         }
-
                     }
                 });
+
+            }
+
+
+            function deleteAdmin(adminId, searchQuery) {
+                if (confirm("Are you sure you want to delete this admin record?")) {
+                    $.ajax({
+                        type: "POST",
+                        url: "action/scholarDelete.php", // Adjust the path to your delete script
+                        data: {
+                            admin_id: adminId
+                        },
+                        success: function(data) {
+                            // Handle the response from the server
+                            alert(data); // You can replace this with your preferred handling method
+
+                            if (data === "Admin record deleted successfully.") {
+                                // Remove the row from the table without a page refresh
+                                $("#row_" + adminId).remove();
+
+                                // Refresh the table data with the current search query
+                                loadPage(1);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("AJAX request failed: " + error);
+                        }
+                    });
+                }
             }
 
 
             function addData() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
-          }
-        };
-        xhttp.open("GET", "action/scholarList.php", true);
-        xhttp.send();
-      }
-
-      function loadDoc() {
-        var searchInput = document.getElementById("searchInput");
-        if (searchInput.value === "") {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("tableData").innerHTML = this.responseText;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "action/scholarList.php", true);
+                xhttp.send();
             }
-          };
-          xhttp.open("GET", "action/scholarList.php", true);
-          xhttp.send();
-        }
-      }
-      loadDoc();
+
+            function loadDoc() {
+                var searchInput = document.getElementById("searchInput");
+                if (searchInput.value === "") {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("tableData").innerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open("GET", "action/scholarList.php", true);
+                    xhttp.send();
+                }
+            }
+            loadDoc();
 
 
-function filterTable(searchQuery) {
-  var rows = document.querySelectorAll("#tableData tr");
-  searchQuery = searchQuery.toLowerCase();
+            function filterTable(searchQuery) {
+                var rows = document.querySelectorAll("#tableData tr");
+                searchQuery = searchQuery.toLowerCase();
 
-  rows.forEach(function(row) {
-          var fullName = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
-          if (fullName.includes(searchQuery)) {
-            row.style.display = "table-row";
-          } else {
-            row.style.display = "none";
-          }
-        });
+                rows.forEach(function(row) {
+                    var fullName = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+                    if (fullName.includes(searchQuery)) {
+                        row.style.display = "table-row";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
 
-  // Call loadPage with the search query
-  loadPage(1);
-}
-
-
-function refreshTable(searchQuery = "") {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
-            // Update the search input with the provided query
-            document.getElementById("searchInput").value = searchQuery;
-        }
-    };
-    xhttp.open("GET", "action/scholarList.php?searchQuery=" + searchQuery, true);
-    xhttp.send();
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Initialize the table and pagination on page load
-    refreshTable(); // Initially, no search query
-
-    // Event handler for the search form submission
-    var searchForm = document.getElementById("searchForm");
-    searchForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        var searchInput = document.getElementById("searchInput");
-        var searchQuery = searchInput.value;
-        refreshTable(searchQuery); // Refresh the table with the search query
-    });
-
-    // Event handler for the refresh button
-    var refreshButton = document.getElementById("refreshButton");
-    refreshButton.addEventListener("click", function () {
-        refreshTable(); // Refresh the table without clearing the search query
-    });
-});
+                // Call loadPage with the search query
+                loadPage(1);
+            }
 
 
-      function refreshList() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
+            function refreshTable(searchQuery = "") {
+                var searchInput = document.getElementById("searchInput").value;
+                var currentPage = getCurrentPage(); // Get the current page from session storage
 
-            // Reset the pagination to page 1
-            loadPage(1);
-        }
-    };
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+                        // Update the search input with the provided query
+                        document.getElementById("searchInput").value = searchQuery;
 
-    xhttp.open("GET", "action/scholarList.php", true);
-    xhttp.send();
-}
+                        // Load the current page after refreshing the table
+                        loadPage(currentPage);
+                    }
+                };
+                xhttp.open("GET", "action/scholarList.php?page=" + currentPage + "&searchQuery=" + searchQuery, true);
+                xhttp.send();
+            }
 
+            document.addEventListener("DOMContentLoaded", function() {
+                // Initialize the table and pagination on page load
+                refreshTable(); // Initially, no search query
 
-// Modify the loadPage function to include the search query and page number
-function loadPage(page) {
-  var searchInput = document.getElementById("searchInput");
-  var searchQuery = searchInput.value;
+                // Event handler for the search form submission
+                var searchForm = document.getElementById("searchForm");
+                searchForm.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    var searchInput = document.getElementById("searchInput");
+                    var searchQuery = searchInput.value;
+                    refreshTable(searchQuery); // Refresh the table with the search query
+                });
 
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("tableData").innerHTML = this.responseText;
-      // Store the current page in localStorage
-      setCurrentPage(page);
-    }
-  };
-  xhttp.open("GET", "action/scholarList.php?page=" + page + "&searchQuery=" + searchQuery, true);
-  xhttp.send();
-}
-
-
-
-document.addEventListener("click", function (e) {
-  if (e.target && e.target.classList.contains("pagination-button")) {
-    e.preventDefault();
-    var page = e.target.getAttribute("data-page");
-    loadPage(page); // Load the page
-
-    // Store the current page in localStorage
-    setCurrentPage(page);
-  }
-});
+                // Event handler for the refresh button
+                var refreshButton = document.getElementById("refreshButton");
+                refreshButton.addEventListener("click", function() {
+                    refreshTable(); // Refresh the table without clearing the search query
+                });
+            });
 
 
-// Add this function to initialize pagination when the page loads
-function initializePagination() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("tableData").innerHTML = this.responseText;
-      // Initialize pagination links
-      loadPage(1);
-    }
-  };
-  xhttp.open("GET", "action/scholarList.php", true);
-  xhttp.send();
-}
+            function refreshList() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
 
-// Call the initializePagination function when the page loads
-document.addEventListener("DOMContentLoaded", function () {
-  initializePagination();
-});
+                        // Reset the pagination to page 1
+                        loadPage(1);
+                    }
+                };
 
-var myNamespace = 'scholarList';
+                xhttp.open("GET", "action/scholarList.php", true);
+                xhttp.send();
+            }
 
-// Function to get the current page from session storage
-function getCurrentPage() {
-    var currentPage = sessionStorage.getItem(myNamespace + 'currentPage');
-    return currentPage ? parseInt(currentPage) : 1;
-}
+            // Modify the loadPage function to include the search query and page number
+            function loadPage(page) {
+                var searchInput = document.getElementById("searchInput");
+                var searchQuery = searchInput.value;
 
-// Function to save the current page to session storage
-function setCurrentPage(page) {
-    sessionStorage.setItem(myNamespace + 'currentPage', page);
-}
-
-
-// Add this function to load the current page from localStorage
-function loadCurrentPage() {
-  var currentPage = getCurrentPage();
-  loadPage(currentPage);
-}
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+                        // Store the current page in localStorage
+                        setCurrentPage(page);
+                    }
+                };
+                xhttp.open("GET", "action/scholarList.php?page=" + page + "&searchQuery=" + searchQuery, true);
+                xhttp.send();
+            }
 
 
-// Add this event listener to handle pagination button clicks and store the current page
-document.addEventListener("click", function (e) {
-  if (e.target && e.target.classList.contains("pagination-button")) {
-    e.preventDefault();
-    var page = e.target.getAttribute("data-page");
-    loadPage(page);
 
-    // Store the current page in localStorage
-    setCurrentPage(page);
-  }
-});
+            document.addEventListener("click", function(e) {
+                if (e.target && e.target.classList.contains("pagination-button")) {
+                    e.preventDefault();
+                    var page = e.target.getAttribute("data-page");
+                    loadPage(page); // Load the page
 
-// Call the loadCurrentPage function to load the current page from localStorage
-loadCurrentPage();
+                    // Store the current page in localStorage
+                    setCurrentPage(page);
+                }
+            });
 
-// Add this function to initialize pagination when the page loads
-function initializePagination() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("tableData").innerHTML = this.responseText;
-      // Initialize pagination links
-      loadCurrentPage(); // Load the current page from localStorage
-    }
-  };
-  xhttp.open("GET", "action/scholarList.php", true);
-  xhttp.send();
-}
 
-// Call the initializePagination function when the page loads
-document.addEventListener("DOMContentLoaded", function() {
-  initializePagination();
-});
+            // Add this function to initialize pagination when the page loads
+            function initializePagination() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+                        // Initialize pagination links
+                        loadPage(1);
+                    }
+                };
+                xhttp.open("GET", "action/scholarList.php", true);
+                xhttp.send();
+            }
 
+            // Call the initializePagination function when the page loads
+            document.addEventListener("DOMContentLoaded", function() {
+                initializePagination();
+            });
+
+            var myNamespace = 'scholarList';
+
+            // Function to get the current page from session storage
+            function getCurrentPage() {
+                var currentPage = sessionStorage.getItem(myNamespace + 'currentPage');
+                return currentPage ? parseInt(currentPage) : 1;
+            }
+
+            // Function to save the current page to session storage
+            function setCurrentPage(page) {
+                sessionStorage.setItem(myNamespace + 'currentPage', page);
+            }
+
+
+            // Add this function to load the current page from localStorage
+            function loadCurrentPage() {
+                var currentPage = getCurrentPage();
+                loadPage(currentPage);
+            }
+
+
+            // Add this event listener to handle pagination button clicks and store the current page
+            document.addEventListener("click", function(e) {
+                if (e.target && e.target.classList.contains("pagination-button")) {
+                    e.preventDefault();
+                    var page = e.target.getAttribute("data-page");
+                    loadPage(page);
+
+                    // Store the current page in localStorage
+                    setCurrentPage(page);
+                }
+            });
+
+            // Call the loadCurrentPage function to load the current page from localStorage
+            loadCurrentPage();
+
+            // Add this function to initialize pagination when the page loads
+            function initializePagination() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+                        // Initialize pagination links
+                        loadCurrentPage(); // Load the current page from localStorage
+                    }
+                };
+                xhttp.open("GET", "action/scholarList.php", true);
+                xhttp.send();
+            }
+
+            // Call the initializePagination function when the page loads
+            document.addEventListener("DOMContentLoaded", function() {
+                initializePagination();
+            });
         </script>
     </section>
 </body>
