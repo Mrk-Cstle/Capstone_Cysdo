@@ -82,7 +82,7 @@ if (
 
 
 
-        echo "Last inserted RenewalID: " . $lastInsertID;
+        echo "uploaded ";
     } else {
         echo "Error: " . mysqli_error($conn);
     }
