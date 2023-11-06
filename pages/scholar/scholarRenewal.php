@@ -20,7 +20,7 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="../../style/addStaff.css">
     <link rel="stylesheet" href="../../style/renewalForm.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Application Form</title>
+    <title>Renewal Form</title>
 
 </head>
 
