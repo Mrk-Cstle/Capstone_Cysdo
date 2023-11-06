@@ -33,14 +33,14 @@ if ($_SESSION['role'] === 'admin') {
 <body>
 
     <section id="content" class="home-section">
-        <h1>Approved Applicant List</h1>
+        <h1 class="mb-5">Approved Applicant List</h1>
         <nav class="navbar navbar-light bg-light d-flex">
-            <a class="btn btn-outline-success" href="applicantList.php">All Applicant</a>
-            <a class="btn btn-outline-success" href="applicantDenied.php">Denied Applicant</a>
+            <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantList.php">All Applicant</a>
+            <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantDenied.php">Denied Applicant</a>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
-                <button id="refreshButton" class="btn btn-outline-secondary" type="button">Refresh</button>
+                <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
                 <p id="response"></p>
             </form>
         </nav>
