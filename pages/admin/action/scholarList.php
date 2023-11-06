@@ -29,7 +29,7 @@ if (mysqli_num_rows($result) > 0) {
             <td class="hidden-cell"><?php echo $row['middle_name']; ?></td>
 
             <td>
-
+                <a class="btn btn-sm btn-primary" href="scholarView.php?id=<?php echo htmlspecialchars($row['scholar_id']); ?>">View</a>
                 <a class="btn btn-sm btn-danger" href="javascript:void(0);" onclick="deleteAdmin(<?php echo $row['scholar_id']; ?>)">Delete</a>
                 <a class="resetPassword btn btn-sm btn-dark" data-id="<?php echo $row['scholar_id']; ?>" href="">Reset Password</a>
             </td>

@@ -15,11 +15,8 @@ if ($result) {
   if (mysqli_num_rows($result) > 0) {
     // Step 4: Fetch the row
     $row = mysqli_fetch_assoc($result);
-
-    // Step 5: Access the values of the row
-    extract($row);
     // ...
-
+    $imageData = $row['image'];
     // Process the retrieved row as needed
     // For example, you can display the values or perform any other operations
 
@@ -204,7 +201,7 @@ if ($result) {
     </div>
     <ul class="navProfile nav nav-pills justify-content-end">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img id="profileImage" src="../../uploads/admin/<?php echo $image ?>" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
+        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img id="profileImage" src="../../uploads/admin/<?php echo $imageData ?>" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="profile.php">Profile</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -235,6 +232,7 @@ if ($result) {
         <a class="sub-btn"><i class="fas fa-table"></i>Manage Scholar<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
           <a href="scholar.php" class="sub-item">Scholar List</a>
+          <a href="renewalList.php" class="sub-item">Renewal Process</a>
 
         </div>
       </div>

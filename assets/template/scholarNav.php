@@ -431,7 +431,7 @@ if ($result) {
     <header class="header">
         <div class="header__container">
             <a class="navProfile nav-link dropdown-toggle text-black" type="button" data-bs-toggle="dropdown" href="#" aria-expanded="false">
-                <img src="../../uploads/scholar/<?php echo $image?>" class="header__img"><?php echo $_SESSION['user']; ?></a>
+                <img src="../../uploads/scholar/<?php echo $image ?>" class="header__img"><?php echo $_SESSION['user']; ?></a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -479,7 +479,7 @@ if ($result) {
                             <span class="nav__name">Renewal</span>
                         </a>
 
-                      
+
 
                         <a href="scholarAnnouncement.php" class="nav__link">
                             <i class='bx bx-news nav__icon'></i>
