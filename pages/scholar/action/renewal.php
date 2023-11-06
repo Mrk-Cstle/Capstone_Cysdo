@@ -32,13 +32,13 @@ function handleFileUpload($fileInput, $user, $id, $action)
 $newFileNamePrevCor = handleFileUpload($_FILES['prevCor'], $user, $id, $action);
 
 // Handle 'cog' file upload
-$newFileNameCog = handleFileUpload($_FILES['cog'], $id, $uniqueNumber, $action);
-$newFileNameCurrentCor = handleFileUpload($_FILES['currentCor'], $id, $uniqueNumber, $action);
-$newFileNameCurriculum = handleFileUpload($_FILES['curriculum'], $id, $uniqueNumber, $action);
+$newFileNameCog = handleFileUpload($_FILES['cog'], $user, $id, $uniqueNumber, $action);
+$newFileNameCurrentCor = handleFileUpload($_FILES['currentCor'], $user, $id, $uniqueNumber, $action);
+$newFileNameCurriculum = handleFileUpload($_FILES['curriculum'], $user, $id, $uniqueNumber, $action);
 
-$newFileNameDtr = handleFileUpload($_FILES['dtr'], $id, $uniqueNumber, $action);
-$newFileNameAtm = handleFileUpload($_FILES['atm'], $id, $uniqueNumber, $action);
-$newFileNameE3Form = handleFileUpload($_FILES['e3Form'], $id, $uniqueNumber, $action);
+$newFileNameDtr = handleFileUpload($_FILES['dtr'], $user, $id, $uniqueNumber, $action);
+$newFileNameAtm = handleFileUpload($_FILES['atm'], $user, $id, $uniqueNumber, $action);
+$newFileNameE3Form = handleFileUpload($_FILES['e3Form'], $user, $id, $uniqueNumber, $action);
 
 
 

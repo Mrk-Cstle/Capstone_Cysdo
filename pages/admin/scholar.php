@@ -378,7 +378,7 @@ if ($_SESSION['role'] === 'admin') {
 
             function refreshTable(searchQuery = "") {
                 var searchInput = document.getElementById("searchInput").value;
-                var currentPage = getCurrentPage(); // Get the current page from session storage
+                var currentPage = '1'; // Get the current page from session storage
 
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {

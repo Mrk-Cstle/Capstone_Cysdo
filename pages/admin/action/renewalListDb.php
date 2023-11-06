@@ -51,7 +51,7 @@ if (mysqli_num_rows($result) > 0) {
 
         if ($row['status'] == null) {
             $tableHTML .=
-                '<a class="resetPassword btn btn-sm btn-dark" href="scholarView.php?id=' . htmlspecialchars($row['scholar_id']) . '&action=' . htmlspecialchars($row['semester']) . '">View</a>';
+                '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['scholar_id']) . '&action=' . htmlspecialchars($row['semester']) . '">View</a>';
         } else {
             $tableHTML .=   '<a class="resetPassword btn btn-sm btn-dark" href="applicantView.php?id=' . htmlspecialchars($row['scholar_id']) . '">View</a>';
             $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" data-applicant-id="' . htmlspecialchars($row['scholar_id']) . '">Delete</button>';
