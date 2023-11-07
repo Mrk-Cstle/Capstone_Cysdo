@@ -440,7 +440,7 @@ include 'include/session.php'; ?>
                             <span class="nav__name">Dashboard</span>
                         </a>
 
-                        <a href="scholarMessage.php" class="nav__link">
+                        <a href="scholarChat.php" class="nav__link">
                             <i class='bx bx-message-rounded nav__icon'></i>
                             <span class="nav__name">Messages</span>
                         </a>

@@ -199,7 +199,7 @@ if ($result) {
 
   <div class="navBar">
     <div class="messageBtn me-2">
-      <a class="msgBtn bi bi-chat-dots-fill text-black fs-4" href="chattingSystem.php"></a>
+      <a class="msgBtn bi bi-chat-dots-fill text-black fs-4" href="adminChat.php"></a>
     </div>
     <ul class="navProfile nav nav-pills justify-content-end">
       <li class="nav-item dropdown">

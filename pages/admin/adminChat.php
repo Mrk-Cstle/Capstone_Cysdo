@@ -34,8 +34,12 @@ mysqli_close($conn);
 ?>
 
 
+
+
+
+
 <!DOCTYPE html>
-<html lang="en" >
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +49,7 @@ mysqli_close($conn);
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
-</head>
+
 
 <style>
 * {
@@ -444,39 +448,30 @@ body {
   }
 }
 /* Add styles for sent messages */
-/* Style for sent messages */
-.chat .messages-chat .message.sent {
-  justify-content: flex-end; /* Align sent messages to the right */
-  text-align: right; /* Align text in sent messages to the right */
-  margin-left: auto; /* Push sent messages to the right */
-  color: #fff; /* White text for sent messages */
-}
 
-/* Style for received messages */
-.chat .messages-chat .message.received {
-  justify-content: flex-start; /* Align received messages to the left */
-  text-align: left; /* Align text in received messages to the left */
-  margin-right: auto; /* Push received messages to the left */
-  color: #000; /* Black text for received messages */
-}
 
 </style>
+</head>
+
+
 <body>
-<!-- partial:index.partial.html -->
-<body>
+<?php
+include '../include/selectDb.php'; 
+?>
   <div class='textAlign'>
     <p style="text-transform: capitalize;" class='bold d-block w-auto'><a href='adminHome.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
   </div>
   <div class="container">
     <div class="row">
-      <section class="discussions">
-        <div class="discussion search">
-          <div class="searchbar">
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <input type="text" placeholder="Search..."></input>
-          </div>
-        </div>
-        <?php
+        <section class="discussions">
+            <div class="discussion search">
+                <div class="searchbar">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <input type="text" placeholder="Search..."></input>
+                </div>
+            </div>
+            
+            <?php
             // Include your database connection script
             include '../include/selectDb.php';
 
@@ -506,220 +501,104 @@ body {
           }
           
             ?>
-      </section>
-      <section class="chat" style="display: none;">
-        <div class="header-chat">
-          <i class="icon fa fa-user-o" aria-hidden="true"></i>
-          <p class="name"></p>
-          <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <div class="btn-group dropstart">
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Delete Message</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+        </section>
+        <section class="chat" style="display: block;">
+            <div class="header-chat">
+                <i class="icon fa fa-user-o" aria-hidden="true"></i>
+                <p class="name"><?php echo $_SESSION['user']; ?></p>
+                <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="btn-group dropstart">
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Delete Message</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                </i>
             </div>
-          </i>
-        </div>
-       <div class="messages-chat">
-    <!-- Add a class "sent" to sent messages and "received" to received messages -->
-          <div class="message sent">
-            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-              <div class="online"></div>
+            <div class="messages-chat">
+                <!-- Placeholder for displaying chat messages -->
+                <div class="chat-box" id="chat-box">
+                    <!-- Messages will be displayed here -->
+                </div>
             </div>
-              <p class="text">This is a sent message.</p>
-          </div>
-    <!-- Add a class "received" to received messages -->
-          <div class="message received">
-            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-              <div class="online"></div>
+            <div class="footer-chat">
+                <input type="text" class="write-message" id="messageInput" placeholder="Type your message here">
+                <i id="send" class="icon send1 fa fa-paper-plane-o clickable" aria-hidden="true"></i>
             </div>
-              <p class="text">This is a received message.</p>
-          </div>
-       </div>
-        <div class="footer-chat">
-          <input type="text" class="write-message" id="messageInput" placeholder="Type your message here"></input>
-          <input type="file" id="imageInput" accept="image/*" style="display: none;"></input>
-          <i id="sendMessageButton" class="icon send1 fa fa-paper-plane-o clickable" aria-hidden="true"></i>
-          
-        </div>
-      </section>
+        </section>
     </div>
-  </div>
-</body>
-<!-- partial -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</div>
 
-  <script>
-  // Get a reference to the send message button
-const sendMessageButton = document.getElementById("sendMessageButton");
-const messageInput = document.getElementById("messageInput");
-
-// Add a click event listener to the send message button
-sendMessageButton.addEventListener("click", sendMessage);
-
-// Add an event listener for Enter key press in the message input field
-messageInput.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    // Prevent the default Enter key behavior (e.g., line break)
-    event.preventDefault();
-    sendMessage();
-  }
-});
-
-// Function to send a text message
-function sendMessage() {
-  // Get the value of the message input
-  const messageText = messageInput.value;
-
-  // Check if the message is not empty
-  if (messageText.trim() !== "") {
-    // Create a new text message element for sent messages
-    const newTextMessage = createMessageElement(messageText, "sent");
-
-    // Get the messages chat container
-    const messagesChat = document.querySelector(".messages-chat");
-
-    // Append the new text message to the chat container
-    messagesChat.appendChild(newTextMessage);
-    
-
-    // Clear the message input field
-    messageInput.value = "";
-
-    // Simulate receiving a message (for testing purposes)
-    setTimeout(function () {
-      receiveMessage("This is a received message.");
-    }, 1000); // Simulate receiving a message after 1 second (you can replace this with actual received messages)
-  }
-}
-
-// Function to create a message element
-function createMessageElement(messageText, messageType) {
-  // Create a new message element
-  const newMessage = document.createElement("div");
-  newMessage.className = `message ${messageType}`;
-
-  
-
-  // Create a new message content element
-  const messageContent = document.createElement("p");
-  messageContent.className = "text";
-  messageContent.textContent = messageText;
-
-  if (messageType === "sent") {
-    messageContent.style.backgroundColor = "#007bff";
-  }
-
-  if (messageType === "received") {
-    messageContent.style.backgroundColor = "#f6f6f6";
-  }
-
-  // Create a photo element (you can customize the photo for sent and received messages)
-  const photoElement = document.createElement("div");
-  photoElement.className = "photo";
-  photoElement.style.backgroundImage =
-    'url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)';
-
-  // Create an online status element (you can customize the online status)
-  const onlineStatusElement = document.createElement("div");
-  onlineStatusElement.className = "online";
-
-  // Append the photo and online status to the message element
-  photoElement.appendChild(onlineStatusElement);
-  newMessage.appendChild(photoElement);
-
-  // Append the message content to the message element
-  newMessage.appendChild(messageContent);
-
-  return newMessage;
-}
-
-// Function to receive a text message
-function receiveMessage(messageText) {
-  // Create a new text message element for received messages
-  const newReceivedMessage = createMessageElement(messageText, "received");
-
-  // Get the messages chat container
-  const messagesChat = document.querySelector(".messages-chat");
-  
-  // Append the new received message to the chat container
-  messagesChat.appendChild(newReceivedMessage);
-}
-</script>
+<!-- Include jQuery library here -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Get all discussion elements
-    const discussions = document.querySelectorAll(".discussion");
-    const chatHeaderName = document.querySelector(".name");
-    const messagesChat = document.querySelector(".messages-chat");
-    let activeDiscussion = null;
+$(document).ready(function () {
+    function fetchMessages(scholarId) {
+        // Fetch messages for the specified scholar (use scholarId in the request)
+        $.ajax({
+            url: 'fetch_message.php',
+            method: 'GET',
+            data: { scholar_id: scholarId },
+            success: function (data) {
+                $('#chat-box').html(data);
+            }
+        });
+    }
 
-    // Add click event listeners to each discussion element
-    discussions.forEach((discussion) => {
-      discussion.addEventListener("click", function () {
-        // Remove the "message-active" class from the previously active discussion
-        if (activeDiscussion) {
-          activeDiscussion.classList.remove("message-active");
+    $('#send').click(function () {
+        var message = $('#messageInput').val();
+
+        if (message !== '') {
+            // Send the message to the active scholar (use activeDiscussion.getAttribute('data-scholar-id'))
+            $.ajax({
+                url: 'send_message.php',
+                method: 'POST',
+                data: {
+                    message: message,
+                    scholar_id: activeDiscussion.getAttribute('data-scholar-id')
+                },
+                success: function () {
+                    $('#messageInput').val(''); // Clear input field
+                    fetchMessages(activeDiscussion.getAttribute('data-scholar-id')); // Refresh messages for the active scholar
+                }
+            });
         }
-
-        // Get the name and message from the clicked discussion
-        const name = discussion.querySelector(".name").textContent;
-        const message = discussion.querySelector(".message").textContent;
-
-        // Clear the messages chat container
-        messagesChat.innerHTML = "";
-
-        // Create a new message element for the initial message
-        const initialMessage = document.createElement("div");
-        initialMessage.className = "message";
-        initialMessage.innerHTML = `
-          <div class="photo" style="background-image: ${discussion.querySelector(".photo").style.backgroundImage};">
-            <div class="online"></div>
-          </div>
-          <p class="text">${message}</p>
-        `;
-
-        // Append the initial message to the messages chat container
-        messagesChat.appendChild(initialMessage);
-
-        // Add the "message-active" class to the clicked discussion
-        discussion.classList.add("message-active");
-        activeDiscussion = discussion;
-
-        // Show the chat section
-        const chatSection = document.querySelector(".chat");
-        chatSection.style.display = "block";
-
-        // Update the chat header name
-        const names = discussion.querySelector(".name").textContent;
-        const chatHeaderName = document.querySelector(".chat .header-chat .name");
-        chatHeaderName.textContent = name;
-
-        // Show the footer chat
-        const footerChat = document.querySelector(".footer-chat");
-        footerChat.style.display = "flex";
-      });
     });
 
-    // Select the first discussion by default
-    if (discussions.length > 0) {
-      discussions[0].click();
-    } else {
-      // If there are no discussions, hide the chat section and footer chat
-      const chatSection = document.querySelector(".chat");
-      chatSection.style.display = "none";
-      const footerChat = document.querySelector(".footer-chat");
-      footerChat.style.display = "none";
-    }
-  });
-  
-</script>
+    const discussions = document.querySelectorAll(".discussion");
+    let activeDiscussion = null;
 
-<script>
- 
-</script>
+    discussions.forEach((discussion) => {
+        discussion.addEventListener("click", function () {
+            if (activeDiscussion) {
+                activeDiscussion.classList.remove("message-active");
+            }
 
+            const name = discussion.querySelector(".name").textContent;
+
+            discussion.classList.add("message-active");
+            activeDiscussion = discussion;
+
+            // Update the chat header name and show the chat section
+            const chatHeaderName = document.querySelector(".chat .header-chat .name");
+            chatHeaderName.textContent = name;
+            const chatSection = document.querySelector(".chat");
+            chatSection.style.display = "block";
+
+            // Show the footer chat
+            const footerChat = document.querySelector(".footer-chat");
+            footerChat.style.display = "flex";
+
+            // Fetch messages for the selected scholar
+            fetchMessages(discussion.getAttribute('data-scholar-id'));
+        });
+    });
+});
+
+
+
+</script>
 </body>
 </html>
