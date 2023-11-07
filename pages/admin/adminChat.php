@@ -565,6 +565,8 @@ $(document).ready(function () {
                 }
             });
         }
+          // Periodically update the chat
+          setInterval(fetchMessages, 2000); // Update every 2 seconds
     });
 
     const discussions = document.querySelectorAll(".discussion");

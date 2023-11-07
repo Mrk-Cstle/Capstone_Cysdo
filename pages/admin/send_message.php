@@ -8,9 +8,9 @@ if (isset($_POST['message']) && isset($_POST['scholar_id'])) {
     $message = $_POST['message'];
     $admin_id = $_SESSION['user_id']; // Get the admin's ID
     $scholar_id = $_POST['scholar_id']; // Get the scholar's ID from the POST data
-    $sender = $_SESSION['user']; // Get the admin's name from the session
+    $sender = 'City Youth and Sports Development Office - CSJDM'; // Set the sender's name
 
-    // Insert the message into the chat_messages table with the admin's name and scholar's ID
+    // Insert the message into the chat_messages table with the specified sender name, scholar's ID, and admin's ID
     $query = "INSERT INTO chat_messages (sender, message, scholar_id, admin_id) VALUES ('$sender', '$message', $scholar_id, $admin_id)";
     mysqli_query($conn, $query);
 

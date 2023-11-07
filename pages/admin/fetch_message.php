@@ -13,7 +13,8 @@ if (mysqli_num_rows($result) > 0) {
     if (isset($_GET['scholar_id'])) {
         $scholar_id = $_GET['scholar_id'];
 
-        $query = "SELECT * FROM chat_messages WHERE scholar_id = $scholar_id AND admin_id = $userId ORDER BY timestamp DESC";
+        // Modify the query to remove the condition that filters by a specific admin user
+        $query = "SELECT * FROM chat_messages WHERE scholar_id = $scholar_id ORDER BY timestamp DESC";
         $result = mysqli_query($conn, $query);
 
         while ($row = mysqli_fetch_assoc($result)) {
