@@ -7,6 +7,7 @@ include 'include/session.php';
 if (isset($_GET['id'])) {
     $scholarId = $_GET['id'];
     $actions = $_GET['action'];
+    $page = $_GET['page'];
 
     // Step 2: Construct and execute the SQL query to select the row with the specified ID
 
@@ -15,7 +16,7 @@ if (isset($_GET['id'])) {
         FROM renewal
         JOIN scholar ON scholar.scholar_id = renewal.scholar_id
         JOIN renewal_process ON renewal_process.renewal_id = renewal.renewal_id
-        WHERE scholar.scholar_id = '$scholarId'";
+        WHERE renewal.renewal_id = '$scholarId'";
 
     $result = mysqli_query($conn, $sql);
 
@@ -73,7 +74,8 @@ if (isset($_GET['id'])) {
             <div class="profileBar">
                 <div class="portlet light profileBar-portlet">
                     <div class='textAlign'>
-                        <p style="text-transform: capitalize;" class='bold d-block mt-3'><a href='scholarHome.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
+                        <p style="text-transform: capitalize;" class='bold d-block mt-3'><a href='renewalList.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
+                        <h1></h1>
                     </div>
                     <div class="profile-pic ms-3">
                         <?php
@@ -96,10 +98,10 @@ if (isset($_GET['id'])) {
                             <h5>Name: <?php echo $full_name ?></h5>
                         </div>
                         <div class="profile-user-name text-uppercase">
-                            <h5>Status: <?php if ($status == null) {
+                            <h5>Status: <?php if ($process_status == null) {
                                             echo ' For Review';
                                         } else {
-                                            echo $status;
+                                            echo $process_status;
                                         }  ?></h5>
                         </div>
                         <div class="profile-user-name text-uppercase">
@@ -112,13 +114,23 @@ if (isset($_GET['id'])) {
                         <hr class="mb-2 mt-5 opacity-0">
                     </div>
                     <div class="res-btn col-md-12">
-                        <?php if ($status == null) { ?>
-                            <button style="float: right;" class="btn btn-danger btn-md mb-3 ms-3 me-2" onclick="sendAction('<?php echo $process_id; ?>', 'decline')">Declined</button>
-                            <button style="float: right;" class="btn btn-success btn-md mb-3 ms-3" onclick="sendAction('<?php echo $process_id; ?>', 'approve')">Approve</button>
+                        <?php
+                        if ($page == 'renew') {
+                            if ($process_status == null) {
+                                $semesterYear = $actions . '_' . $academic_year;
+                        ?>
 
-                        <?php } else {
-                            echo $status;
-                        }  ?></h5>
+                                <button style="float: right;" class="btn btn-danger btn-md mb-3 ms-3 me-2" onclick="sendAction('<?php echo $process_id; ?>', 'decline','<?php echo $semesterYear ?>')">Declined</button>
+                                <button style="float: right;" class="btn btn-success btn-md mb-3 ms-3" onclick="sendAction('<?php echo $process_id; ?>', 'approve','<?php echo $semesterYear ?>')">Approve</button>
+
+                            <?php } else { ?>
+                                <button disabled style="float: right;" class="btn btn-danger btn-md mb-3 ms-3 me-2" onclick="sendAction('<?php echo $process_id; ?>', 'decline','<?php echo $semesterYear ?>')">Declined</button>
+                                <button disabled style="float: right;" class="btn btn-success btn-md mb-3 ms-3" onclick="sendAction('<?php echo $process_id; ?>', 'approve','<?php echo $semesterYear ?>')">Approve</button>
+                        <?php }
+                        } elseif ($page == 'award') {
+                        }
+
+                        ?></h5>
 
                     </div>
                 </div>
@@ -357,18 +369,20 @@ if (isset($_GET['id'])) {
         });
     </script>
     <script>
-        function sendAction(applicantId, action) {
+        function sendAction(applicantId, action, semesterYear) {
             // Create an AJAX request
             $.ajax({
                 type: 'POST', // You can use 'GET' if preferred
                 url: 'action/renewalViewDb.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
                 data: {
                     id: applicantId,
-                    action: action
+                    action: action,
+                    semesterYear: semesterYear
                 },
                 success: function(response) {
                     // Handle the response from the server if needed
                     $('h1').text(response);
+                    console.log(semesterYear);
                     // For example, you can display a success message or update the UI
                     if (action === 'approve') {
                         alert('Applicant approved successfully!');

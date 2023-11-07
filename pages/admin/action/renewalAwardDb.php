@@ -16,12 +16,12 @@ if (!empty($searchQuery)) {
 }
 
 $query =
-    "SELECT renewal_process.*, renewal.*, scholar.*
+    "SELECT renewal_award.*, renewal.*, scholar.*
           FROM renewal
           JOIN scholar ON scholar.scholar_id = renewal.scholar_id
-          JOIN renewal_process ON renewal_process.renewal_id = renewal.renewal_id
+          JOIN renewal_award ON renewal_award.renewal_id = renewal.renewal_id
           $searchCondition
-          ORDER BY renewal_process.process_id ASC
+          ORDER BY renewal_award.award_id ASC
           LIMIT $offset, $pageSize";
 
 // Execute the SQL query for data retrieval
@@ -38,14 +38,14 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '<td>' . htmlspecialchars($row['full_name']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contact_num1']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contact_num2']) . '</td>';
-        $tableHTML .= '<td>' . htmlspecialchars($row['semester']) . '</td>';
+        $tableHTML .= '<td>' . htmlspecialchars($row['semester_year']) . '</td>';
 
         $tableHTML .= '<td>';
-        if ($row['process_status'] == !null) {
-            if ($row['process_status'] == 'approve') {
-                $tableHTML .= '<span class="badge bg-success text-capitalize" >' . $row['process_status'] . '</span>';
+        if ($row['award_status'] == !null) {
+            if ($row['award_status'] == 'done') {
+                $tableHTML .= '<span class="badge bg-success text-capitalize" >' . $row['award_status'] . '</span>';
             } else {
-                $tableHTML .= '<span class="badge bg-danger text-capitalize" >' . $row['process_status'] . '</span>';
+                $tableHTML .= '<span class="badge bg-danger text-capitalize" >' . $row['award_status'] . '</span>';
             }
         } else {
             $tableHTML .= '<span class="badge bg-warning">For Review</span>';
@@ -53,10 +53,12 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '</td>';
         $tableHTML .= '<td>';
 
-        if ($row['process_status'] == null) {
-            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=renew">View</a>';
+        if ($row['award_status'] == null) {
+            $tableHTML .= '<button class="resetPassword btn btn-sm btn-success" onclick="sendAction(\'' .  $row['award_id'] . '\', \'decline\', \'' . $row['semester_year'] . '\')">Done</button> | ';
+
+            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=award">View</a>';
         } else {
-            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=renew">View</a>';
+            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=award">View</a>';
             $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" data-applicant-id="' . htmlspecialchars($row['renewal_id']) . '">Delete</button>';
         }
 

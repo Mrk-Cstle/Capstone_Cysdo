@@ -3,12 +3,13 @@ session_start();
 include '../../include/dbConnection.php';
 if (isset($_POST['id']) && isset($_POST['action'])) {
     $applicantId = $_POST['id'];
+    $semesterYear = $_POST['semesterYear'];
 
     $sql = "SELECT renewal_process.*, renewal.*, scholar.*
         FROM renewal
         JOIN scholar ON scholar.scholar_id = renewal.scholar_id
         JOIN renewal_process ON renewal_process.renewal_id = renewal.renewal_id
-        WHERE renewal_process.process_id = '$scholarId'";
+        WHERE renewal_process.process_id = '$applicantId'";
 
     $result = mysqli_query($conn, $sql);
 
@@ -27,18 +28,16 @@ if (isset($_POST['id']) && isset($_POST['action'])) {
 
             // Free the result set
             mysqli_free_result($result);
-            $user =
-                $_SESSION['user'];
         }
 
         if ($_POST["action"] == "approve") {
-            approve($contactNum1, $fullName, $user);
+            approve($row, $semesterYear);
         }
         // else if ($_POST["action"] == "edit") {
         //     edit();
         // } 
         else if ($_POST["action"] == "decline") {
-            decline($contactNum1, $fullName, $user);
+            decline($row, $semesterYear, $applicantId);
         } else {
             echo "error";
         }
@@ -52,22 +51,22 @@ if (isset($_POST['id']) && isset($_POST['action'])) {
     }
 }
 
-function approve($contactNum1, $fullName, $user)
+function approve($row, $semesterYear)
 {
     global $conn;
-
     $applicantId = $_POST['id'];
-    $action = $_POST['action'];
+    $scholar_id = $row['scholar_id'];
+    $renewal_id = $row['renewal_id'];
 
-    $action = "approve";
+
     try {
-        mysqli_query($conn, "UPDATE registration SET status = 'done'  WHERE applicant_id = '$applicantId'");
-        $insertQuery = "INSERT INTO registration_approval (application_id,action_type ) VALUES ('$applicantId', '$action')";
+        mysqli_query($conn, "UPDATE renewal_process SET process_status = 'approve'  WHERE process_id = '$applicantId'");
+        mysqli_query($conn, "UPDATE renewal SET status = 'approve'  WHERE renewal_id = '$renewal_id'");
+        mysqli_query($conn, "UPDATE scholar SET status_lastsem = '$semesterYear'  WHERE scholar_id = '$scholar_id'");
+        $insertQuery = "INSERT INTO renewal_award (renewal_id,semester_year ) VALUES ('$renewal_id', '$semesterYear')";
         $result = mysqli_query($conn, $insertQuery);
         if ($result) {
-
             echo "Scholar Approve";
-            send_sms("We are pleased to inform you " . $fullName . " that your CYSDO Scholarship application has been accepted. You will receive further details regarding the examination date in the near future. Please stay updated by regularly checking of facebook page and our official website. Congratulations on your selection, and feel free to reach out if you have any questions.  " . "\n\n-CYSDO CSJDM-", $contactNum1);
         } else {
             echo "Insert Failed: " . mysqli_error($conn);
         }
@@ -77,7 +76,7 @@ function approve($contactNum1, $fullName, $user)
     }
 }
 
-function decline($contactNum1, $fullName, $user)
+function decline($row, $semesterYear, $applicantId)
 {
     global $conn;
 
@@ -85,20 +84,20 @@ function decline($contactNum1, $fullName, $user)
     $action = $_POST['action'];
 
     $action = "decline";
-    try {
-        mysqli_query($conn, "UPDATE registration SET status = 'done'  WHERE applicant_id = '$applicantId'");
-        $insertQuery = "INSERT INTO registration_approval (application_id,action_type ) VALUES ('$applicantId', '$action')";
-        $result = mysqli_query($conn, $insertQuery);
-        if ($result) {
-            send_sms("We regret to inform you " . $fullName . " that your CYSDO Scholarship application has not been accepted. We appreciate your interest in the scholarship program and encourage you to consider other opportunities in the future. If you have any questions or require feedback, please do not hesitate to reach out.\n\n-CYSDO CSJDM-", $contactNum1);
-            echo "Scholar Declined";
-        } else {
-            echo "Insert Failed: " . mysqli_error($conn);
-        }
-    } catch (mysqli_sql_exception $e) {
-        // Hide the error message from the frontend
-        echo "An error occurred";
-    }
+
+    global $conn;
+
+    $scholar_id = $row['scholar_id'];
+    $renewal_id = $row['renewal_id'];
+
+
+
+    mysqli_query($conn, "UPDATE renewal SET status = 'decline'  WHERE renewal_id = '$renewal_id'");
+    mysqli_query($conn, "UPDATE renewal_process SET process_status = 'decline'  WHERE process_id = '$applicantId'");
+
+
+
+    echo "Scholar Declined";
 }
 
 function send_sms($message, $contactNum1)

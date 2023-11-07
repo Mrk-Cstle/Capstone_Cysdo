@@ -32,9 +32,10 @@ if ($_SESSION['role'] === 'admin') {
 
 <body>
     <section id="content" class="home-section">
-        <h1 class="mb-5">Renewal List</h1>
+        <h1 class="mb-5">DI KO ALAM LALAGAY BAHALA NA SI MARIE</h1>
         <nav class="navbar navbar-light bg-light d-flex">
-
+            <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantApprove.php">Approve Renewal</a>
+            <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantDenied.php">Denied Renewal</a>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
@@ -71,7 +72,7 @@ if ($_SESSION['role'] === 'admin') {
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            var myNamespace = 'renewalList';
+            var myNamespace = 'renewalAwardList';
 
             // Function to get the current page from session storage
             function getCurrentPage() {
@@ -98,7 +99,7 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     }
                 };
-                xhr.open('GET', 'action/renewalListDb.php?page=' + page, true);
+                xhr.open('GET', 'action/renewalAwardDb.php?page=' + page, true);
                 xhr.send();
             }
 
@@ -114,7 +115,7 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     }
                 };
-                xhr.open('GET', 'action/renewalListDb.php?search=' + searchValue + '&page=' + page, true);
+                xhr.open('GET', 'action/renewalAwardDb.php?search=' + searchValue + '&page=' + page, true);
                 xhr.send();
             }
 
@@ -129,7 +130,7 @@ if ($_SESSION['role'] === 'admin') {
                     }
                 };
 
-                xhttp.open("GET", "action/renewalListDb.php", true);
+                xhttp.open("GET", "action/renewalAwardDb.php", true);
                 xhttp.send();
             }
 

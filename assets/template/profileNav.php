@@ -233,6 +233,7 @@ if ($result) {
         <div class="sub-menu">
           <a href="scholar.php" class="sub-item">Scholar List</a>
           <a href="renewalList.php" class="sub-item">Renewal Process</a>
+          <a href="renewalAward.php" class="sub-item">Di ko ulit alam</a>
 
         </div>
       </div>
