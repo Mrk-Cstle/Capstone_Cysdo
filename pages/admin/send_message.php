@@ -6,7 +6,7 @@ include '../include/selectDb.php';
 
 if (isset($_POST['message']) && isset($_POST['scholar_id'])) {
     $message = $_POST['message'];
-    $admin_id = $_SESSION['user_id']; // Get the admin's ID
+    $admin_id = 24; // Get the admin's ID
     $scholar_id = $_POST['scholar_id']; // Get the scholar's ID from the POST data
     $sender = 'City Youth and Sports Development Office - CSJDM'; // Set the sender's name
 

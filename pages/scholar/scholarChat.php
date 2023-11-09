@@ -149,6 +149,7 @@ body {
   border-bottom: solid 1px #E0E0E0;
 }
 
+/* for the search */
 .discussions .discussion .photo {
     margin-left:20px;
     display: block;
@@ -278,20 +279,36 @@ body {
   margin-left: 85px;
 }
 
+.message.response {
+  display: flex;
+  align-items: flex-end; /* Align items to the flex-end (bottom) of the container */
+}
+
+.message.response .photo {
+  margin-left: 8px; /* Add margin to the left of the photo for spacing */
+}
+
+.message.response p.text {
+  order: 2; /* Reverse the order of the text in response messages */
+}
+
+
 .response-time {
   float: right;
   margin-right: 40px !important;
 }
 
 .response {
-  float: right;
-  margin-right: 0px !important;
-  margin-left:auto; /* flexbox alignment rule */
+  display: flex;
+  flex-direction: row-reverse; /* Reverse the order for right-aligned messages */
+  align-items: flex-start; /* Align items to the start (top) of the container */
 }
 
 .response .text {
+  margin: 0;
   background-color: #e3effd !important;
 }
+
 
 .footer-chat {
   width: 60%;
@@ -380,10 +397,14 @@ body {
     max-height: 800px; /* Set a maximum height for chat messages */
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
   }
+ 
   .messages-chat {
-    max-height: 500px; /* Set a maximum height for chat messages */
-    overflow-y: auto; /* Enable vertical scrolling when content overflows */
-  }
+  height: 600px; /* Set a fixed height for the chat container */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  display: flex;
+  flex-direction: column-reverse; /* Reverse the order of the flex container */
+}
+
 
   @media (max-width: 768px) {
   .container {
@@ -430,10 +451,7 @@ body {
     margin-left: 10px;
     font-size: 24px;
   }
-  .messages-chat {
-    max-height: 100%;
-    overflow-y: auto;
-  }
+ 
   .header-chat .right {
     right: 10px;
   }
@@ -447,6 +465,7 @@ body {
     font-size: 20px;
   }
 }
+
 
 </style>
 </head>

@@ -29,8 +29,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 mysqli_close($conn);
-
-
 ?>
 
 
@@ -149,6 +147,7 @@ body {
   border-bottom: solid 1px #E0E0E0;
 }
 
+/* for the search */
 .discussions .discussion .photo {
     margin-left:20px;
     display: block;
@@ -175,7 +174,7 @@ body {
 
 .desc-contact {
   height: 43px;
-  width:50%;
+  width:100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -278,20 +277,36 @@ body {
   margin-left: 85px;
 }
 
+.message.response {
+  display: flex;
+  align-items: flex-end; /* Align items to the flex-end (bottom) of the container */
+}
+
+.message.response .photo {
+  margin-left: 8px; /* Add margin to the left of the photo for spacing */
+}
+
+.message.response p.text {
+  order: 2; /* Reverse the order of the text in response messages */
+}
+
+
 .response-time {
   float: right;
   margin-right: 40px !important;
 }
 
 .response {
-  float: right;
-  margin-right: 0px !important;
-  margin-left:auto; /* flexbox alignment rule */
+  display: flex;
+  flex-direction: row-reverse; /* Reverse the order for right-aligned messages */
+  align-items: flex-start; /* Align items to the start (top) of the container */
 }
 
 .response .text {
+  margin: 0;
   background-color: #e3effd !important;
 }
+
 
 .footer-chat {
   width: 60%;
@@ -336,7 +351,7 @@ body {
 
 .write-message {
   border:none !important;
-  width:60%;
+  width:80%;
   height: 50px;
   margin-left: 20px;
   padding: 10px;
@@ -361,8 +376,9 @@ body {
 }
 
 .clickable {
-  cursor: pointer;
-}
+    cursor: pointer;
+  }
+
   /* Add your custom responsive styles here */
   @media (max-width: 768px) {
     .container {
@@ -380,10 +396,14 @@ body {
     max-height: 800px; /* Set a maximum height for chat messages */
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
   }
+ 
   .messages-chat {
-    max-height: 500px; /* Set a maximum height for chat messages */
-    overflow-y: auto; /* Enable vertical scrolling when content overflows */
-  }
+  height: 600px; /* Set a fixed height for the chat container */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  display: flex;
+  flex-direction: column-reverse; /* Reverse the order of the flex container */
+}
+
 
   @media (max-width: 768px) {
   .container {
@@ -430,10 +450,7 @@ body {
     margin-left: 10px;
     font-size: 24px;
   }
-  .messages-chat {
-    max-height: 100%;
-    overflow-y: auto;
-  }
+ 
   .header-chat .right {
     right: 10px;
   }
@@ -449,7 +466,36 @@ body {
 }
 /* Add styles for sent messages */
 
+.bell-container {
+    position: relative;
+    display: inline-block;
+}
 
+.icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 12px;
+}
+
+.notification {
+    overflow-y: auto;
+    max-height: 150px; /* Set the maximum height as needed */
+}
+
+.notification-item {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0; /* Add a separating line */
+}
 </style>
 </head>
 
@@ -464,57 +510,64 @@ include '../include/selectDb.php';
   <div class="container">
     <div class="row">
         <section class="discussions">
-            <div class="discussion search">
-                <div class="searchbar">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    <input type="text" placeholder="Search..."></input>
-                </div>
-            </div>
+        <div class="discussion search">
+  <div class="searchbar">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <input type="text" placeholder="Search..." oninput="searchScholars(this.value)"></input>
+  </div>
+</div>
             
-            <?php
-            // Include your database connection script
-            include '../include/selectDb.php';
+<?php
+// Include your database connection script
+include '../include/selectDb.php';
 
-            // Get the admin's ID (assuming it's stored in a session variable)
-            $admin_id = $_SESSION['user_id'];
+// Get the admin's ID (assuming it's stored in a session variable)
+$admin_id = $_SESSION['user_id'];
 
-            // Fetch the admin's full name from the admin table
-            $query = "SELECT full_name FROM admin WHERE admin_id = $admin_id";
-            $result = mysqli_query($conn, $query);
-            $admin = mysqli_fetch_assoc($result);
+// Fetch the admin's full name from the admin table
+$query = "SELECT full_name FROM admin WHERE admin_id = $admin_id";
+$result = mysqli_query($conn, $query);
+$admin = mysqli_fetch_assoc($result);
 
-            // Fetch the list of scholars associated with the admin from the scholar table
-            $query = "SELECT scholar_id, full_name FROM scholar";
-            $result = mysqli_query($conn, $query);
+// Fetch the list of scholars associated with the admin from the scholar table
+$query = "SELECT scholar_id, full_name FROM scholar";
+$result = mysqli_query($conn, $query);
 
-            while ($scholar = mysqli_fetch_assoc($result)) {
-              // Display chat head for each scholar
-              echo '<div class="discussion" data-scholar-id="' . $scholar['scholar_id'] . '">';
-              echo '<div class="photo" style="background-image: url(\'/assets/image/1x1.jpg\');">';
-              echo '<div class="online"></div>';
-              echo '</div>';
-              echo '<div class="desc-contact">';
-              echo '<p class="name font-weight-bold">' . $scholar['full_name'] . '</p>';
-              echo '<p class="message">Last message goes here</p>';
-              echo '</div>';
-              echo '</div>';
-          }
-          
-            ?>
+while ($scholar = mysqli_fetch_assoc($result)) {
+    // Display chat head for each scholar
+    echo '<div class="discussion" data-scholar-id="' . $scholar['scholar_id'] . '">';
+    echo '<div class="photo" style="background-image: url(\'/assets/image/1x1.jpg\');">';
+    echo '<div class="online"></div>';
+    echo '</div>';
+    echo '<div class="desc-contact">';
+    echo '<p class="name font-weight-bold">' . $scholar['full_name'] . '</p>';
+    echo '<p class="message">Last message goes here</p>';
+    echo '</div>';
+    echo '</div>';
+}
+
+
+?>
+
         </section>
         <section class="chat" style="display: block;">
             <div class="header-chat">
                 <i class="icon fa fa-user-o" aria-hidden="true"></i>
                 <p class="name"><?php echo $_SESSION['user']; ?></p>
-                <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="btn-group dropstart">
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Delete Message</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                </i>
+                <div class="bell-container">
+                <i class="icon clickable fa fa-bell dropdown-toggle" aria-hidden="true" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="counter">0</span>
+    </i>
+    <div class="dropdown-menu overflow-h-menu dropdown-menu-right">
+    <div class="notification">
+    <div class="notification-item">New message from Scholar</div>
+    <div class="notification-item">Another message from Scholar</div>
+    <!-- Add more notification items dynamically -->
+</div>
+
+                            </div>
+</div>
+
             </div>
             <div class="messages-chat">
                 <!-- Placeholder for displaying chat messages -->
@@ -532,6 +585,8 @@ include '../include/selectDb.php';
 
 <!-- Include jQuery library here -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
 
 <script>
 $(document).ready(function () {
@@ -565,8 +620,7 @@ $(document).ready(function () {
                 }
             });
         }
-          // Periodically update the chat
-          setInterval(fetchMessages, 2000); // Update every 2 seconds
+
     });
 
     const discussions = document.querySelectorAll(".discussion");
@@ -599,6 +653,68 @@ $(document).ready(function () {
     });
 });
 
+function searchScholars(searchTerm) {
+    // Get all scholar elements
+    var scholars = document.querySelectorAll('.discussion[data-scholar-id]');
+
+    // Loop through each scholar and hide/show based on the search term
+    scholars.forEach(function (scholar) {
+      var fullName = scholar.querySelector('.name').textContent.toLowerCase();
+      if (fullName.includes(searchTerm.toLowerCase())) {
+        scholar.style.display = 'block';
+      } else {
+        scholar.style.display = 'none';
+      }
+    });
+  }
+
+  $(document).ready(function () {
+
+    function updateNotifications() {
+    $.ajax({
+        type: "GET",
+        url: "fetch_notifications.php",
+        success: function (response) {
+            var notifications = JSON.parse(response);
+
+            var counter = notifications.length;
+            $('.counter').text(counter);
+
+            var notificationContainer = $('.notification');
+            notificationContainer.empty();
+
+            notifications.forEach(function (notification) {
+                // Check if the notification has a sender property
+                var senderName = notification.sender || 'Scholar';
+
+                // Display the notification with the sender's name
+                notificationContainer.append('<div class="notification-item">New message from ' + senderName + '</div>');
+            });
+        }
+    });
+}
+
+updateNotifications();
+
+setInterval(updateNotifications, 10000);
+
+});
+
+$(document).ready(function () {
+    function updateNotifications() {
+        // Your existing code to fetch notifications...
+    }
+
+    // Add an event listener for resetting the counter on bell icon click
+    $('.clickable').click(function () {
+        // Reset the counter
+        $('.counter').text('0');
+    });
+
+    updateNotifications();
+
+    setInterval(updateNotifications, 10000);
+});
 
 
 </script>
