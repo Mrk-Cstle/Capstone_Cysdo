@@ -65,7 +65,7 @@ if ($result) {
         <div class="container">
             <div class="profileBar">
                 <div class="portlet light profileBar-portlet">
-                    <div class="profile-pic">
+                    <div class="profile-pic ms-3">
                         <?php
                         $signaturePicPath = "../../uploads/scholar/" . $image;
 
@@ -949,7 +949,6 @@ if ($result) {
             });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script>
         const triggerTabList = document.querySelectorAll('#myTab button')
         triggerTabList.forEach(triggerEl => {

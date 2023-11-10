@@ -9,6 +9,14 @@
 
     <link rel="stylesheet" href="../../style/dashboard.css">
     <style>
+        #content main .box-info li {
+            padding: 24px;
+            background: #eee;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            grid-gap: 24px;
+        }
         #editTodo .modal-dialog {
             max-width: 400px;
         }
@@ -25,6 +33,17 @@
             font-size: 18px;
             font-weight: bold;
         }
+
+        #content main .box-info #bx-1 {
+            background: #CFE8FF;
+            color: #3C91E6;
+        }
+
+        #content main .box-info #bx-2 {
+            background: #FFE0D3;
+            color: #FD7238;
+        }
+
     </style>
     <title>Home</title>
 
@@ -49,63 +68,54 @@
                 <div class="head-title">
                     <div class="left">
                         <h1>Dashboard</h1>
-                        <ul class="breadcrumb">
-                            <li>
-                                <a href="#">Dashboard</a>
-                            </li>
-                            <li><i class='bx bx-chevron-right'></i></li>
-                            <li>
-                                <a class="active" href="#">Home</a>
-                            </li>
-                        </ul>
+                        
                     </div>
 
                 </div>
 
                 <ul class="box-info">
-                    <li>
-                        <i class='bx bxs-calendar-check'></i>
+                    <li class="box-1">
+                        <i class='bx bxs-calendar-check' id="bx-1"></i>
                         <span class="text">
                             <h3>1020</h3>
                             <p>Total No. of Scholars</p>
                         </span>
                     </li>
-                    <li>
-                        <i class='bx bxs-dollar-circle'></i>
+                    <li class="box-2">
+                        <i class='bx bxs-group' id="bx-1"></i>
                         <span class="text">
                             <h3>2543</h3>
                             <p>Active Scholars</p>
                         </span>
                     </li>
-                    <li>
-                        <i class='bx bxs-group'></i>
-                        <span class="text">
-                            <h3>2834</h3>
-                            <p>Inactive Scholars</p>
-                        </span>
-                    </li>
-
-                </ul>
-                <ul class="box-info">
-                    <li>
-                        <i class='bx bxs-calendar-check'></i>
+                    <li class="box-4">
+                        <i class="bx bx bi-person-fill-check" id="bx-1"></i>
                         <span class="text">
                             <h3>1020</h3>
                             <p>Number Of Approved Applicants</p>
                         </span>
                     </li>
-                    <li>
-                        <i class='bx bxs-group'></i>
-                        <span class="text">
-                            <h3>2834</h3>
-                            <p>Number Of Denied Applicants</p>
-                        </span>
-                    </li>
-                    <li>
-                        <i class='bx bxs-dollar-circle'></i>
+                </ul>
+                <ul class="box-info">
+                    <li class="box-6">
+                        <i class="bx bx bi-person-fill-slash" id="bx-2"></i>
                         <span class="text">
                             <h3>2543</h3>
                             <p>Unrenewed Scholars</p>
+                        </span>
+                    </li>
+                    <li class="box-3">
+                        <i class="bx bx bi-person-fill-exclamation" id="bx-2"></i>
+                        <span class="text">
+                            <h3>2834</h3>
+                            <p>Inactive Scholars</p>
+                        </span>
+                    </li>
+                    <li class="box-5">
+                        <i class="bx bx bi-person-fill-x" id="bx-2"></i>
+                        <span class="text">
+                            <h3>2834</h3>
+                            <p>Number Of Denied Applicants</p>
                         </span>
                     </li>
                 </ul>

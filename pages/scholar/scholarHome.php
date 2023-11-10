@@ -26,31 +26,31 @@ include 'include/session.php'; ?>
   <!--========== CONTENTS ==========-->
   <main>
     <section>
-      <h3>Dashboard</h3>
+      <h3 class="ms-5">Dashboard</h3>
       <div class="container">
         <div class="content-section">
-          <div class="card">
+          <div class="card-1">
             <h2>Status:</h2>
             <div class="card-body">
               <p class="text-success">Scholar</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card-2">
             <h2>No. Community Service:</h2>
             <div class="card-body">
-              <p class="text-success">3</p>
+              <p class="text-danger">3</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card-3">
             <h2>Renewal Status:</h2>
             <div class="card-body">
-              <p class="text-danger">Ongoing</p>
+              <p class="text-success">Ongoing</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card-4">
             <h2>Message:</h2>
             <div class="card-body">
-              <p class="text-success">2</p>
+              <p class="text-danger">2</p>
             </div>
           </div>
         </div>
@@ -58,25 +58,25 @@ include 'include/session.php'; ?>
 
       <div class="container">
         <div class="content-section">
-          <div class="card">
+          <div class="card-5">
             <h2>Status:</h2>
             <div class="card-body">
               <p class="text-success">Ongoing</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card-6">
             <h2>Status:</h2>
             <div class="card-body">
               <p class="text-danger">Ongoing</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card-7">
             <h2>Status:</h2>
             <div class="card-body">
               <p class="text-success">Ongoing</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card-8">
             <h2>Status:</h2>
             <div class="card-body">
               <p class="text-danger">Ongoing</p>

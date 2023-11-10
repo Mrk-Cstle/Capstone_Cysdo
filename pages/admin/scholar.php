@@ -19,18 +19,19 @@ include 'include/session.php';
 if ($_SESSION['role'] === 'admin') {
     include '../../assets/template/profileNav.php';
 } elseif ($_SESSION['role'] === 'staff') {
-    include '../../assets/template/staffNav.php';
+    include '../../assets/template/staffNavi.php';
 }
 ?>
 
 
 <body>
     <section id="content" class="home-section">
-        <nav class="navbar navbar-light bg-light d-flex">
+        <nav class="navbar navbar-light bg-light d-flex mt-2">
+        <h3 class="scholarList">Scholar List</h3>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
-                <button id="refreshButton" class="btn btn-outline-secondary" type="button">Refresh</button>
+                <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
                 <a class="btnAddStaff btn btn-outline-primary" href="#btnAdd">Add Scholar</a>
 
                 <p id="response"></p>

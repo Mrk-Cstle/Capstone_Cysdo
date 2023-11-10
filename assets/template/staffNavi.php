@@ -30,7 +30,8 @@
   }
 
   .side-bar {
-    background: #FF5F9E;
+    background: rgb(255,255,255);
+    background: linear-gradient(356deg, rgba(255,255,255,1) 0%, rgba(236,77,155,1)80%);
     width: 290px;
     height: 100%;
     position: fixed;
@@ -39,12 +40,10 @@
   }
 
   .navBar {
-    background: #FF5F9E;
-
+    background: #F875AA;
     padding-top: 10px;
     padding-bottom: 10px;
     justify-content: end;
-
   }
 
   .navProfile {
@@ -75,7 +74,7 @@
   }
 
   .side-bar .menu .item a:hover {
-    background: #C23373;
+    background: #F875AA;
     transition: 0.3s ease;
   }
 
@@ -122,7 +121,7 @@
   }
 
   .sideHead {
-    margin-top: 40px;
+    margin-top: 15px;
     margin-left: 30px;
   }
 
@@ -158,6 +157,10 @@
     font-size: 26px;
     font-weight: 600;
   }
+
+  .fontWeight {
+    font-weight: 500;
+  }
 </style>
 
 <body>
@@ -184,17 +187,17 @@
       <a class="sideHead nav-link text-black" role="none" aria-expanded="false"><img src="../../assets/image/CysdoLogo.png" style="height: 50px; width: 50px;" class="sideLogo"><i class="caption">CYSDO</i></a>
     </div>
     <div class="menu">
-      <div class="item"><a href="adminHome.php"><i class="fas fa-desktop"></i>Dashboard</a>
+      <div class="item fontWeight"><a href="adminHome.php"><i class="fas fa-desktop"></i>Dashboard</a>
       </div>
       <div class="item">
-        <a class="sub-btn"><i class="bi bi-person-lines-fill"></i></i>Manage Applicants<i class="fas fa-angle-right dropdown"></i></a>
+        <a class="sub-btn fontWeight"><i class="bi bi-person-lines-fill"></i></i>Manage Applicants<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
           <a href="applicantApprove.php" class="sub-item">List of Approve</a>
           <a href="applicantDenied.php" class="sub-item">List of Denied</a>
           <a href="applicantList.php" class="sub-item">List of Applicants</a>
         </div>
       </div>
-      <div class="item"><a href="postUpdate.php"><i class="bi bi-file-earmark-ppt-fill"></i></i>Manage Post</a></div>
+      <div class="item fontWeight"><a href="postUpdate.php"><i class="bi bi-file-earmark-ppt-fill"></i></i>Manage Post</a></div>
     </div>
   </div>
 

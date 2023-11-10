@@ -30,12 +30,14 @@ header {
     position: absolute;
     width: 100%;
     min-height: 66px;
-    background: #FF5F9E;
+    background-color: #F875AA;
     padding: 0 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
 }
 
 header .logo {
@@ -66,9 +68,8 @@ header ul li a {
     color: #000;
 }
 
-
 header ul li a:hover {
-    background: #C23373;
+    background: #F875AA;
 }
 
 header ul li ul {
@@ -218,9 +219,9 @@ header ul li ul li {
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="index.php#about">About</a></li>
-                <li><a href="index.php#faqs">Faqs</a></li>
+                <li><a href="index.php#faqs">FAQs</a></li>
                 <li><a href="index.php#contact">Contact</a></li>
-                <li><a href="announcementTab.php">News & Upadates</a></li>
+                <li><a href="announcementTab.php">News & Updates</a></li>
                 <li><a href="#">Login</a>
                     <ul>
                         <li><a class="log" href="pages/admin/adminLogin.php">Admin</a></li>

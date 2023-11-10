@@ -33,9 +33,8 @@ if ($_SESSION['role'] === 'admin') {
 <body>
 
     <section id="content" class="home-section">
-        <h1 class="mb-5">Denied Applicant List</h1>
-
-        <nav class="navbar navbar-light bg-light d-flex">
+        <nav class="navbar navbar-light bg-light d-flex mt-2">
+        <h3 class="deniedList">Denied Applicant List</h3>
             <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantList.php">All Applicant</a>
             <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantApprove.php">Approve Applicant</a>
             <form id="searchForm" class="form-inline m-lg-3">

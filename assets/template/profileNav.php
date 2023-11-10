@@ -65,22 +65,72 @@ if ($result) {
   }
 
   .side-bar {
-    background: #FF5F9E;
+    background: rgb(255,255,255);
+    background: linear-gradient(356deg, rgba(255,255,255,1) 0%, rgba(236,77,155,1)80%);
+    position: fixed;
     width: 290px;
     height: 100%;
-    position: fixed;
     top: 0;
     overflow-y: auto;
   }
 
-  .navBar {
-    background: #FF5F9E;
+  .navBar{
+    background: #F875AA;
     margin-top: -25px;
-    padding-top: 10px;
+    padding-top: 30px;
     padding-bottom: 10px;
-    justify-content: end;
     position: relative;
+    justify-content: end;
+  }
 
+  .scholarList {
+    margin-bottom: 70px;
+    margin-right: 550px;
+  }
+
+  .staffList {
+    margin-bottom: 70px;
+    margin-right: 650px;
+  }
+
+  .adminList {
+    margin-bottom: 70px;
+    margin-right: 610px;
+  }
+
+  .applicantList {margin-right: 30px;
+    margin-bottom: 70px;
+    margin-right: 300px;
+  }
+
+  .examinersList {
+    margin-bottom: 70px;
+    margin-right: 340px;
+  }
+
+  .newscholarsList {
+    margin-bottom: 70px;
+    margin-right: 490px;
+  }
+
+  .approvedList {
+    margin-bottom: 70px;
+    margin-right: 200px;
+  }
+
+  .deniedList {
+    margin-bottom: 70px;
+    margin-right: 135px;
+  }
+
+  .passedList {
+    margin-bottom: 70px;
+    margin-right: 75px;
+  }
+
+  .failedList {
+    margin-bottom: 70px;
+    margin-right: 100px;
   }
 
   .navProfile {
@@ -111,7 +161,7 @@ if ($result) {
   }
 
   .side-bar .menu .item a:hover {
-    background: #C23373;
+    background: #F875AA;
     transition: 0.3s ease;
   }
 
@@ -158,18 +208,19 @@ if ($result) {
   }
 
   .sideHead {
-    margin-top: 40px;
+    margin-top: 15px;
     margin-left: 30px;
   }
 
   .home-section {
     position: relative;
-    background: #E4E9F7;
+    background: #fff;
     margin-left: 20px;
     left: 270px;
-    width: calc(100% - 280px);
+    width: calc(100% - 290px);
     transition: all 0.5s ease;
-    padding: 12px;
+    margin-top: 0;
+    padding: 6px;
     padding-right: 50px;
   }
 
@@ -194,14 +245,127 @@ if ($result) {
     font-size: 26px;
     font-weight: 600;
   }
+
+  .fontWeight {
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 1831px) {
+    .scholarList {
+    margin-bottom: 70px;
+    margin-right: 350px
+  }
+
+  .staffList {
+    margin-bottom: 70px;
+    margin-right: 450px;
+  }
+
+  .adminList {
+    margin-bottom: 70px;
+    margin-right: 400px;
+  }
+
+  .applicantList {
+    margin-bottom: 70px;
+    margin-right: 100px;
+  }
+
+  .examinersList {
+    margin-bottom: 70px;
+    margin-right: 200px;
+  }
+
+  .newscholarsList {
+    margin-bottom: 70px;
+    margin-right: 300px;
+  }
+  .approvedList {
+    margin-bottom: 70px;
+    margin-right: 10px;
+  }
+  .deniedList {
+    margin-bottom: 70px;
+    margin-right: 10px;
+  }
+  .passedList {
+    margin-bottom: 70px;
+    margin-right: 10px;
+  }
+  .failedList {
+    margin-bottom: 70px;
+    margin-right: 10px;
+  }
+  }
+
+  @media screen and (max-width: 1631px) {
+    .scholarList {
+    margin-bottom: 70px;
+    margin-right: 240px
+  }
+
+  .staffList {
+    margin-bottom: 70px;
+    margin-right: 345px;
+  }
+
+  .adminList {
+    margin-bottom: 70px;
+    margin-right: 300px;
+  }
+
+  .applicantList {
+    margin-bottom: 70px;
+    margin-right: 5px;
+  }
+
+  .examinersList {
+    margin-bottom: 70px;
+    margin-right: 40px;
+  }
+
+  .newscholarsList {
+    margin-bottom: 70px;
+    margin-right: 190px;
+  }
+  }
+
+  @media screen and (max-width: 1527px) {
+    .scholarList {
+    margin-bottom: 70px;
+    margin-right: 150px
+  }
+
+  .staffList {
+    margin-bottom: 70px;
+    margin-right: 240px;
+  }
+
+  .adminList {
+    margin-bottom: 70px;
+    margin-right: 200px;
+  }
+
+  .applicantList {
+    margin-bottom: 70px;
+    margin-right: 5px;
+  }
+
+  .examinersList {
+    margin-bottom: 70px;
+    margin-right: 10px;
+  }
+
+  .newscholarsList {
+    margin-bottom: 70px;
+    margin-right: 100px;
+  }
+  }
 </style>
 
 <body>
 
   <div class="navBar">
-    <div class="messageBtn me-2">
-      <a class="msgBtn bi bi-chat-dots-fill text-black fs-4" href="chattingSystem.php"></a>
-    </div>
     <ul class="navProfile nav nav-pills justify-content-end">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img id="profileImage" src="../../uploads/admin/<?php echo $image ?>" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
@@ -219,27 +383,29 @@ if ($result) {
   </div>
 
   <div class="side-bar">
-    <div>
+  <div>
       <a class="sideHead nav-link text-black" role="none" aria-expanded="false"><img src="../../assets/image/CysdoLogo.png" style="height: 50px; width: 50px;" class="sideLogo"><i class="caption">CYSDO</i></a>
     </div>
     <div class="menu">
-      <div class="item"><a href="adminHome.php"><i class="fas fa-desktop"></i>Dashboard</a></div>
+      <div class="item fontWeight"><a href="adminHome.php"><i class="fas fa-desktop"></i>Dashboard</a></div>
+      <div class="item fontWeight"><a href="chattingSystem.php"><i class="bi bi-chat-dots-fill"></i>Messages</a>
+    </div>
       <div class="item">
-        <a class="sub-btn"><i class="fas fa-table"></i>Manage Users<i class="fas fa-angle-right dropdown"></i></a>
+        <a class="sub-btn fontWeight"><i class="fas fa-table"></i>Manage Users<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
           <a href="addStaff.php" class="sub-item">Manage Staff</a>
           <a href="addAdmin.php" class="sub-item">Manage Admin</a>
         </div>
       </div>
       <div class="item">
-        <a class="sub-btn"><i class="fas fa-table"></i>Manage Scholar<i class="fas fa-angle-right dropdown"></i></a>
+        <a class="sub-btn fontWeight"><i class="fas fa-table"></i>Manage Scholar<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
           <a href="scholar.php" class="sub-item">Scholar List</a>
 
         </div>
       </div>
       <div class="item">
-        <a class="sub-btn"><i class="bi bi-person-lines-fill"></i></i>Manage Applicants<i class="fas fa-angle-right dropdown"></i></a>
+        <a class="sub-btn fontWeight"><i class="bi bi-person-lines-fill"></i></i>Manage Applicants<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
 
           <a href="applicantList.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 1 </br>List of Applicants</a>
@@ -247,8 +413,9 @@ if ($result) {
           <a href="applicantScholar.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 3 </br>List of New Scholar</a>
         </div>
       </div>
-      <div class="item"><a href="postUpdate.php"><i class="bi bi-file-earmark-ppt-fill"></i></i>Manage Post</a></div>
+      <div class="item fontWeight"><a href="postUpdate.php"><i class="bi bi-file-earmark-ppt-fill"></i>Manage Post</a>
     </div>
+   </div>
   </div>
 
   <section class="home-section">

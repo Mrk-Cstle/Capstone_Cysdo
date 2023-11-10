@@ -33,14 +33,12 @@ if ($_SESSION['role'] === 'admin') {
 <body>
 
     <section id="content" class="home-section">
-        <h1 class="mb-5">New Approve Scholar List</h1>
-
-        <nav class="navbar navbar-light bg-light d-flex">
-
+        <nav class="navbar navbar-light bg-light d-flex mt-2">
+        <h3 class="newscholarsList">New Approved Scholar List</h3>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
-                <button id="refreshButton" class="btn btn-outline-secondary" type="button">Refresh</button>
+                <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
                 <p id="response"></p>
             </form>
         </nav>
