@@ -110,6 +110,14 @@ if (isset($_GET['id'])) {
                         <div class="profile-user-name text-uppercase">
                             <h5>Academic Year: <?php echo $academic_year ?></h5>
                         </div>
+                        <div class="profile-user-name text-uppercase">
+                            <h5>Community Service: <input type="number" name="service" id="service" value="<?php echo $c_service1st ?>"> </h5>
+
+                        </div>
+                        <div class="profile-user-name text-uppercase">
+                            <h5>Comment: </h5>
+                            <textarea name="comment" rows="5" cols="30" id="comment" value="<?php echo $c_service1st ?>"><?php echo $comment ?></textarea>
+                        </div>
 
                         <hr class="mb-2 mt-5 opacity-0">
                     </div>
@@ -120,8 +128,8 @@ if (isset($_GET['id'])) {
                                 $semesterYear = $actions . '_' . $academic_year;
                         ?>
 
-                                <button style="float: right;" class="btn btn-danger btn-md mb-3 ms-3 me-2" onclick="sendAction('<?php echo $process_id; ?>', 'decline','<?php echo $semesterYear ?>')">Declined</button>
-                                <button style="float: right;" class="btn btn-success btn-md mb-3 ms-3" onclick="sendAction('<?php echo $process_id; ?>', 'approve','<?php echo $semesterYear ?>')">Approve</button>
+                                <button id="approveBtn" style="float: right;" class="btn btn-danger btn-md mb-3 ms-3 me-2" onclick="sendAction('<?php echo $process_id; ?>', 'decline','<?php echo $semesterYear ?>')">Declined</button>
+                                <button id="declineBtn" style="float: right;" class="btn btn-success btn-md mb-3 ms-3" onclick="sendAction('<?php echo $process_id; ?>', 'approve','<?php echo $semesterYear ?>')">Approve</button>
 
                             <?php } else { ?>
                                 <button disabled style="float: right;" class="btn btn-danger btn-md mb-3 ms-3 me-2" onclick="sendAction('<?php echo $process_id; ?>', 'decline','<?php echo $semesterYear ?>')">Declined</button>
@@ -371,18 +379,23 @@ if (isset($_GET['id'])) {
     <script>
         function sendAction(applicantId, action, semesterYear) {
             // Create an AJAX request
+            var serviceValue = $("#service").val();
+            var commentValue = $("#comment").val();
+
             $.ajax({
                 type: 'POST', // You can use 'GET' if preferred
                 url: 'action/renewalViewDb.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
                 data: {
                     id: applicantId,
                     action: action,
-                    semesterYear: semesterYear
+                    semesterYear: semesterYear,
+                    commentValue: commentValue,
+                    serviceValue: serviceValue
                 },
                 success: function(response) {
                     // Handle the response from the server if needed
-                    $('h1').text(response);
-                    console.log(semesterYear);
+                    $('#approveBtn').prop('disabled', true);
+                    $('#declineBtn').prop('disabled', true);
                     // For example, you can display a success message or update the UI
                     if (action === 'approve') {
                         alert('Applicant approved successfully!');

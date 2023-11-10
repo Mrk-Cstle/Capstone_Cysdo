@@ -60,35 +60,42 @@ if (
     $result = mysqli_query($conn, $insertRenewalMergeQuery);
 
     if ($result) {
-        // Get the last inserted RenewalID
-        $lastInsertID = mysqli_insert_id($conn);
-        $insertRenewalProcess = "INSERT INTO renewal_process (renewal_id) VALUES ('$lastInsertID')";
-        $result = mysqli_query($conn, $insertRenewalProcess);
 
+        try {
 
-        # code...
-        $Query = "SELECT * FROM scholar WHERE scholar_id='$user'";
-        $queryresult = mysqli_query($conn, $Query);
-        if ($queryresult) {
-            // Step 3: Check if the row exists
-            mysqli_query($conn, "UPDATE scholar SET $action = 'uploaded'  WHERE scholar_id = '$id'");
-            // Respond with a success message (optional)
+            $lastInsertID = mysqli_insert_id($conn);
+            $insertRenewalProcess = "INSERT INTO renewal_process (renewal_id,uploader) VALUES ('$lastInsertID','$id')";
+            $results = mysqli_query($conn, $insertRenewalProcess);
 
-        } else {
-            // Respond with an error message if any parameter is missing
-            echo "Error: Missing parameters in the request.";
+            if ($results) {
+                $Query = "SELECT * FROM scholar WHERE scholar_id='$user'";
+                $queryresult = mysqli_query($conn, $Query);
+                if ($queryresult) {
+
+                    mysqli_query($conn, "UPDATE scholar SET $action = 'uploaded'  WHERE scholar_id = '$id'");
+                } else {
+
+                    echo "Error: Missing parameters in the request.";
+                }
+
+                echo "uploaded ";
+            } else {
+                echo "failed to upload due to duplicate entry ";
+            }
+
+            # code...
+
+        } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() == 1062) {
+
+                echo "Duplicate entry: " . $e->getMessage();
+            } else {
+                // Handle other exceptions
+                echo "Error: " . $e->getMessage();
+            }
         }
-
-
-
-
-        echo "uploaded ";
     } else {
         echo "Error: " . mysqli_error($conn);
     }
 } else {
-    // Handle the case where there was an error in file upload
 }
-
-    // Perform other actions based on $id, $action, and the uploaded files
-    // ...

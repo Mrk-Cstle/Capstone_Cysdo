@@ -153,9 +153,19 @@ $result = mysqli_query($conn, $sql);
                                         <div class="col-md-12">
                                             <?php if ($renew_1stYr_1stSem == !null) { ?>
                                                 <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_1stYr_1stSem; ?></p>
-                                            <?php
-                                            } else { ?>
-                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <?php
+                                            } else {
+                                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                                $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                                if (mysqli_num_rows($queryresult) > 0) { ?>
+                                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <?php } else { ?>
+                                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <?php } ?>
+
                                             <?php }
                                             ?>
 
@@ -244,9 +254,21 @@ $result = mysqli_query($conn, $sql);
                                     <div class="col-md-12">
                                         <?php if ($renew_1stYr_2ndSem == !null) { ?>
                                             <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_1stYr_2ndSem; ?></p>
-                                        <?php
-                                        } else { ?>
-                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php
+                                        } else {
+
+
+                                            $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                            $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                            if (mysqli_num_rows($queryresult) > 0) { ?>
+                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php } else { ?>
+                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php } ?>
+
                                         <?php }
                                         ?>
 
@@ -339,9 +361,19 @@ $result = mysqli_query($conn, $sql);
                                     <div class="col-md-12">
                                         <?php if ($renew_2ndYr_1stSem == !null) { ?>
                                             <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_2ndYr_1stSem; ?></p>
-                                        <?php
-                                        } else { ?>
-                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php
+                                        } else {
+                                            $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                            $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                            if (mysqli_num_rows($queryresult) > 0) { ?>
+                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php } else { ?>
+                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php } ?>
+
                                         <?php }
                                         ?>
 
@@ -430,9 +462,19 @@ $result = mysqli_query($conn, $sql);
                                 <div class="col-md-12">
                                     <?php if ($renew_2ndYr_2ndSem == !null) { ?>
                                         <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_2ndYr_2ndSem; ?></p>
-                                    <?php
-                                    } else { ?>
-                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <?php
+                                    } else {
+                                        $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                        $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                        if (mysqli_num_rows($queryresult) > 0) { ?>
+                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <?php } else { ?>
+                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <?php } ?>
+
                                     <?php }
                                     ?>
 
@@ -525,9 +567,19 @@ $result = mysqli_query($conn, $sql);
                                 <div class="col-md-12">
                                     <?php if ($renew_3rdYr_1stSem == !null) { ?>
                                         <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_3rdYr_1stSem; ?></p>
-                                    <?php
-                                    } else { ?>
-                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <?php
+                                    } else {
+                                        $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                        $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                        if (mysqli_num_rows($queryresult) > 0) { ?>
+                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <?php } else { ?>
+                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <?php } ?>
+
                                     <?php }
                                     ?>
 
@@ -616,9 +668,19 @@ $result = mysqli_query($conn, $sql);
                             <div class="col-md-12">
                                 <?php if ($renew_3rdYr_2ndSem == !null) { ?>
                                     <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_3rdYr_2ndSem; ?></p>
-                                <?php
-                                } else { ?>
-                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php
+                                } else {
+                                    $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                    $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                    if (mysqli_num_rows($queryresult) > 0) { ?>
+                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } else { ?>
+                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } ?>
+
                                 <?php }
                                 ?>
 
@@ -710,9 +772,19 @@ $result = mysqli_query($conn, $sql);
                             <div class="col-md-12">
                                 <?php if ($renew_4thYr_1stSem == !null) { ?>
                                     <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_4thYr_1stSem; ?></p>
-                                <?php
-                                } else { ?>
-                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php
+                                } else {
+                                    $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                    $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                    if (mysqli_num_rows($queryresult) > 0) { ?>
+                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } else { ?>
+                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } ?>
+
                                 <?php }
                                 ?>
 
@@ -801,9 +873,19 @@ $result = mysqli_query($conn, $sql);
                         <div class="col-md-12">
                             <?php if ($renew_4thYr_2ndSem == !null) { ?>
                                 <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_4thYr_2ndSem; ?></p>
-                            <?php
-                            } else { ?>
-                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php
+                            } else {
+                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                if (mysqli_num_rows($queryresult) > 0) { ?>
+                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php } else { ?>
+                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php } ?>
+
                             <?php }
                             ?>
 
@@ -895,9 +977,19 @@ $result = mysqli_query($conn, $sql);
                             <div class="col-md-12">
                                 <?php if ($renew_5thYr_1stSem == !null) { ?>
                                     <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_5thYr_1stSem; ?></p>
-                                <?php
-                                } else { ?>
-                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_5thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php
+                                } else {
+                                    $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                    $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                    if (mysqli_num_rows($queryresult) > 0) { ?>
+                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_5thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } else { ?>
+                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_5thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } ?>
+
                                 <?php }
                                 ?>
 
@@ -986,9 +1078,19 @@ $result = mysqli_query($conn, $sql);
                         <div class="col-md-12">
                             <?php if ($renew_5thYr_2ndSem == !null) { ?>
                                 <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_5thYr_2ndSem; ?></p>
-                            <?php
-                            } else { ?>
-                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_5thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php
+                            } else {
+                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                if (mysqli_num_rows($queryresult) > 0) { ?>
+                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_5thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php } else { ?>
+                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_5thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php } ?>
+
                             <?php }
                             ?>
 
@@ -1081,9 +1183,19 @@ $result = mysqli_query($conn, $sql);
                             <div class="col-md-12">
                                 <?php if ($renew_6thYr_1stSem == !null) { ?>
                                     <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_6thYr_1stSem; ?></p>
-                                <?php
-                                } else { ?>
-                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_6thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php
+                                } else {
+                                    $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                    $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                    if (mysqli_num_rows($queryresult) > 0) { ?>
+                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_6thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } else { ?>
+                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_6thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } ?>
+
                                 <?php }
                                 ?>
 
@@ -1172,9 +1284,19 @@ $result = mysqli_query($conn, $sql);
                         <div class="col-md-12">
                             <?php if ($renew_6thYr_2ndSem == !null) { ?>
                                 <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_6thYr_2ndSem; ?></p>
-                            <?php
-                            } else { ?>
-                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_6thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php
+                            } else {
+                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                if (mysqli_num_rows($queryresult) > 0) { ?>
+                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_6thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php } else { ?>
+                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_6thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php } ?>
+
                             <?php }
                             ?>
 

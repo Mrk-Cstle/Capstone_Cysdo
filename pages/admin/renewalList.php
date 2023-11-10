@@ -1,3 +1,6 @@
+<?php
+
+?>
 <html lang="en">
 
 <head>
@@ -39,6 +42,7 @@ if ($_SESSION['role'] === 'admin') {
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
                 <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
+                <button id="deleteAllButton" class="btn btn-danger">Delete All</button>
                 <p id="response"></p>
             </form>
         </nav>
@@ -163,6 +167,63 @@ if ($_SESSION['role'] === 'admin') {
                     refreshList();
                 });
             });
+        </script>
+        <script>
+            document.getElementById('deleteAllButton').addEventListener('click', function() {
+                var confirmation = confirm('Are you sure you want to delete all examinees? This action cannot be undone.');
+                if (confirmation) {
+                    // Perform the delete all operation here, for example, using AJAX
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4) {
+                            if (xhr.status == 200) {
+                                // Refresh the table after successful deletion
+                                refreshList();
+                                // Show a success message (you can customize this)
+                                alert(xhr.responseText);
+                            } else {
+                                // Handle errors, e.g., show an error message
+                                alert("Error deleting all examinees: " + xhr.status);
+                            }
+                        }
+                    };
+
+                    xhr.open("GET", "action/renewalDeleteProcess.php", true); // Replace "path/to/deleteAllExamineesPass.php" with the correct URL
+                    xhr.send();
+                }
+            });
+
+            function sendAction(applicantId, action, semesterYear) {
+                // Create an AJAX request
+                $.ajax({
+                    type: 'POST', // You can use 'GET' if preferred
+                    url: 'action/renewalViewDb.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
+                    data: {
+                        id: applicantId,
+                        action: action,
+                        semesterYear: semesterYear
+                    },
+                    success: function(response) {
+                        // Handle the response from the server if needed
+                        $('h1').text(response);
+                        loadTableData(currentPage);
+                        // For example, you can display a success message or update the UI
+                        if (action === 'approve') {
+                            alert('Applicant approved successfully!');
+                            $('#approveBtn').hide();
+                            $('#declineBtn').hide();
+                        } else if (action === 'decline') {
+                            alert('Applicant declined successfully!');
+                            $('#approveBtn').hide();
+                            $('#declineBtn').hide();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle the error if the request fails
+                        console.error('Error sending action:', error);
+                    }
+                });
+            }
         </script>
     </section>
 </body>

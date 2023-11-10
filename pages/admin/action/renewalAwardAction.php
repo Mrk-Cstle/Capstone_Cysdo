@@ -3,13 +3,17 @@ session_start();
 include '../../include/dbConnection.php';
 if (isset($_POST['id']) && isset($_POST['action'])) {
     $applicantId = $_POST['id'];
-    $semesterYear = $_POST['semesterYear'];
+    $semYr = $_POST['semesterYear'];
 
-    $sql = "SELECT renewal_process.*, renewal.*, scholar.*
+    $sql = "SELECT renewal_award.*, renewal.*, scholar.*
         FROM renewal
         JOIN scholar ON scholar.scholar_id = renewal.scholar_id
-        JOIN renewal_process ON renewal_process.renewal_id = renewal.renewal_id
-        WHERE renewal_process.process_id = '$applicantId'";
+        JOIN renewal_award ON renewal_award.renewal_id = renewal.renewal_id
+        WHERE renewal_award.award_id = '$applicantId'";
+
+
+
+
 
     $result = mysqli_query($conn, $sql);
 
@@ -28,18 +32,18 @@ if (isset($_POST['id']) && isset($_POST['action'])) {
 
             // Free the result set
             mysqli_free_result($result);
+            $user =
+                $_SESSION['user'];
         }
 
-        if ($_POST["action"] == "approve") {
-            approve($row, $semesterYear, $full_name, $contact_num1);
+        if ($_POST["action"] == "done") {
+            approve($row, $semYr);
         }
         // else if ($_POST["action"] == "edit") {
         //     edit();
         // } 
-        else if ($_POST["action"] == "decline") {
-            decline($row, $semesterYear, $applicantId);
-        } else if ($_POST["action"] == "delete") {
-            deleted($row, $semesterYear, $applicantId);
+        else if ($_POST["action"] == "delete") {
+            decline($contactNum1, $fullName, $user);
         } else {
             echo "error";
         }
@@ -53,60 +57,34 @@ if (isset($_POST['id']) && isset($_POST['action'])) {
     }
 }
 
-function approve($row, $semesterYear, $full_name, $contact_num1)
+function approve($row, $semYr)
 {
     global $conn;
-    $applicantId = $_POST['id'];
-    $serviceValue = $_POST['serviceValue'];
-    $commentValue = $_POST['commentValue'];
     $scholar_id = $row['scholar_id'];
-    $renewal_id = $row['renewal_id'];
+    $applicantId = $_POST['id'];
+    $action = $_POST['action'];
 
-
+    $action = "released_$semYr";
     try {
-        mysqli_query($conn, "UPDATE renewal_process SET process_status = 'approve' , comment = '$commentValue' WHERE process_id = '$applicantId'");
-        send_sms("Hello " . $full_name . ", " . $commentValue, $contact_num1);
-        mysqli_query($conn, "UPDATE renewal SET status = 'approve'  WHERE renewal_id = '$renewal_id'");
-        mysqli_query($conn, "UPDATE scholar SET status_lastsem = '$semesterYear' , c_service1st = '$serviceValue'  WHERE scholar_id = '$scholar_id'");
-        $insertQuery = "INSERT INTO renewal_award (renewal_id,semester_year ) VALUES ('$renewal_id', '$semesterYear')";
-        $result = mysqli_query($conn, $insertQuery);
-        if ($result) {
-            echo "Scholar Approve";
-        } else {
-            echo "Insert Failed: " . mysqli_error($conn);
-        }
+        mysqli_query($conn, "UPDATE renewal_award SET award_status = 'done'  WHERE award_id = '$applicantId'");
+        mysqli_query($conn, "UPDATE scholar SET scholar_award_status = '$action'  WHERE scholar_id = '$scholar_id'");
+
+        // $insertQuery = "INSERT INTO registration_approval (application_id,action_type ) VALUES ('$applicantId', '$action')";
+        // $result = mysqli_query($conn, $insertQuery);
+        // if ($result) {
+
+        //     // echo "Scholar Approve";
+        //     // send_sms("We are pleased to inform you " . $fullName . " that your CYSDO Scholarship application has been accepted. You will receive further details regarding the examination date in the near future. Please stay updated by regularly checking of facebook page and our official website. Congratulations on your selection, and feel free to reach out if you have any questions.  " . "\n\n-CYSDO CSJDM-", $contactNum1);
+        // } else {
+        //     echo "Insert Failed: " . mysqli_error($conn);
+        // }
     } catch (mysqli_sql_exception $e) {
         // Hide the error message from the frontend
         echo "An error occurred";
     }
 }
 
-function decline($row, $semesterYear, $applicantId)
-{
-    global $conn;
-
-    $applicantId = $_POST['id'];
-    $action = $_POST['action'];
-
-    $action = "decline";
-
-    global $conn;
-
-    $scholar_id = $row['scholar_id'];
-    $renewal_id = $row['renewal_id'];
-
-
-
-    mysqli_query($conn, "UPDATE renewal SET status = 'decline'  WHERE renewal_id = '$renewal_id'");
-    mysqli_query($conn, "UPDATE renewal_process SET process_status = 'decline'  WHERE process_id = '$applicantId'");
-
-
-
-    echo "Scholar Declined";
-}
-
-
-function deleted($row, $semesterYear, $applicantId)
+function decline($contactNum1, $fullName, $user)
 {
     global $conn;
 
@@ -115,7 +93,7 @@ function deleted($row, $semesterYear, $applicantId)
 
     $action = "decline";
     try {
-        mysqli_query($conn, "DELETE FROM renewal_process WHERE process_id =  '$applicantId'");
+        mysqli_query($conn, "DELETE FROM renewal_award WHERE award_id =  '$applicantId'");
 
 
 
@@ -154,4 +132,3 @@ function send_sms($message, $contactNum1)
     //     echo "Failed to send SMS. Response: " . $response;
     // }
 }
-mysqli_query($conn, "DELETE FROM renewal_award WHERE award_id =  '$applicantId'");
