@@ -590,6 +590,9 @@ while ($scholar = mysqli_fetch_assoc($result)) {
 
 <script>
 $(document).ready(function () {
+    // Store the timeout ID for the fetchMessages timeout
+    let fetchMessagesTimeout;
+
     function fetchMessages(scholarId) {
         // Fetch messages for the specified scholar (use scholarId in the request)
         $.ajax({
@@ -598,6 +601,16 @@ $(document).ready(function () {
             data: { scholar_id: scholarId },
             success: function (data) {
                 $('#chat-box').html(data);
+
+                // Clear the previous timeout
+                if (fetchMessagesTimeout) {
+                    clearTimeout(fetchMessagesTimeout);
+                }
+
+                // Set a timeout to call fetchMessages again after a delay (e.g., 10 seconds)
+                fetchMessagesTimeout = setTimeout(function () {
+                    fetchMessages(scholarId);
+                }, 2000);
             }
         });
     }
@@ -620,7 +633,6 @@ $(document).ready(function () {
                 }
             });
         }
-
     });
 
     const discussions = document.querySelectorAll(".discussion");
@@ -647,6 +659,11 @@ $(document).ready(function () {
             const footerChat = document.querySelector(".footer-chat");
             footerChat.style.display = "flex";
 
+            // Clear the previous timeout
+            if (fetchMessagesTimeout) {
+                clearTimeout(fetchMessagesTimeout);
+            }
+
             // Fetch messages for the selected scholar
             fetchMessages(discussion.getAttribute('data-scholar-id'));
         });
@@ -659,62 +676,62 @@ function searchScholars(searchTerm) {
 
     // Loop through each scholar and hide/show based on the search term
     scholars.forEach(function (scholar) {
-      var fullName = scholar.querySelector('.name').textContent.toLowerCase();
-      if (fullName.includes(searchTerm.toLowerCase())) {
-        scholar.style.display = 'block';
-      } else {
-        scholar.style.display = 'none';
-      }
-    });
-  }
-
-  $(document).ready(function () {
-
-    function updateNotifications() {
-    $.ajax({
-        type: "GET",
-        url: "fetch_notifications.php",
-        success: function (response) {
-            var notifications = JSON.parse(response);
-
-            var counter = notifications.length;
-            $('.counter').text(counter);
-
-            var notificationContainer = $('.notification');
-            notificationContainer.empty();
-
-            notifications.forEach(function (notification) {
-                // Check if the notification has a sender property
-                var senderName = notification.sender || 'Scholar';
-
-                // Display the notification with the sender's name
-                notificationContainer.append('<div class="notification-item">New message from ' + senderName + '</div>');
-            });
+        var fullName = scholar.querySelector('.name').textContent.toLowerCase();
+        if (fullName.includes(searchTerm.toLowerCase())) {
+            scholar.style.display = 'block';
+        } else {
+            scholar.style.display = 'none';
         }
     });
 }
 
-updateNotifications();
-
-setInterval(updateNotifications, 10000);
-
-});
-
 $(document).ready(function () {
     function updateNotifications() {
-        // Your existing code to fetch notifications...
+        $.ajax({
+            type: "GET",
+            url: "fetch_notifications.php",
+            success: function (response) {
+                var data = JSON.parse(response);
+                var notifications = data.notifications;
+                var unreadCount = data.unread_count;
+
+                $('.counter').text(unreadCount);
+
+                var notificationContainer = $('.notification');
+                notificationContainer.empty();
+
+                notifications.forEach(function (notification) {
+                    var senderName = notification.sender || 'Scholar';
+                    notificationContainer.append('<div class="notification-item">New message from ' + senderName + '</div>');
+                });
+            }
+        });
     }
 
-    // Add an event listener for resetting the counter on bell icon click
+    // Function to mark notifications as read
+    function markNotificationsAsRead() {
+        $.ajax({
+            type: "POST",
+            url: "mark_as_read.php", // Create this PHP file to handle marking messages as read
+            success: function () {
+                // After successfully marking as read, update the notifications
+                updateNotifications();
+            }
+        });
+    }
+
+    // Event listener for the notification bell
     $('.clickable').click(function () {
-        // Reset the counter
-        $('.counter').text('0');
+        markNotificationsAsRead();
     });
 
     updateNotifications();
 
-    setInterval(updateNotifications, 10000);
+    setInterval(updateNotifications, 5000);
 });
+
+
+
 
 
 </script>
