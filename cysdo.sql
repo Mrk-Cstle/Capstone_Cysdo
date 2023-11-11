@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2023 at 08:02 PM
+-- Generation Time: Nov 11, 2023 at 07:00 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -91,6 +91,22 @@ INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader
 (48, '2023-09-20', 'asd', 'qaz, qaz qaz', 'scholar'),
 (49, '2023-09-20', 'asd', 'qaz, qaz qaz', 'applicant'),
 (51, '2023-09-20', 'asd', 'bnm, bnm bnm', 'applicant');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat_messages`
+--
+
+CREATE TABLE `chat_messages` (
+  `id` int(11) NOT NULL,
+  `sender` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `admin_id` int(11) DEFAULT NULL,
+  `scholar_id` int(11) DEFAULT NULL,
+  `is_read` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -297,17 +313,17 @@ INSERT INTO `registration_approval` (`action_id`, `application_id`, `action_type
 --
 
 CREATE TABLE `scholar` (
-  `scholar_id` int(10) NOT NULL,
+  `scholar_id` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `applicant_id` int(10) NOT NULL,
+  `applicant_id` int(11) NOT NULL,
   `full_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
-  `middle_name` varchar(255) NOT NULL,
-  `contact_num1` varchar(20) NOT NULL,
-  `contact_num2` varchar(20) NOT NULL,
-  `approve_date` date NOT NULL DEFAULT current_timestamp()
+  `middle_name` varchar(255) DEFAULT NULL,
+  `contact_num1` varchar(15) NOT NULL,
+  `contact_num2` varchar(15) DEFAULT NULL,
+  `approve_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -315,11 +331,8 @@ CREATE TABLE `scholar` (
 --
 
 INSERT INTO `scholar` (`scholar_id`, `user`, `password`, `applicant_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `contact_num1`, `contact_num2`, `approve_date`) VALUES
-(1, '', '', 49, 'qweewq, qweerq qawer', 'qweewq', 'qweerq', 'qawer', '5634564', '', '2023-10-10'),
-(2, '', '', 52, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', '123123123', '', '2023-10-10'),
-(3, '', '', 53, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', '+639957751618', '', '2023-10-10'),
-(4, '', '', 80, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', '123123123', '', '2023-10-10'),
-(5, 'eqweasdasdad', '$2y$10$bkPmzBB/oEypHsB4qJ1fc.0L8thjsItPYblRVSlxeNF3GFFavEJga', 98, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'eqweasdasdad', 'rdfgdrt', 'dfgdfgdfg', '345345', '', '2023-10-24');
+(5, 'eqweasdasdad', '$2y$10$bkPmzBB/oEypHsB4qJ1fc.0L8thjsItPYblRVSlxeNF3GFFavEJga', 98, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'eqweasdasdad', 'rdfgdrt', 'dfgdfgdfg', '345345', '', '2023-10-24'),
+(6, 'Reyes', '$2y$10$bkPmzBB/oEypHsB4qJ1fc.0L8thjsItPYblRVSlxeNF3GFFavEJga', 98, 'Reyes, Jeremiah Rev', 'Reyes', 'Jeremiah', 'Rev', '345345', '', '2023-10-24');
 
 -- --------------------------------------------------------
 
@@ -347,12 +360,13 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_name`, `position`, `user`, `password`, `contactNum`, `address`, `email`, `image`) VALUES
-(166, ',  asd', '', '', 'asd', '', 'asd', '$2y$10$Ze5h8a/n.MJeuQ650sJ/m.r30W.ICZxKb.v6crisHbSbqT58cX08e', 0, '', 'asd', ''),
+(166, ',  asd', '', '', 'asd', '', 'asd', '345', 0, '', 'asd', ''),
 (167, 'qwem,  ', 'qwem', '', '', '', 'qweqweqweqwe', '$2y$10$8qmU/eYjAALSYcgRCLZU5eNiDkoCpCtqr0skiWBwUC30VloS9Ne66', 0, '', 'qweqweqweqweqwe', ''),
 (168, 'zxczxc, qweqwe asdqw', 'zxczxc', 'qweqwe', 'asdqw', '123', 'qeqwe@asd', '$2y$10$6TeFjAsvRkqIu6B3WnwU..oEA.ic/T3XDPEE9sJmNhQIPmct/lD/G', 123123, '', 'qeqwe@asd', ''),
 (175, 'asd, qwe asd', 'asd', 'qwe', 'asd', '', '', '$2y$10$tedEnHfW6SKyYFFQ12eQdODBl0EJhY9NeaD2HtznBIN4UAhfJhB.O', 0, '', '', ''),
 (176, ', xacsdQWEZXC AS', '', 'xacsdQWEZXC', 'AS', '', 'zxfaewdasd@asdzxc', '$2y$10$bvNGuatyaGaIUR/la71rYu/.Br5jFsYZ1tTKpZqPKfhc7i4mizZ6K', 0, '', 'zxfaewdasd@asdzxc', ''),
-(181, 'asd, qwe qwe', 'asd', 'qwe', 'qwe', 'qwe', 'qwe', '$2y$10$UaS6A4YGJ40KzXKqWqJdAeqmgETmI1VWG7l1I6HX/l/YhaOh7JVDa', 0, '', 'qwe', '');
+(181, 'asd, qwe qwe', 'asd', 'qwe', 'qwe', 'qwe', 'qwe', '$2y$10$UaS6A4YGJ40KzXKqWqJdAeqmgETmI1VWG7l1I6HX/l/YhaOh7JVDa', 0, '', 'qwe', ''),
+(182, '123,  ', '123', '', '', '', '123@gmail.com', '$2y$10$lqkPpmk02phmtHAR6w5MHOwblTg4nXlYW.zs.R94c9jOtbTamnFCK', 2147483647, '', '123@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -402,6 +416,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `announcements`
   ADD PRIMARY KEY (`uploadId`);
+
+--
+-- Indexes for table `chat_messages`
+--
+ALTER TABLE `chat_messages`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `examination`
@@ -466,6 +486,12 @@ ALTER TABLE `announcements`
   MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
+-- AUTO_INCREMENT for table `chat_messages`
+--
+ALTER TABLE `chat_messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
+
+--
 -- AUTO_INCREMENT for table `examination`
 --
 ALTER TABLE `examination`
@@ -493,13 +519,13 @@ ALTER TABLE `registration_approval`
 -- AUTO_INCREMENT for table `scholar`
 --
 ALTER TABLE `scholar`
-  MODIFY `scholar_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
 -- AUTO_INCREMENT for table `todos`
