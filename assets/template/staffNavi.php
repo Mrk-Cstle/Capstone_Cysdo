@@ -163,6 +163,9 @@
 <body>
 
   <div class="navBar">
+  <div class="messageBtn me-2">
+      <a class="msgBtn bi bi-chat-dots-fill text-black fs-4" href="staffChat.php"></a>
+    </div>
     <ul class="navProfile nav nav-pills justify-content-end">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../../assets/image/1x1.jpg" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
