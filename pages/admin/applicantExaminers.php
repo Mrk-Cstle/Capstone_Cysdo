@@ -33,8 +33,8 @@ if ($_SESSION['role'] === 'admin') {
 <body>
 
     <section id="content" class="home-section">
-        <h1 class="mb-5">Examiners List</h1>
-        <nav class="navbar navbar-light bg-light d-flex">
+        <nav class="navbar navbar-light bg-light d-flex mt-2">
+        <h3 class="examinersList">Examiners List</h3>
             <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantExamPass.php">Pass Examiner</a>
             <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantExamFailed.php">Failed Examiner</a>
             <form id="searchForm" class="form-inline m-lg-3">

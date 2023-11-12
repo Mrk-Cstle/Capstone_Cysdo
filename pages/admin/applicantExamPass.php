@@ -33,15 +33,15 @@ if ($_SESSION['role'] === 'admin') {
 <body>
 
     <section id="content" class="home-section">
-        <h1 class="mb-5">Pass Examiner List</h1>
-        <nav class="navbar navbar-light bg-light d-flex">
+        <nav class="navbar navbar-light bg-light d-flex mt-2">
+        <h3 class="passedList">Passed Examiner List</h3>
             <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantExaminers.php">All Examiner</a>
             <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantExamFailed.php">Failed Examiner</a>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
                 <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
-                <button id="deleteAllButton" class="btn btn-danger">Delete All Examinees</button>
+                <button id="deleteAllButton" class="btnSearch btn btn-outline-danger">Delete All Examinees</button>
                 <p id="response"></p>
             </form>
         </nav>

@@ -61,7 +61,7 @@ if ($result) {
         --text-color: #000;
         --text-color-light: #000;
         --body-color: #E4E9F7;
-        --container-color: #FF5F9E;
+        --container-color: #FF87B2;
 
         /*========== Font and typography ==========*/
         --body-font: 'Poppins', sans-serif;
@@ -122,8 +122,8 @@ if ($result) {
         top: 0;
         left: 0;
         width: 100%;
-        height: 73px;
-        background-color: var(--container-color);
+        height: 72px;
+        background-color: #F875AA;
         box-shadow: 0 1px 0 rgba(22, 8, 43, 0.1);
         padding: 0 1rem;
         z-index: var(--z-fixed);
@@ -324,6 +324,7 @@ if ($result) {
         .header__logo {
             display: inline-flex;
             margin-top: 20px;
+            margin-left: 10px;
             text-align: start;
         }
 
@@ -399,15 +400,136 @@ if ($result) {
         margin-top: 40px;
     }
 
-    .content-section .card {
+    .content-section .card-1 {
+        background-color: #eee;
         flex: 1;
-        width: 200px;
-        padding: 20px;
+        width: 250px;
+        height: 200px;
+        padding: 30px;
         margin: 30px 20px;
-        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 20px;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
     }
 
-    .content-section .card h2 {
+    .content-section .card-1 h2 {
+        margin: 15px 0px;
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+    .content-section .card-2 {
+        background-color: #ddd;
+        flex: 1;
+        width: 250px;
+        height: 200px;
+        padding: 30px;
+        margin: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
+    }
+
+    .content-section .card-2 h2 {
+        margin: 15px 0px;
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+
+    .content-section .card-3 {
+        background-color: #ccc;
+        flex: 1;
+        width: 250px;
+        height: 200px;
+        padding: 30px;
+        margin: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
+    }
+
+    .content-section .card-3 h2 {
+        margin: 15px 0px;
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+
+    .content-section .card-4 {
+        background-color: #bbb;
+        flex: 1;
+        width: 250px;
+        height: 200px;
+        padding: 30px;
+        margin: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
+    }
+
+    .content-section .card-4 h2 {
+        margin: 15px 0px;
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+
+    .content-section .card-5 {
+        background-color: #eee;
+        flex: 1;
+        width: 250px;
+        height: 200px;
+        padding: 30px;
+        margin: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
+    }
+
+    .content-section .card-5 h2 {
+        margin: 15px 0px;
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+
+    .content-section .card-6 {
+        background-color: #ddd;
+        flex: 1;
+        width: 250px;
+        height: 200px;
+        padding: 30px;
+        margin: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
+    }
+
+    .content-section .card-6 h2 {
+        margin: 15px 0px;
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+
+    .content-section .card-7 {
+        background-color: #ccc;
+        flex: 1;
+        width: 250px;
+        height: 200px;
+        padding: 30px;
+        margin: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
+    }
+
+    .content-section .card-7 h2 {
+        margin: 15px 0px;
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+
+    .content-section .card-8 {
+        background-color: #bbb;
+        flex: 1;
+        width: 250px;
+        height: 200px;
+        padding: 30px;
+        margin: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
+    }
+
+    .content-section .card-8 h2 {
         margin: 15px 0px;
         font-size: 20px;
         font-family: sans-serif;
@@ -416,14 +538,17 @@ if ($result) {
     @media screen and (max-width: 768px) {
         .content-section {
             flex-direction: column;
+            margin-right: 25px;
         }
     }
 
-    @media screen and (max-width: 992px) {
+    @media screen and (max-width: 993px) {
         .content-section {
+            flex-direction: column;
             width: 100%;
         }
     }
+
 </style>
 
 <body>

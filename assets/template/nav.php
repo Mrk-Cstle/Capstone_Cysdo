@@ -3,12 +3,12 @@
 ?>
 
 <!DOCTYPE html>
-<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+
 <html lang="en" dir="ltr">
 
 <head>
   <meta charset="UTF-8">
-  <title> Drop Down Sidebar Menu | CodingLab </title>
+  <title></title>
 
   <!-- Boxiocns CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>

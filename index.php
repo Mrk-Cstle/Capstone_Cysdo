@@ -71,6 +71,13 @@
       #aboutPic {
         display: none;
       }
+      .aboutFormat {
+        border: 1px solid black;
+        border-radius: 5px;
+        padding-bottom: 10px;
+        padding-right: 15px;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+      }
       .aboutFormat li, h3 {
       font-size: 14px;
       margin-left: 50px;
@@ -123,10 +130,14 @@
     
     #accordItem {
       border: 0.2px solid black;
+      border-radius: 3px;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
     }
 
     #AccordBtn {
-      background-color: powderblue;
+      background-color: #FFACC7;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
+      border-radius: 3px;
     }
 
     #contact {
@@ -172,7 +183,11 @@
     }
 
     .contactText {
-      background-color: #d2c8c1;
+      background-color: #FFACC7;
+    }
+
+    .contactText h5, a, .text-break {
+      padding-left: 30px;
     }
 
     .contactText a,
@@ -208,7 +223,8 @@
       height: 100px;
       width: 95%;
       border: 1px solid black;
-      border-radius: 5px;
+      border-radius: 100px;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
       padding: 15px;
     }
 

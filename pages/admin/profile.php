@@ -57,14 +57,14 @@ if ($result) {
     if ($_SESSION['role'] === 'admin') {
         include '../../assets/template/profileNav.php';
     } elseif ($_SESSION['role'] === 'staff') {
-        include '../../assets/template/staffNav.php';
+        include '../../assets/template/staffNavi.php';
     }
     ?>
     <section id="content" class="home-section">
         <div class="container">
             <div class="profileBar">
                 <div class="portlet light profileBar-portlet">
-                    <div class="profile-pic">
+                    <div class="profile-pic ms-4">
                         <?php
                         $signaturePicPath = "../../uploads/admin/" . $image;
 
@@ -80,7 +80,7 @@ if ($result) {
                     </div>
                     <div class="profile-usertab">
 
-                        <div class="profile-user-name text-uppercase"><?php echo $full_name ?>
+                        <div class="profile-user-name text-uppercase ms-3"><?php echo $full_name ?>
                             <h1></h1>
                         </div>
 

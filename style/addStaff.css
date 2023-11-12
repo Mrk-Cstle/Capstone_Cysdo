@@ -25,6 +25,12 @@
     margin-left: 5px;
 }
 
+.scholarlist {
+	text-align: start;
+	justify-content: start;
+	align-items: start;
+}
+
 tr, th {
         column-gap: 40px;
         border: 1px solid black;
