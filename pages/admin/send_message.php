@@ -6,6 +6,8 @@ include '../include/selectDb.php';
 
 if (isset($_POST['message']) && isset($_POST['scholar_id'])) {
     $message = $_POST['message'];
+    $admin_id = 24; // Get the admin's ID
+    $staffId = 183;
     $sender = 'City Youth and Sports Development Office - CSJDM'; // Set the sender's name
     $scholar_id = $_POST['scholar_id']; // Get the scholar's ID from the POST data
 
@@ -15,7 +17,7 @@ if (isset($_POST['message']) && isset($_POST['scholar_id'])) {
 
     if ($role === 'admin') {
         // For admin, use admin_id
-        $query = "INSERT INTO chat_messages (sender, message, scholar_id, admin_id) VALUES ('$sender', '$message', $scholar_id, $user_id)";
+        $query = "INSERT INTO chat_messages (sender, message, scholar_id, admin_id) VALUES ('$sender', '$message', $scholar_id, $admin_id)";
         mysqli_query($conn, $query);
         
         // Add a record to a table that tracks which admin sent the message

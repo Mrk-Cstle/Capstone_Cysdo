@@ -22,6 +22,7 @@ if (mysqli_num_rows($result) == 1) {
         // Password is correct
         // Set session variables
         $_SESSION['user_id'] = $row['id'];
+        $_SESSION['user_id'] = $row['staffId'];
         $_SESSION['user'] = $row['user'];
         $_SESSION['role'] = 'staff';
         $_SESSION['logged_in'] = true;

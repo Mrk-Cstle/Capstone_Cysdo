@@ -4,20 +4,18 @@ session_start();
 // Include your database connection script
 include '../include/selectDb.php';
 
-// Check if the staff member is logged in
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true || $_SESSION['role'] !== 'staff') {
-    // Redirect to the login page if not logged in or not a staff member
-    header("Location: ../staffLogin.php");
-    exit();
-}
-
-// Handle sending chat messages from the staff
+// Handle sending chat messages from the admin
 if (isset($_POST['message'])) {
     $message = $_POST['message'];
-    $staff_id = $_SESSION['user_id']; // Get the staff member's ID
+    $admin_id = $_SESSION['user_id']; // Get the admin's ID
+    $scholar_id = 1; // Replace with the actual scholar's user ID
 
     // Insert the message into the chat_messages table
-    $query = "INSERT INTO chat_messages (sender, message) VALUES ($staff_id, '$message')";
+    $query = "INSERT INTO chat_messages (sender, message) VALUES ('Admin', '$message')";
+    mysqli_query($conn, $query);
+
+    // Add a record to a table that tracks which admin sent the message
+    $query = "INSERT INTO admin_messages (admin_id, message_id) VALUES ($admin_id, LAST_INSERT_ID())";
     mysqli_query($conn, $query);
 }
 
@@ -32,7 +30,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 mysqli_close($conn);
 ?>
-
 
 
 
@@ -546,7 +543,6 @@ while ($scholar = mysqli_fetch_assoc($result)) {
     echo '</div>';
 }
 ?>
-
 
         </section>
         <section class="chat" style="display: block;">
