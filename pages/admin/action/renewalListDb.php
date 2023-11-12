@@ -56,8 +56,14 @@ if (mysqli_num_rows($result) > 0) {
         if ($row['process_status'] == null) {
             $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=renew">View</a>';
         } else {
-            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=renew">View</a> | ';
-            $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" onclick="sendAction(\'' .  $row['process_id'] . '\', \'delete\', \'' . $row['scholar_id'] . '\')">Delete</button>';
+
+            if ($row['process_status'] == 'decline') {
+                $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=renew">View</a> | ';
+                $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" onclick="sendAction(\'' .  $row['process_id'] . '\', \'delete_decline\', \'' . $row['scholar_id'] . '\')">Delete</button>';
+            } else {
+                $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=renew">View</a> | ';
+                $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" onclick="sendAction(\'' .  $row['process_id'] . '\', \'delete\', \'' . $row['scholar_id'] . '\')">Delete</button>';
+            }
         }
 
         $tableHTML .= '</td>';

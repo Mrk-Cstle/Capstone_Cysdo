@@ -92,7 +92,12 @@ if (isset($_GET['id'])) {
 
                             <hr class="mb-2 mt-5 opacity-0">
                         </div>
+                        <div class="actionBtn">
+                            <button type="button" id="approveBtn" class="btnApprove btn btn-success btn-sm" onclick="sendAction('<?php echo $applicantId; ?>', 'approve')">Graduated Scholar</button>
+                            <button type="button" id="declineBtn" class="btnDecline btn btn-danger btn-sm" onclick="sendAction('<?php echo $applicantId; ?>', 'decline')">Remove Scholar</button>
+                        </div>
                     </div>
+
                 </div>
                 <div class="portlet light">
                     <!-- Nav tabs -->

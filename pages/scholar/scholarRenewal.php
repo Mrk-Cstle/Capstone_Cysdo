@@ -76,8 +76,11 @@ $result = mysqli_query($conn, $sql);
                             <div class="portletForm light bg-inverse">
                                 <div class="portlet-body form">
                                     <div class="row">
-                                        <h3 class="header-title">1st sem</h3>
+                                        <h3 class="header-title">1st sem (<?php echo $renew_1stYr_1stSem; ?>)</h3>
+                                        </h3>
+
                                         <div class="col-md-8 col-sm-9 input-box">
+
                                             <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                                 <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
                                                 <input type="file" class="form-control" name="prevCor" id="prevCor">
@@ -151,9 +154,18 @@ $result = mysqli_query($conn, $sql);
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <?php if ($renew_1stYr_1stSem == !null) { ?>
-                                                <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_1stYr_1stSem; ?></p>
+                                            <?php if ($renew_1stYr_1stSem == 'uploaded' || $renew_1stYr_1stSem == 'approve renewal') { ?>
+                                                <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_1stYr_1stSem; ?></button>
                                                 <?php
+                                            } elseif ($renew_1stYr_1stSem == 'reupload renewal') {
+                                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                                $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                                if (mysqli_num_rows($queryresult) > 0) { ?>
+                                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <?php } else { ?>
+                                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <?php }
                                             } else {
                                                 $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                                 $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -177,7 +189,7 @@ $result = mysqli_query($conn, $sql);
                             <form id="renew_1stYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                                 <div class="row">
 
-                                    <h3 class="header-title">2nd sem</h3>
+                                    <h3 class="header-title">2nd sem (<?php echo $renew_1stYr_2ndSem; ?>)</h3>
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                             <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -252,12 +264,19 @@ $result = mysqli_query($conn, $sql);
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <?php if ($renew_1stYr_2ndSem == !null) { ?>
-                                            <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_1stYr_2ndSem; ?></p>
+                                        <?php if ($renew_1stYr_2ndSem == 'uploaded' || $renew_1stYr_2ndSem == 'approve renewal') { ?>
+                                            <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_1stYr_2ndSem; ?></button>
                                             <?php
+                                        } elseif ($renew_1stYr_2ndSem == 'reupload renewal') {
+                                            $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                            $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                            if (mysqli_num_rows($queryresult) > 0) { ?>
+                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php } else { ?>
+                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php }
                                         } else {
-
-
                                             $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                             $queryresult = mysqli_query($conn, $sqlSELECT);
 
@@ -284,7 +303,7 @@ $result = mysqli_query($conn, $sql);
                         <div class="portletForm light bg-inverse">
                             <div class="portlet-body form">
                                 <div class="row">
-                                    <h3 class="header-title">1st sem</h3>
+                                    <h3 class="header-title">1st sem (<?php echo $renew_2ndYr_1stSem; ?>)</h3>
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                             <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -359,9 +378,18 @@ $result = mysqli_query($conn, $sql);
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <?php if ($renew_2ndYr_1stSem == !null) { ?>
-                                            <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_2ndYr_1stSem; ?></p>
+                                        <?php if ($renew_2ndYr_1stSem == 'uploaded' || $renew_2ndYr_1stSem == 'approve renewal') { ?>
+                                            <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_2ndYr_1stSem; ?></button>
                                             <?php
+                                        } elseif ($renew_2ndYr_1stSem == 'reupload renewal') {
+                                            $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                            $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                            if (mysqli_num_rows($queryresult) > 0) { ?>
+                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php } else { ?>
+                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php }
                                         } else {
                                             $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                             $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -385,7 +413,7 @@ $result = mysqli_query($conn, $sql);
                         <form id="renew_2ndYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                             <div class="row">
 
-                                <h3 class="header-title">2nd sem</h3>
+                                <h3 class="header-title">2nd sem (<?php echo $renew_2ndYr_2ndSem; ?>)</h3>
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                         <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -460,9 +488,18 @@ $result = mysqli_query($conn, $sql);
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <?php if ($renew_2ndYr_2ndSem == !null) { ?>
-                                        <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_2ndYr_2ndSem; ?></p>
+                                    <?php if ($renew_2ndYr_2ndSem == 'uploaded' || $renew_2ndYr_2ndSem == 'approve renewal') { ?>
+                                        <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_2ndYr_2ndSem; ?></button>
                                         <?php
+                                    } elseif ($renew_2ndYr_2ndSem == 'reupload renewal') {
+                                        $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                        $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                        if (mysqli_num_rows($queryresult) > 0) { ?>
+                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <?php } else { ?>
+                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <?php }
                                     } else {
                                         $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                         $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -490,7 +527,7 @@ $result = mysqli_query($conn, $sql);
                     <div class="portletForm light bg-inverse">
                         <div class="portlet-body form">
                             <div class="row">
-                                <h3 class="header-title">1st sem</h3>
+                                <h3 class="header-title">1st sem (<?php echo $renew_3rdYr_1stSem; ?>)</h3>
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                         <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -565,9 +602,18 @@ $result = mysqli_query($conn, $sql);
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <?php if ($renew_3rdYr_1stSem == !null) { ?>
-                                        <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_3rdYr_1stSem; ?></p>
+                                    <?php if ($renew_3rdYr_1stSem == 'uploaded' || $renew_3rdYr_1stSem == 'approve renewal') { ?>
+                                        <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_3rdYr_1stSem; ?></button>
                                         <?php
+                                    } elseif ($renew_3rdYr_1stSem == 'reupload renewal') {
+                                        $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                        $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                        if (mysqli_num_rows($queryresult) > 0) { ?>
+                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <?php } else { ?>
+                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <?php }
                                     } else {
                                         $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                         $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -591,7 +637,7 @@ $result = mysqli_query($conn, $sql);
                     <form id="renew_3rdYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                         <div class="row">
 
-                            <h3 class="header-title">2nd sem</h3>
+                            <h3 class="header-title">2nd sem (<?php echo $renew_3rdYr_2ndSem; ?>)</h3>
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                     <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -666,9 +712,18 @@ $result = mysqli_query($conn, $sql);
 
                         <div class="row">
                             <div class="col-md-12">
-                                <?php if ($renew_3rdYr_2ndSem == !null) { ?>
-                                    <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_3rdYr_2ndSem; ?></p>
+                                <?php if ($renew_3rdYr_2ndSem == 'uploaded' || $renew_3rdYr_2ndSem == 'approve renewal') { ?>
+                                    <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_3rdYr_2ndSem; ?></button>
                                     <?php
+                                } elseif ($renew_3rdYr_2ndSem == 'reupload renewal') {
+                                    $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                    $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                    if (mysqli_num_rows($queryresult) > 0) { ?>
+                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } else { ?>
+                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php }
                                 } else {
                                     $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                     $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -695,7 +750,7 @@ $result = mysqli_query($conn, $sql);
                 <div class="portletForm light bg-inverse">
                     <div class="portlet-body form">
                         <div class="row">
-                            <h3 class="header-title">1st sem</h3>
+                            <h3 class="header-title">1st sem (<?php echo $renew_4thYr_1stSem; ?>)</h3>
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                     <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -770,9 +825,18 @@ $result = mysqli_query($conn, $sql);
 
                         <div class="row">
                             <div class="col-md-12">
-                                <?php if ($renew_4thYr_1stSem == !null) { ?>
-                                    <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_4thYr_1stSem; ?></p>
+                                <?php if ($renew_4thYr_1stSem == 'uploaded' || $renew_4thYr_1stSem == 'approve renewal') { ?>
+                                    <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_4thYr_1stSem; ?></button>
                                     <?php
+                                } elseif ($renew_4thYr_1stSem == 'reupload renewal') {
+                                    $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                    $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                    if (mysqli_num_rows($queryresult) > 0) { ?>
+                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } else { ?>
+                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php }
                                 } else {
                                     $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                     $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -796,7 +860,7 @@ $result = mysqli_query($conn, $sql);
                 <form id="renew_4thYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                     <div class="row">
 
-                        <h3 class="header-title">2nd sem</h3>
+                        <h3 class="header-title">2nd sem (<?php echo $renew_4thYr_2ndSem; ?>)</h3>
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                 <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -871,9 +935,18 @@ $result = mysqli_query($conn, $sql);
 
                     <div class="row">
                         <div class="col-md-12">
-                            <?php if ($renew_4thYr_2ndSem == !null) { ?>
-                                <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_4thYr_2ndSem; ?></p>
+                            <?php if ($renew_4thYr_2ndSem == 'uploaded' || $renew_4thYr_2ndSem == 'approve renewal') { ?>
+                                <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_4thYr_2ndSem; ?></button>
                                 <?php
+                            } elseif ($renew_4thYr_2ndSem == 'reupload renewal') {
+                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                if (mysqli_num_rows($queryresult) > 0) { ?>
+                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php } else { ?>
+                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php }
                             } else {
                                 $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                 $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -900,7 +973,7 @@ $result = mysqli_query($conn, $sql);
                 <div class="portletForm light bg-inverse">
                     <div class="portlet-body form">
                         <div class="row">
-                            <h3 class="header-title">1st sem</h3>
+                            <h3 class="header-title">1st sem (<?php echo $renew_5thYr_1stSem; ?>)</h3>
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                     <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -975,9 +1048,18 @@ $result = mysqli_query($conn, $sql);
 
                         <div class="row">
                             <div class="col-md-12">
-                                <?php if ($renew_5thYr_1stSem == !null) { ?>
-                                    <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_5thYr_1stSem; ?></p>
+                                <?php if ($renew_5thYr_1stSem == 'uploaded' || $renew_5thYr_1stSem == 'approve renewal') { ?>
+                                    <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_5thYr_1stSem; ?></button>
                                     <?php
+                                } elseif ($renew_5thYr_1stSem == 'reupload renewal') {
+                                    $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                    $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                    if (mysqli_num_rows($queryresult) > 0) { ?>
+                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_5thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } else { ?>
+                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_5thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php }
                                 } else {
                                     $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                     $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -1001,7 +1083,7 @@ $result = mysqli_query($conn, $sql);
                 <form id="renew_5thYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                     <div class="row">
 
-                        <h3 class="header-title">2nd sem</h3>
+                        <h3 class="header-title">2nd sem (<?php echo $renew_5thYr_2ndSem; ?>)</h3>
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                 <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -1076,9 +1158,18 @@ $result = mysqli_query($conn, $sql);
 
                     <div class="row">
                         <div class="col-md-12">
-                            <?php if ($renew_5thYr_2ndSem == !null) { ?>
-                                <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_5thYr_2ndSem; ?></p>
+                            <?php if ($renew_5thYr_2ndSem == 'uploaded' || $renew_5thYr_2ndSem == 'approve renewal') { ?>
+                                <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_5thYr_2ndSem; ?></button>
                                 <?php
+                            } elseif ($renew_5thYr_2ndSem == 'reupload renewal') {
+                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                if (mysqli_num_rows($queryresult) > 0) { ?>
+                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_5thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php } else { ?>
+                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_5thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php }
                             } else {
                                 $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                 $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -1106,7 +1197,7 @@ $result = mysqli_query($conn, $sql);
                 <div class="portletForm light bg-inverse">
                     <div class="portlet-body form">
                         <div class="row">
-                            <h3 class="header-title">1st sem</h3>
+                            <h3 class="header-title">1st sem (<?php echo $renew_6thYr_1stSem; ?>)</h3>
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                     <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -1181,9 +1272,18 @@ $result = mysqli_query($conn, $sql);
 
                         <div class="row">
                             <div class="col-md-12">
-                                <?php if ($renew_6thYr_1stSem == !null) { ?>
-                                    <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_6thYr_1stSem; ?></p>
+                                <?php if ($renew_6thYr_1stSem == 'uploaded' || $renew_6thYr_1stSem == 'approve renewal') { ?>
+                                    <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_6thYr_1stSem; ?></button>
                                     <?php
+                                } elseif ($renew_6thYr_1stSem == 'reupload renewal') {
+                                    $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                    $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                    if (mysqli_num_rows($queryresult) > 0) { ?>
+                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_6thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php } else { ?>
+                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_6thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                    <?php }
                                 } else {
                                     $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                     $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -1207,7 +1307,7 @@ $result = mysqli_query($conn, $sql);
                 <form id="renew_6thYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                     <div class="row">
 
-                        <h3 class="header-title">2nd sem</h3>
+                        <h3 class="header-title">2nd sem (<?php echo $renew_6thYr_2ndSem; ?>)</h3>
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                 <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
@@ -1282,9 +1382,18 @@ $result = mysqli_query($conn, $sql);
 
                     <div class="row">
                         <div class="col-md-12">
-                            <?php if ($renew_6thYr_2ndSem == !null) { ?>
-                                <p style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_6thYr_2ndSem; ?></p>
+                            <?php if ($renew_6thYr_2ndSem == 'uploaded' || $renew_6thYr_2ndSem == 'approve renewal') { ?>
+                                <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_6thYr_2ndSem; ?></button>
                                 <?php
+                            } elseif ($renew_6thYr_2ndSem == 'reupload renewal') {
+                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                if (mysqli_num_rows($queryresult) > 0) { ?>
+                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_6thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php } else { ?>
+                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_6thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                <?php }
                             } else {
                                 $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                 $queryresult = mysqli_query($conn, $sqlSELECT);
@@ -1342,6 +1451,12 @@ $result = mysqli_query($conn, $sql);
                         button.textContent = response;
                         button.disabled = true;
                     }
+                    const buttonsToUpdatePersonalInfo = document.querySelectorAll('.btnUpdate-peronalInfo');
+
+                    // Loop through the selected buttons and disable them
+                    buttonsToUpdatePersonalInfo.forEach(button => {
+                        button.disabled = true;
+                    });
 
 
                 },

@@ -7,17 +7,17 @@ $action = $_POST['action'];
 $academic = $_POST['academic'];
 
 // Define the upload directory
-$uniqueNumber = uniqid();
+
 
 // Function to handle file upload and return the new file name
-function handleFileUpload($fileInput, $user, $id, $action)
+function handleFileUpload($fileInput, $user, $id, $action, $docs)
 {
     if (!empty($fileInput['tmp_name'])) {
 
         $uploadDir = "../../../uploads/scholar/renewal/";
 
         $extension = pathinfo($fileInput['name'], PATHINFO_EXTENSION);
-        $newFileName = $action . "_" . $user . "_" . $id . "_" . uniqid() . "." . $extension;
+        $newFileName = $action . "_" . $user . "_" . $id . "_" . $docs . "." . $extension;
         $filePath = $uploadDir . $newFileName;
 
         if (move_uploaded_file($fileInput['tmp_name'], $filePath)) {
@@ -29,16 +29,17 @@ function handleFileUpload($fileInput, $user, $id, $action)
 }
 
 // Handle 'prevCor' file upload
-$newFileNamePrevCor = handleFileUpload($_FILES['prevCor'], $user, $id, $action);
+$newFileNamePrevCor = handleFileUpload($_FILES['prevCor'], $user, $id, $action, 'PrevCor');
 
 // Handle 'cog' file upload
-$newFileNameCog = handleFileUpload($_FILES['cog'], $user, $id, $uniqueNumber, $action);
-$newFileNameCurrentCor = handleFileUpload($_FILES['currentCor'], $user, $id, $uniqueNumber, $action);
-$newFileNameCurriculum = handleFileUpload($_FILES['curriculum'], $user, $id, $uniqueNumber, $action);
+$newFileNameCog = handleFileUpload($_FILES['cog'], $user, $id, $action, 'Cog');
+$newFileNameCurrentCor = handleFileUpload($_FILES['currentCor'], $user, $id,  $action, 'CurrCor');
+$newFileNameDtr = handleFileUpload($_FILES['dtr'], $user, $id,  $action, 'Dtr');
+$newFileNameCurriculum = handleFileUpload($_FILES['curriculum'], $user, $id, $action, 'Curri');
 
-$newFileNameDtr = handleFileUpload($_FILES['dtr'], $user, $id, $uniqueNumber, $action);
-$newFileNameAtm = handleFileUpload($_FILES['atm'], $user, $id, $uniqueNumber, $action);
-$newFileNameE3Form = handleFileUpload($_FILES['e3Form'], $user, $id, $uniqueNumber, $action);
+
+$newFileNameAtm = handleFileUpload($_FILES['atm'], $user, $id, $action, 'Atm');
+$newFileNameE3Form = handleFileUpload($_FILES['e3Form'], $user, $id, $action, 'Form');
 
 
 

@@ -128,12 +128,12 @@ if (isset($_GET['id'])) {
                                 $semesterYear = $actions . '_' . $academic_year;
                         ?>
 
-                                <button id="approveBtn" style="float: right;" class="btn btn-danger btn-md mb-3 ms-3 me-2" onclick="sendAction('<?php echo $process_id; ?>', 'decline','<?php echo $semesterYear ?>')">Declined</button>
-                                <button id="declineBtn" style="float: right;" class="btn btn-success btn-md mb-3 ms-3" onclick="sendAction('<?php echo $process_id; ?>', 'approve','<?php echo $semesterYear ?>')">Approve</button>
+                                <button id="approveBtn" style="float: right;" class="btn btn-danger btn-md mb-3 ms-3 me-2" onclick="sendAction('<?php echo $process_id; ?>', 'decline','<?php echo $semesterYear ?>','<?php echo $actions ?>')">Declined</button>
+                                <button id="declineBtn" style="float: right;" class="btn btn-success btn-md mb-3 ms-3" onclick="sendAction('<?php echo $process_id; ?>', 'approve','<?php echo $semesterYear ?>','<?php echo $actions ?>')">Approve</button>
 
                             <?php } else { ?>
-                                <button disabled style="float: right;" class="btn btn-danger btn-md mb-3 ms-3 me-2" onclick="sendAction('<?php echo $process_id; ?>', 'decline','<?php echo $semesterYear ?>')">Declined</button>
-                                <button disabled style="float: right;" class="btn btn-success btn-md mb-3 ms-3" onclick="sendAction('<?php echo $process_id; ?>', 'approve','<?php echo $semesterYear ?>')">Approve</button>
+                                <button disabled style="float: right;" class="btn btn-danger btn-md mb-3 ms-3 me-2" onclick="sendAction('<?php echo $process_id; ?>', 'decline','<?php echo $semesterYear ?>','<?php echo $actions ?>')">Declined</button>
+                                <button disabled style="float: right;" class="btn btn-success btn-md mb-3 ms-3" onclick="sendAction('<?php echo $process_id; ?>', 'approve','<?php echo $semesterYear ?>','<?php echo $actions ?>')">Approve</button>
                         <?php }
                         } elseif ($page == 'award') {
                         }
@@ -377,7 +377,7 @@ if (isset($_GET['id'])) {
         });
     </script>
     <script>
-        function sendAction(applicantId, action, semesterYear) {
+        function sendAction(applicantId, action, semesterYear, semester) {
             // Create an AJAX request
             var serviceValue = $("#service").val();
             var commentValue = $("#comment").val();
@@ -389,6 +389,7 @@ if (isset($_GET['id'])) {
                     id: applicantId,
                     action: action,
                     semesterYear: semesterYear,
+                    semester: semester,
                     commentValue: commentValue,
                     serviceValue: serviceValue
                 },

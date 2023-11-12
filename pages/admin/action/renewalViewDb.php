@@ -37,9 +37,11 @@ if (isset($_POST['id']) && isset($_POST['action'])) {
         //     edit();
         // } 
         else if ($_POST["action"] == "decline") {
-            decline($row, $semesterYear, $applicantId);
+            decline($row, $semesterYear, $full_name, $contact_num1);
         } else if ($_POST["action"] == "delete") {
             deleted($row, $semesterYear, $applicantId);
+        } else if ($_POST["action"] == "delete_decline") {
+            delete_decline($row, $semesterYear, $applicantId);
         } else {
             echo "error";
         }
@@ -59,15 +61,16 @@ function approve($row, $semesterYear, $full_name, $contact_num1)
     $applicantId = $_POST['id'];
     $serviceValue = $_POST['serviceValue'];
     $commentValue = $_POST['commentValue'];
+    $semester = $_POST['semester'];
     $scholar_id = $row['scholar_id'];
     $renewal_id = $row['renewal_id'];
 
 
     try {
-        mysqli_query($conn, "UPDATE renewal_process SET process_status = 'approve' , comment = '$commentValue' WHERE process_id = '$applicantId'");
-        send_sms("Hello " . $full_name . ", " . $commentValue, $contact_num1);
+        mysqli_query($conn, "UPDATE renewal_process SET process_status = 'approve'  WHERE process_id = '$applicantId'");
+        // send_sms("Hello " . $full_name . ", " . $commentValue, $contact_num1);
         mysqli_query($conn, "UPDATE renewal SET status = 'approve'  WHERE renewal_id = '$renewal_id'");
-        mysqli_query($conn, "UPDATE scholar SET status_lastsem = '$semesterYear' , c_service1st = '$serviceValue'  WHERE scholar_id = '$scholar_id'");
+        mysqli_query($conn, "UPDATE scholar SET status_lastsem = '$semesterYear' , c_service1st = '$serviceValue' , $semester = 'approve renewal'  WHERE scholar_id = '$scholar_id'");
         $insertQuery = "INSERT INTO renewal_award (renewal_id,semester_year ) VALUES ('$renewal_id', '$semesterYear')";
         $result = mysqli_query($conn, $insertQuery);
         if ($result) {
@@ -81,7 +84,7 @@ function approve($row, $semesterYear, $full_name, $contact_num1)
     }
 }
 
-function decline($row, $semesterYear, $applicantId)
+function decline($row, $semesterYear, $full_name, $contact_num1)
 {
     global $conn;
 
@@ -90,7 +93,9 @@ function decline($row, $semesterYear, $applicantId)
 
     $action = "decline";
 
-    global $conn;
+    $serviceValue = $_POST['serviceValue'];
+    $commentValue = $_POST['commentValue'];
+    $semester = $_POST['semester'];
 
     $scholar_id = $row['scholar_id'];
     $renewal_id = $row['renewal_id'];
@@ -98,7 +103,9 @@ function decline($row, $semesterYear, $applicantId)
 
 
     mysqli_query($conn, "UPDATE renewal SET status = 'decline'  WHERE renewal_id = '$renewal_id'");
-    mysqli_query($conn, "UPDATE renewal_process SET process_status = 'decline'  WHERE process_id = '$applicantId'");
+    mysqli_query($conn, "UPDATE renewal_process SET process_status = 'decline', comment = '$commentValue'  WHERE process_id = '$applicantId'");
+    send_sms("Hello " . $full_name . ", " . $commentValue, $contact_num1);
+    mysqli_query($conn, "UPDATE scholar SET  $semester = 'reupload renewal'  WHERE scholar_id = '$scholar_id'");
 
 
 
@@ -116,6 +123,30 @@ function deleted($row, $semesterYear, $applicantId)
     $action = "decline";
     try {
         mysqli_query($conn, "DELETE FROM renewal_process WHERE process_id =  '$applicantId'");
+
+
+
+        // if ($result) {
+        //     send_sms("We regret to inform you " . $fullName . " that your CYSDO Scholarship application has not been accepted. We appreciate your interest in the scholarship program and encourage you to consider other opportunities in the future. If you have any questions or require feedback, please do not hesitate to reach out.\n\n-CYSDO CSJDM-", $contactNum1);
+        //     echo "Scholar Declined";
+        // } else {
+        //     echo "Insert Failed: " . mysqli_error($conn);
+        // }
+    } catch (mysqli_sql_exception $e) {
+        // Hide the error message from the frontend
+        echo "An error occurred";
+    }
+}
+function delete_decline($row, $semesterYear, $applicantId)
+{
+    global $conn;
+
+    $applicantId = $_POST['id'];
+    $action = $_POST['action'];
+    $renewal_id = $row['renewal_id'];
+    $action = "decline";
+    try {
+        mysqli_query($conn, "DELETE FROM renewal WHERE renewal_id =  '$renewal_id'");
 
 
 
