@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2023 at 07:00 AM
+-- Generation Time: Nov 12, 2023 at 03:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -101,12 +101,20 @@ INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader
 CREATE TABLE `chat_messages` (
   `id` int(11) NOT NULL,
   `sender` varchar(255) NOT NULL,
+  `staffId` int(11) DEFAULT NULL,
   `message` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `admin_id` int(11) DEFAULT NULL,
   `scholar_id` int(11) DEFAULT NULL,
   `is_read` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chat_messages`
+--
+
+INSERT INTO `chat_messages` (`id`, `sender`, `staffId`, `message`, `timestamp`, `admin_id`, `scholar_id`, `is_read`) VALUES
+(194, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 183, 'qwe', '2023-11-12 14:08:59', 24, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -366,7 +374,8 @@ INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_n
 (175, 'asd, qwe asd', 'asd', 'qwe', 'asd', '', '', '$2y$10$tedEnHfW6SKyYFFQ12eQdODBl0EJhY9NeaD2HtznBIN4UAhfJhB.O', 0, '', '', ''),
 (176, ', xacsdQWEZXC AS', '', 'xacsdQWEZXC', 'AS', '', 'zxfaewdasd@asdzxc', '$2y$10$bvNGuatyaGaIUR/la71rYu/.Br5jFsYZ1tTKpZqPKfhc7i4mizZ6K', 0, '', 'zxfaewdasd@asdzxc', ''),
 (181, 'asd, qwe qwe', 'asd', 'qwe', 'qwe', 'qwe', 'qwe', '$2y$10$UaS6A4YGJ40KzXKqWqJdAeqmgETmI1VWG7l1I6HX/l/YhaOh7JVDa', 0, '', 'qwe', ''),
-(182, '123,  ', '123', '', '', '', '123@gmail.com', '$2y$10$lqkPpmk02phmtHAR6w5MHOwblTg4nXlYW.zs.R94c9jOtbTamnFCK', 2147483647, '', '123@gmail.com', '');
+(182, '123, Jeremiah Reyes', '123', 'Jeremiah', '123', '', '123@gmail.com', '$2y$10$InA5vfUI.VgzzWo6P6/5quVq7x5COCPVX9.itF5fU2xpexw6eni9S', 2147483647, '', '123@gmail.com', ''),
+(183, 'Reyes, Jeremiah rev', 'Reyes', 'Jeremiah', 'rev', 'Taga timpla ng kape', 'jer', '$2y$10$tlunQn8i.xjZuO0MDhIiBOfkPQgBZW151XP0PmgW9QKcGMzZDM/BC', 123123123, '', 'jer', '');
 
 -- --------------------------------------------------------
 
@@ -489,7 +498,7 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `chat_messages`
 --
 ALTER TABLE `chat_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
 -- AUTO_INCREMENT for table `examination`
@@ -525,7 +534,7 @@ ALTER TABLE `scholar`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
+  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 
 --
 -- AUTO_INCREMENT for table `todos`
