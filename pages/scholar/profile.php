@@ -52,6 +52,18 @@ if ($result) {
 
 </head>
 
+<style>
+    
+.profile-pic img {
+    float: none;
+    margin: 0;
+    object-fit: contain;
+    width: 250px;
+    height: 250px;
+    border-radius: 50% !important;
+}
+</style>
+
 <body>
 
     <?php
@@ -64,8 +76,11 @@ if ($result) {
         
         <div class="container">
             <div class="profileBar">
+            
                 <div class="portlet light profileBar-portlet">
+                
                     <div class="profile-pic ms-3">
+                    
                         <?php
                         $signaturePicPath = "../../uploads/scholar/" . $image;
 
@@ -79,16 +94,24 @@ if ($result) {
                             echo '<img id="profilePicImage" src="../../uploads/applicant/2x2/No_Image_Available.jpg" class="img-responsive" alt="Default Image">';
                         }
                         ?>
-                        <div class="profile-usertab">
-
+                        <div class="profile-usertab d-flex">
                             <div class="profile-user-name text-uppercase">
-                                <h1></h1>
+
                             </div>
 
                             <hr class="mb-2 mt-5 opacity-0">
                         </div>
                     </div>
+                    <div class="profile-nm">
+                        <div>
+                            <h4>First Name :</h4>
+                            <h4>Last Name :</h4>
+                            <h4>Middle Initial :</h4>
+                            <h4>Status :</h4>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="portlet light">
                     <!-- Nav tabs -->
                     <div class="portlet-title tabbable-line">

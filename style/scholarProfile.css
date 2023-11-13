@@ -15,10 +15,6 @@ li {
       display: list-item;
 }
 
-div {
-    display: block;
-}
-
 .profileBar {
     display: block;
     width: 100%;
@@ -26,14 +22,14 @@ div {
 
 .profileBar-portlet {
     padding: 10px 0 0 0 !important;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.profile-pic img {
-    float: none;
-    margin: 0;
-    width: 25%;
-    height: 25%;
-    border-radius: 50% !important;
+.profile-nm {
+    padding-top: 30px;
+    padding-left: 50px;
+    margin-left: 200px;
 }
 
 .img-responsive {
