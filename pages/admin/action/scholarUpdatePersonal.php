@@ -12,6 +12,7 @@ $facebook = $_POST['facebook'];
 $telegram = $_POST['telegram'];
 $gender = $_POST['gender'];
 $voter = $_POST['voter'];
+$community = $_POST['community'];
 
 $full_address = $_POST['add-ress'];
 $barangay = $_POST['barangay'];
@@ -33,9 +34,11 @@ try {
         $row['barangay'] === $barangay && $row['contact_num1'] === $contact_num1 && $row['contact_num2'] === $contact_num2
         && $row['gender'] === $gender
         && $row['voter'] === $voter
+        && $row['telegram'] === $telegram
+        && $row['facebook'] === $facebook
         && $row['school_address'] === $school_address
         && $row['full_address'] === $full_address
-
+        && $row['c_service1st'] === $community
         && $row['current_yr'] === $current_year
         && $row['course'] === $course
         && $row['years_course'] === $years_course
@@ -46,7 +49,7 @@ try {
         echo 'No changes were made';
     } else {
         // Changes were made, execute the UPDATE query
-        mysqli_query($conn, "UPDATE scholar SET age = '$age', full_address ='$full_address', barangay='$barangay', email = '$email', contact_num1 = '$contact_num1', contact_num2= '$contact_num2', facebook = '$facebook', telegram= '$telegram' , gender= '$gender', voter= '$voter', school_address= '$school_address', current_yr= '$current_year', course= '$course' , years_course= '$years_course', degree_or_non= '$degree_or_non' , school_name= '$school_name' WHERE scholar_id = '$user_id'");
+        mysqli_query($conn, "UPDATE scholar SET age = '$age', full_address ='$full_address', barangay='$barangay', email = '$email', contact_num1 = '$contact_num1', contact_num2= '$contact_num2', facebook = '$facebook', telegram= '$telegram' , gender= '$gender', voter= '$voter', school_address= '$school_address', current_yr= '$current_year', course= '$course' , years_course= '$years_course', degree_or_non= '$degree_or_non' , school_name= '$school_name', c_service1st = '$community' WHERE scholar_id = '$user_id'");
 
         if (mysqli_affected_rows($conn) > 0) {
             echo 'Save Changes Successfully';
