@@ -51,6 +51,30 @@ if ($result) {
 
 </head>
 
+    <style>
+        .profile-pic img {
+            float: none;
+            margin: 0;
+            object-fit: contain;
+            width: 250px;
+            height: 250px;
+            border-radius: 50% !important;
+        }
+        .profileBar-portlet {
+            padding: 10px 0 0 0 !important;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+
+        .profile-nm {
+            padding-top: 30px;
+            padding-left: 50px;
+            margin-left: 100px;
+        }
+
+    </style>
+
 <body>
     <?php
 
@@ -71,7 +95,7 @@ if ($result) {
                         // Check if the image file exists
                         if (!empty($image) && file_exists($signaturePicPath)) {
                             // Display the image with an id
-                            echo '<img id="profilePicImage" src="' . $signaturePicPath . '" class="img-responsive" alt="image">';
+                            echo '<img id="profilePicImage" src="' . $signaturePicPath . '" class="img-responsive mb-3" alt="image">';
                         } else {
                             // Display a default image or a placeholder image with an id
                             echo '<img id="profilePicImage" src="../../uploads/applicant/2x2/No_Image_Available.jpg" class="img-responsive" alt="Default Image">';
@@ -80,11 +104,19 @@ if ($result) {
                     </div>
                     <div class="profile-usertab">
 
-                        <div class="profile-user-name text-uppercase ms-3"><?php echo $full_name ?>
+                        <div class="profile-user-name text-uppercase ms-3">
                             <h1></h1>
                         </div>
 
                         <hr class="mb-2 mt-5 opacity-0">
+                    </div>
+                    <div class="profile-nm">
+                        <div>
+                            <h4>First Name :</h4>
+                            <h4>Last Name :</h4>
+                            <h4>Middle Initial :</h4>
+                            <h4>Status :</h4>
+                        </div>
                     </div>
                 </div>
             </div>

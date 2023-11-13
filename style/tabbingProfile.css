@@ -16,25 +16,9 @@ li {
       display: list-item;
 }
 
-div {
-    display: block;
-}
-
 .profileBar {
     display: block;
     width: 100%;
-}
-
-.profileBar-portlet {
-    padding: 10px 0 0 0 !important;
-}
-
-.profile-pic img {
-    float: none;
-    margin: 0;
-    width: 25%;
-    height: 25%;
-    border-radius: 50% !important;
 }
 
 .img-responsive {
