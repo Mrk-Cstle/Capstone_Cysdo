@@ -24,14 +24,14 @@
   }
 
   body {
-    background-color: whitesmoke;
+    background-color: #ddd;
     background-size: cover;
     background-position: center;
   }
 
   .side-bar {
-    background: rgb(255,255,255);
-    background: linear-gradient(356deg, rgba(255,255,255,1) 0%, rgba(236,77,155,1)80%);
+    background: rgb(245,220,220);
+    background: linear-gradient(356deg, rgba(245,220,220,1) 0%, rgba(236,77,155,1) 80%);
     width: 290px;
     height: 100%;
     position: fixed;
@@ -127,7 +127,7 @@
 
   .home-section {
     position: relative;
-    background: #E4E9F7;
+    background: #eee;
     margin-left: 20px;
     left: 270px;
     width: calc(100% - 280px);

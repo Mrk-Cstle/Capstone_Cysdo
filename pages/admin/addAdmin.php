@@ -7,10 +7,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style/addStaff.css">
-    <title>Document</title>
+    <title>Admins</title>
     <style>
         .hidden-cell {
             display: none;
+        }
+        .wrapper {
+	        margin: 100px auto;
+	        padding: 30px;
+	        background: #e7e7e7;
+	        border-radius: 5px;
+	        width: 50%;
+	        position: relative;
+	        transition: all 5s ease-in-out;
+            z-index: 9999;
         }
     </style>
 </head>
@@ -54,7 +64,9 @@ if ($_SESSION['role'] === 'admin') {
                 </tbody>
             </table>
         </div>
-        <div id="paginationContainer" class="pagination-container"></div>
+
+        <div id="paginationContainer" class="pagination-container pagiBtn">
+        </div>
         <div class="overlay" id="btnAdd">
             <div class="wrapper">
                 <h2>Please Fill up The Form</h2><a class="close" href="#">&times;</a>

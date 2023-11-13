@@ -62,6 +62,12 @@ if ($result) {
     height: 250px;
     border-radius: 50% !important;
 }
+
+.profile-pic {
+    padding: 10px 0 0 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+}
 </style>
 
 <body>
@@ -88,7 +94,7 @@ if ($result) {
                         // Check if the image file exists
                         if (!empty($image) && file_exists($signaturePicPath)) {
                             // Display the image with an id
-                            echo '<img id="profilePicImage" src="' . $signaturePicPath . '" class="img-responsive" alt="image">';
+                            echo '<img id="profilePicImage" src="' . $signaturePicPath . '" class="img-responsive mb-4" alt="image">';
                         } else {
                             // Display a default image or a placeholder image with an id
                             echo '<img id="profilePicImage" src="../../uploads/applicant/2x2/No_Image_Available.jpg" class="img-responsive" alt="Default Image">';
@@ -96,21 +102,21 @@ if ($result) {
                         ?>
                         <div class="profile-usertab d-flex">
                             <div class="profile-user-name text-uppercase">
-
+                                <div class="profile-nm">
+                                    <div>
+                                    <h4>First Name :</h4>
+                                    <h4>Last Name :</h4>
+                                    <h4>Middle Initial :</h4>
+                                    <h4>Status :</h4>
+                                </div>
                             </div>
-
+                        </div>
+                        </div>
                             <hr class="mb-2 mt-5 opacity-0">
                         </div>
                     </div>
-                    <div class="profile-nm">
-                        <div>
-                            <h4>First Name :</h4>
-                            <h4>Last Name :</h4>
-                            <h4>Middle Initial :</h4>
-                            <h4>Status :</h4>
-                        </div>
-                    </div>
-                </div>
+                    
+                
                 
                 <div class="portlet light">
                     <!-- Nav tabs -->

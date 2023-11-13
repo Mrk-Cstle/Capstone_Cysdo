@@ -56,7 +56,7 @@ if ($result) {
   }
 
   body {
-    background-color: whitesmoke;
+    background-color: #ddd;
     background-size: cover;
     background-position: center;
   }
@@ -95,7 +95,8 @@ if ($result) {
     margin-right: 610px;
   }
 
-  .applicantList {margin-right: 30px;
+  .applicantList {
+    margin-right: 30px;
     margin-bottom: 70px;
     margin-right: 300px;
   }
@@ -132,6 +133,16 @@ if ($result) {
 
   .navProfile {
     margin-right: 30px;
+  }
+
+  .renewalList {
+    margin-bottom: 70px;
+    margin-right: 600px;
+  }
+
+  .cashAllowance {
+    margin-bottom: 70px;
+    margin-right: 380px;
   }
 
   .side-bar.active {
@@ -211,14 +222,16 @@ if ($result) {
 
   .home-section {
     position: relative;
-    background: #fff;
+    background: #ddd;
     margin-left: 20px;
     left: 270px;
     width: calc(100% - 290px);
     transition: all 0.5s ease;
-    margin-top: 0;
-    padding: 6px;
     padding-right: 50px;
+  }
+
+  .container {
+    padding: 10px 10px;
   }
 
   .home-content {
@@ -293,6 +306,14 @@ if ($result) {
     margin-bottom: 70px;
     margin-right: 10px;
   }
+  .renewalList {
+    margin-bottom: 70px;
+    margin-right: 400px;
+  }
+  .cashAllowance {
+    margin-bottom: 70px;
+    margin-right: 180px;
+  }
   }
 
   @media screen and (max-width: 1631px) {
@@ -324,6 +345,14 @@ if ($result) {
   .newscholarsList {
     margin-bottom: 70px;
     margin-right: 190px;
+  }
+  .renewalList {
+    margin-bottom: 70px;
+    margin-right: 200px;
+  }
+  .cashAllowance {
+    margin-bottom: 70px;
+    margin-right: 120px;
   }
   }
 
@@ -399,7 +428,7 @@ if ($result) {
         <div class="sub-menu">
           <a href="scholar.php" class="sub-item">Scholar List</a>
           <a href="renewalList.php" class="sub-item">Renewal Process</a>
-          <a href="renewalAward.php" class="sub-item">Di ko ulit alam</a>
+          <a href="renewalAward.php" class="sub-item">Cash Allowance</a>
 
         </div>
       </div>

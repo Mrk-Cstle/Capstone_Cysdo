@@ -5,13 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="include/nav.css">
     <link rel="stylesheet" href="../../style/managePost.css">
     <title>Manage Post</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
+<style>
+    form {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+    }
+    
+</style>
 <body>
     <?php
     include '../include/selectDb.php';
@@ -22,7 +35,7 @@
         include '../../assets/template/staffNavi.php';
     }
     ?>
-    <section class="home-section">
+    <section class="home-section"> 
         <form id="postForm" method="POST" action="postUpdateDb.php">
             <label for="postText" class="bold">Post Announcements</label><br>
             <textarea id="postText" name="postText" rows="5" cols="50"></textarea><br>

@@ -25,6 +25,7 @@ form {
     width: 90%;
     justify-content: flex-end;
     flex-direction: column;
+    background: #fff;
 }
 
 textarea {
@@ -96,7 +97,7 @@ footer {
 }
 
 .modal-content {
-    background-color: white;
+    background-color: #fff;
     margin: 10% auto;
     padding: 40px;
     border: 1px solid #888;
@@ -149,7 +150,7 @@ display: block;
 }
 
 .portlet-title {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #fff;
     padding: 0;
     margin-bottom: 10px;
     min-height: 66px;
