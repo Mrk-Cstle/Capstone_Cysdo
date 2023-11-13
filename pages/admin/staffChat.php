@@ -509,42 +509,18 @@ include '../include/selectDb.php';
   </div>
   <div class="container">
     <div class="row">
-        <section class="discussions">
-        <div class="discussion search">
-  <div class="searchbar">
-    <i class="fa fa-search" aria-hidden="true"></i>
-    <input type="text" placeholder="Search..." oninput="searchScholars(this.value)"></input>
-  </div>
-</div>
-            
-<?php
-// Include your database connection script
-include '../include/selectDb.php';
+    <section class="discussions">
+    <div class="discussion search">
+        <div class="searchbar">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" placeholder="Search..." oninput="searchScholars(this.value)">
+        </div>
+    </div>
 
-// Get the staff's ID (assuming it's stored in a session variable)
-$staff_id = $_SESSION['user'];
-
-
-
-// Fetch the list of scholars associated with the staff from the scholar table
-$query = "SELECT scholar_id, full_name FROM scholar";
-$result = mysqli_query($conn, $query);
-
-while ($scholar = mysqli_fetch_assoc($result)) {
-    // Display chat head for each scholar
-    echo '<div class="discussion" data-scholar-id="' . $scholar['scholar_id'] . '">';
-    echo '<div class="photo" style="background-image: url(\'/assets/image/1x1.jpg\');">';
-    echo '<div class="online"></div>';
-    echo '</div>';
-    echo '<div class="desc-contact">';
-    echo '<p class="name font-weight-bold">' . $scholar['full_name'] . '</p>';
-    echo '<p class="message">Last message goes here</p>';
-    echo '</div>';
-    echo '</div>';
-}
-?>
-
-        </section>
+    <div id="discussions-container">
+        <!-- Discussions content will be loaded here using Ajax -->
+    </div>
+</section>
         <section class="chat" style="display: block;">
             <div class="header-chat">
                 <i class="icon fa fa-user-o" aria-hidden="true"></i>
@@ -581,154 +557,179 @@ while ($scholar = mysqli_fetch_assoc($result)) {
 <!-- Include jQuery library here -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
-$(document).ready(function () {
-    // Store the timeout ID for the fetchMessages timeout
-    let fetchMessagesTimeout;
+    $(document).ready(function () {
+        let fetchMessagesTimeout;
+        let activeDiscussion = null;
+        let isSearchActive = false;
 
-    function fetchMessages(scholarId) {
-        // Fetch messages for the specified scholar (use scholarId in the request)
-        $.ajax({
-            url: 'fetch_message.php',
-            method: 'GET',
-            data: { scholar_id: scholarId },
-            success: function (data) {
-                $('#chat-box').html(data);
-
-                // Clear the previous timeout
-                if (fetchMessagesTimeout) {
-                    clearTimeout(fetchMessagesTimeout);
-                }
-
-                // Set a timeout to call fetchMessages again after a delay (e.g., 10 seconds)
-                fetchMessagesTimeout = setTimeout(function () {
-                    fetchMessages(scholarId);
-                }, 2000);
-            }
-        });
-    }
-
-    $('#send').click(function () {
-        var message = $('#messageInput').val();
-
-        if (message !== '') {
-            // Send the message to the active scholar (use activeDiscussion.getAttribute('data-scholar-id'))
+        function fetchMessages(scholarId) {
             $.ajax({
-                url: 'send_message.php',
-                method: 'POST',
-                data: {
-                    message: message,
-                    scholar_id: activeDiscussion.getAttribute('data-scholar-id')
-                },
-                success: function () {
-                    $('#messageInput').val(''); // Clear input field
-                    fetchMessages(activeDiscussion.getAttribute('data-scholar-id')); // Refresh messages for the active scholar
+                url: 'fetch_message.php',
+                method: 'GET',
+                data: { scholar_id: scholarId },
+                success: function (data) {
+                    $('#chat-box').html(data);
+
+                    if (fetchMessagesTimeout) {
+                        clearTimeout(fetchMessagesTimeout);
+                    }
+
+                    fetchMessagesTimeout = setTimeout(function () {
+                        fetchMessages(scholarId);
+                    }, 2000);
                 }
             });
         }
-    });
 
-    const discussions = document.querySelectorAll(".discussion");
-    let activeDiscussion = null;
+        $('#send').click(function () {
+            var message = $('#messageInput').val();
 
-    discussions.forEach((discussion) => {
-        discussion.addEventListener("click", function () {
-            if (activeDiscussion) {
-                activeDiscussion.classList.remove("message-active");
-            }
-
-            const name = discussion.querySelector(".name").textContent;
-
-            discussion.classList.add("message-active");
-            activeDiscussion = discussion;
-
-            // Update the chat header name and show the chat section
-            const chatHeaderName = document.querySelector(".chat .header-chat .name");
-            chatHeaderName.textContent = name;
-            const chatSection = document.querySelector(".chat");
-            chatSection.style.display = "block";
-
-            // Show the footer chat
-            const footerChat = document.querySelector(".footer-chat");
-            footerChat.style.display = "flex";
-
-            // Clear the previous timeout
-            if (fetchMessagesTimeout) {
-                clearTimeout(fetchMessagesTimeout);
-            }
-
-            // Fetch messages for the selected scholar
-            fetchMessages(discussion.getAttribute('data-scholar-id'));
-        });
-    });
-});
-
-function searchScholars(searchTerm) {
-    // Get all scholar elements
-    var scholars = document.querySelectorAll('.discussion[data-scholar-id]');
-
-    // Loop through each scholar and hide/show based on the search term
-    scholars.forEach(function (scholar) {
-        var fullName = scholar.querySelector('.name').textContent.toLowerCase();
-        if (fullName.includes(searchTerm.toLowerCase())) {
-            scholar.style.display = 'block';
-        } else {
-            scholar.style.display = 'none';
-        }
-    });
-}
-
-$(document).ready(function () {
-    function updateNotifications() {
-        $.ajax({
-            type: "GET",
-            url: "fetch_notifications.php",
-            success: function (response) {
-                var data = JSON.parse(response);
-                var notifications = data.notifications;
-                var unreadCount = data.unread_count;
-
-                $('.counter').text(unreadCount);
-
-                var notificationContainer = $('.notification');
-                notificationContainer.empty();
-
-                notifications.forEach(function (notification) {
-                    var senderName = notification.sender || 'Scholar';
-                    notificationContainer.append('<div class="notification-item">New message from ' + senderName + '</div>');
+            if (message !== '') {
+                $.ajax({
+                    url: 'send_message.php',
+                    method: 'POST',
+                    data: {
+                        message: message,
+                        scholar_id: activeDiscussion.getAttribute('data-scholar-id')
+                    },
+                    success: function () {
+                        $('#messageInput').val('');
+                        fetchMessages(activeDiscussion.getAttribute('data-scholar-id'));
+                    }
                 });
             }
         });
-    }
 
-    // Function to mark notifications as read
-    function markNotificationsAsRead() {
-        $.ajax({
-            type: "POST",
-            url: "mark_as_read.php", // Create this PHP file to handle marking messages as read
-            success: function () {
-                // After successfully marking as read, update the notifications
-                updateNotifications();
+        function updateDiscussions() {
+            if (isSearchActive) {
+                console.log("Search is active. Skipping automatic refresh.");
+                return;
             }
+
+            const discussionsContainer = document.getElementById("discussions-container");
+
+            fetch('fetch_discussions_ajax.php')
+                .then(response => response.text())
+                .then(data => {
+                    discussionsContainer.innerHTML = data;
+                    attachDiscussionClickHandlers();
+                })
+                .catch(error => console.error('Error fetching discussions:', error));
+        }
+
+        updateDiscussions();
+
+        setInterval(updateDiscussions, 2000);
+
+        function attachDiscussionClickHandlers() {
+            const discussions = document.querySelectorAll(".discussion");
+
+            discussions.forEach((discussion) => {
+                discussion.addEventListener("click", function () {
+                    console.log("Discussion clicked");
+
+                    if (activeDiscussion) {
+                        activeDiscussion.classList.remove("message-active");
+                    }
+
+                    const name = discussion.querySelector(".name").textContent;
+
+                    discussion.classList.add("message-active");
+                    activeDiscussion = discussion;
+
+                    const chatHeaderName = document.querySelector(".chat .header-chat .name");
+                    chatHeaderName.textContent = name;
+                    const chatSection = document.querySelector(".chat");
+                    chatSection.style.display = "block";
+
+                    const footerChat = document.querySelector(".footer-chat");
+                    footerChat.style.display = "flex";
+
+                    if (fetchMessagesTimeout) {
+                        clearTimeout(fetchMessagesTimeout);
+                    }
+
+                    fetchMessages(discussion.getAttribute('data-scholar-id'));
+                });
+            });
+        }
+
+        function searchScholars(searchTerm) {
+            isSearchActive = searchTerm.trim() !== '';
+
+            var scholars = document.querySelectorAll('.discussion[data-scholar-id]');
+
+            scholars.forEach(function (scholar) {
+                var fullName = scholar.querySelector('.name').textContent.toLowerCase();
+                if (fullName.includes(searchTerm.toLowerCase())) {
+                    scholar.style.display = 'block';
+                } else {
+                    scholar.style.display = 'none';
+                }
+            });
+
+            updateDiscussions();
+        }
+
+        function markMessagesAsRead(scholarId) {
+            $.ajax({
+                url: 'mark_messages_as_read.php',
+                method: 'POST',
+                data: { scholar_id: scholarId },
+                success: function () {
+                    // Do something if needed after marking messages as read
+                }
+            });
+        }
+
+        function updateNotifications() {
+            $.ajax({
+                type: "GET",
+                url: "fetch_notifications.php",
+                success: function (response) {
+                    var data = JSON.parse(response);
+                    var notifications = data.notifications;
+                    var unreadCount = data.unread_count;
+
+                    $('.counter').text(unreadCount);
+
+                    var notificationContainer = $('.notification');
+                    notificationContainer.empty();
+
+                    notifications.forEach(function (notification) {
+                        var senderName = notification.sender || 'Scholar';
+                        notificationContainer.append('<div class="notification-item">New message from ' + senderName + '</div>');
+                    });
+                }
+            });
+        }
+
+        function markNotificationsAsRead() {
+            $.ajax({
+                type: "POST",
+                url: "mark_as_read.php",
+                success: function () {
+                    updateNotifications();
+                }
+            });
+        }
+
+        $('.clickable').click(function () {
+            markNotificationsAsRead();
         });
-    }
 
-    // Event listener for the notification bell
-    $('.clickable').click(function () {
-        markNotificationsAsRead();
+        updateNotifications();
+
+        setInterval(updateNotifications, 5000);
+        
+        // Add an input event listener for the search bar
+        $('.searchbar input').on('input', function () {
+            searchScholars($(this).val());
+        });
     });
-
-    updateNotifications();
-
-    setInterval(updateNotifications, 5000);
-});
-
-
-
-
-
 </script>
 </body>
 </html>
