@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2023 at 01:15 PM
+-- Generation Time: Nov 14, 2023 at 01:21 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -92,6 +92,38 @@ INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader
 (48, '2023-09-20', 'asd', 'qaz, qaz qaz', 'scholar'),
 (49, '2023-09-20', 'asd', 'qaz, qaz qaz', 'applicant'),
 (51, '2023-09-20', 'asd', 'bnm, bnm bnm', 'applicant');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat_messages`
+--
+
+CREATE TABLE `chat_messages` (
+  `id` int(100) NOT NULL,
+  `sender` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `admin_id` int(11) DEFAULT NULL,
+  `scholar_id` int(11) DEFAULT NULL,
+  `is_read` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chat_messages`
+--
+
+INSERT INTO `chat_messages` (`id`, `sender`, `message`, `timestamp`, `admin_id`, `scholar_id`, `is_read`) VALUES
+(1, 'City Youth and Sports Development Office - CSJDM', 'qwe', '2023-11-12 12:23:23', 24, 5, 0),
+(2, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'asd', '2023-11-12 12:25:55', 24, 5, 1),
+(3, 'City Youth and Sports Development Office - CSJDM', 'asd', '2023-11-12 12:26:15', 24, 5, 0),
+(4, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'qwe', '2023-11-12 12:26:52', 24, 5, 1),
+(5, 'City Youth and Sports Development Office - CSJDM', 'qwe', '2023-11-12 12:27:05', 24, 5, 0),
+(6, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'qwe', '2023-11-12 12:27:09', 24, 5, 1),
+(7, 'ASDSDF, XCVSDF SDFXCV', 'qwe', '2023-11-12 12:27:52', 24, 14, 1),
+(8, 'City Youth and Sports Development Office - CSJDM', 'qwe', '2023-11-12 12:28:09', 24, 14, 0),
+(9, 'ASDSDF, XCVSDF SDFXCV', 'asd', '2023-11-12 14:07:19', 24, 14, 1),
+(10, 'City Youth and Sports Development Office - CSJDM', 'qwe', '2023-11-12 14:14:10', 24, 14, 0);
 
 -- --------------------------------------------------------
 
@@ -379,7 +411,9 @@ INSERT INTO `renewal` (`renewal_id`, `scholar_id`, `semester`, `academic_year`, 
 (101, 9, 'renew_1stYr_1stSem', '2020', '2023-11-10 16:21:33', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_PrevCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Cog.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Atm.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_CurrCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Dtr.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Form.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Curri.jpg'),
 (102, 9, 'renew_1stYr_1stSem', '', '2023-11-10 16:25:02', 'decline', '', '', '', '', '', '', '', '', ''),
 (104, 14, 'renew_4thYr_2ndSem', '', '2023-11-11 14:34:25', 'decline', '', '', '', '', '', '', '', '', ''),
-(106, 14, 'renew_4thYr_2ndSem', '', '2023-11-11 14:39:28', 'approve', '', '', '', '', '', '', '', '', '');
+(106, 14, 'renew_4thYr_2ndSem', '', '2023-11-11 14:39:28', 'approve', '', '', '', '', '', '', '', '', ''),
+(107, 14, 'renew_5thYr_1stSem', '', '2023-11-12 12:41:29', 'approve', '', '', '', '', '', '', '', '', ''),
+(108, 14, 'renew_5thYr_2ndSem', '', '2023-11-12 14:39:05', 'approve', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -399,14 +433,7 @@ CREATE TABLE `renewal_award` (
 --
 
 INSERT INTO `renewal_award` (`award_id`, `renewal_id`, `award_status`, `semester_year`) VALUES
-(20, 73, NULL, 'renew_3rdYr_1stSem_2023-2024'),
-(21, 73, NULL, 'renew_3rdYr_1stSem_2023-2024'),
-(22, 74, NULL, 'renew_2ndYr_1stSem_213123'),
-(23, 78, NULL, 'renew_4thYr_2ndSem_'),
-(24, 78, NULL, 'renew_4thYr_2ndSem_'),
-(25, 87, NULL, 'renew_1stYr_1stSem_2023-2024'),
-(26, 95, NULL, 'renew_1stYr_1stSem_'),
-(27, 106, NULL, 'renew_4thYr_2ndSem_');
+(29, 108, NULL, 'renew_5thYr_2ndSem_');
 
 -- --------------------------------------------------------
 
@@ -480,9 +507,63 @@ CREATE TABLE `scholar` (
 
 INSERT INTO `scholar` (`scholar_id`, `image`, `scholar_award_status`, `status_lastsem`, `user`, `password`, `applicant_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `age`, `gender`, `voter`, `contact_num1`, `contact_num2`, `full_address`, `barangay`, `telegram`, `atm_number`, `facebook`, `email`, `course`, `years_course`, `current_yr`, `degree_or_non`, `school_name`, `school_address`, `renew_1stYr_1stSem`, `renew_1stYr_2ndSem`, `renew_2ndYr_1stSem`, `renew_2ndYr_2ndSem`, `renew_3rdYr_1stSem`, `renew_3rdYr_2ndSem`, `renew_4thYr_1stSem`, `renew_4thYr_2ndSem`, `renew_5thYr_1stSem`, `renew_5thYr_2ndSem`, `renew_6thYr_1stSem`, `renew_6thYr_2ndSem`, `c_service1st`, `c_service2nd`, `approve_date`) VALUES
 (5, 'eqweasdasdad_profile.jpg', '', 'renew_1stYr_1stSem_2023-2024', 'eqweasdasdad', '$2y$10$bkPmzBB/oEypHsB4qJ1fc.0L8thjsItPYblRVSlxeNF3GFFavEJga', 98, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'eqweasdasdad', 'rdfgdrt', 'dfgdfgdfg', 0, '', '', '345345', '123123', '', '', '', '0', '', '0', '', 0, '0', NULL, '', '', 'uploaded', 'uploaded', '', 'uploaded', '', '', '', '', '', '', '', '', NULL, NULL, '2023-10-24'),
-(9, '', '', 'renew_1stYr_1stSem_', 'qwe', '$2y$10$bmuvoFNCxgEMQCZcEtN7PuBVdGUZYuSFNWqfRjss0T4XCF.z1k11m', 20, 'qwe, qwe qwe', 'qwe', 'qwe', 'qwe', 0, 'male', 'yes', '+639612479632', '123123', 'qweqweqweqweqweqweqweqwe', 'qweqweqwe', '', '0', '', '0', 'qweqweqweqweqwe', 0, 'als', NULL, 'qweqwe', 'qweqwe', 'reupload renewal', 'null', 'uploaded', NULL, 'uploaded', 'uploaded', 'uploaded', 'approve', 'reupload renewal', NULL, NULL, NULL, 20, NULL, '2023-10-31'),
-(12, 'CVB_profile.jpg', 'released_renew_1stYr_2ndSem_', 'renew_3rdYr_1stSem_2023-2024', 'CVB', '$2y$10$PuzKNDWprIeM4PeNC16OUelTYMVSR0zr0xjJUZGzzHVEw35i8oVFC', 0, 'CVB, CVB CVB', 'CVB', 'CVB', 'CVB', 0, '', '', '+639164983650', '', '', '', '', '0', '', '', '', 0, '', NULL, '', '', 'uploaded', 'uploaded', NULL, NULL, 'uploaded', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 20, NULL, '2023-11-03'),
-(14, 'ASDSDF_profile.jpg', '', 'renew_4thYr_2ndSem_', 'ASDSDF', '$2y$10$/3TOohNGpQJIFJoJCV68du9ufANFd0jZV.uSQ3FQpKcJulmWxUHG6', 0, 'ASDSDF, XCVSDF SDFXCV', 'ASDSDF', 'XCVSDF', 'SDFXCV', 0, '', '', '235345', '', '', '', '', '0', '', '', '', 0, '', NULL, '', '', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'approve renewal', NULL, NULL, NULL, NULL, 10, NULL, '2023-11-03');
+(9, '', 'released_renew_2ndYr_1stSem_213123', 'renew_1stYr_1stSem_', 'qwe', '$2y$10$bmuvoFNCxgEMQCZcEtN7PuBVdGUZYuSFNWqfRjss0T4XCF.z1k11m', 20, 'qwe, qwe qwe', 'qwe', 'qwe', 'qwe', 0, 'male', 'yes', '+639612479632', '123123', 'qweqweqweqweqweqweqweqwe', 'qweqweqwe', '', '0', '', '0', 'qweqweqweqweqwe', 0, 'als', NULL, 'qweqwe', 'qweqwe', 'reupload renewal', 'null', 'uploaded', NULL, 'uploaded', 'uploaded', 'uploaded', 'approve', 'reupload renewal', NULL, NULL, NULL, 20, NULL, '2023-10-31'),
+(12, 'CVB_profile.jpg', 'released_renew_3rdYr_1stSem_2023-2024', 'renew_3rdYr_1stSem_2023-2024', 'CVB', '$2y$10$PuzKNDWprIeM4PeNC16OUelTYMVSR0zr0xjJUZGzzHVEw35i8oVFC', 0, 'CVB, CVB CVB', 'CVB', 'CVB', 'CVB', 0, '', '', '+639164983650', '', '', '', '', '0', '', '', '', 0, '', NULL, '', '', 'uploaded', 'uploaded', NULL, NULL, 'uploaded', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 20, NULL, '2023-11-03'),
+(14, 'ASDSDF_profile.jpg', 'released_renew_4thYr_2ndSem_', 'renew_5thYr_2ndSem_', 'ASDSDF', '$2y$10$/3TOohNGpQJIFJoJCV68du9ufANFd0jZV.uSQ3FQpKcJulmWxUHG6', 0, 'ASDSDF, XCVSDF SDFXCV', 'ASDSDF', 'XCVSDF', 'SDFXCV', 0, '', '', '235345', '', '', '', '', '0', '', '', '', 0, '', NULL, '', '', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'approve renewal', 'approve renewal', 'approve renewal', NULL, NULL, 10, NULL, '2023-11-03'),
+(22, '', '', '', 'asdasd', '$2y$10$Kq9kj10PVW2esAVyIMe4qO3aGg8BgFJne0TrIk0R/Yea6XYuhEBvO', 0, 'asdasd, asdasd asdasd', 'asdasd', 'asdasd', 'asdasd', 0, '', '', '4356456', '', '', '', '', '', '', '', '', 0, '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-12'),
+(23, 'asd_profile.jpg', '', '', 'asd', '$2y$10$D36Y6OANMpb2cN3bDOEGT.Uoobf0LFNlrRWxEPSLEpRFB9vgQOJMe', 0, 'asd, asd asd', 'asd', 'asd', 'asd', 0, '', '', '123123', '1212312', 'qwe', 'qwe', 'weqweqwe', '', 'qweq', ' qwe@qwe', '', 0, '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `scholar_archive`
+--
+
+CREATE TABLE `scholar_archive` (
+  `scholar_id` int(100) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `scholar_award_status` varchar(100) NOT NULL,
+  `status_lastsem` varchar(100) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `applicant_id` int(10) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `middle_name` varchar(255) NOT NULL,
+  `age` int(100) NOT NULL,
+  `gender` varchar(100) NOT NULL,
+  `voter` varchar(100) NOT NULL,
+  `contact_num1` varchar(20) NOT NULL,
+  `contact_num2` varchar(20) NOT NULL,
+  `full_address` varchar(100) NOT NULL,
+  `barangay` varchar(100) NOT NULL,
+  `telegram` varchar(100) NOT NULL,
+  `atm_number` varchar(255) NOT NULL,
+  `facebook` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `course` varchar(100) NOT NULL,
+  `years_course` int(100) NOT NULL,
+  `current_yr` varchar(100) NOT NULL,
+  `degree_or_non` varchar(100) DEFAULT NULL,
+  `school_name` varchar(100) NOT NULL,
+  `school_address` varchar(100) NOT NULL,
+  `renew_1stYr_1stSem` varchar(100) DEFAULT NULL,
+  `renew_1stYr_2ndSem` varchar(100) DEFAULT NULL,
+  `renew_2ndYr_1stSem` varchar(100) DEFAULT NULL,
+  `renew_2ndYr_2ndSem` varchar(100) DEFAULT NULL,
+  `renew_3rdYr_1stSem` varchar(100) DEFAULT NULL,
+  `renew_3rdYr_2ndSem` varchar(100) DEFAULT NULL,
+  `renew_4thYr_1stSem` varchar(100) DEFAULT NULL,
+  `renew_4thYr_2ndSem` varchar(100) DEFAULT NULL,
+  `renew_5thYr_1stSem` varchar(100) DEFAULT NULL,
+  `renew_5thYr_2ndSem` varchar(100) DEFAULT NULL,
+  `renew_6thYr_1stSem` varchar(100) DEFAULT NULL,
+  `renew_6thYr_2ndSem` varchar(100) DEFAULT NULL,
+  `c_service1st` int(100) DEFAULT NULL,
+  `c_service2nd` int(100) DEFAULT NULL,
+  `approve_date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -567,6 +648,12 @@ ALTER TABLE `announcements`
   ADD PRIMARY KEY (`uploadId`);
 
 --
+-- Indexes for table `chat_messages`
+--
+ALTER TABLE `chat_messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `examination`
 --
 ALTER TABLE `examination`
@@ -623,6 +710,13 @@ ALTER TABLE `scholar`
   ADD UNIQUE KEY `user` (`user`);
 
 --
+-- Indexes for table `scholar_archive`
+--
+ALTER TABLE `scholar_archive`
+  ADD PRIMARY KEY (`scholar_id`),
+  ADD UNIQUE KEY `user` (`user`);
+
+--
 -- Indexes for table `staff`
 --
 ALTER TABLE `staff`
@@ -644,13 +738,19 @@ ALTER TABLE `todos`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `admin_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
   MODIFY `uploadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `chat_messages`
+--
+ALTER TABLE `chat_messages`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `examination`
@@ -680,25 +780,25 @@ ALTER TABLE `registration_approval`
 -- AUTO_INCREMENT for table `renewal`
 --
 ALTER TABLE `renewal`
-  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `renewal_award`
 --
 ALTER TABLE `renewal_award`
-  MODIFY `award_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `award_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `renewal_process`
 --
 ALTER TABLE `renewal_process`
-  MODIFY `process_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `process_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `scholar`
 --
 ALTER TABLE `scholar`
-  MODIFY `scholar_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `scholar_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `staff`
