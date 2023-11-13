@@ -56,7 +56,33 @@ if (isset($_GET['id'])) {
     <title>Application Form</title>
 
 </head>
+<style>
+        .profile-pic img {
+            float: none;
+            margin: 0;
+            object-fit: contain;
+            width: 250px;
+            height: 250px;
+            border-radius: 50% !important;
+        }
+        .profileBar-portlet {
+            padding: 10px 0 0 0 !important;
+            display: flex;
+            flex-wrap: wrap;
+        }
 
+        .profile-nm {
+            padding-top: 30px;
+            padding-left: 50px;
+            margin-left: 150px;
+        }
+
+        .actionBtn {
+            margin-top: 20%;
+            margin-left: 15%;
+        }
+
+</style>
 <body>
 
     <?php
@@ -78,7 +104,7 @@ if (isset($_GET['id'])) {
                         // Check if the image file exists
                         if (!empty($image) && file_exists($signaturePicPath)) {
                             // Display the image with an id
-                            echo '<img id="profilePicImage" src="' . $signaturePicPath . '" class="img-responsive" alt="image">';
+                            echo '<img id="profilePicImage" src="' . $signaturePicPath . '" class="img-responsive ms-3" alt="image">';
                         } else {
                             // Display a default image or a placeholder image with an id
                             echo '<img id="profilePicImage" src="../../uploads/applicant/2x2/No_Image_Available.jpg" class="img-responsive" alt="Default Image">';
@@ -89,14 +115,24 @@ if (isset($_GET['id'])) {
                             <div class="profile-user-name text-uppercase">
                                 <h1></h1>
                             </div>
-
+                            
                             <hr class="mb-2 mt-5 opacity-0">
+                        </div>
+                    </div>
+                        <div class="profile-nm">
+                            <div>
+                                <h4>First Name :</h4>
+                                <h4>Last Name :</h4>
+                                <h4>Middle Initial :</h4>
+                                <h4>Status :</h4>
+                            </div>
                         </div>
                         <div class="actionBtn">
                             <button type="button" id="approveBtn" class="btnApprove btn btn-success btn-sm" onclick="sendAction('<?php echo $applicantId; ?>', 'approve')">Graduated Scholar</button>
                             <button type="button" id="declineBtn" class="btnDecline btn btn-danger btn-sm" onclick="sendAction('<?php echo $applicantId; ?>', 'decline')">Remove Scholar</button>
                         </div>
-                    </div>
+                </div>
+                    
 
                 </div>
                 <div class="portlet light">
