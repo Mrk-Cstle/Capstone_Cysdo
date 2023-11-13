@@ -133,7 +133,7 @@ if (isset($_GET['id'])) {
                                         <div class="row">
                                             <div class="col-md-3 col-sm-4">
                                                 <div class="form-group">
-                                                    <input type="hidden" class="form-control" name="userid" id="userid" value="<?php echo $_SESSION['user_id']; ?> ">
+                                                    <input type="hidden" class="form-control" name="userid" id="userid" value="<?php echo $scholar_id; ?> ">
                                                     <label class="control-label bold font-xs">Last Name</label>
                                                     <input type="text" class="form-control" name="l-name" id="l-name" value="<?php echo $last_name ?>">
                                                 </div>
@@ -217,6 +217,22 @@ if (isset($_GET['id'])) {
                                                 </div>
 
 
+
+
+                                            </div>
+                                            <div class="row">
+                                                <div class=" col-md-3 col-sm-4">
+                                                    <div class="form-group">
+                                                        <label class="control-label bold font-xs">Telegram</label>
+                                                        <input type="text" class="form-control" name="telegram" id="telegram" value="<?php echo $telegram ?> ">
+                                                    </div>
+                                                </div>
+                                                <div class=" col-md-3 col-sm-4">
+                                                    <div class="form-group">
+                                                        <label class="control-label bold font-xs">Facebook</label>
+                                                        <input type="text" class="form-control" name="facebook" id="facebook" value="<?php echo $facebook ?> ">
+                                                    </div>
+                                                </div>
                                             </div>
                                             <h4 class="form-section bold font">School</h4>
                                             <div class="row">
@@ -1619,7 +1635,7 @@ if (isset($_GET['id'])) {
                 var formData = new FormData(this); // Create a FormData object to handle file upload
 
                 $.ajax({
-                    url: "action/updateProfilePersonalInfo.php", // Replace with your server-side script to handle the request
+                    url: "action/scholarUpdatePersonal.php", // Replace with your server-side script to handle the request
                     type: "POST",
                     data: formData,
                     contentType: false, // Set content type to false for FormData
