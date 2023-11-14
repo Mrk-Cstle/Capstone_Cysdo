@@ -528,8 +528,8 @@ include '../include/selectDb.php';
     </i>
     <div class="dropdown-menu overflow-h-menu dropdown-menu-right">
     <div class="notification">
-    <div class="notification-item">New message from Scholar</div>
-    <div class="notification-item">Another message from Scholar</div>
+    <div class="notification-item">New message from Admin</div>
+    <div class="notification-item">Another message from Admin</div>
     <!-- Add more notification items dynamically -->
 </div>
 
@@ -601,26 +601,44 @@ include '../include/selectDb.php';
         }
 
         function updateNotifications() {
-            $.ajax({
-                type: "GET",
-                url: "fetch_notifications.php",
-                success: function (response) {
-                    var data = JSON.parse(response);
-                    var notifications = data.notifications;
-                    var unreadCount = data.unread_count;
+    $.ajax({
+        type: "GET",
+        url: "fetch_notifications.php",
+        success: function (response) {
+            try {
+                var data = JSON.parse(response);
 
-                    $('.counter').text(unreadCount);
+                // Combine admin and staff notifications
+                var allNotifications = data.admin.notifications.concat(data.staff.notifications);
 
-                    var notificationContainer = $('.notification');
-                    notificationContainer.empty();
+                // Filter notifications by sender
+                var filteredNotifications = allNotifications.filter(function (notification) {
+                    return notification.sender === 'City Youth and Sports Development Office - CSJDM';
+                });
 
-                    notifications.forEach(function (notification) {
-                        var senderName = notification.sender || 'Admin';
-                        notificationContainer.append('<div class="notification-item">New message from ' + senderName + '</div>');
-                    });
-                }
-            });
+                // Convert unread_count values to integers and then sum
+                var totalUnreadCount = parseInt(data.admin.unread_count) + parseInt(data.staff.unread_count);
+
+                // Display combined notifications
+                $('.counter').text(totalUnreadCount);
+                var notificationContainer = $('.notification');
+                notificationContainer.empty();
+                filteredNotifications.forEach(function (notification) {
+                    notificationContainer.append('<div class="notification-item">New message from ' + notification.sender + '</div>');
+                });
+
+            } catch (error) {
+                console.error('Error parsing JSON:', error);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('AJAX Error:', status, error);
         }
+    });
+}
+
+
+
 
         function markNotificationsAsRead() {
             $.ajax({

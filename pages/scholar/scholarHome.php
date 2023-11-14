@@ -143,28 +143,42 @@ include '../include/selectDb.php';
   <script>
         $(document).ready(function () {
 
-        function updateNotifications() {
-            $.ajax({
-                type: "GET",
-                url: "fetch_notifications.php",
-                success: function (response) {
-                    var data = JSON.parse(response);
-                    var notifications = data.notifications;
-                    var unreadCount = data.unread_count;
+          function updateNotifications() {
+    $.ajax({
+        type: "GET",
+        url: "fetch_notifications.php",
+        success: function (response) {
+            try {
+                var data = JSON.parse(response);
 
-                    $('.counter').text(unreadCount);
+                // Combine admin and staff notifications
+                var allNotifications = data.admin.notifications.concat(data.staff.notifications);
 
-                    var notificationContainer = $('.notification');
-                    notificationContainer.empty();
+                // Filter notifications by sender
+                var filteredNotifications = allNotifications.filter(function (notification) {
+                    return notification.sender === 'City Youth and Sports Development Office - CSJDM';
+                });
 
-                    notifications.forEach(function (notification) {
-                      var senderName = notification.sender || 'Admin'; // or 'Staff' depending on the case
+                // Convert unread_count values to integers and then sum
+                var totalUnreadCount = parseInt(data.admin.unread_count) + parseInt(data.staff.unread_count);
 
-                        notificationContainer.append('<div class="notification-item">New message from ' + senderName + '</div>');
-                    });
-                }
-            });
+                // Display combined notifications
+                $('.counter').text(totalUnreadCount);
+                var notificationContainer = $('.notification');
+                notificationContainer.empty();
+                filteredNotifications.forEach(function (notification) {
+                    notificationContainer.append('<div class="notification-item">New message from ' + notification.sender + '</div>');
+                });
+
+            } catch (error) {
+                console.error('Error parsing JSON:', error);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('AJAX Error:', status, error);
         }
+    });
+}
 
 
 
@@ -174,7 +188,7 @@ include '../include/selectDb.php';
 
         updateNotifications();
 
-        setInterval(updateNotifications, 5000);
+        setInterval(updateNotifications, 2000);
         
       });
     </script>
