@@ -65,8 +65,10 @@ body {
 .container {
   padding: 0;
   background-color: #FFF; 
+  margin-top: 30px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   height: 800px;
+  width: 100%;
 }
 
 .textAlign {
@@ -78,12 +80,11 @@ body {
 /* === CONVERSATIONS === */
 
 .discussions {
-  width: 35%;
+  width: 25%;
   height: 800px;
-  box-shadow: 0px 8px 10px rgba(0,0,0,0.20);
+  margin-left: 15px;
+  box-shadow: 2px 0px 0px rgba(0,0,0,0.1);
   overflow: hidden;
-  background-color: #FF5F9E;
-  display: inline-block;
   padding: 0;
 }
 
@@ -98,7 +99,7 @@ body {
 }
 
 .discussions .search {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   color: #E0E0E0;
@@ -110,6 +111,7 @@ body {
   width: 70%;
   padding-left: 15px;
   border-radius: 50px;
+  margin-right: 40px;
   border: 1px solid #EEEEEE;
   display:flex;
   align-items: center;
@@ -174,7 +176,7 @@ body {
 
 .desc-contact {
   height: 43px;
-  width:100%;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -192,6 +194,11 @@ body {
   font-family:'Montserrat', sans-serif;
   font-size: 9pt;
   color:#515151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 150px;
+  margin-left: 30px;
 }
 
 .timer {
@@ -206,7 +213,7 @@ body {
 }
 
 .chat {
-  width: calc(70% - 62px);
+  width: calc(74% - 0px);
 }
 
 .header-chat {
@@ -238,7 +245,8 @@ body {
 }
 
 .chat .messages-chat {
-  padding: 25px 35px;
+  padding: 20px 10px;
+  height: 630px;
 }
 
 .chat .messages-chat .message {
@@ -268,6 +276,13 @@ body {
 
 .text-only {
   margin-left: 45px;
+}
+
+.chat-box .text {
+  display: block;
+  max-width: 60%;
+  padding: 0;
+  word-break: break-all;
 }
 
 .time {
@@ -309,9 +324,9 @@ body {
 
 
 .footer-chat {
-  width: 60%;
+  width: 73%;
   height: 80px;
-  display:flex;
+  display: flex;
   align-items: center;
   position:absolute;
   bottom: 0;
@@ -329,7 +344,7 @@ body {
   color:#fff;
   background-color: #4f6ebd;
   position: absolute;
-  right: 40px;
+  right: 80px;
   padding: 12px 12px 12px 12px;
   border-radius: 50px;
   font-size: 14pt;
@@ -351,7 +366,7 @@ body {
 
 .write-message {
   border:none !important;
-  width:80%;
+  width: 50%;
   height: 50px;
   margin-left: 20px;
   padding: 10px;
@@ -402,6 +417,13 @@ body {
   overflow-y: auto; /* Enable vertical scrolling when content overflows */
   display: flex;
   flex-direction: column-reverse; /* Reverse the order of the flex container */
+}
+
+.backBtn {
+  margin-top: 15px;
+  font-size: 26px;
+  margin-right: 100px;
+  display: flex;
 }
 
 
@@ -505,16 +527,19 @@ body {
 include '../include/selectDb.php'; 
 ?>
   <div class='textAlign'>
-    <p style="text-transform: capitalize;" class='bold d-block w-auto'><a href='adminHome.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
+
   </div>
   <div class="container">
     <div class="row">
     <section class="discussions">
     <div class="discussion search">
+    <p style="text-transform: capitalize;" class='backBtn bold'><a href='adminHome.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
         <div class="searchbar">
+          
             <i class="fa fa-search" aria-hidden="true"></i>
             <input type="text" placeholder="Search..." oninput="searchScholars(this.value)">
         </div>
+        
     </div>
 
     <div id="discussions-container">
