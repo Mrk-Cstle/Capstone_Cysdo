@@ -31,8 +31,6 @@ li {
 
 .profileBar-portlet {
     padding: 10px 0 0 0 !important;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .profile-nm {

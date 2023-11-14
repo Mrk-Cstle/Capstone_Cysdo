@@ -97,7 +97,7 @@ if ($result) {
         padding: 1rem 1rem 0;
         font-family: var(--body-font);
         font-size: var(--normal-font-size);
-        background-color: var(--body-color);
+        background-color: #eee;
         color: var(--text-color);
     }
 
@@ -183,7 +183,8 @@ if ($result) {
         left: -100%;
         height: 100%;
         padding: 1rem 1rem 0;
-        background-color: var(--container-color);
+        background: rgb(255,255,255);
+        background: linear-gradient(356deg, rgba(255,255,255,1) 0%, rgba(236,77,155,1)80%);
         box-shadow: 1px 0 0 rgba(22, 8, 43, 0.1);
         z-index: var(--z-fixed);
         transition: .4s;
@@ -389,7 +390,7 @@ if ($result) {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 10px;
+        padding: 10px 10px;
     }
 
     .content-section {
@@ -397,11 +398,11 @@ if ($result) {
         justify-content: center;
         align-items: center;
         text-align: center;
-        margin-top: 40px;
+        margin-top: 200px;
     }
 
     .content-section .card-1 {
-        background-color: #eee;
+        background-color: #fff;
         flex: 1;
         width: 250px;
         height: 200px;
@@ -468,7 +469,7 @@ if ($result) {
     }
 
     .content-section .card-5 {
-        background-color: #eee;
+        background-color: #888;
         flex: 1;
         width: 250px;
         height: 200px;
@@ -539,6 +540,7 @@ if ($result) {
         .content-section {
             flex-direction: column;
             margin-right: 25px;
+            
         }
     }
 
@@ -546,8 +548,21 @@ if ($result) {
         .content-section {
             flex-direction: column;
             width: 100%;
+            margin-top: 50px;
         }
     }
+
+    @media screen and (max-width: 1414px) {
+        .content-section {
+            flex-direction: column;
+            width: 100%;
+        }
+        .navProfile {
+        display: none;
+        
+    }
+    }
+
 
 </style>
 

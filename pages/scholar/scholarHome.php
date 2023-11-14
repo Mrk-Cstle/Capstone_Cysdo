@@ -53,33 +53,10 @@ include 'include/session.php'; ?>
               <p class="text-danger">2</p>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="content-section">
           <div class="card-5">
-            <h2>Status:</h2>
+            <h2>Cash Allowance</h2>
             <div class="card-body">
               <p class="text-success">Ongoing</p>
-            </div>
-          </div>
-          <div class="card-6">
-            <h2>Status:</h2>
-            <div class="card-body">
-              <p class="text-danger">Ongoing</p>
-            </div>
-          </div>
-          <div class="card-7">
-            <h2>Status:</h2>
-            <div class="card-body">
-              <p class="text-success">Ongoing</p>
-            </div>
-          </div>
-          <div class="card-8">
-            <h2>Status:</h2>
-            <div class="card-body">
-              <p class="text-danger">Ongoing</p>
             </div>
           </div>
         </div>

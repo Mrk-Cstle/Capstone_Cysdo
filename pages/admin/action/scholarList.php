@@ -29,7 +29,7 @@ if (mysqli_num_rows($result) > 0) {
             <td class="hidden-cell"><?php echo $row['middle_name']; ?></td>
 
             <td>
-                <a class="btn btn-sm btn-primary" href="scholarView.php?id=<?php echo htmlspecialchars($row['scholar_id']); ?>">View</a>
+                <a class="btn btn-sm btn-success" href="scholarView.php?id=<?php echo htmlspecialchars($row['scholar_id']); ?>">View</a>
 
             </td>
         </tr>
@@ -45,7 +45,7 @@ if (mysqli_num_rows($result) > 0) {
     $paginationHTML = '';
     if ($totalPages > 1) {
         $paginationHTML .= '<ul class="pagination">';
-        $paginationHTML .= '<li class="page-item ' . ($page == 1 ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page - 1) . '">Previous</a></li>';
+        $paginationHTML .= '<li class="page-item ' . ($page == 1 ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page - 1) . '"> < </a></li>';
 
         // Add the current page count
         $paginationHTML .= '<li class="page-item disabled"><span class="page-link">Page ' . $page . ' of ' . $totalPages . '</span></li>';
@@ -54,7 +54,7 @@ if (mysqli_num_rows($result) > 0) {
             $activeClass = ($i === $page) ? 'active' : '';
             $paginationHTML .= '<li class="page-item ' . $activeClass . '"><a class="page-link pagination-button" href="#" data-page="' . $i . '">' . $i . '</a></li>';
         }
-        $paginationHTML .= '<li class="page-item ' . ($page == $totalPages ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page + 1) . '">Next</a></li>';
+        $paginationHTML .= '<li class="page-item ' . ($page == $totalPages ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page + 1) . '"> > </a></li>';
         $paginationHTML .= '</ul>';
     }
     echo $paginationHTML;

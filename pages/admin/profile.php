@@ -66,11 +66,10 @@ if ($result) {
             flex-wrap: wrap;
         }
 
-
         .profile-nm {
             padding-top: 30px;
             padding-left: 50px;
-            margin-left: 100px;
+            margin-left: 150px;
         }
 
     </style>
@@ -101,14 +100,6 @@ if ($result) {
                             echo '<img id="profilePicImage" src="../../uploads/applicant/2x2/No_Image_Available.jpg" class="img-responsive" alt="Default Image">';
                         }
                         ?>
-                    </div>
-                    <div class="profile-usertab">
-
-                        <div class="profile-user-name text-uppercase ms-3">
-                            <h1></h1>
-                        </div>
-
-                        <hr class="mb-2 mt-5 opacity-0">
                     </div>
                     <div class="profile-nm">
                         <div>

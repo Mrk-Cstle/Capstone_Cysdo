@@ -56,7 +56,7 @@ if ($result) {
   }
 
   body {
-    background-color: whitesmoke;
+    background-color: #ddd;
     background-size: cover;
     background-position: center;
   }
@@ -133,6 +133,16 @@ if ($result) {
 
   .navProfile {
     margin-right: 30px;
+  }
+
+  .renewalList {
+    margin-bottom: 70px;
+    margin-right: 600px;
+  }
+
+  .cashAllowance {
+    margin-bottom: 70px;
+    margin-right: 380px;
   }
 
   .side-bar.active {
@@ -212,14 +222,16 @@ if ($result) {
 
   .home-section {
     position: relative;
-    background: #fff;
+    background: #ddd;
     margin-left: 20px;
     left: 270px;
     width: calc(100% - 290px);
     transition: all 0.5s ease;
-    margin-top: 0;
-    padding: 6px;
     padding-right: 50px;
+  }
+
+  .container {
+    padding: 10px 10px;
   }
 
   .home-content {
@@ -297,6 +309,16 @@ if ($result) {
     .failedList {
       margin-bottom: 70px;
       margin-right: 10px;
+    }
+
+    .renewalList {
+      margin-bottom: 70px;
+      margin-right: 400px;
+    }
+
+    .cashAllowance {
+      margin-bottom: 70px;
+      margin-right: 180px;
     }
   }
 
@@ -405,7 +427,7 @@ if ($result) {
           <a href="scholar.php" class="sub-item">Scholar List</a>
           <a href="scholarArchive.php" class="sub-item">Scholar Archive List</a>
           <a href="renewalList.php" class="sub-item">Renewal Process</a>
-          <a href="renewalAward.php" class="sub-item">Di ko ulit alam</a>
+          <a href="renewalAward.php" class="sub-item">Cash Allowance</a>
 
         </div>
       </div>

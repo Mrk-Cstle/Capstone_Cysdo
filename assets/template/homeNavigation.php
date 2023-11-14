@@ -23,7 +23,7 @@
 
 body {
     min-height: 100vh;
-    background: whitesmoke;
+    background: #eee;
 }
 
 header {

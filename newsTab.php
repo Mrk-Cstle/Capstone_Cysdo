@@ -28,7 +28,7 @@
 
  .container {
   width: 100%;
-  background-color: #f7f7f7;
+  background-color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;

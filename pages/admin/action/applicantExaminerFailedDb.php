@@ -50,7 +50,7 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['firstName']) . '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['middleName']) . '</td>';
         $tableHTML .= '<td>';
-        $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">View</a>';
+        $tableHTML .= '<a class="resetPassword btn btn-sm btn-success me-2" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">View</a>';
         $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" data-applicant-id="' . htmlspecialchars($row['applicant_id']) . '">Delete</button>';
         $tableHTML .= '</td>';
         $tableHTML .= '</tr>';
@@ -75,16 +75,15 @@ if (mysqli_num_rows($result) > 0) {
         $paginationHTML = '';
         if ($totalPages > 1) {
             $paginationHTML .= '<ul class="pagination">';
-            $paginationHTML .= '<li class="page-item ' . ($page == 1 ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page - 1) . '">Previous</a></li>';
+            $paginationHTML .= '<li class="page-item ' . ($page == 1 ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page - 1) . '"> < </a></li>';
 
             // Add the current page count
-            $paginationHTML .= '<li class="page-item disabled"><span class="page-link">Page ' . $page . ' of ' . $totalPages . '</span></li>';
 
             for ($i = 1; $i <= $totalPages; $i++) {
                 $activeClass = ($i === $page) ? 'active' : '';
                 $paginationHTML .= '<li class="page-item ' . $activeClass . '"><a class="page-link pagination-button" href="#" data-page="' . $i . '">' . $i . '</a></li>';
             }
-            $paginationHTML .= '<li class="page-item ' . ($page == $totalPages ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page + 1) . '">Next</a></li>';
+            $paginationHTML .= '<li class="page-item ' . ($page == $totalPages ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page + 1) . '"> > </a></li>';
             $paginationHTML .= '</ul>';
         }
 

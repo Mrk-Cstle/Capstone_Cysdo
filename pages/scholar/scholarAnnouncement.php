@@ -25,7 +25,7 @@ include 'include/session.php'; ?>
     }
 
     body {
-        background-color: whitesmoke;
+        background-color: #eee;
         background-size: cover;
         background-position: center;
     }
@@ -98,6 +98,7 @@ include 'include/session.php'; ?>
     }
 
     .box-info li {
+        background-color: #fff;
         font-size: 24px;
         font-weight: 500;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
