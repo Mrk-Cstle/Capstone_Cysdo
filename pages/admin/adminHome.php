@@ -17,6 +17,7 @@
             align-items: center;
             grid-gap: 24px;
         }
+
         #editTodo .modal-dialog {
             max-width: 400px;
         }
@@ -43,7 +44,6 @@
             background: #FFE0D3;
             color: #FD7238;
         }
-
     </style>
     <title>Home</title>
 
@@ -62,13 +62,13 @@
     ?>
     <section id="content" class="home-section">
         <?php
-
+        include 'action/dashboardDb.php';
         if ($_SESSION['role'] === 'admin') {
         ?> <main>
                 <div class="head-title">
                     <div class="left">
                         <h1>Dashboard</h1>
-                        
+
                     </div>
 
                 </div>
@@ -77,22 +77,32 @@
                     <li class="box-1">
                         <i class='bx bxs-calendar-check' id="bx-1"></i>
                         <span class="text">
-                            <h3>1020</h3>
+                            <h3> <?php
+                                    echo $totalScholar->num_rows;
+
+                                    ?></h3>
                             <p>Total No. of Scholars</p>
                         </span>
                     </li>
-                    <li class="box-2">
-                        <i class='bx bxs-group' id="bx-1"></i>
+
+                    <li class="box-4">
+                        <i class="bx bx bi-person-fill-check" id="bx-1"></i>
                         <span class="text">
-                            <h3>2543</h3>
-                            <p>Active Scholars</p>
+                            <h3><?php
+                                echo $totalApplicant->num_rows;
+
+                                ?></h3>
+                            <p>Number Applicants</p>
                         </span>
                     </li>
                     <li class="box-4">
                         <i class="bx bx bi-person-fill-check" id="bx-1"></i>
                         <span class="text">
-                            <h3>1020</h3>
-                            <p>Number Of Approved Applicants</p>
+                            <h3><?php
+                                echo $totalNewScholar->num_rows;
+
+                                ?></h3>
+                            <p>Number Of New Scholar</p>
                         </span>
                     </li>
                 </ul>
@@ -100,29 +110,38 @@
                     <li class="box-6">
                         <i class="bx bx bi-person-fill-slash" id="bx-2"></i>
                         <span class="text">
-                            <h3>2543</h3>
-                            <p>Unrenewed Scholars</p>
+                            <h3><?php
+                                echo $totalRenewalProcess->num_rows;
+
+                                ?></h3>
+                            <p>Number of Renewal</p>
                         </span>
                     </li>
                     <li class="box-3">
                         <i class="bx bx bi-person-fill-exclamation" id="bx-2"></i>
                         <span class="text">
-                            <h3>2834</h3>
-                            <p>Inactive Scholars</p>
+                            <h3><?php
+                                echo $totalExaminer->num_rows;
+
+                                ?></h3>
+                            <p>Number of Examiner</p>
                         </span>
                     </li>
                     <li class="box-5">
                         <i class="bx bx bi-person-fill-x" id="bx-2"></i>
                         <span class="text">
-                            <h3>2834</h3>
-                            <p>Number Of Denied Applicants</p>
+                            <h3><?php
+                                echo $totalRelease->num_rows;
+
+                                ?></h3>
+                            <p>Number Of For Release Scholar</p>
                         </span>
                     </li>
                 </ul>
-        </main>
+            </main>
 
-            <?php } ?>
-            <main>
+        <?php } ?>
+        <main>
             <div class="table-data">
                 <div class="todo">
                     <div class="head">
@@ -414,7 +433,7 @@
                     });
                 }
             </script>
-            </main>
+        </main>
     </section>
 </body>
 

@@ -183,8 +183,8 @@ if ($result) {
         left: -100%;
         height: 100%;
         padding: 1rem 1rem 0;
-        background: rgb(255,255,255);
-        background: linear-gradient(356deg, rgba(255,255,255,1) 0%, rgba(236,77,155,1)80%);
+        background: rgb(255, 255, 255);
+        background: linear-gradient(356deg, rgba(255, 255, 255, 1) 0%, rgba(236, 77, 155, 1)80%);
         box-shadow: 1px 0 0 rgba(22, 8, 43, 0.1);
         z-index: var(--z-fixed);
         transition: .4s;
@@ -417,6 +417,7 @@ if ($result) {
         font-size: 20px;
         font-family: sans-serif;
     }
+
     .content-section .card-2 {
         background-color: #ddd;
         flex: 1;
@@ -540,7 +541,7 @@ if ($result) {
         .content-section {
             flex-direction: column;
             margin-right: 25px;
-            
+
         }
     }
 
@@ -557,13 +558,12 @@ if ($result) {
             flex-direction: column;
             width: 100%;
         }
+
         .navProfile {
-        display: none;
-        
-    }
-    }
+            display: none;
 
-
+        }
+    }
 </style>
 
 <body>

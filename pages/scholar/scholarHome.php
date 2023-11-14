@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
 <?php
-include 'include/session.php'; ?>
+include 'include/session.php';
+?>
 
 <head>
   <meta charset="UTF-8">
@@ -77,13 +77,13 @@ include 'include/session.php'; ?>
           <div class="card-2">
             <h2>No. Community Service:</h2>
             <div class="card-body">
-              <p class="text-danger">3</p>
+              <p class="text-danger"><?php echo $c_service1st ?></p>
             </div>
           </div>
           <div class="card-3">
             <h2>Renewal Status:</h2>
             <div class="card-body">
-              <p class="text-success">Ongoing</p>
+              <p class="text-success"><?php echo $status_lastsem ?></p>
             </div>
           </div>
           <div class="card-4">
@@ -108,7 +108,7 @@ include 'include/session.php'; ?>
           <div class="card-5">
             <h2>Cash Allowance</h2>
             <div class="card-body">
-              <p class="text-success">Ongoing</p>
+              <p class="text-success"><?php echo $status_lastsem ?></p>
             </div>
           </div>
         </div>
