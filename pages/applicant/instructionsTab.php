@@ -95,6 +95,7 @@
           <li class="d-block w-100 text-center" >
             <p class="steps">YOU CAN NOW PROCEED TO THE APPLICATION</p>
             <a type="button" href="registration.php" class="btn btn-outline-success mt-4">Application</a>
+            <a type="button" href="" class="btn btn-outline-dark mt-4">Go Back</a>
             <li class="note text-center">Note: PLEASE READ ALL THE INSTRUCTIONS BEFORE PROCEEDING TO THE APPLICATION FORM (E-1 FORM)</li>
           </li>
         </div>

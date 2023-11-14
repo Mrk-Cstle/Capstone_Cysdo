@@ -145,6 +145,11 @@ if ($result) {
     margin-right: 380px;
   }
 
+  .scholarArchiveList{
+    margin-bottom: 70px;
+    margin-right: 420px;
+  }
+
   .side-bar.active {
     left: 0;
   }
@@ -320,6 +325,11 @@ if ($result) {
       margin-bottom: 70px;
       margin-right: 180px;
     }
+
+    .scholarArchiveList{
+    margin-bottom: 70px;
+    margin-right: 230px;
+  }
   }
 
   @media screen and (max-width: 1631px) {
@@ -352,6 +362,11 @@ if ($result) {
       margin-bottom: 70px;
       margin-right: 190px;
     }
+
+    .scholarArchiveList{
+    margin-bottom: 70px;
+    margin-right: 130px;
+  }
   }
 
   @media screen and (max-width: 1527px) {
@@ -390,9 +405,6 @@ if ($result) {
 <body>
 
   <div class="navBar">
-    <div class="messageBtn me-2">
-      <a class="msgBtn bi bi-chat-dots-fill text-black fs-4" href="adminChat.php"></a>
-    </div>
     <ul class="navProfile nav nav-pills justify-content-end">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img id="profileImage" src="../../uploads/admin/<?php echo $imageData ?>" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
@@ -415,7 +427,7 @@ if ($result) {
     </div>
     <div class="menu">
       <div class="item fontWeight"><a href="adminHome.php"><i class="fas fa-desktop"></i>Dashboard</a></div>
-      <div class="item fontWeight"><a href="chattingSystem.php"><i class="bi bi-chat-dots-fill"></i>Messages</a>
+      <div class="item fontWeight"><a href="adminChat.php"><i class="bi bi-chat-dots-fill"></i>Messages</a>
       </div>
       <div class="item">
         <a class="sub-btn fontWeight"><i class="fas fa-table"></i>Manage Users<i class="fas fa-angle-right dropdown"></i></a>

@@ -178,7 +178,7 @@
 
     #contactDetails {
       width: 100%;
-      margin-bottom: 200px;
+      margin-bottom: 100px;
 
     }
 
@@ -193,6 +193,12 @@
     .contactText a,
     p {
       font-size: 15px;
+    }
+
+    .contactText a,
+    .ConNm, .Add-ress, .Con-Icon {
+      font-size: 18px;
+      padding: 20px;
     }
 
     .contactFormat {
@@ -219,7 +225,7 @@
     }
 
     .contactText {
-      display: inline-block;
+      display: flex;
       height: 100px;
       width: 95%;
       border: 1px solid black;
@@ -234,12 +240,85 @@
       text-align: justify;
     }
 
-    @media (max-width: 850px){
+    @media (max-width: 879px) {
+      .contactText a,
+      .ConNm, .Add-ress, .Con-Icon {
+      font-size: 18px;
+      padding: 5px;
+    }
+    .conNm, .Con-Icon {
+      margin-top: 6px;
+    }
+    .gmail {
+      margin-top: 0px;
+    }
+    }
+
+    @media (max-width: 850px) {
       #FontSize {
       font-size: 30px;
       text-align: center;
       margin-top: 10px;
       }
+    }
+    @media (max-width: 724px) {
+      .contactText {
+      display: flex;
+      height: 200px;
+      width: 100%;
+      border: 1px solid black;
+      border-radius: 40px;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      margin-bottom: 10px;
+      }
+
+      .Con-Icon{
+        display: none;
+      }
+
+      .contactText a,
+      .ConNm, .Add-ress {
+      font-size: 18px;
+      padding: 30px;
+    }
+    .contactIcon img {
+      margin-bottom: 10px;
+    }
+    }
+    @media (max-width: 497px) {
+      .contactText {
+      display: flex;
+      height: 200px;
+      width: 100%;
+      border: 1px solid black;
+      border-radius: 40px;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      margin-bottom: 10px;
+      }
+
+      .Con-Icon{
+        display: none;
+      }
+
+      .contactText a,
+      .ConNm, .Add-ress {
+      font-size: 14px;
+      padding: 5px;
+    }
+    .contactIcon img {
+      margin-bottom: 10px;
+    }
+    .conNm {
+      margin-top: 50px;
+    }
+    .gmail {
+      margin-top: 40px;
+    }
+    .fb1 {
+      margin-top: 5px;
+    }
     }
 
   </style>
@@ -489,8 +568,8 @@
           <img src="assets/image/fbIcon.png" />
         </div>
         <div class="contactText">
-          <h5>Facebook Page</h5>
-          <a class="text-break lh-sm text-decoration-underline" href="https://www.facebook.com/CEAP.CYSDO">https://www.facebook.com/CEAP.CYSDO(City Youth and Sports Development Office – CSJDM)</a>
+          <h5 class="Con-Icon">Facebook Page</h5>
+          <a class="text-break lh-sm text-decoration-underline fb1" href="https://www.facebook.com/CEAP.CYSDO">https://www.facebook.com/CEAP.CYSDO(City Youth and Sports Development Office – CSJDM)</a>
         </div>
       </div>
       <div class="contactFormat">
@@ -498,8 +577,8 @@
           <img src="assets/image/gmailIcon.png" />
         </div>
         <div class="contactText">
-          <h5>Email</h5>
-          <a class="text-break text-decoration-underline" href="csjdm.cysdo1@gmail.com">csjdm.cysdo1@gmail.com</a>
+          <h5 class="Con-Icon">Email</h5>
+          <a class="text-break text-decoration-underline gmail" href="csjdm.cysdo1@gmail.com">csjdm.cysdo1@gmail.com</a>
         </div>
       </div>
       <div class="contactFormat">
@@ -507,8 +586,8 @@
           <img src="assets/image/callIcon.png" />
         </div>
         <div class="contactText">
-          <h5>Contact No.</h5>
-          <li class="text-break lh-sm">(639)905-603-7218</li>
+          <h5 class="Con-Icon">Contact No.</h5>
+          <li class="text-break lh-sm conNm">(639)905-603-7218</li>
         </div>
       </div>
       <div class="contactFormat">
@@ -516,8 +595,8 @@
           <img src="assets/image/locationIcon.png" />
         </div>
         <div class="contactText">
-          <h5>Address</h5>
-          <li class="text-break lh-sm">Productivity Complex, Barangay Sapang Palay Proper, City of San Jose del Monte, Bulacan</li>
+          <h5 class="Con-Icon">Address</h5>
+          <li class="text-break lh-sm Add-ress">Productivity Complex, Barangay Sapang Palay Proper, City of San Jose del Monte, Bulacan</li>
         </div>
       </div>
     </div>

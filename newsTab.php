@@ -21,9 +21,9 @@
 
  .textAlign {
     display: flex;
-    padding-top: 150px;
-    padding-left: 20px;
-    font-size: 26px;
+    padding-top: 120px;
+    padding-left: 50px;
+    font-size: 28px;
  }
 
  .container {
