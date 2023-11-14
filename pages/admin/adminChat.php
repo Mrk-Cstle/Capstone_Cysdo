@@ -199,6 +199,7 @@ body {
   white-space: nowrap;
   margin-right: 150px;
   margin-left: 30px;
+  font-size: 14px;
 }
 
 .timer {

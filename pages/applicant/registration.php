@@ -244,15 +244,17 @@
       </div>
       <div class="row">
         <div class="col-md-4 col-sm-4">
-          <div class="form-group">
-            <label class="control-label bold font-xs">Contact Number 1</label>
-            <input type="number" class="form-control" name="contactNumber1" id="contactNumber1" required>
+        <label class="control-label bold font-xs">Contact Number 1</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">+63</span>
+            <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber1" id="contactNumber1">
           </div>
         </div>
         <div class="col-md-4 col-sm-4">
-          <div class="form-group">
-            <label class="control-label bold font-xs">Contact Number 2</label>
-            <input type="number" class="form-control" name="contactNumber2" id="contactNumber2">
+        <label class="control-label bold font-xs">Contact Number 2</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">+63</span>
+            <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber2" id="contactNumber2">
           </div>
         </div>
       </div>
@@ -348,11 +350,12 @@
               </div>
             </div>
 
-
-            <div class="col-md-3 col-sm-4">
-              <div class="form-group">
-                <label class="control-label bold font-xs">Contact Number</label>
-                <input type="number" class="form-control" name="fatherNumber" id="fatherNumber">
+            
+            <div class="col-md-4 col-sm-4">
+              <label class="control-label bold font-xs">Contact Number</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">+63</span>
+                <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="fatherNumber" id="fatherNumber">
               </div>
             </div>
             <div class="col-md-3 col-sm-4">
@@ -398,10 +401,11 @@
 
 
 
-            <div class="col-md-3 col-sm-4">
-              <div class="form-group">
-                <label class="control-label bold font-xs">Contact Number</label>
-                <input type="number" class="form-control" name="motherNumber" id="motherNumber">
+            <div class="col-md-4 col-sm-4">
+              <label class="control-label bold font-xs">Contact Number</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">+63</span>
+                <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="motherNumber" id="motherNumber">
               </div>
             </div>
             <div class="col-md-3 col-sm-4">

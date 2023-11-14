@@ -231,14 +231,15 @@ if ($result) {
         color: var(--text-color-light);
     }
 
-    .nav__link {
+    .nav1__link {
         display: flex;
         align-items: center;
         color: var(--text-color);
     }
 
-    .nav__link:hover {
+    .nav1__link:hover {
         color: var(--first-color);
+        text-decoration: none;
     }
 
     .nav__icon {
@@ -246,7 +247,7 @@ if ($result) {
         margin-right: .5rem;
     }
 
-    .nav__name {
+    .nav1__name {
         font-size: var(--small-font-size);
         font-weight: var(--font-medium);
         white-space: nowrap;
@@ -279,6 +280,7 @@ if ($result) {
 
     .nav__dropdown__item:hover {
         color: var(--first-color);
+        text-decoration: none;
     }
 
     .nav__dropdown-icon {
@@ -289,11 +291,13 @@ if ($result) {
     /* Show dropdown collapse */
     .nav__dropdown:hover {
         max-height: 100rem;
+        text-decoration: none;
     }
 
     /* Rotate icon arrow */
     .nav__dropdown:hover .nav__dropdown-icon {
         transform: rotate(180deg);
+        text-decoration: none;
     }
 
 
@@ -351,7 +355,7 @@ if ($result) {
 
         /* Element opacity */
         .nav__logo-name,
-        .nav__name,
+        .nav1__name,
         .nav__subtitle,
         .nav__dropdown-icon {
             opacity: 0;
@@ -361,27 +365,33 @@ if ($result) {
         /* Navbar expanded */
         .Navi:hover {
             width: var(--nav-width);
+            text-decoration: none;
         }
 
         /* Visible elements */
         .Navi:hover .nav__logo-name {
             opacity: 1;
+            text-decoration: none;
         }
 
         .Navi:hover .nav__subtitle {
             opacity: 1;
+            text-decoration: none;
         }
 
-        .Navi:hover .nav__name {
+        .Navi:hover .nav1__name {
             opacity: 1;
+            text-decoration: none;
         }
 
         .Navi:hover .nav__dropdown-icon {
             opacity: 1;
+            text-decoration: none;
         }
 
-        .Navi:hover .nav__link.nav__logo .sideLogo {
+        .Navi:hover .nav1__link.nav__logo .sideLogo {
             display: flex;
+            text-decoration: none;
         }
     }
 
@@ -486,57 +496,6 @@ if ($result) {
         font-family: sans-serif;
     }
 
-    .content-section .card-6 {
-        background-color: #ddd;
-        flex: 1;
-        width: 250px;
-        height: 200px;
-        padding: 30px;
-        margin: 30px 20px;
-        border-radius: 20px;
-        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
-    }
-
-    .content-section .card-6 h2 {
-        margin: 15px 0px;
-        font-size: 20px;
-        font-family: sans-serif;
-    }
-
-    .content-section .card-7 {
-        background-color: #ccc;
-        flex: 1;
-        width: 250px;
-        height: 200px;
-        padding: 30px;
-        margin: 30px 20px;
-        border-radius: 20px;
-        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
-    }
-
-    .content-section .card-7 h2 {
-        margin: 15px 0px;
-        font-size: 20px;
-        font-family: sans-serif;
-    }
-
-    .content-section .card-8 {
-        background-color: #bbb;
-        flex: 1;
-        width: 250px;
-        height: 200px;
-        padding: 30px;
-        margin: 30px 20px;
-        border-radius: 20px;
-        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.6);
-    }
-
-    .content-section .card-8 h2 {
-        margin: 15px 0px;
-        font-size: 20px;
-        font-family: sans-serif;
-    }
-
     @media screen and (max-width: 768px) {
         .content-section {
             flex-direction: column;
@@ -558,11 +517,6 @@ if ($result) {
             flex-direction: column;
             width: 100%;
         }
-
-        .navProfile {
-            display: none;
-
-        }
     }
 </style>
 
@@ -581,11 +535,10 @@ if ($result) {
                 </li>
                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
             </ul>
-            <a href="#" class="header__logo">CYSDO</a>
+            <a class="header__logo">CYSDO</a>
 
             <div class="header__toggle">
                 <i class='bx bx-menu' id="header-toggle"></i>
-
             </div>
 
         </div>
@@ -596,7 +549,7 @@ if ($result) {
     <div class="Navi" id="navbar">
         <nav class="nav__container">
             <div>
-                <a href="#" class="nav__link nav__logo">
+                <a href="#" class="nav1__link nav__logo">
                     <img src="../../assets/image/CysdoLogo.png" style="height: 50px; width: 50px;" class="sideLogo">
                     <span class="nav__logo-name">CYSDO</span>
                 </a>
@@ -604,26 +557,26 @@ if ($result) {
                 <div class="nav__list">
                     <div class="nav__items">
 
-                        <a href="scholarHome.php" class="nav__link">
+                        <a href="scholarHome.php" class="nav1__link">
                             <i class='bx bxs-dashboard nav__icon'></i>
-                            <span class="nav__name">Dashboard</span>
+                            <span class="nav1__name">Dashboard</span>
                         </a>
 
-                        <a href="scholarChat.php" class="nav__link">
+                        <a href="scholarChat.php" class="nav1__link">
                             <i class='bx bx-message-rounded nav__icon'></i>
-                            <span class="nav__name">Messages</span>
+                            <span class="nav1__name">Messages</span>
                         </a>
 
-                        <a href="scholarRenewal.php" class="nav__link">
+                        <a href="scholarRenewal.php" class="nav1__link">
                             <i class="bi bi-arrow-clockwise nav__icon"></i>
-                            <span class="nav__name">Renewal</span>
+                            <span class="nav1__name">Renewal</span>
                         </a>
 
 
 
-                        <a href="scholarAnnouncement.php" class="nav__link">
+                        <a href="scholarAnnouncement.php" class="nav1__link">
                             <i class='bx bx-news nav__icon'></i>
-                            <span class="nav__name">News & Update</span>
+                            <span class="nav1__name">News & Update</span>
                         </a>
 
                     </div>
@@ -655,17 +608,16 @@ if ($result) {
         showMenu('header-toggle', 'navbar')
 
         /*==================== LINK ACTIVE ====================*/
-        const linkColor = document.querySelectorAll('.nav__link')
+        const linkColor = document.querySelectorAll('.nav1__link')
 
         function colorLink() {
             linkColor.forEach(l => l.classList.remove('active'))
             this.classList.add('active')
         }
-
-        linkColor.forEach(l => l.addEventListener('click', colorLink))
     </script>
 
     <script>
         const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
         const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
     </script>
+</body>
