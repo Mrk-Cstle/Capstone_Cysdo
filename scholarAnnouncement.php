@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <title>Applicant </title>
+    <title>Announcements</title>
 </head>
 
 <style>
@@ -225,7 +225,7 @@
 
     ?>
         <div class='textAlign'>
-            <p style="text-transform: capitalize;" class='bold d-block w-auto'><a href='newsTab.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a>
+            <p style="text-transform: capitalize;" class='bold d-block w-auto mt-3'><a href='newsTab.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a>
                 <?php echo $pageCheck; ?> Announcements
             </p>
         </div>
@@ -245,7 +245,7 @@
             <ul class='box-info justify-content-center'>
                 <li class='responsive'>
                     <img src='./assets/image/CysdoLogo.png' style='height: 50px; width: 50px;' class='sideLogo'><i class='caption'>City Youth Sports Development Office</i></a>
-                    <i id='uploadDate' class='date p-3'>" . $row['uploadDate'] . "</i>
+                    <i id='uploadDate' class='date p-3 text-success'>" . $row['uploadDate'] . "</i>
                     <div>
                         <i id='uploaderName' class='textCap text-black-50 ms-5'>" . $row['uploader'] . "</i>
                     </div>

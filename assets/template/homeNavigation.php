@@ -221,7 +221,7 @@ header ul li ul li {
                 <li><a href="index.php#about">About</a></li>
                 <li><a href="index.php#faqs">FAQs</a></li>
                 <li><a href="index.php#contact">Contact</a></li>
-                <li><a href="announcementTab.php">News & Updates</a></li>
+                <li><a href="newsTab.php">News & Updates</a></li>
                 <li><a href="#">Login</a>
                     <ul>
                         <li><a class="log" href="pages/admin/adminLogin.php">Admin</a></li>
