@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2023 at 01:21 AM
+-- Generation Time: Nov 14, 2023 at 08:10 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -102,6 +102,7 @@ INSERT INTO `announcements` (`uploadId`, `uploadDate`, `announcement`, `uploader
 CREATE TABLE `chat_messages` (
   `id` int(100) NOT NULL,
   `sender` varchar(255) NOT NULL,
+  `staffId` int(11) DEFAULT NULL,
   `message` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `admin_id` int(11) DEFAULT NULL,
@@ -113,17 +114,32 @@ CREATE TABLE `chat_messages` (
 -- Dumping data for table `chat_messages`
 --
 
-INSERT INTO `chat_messages` (`id`, `sender`, `message`, `timestamp`, `admin_id`, `scholar_id`, `is_read`) VALUES
-(1, 'City Youth and Sports Development Office - CSJDM', 'qwe', '2023-11-12 12:23:23', 24, 5, 0),
-(2, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'asd', '2023-11-12 12:25:55', 24, 5, 1),
-(3, 'City Youth and Sports Development Office - CSJDM', 'asd', '2023-11-12 12:26:15', 24, 5, 0),
-(4, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'qwe', '2023-11-12 12:26:52', 24, 5, 1),
-(5, 'City Youth and Sports Development Office - CSJDM', 'qwe', '2023-11-12 12:27:05', 24, 5, 0),
-(6, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'qwe', '2023-11-12 12:27:09', 24, 5, 1),
-(7, 'ASDSDF, XCVSDF SDFXCV', 'qwe', '2023-11-12 12:27:52', 24, 14, 1),
-(8, 'City Youth and Sports Development Office - CSJDM', 'qwe', '2023-11-12 12:28:09', 24, 14, 0),
-(9, 'ASDSDF, XCVSDF SDFXCV', 'asd', '2023-11-12 14:07:19', 24, 14, 1),
-(10, 'City Youth and Sports Development Office - CSJDM', 'qwe', '2023-11-12 14:14:10', 24, 14, 0);
+INSERT INTO `chat_messages` (`id`, `sender`, `staffId`, `message`, `timestamp`, `admin_id`, `scholar_id`, `is_read`) VALUES
+(1, 'City Youth and Sports Development Office - CSJDM', NULL, 'qwe', '2023-11-12 12:23:23', 24, 5, 0),
+(2, 'eqweasdasdad, rdfgdrt dfgdfgdfg', NULL, 'asd', '2023-11-12 12:25:55', 24, 5, 1),
+(3, 'City Youth and Sports Development Office - CSJDM', NULL, 'asd', '2023-11-12 12:26:15', 24, 5, 0),
+(4, 'eqweasdasdad, rdfgdrt dfgdfgdfg', NULL, 'qwe', '2023-11-12 12:26:52', 24, 5, 1),
+(5, 'City Youth and Sports Development Office - CSJDM', NULL, 'qwe', '2023-11-12 12:27:05', 24, 5, 0),
+(6, 'eqweasdasdad, rdfgdrt dfgdfgdfg', NULL, 'qwe', '2023-11-12 12:27:09', 24, 5, 1),
+(7, 'ASDSDF, XCVSDF SDFXCV', NULL, 'qwe', '2023-11-12 12:27:52', 24, 14, 1),
+(8, 'City Youth and Sports Development Office - CSJDM', NULL, 'qwe', '2023-11-12 12:28:09', 24, 14, 1),
+(9, 'ASDSDF, XCVSDF SDFXCV', NULL, 'asd', '2023-11-12 14:07:19', 24, 14, 1),
+(10, 'City Youth and Sports Development Office - CSJDM', NULL, 'qwe', '2023-11-12 14:14:10', 24, 14, 1),
+(194, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 183, 'qwe', '2023-11-12 14:08:59', 24, 5, 1),
+(195, 'City Youth and Sports Development Office - CSJDM', NULL, 'asd', '2023-11-13 10:13:37', 24, 5, 1),
+(196, 'City Youth and Sports Development Office - CSJDM', NULL, 'asd', '2023-11-13 10:13:46', 24, 9, 1),
+(197, 'City Youth and Sports Development Office - CSJDM', NULL, 'qwe', '2023-11-13 10:13:52', 24, 12, 1),
+(198, 'City Youth and Sports Development Office - CSJDM', NULL, 'asd', '2023-11-13 10:13:56', 24, 14, 1),
+(199, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-13 10:15:33', 24, 14, 1),
+(200, 'ASDSDF, XCVSDF SDFXCV', 183, 'zxc', '2023-11-13 10:15:41', 24, 14, 1),
+(201, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-13 10:15:59', 24, 14, 1),
+(202, 'City Youth and Sports Development Office - CSJDM', NULL, 'asd', '2023-11-13 10:16:11', 24, 14, 1),
+(203, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-14 06:59:29', 24, 14, 1),
+(204, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-14 07:00:03', 24, 14, 1),
+(205, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-14 07:02:28', 24, 14, 1),
+(206, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-14 07:02:58', 24, 14, 1),
+(207, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-14 07:06:01', 24, 14, 1),
+(208, 'City Youth and Sports Development Office - CSJDM', NULL, 'asdasd', '2023-11-14 07:06:16', 24, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -365,56 +381,6 @@ CREATE TABLE `renewal` (
   `curriculum` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `renewal`
---
-
-INSERT INTO `renewal` (`renewal_id`, `scholar_id`, `semester`, `academic_year`, `renewal_date`, `status`, `current_yr`, `form`, `previous_cor`, `cog`, `atm`, `current_cor`, `dtr`, `e3_form`, `curriculum`) VALUES
-(42, 9, 'renew_1stYr_2ndSem', '2023-2024', '2023-11-07 15:26:57', 'approve', '', '', 'renew_1stYr_2ndSem_qwe, qwe qwe_9_654a5741e4158.png', '654a5741e4151_qwe, qwe qwe_9_654a5741e4380.png', '654a5741e4151_qwe, qwe qwe_9_654a5741e4a50.png', '654a5741e4151_qwe, qwe qwe_9_654a5741e453b.png', '654a5741e4151_qwe, qwe qwe_9_654a5741e48a9.png', '654a5741e4151_qwe, qwe qwe_9_654a5741e4be5.png', '654a5741e4151_qwe, qwe qwe_9_654a5741e46fd.png'),
-(43, 14, 'renew_2ndYr_1stSem', '2023-2024', '2023-11-07 16:07:56', 'decline', '', '', 'renew_2ndYr_1stSem_ASDSDF, XCVSDF SDFXCV_14_654a60dc908e2.png', '654a60dc908d9_ASDSDF, XCVSDF SDFXCV_14_654a60dc90a8c.png', '654a60dc908d9_ASDSDF, XCVSDF SDFXCV_14_654a60dc90dc5.png', '654a60dc908d9_ASDSDF, XCVSDF SDFXCV_14_654a60dc90b63.png', '654a60dc908d9_ASDSDF, XCVSDF SDFXCV_14_654a60dc90d07.png', '654a60dc908d9_ASDSDF, XCVSDF SDFXCV_14_654a60dc90ed0.png', '654a60dc908d9_ASDSDF, XCVSDF SDFXCV_14_654a60dc90c2f.png'),
-(44, 14, 'renew_2ndYr_2ndSem', '', '2023-11-07 17:22:20', '', '', '', '', '', '', '', '', '', ''),
-(45, 5, 'renew_1stYr_1stSem', '2023-2024', '2023-11-08 06:08:10', '', '', '', 'renew_1stYr_1stSem_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b25cad2f6c.jpg', '654b25cad2f64_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b25cad3422.jpg', '654b25cad2f64_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b25cad39b2.jpg', '654b25cad2f64_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b25cad35af.jpg', '654b25cad2f64_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b25cad3878.jpg', '', '654b25cad2f64_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b25cad3743.jpg'),
-(46, 5, 'renew_1stYr_1stSem', '2023-2024', '2023-11-08 06:09:18', 'approve', '', '', 'renew_1stYr_1stSem_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b260ee2f09.jpeg', '654b260ee2eff_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b260ee30de.jpeg', '654b260ee2eff_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b260ee3828.jpeg', '654b260ee2eff_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b260ee32dc.jpeg', '654b260ee2eff_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b260ee367a.jpeg', '654b260ee2eff_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b260ee39bb.jpeg', '654b260ee2eff_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b260ee3498.jpeg'),
-(47, 5, 'renew_1stYr_2ndSem', '2023-2024', '2023-11-08 06:09:50', '', '', '', 'renew_1stYr_2ndSem_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b262ed22e2.jpg', '654b262ed22dc_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b262ed2452.jpg', '654b262ed22dc_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b262ed2a2b.jpg', '654b262ed22dc_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b262ed266f.jpg', '654b262ed22dc_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b262ed290a.jpg', '654b262ed22dc_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b262ed2b54.jpg', '654b262ed22dc_eqweasdasdad, rdfgdrt dfgdfgdfg_5_654b262ed27e6.jpg'),
-(65, 12, 'renew_2ndYr_2ndSem', '', '2023-11-08 06:28:01', '', '', '', '', '', '', '', '', '', ''),
-(66, 12, 'renew_1stYr_2ndSem', '', '2023-11-08 06:49:39', 'approve', '', '', '', 'qqweqw', '', '', '', '', ''),
-(67, 14, 'renew_1stYr_1stSem', '', '2023-11-08 09:44:31', 'approve', '', '', 'qeasdaw', '', '', '', '', '', ''),
-(68, 14, 'renew_1stYr_2ndSem', '', '2023-11-08 09:46:08', 'decline', '', '', '', '', '', '', '', '', ''),
-(69, 14, 'renew_3rdYr_1stSem', '', '2023-11-08 09:46:39', 'approve', '', '', '', '', '', '', '', '', ''),
-(70, 14, 'renew_3rdYr_2ndSem', '', '2023-11-08 09:54:08', 'approve', '', '', '', '', '', '', '', '', ''),
-(71, 14, 'renew_4thYr_1stSem', '', '2023-11-08 10:10:17', 'approve', '', '', '', '', '', '', '', '', ''),
-(72, 14, 'renew_4thYr_2ndSem', '', '2023-11-08 10:16:20', 'approve', '', '', '', '', '', '', '', '', ''),
-(73, 12, 'renew_3rdYr_1stSem', '2023-2024', '2023-11-09 14:05:57', 'approve', '', '', 'renew_3rdYr_1stSem_CVB, CVB CVB_12_654ce7456a621.jpeg', '654ce7456a61b_CVB, CVB CVB_12_654ce7456ab90.jpeg', '654ce7456a61b_CVB, CVB CVB_12_654ce74570a45.jpg', '654ce7456a61b_CVB, CVB CVB_12_654ce7456ad22.jpeg', '654ce7456a61b_CVB, CVB CVB_12_654ce74570849.jpg', '654ce7456a61b_CVB, CVB CVB_12_654ce74570da8.jpg', '654ce7456a61b_CVB, CVB CVB_12_654ce7456aea2.jpeg'),
-(74, 9, 'renew_2ndYr_1stSem', '213123', '2023-11-10 13:33:55', 'approve', '', '', '', '', '', '', '', '', ''),
-(75, 9, 'renew_3rdYr_1stSem', '', '2023-11-10 13:44:26', 'approve', '', '', '', '', '', '', '', '', ''),
-(76, 9, 'renew_3rdYr_2ndSem', '', '2023-11-10 13:49:21', 'approve', '', '', '', '', '', '', '', '', ''),
-(77, 9, 'renew_4thYr_1stSem', '', '2023-11-10 13:50:15', 'approve', '', '', '', '', '', '', '', '', ''),
-(78, 9, 'renew_4thYr_2ndSem', '', '2023-11-10 13:58:51', 'approve', '', '', '', '', '', '', '', '', ''),
-(82, 9, 'renew_1stYr_1stSem', '', '2023-11-10 14:51:43', 'decline', '', '', '', '', '', '', '', '', ''),
-(83, 9, 'renew_1stYr_1stSem', '', '2023-11-10 14:52:53', 'decline', '', '', '', '', '', '', '', '', ''),
-(84, 9, 'renew_1stYr_1stSem', 'qwe', '2023-11-10 14:57:54', 'decline', '', '', '', '', '', '', '', '', ''),
-(85, 9, 'renew_1stYr_1stSem', '', '2023-11-10 14:59:02', 'decline', '', '', '', '', '', '', '', '', ''),
-(86, 9, 'renew_1stYr_1stSem', '', '2023-11-10 15:01:50', 'decline', '', '', '', '', '', '', '', '', ''),
-(87, 9, 'renew_1stYr_1stSem', '2023-2024', '2023-11-10 15:07:21', 'approve', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_gif', '654e4729774e6_qwe, qwe qwe_9_gif', '654e4729774e6_qwe, qwe qwe_9_gif', '654e4729774e6_qwe, qwe qwe_9_gif', '654e4729774e6_qwe, qwe qwe_9_gif', '654e4729774e6_qwe, qwe qwe_9_gif', '654e4729774e6_qwe, qwe qwe_9_gif'),
-(88, 9, 'renew_1stYr_1stSem', '2020', '2023-11-10 15:11:41', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg', '654e482d0d394_qwe, qwe qwe_9_jpg', '654e482d0d394_qwe, qwe qwe_9_jpg', '654e482d0d394_qwe, qwe qwe_9_jpg', '654e482d0d394_qwe, qwe qwe_9_jpg', '654e482d0d394_qwe, qwe qwe_9_jpg', '654e482d0d394_qwe, qwe qwe_9_jpg'),
-(89, 9, 'renew_5thYr_1stSem', '2020', '2023-11-10 15:14:52', 'decline', '', '', 'renew_5thYr_1stSem_qwe, qwe qwe_9_jpg', '654e48ec08d4c_qwe, qwe qwe_9_jpg', '654e48ec08d4c_qwe, qwe qwe_9_jpg', '654e48ec08d4c_qwe, qwe qwe_9_jpg', '654e48ec08d4c_qwe, qwe qwe_9_jpg', '654e48ec08d4c_qwe, qwe qwe_9_jpg', '654e48ec08d4c_qwe, qwe qwe_9_jpg'),
-(90, 9, 'renew_1stYr_1stSem', '2020', '2023-11-10 15:21:29', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_png', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_png', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_png', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg'),
-(91, 9, 'renew_1stYr_1stSem', '2020', '2023-11-10 15:29:02', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_jpg'),
-(92, 9, 'renew_1stYr_1stSem', '2020', '2023-11-10 15:32:05', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_PrevCorpng', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Cogjpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Atmjpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_CurrCorjpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Dtrjpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Formpng', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Curripng'),
-(93, 9, 'renew_1stYr_1stSem', '', '2023-11-10 15:34:03', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_PrevCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Cog.png', '', '', '', '', ''),
-(94, 9, 'renew_1stYr_1stSem', '', '2023-11-10 15:35:09', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_PrevCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Cog.png', '', '', '', '', ''),
-(95, 9, 'renew_1stYr_1stSem', '', '2023-11-10 15:35:54', 'approve', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_PrevCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Cog.png', '', '', '', '', ''),
-(96, 9, 'renew_1stYr_1stSem', '2020', '2023-11-10 16:14:59', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_PrevCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Cog.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Atm.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_CurrCor.png', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Dtr.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Form.png', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Curri.jpg'),
-(98, 9, 'renew_1stYr_1stSem', '2020', '2023-11-10 16:16:48', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_PrevCor.png', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Cog.png', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Atm.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_CurrCor.png', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Dtr.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Form.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Curri.jpg'),
-(99, 9, 'renew_1stYr_1stSem', '2020', '2023-11-10 16:18:19', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_PrevCor.png', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Cog.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Atm.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_CurrCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Dtr.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Form.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Curri.jpg'),
-(100, 9, 'renew_1stYr_1stSem', '2020', '2023-11-10 16:19:27', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_PrevCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Cog.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Atm.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_CurrCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Dtr.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Form.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Curri.jpg'),
-(101, 9, 'renew_1stYr_1stSem', '2020', '2023-11-10 16:21:33', 'decline', '', '', 'renew_1stYr_1stSem_qwe, qwe qwe_9_PrevCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Cog.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Atm.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_CurrCor.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Dtr.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Form.jpg', 'renew_1stYr_1stSem_qwe, qwe qwe_9_Curri.jpg'),
-(102, 9, 'renew_1stYr_1stSem', '', '2023-11-10 16:25:02', 'decline', '', '', '', '', '', '', '', '', ''),
-(104, 14, 'renew_4thYr_2ndSem', '', '2023-11-11 14:34:25', 'decline', '', '', '', '', '', '', '', '', ''),
-(106, 14, 'renew_4thYr_2ndSem', '', '2023-11-11 14:39:28', 'approve', '', '', '', '', '', '', '', '', ''),
-(107, 14, 'renew_5thYr_1stSem', '', '2023-11-12 12:41:29', 'approve', '', '', '', '', '', '', '', '', ''),
-(108, 14, 'renew_5thYr_2ndSem', '', '2023-11-12 14:39:05', 'approve', '', '', '', '', '', '', '', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -427,13 +393,6 @@ CREATE TABLE `renewal_award` (
   `award_status` varchar(100) DEFAULT NULL,
   `semester_year` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `renewal_award`
---
-
-INSERT INTO `renewal_award` (`award_id`, `renewal_id`, `award_status`, `semester_year`) VALUES
-(29, 108, NULL, 'renew_5thYr_2ndSem_');
 
 -- --------------------------------------------------------
 
@@ -456,7 +415,7 @@ CREATE TABLE `renewal_process` (
 --
 
 CREATE TABLE `scholar` (
-  `scholar_id` int(10) NOT NULL,
+  `scholar_id` int(11) NOT NULL,
   `image` varchar(100) NOT NULL,
   `scholar_award_status` varchar(100) NOT NULL,
   `status_lastsem` varchar(100) NOT NULL,
@@ -481,7 +440,7 @@ CREATE TABLE `scholar` (
   `course` varchar(100) NOT NULL,
   `years_course` int(100) NOT NULL,
   `current_yr` varchar(100) NOT NULL,
-  `degree_or_non` varchar(100) DEFAULT NULL,
+  `degree_or_non` varchar(100) NOT NULL,
   `school_name` varchar(100) NOT NULL,
   `school_address` varchar(100) NOT NULL,
   `renew_1stYr_1stSem` varchar(100) DEFAULT NULL,
@@ -506,12 +465,7 @@ CREATE TABLE `scholar` (
 --
 
 INSERT INTO `scholar` (`scholar_id`, `image`, `scholar_award_status`, `status_lastsem`, `user`, `password`, `applicant_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `age`, `gender`, `voter`, `contact_num1`, `contact_num2`, `full_address`, `barangay`, `telegram`, `atm_number`, `facebook`, `email`, `course`, `years_course`, `current_yr`, `degree_or_non`, `school_name`, `school_address`, `renew_1stYr_1stSem`, `renew_1stYr_2ndSem`, `renew_2ndYr_1stSem`, `renew_2ndYr_2ndSem`, `renew_3rdYr_1stSem`, `renew_3rdYr_2ndSem`, `renew_4thYr_1stSem`, `renew_4thYr_2ndSem`, `renew_5thYr_1stSem`, `renew_5thYr_2ndSem`, `renew_6thYr_1stSem`, `renew_6thYr_2ndSem`, `c_service1st`, `c_service2nd`, `approve_date`) VALUES
-(5, 'eqweasdasdad_profile.jpg', '', 'renew_1stYr_1stSem_2023-2024', 'eqweasdasdad', '$2y$10$bkPmzBB/oEypHsB4qJ1fc.0L8thjsItPYblRVSlxeNF3GFFavEJga', 98, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'eqweasdasdad', 'rdfgdrt', 'dfgdfgdfg', 0, '', '', '345345', '123123', '', '', '', '0', '', '0', '', 0, '0', NULL, '', '', 'uploaded', 'uploaded', '', 'uploaded', '', '', '', '', '', '', '', '', NULL, NULL, '2023-10-24'),
-(9, '', 'released_renew_2ndYr_1stSem_213123', 'renew_1stYr_1stSem_', 'qwe', '$2y$10$bmuvoFNCxgEMQCZcEtN7PuBVdGUZYuSFNWqfRjss0T4XCF.z1k11m', 20, 'qwe, qwe qwe', 'qwe', 'qwe', 'qwe', 0, 'male', 'yes', '+639612479632', '123123', 'qweqweqweqweqweqweqweqwe', 'qweqweqwe', '', '0', '', '0', 'qweqweqweqweqwe', 0, 'als', NULL, 'qweqwe', 'qweqwe', 'reupload renewal', 'null', 'uploaded', NULL, 'uploaded', 'uploaded', 'uploaded', 'approve', 'reupload renewal', NULL, NULL, NULL, 20, NULL, '2023-10-31'),
-(12, 'CVB_profile.jpg', 'released_renew_3rdYr_1stSem_2023-2024', 'renew_3rdYr_1stSem_2023-2024', 'CVB', '$2y$10$PuzKNDWprIeM4PeNC16OUelTYMVSR0zr0xjJUZGzzHVEw35i8oVFC', 0, 'CVB, CVB CVB', 'CVB', 'CVB', 'CVB', 0, '', '', '+639164983650', '', '', '', '', '0', '', '', '', 0, '', NULL, '', '', 'uploaded', 'uploaded', NULL, NULL, 'uploaded', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 20, NULL, '2023-11-03'),
-(14, 'ASDSDF_profile.jpg', 'released_renew_4thYr_2ndSem_', 'renew_5thYr_2ndSem_', 'ASDSDF', '$2y$10$/3TOohNGpQJIFJoJCV68du9ufANFd0jZV.uSQ3FQpKcJulmWxUHG6', 0, 'ASDSDF, XCVSDF SDFXCV', 'ASDSDF', 'XCVSDF', 'SDFXCV', 0, '', '', '235345', '', '', '', '', '0', '', '', '', 0, '', NULL, '', '', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'approve renewal', 'approve renewal', 'approve renewal', NULL, NULL, 10, NULL, '2023-11-03'),
-(22, '', '', '', 'asdasd', '$2y$10$Kq9kj10PVW2esAVyIMe4qO3aGg8BgFJne0TrIk0R/Yea6XYuhEBvO', 0, 'asdasd, asdasd asdasd', 'asdasd', 'asdasd', 'asdasd', 0, '', '', '4356456', '', '', '', '', '', '', '', '', 0, '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-12'),
-(23, 'asd_profile.jpg', '', '', 'asd', '$2y$10$D36Y6OANMpb2cN3bDOEGT.Uoobf0LFNlrRWxEPSLEpRFB9vgQOJMe', 0, 'asd, asd asd', 'asd', 'asd', 'asd', 0, '', '', '123123', '1212312', 'qwe', 'qwe', 'weqweqwe', '', 'qweq', ' qwe@qwe', '', 0, '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-12');
+(14, 'ASDSDF_profile.jpg', '', 'renew_4thYr_2ndSem_', 'qaz', '$2y$10$dQakUyBW7kkL3NgCaHUr8uudNfrQ8b9UB7npQ8bfUrAJED.uaS6qO', 0, 'ASDSDF, XCVSDF SDFXCV', 'ASDSDF', 'XCVSDF', 'SDFXCV', 1321, 'asd', 'asd', '235345', '', '', '', '', '0', '', '', '', 0, '', ' ', '', '', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'approve renewal', '', '', '', '', 10, 0, '2023-11-03');
 
 -- --------------------------------------------------------
 
@@ -521,6 +475,7 @@ INSERT INTO `scholar` (`scholar_id`, `image`, `scholar_award_status`, `status_la
 
 CREATE TABLE `scholar_archive` (
   `scholar_id` int(100) NOT NULL,
+  `type` varchar(100) NOT NULL,
   `image` varchar(100) NOT NULL,
   `scholar_award_status` varchar(100) NOT NULL,
   `status_lastsem` varchar(100) NOT NULL,
@@ -562,7 +517,8 @@ CREATE TABLE `scholar_archive` (
   `renew_6thYr_2ndSem` varchar(100) DEFAULT NULL,
   `c_service1st` int(100) DEFAULT NULL,
   `c_service2nd` int(100) DEFAULT NULL,
-  `approve_date` date NOT NULL DEFAULT current_timestamp()
+  `approve_date` date NOT NULL DEFAULT current_timestamp(),
+  `remove_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -615,8 +571,7 @@ CREATE TABLE `todos` (
 --
 
 INSERT INTO `todos` (`id`, `todo_text`, `completed`, `created_at`) VALUES
-(35, 'asdasd', 0, '2023-09-19 17:38:34'),
-(36, 'asd', 0, '2023-10-08 13:47:17'),
+(36, 'asd', 1, '2023-10-08 13:47:17'),
 (37, 'z', 0, '2023-10-08 13:47:20'),
 (38, 'z', 0, '2023-10-08 13:47:22'),
 (39, 'z', 0, '2023-10-08 13:47:25'),
@@ -625,9 +580,10 @@ INSERT INTO `todos` (`id`, `todo_text`, `completed`, `created_at`) VALUES
 (42, 'z', 0, '2023-10-08 13:47:33'),
 (43, 'adsxc', 0, '2023-10-08 13:47:36'),
 (44, 'zxczs', 0, '2023-10-08 13:47:38'),
-(45, 'zxc', 0, '2023-10-08 13:47:44'),
-(46, 'zxcasd', 0, '2023-10-08 13:47:47'),
-(47, 'zxczs', 0, '2023-10-08 13:47:49');
+(45, 'zxc', 1, '2023-10-08 13:47:44'),
+(46, 'zxcasd', 1, '2023-10-08 13:47:47'),
+(47, 'zxczs', 0, '2023-10-08 13:47:49'),
+(48, 'vgcgtrxrxy', 0, '2023-11-13 05:34:13');
 
 --
 -- Indexes for dumped tables
@@ -750,7 +706,7 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `chat_messages`
 --
 ALTER TABLE `chat_messages`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- AUTO_INCREMENT for table `examination`
@@ -774,43 +730,43 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `registration_approval`
 --
 ALTER TABLE `registration_approval`
-  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `renewal`
 --
 ALTER TABLE `renewal`
-  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `renewal_award`
 --
 ALTER TABLE `renewal_award`
-  MODIFY `award_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `award_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `renewal_process`
 --
 ALTER TABLE `renewal_process`
-  MODIFY `process_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `process_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `scholar`
 --
 ALTER TABLE `scholar`
-  MODIFY `scholar_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
+  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 
 --
 -- AUTO_INCREMENT for table `todos`
 --
 ALTER TABLE `todos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Constraints for dumped tables
@@ -838,7 +794,8 @@ ALTER TABLE `registration_approval`
 -- Constraints for table `renewal`
 --
 ALTER TABLE `renewal`
-  ADD CONSTRAINT `FK_Renewal` FOREIGN KEY (`scholar_id`) REFERENCES `scholar` (`scholar_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_Renewa_Archive` FOREIGN KEY (`scholar_id`) REFERENCES `scholar` (`scholar_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_Renewal` FOREIGN KEY (`scholar_id`) REFERENCES `scholar` (`scholar_id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `renewal_award`
