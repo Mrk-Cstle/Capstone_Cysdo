@@ -62,8 +62,8 @@ if ($result) {
   }
 
   .side-bar {
-    background: rgb(255,255,255);
-    background: linear-gradient(356deg, rgba(255,255,255,1) 0%, rgba(236,77,155,1)80%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(356deg, rgba(255, 255, 255, 1) 0%, rgba(236, 77, 155, 1)80%);
     position: fixed;
     width: 290px;
     height: 100%;
@@ -71,7 +71,7 @@ if ($result) {
     overflow-y: auto;
   }
 
-  .navBar{
+  .navBar {
     background: #F875AA;
     margin-top: -25px;
     padding-top: 30px;
@@ -95,7 +95,8 @@ if ($result) {
     margin-right: 610px;
   }
 
-  .applicantList {margin-right: 30px;
+  .applicantList {
+    margin-right: 30px;
     margin-bottom: 70px;
     margin-right: 300px;
   }
@@ -249,114 +250,118 @@ if ($result) {
 
   @media screen and (max-width: 1831px) {
     .scholarList {
-    margin-bottom: 70px;
-    margin-right: 350px
-  }
+      margin-bottom: 70px;
+      margin-right: 350px
+    }
 
-  .staffList {
-    margin-bottom: 70px;
-    margin-right: 450px;
-  }
+    .staffList {
+      margin-bottom: 70px;
+      margin-right: 450px;
+    }
 
-  .adminList {
-    margin-bottom: 70px;
-    margin-right: 400px;
-  }
+    .adminList {
+      margin-bottom: 70px;
+      margin-right: 400px;
+    }
 
-  .applicantList {
-    margin-bottom: 70px;
-    margin-right: 100px;
-  }
+    .applicantList {
+      margin-bottom: 70px;
+      margin-right: 100px;
+    }
 
-  .examinersList {
-    margin-bottom: 70px;
-    margin-right: 200px;
-  }
+    .examinersList {
+      margin-bottom: 70px;
+      margin-right: 200px;
+    }
 
-  .newscholarsList {
-    margin-bottom: 70px;
-    margin-right: 300px;
-  }
-  .approvedList {
-    margin-bottom: 70px;
-    margin-right: 10px;
-  }
-  .deniedList {
-    margin-bottom: 70px;
-    margin-right: 10px;
-  }
-  .passedList {
-    margin-bottom: 70px;
-    margin-right: 10px;
-  }
-  .failedList {
-    margin-bottom: 70px;
-    margin-right: 10px;
-  }
+    .newscholarsList {
+      margin-bottom: 70px;
+      margin-right: 300px;
+    }
+
+    .approvedList {
+      margin-bottom: 70px;
+      margin-right: 10px;
+    }
+
+    .deniedList {
+      margin-bottom: 70px;
+      margin-right: 10px;
+    }
+
+    .passedList {
+      margin-bottom: 70px;
+      margin-right: 10px;
+    }
+
+    .failedList {
+      margin-bottom: 70px;
+      margin-right: 10px;
+    }
   }
 
   @media screen and (max-width: 1631px) {
     .scholarList {
-    margin-bottom: 70px;
-    margin-right: 240px
-  }
+      margin-bottom: 70px;
+      margin-right: 240px
+    }
 
-  .staffList {
-    margin-bottom: 70px;
-    margin-right: 345px;
-  }
+    .staffList {
+      margin-bottom: 70px;
+      margin-right: 345px;
+    }
 
-  .adminList {
-    margin-bottom: 70px;
-    margin-right: 300px;
-  }
+    .adminList {
+      margin-bottom: 70px;
+      margin-right: 300px;
+    }
 
-  .applicantList {
-    margin-bottom: 70px;
-    margin-right: 5px;
-  }
+    .applicantList {
+      margin-bottom: 70px;
+      margin-right: 5px;
+    }
 
-  .examinersList {
-    margin-bottom: 70px;
-    margin-right: 40px;
-  }
+    .examinersList {
+      margin-bottom: 70px;
+      margin-right: 40px;
+    }
 
-  .newscholarsList {
-    margin-bottom: 70px;
-    margin-right: 190px;
-  }
+    .newscholarsList {
+      margin-bottom: 70px;
+      margin-right: 190px;
+    }
   }
 
   @media screen and (max-width: 1527px) {
     .scholarList {
-    margin-bottom: 70px;
-    margin-right: 150px
-  }
+      margin-bottom: 70px;
+      margin-right: 150px
+    }
 
-  .staffList {
-    margin-bottom: 70px;
-    margin-right: 240px;
-  }
+    .staffList {
+      margin-bottom: 70px;
+      margin-right: 240px;
+    }
 
-  .adminList {
-    margin-bottom: 70px;
-    margin-right: 200px;
-  }
+    .adminList {
+      margin-bottom: 70px;
+      margin-right: 200px;
+    }
 
-  .applicantList {
-    margin-bottom: 70px;
-    margin-right: 5px;
-  }
+    .applicantList {
+      margin-bottom: 70px;
+      margin-right: 5px;
+    }
 
-  .examinersList {
-    margin-bottom: 70px;
-    margin-right: 10px;
-  }
+    .examinersList {
+      margin-bottom: 70px;
+      margin-right: 10px;
+    }
 
-  .newscholarsList {
-    margin-bottom: 70px;
-    margin-right: 100px;
-  }
+    .newscholarsList {
+      margin-bottom: 70px;
+      margin-right: 100px;
+    }
   }
 </style>
 
@@ -380,13 +385,13 @@ if ($result) {
   </div>
 
   <div class="side-bar">
-  <div>
+    <div>
       <a class="sideHead nav-link text-black" role="none" aria-expanded="false"><img src="../../assets/image/CysdoLogo.png" style="height: 50px; width: 50px;" class="sideLogo"><i class="caption">CYSDO</i></a>
     </div>
     <div class="menu">
       <div class="item fontWeight"><a href="adminHome.php"><i class="fas fa-desktop"></i>Dashboard</a></div>
       <div class="item fontWeight"><a href="chattingSystem.php"><i class="bi bi-chat-dots-fill"></i>Messages</a>
-    </div>
+      </div>
       <div class="item">
         <a class="sub-btn fontWeight"><i class="fas fa-table"></i>Manage Users<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
@@ -398,6 +403,7 @@ if ($result) {
         <a class="sub-btn fontWeight"><i class="fas fa-table"></i>Manage Scholar<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
           <a href="scholar.php" class="sub-item">Scholar List</a>
+          <a href="scholarArchive.php" class="sub-item">Scholar Archive List</a>
           <a href="renewalList.php" class="sub-item">Renewal Process</a>
           <a href="renewalAward.php" class="sub-item">Di ko ulit alam</a>
 
@@ -413,8 +419,8 @@ if ($result) {
         </div>
       </div>
       <div class="item fontWeight"><a href="postUpdate.php"><i class="bi bi-file-earmark-ppt-fill"></i>Manage Post</a>
+      </div>
     </div>
-   </div>
   </div>
 
   <section class="home-section">

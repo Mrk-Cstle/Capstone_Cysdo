@@ -9,7 +9,7 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $start = ($page - 1) * $recordsPerPage;
 
 $searchQuery = isset($_GET['searchQuery']) ? mysqli_real_escape_string($conn, $_GET['searchQuery']) : '';
-$sql = "SELECT * FROM scholar WHERE full_name LIKE '%$searchQuery%' LIMIT $start, $recordsPerPage";
+$sql = "SELECT * FROM scholar_archive WHERE full_name LIKE '%$searchQuery%' LIMIT $start, $recordsPerPage";
 
 $result = mysqli_query($conn, $sql);
 
@@ -19,8 +19,8 @@ if (mysqli_num_rows($result) > 0) {
         <tr>
             <th class="user_id" scope="row"><?php echo $row['scholar_id']; ?></th>
             <td><?php echo $row['full_name']; ?></td>
-            <td><?php echo $row['contact_num1']; ?></td>
-            <td><?php echo $row['contact_num2']; ?></td>
+            <td><?php echo $row['type']; ?></td>
+            <td><?php echo $row['remove_date']; ?></td>
             <td><?php echo $row['approve_date']; ?></td>
 
 
@@ -29,7 +29,7 @@ if (mysqli_num_rows($result) > 0) {
             <td class="hidden-cell"><?php echo $row['middle_name']; ?></td>
 
             <td>
-                <a class="btn btn-sm btn-primary" href="scholarView.php?id=<?php echo htmlspecialchars($row['scholar_id']); ?>">View</a>
+                <a class="btn btn-sm btn-primary" href="scholarArchiveView.php?id=<?php echo htmlspecialchars($row['scholar_id']); ?>">View</a>
 
             </td>
         </tr>
@@ -37,7 +37,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 
     // Calculate total number of rows for the search query
-    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM scholar WHERE full_name LIKE '%$searchQuery%'"));
+    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM scholar_archive WHERE full_name LIKE '%$searchQuery%'"));
 
     // Calculate total number of pages based on the search results
     $totalPages = ceil($totalRows / $recordsPerPage);
