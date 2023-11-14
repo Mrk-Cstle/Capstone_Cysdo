@@ -40,6 +40,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 30px;
   width: 60%;
  }
 
@@ -47,11 +48,13 @@
   flex: 1;
   margin: 20px 20px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
  }
 
  .content-section .card img {
   width: 100%;
   height: auto;
+  border-radius: 5px;
  }
 
  .content-section .card h2 {
@@ -62,7 +65,7 @@
 
  @media screen and (max-width: 768px) {
   .content-section {
-    margin-top: 100px;
+    margin-top: 10px;
     flex-direction: column;
   }
  }
@@ -85,14 +88,14 @@
     <div class="container">
       <div class="content-section">
         <div class="card">
-          <img src="./assets/image/No_Image_Available.jpg" alt="No img">
+          <img src="./assets/image/1x1.jpg" alt="No img">
          <div class="card-body">
           <h2>Scholar Announcement</h2>
           <a href="scholarAnnouncement.php?page=scholar" class="btn btn-outline-primary mb-4">View</a>
          </div>
         </div>
         <div class="card">
-          <img src="./assets/image/No_Image_Available.jpg" alt="No img">
+          <img src="./assets/image/1x1.jpg" alt="No img">
          <div class="card-body">
           <h2>Applicant Announcement</h2>
           <a href="scholarAnnouncement.php?page=applicant" class="btn btn-outline-primary mb-4">View</a>
