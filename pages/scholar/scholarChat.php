@@ -466,6 +466,36 @@ body {
   }
 }
 
+.bell-container {
+    position: relative;
+    display: inline-block;
+}
+
+.icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 12px;
+}
+
+.notification {
+    overflow-y: auto;
+    max-height: 150px; /* Set the maximum height as needed */
+}
+
+.notification-item {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0; /* Add a separating line */
+}
 
 </style>
 </head>
@@ -492,15 +522,20 @@ include '../include/selectDb.php';
             <div class="header-chat">
                 <i class="icon fa fa-user-o" aria-hidden="true"></i>
                 <p class="name"><?php echo $_SESSION['user']; ?></p>
-                <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="btn-group dropstart">
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Delete Message</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                </i>
+                <div class="bell-container">
+                <i class="icon clickable fa fa-bell dropdown-toggle" aria-hidden="true" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="counter">0</span>
+    </i>
+    <div class="dropdown-menu overflow-h-menu dropdown-menu-right">
+    <div class="notification">
+    <div class="notification-item">New message from Scholar</div>
+    <div class="notification-item">Another message from Scholar</div>
+    <!-- Add more notification items dynamically -->
+</div>
+
+                            </div>
+</div>
+
             </div>
             <div class="messages-chat">
                 <!-- Placeholder for displaying chat messages -->
@@ -518,6 +553,8 @@ include '../include/selectDb.php';
 
 <!-- Include jQuery library here -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
     $(document).ready(function () {
@@ -551,6 +588,63 @@ include '../include/selectDb.php';
         // Periodically update the chat
         setInterval(fetchMessages, 2000); // Update every 2 seconds
     });
+
+    function markMessagesAsRead(scholarId) {
+            $.ajax({
+                url: 'mark_messages_as_read.php',
+                method: 'POST',
+                data: { scholar_id: scholarId },
+                success: function () {
+                    // Do something if needed after marking messages as read
+                }
+            });
+        }
+
+        function updateNotifications() {
+            $.ajax({
+                type: "GET",
+                url: "fetch_notifications.php",
+                success: function (response) {
+                    var data = JSON.parse(response);
+                    var notifications = data.notifications;
+                    var unreadCount = data.unread_count;
+
+                    $('.counter').text(unreadCount);
+
+                    var notificationContainer = $('.notification');
+                    notificationContainer.empty();
+
+                    notifications.forEach(function (notification) {
+                        var senderName = notification.sender || 'Admin';
+                        notificationContainer.append('<div class="notification-item">New message from ' + senderName + '</div>');
+                    });
+                }
+            });
+        }
+
+        function markNotificationsAsRead() {
+            $.ajax({
+                type: "POST",
+                url: "mark_as_read.php",
+                success: function () {
+                    updateNotifications();
+                }
+            });
+        }
+
+        $('.clickable').click(function () {
+            markNotificationsAsRead();
+        });
+
+        updateNotifications();
+
+        setInterval(updateNotifications, 5000);
+        
+        // Add an input event listener for the search bar
+        $('.searchbar input').on('input', function () {
+            searchScholars($(this).val());
+        });
+    
 </script>
 </body>
 </html>
