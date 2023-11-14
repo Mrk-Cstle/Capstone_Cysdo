@@ -1,3 +1,39 @@
+<?php
+session_start();
+
+// Include your database connection script
+include '../include/selectDb.php';
+
+// Handle sending chat messages from the admin
+if (isset($_POST['message'])) {
+    $message = $_POST['message'];
+    $admin_id = $_SESSION['user_id']; // Get the admin's ID
+    $scholar_id = 1; // Replace with the actual scholar's user ID
+
+    // Insert the message into the chat_messages table
+    $query = "INSERT INTO chat_messages (sender, message) VALUES ('Admin', '$message')";
+    mysqli_query($conn, $query);
+
+    // Add a record to a table that tracks which admin sent the message
+    $query = "INSERT INTO admin_messages (admin_id, message_id) VALUES ($admin_id, LAST_INSERT_ID())";
+    mysqli_query($conn, $query);
+}
+
+// Fetch and display chat messages
+$query = "SELECT sender, message FROM chat_messages ORDER BY timestamp DESC LIMIT 10"; // Fetch the last 10 messages
+$result = mysqli_query($conn, $query);
+
+$chat_messages = array();
+while ($row = mysqli_fetch_assoc($result)) {
+    $chat_messages[] = $row;
+}
+
+mysqli_close($conn);
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -447,90 +483,36 @@ body {
             <input type="text" placeholder="Search..."></input>
           </div>
         </div>
-        <div class="discussion">
-          <div class="photo"  img src="/assets/image/1x1.jpg">
-            <div class="online"></div>
-          </div>
-          <div class="desc-contact">
-            <p class="name font-weight-bold">Mark David</p>
-            <p class="message">9 pm at the bar if possible 😳</p>
-          </div>
-          
-        </div>
+        <?php
+            // Include your database connection script
+            include '../include/selectDb.php';
 
-        <div class="discussion">
-          <div class="photo">
-            <div class="online"></div>
-          </div>
-          <div class="desc-contact">
-            <p class="name font-weight-bold">Rosemarie</p>
-            <p class="message">Let's meet for a coffee or something today ?</p>
-          </div>
-          
-        </div>
+            // Get the admin's ID (assuming it's stored in a session variable)
+            $admin_id = $_SESSION['user_id'];
 
-        <div class="discussion">
-          <div class="photo" style="background-image: 1">
-          </div>
-          <div class="desc-contact">
-            <p class="name font-weight-bold">Jeremiah</p>
-            <p class="message">I've sent you the annual report</p>
-          </div>
-          
-        </div>
+            // Fetch the admin's full name from the admin table
+            $query = "SELECT full_name FROM admin WHERE admin_id = $admin_id";
+            $result = mysqli_query($conn, $query);
+            $admin = mysqli_fetch_assoc($result);
 
-        <div class="discussion">
-          <div class="photo" style="background-image: 2">
-            <div class="online"></div>
-          </div>
-          <div class="desc-contact">
-            <p class="name font-weight-bold">John Martin</p>
-            <p class="message">See you tomorrow ! 🙂</p>
-          </div>
-          
-        </div>
+            // Fetch the list of scholars associated with the admin from the scholar table
+            $query = "SELECT scholar_id, full_name FROM scholar";
+            $result = mysqli_query($conn, $query);
 
-        <div class="discussion">
-          <div class="photo" style="background-image: 3">
-          </div>
-          <div class="desc-contact">
-            <p class="name font-weight-bold">Andrei</p>
-            <p class="message">What the f**k is going on ?</p>
-          </div>
+            while ($scholar = mysqli_fetch_assoc($result)) {
+              // Display chat head for each scholar
+              echo '<div class="discussion" data-scholar-id="' . $scholar['scholar_id'] . '">';
+              echo '<div class="photo" style="background-image: url(\'/assets/image/1x1.jpg\');">';
+              echo '<div class="online"></div>';
+              echo '</div>';
+              echo '<div class="desc-contact">';
+              echo '<p class="name font-weight-bold">' . $scholar['full_name'] . '</p>';
+              echo '<p class="message">Last message goes here</p>';
+              echo '</div>';
+              echo '</div>';
+          }
           
-        </div>
-
-        <div class="discussion">
-          <div class="photo" style="background-image: 4">
-          </div>
-          <div class="desc-contact">
-            <p class="name font-weight-bold">Ron Russel</p>
-            <p class="message">Ahahah 😂</p>
-          </div>
-          
-        </div>
-
-        <div class="discussion">
-          <div class="photo" style="background-image: 5">
-            <div class="online"></div>
-          </div>
-          <div class="desc-contact">
-            <p class="name font-weight-bold">Paul</p>
-            <p class="message">You can't see me</p>
-          </div>
-          
-        </div>
-
-        <div class="discussion">
-          <div class="photo" style="background-image: 5">
-            <div class="online"></div>
-          </div>
-          <div class="desc-contact">
-            <p class="name font-weight-bold">Bris</p>
-            <p class="message">Loooooooooool</p>
-          </div>
-          
-        </div>
+            ?>
       </section>
       <section class="chat" style="display: none;">
         <div class="header-chat">
