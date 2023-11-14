@@ -1,5 +1,40 @@
 <?php
 
+// Your database connection code here...
+include '../include/dbConnection.php';
+
+// Get the applicant ID from the URL
+$adminId = $_SESSION['user_id'];
+
+// Step 2: Construct and execute the SQL query to select the row with the specified ID
+$sql = "SELECT * FROM staff WHERE staffId = '$adminId'";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+  // Step 3: Check if the row exists
+  if (mysqli_num_rows($result) > 0) {
+    // Step 4: Fetch the row
+    $row = mysqli_fetch_assoc($result);
+
+    // Step 5: Access the values of the row
+    extract($row);
+    // ...
+
+    // Process the retrieved row as needed
+    // For example, you can display the values or perform any other operations
+
+    // Free the result set
+    mysqli_free_result($result);
+  } else {
+    echo "No row found with the specified ID.";
+  }
+} else {
+  echo "Error executing the query: " . mysqli_error($conn);
+}
+
+
+// // Close the database connection and perform any other necessary cleanup...
+// 
 ?>
 
 <html lang="en" dir="ltr">
@@ -30,8 +65,8 @@
   }
 
   .side-bar {
-    background: rgb(245,220,220);
-    background: linear-gradient(356deg, rgba(245,220,220,1) 0%, rgba(236,77,155,1) 80%);
+    background: rgb(245, 220, 220);
+    background: linear-gradient(356deg, rgba(245, 220, 220, 1) 0%, rgba(236, 77, 155, 1) 80%);
     width: 290px;
     height: 100%;
     position: fixed;
@@ -166,14 +201,14 @@
 <body>
 
   <div class="navBar">
-  <div class="messageBtn me-2">
+    <div class="messageBtn me-2">
       <a class="msgBtn bi bi-chat-dots-fill text-black fs-4" href="staffChat.php"></a>
     </div>
     <ul class="navProfile nav nav-pills justify-content-end">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../../assets/image/1x1.jpg" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
+        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../../uploads/admin/<?php echo $image ?>" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+          <li><a class="dropdown-item" href="profileStaff.php">Profile</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li>
@@ -192,12 +227,24 @@
     <div class="menu">
       <div class="item fontWeight"><a href="adminHome.php"><i class="fas fa-desktop"></i>Dashboard</a>
       </div>
+
+      <div class="item">
+        <a class="sub-btn fontWeight"><i class="fas fa-table"></i>Manage Scholar<i class="fas fa-angle-right dropdown"></i></a>
+        <div class="sub-menu">
+          <a href="scholar.php" class="sub-item">Scholar List</a>
+          <a href="scholarArchive.php" class="sub-item">Scholar Archive List</a>
+          <a href="renewalList.php" class="sub-item">Renewal Process</a>
+          <a href="renewalAward.php" class="sub-item">Cash Allowance</a>
+
+        </div>
+      </div>
       <div class="item">
         <a class="sub-btn fontWeight"><i class="bi bi-person-lines-fill"></i></i>Manage Applicants<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
-          <a href="applicantApprove.php" class="sub-item">List of Approve</a>
-          <a href="applicantDenied.php" class="sub-item">List of Denied</a>
-          <a href="applicantList.php" class="sub-item">List of Applicants</a>
+
+          <a href="applicantList.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 1 </br>List of Applicants</a>
+          <a href="applicantExaminers.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 2 </br>List of Examiners</a>
+          <a href="applicantScholar.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 3 </br>List of New Scholar</a>
         </div>
       </div>
       <div class="item fontWeight"><a href="postUpdate.php"><i class="bi bi-file-earmark-ppt-fill"></i></i>Manage Post</a></div>

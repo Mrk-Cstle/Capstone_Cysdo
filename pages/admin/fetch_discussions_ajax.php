@@ -14,35 +14,50 @@ $resultAllScholars = mysqli_query($conn, $queryAllScholars);
 $seenScholars = array(); // To track scholars that have been seen
 
 while ($row = mysqli_fetch_assoc($resultAllScholars)) {
-  $scholar_id = $row['scholar_id'];
-  // Check if we have already displayed the scholar
-  if (in_array($scholar_id, $seenScholars)) {
-      continue;
-  }
+    $scholar_id = $row['scholar_id'];
+    // Check if we have already displayed the scholar
+    if (in_array($scholar_id, $seenScholars)) {
+        continue;
+    }
+    $scholar_id = $row['scholar_id'];
 
-  // Display chat head for each scholar
-  echo '<div class="discussion" data-scholar-id="' . $scholar_id . '">';
-  echo '<div class="photo" style="background-image: url(\'/assets/image/1x1.jpg\');">';
-  echo '<div class="online"></div>';
-  echo '</div>';
-  echo '<div class="desc-contact">';
-  echo '<p class="name font-weight-bold">' . $row['full_name'] . '</p>';
+    $imageQuery = "SELECT * FROM scholar where scholar_id = '$scholar_id'";
+    $imageResult = mysqli_query($conn, $imageQuery);
+    if ($imageResult) {
+        // Fetch the image row as an associative array
+        $imageRow = mysqli_fetch_assoc($imageResult);
 
-  if ($row['sender'] && $row['message']) {
-      // Apply the bolding logic for the last message
-      $message = $row['message'];
-      $isScholarMessage = ($row['sender'] !== 'City Youth and Sports Development Office - CSJDM');
-      echo '<p class="message">';
-      echo $isScholarMessage ? '<strong>' . $message . '</strong>' : $message;
-      echo '</p>';
-  } else {
-      // Display a default message if no messages exist
-      echo '<p class="message">No messages yet</p>';
-  }
-  echo '</div>';
-  echo '</div>';
+        // Now $imageRow contains the data for the scholar with the specified scholar_id
+        // You can access the image data using $imageRow['column_name']
 
-  // Mark the scholar as seen
-  $seenScholars[] = $scholar_id;
+        // Example: Accessing the image URL
+        $image = $imageRow['image'];
+
+        // Close the result set
+        mysqli_free_result($imageResult);
+    }
+    // Display chat head for each scholar
+    echo '<div class="discussion" data-scholar-id="' . $scholar_id . '">';
+    echo '<div class="photo" style="background-image: url(\'../../uploads/scholar/' . $image . '\');">';
+    echo '<div class="online"></div>';
+    echo '</div>';
+    echo '<div class="desc-contact">';
+    echo '<p class="name font-weight-bold">' . $row['full_name'] . '</p>';
+
+    if ($row['sender'] && $row['message']) {
+        // Apply the bolding logic for the last message
+        $message = $row['message'];
+        $isScholarMessage = ($row['sender'] !== 'City Youth and Sports Development Office - CSJDM');
+        echo '<p class="message">';
+        echo $isScholarMessage ? '<strong>' . $message . '</strong>' : $message;
+        echo '</p>';
+    } else {
+        // Display a default message if no messages exist
+        echo '<p class="message">No messages yet</p>';
+    }
+    echo '</div>';
+    echo '</div>';
+
+    // Mark the scholar as seen
+    $seenScholars[] = $scholar_id;
 }
-?>

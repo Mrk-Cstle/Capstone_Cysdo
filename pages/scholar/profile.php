@@ -104,10 +104,10 @@ if ($result) {
                             <div class="profile-user-name text-uppercase">
                                 <div class="profile-nm">
                                     <div>
-                                        <h4>First Name :</h4>
-                                        <h4>Last Name :</h4>
-                                        <h4>Middle Initial :</h4>
-                                        <h4>Status :</h4>
+                                        <h4>Name : <?php echo $full_name; ?></h4>
+                                        <h4>Community Service : <?php echo $c_service1st; ?></h4>
+                                        <h4>Status Last Sem : <?php echo $status_lastsem; ?></h4>
+                                        <h4>Approve Date : <?php echo $approve_date; ?></h4>
                                     </div>
                                 </div>
                             </div>
@@ -217,7 +217,7 @@ if ($result) {
                                                 <div class=" col-md-3 col-sm-4">
                                                     <div class="form-group">
                                                         <label class="control-label bold font-xs">Email</label>
-                                                        <input type="text" class="form-control" name="email" id="email" value="<?php echo $email ?> ">
+                                                        <input type="text" class="form-control" name="email" id="email" value="<?php echo $email ?>">
                                                     </div>
                                                 </div>
 
@@ -577,7 +577,7 @@ if ($result) {
                                         <div class="portlet-body form">
                                             <div class="row">
                                                 <?php
-                                                $scholarId = $_GET['id'];
+
 
                                                 // First query for 1st semester
                                                 $sql3 = "SELECT renewal.*, scholar.*
@@ -774,7 +774,7 @@ if ($result) {
                                     <div class="portlet-body form">
                                         <div class="row">
                                             <?php
-                                            $scholarId = $_GET['id'];
+
 
                                             // First query for 1st semester
                                             $sql5 = "SELECT renewal.*, scholar.*
@@ -970,7 +970,7 @@ if ($result) {
                                     <div class="portlet-body form">
                                         <div class="row">
                                             <?php
-                                            $scholarId = $_GET['id'];
+
 
                                             // First query for 1st semester
                                             $sql7 = "SELECT renewal.*, scholar.*
@@ -1167,7 +1167,7 @@ if ($result) {
                                     <div class="portlet-body form">
                                         <div class="row">
                                             <?php
-                                            $scholarId = $_GET['id'];
+
 
                                             // First query for 1st semester
                                             $sql9 = "SELECT renewal.*, scholar.*
@@ -1365,7 +1365,7 @@ if ($result) {
                                     <div class="portlet-body form">
                                         <div class="row">
                                             <?php
-                                            $scholarId = $_GET['id'];
+
 
                                             // First query for 1st semester
                                             $sql11 = "SELECT renewal.*, scholar.*

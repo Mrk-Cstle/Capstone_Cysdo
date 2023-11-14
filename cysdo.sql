@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2023 at 08:10 AM
+-- Generation Time: Nov 14, 2023 at 05:24 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,7 +52,7 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`admin_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `birth_date`, `contact_number`, `email`, `address`, `gender`, `civil_status`, `citizenship`, `image`, `user`, `password`) VALUES
 (8, 'qwea, qwe qwe', 'qwea', 'qwe', 'qwe', NULL, 123, 'qwe@qwe', 'qwe', '', '', '', '', 'qwe@qwe', '$2y$10$rwj3q8rJCZsaVp9QRGnXhe3CqCv/m.vyZrn3hnayq51R1b2zj/QrS'),
 (24, 'qaz, qaz qaz', 'qaz', 'qaz', 'qaz', '2023-07-30', 1233425345, 'qaz@qaz1  ', 'zxc  ', 'male', 'married', 'French-', 'qaz_profile.jpg', 'qaz', '$2y$10$QRNUQdpxahNTCd9efiQ2Ruoyv/rKs19gBbbA15A5Q4LHRI1gR93x2'),
-(25, 'Castillo, Mark David S.', 'Castillo', 'Mark David', 'S.', '2002-02-11', 2147483647, ' markdavid.castillo.s@bulsu.edu.ph', '    Marilao Bulacan', 'male', 'single', 'Filipino-', 'Castillo_profile.jpeg', '', '$2y$10$eSn1oqf8j8DfjifsaDPOQ.qNpyP1J6VZwB1tzmDB1mjr59oZKIeL6'),
+(25, 'Castillo, Mark David S.', 'Castillo', 'Mark David', 'S.', '2002-02-11', 2147483647, ' markdavid.castillo.s@bulsu.edu.ph ', '    Marilao Bulacan ', 'male', 'single', 'Filipino-', 'Castillo_profile.jpeg', '', '$2y$10$b2BU6DtoXeHx/r7Do4ZsD.ALxDeO3fMIjiL59VEzzPbgBAUaeAV8i'),
 (26, 'qweqw, eqweqwe qweqwe', 'qweqw', 'eqweqwe', 'qweqwe', NULL, 13123, 'qweqwe', '', '', '', '', '', 'qweqwe', '$2y$10$upTHZF.td3dgiI1lEXAmbe1vFbNYU/.vaYSfK/EO.8IWBwhF/1Cnm');
 
 -- --------------------------------------------------------
@@ -139,7 +139,10 @@ INSERT INTO `chat_messages` (`id`, `sender`, `staffId`, `message`, `timestamp`, 
 (205, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-14 07:02:28', 24, 14, 1),
 (206, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-14 07:02:58', 24, 14, 1),
 (207, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-14 07:06:01', 24, 14, 1),
-(208, 'City Youth and Sports Development Office - CSJDM', NULL, 'asdasd', '2023-11-14 07:06:16', 24, 14, 1);
+(208, 'City Youth and Sports Development Office - CSJDM', NULL, 'asdasd', '2023-11-14 07:06:16', 24, 14, 1),
+(209, 'City Youth and Sports Development Office - CSJDM', NULL, 'asdasd', '2023-11-14 14:53:30', 24, 14, 1),
+(210, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-14 15:19:58', 24, 14, 1),
+(211, 'City Youth and Sports Development Office - CSJDM', 168, 'asd', '2023-11-14 16:18:18', NULL, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -381,6 +384,13 @@ CREATE TABLE `renewal` (
   `curriculum` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `renewal`
+--
+
+INSERT INTO `renewal` (`renewal_id`, `scholar_id`, `semester`, `academic_year`, `renewal_date`, `status`, `current_yr`, `form`, `previous_cor`, `cog`, `atm`, `current_cor`, `dtr`, `e3_form`, `curriculum`) VALUES
+(114, 14, 'renew_5thYr_1stSem', '2023', '2023-11-14 15:16:31', '', '', '', 'renew_5thYr_1stSem_ASDSDF, XCVSDF SDFXCV_14_PrevCor.jpg', '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -465,7 +475,7 @@ CREATE TABLE `scholar` (
 --
 
 INSERT INTO `scholar` (`scholar_id`, `image`, `scholar_award_status`, `status_lastsem`, `user`, `password`, `applicant_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `age`, `gender`, `voter`, `contact_num1`, `contact_num2`, `full_address`, `barangay`, `telegram`, `atm_number`, `facebook`, `email`, `course`, `years_course`, `current_yr`, `degree_or_non`, `school_name`, `school_address`, `renew_1stYr_1stSem`, `renew_1stYr_2ndSem`, `renew_2ndYr_1stSem`, `renew_2ndYr_2ndSem`, `renew_3rdYr_1stSem`, `renew_3rdYr_2ndSem`, `renew_4thYr_1stSem`, `renew_4thYr_2ndSem`, `renew_5thYr_1stSem`, `renew_5thYr_2ndSem`, `renew_6thYr_1stSem`, `renew_6thYr_2ndSem`, `c_service1st`, `c_service2nd`, `approve_date`) VALUES
-(14, 'ASDSDF_profile.jpg', '', 'renew_4thYr_2ndSem_', 'qaz', '$2y$10$dQakUyBW7kkL3NgCaHUr8uudNfrQ8b9UB7npQ8bfUrAJED.uaS6qO', 0, 'ASDSDF, XCVSDF SDFXCV', 'ASDSDF', 'XCVSDF', 'SDFXCV', 1321, 'asd', 'asd', '235345', '', '', '', '', '0', '', '', '', 0, '', ' ', '', '', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'uploaded', 'approve renewal', '', '', '', '', 10, 0, '2023-11-03');
+(14, 'ASDSDF_profile.jpg', '', 'renew_4thYr_2ndSem_', 'qwe', '$2y$10$eZ1HaQ1wrws4eoYQfPnJBOX3P/226IYUV6gRrIUqRitCu8/choX2G', 0, 'ASDSDF, XCVSDF SDFXCV', 'ASDSDF', 'XCVSDF', 'SDFXCV', 1321, 'asd', 'asd', '235345', '123', 'asd', 'asd', 'qwe', '0', 'qwes', ' asd  ', '', 0, '', ' ', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10, 0, '2023-11-03');
 
 -- --------------------------------------------------------
 
@@ -549,7 +559,7 @@ CREATE TABLE `staff` (
 INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_name`, `position`, `user`, `password`, `contactNum`, `address`, `email`, `image`) VALUES
 (166, ',  asd', '', '', 'asd', '', 'asd', '$2y$10$Ze5h8a/n.MJeuQ650sJ/m.r30W.ICZxKb.v6crisHbSbqT58cX08e', 0, '', 'asd', ''),
 (167, 'qwem,  ', 'qwem', '', '', '', 'qweqweqweqwe', '$2y$10$8qmU/eYjAALSYcgRCLZU5eNiDkoCpCtqr0skiWBwUC30VloS9Ne66', 0, '', 'qweqweqweqweqwe', ''),
-(168, 'zxczxc, qweqwe asdqw', 'zxczxc', 'qweqwe', 'asdqw', '123', 'qeqwe@asd', '$2y$10$6TeFjAsvRkqIu6B3WnwU..oEA.ic/T3XDPEE9sJmNhQIPmct/lD/G', 123123, '', 'qeqwe@asd', ''),
+(168, 'zxczxc, qweqwe asdqw', 'zxczxc', 'qweqwe', 'asdqw', '123', 'qwe', '$2y$10$hbZNtRozkM1noS8SI6Kc9OTmGKXSwOpvdPzoICa189BEI/zpDABlu', 123123, 'asd', 'qeqwe@asd  ', 0x7a78637a78635f70726f66696c652e6a706567),
 (175, 'asd, qwe asd', 'asd', 'qwe', 'asd', '', '', '$2y$10$tedEnHfW6SKyYFFQ12eQdODBl0EJhY9NeaD2HtznBIN4UAhfJhB.O', 0, '', '', ''),
 (176, ', xacsdQWEZXC AS', '', 'xacsdQWEZXC', 'AS', '', 'zxfaewdasd@asdzxc', '$2y$10$bvNGuatyaGaIUR/la71rYu/.Br5jFsYZ1tTKpZqPKfhc7i4mizZ6K', 0, '', 'zxfaewdasd@asdzxc', '');
 
@@ -706,7 +716,7 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `chat_messages`
 --
 ALTER TABLE `chat_messages`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
 
 --
 -- AUTO_INCREMENT for table `examination`
@@ -736,7 +746,7 @@ ALTER TABLE `registration_approval`
 -- AUTO_INCREMENT for table `renewal`
 --
 ALTER TABLE `renewal`
-  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `renewal_award`
@@ -748,7 +758,7 @@ ALTER TABLE `renewal_award`
 -- AUTO_INCREMENT for table `renewal_process`
 --
 ALTER TABLE `renewal_process`
-  MODIFY `process_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `process_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `scholar`

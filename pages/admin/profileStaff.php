@@ -4,10 +4,10 @@
 include '../include/dbConnection.php';
 include 'include/session.php';
 // Get the applicant ID from the URL
-$adminId = $_SESSION['user'];
+$adminId = $_SESSION['user_id'];
 
 // Step 2: Construct and execute the SQL query to select the row with the specified ID
-$sql = "SELECT * FROM admin WHERE full_name = '$adminId'";
+$sql = "SELECT * FROM staff WHERE staffId = '$adminId'";
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
@@ -156,15 +156,7 @@ if ($result) {
                                                 <input type="text" class="form-control" name="m-name" id="m-name" value="<?php echo $middle_name ?> " readonly>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label class="control-label bold font-xs">Birth date</label>
-                                                <div class="input-group">
 
-                                                    <input type="text" class="form-control datepicker" name="b-date" id="b-date" value="<?php echo $birth_date ?> ">
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <h4 class="form-section bold font">Complete Address</h4>
                                     <div class="row">
@@ -174,86 +166,7 @@ if ($result) {
                                                 <input type="text" class="form-control" name="add-ress" id="add-ress" value="<?php echo $address ?> ">
                                             </div>
                                         </div>
-
-                                    </div>
-                                    <h4 class="form-section bold font">Status</h4>
-                                    <div class="row">
-                                        <div class="col-md-2 col-sm-3">
-                                            <div class="form-group">
-                                                <label class="control-label bold font-xs">Gender</label>
-                                                <select class="form-control" name="gender" id="gender">
-                                                    <option value="<?php echo $gender ?>"><?php echo $gender ?></option>
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 col-sm-3">
-                                            <div class="form-group">
-                                                <label class="control-label bold font-xs">Civil Status</label>
-                                                <select class="form-control" name="civilStatus" id="civilStatus">
-                                                    <option value="<?php echo $civil_status ?>"><?php echo $civil_status ?></option>
-                                                    <option value="single">Single</option>
-                                                    <option value="married">Married</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-4">
-                                            <div class="form-group">
-                                                <label class="control-label bold font-xs">Citizenship</label>
-                                                <select class="form-control" name="citizenship" id="citizenship">
-                                                    <option value="<?php echo $citizenship ?>"><?php echo $citizenship ?></option>
-                                                    <option value="American-">American</option>
-                                                    <option value="Arabic-">Arabic</option>
-                                                    <option value="Australian-">Australian</option>
-                                                    <option value="Belgian-">Belgian</option>
-                                                    <option value="Brazilian-">Brazilian</option>
-                                                    <option value="British-">British</option>
-                                                    <option value="Burmese-">Burmese</option>
-                                                    <option value="Canadian-">Canadian</option>
-                                                    <option value="Chinese-">Chinese</option>
-                                                    <option value="Dutch-">Dutch</option>
-                                                    <option value="Dutch-">Dutch</option>
-                                                    <option value="Egyptian-">Egyptian</option>
-                                                    <option value="Filipino-">Filipino</option>
-                                                    <option value="Filipino-Chinese">Filipino-Chinese</option>
-                                                    <option value="French-">French</option>
-                                                    <option value="German-">German</option>
-                                                    <option value="Greek-">Greek</option>
-                                                    <option value="Indian-">Indian</option>
-                                                    <option value="Indonesian-">Indonesian</option>
-                                                    <option value="Iranian-">Iranian</option>
-                                                    <option value="Iraqui-">Iraqui</option>
-                                                    <option value="Irish-">Irish</option>
-                                                    <option value="Israeli-">Israeli</option>
-                                                    <option value="Italian-">Italian</option>
-                                                    <option value="Japanese-">Japanese</option>
-                                                    <option value="Korean-">Korean</option>
-                                                    <option value="Mexican-">Mexican</option>
-                                                    <option value="Nigerian-">Nigerian</option>
-                                                    <option value="Polish-">Polish</option>
-                                                    <option value="Russian-">Russian</option>
-                                                    <option value="Singaporean-">Singaporean</option>
-                                                    <option value="Spanish-">Spanish</option>
-                                                    <option value="Sudanese-">Sudanese</option>
-                                                    <option value="Swiss-">Swiss</option>
-                                                    <option value="Taiwanese-">Taiwanese</option>
-                                                    <option value="Thai-">Thai</option>
-                                                    <option value="Turkish-">Turkish</option>
-
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-4">
-                                            <div class="form-group">
-                                                <label class="control-label bold font-xs">Contact Number</label>
-                                                <input type="text" class="form-control" name="contactNum" id="contactNum" title="Please enter a valid numeric contact number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="<?php echo $contact_number ?>">
-                                            </div>
-                                        </div>
-                                        <div class=" col-md-3 col-sm-4">
+                                        <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="control-label bold font-xs">Email</label>
                                                 <input type="text" class="form-control" name="email" id="email" value="<?php echo $email ?> ">
@@ -363,7 +276,7 @@ if ($result) {
                 var formData = new FormData(this); // Create a FormData object to handle file upload
 
                 $.ajax({
-                    url: "action/updateProfile.php", // Replace with your server-side script to handle the request
+                    url: "action/updateStaffProfile.php", // Replace with your server-side script to handle the request
                     type: "POST",
                     data: formData,
                     contentType: false, // Set content type to false for FormData
@@ -396,7 +309,7 @@ if ($result) {
                 var formData = new FormData(this); // Create a FormData object to handle file upload
 
                 $.ajax({
-                    url: "action/updateProfilePersonalInfo.php", // Replace with your server-side script to handle the request
+                    url: "action/updateStaffProfilePersonalInfo.php", // Replace with your server-side script to handle the request
                     type: "POST",
                     data: formData,
                     contentType: false, // Set content type to false for FormData
@@ -425,7 +338,7 @@ if ($result) {
                 var formData = new FormData(this); // Create a FormData object to handle file upload
 
                 $.ajax({
-                    url: "action/updateProfileAccount.php", // Replace with your server-side script to handle the request
+                    url: "action/updateStaffProfileAccount.php", // Replace with your server-side script to handle the request
                     type: "POST",
                     data: formData,
                     contentType: false, // Set content type to false for FormData
