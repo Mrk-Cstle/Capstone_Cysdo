@@ -83,7 +83,7 @@
     include 'assets/template/homeNavigation.php';
     ?>
   <div class='textAlign'>
-    <p style="text-transform: capitalize;" class='bold d-block w-auto'><a href='announcementTab.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
+    <p style="text-transform: capitalize;" class='bold d-block w-auto'><a href='index.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
   </div>
     <div class="container">
       <div class="content-section">

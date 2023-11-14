@@ -60,7 +60,7 @@ mysqli_close($conn);
 }
 
 body {
-  padding: 2%;
+  padding: 3%;
   background-color: #F5F5F5;
 }
 
@@ -68,7 +68,8 @@ body {
   padding: 0;
   background-color: #FFF; 
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  height: 800px;
+  height: 772px;
+  width: 80%
 }
 
 .textAlign {
@@ -78,76 +79,6 @@ body {
  }
 
 /* === CONVERSATIONS === */
-
-.discussions {
-  width: 35%;
-  height: 800px;
-  box-shadow: 0px 8px 10px rgba(0,0,0,0.20);
-  overflow: hidden;
-  background-color: #FF5F9E;
-  display: inline-block;
-  padding: 0;
-}
-
-.discussions .discussion {
-  width: 100%;
-  height: 90px;
-  background-color: #FAFAFA;
-  border-bottom: solid 1px #E0E0E0;
-  display:flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.discussions .search {
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  color: #E0E0E0;
-}
-
-.discussions .search .searchbar {
-  height: 40px;
-  background-color: #FFF;
-  width: 70%;
-  padding-left: 15px;
-  border-radius: 50px;
-  border: 1px solid #EEEEEE;
-  display:flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.discussions .search .searchbar input {
-  margin-left: 10px;
-  border-radius: 50px;
-  height:38px;
-  padding: 0 20px;
-  width: 100%;
-  display:flex;
-  border:none;
-  font-family: 'Montserrat', sans-serif;;
-}
-
-.discussions .search .searchbar *::-webkit-input-placeholder {
-    color: #E0E0E0;
-}
-.discussions .search .searchbar input *:-moz-placeholder {
-    color: #E0E0E0;
-}
-.discussions .search .searchbar input *::-moz-placeholder {
-    color: #E0E0E0;
-}
-.discussions .search .searchbar input *:-ms-input-placeholder {
-    color: #E0E0E0;
-}
-
-.discussions .message-active {
-  width: 98.5%;
-  height: 90px;
-  background-color: #FFF;
-  border-bottom: solid 1px #E0E0E0;
-}
 
 /* for the search */
 .discussions .discussion .photo {
@@ -186,7 +117,7 @@ body {
   margin: 0 0 0 20px;
   font-family:'Montserrat', sans-serif;
   font-size: 11pt;
-  color:#515151;
+  color: #515151;
 }
 
 .discussions .discussion .message {
@@ -208,7 +139,7 @@ body {
 }
 
 .chat {
-  width: calc(70% - 62px);
+  width: calc(100% - 2px);
 }
 
 .header-chat {
@@ -262,19 +193,22 @@ body {
 }
 
 .chat .messages-chat .text {
-  margin: 0 35px;
+  margin: 0 15px;
   background-color: #f6f6f6;
   padding: 15px;
   border-radius: 12px;
 }
 
-.text-only {
-  margin-left: 45px;
+.chat-box .text {
+  display: block;
+  max-width: 65%;
+  padding: 0;
+  word-break: break-all;
 }
 
 .time {
   font-size: 10px;
-  color:lightgrey;
+  color: #eee;
   margin-bottom:10px;
   margin-left: 85px;
 }
@@ -311,8 +245,9 @@ body {
 
 
 .footer-chat {
-  width: 60%;
+  width: 99%;
   height: 80px;
+  margin-left: 8px;
   display:flex;
   align-items: center;
   position:absolute;
@@ -331,7 +266,7 @@ body {
   color:#fff;
   background-color: #4f6ebd;
   position: absolute;
-  right: 40px;
+  right: 100px;
   padding: 12px 12px 12px 12px;
   border-radius: 50px;
   font-size: 14pt;
@@ -380,13 +315,23 @@ body {
 .clickable {
   cursor: pointer;
 }
+
+.chatProfile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  margin-left: 35px;
+}
+
+.backBtn {
+  margin-top: 10px;
+  font-size: 20px;
+  display: flex;
+}
   /* Add your custom responsive styles here */
   @media (max-width: 768px) {
     .container {
       flex-direction: column;
-    }
-    .discussions {
-      width: 100%;
     }
     .chat {
       width: 100%;
@@ -410,22 +355,17 @@ body {
   .container {
     flex-direction: column;
     width: 100%;
-    height: auto;
-
+    height: 770px;
   }
   .textAlign {
     display: none;
   }
-  .discussions {
-    width: 40%;
-    max-width: 100%;
-  }
   .chat {
-    width: 56%;
+    width: 100%;
     max-width: 100%;
   }
   .footer-chat {
-    width: 55%;
+    width: 98%;
     bottom: 0;
     box-sizing: border-box;
     padding: 10px;
@@ -434,7 +374,7 @@ body {
     color:#fff;
     background-color: #4f6ebd;
     position: absolute;
-    right: 4px;
+    right: 40px;
     padding: 12px 12px 12px 12px;
     border-radius: 50px;
     font-size: 12pt;
@@ -466,10 +406,44 @@ body {
   }
 }
 
+@media (max-width: 528px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    height: 650px;
+  }
+  .textAlign {
+    display: none;
+  }
+  .chat {
+    width: 100%;
+    max-width: 100%;
+  }
+  .footer-chat {
+    width: 98%;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  .chat .footer-chat .send1 {
+    color:#fff;
+    background-color: #4f6ebd;
+    position: absolute;
+    right: 40px;
+    padding: 12px 12px 12px 12px;
+    border-radius: 50px;
+    font-size: 12pt;
+  }
+  .chat .messages-chat {
+    padding: 10px 10px;
+    height: 480px;
+  }
+}
 .bell-container {
     position: relative;
     display: inline-block;
 }
+
 
 .icon {
     font-size: 24px;
@@ -496,7 +470,6 @@ body {
     padding: 10px;
     border-bottom: 1px solid #e0e0e0; /* Add a separating line */
 }
-
 </style>
 </head>
 
@@ -506,22 +479,15 @@ body {
 include '../include/selectDb.php'; 
 ?>
   <div class='textAlign'>
-    <p style="text-transform: capitalize;" class='bold d-block w-auto'><a href='scholarHome.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
+    
   </div>
   <div class="container">
     <div class="row">
-        <section class="discussions">
-            <div class="discussion search">
-                <div class="searchbar">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    <input type="text" placeholder="Search..."></input>
-                </div>
-            </div>
-        </section>
         <section class="chat" style="display: block;">
             <div class="header-chat">
-                <i class="icon fa fa-user-o" aria-hidden="true"></i>
-                <p class="name"><?php echo $_SESSION['user']; ?></p>
+            <p style="text-transform: capitalize;" class='backBtn bold'><a href='scholarHome.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a></p>
+                <img src="../../assets/image/CysdoLogo.jpg" class="chatProfile" alt="">
+                <p class="name bolder">CYSDO</p>
                 <div class="bell-container">
                 <i class="icon clickable fa fa-bell dropdown-toggle" aria-hidden="true" data-bs-toggle="dropdown" aria-expanded="false">
         <span class="counter">0</span>
