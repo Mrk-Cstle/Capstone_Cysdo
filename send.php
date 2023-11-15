@@ -20,7 +20,7 @@ try {
     $mail->Port       = 587; // TCP port to connect to
 
     // Sender information
-    $mail->setFrom('csjdm@cysdo-ceap.online', 'Your Name');
+    $mail->setFrom('castillo.markdavid11@gmail.com', 'Your Name');
 
     // Recipient
     $mail->addAddress('castillo.markdavid64@gmail.com', 'Recipient Name');
