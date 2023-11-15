@@ -44,6 +44,91 @@
             color: #FD7238;
         }
 
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container-1{
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .TG-button{
+            background-color: #d2d2d2;
+            width: 65px;
+            height: 35px;
+            border-radius: 200px;
+            cursor: pointer;
+            position: relative;
+            transition: 0.2s;
+            margin-bottom: 3px;
+        }
+
+        .TG-button::before{
+            position: absolute;
+            content: '';
+            background-color: #fff;
+            width: 25px;
+            height: 25px;
+            border-radius: 200px;
+            margin: 5px;
+            transition: 0.2s;
+        }
+
+        input:checked + .TG-button{
+            background-color: rgb(236, 55, 146);
+        }
+
+        input:checked + .TG-button::before{
+            transform: translateX(30px);
+        }
+
+        input{
+            display: none;
+        }
+
+        #content main .box-info-togglebtn li {
+            padding: 24px;
+            background: #eee;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            grid-gap: 24px;
+        }
+
+        #content main .box-info-togglebtn {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            grid-gap: 24px;
+            margin-top: 36px;
+        }
+
+        #content main .box-info-togglebtn li .text h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #342E37;
+        }
+
+        #content main .box-info-togglebtn li .text p {
+            color: #342E37;
+        }
+
+        .toggle-name {
+            display: block;
+            padding: 20px;
+        }
+
+        .toggle-no {
+            text-align: center;
+            padding: 3px;
+        }
+
+        .toggle-text {
+            display: flex;
+        }
+
     </style>
     <title>Home</title>
 
@@ -117,6 +202,32 @@
                             <h3>2834</h3>
                             <p>Number Of Denied Applicants</p>
                         </span>
+                    </li>
+                </ul>
+                <ul class="box-info-togglebtn">
+                    <li>
+                    <div class="container-1">
+                        <h5 class="toggle-name">Renewal Form:</h5>
+                        <input type="checkbox" id="check">
+                        <label for="check" class="TG-button"></label>
+                    </div>
+                    </li>
+                    <li>
+                     <div class="container-1">
+                        <span class="text">
+                            <h5 class="toggle-no">No. of Applicants : </h5>
+                            <h5 class="toggle-no">Quota Set : </h5>
+                        <div class="col-md-10 ms-2">
+                            <div class="toggle-text form-group">
+                                <label class="control-label bold font-xs"></label>
+                                <div class="input-group ms-3">
+                                    <input type="text" class="form-control" name="quota" id="quota">
+                                </div>
+                                <a href="" class="btn btn-outline-success ms-3">Submit</a>
+                                <a href="" class="btn btn-outline-dark ms-3">close</a>
+                            </div>
+                        </div>
+                     </div>
                     </li>
                 </ul>
         </main>

@@ -50,7 +50,7 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="../../style/scholarProfile.css">
     <link rel="stylesheet" href="../../style/lightbox.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Application Form</title>
+    <title>Scholar Details</title>
 
 </head>
 <style>

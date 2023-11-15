@@ -40,6 +40,7 @@ if ($result) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <title>Document</title>
@@ -62,22 +63,39 @@ if ($result) {
   }
 
   .side-bar {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(356deg, rgba(255, 255, 255, 1) 0%, rgba(236, 77, 155, 1)80%);
     position: fixed;
     width: 290px;
     height: 100%;
     top: 0;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(356deg, rgba(255, 255, 255, 1) 0%, rgba(236, 77, 155, 1)80%);
     overflow-y: auto;
+    z-index: 100;
   }
 
   .navBar {
-    background: #F875AA;
-    margin-top: -25px;
-    padding-top: 30px;
-    padding-bottom: 10px;
+    display: flex;
     position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 76px;
+    background: #F875AA;
+    padding-bottom: 10px;
     justify-content: end;
+  }
+
+  .navProfile {
+    display: inline;
+    float: right;
+    margin-right: 30px;
+  }
+
+  .header__img {
+    width: 40px;
+    height: 40px;
+    margin-right: 3px;
+    border-radius: 50%;
   }
 
   .scholarList {
@@ -129,10 +147,6 @@ if ($result) {
   .failedList {
     margin-bottom: 70px;
     margin-right: 100px;
-  }
-
-  .navProfile {
-    margin-right: 30px;
   }
 
   .renewalList {
@@ -217,6 +231,7 @@ if ($result) {
   }
 
   .sideLogo {
+    margin-top: 20px;
     margin-left: 20px;
   }
 
@@ -263,6 +278,55 @@ if ($result) {
 
   .fontWeight {
     font-weight: 500;
+  }
+
+  .header__toggle {
+    display: inline-flex;
+    font-size: 28px;
+    margin-top: 10px;
+  }
+
+  .header__toggle {
+    margin-left: 10px;
+    color: #19181B;
+    cursor: pointer;
+  }
+
+  .header__toggle {
+    display: none;
+  }
+
+  .show-menu {
+    left: 0;
+  }
+  
+  @media screen and (max-width: 779px) {
+    .side-bar {
+      left: 0;
+      width: 260px;
+      transition: .4s;
+      z-index: 100;
+    }
+
+    .show-menu {
+      left: 0;
+    }
+
+    .home-section {
+      position: relative;
+      background: #ddd;
+      margin-left: 20px;
+      left: 120px;
+      width: calc(100% - 120px);
+      transition: all 0.5s ease;
+      padding-right: 50px;
+      margin-top: 50px;
+    }
+
+    .header__toggle {
+      display: block;
+      left: 0;
+    }
   }
 
   @media screen and (max-width: 1831px) {
@@ -405,9 +469,14 @@ if ($result) {
 <body>
 
   <div class="navBar">
-    <ul class="navProfile nav nav-pills justify-content-end">
+  <div class="header__toggle float-start">
+      <i class='bx bx-menu' id="header-toggle"></i>
+    </div>
+    <ul class="navProfile nav nav-pills">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img id="profileImage" src="../../uploads/admin/<?php echo $imageData ?>" style="height: 40px; width: 40px;"><?php echo $_SESSION['user']; ?></a>
+
+        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+          <img id="profileImage" src="../../uploads/admin/<?php echo $imageData ?>"class="header__img"><?php echo $_SESSION['user']; ?></a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="profile.php">Profile</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -419,13 +488,14 @@ if ($result) {
         </ul>
       </li>
     </ul>
+    
   </div>
 
-  <div class="side-bar">
+  <div class="side-bar" id="bar-side">
     <div>
       <a class="sideHead nav-link text-black" role="none" aria-expanded="false"><img src="../../assets/image/CysdoLogo.png" style="height: 50px; width: 50px;" class="sideLogo"><i class="caption">CYSDO</i></a>
     </div>
-    <div class="menu">
+    <div class="menu" id="menu-side">
       <div class="item fontWeight"><a href="adminHome.php"><i class="fas fa-desktop"></i>Dashboard</a></div>
       <div class="item fontWeight"><a href="adminChat.php"><i class="bi bi-chat-dots-fill"></i>Messages</a>
       </div>
@@ -478,6 +548,24 @@ if ($result) {
     });
   </script>
 
+<script>
+    /*==================== SHOW NAVBAR ====================*/
+    const showMenu = (headersToggle, navbarId) => {
+      const toggleBtn = document.getElementById(headersToggle),
+        nav = document.getElementById(navbarId)
+
+        // Validate that variables exist
+      if (headersToggle && navbarId) {
+        toggleBtn.addEventListener('click', () => {
+            // We add the show-menu class to the div tag with the nav__menu class
+          nav.classList.toggle('show-menu')
+            // change icon
+          toggleBtn.classList.toggle('bx-x')
+          })
+        }
+    }
+    showMenu('header-toggle', 'bar-side')
+  </script>
 
 </body>
 

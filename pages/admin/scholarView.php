@@ -70,14 +70,14 @@ if (isset($_GET['id'])) {
     }
 
     .profile-nm {
-        padding-top: 30px;
-        padding-left: 50px;
-        margin-left: 150px;
+        padding-top: 50px;
+        padding-left: 10px;
+        margin-left: 120px;
     }
 
     .actionBtn {
-        margin-top: 20%;
-        margin-left: 15%;
+        margin-left: 70%;
+        margin-bottom: 10px;
     }
 </style>
 
