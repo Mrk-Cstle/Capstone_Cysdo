@@ -58,33 +58,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Get the original file extension
     $extension2x2 = pathinfo($_FILES["2x2Pic"]["name"], PATHINFO_EXTENSION);
-    $extensionSign = pathinfo($_FILES["signPic"]["name"], PATHINFO_EXTENSION);
+
 
     // Construct the new file name
     $newFileName2x2 = $lastName . "_" . $uniqueNumber . "_2x2image." . $extension2x2;
-    $newFileNameSign = $lastName . "_" . $uniqueNumber . "_Signature." . $extensionSign;
+
 
 
     // Image upload paths
     $uploadDir = "../../uploads/applicant/2x2/";
     $picturePath = $uploadDir . $newFileName2x2;
-    $signPicPath = $uploadDir . $newFileNameSign;
+
     $imageName = $newFileName2x2;
-    $signName = $newFileNameSign;
+
 
 
 
 
     // Check if the file uploads were successful
     if (
-        move_uploaded_file($_FILES["2x2Pic"]["tmp_name"], $picturePath) &&
-        move_uploaded_file($_FILES["signPic"]["tmp_name"], $signPicPath)
+        move_uploaded_file($_FILES["2x2Pic"]["tmp_name"], $picturePath)
     ) {
         // Both images were successfully uploaded
         echo "";
 
 
-        $query = "INSERT INTO registration (fullName, lastName, firstName,middleName,gender, civilStatus, voter, birthDate,birthPlace, citizenship,fullAddress, houseAddress, streetAddress, barangayAddress, contactNum1, contactNum2, pic2x2, signaturePic, schoolName, schoolAddress, schoolType, course, yearLevel, fatherName, fatherStatus,fatherAddress, fatherContact, fatherOccupation, fatherEduc, motherName, motherStatus, motherAddress, motherContact, motherOccupation, motherEduc, guardianName, guardianAddress, guardianContact, guardianOccupation, guardianEduc, sizeFamily, annualGross,  sibling1,sibling2,sibling3,sibling4,sibling5,sibling6 ) VALUES ( '$fullName','$lastName' , '$firstName', '$middleName', '$gender', '$civilStatus', '$registeredVoter', '$birthDate','$birthPlace', '$citizenship','$fullAddress', '$addressNum', '$addressStreet', '$addressBarangay', '$contactNumber1', '$contactNumber2', '$imageName', '$signName', '$schoolName', '$schoolAddress', '$schoolType', '$course', '$currentLevel', '$fatherName', '$father', '$fatherAddress', '$fatherNumber', '$fatherOccupation',  '$fEducAttainment', '$motherName', '$mother', '$motherAddress', '$motherNumber', '$motherOccupation', '$mEducAttainment', '$guardianName', '$guardianAddress', '$guardianNumber', '$guardianOccupation', '$gEducAttainment', '$sizeFamily', '$familyIncome', '$sibling1', '$sibling2', '$sibling3', '$sibling4', '$sibling5', '$sibling6')";
+        $query = "INSERT INTO registration (fullName, lastName, firstName,middleName,gender, civilStatus, voter, birthDate,birthPlace, citizenship,fullAddress, houseAddress, streetAddress, barangayAddress, contactNum1, contactNum2, pic2x2,  schoolName, schoolAddress, schoolType, course, yearLevel, fatherName, fatherStatus,fatherAddress, fatherContact, fatherOccupation, fatherEduc, motherName, motherStatus, motherAddress, motherContact, motherOccupation, motherEduc, guardianName, guardianAddress, guardianContact, guardianOccupation, guardianEduc, sizeFamily, annualGross,  sibling1,sibling2,sibling3,sibling4,sibling5,sibling6 ) VALUES ( '$fullName','$lastName' , '$firstName', '$middleName', '$gender', '$civilStatus', '$registeredVoter', '$birthDate','$birthPlace', '$citizenship','$fullAddress', '$addressNum', '$addressStreet', '$addressBarangay', '$contactNumber1', '$contactNumber2', '$imageName',  '$schoolName', '$schoolAddress', '$schoolType', '$course', '$currentLevel', '$fatherName', '$father', '$fatherAddress', '$fatherNumber', '$fatherOccupation',  '$fEducAttainment', '$motherName', '$mother', '$motherAddress', '$motherNumber', '$motherOccupation', '$mEducAttainment', '$guardianName', '$guardianAddress', '$guardianNumber', '$guardianOccupation', '$gEducAttainment', '$sizeFamily', '$familyIncome', '$sibling1', '$sibling2', '$sibling3', '$sibling4', '$sibling5', '$sibling6')";
 
         $insert = mysqli_query($conn, $query);
     } else {
@@ -429,7 +428,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <th>Civil Status</th>
                         <th>Citizenship</th>
                         <th>Contact Number 1</th>
-                        <th>Contact Number 2</th>
+                        <th>Email</th>
                         <th>Registered Voter?</th>
                     </tr>
             </div>
@@ -561,14 +560,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <tr>
 
                     </tr>
-                    <th colspan="2" rowspan="3"><img src="../../assets/image/1x1.jpg" style="width: 200px; height: auto;"></th>
+                    <th colspan="2" rowspan="3">
+                        <?php
+                        $pictureName = $imageName; // Replace with the actual image name
+                        $picturePath = $uploadDir . $pictureName;
+
+                        // Check if the image file exists
+                        if (file_exists($picturePath)) {
+                            echo '<img src="' . $picturePath . '" alt="2x2 Picture" style="width: 200px; height: auto;">';
+                        } else {
+                            echo '2x2 Picture not found.';
+                        }
+                        ?>
+
+                    </th>
                     <td colspan="3"><img src="../../assets/image/examStub.png" style="width: 400px; height: auto; space-between: none;"></td>
                     <tr class="">
+
                         <td colspan="5" rowspan="5">
                             <p class="float-start">Control Number:_________________</p>
-                            <p style="font-family: sans-serif;">Date Filling:_________________<br /></p>
+                            <p style="font-family: sans-serif;">Date Filling: <?php
+                                                                                $currentDate = date('Y-m-d'); // Format: Year-Month-Day
+                                                                                echo $currentDate;
+                                                                                ?><br /></p>
                             <p><img src="../../assets/image/RisingCity.png" style="width: 80px; height: auto; float: end;" class="float-end"></p>
-                            <p class="float-start" style="font-family: sans-serif;">Name of Applicant:________________________________<br /></p>
+                            <p class="float-start" style="font-family: sans-serif;">Name of Applicant: <?php echo "$fullName"; ?><br /></p>
                             <p style="font-family: sans-serif;">Examination Date & Venue:________________________________<br /></p><br />
                             <p class="float-start" style="font-family: sans-serif;">Signature:________________________________</p>
                             <p class="float-start" style="font-family: sans-serif;">Received by:________________________________</p>

@@ -244,17 +244,17 @@
       </div>
       <div class="row">
         <div class="col-md-4 col-sm-4">
-        <label class="control-label bold font-xs">Contact Number 1</label>
+          <label class="control-label bold font-xs">Contact Number 1</label>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">+63</span>
             <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber1" id="contactNumber1">
           </div>
         </div>
         <div class="col-md-4 col-sm-4">
-        <label class="control-label bold font-xs">Contact Number 2</label>
+          <label class="control-label bold font-xs">Email</label>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">+63</span>
-            <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber2" id="contactNumber2">
+
+            <input type="email" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber2" id="contactNumber2">
           </div>
         </div>
       </div>
@@ -265,12 +265,7 @@
             <input type="file" class="form-control" id="2x2Pic" name="2x2Pic" accept="image/jpeg" required />
           </div>
         </div>
-        <div class="col-md-4 col-sm-4">
-          <div class="form-group">
-            <label class="control-label bold font-xs">Upload Signature Picture (Png): </label>
-            <input type="file" class="form-control" id="signPic" name="signPic" accept="image/png" required />
-          </div>
-        </div>
+
       </div>
       <!-- EDUCTIONAL BACKGROUND PART -->
 
@@ -350,7 +345,7 @@
               </div>
             </div>
 
-            
+
             <div class="col-md-4 col-sm-4">
               <label class="control-label bold font-xs">Contact Number</label>
               <div class="input-group mb-3">
