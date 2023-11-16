@@ -556,6 +556,55 @@ if ($result) {
 
                 <div class="nav__list">
                     <div class="nav__items">
+                        <?php
+                        if (!function_exists('getSwitchStatus')) {
+                            function getSwitchStatus()
+                            {
+                                // Establish a database connection
+                                $server = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $db = "cysdo";
+
+                                $conn = mysqli_connect(
+                                    $server,
+                                    $username,
+                                    $password,
+                                    $db
+                                );
+
+                                if ($conn->connect_error) {
+                                    die("Connection failed: " . $conn->connect_error);
+                                }
+
+
+                                if (!$conn) {
+                                    die('Could not connect: ' . mysqli_connect_error());
+                                }
+
+                                // Query to retrieve the switch status
+                                $sql = "SELECT switch_status FROM renewal_control WHERE renew_control_id = 1"; // Adjust the query as needed
+
+                                $result = mysqli_query($conn, $sql);
+
+                                if (!$result) {
+                                    die('Error: ' . mysqli_error($conn));
+                                }
+
+                                // Fetch the switch status
+                                $row = mysqli_fetch_assoc($result);
+                                $switchStatus = $row['switch_status'];
+
+                                // Close the database connection
+                                mysqli_close($conn);
+
+                                return $switchStatus;
+                            }
+                        }
+
+                        // Get the switch status from the database
+                        $switchStatus = getSwitchStatus();
+                        ?>
 
                         <a href="scholarHome.php" class="nav1__link">
                             <i class='bx bxs-dashboard nav__icon'></i>
@@ -566,12 +615,20 @@ if ($result) {
                             <i class='bx bx-message-rounded nav__icon'></i>
                             <span class="nav1__name">Messages</span>
                         </a>
-
-                        <a href="scholarRenewal.php" class="nav1__link">
-                            <i class="bi bi-arrow-clockwise nav__icon"></i>
-                            <span class="nav1__name">Renewal</span>
-                        </a>
-
+                        <?php
+                        if ($switchStatus == 1) { ?>
+                            <a href="scholarRenewal.php" class="nav1__link">
+                                <i class="bi bi-arrow-clockwise nav__icon"></i>
+                                <span class="nav1__name">Renewal</span>
+                            </a>
+                        <?php
+                        } else { ?>
+                            <a href="#" class="nav1__link" style="pointer-events: none; cursor: not-allowed;opacity: 0.5;">
+                                <i class="bi bi-arrow-clockwise nav__icon"></i>
+                                <span class="nav1__name">Renewal</span>
+                            </a>
+                        <?php  }
+                        ?>
 
 
                         <a href="scholarAnnouncement.php" class="nav1__link">

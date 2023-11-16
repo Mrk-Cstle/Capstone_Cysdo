@@ -224,36 +224,92 @@
                         </span>
                     </li>
                 </ul>
-                <<<<<<< HEAD </main>
-                    =======
-                    <ul class="box-info-togglebtn">
-                        <li>
-                            <div class="container-1">
-                                <h5 class="toggle-name">Renewal Form:</h5>
-                                <input type="checkbox" id="check">
-                                <label for="check" class="TG-button"></label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="container-1">
-                                <span class="text">
-                                    <h5 class="toggle-no">No. of Applicants : </h5>
-                                    <h5 class="toggle-no">Quota Set : </h5>
-                                    <div class="col-md-10 ms-2">
-                                        <div class="toggle-text form-group">
-                                            <label class="control-label bold font-xs"></label>
-                                            <div class="input-group ms-3">
-                                                <input type="text" class="form-control" name="quota" id="quota">
-                                            </div>
-                                            <a href="" class="btn btn-outline-success ms-3">Submit</a>
-                                            <a href="" class="btn btn-outline-dark ms-3">close</a>
+
+
+                <ul class="box-info-togglebtn">
+                    <li>
+                        <?php
+                        function getSwitchStatus()
+                        {
+                            // Establish a database connection
+                            include '../include/dbConnection.php';
+
+                            if (!$conn) {
+                                die('Could not connect: ' . mysqli_connect_error());
+                            }
+
+                            // Query to retrieve the switch status
+                            $sql = "SELECT switch_status FROM renewal_control WHERE renew_control_id = 1"; // Adjust the query as needed
+
+                            $result = mysqli_query($conn, $sql);
+
+                            if (!$result) {
+                                die('Error: ' . mysqli_error($conn));
+                            }
+
+                            // Fetch the switch status
+                            $row = mysqli_fetch_assoc($result);
+                            $switchStatus = $row['switch_status'];
+
+                            // Close the database connection
+                            mysqli_close($conn);
+
+                            return $switchStatus;
+                        }
+
+                        // Get the switch status from the database
+                        $switchStatus = getSwitchStatus();
+                        ?>
+                        <div class="container-1">
+                            <h5 class="toggle-name">Renewal Form:</h5>
+                            <input type="checkbox" id="check" name="registrationSwitch" <?php echo ($switchStatus == 1) ? 'checked' : ''; ?>>
+                            <label for="check" class="TG-button"></label>
+                        </div>
+                    </li>
+                    <li>
+
+                        <?php
+                        $sql = "SELECT * FROM registration_control WHERE reg_control_id = '1'";
+
+                        $result = mysqli_query($conn, $sql);
+
+                        if ($result) {
+                            // Step 3: Check if the row exists
+                            if (mysqli_num_rows($result) > 0) {
+                                // Step 4: Fetch the row
+                                $row = mysqli_fetch_assoc($result);
+
+                                // Step 5: Access the values of the row
+                                extract($row);
+                                // ...
+
+                                // Process the retrieved row as needed
+                                // For example, you can display the values or perform any other operations
+
+                                // Free the result set
+                                mysqli_free_result($result);
+                            }
+                        }
+                        ?>
+                        <div class="container-1">
+                            <span class="text">
+
+                                <h5 class="toggle-no quotaVal">Quota Set : <?php echo $quota ?></h5>
+                                <div class="col-md-10 ms-2">
+                                    <div class="toggle-text form-group">
+                                        <label class="control-label bold font-xs"></label>
+                                        <div class="input-group ms-3">
+                                            <input type="number" class="form-control quotaVal" name="quota" id="quota" value="<?php echo $quota ?>">
                                         </div>
+                                        <button type="submit" class="btn btn-outline-success ms-3" id="submitBtn">Submit</button>
+
                                     </div>
-                            </div>
-                        </li>
-                    </ul>
+                                </div>
+                        </div>
+                    </li>
+                </ul>
             </main>
-            >>>>>>> Martin
+
 
         <?php } ?>
         <main>
@@ -365,6 +421,56 @@
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+            <script>
+                $(document).ready(function() {
+                    $('#submitBtn').click(function() {
+                        // Get the value of the input
+                        var quotaValue = $('#quota').val();
+
+                        // Send an AJAX request
+                        $.ajax({
+                            type: 'POST',
+                            url: 'action/updateSwitchRegistration.php', // Replace with your server-side script
+                            data: {
+                                quota: quotaValue
+                            },
+                            success: function(response) {
+                                $('.quotaVal').text('Quota Set: ' + quotaValue);
+                                console.log(response);
+                            },
+                            error: function(error) {
+                                // Handle errors if any
+                                console.log(error);
+                            }
+                        });
+                    });
+                });
+            </script>
+            <script>
+                $(document).ready(function() {
+                    $('#check').change(function() {
+                        // Get the checkbox state
+                        var switchStatus = $(this).prop('checked') ? 1 : 0;
+
+                        // Send an AJAX request to update_switch.php
+                        $.ajax({
+                            type: 'POST',
+                            url: 'action/update_switch.php',
+                            data: {
+                                switchStatus: switchStatus
+                            },
+                            success: function(response) {
+                                // Handle the response if needed
+                                console.log(response);
+                            },
+                            error: function(error) {
+                                // Handle errors if any
+                                console.log(error);
+                            }
+                        });
+                    });
+                });
+            </script>
             <script>
                 $(document).ready(function() {
                     // Function to initialize event handlers
