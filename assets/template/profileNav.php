@@ -60,35 +60,40 @@ if ($result) {
     background-color: #ddd;
     background-size: cover;
     background-position: center;
+    margin: 0;
+    padding: 0;
   }
 
   .side-bar {
     position: fixed;
     width: 290px;
     height: 100%;
-    top: 0;
+    top: 70px;
     background: rgb(255, 255, 255);
     background: linear-gradient(356deg, rgba(255, 255, 255, 1) 0%, rgba(236, 77, 155, 1)80%);
     overflow-y: auto;
     z-index: 100;
   }
 
-  .navBar {
+  .navi-Bar {
     display: flex;
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 76px;
     background: #F875AA;
     padding-bottom: 10px;
-    justify-content: end;
+    z-index: 999;
+    justify-content: flex-end;
   }
 
   .navProfile {
-    display: inline;
-    float: right;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
     margin-right: 30px;
+    align-items: center;
   }
 
   .header__img {
@@ -98,70 +103,56 @@ if ($result) {
     border-radius: 50%;
   }
 
-  .scholarList {
-    margin-bottom: 70px;
-    margin-right: 550px;
-  }
-
   .staffList {
     margin-bottom: 70px;
-    margin-right: 650px;
   }
 
   .adminList {
     margin-bottom: 70px;
-    margin-right: 610px;
+  }
+
+  .scholarList {
+    margin-bottom: 70px;
   }
 
   .applicantList {
-    margin-right: 30px;
     margin-bottom: 70px;
-    margin-right: 300px;
   }
 
   .examinersList {
     margin-bottom: 70px;
-    margin-right: 340px;
   }
 
   .newscholarsList {
     margin-bottom: 70px;
-    margin-right: 490px;
   }
 
   .approvedList {
     margin-bottom: 70px;
-    margin-right: 200px;
   }
 
   .deniedList {
     margin-bottom: 70px;
-    margin-right: 135px;
   }
 
   .passedList {
     margin-bottom: 70px;
-    margin-right: 75px;
   }
 
   .failedList {
     margin-bottom: 70px;
-    margin-right: 100px;
   }
 
   .renewalList {
     margin-bottom: 70px;
-    margin-right: 600px;
   }
 
   .cashAllowance {
     margin-bottom: 70px;
-    margin-right: 380px;
   }
 
   .scholarArchiveList{
     margin-bottom: 70px;
-    margin-right: 420px;
   }
 
   .side-bar.active {
@@ -225,14 +216,13 @@ if ($result) {
   }
 
   .caption {
-    margin-top: 20px;
+    margin-top: 30px;
     margin-left: 10px;
     font-size: 22px;
   }
 
   .sideLogo {
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   .sideHead {
@@ -248,6 +238,7 @@ if ($result) {
     width: calc(100% - 290px);
     transition: all 0.5s ease;
     padding-right: 50px;
+    margin-top: 30px;
   }
 
   .container {
@@ -283,11 +274,11 @@ if ($result) {
   .header__toggle {
     display: inline-flex;
     font-size: 28px;
-    margin-top: 10px;
   }
 
   .header__toggle {
     margin-left: 10px;
+    margin-top: 25px;
     color: #19181B;
     cursor: pointer;
   }
@@ -302,165 +293,203 @@ if ($result) {
   
   @media screen and (max-width: 779px) {
     .side-bar {
+      display: block;
       left: 0;
-      width: 260px;
+      width: 220px;
       transition: .4s;
       z-index: 100;
+      font-size: 12px;
+    }
+
+    .navi-Bar {
+      justify-content: space-between;
     }
 
     .show-menu {
       left: 0;
     }
 
+    .Navi:hover {
+      width: 160px;
+      text-decoration: none;
+    }
+
     .home-section {
       position: relative;
       background: #ddd;
       margin-left: 20px;
-      left: 120px;
-      width: calc(100% - 120px);
+      left: 0px;
+      width: 100%;
       transition: all 0.5s ease;
       padding-right: 50px;
-      margin-top: 50px;
+      margin-top: 40px;
     }
 
     .header__toggle {
-      display: block;
+      display: flex;
       left: 0;
+      justify-content: flex-start;
     }
+
+    #menu-side{
+      margin-top: 40px;
+    }
+
+    .content {
+      margin-left: 0;
+    }
+
+    .side-bar .menu .item a {
+      color: #000;
+      font-size: 14px;
+      text-decoration: none;
+      padding: 2px 20px;
+      line-height: 55px;
+    }
+
+    .caption {
+      margin-left: 5px;
+      font-size: 18px;
+    }
+
+    .sideLogo {
+      margin-left: 10px;
+    }
+
   }
 
   @media screen and (max-width: 1831px) {
     .scholarList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 350px
     }
 
     .staffList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 450px;
     }
 
     .adminList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 400px;
     }
 
     .applicantList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 100px;
     }
 
     .examinersList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 200px;
     }
 
     .newscholarsList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 300px;
     }
 
     .approvedList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 10px;
     }
 
     .deniedList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 10px;
     }
 
     .passedList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 10px;
     }
 
     .failedList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 10px;
     }
 
     .renewalList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 400px;
     }
 
     .cashAllowance {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 180px;
     }
 
     .scholarArchiveList{
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     margin-right: 230px;
-  }
+    }
   }
 
   @media screen and (max-width: 1631px) {
     .scholarList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 240px
     }
 
     .staffList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 345px;
     }
 
     .adminList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 300px;
     }
 
     .applicantList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 5px;
     }
 
     .examinersList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 40px;
     }
 
     .newscholarsList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 190px;
     }
 
     .scholarArchiveList{
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     margin-right: 130px;
   }
   }
 
   @media screen and (max-width: 1527px) {
     .scholarList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 150px
     }
 
     .staffList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 240px;
     }
 
     .adminList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 200px;
     }
 
     .applicantList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 5px;
     }
 
     .examinersList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 10px;
     }
 
     .newscholarsList {
-      margin-bottom: 70px;
+      margin-bottom: 50px;
       margin-right: 100px;
     }
   }
@@ -468,14 +497,13 @@ if ($result) {
 
 <body>
 
-  <div class="navBar">
+  <div class="navi-Bar">
   <div class="header__toggle float-start">
-      <i class='bx bx-menu' id="header-toggle"></i>
+      <a class="Button_toggle text-black" onclick="toggleNav()"><i class='bx bx-menu' id="header-toggle"></i></a>
     </div>
-    <ul class="navProfile nav nav-pills">
+    <ul class="nav nav-pills">
       <li class="nav-item dropdown">
-
-        <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+        <a class="navProfile nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
           <img id="profileImage" src="../../uploads/admin/<?php echo $imageData ?>"class="header__img"><?php echo $_SESSION['user']; ?></a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="profile.php">Profile</a></li>
@@ -496,18 +524,37 @@ if ($result) {
       <a class="sideHead nav-link text-black" role="none" aria-expanded="false"><img src="../../assets/image/CysdoLogo.png" style="height: 50px; width: 50px;" class="sideLogo"><i class="caption">CYSDO</i></a>
     </div>
     <div class="menu" id="menu-side">
-      <div class="item fontWeight"><a href="adminHome.php"><i class="fas fa-desktop"></i>Dashboard</a></div>
-      <div class="item fontWeight"><a href="adminChat.php"><i class="bi bi-chat-dots-fill"></i>Messages</a>
+      <div class="item fontWeight">
+        <a href="adminHome.php">
+          <i class="fas fa-desktop side_icon"></i>
+          <span class="nav_label">Dashboard</span>
+        </a>
+        </div>
+      <div class="item fontWeight">
+        <a href="adminChat.php">
+          <i class="bi bi-chat-dots-fill side_icon"></i>
+          <span class="nav_label">Messages</span>
+        </a>
       </div>
       <div class="item">
-        <a class="sub-btn fontWeight"><i class="fas fa-table"></i>Manage Users<i class="fas fa-angle-right dropdown"></i></a>
+        <a class="sub-btn fontWeight">
+          <i class="fas fa-table side_icon"></i>
+          <i class="fas fa-angle-right dropdown"></i>
+         <span class="nav_label">Manage Users</span>
+          
+        </a>
         <div class="sub-menu">
           <a href="addStaff.php" class="sub-item">Manage Staff</a>
           <a href="addAdmin.php" class="sub-item">Manage Admin</a>
         </div>
       </div>
       <div class="item">
-        <a class="sub-btn fontWeight"><i class="fas fa-table"></i>Manage Scholar<i class="fas fa-angle-right dropdown"></i></a>
+        <a class="sub-btn fontWeight">
+          <i class="fas fa-table side_icon"></i>
+          <i class="fas fa-angle-right dropdown"></i>
+          <span class="nav_label">Manage Scholar</span>
+          
+        </a>
         <div class="sub-menu">
           <a href="scholar.php" class="sub-item">Scholar List</a>
           <a href="scholarArchive.php" class="sub-item">Scholar Archive List</a>
@@ -517,19 +564,35 @@ if ($result) {
         </div>
       </div>
       <div class="item">
-        <a class="sub-btn fontWeight"><i class="bi bi-person-lines-fill"></i></i>Manage Applicants<i class="fas fa-angle-right dropdown"></i></a>
+        <a class="sub-btn fontWeight">
+          <i class="bi bi-person-lines-fill side_icon"></i>
+          <i class="fas fa-angle-right dropdown"></i>
+          <span class="nav_label">Manage Applicants</span>
+          
+        </a>
         <div class="sub-menu">
-
-          <a href="applicantList.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 1 </br>List of Applicants</a>
-          <a href="applicantExaminers.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 2 </br>List of Examiners</a>
-          <a href="applicantScholar.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 3 </br>List of New Scholar</a>
+          <a href="applicantList.php" class="sub-item">
+            <i class="bi bi-person-lines-fill"></i>
+            Step 1 </br>List of Applicants
+          </a>
+          <a href="applicantExaminers.php" class="sub-item">
+            <i class="bi bi-person-lines-fill"></i>
+            Step 2 </br>List of Examiners
+          </a>
+          <a href="applicantScholar.php" class="sub-item">
+            <i class="bi bi-person-lines-fill"></i>
+            Step 3 </br>List of New Scholar
+          </a>
         </div>
       </div>
-      <div class="item fontWeight"><a href="postUpdate.php"><i class="bi bi-file-earmark-ppt-fill"></i>Manage Post</a>
+      <div class="item fontWeight">
+        <a href="postUpdate.php">
+          <i class="bi bi-file-earmark-ppt-fill side_icon"></i>
+          <span class="nav_label">Manage Post</span>
+        </a>
       </div>
     </div>
   </div>
-
   <section class="home-section">
     <div class="home-content">
       <span class="text"></span>
@@ -566,6 +629,24 @@ if ($result) {
     }
     showMenu('header-toggle', 'bar-side')
   </script>
+
+<script>
+    function toggleNav() {
+    var sidenav = document.querySelector('.side-bar');
+    var content = document.querySelector('.content');
+    sidenav.style.left = (sidenav.style.left === '0px') ? '-250px' : '0';
+    content.style.marginLeft = (content.style.marginLeft === '250px') ? '0' : '250px';
+
+    if (headersToggle && navbarId) {
+        toggleBtn.addEventListener('click', () => {
+            // We add the show-menu class to the div tag with the nav__menu class
+          nav.classList.toggle('show-menu')
+            // change icon
+          toggleBtn.classList.toggle('bx-x')
+          })
+        }
+}
+</script>
 
 </body>
 

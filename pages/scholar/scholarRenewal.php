@@ -81,23 +81,23 @@ $result = mysqli_query($conn, $sql);
                                         <div class="col-md-8 col-sm-9 input-box">
 
                                             <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                                <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                                <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                                <label class="control-label bold font-xs">Previous Registration Form (COR)<strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 col-sm-9 input-box">
                                             <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                                <label class="control-label bold font-xs">Certificate of Grades</label>
-                                                <input type="file" class="form-control" name="cog" id="cog">
+                                                <label class="control-label bold font-xs">Certificate of Grades<strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" name="cog" id="cog" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 col-sm-9 input-box">
                                             <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                                <label class="control-label bold font-xs">Current Registration Form (COR)</label>
+                                                <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
                                                 <input type="file" class="form-control" name="currentCor" id="currentCor">
                                             </div>
                                         </div>
@@ -105,48 +105,48 @@ $result = mysqli_query($conn, $sql);
                                     <div class="row">
                                         <div class="col-md-8 col-sm-9 input-box">
                                             <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                                <label class="control-label bold font-xs">Curriculum</label>
-                                                <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                                <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 col-sm-9 input-box">
                                             <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                                <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                                <input type="file" class="form-control" name="voter" id="voter">
+                                                <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" name="voter" id="voter" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 col-sm-9 input-box">
                                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                                <input type="file" class="form-control" name="dtr" id="dtr">
+                                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" name="dtr" id="dtr" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 col-sm-9 input-box">
                                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                                <label class="control-label bold font-xs">ATM</label>
-                                                <input type="file" class="form-control" name="atm" id="atm">
+                                                <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" name="atm" id="atm" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 col-sm-9 input-box">
                                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                                <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                                <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                                <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 col-sm-9 input-box">
                                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                                <label class="control-label bold font-xs">Academic Year</label>
-                                                <input type="text" class="form-control" name="academic" id="academic">
+                                                <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="text" class="form-control" name="academic" id="academic" required>
                                             </div>
                                         </div>
                                     </div>
@@ -191,72 +191,72 @@ $result = mysqli_query($conn, $sql);
                                     <h3 class="header-title">2nd sem (<?php echo $renew_1stYr_2ndSem; ?>)</h3>
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                            <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                            <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                            <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                            <label class="control-label bold font-xs">Certificate of Grades</label>
-                                            <input type="file" class="form-control" name="cog" id="cog">
+                                            <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="cog" id="cog" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                            <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                            <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                            <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                            <label class="control-label bold font-xs">Curriculum</label>
-                                            <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                            <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                            <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                            <input type="file" class="form-control" name="voter" id="voter">
+                                            <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="voter" id="voter" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                            <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                            <input type="file" class="form-control" name="dtr" id="dtr">
+                                            <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="dtr" id="dtr" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                            <label class="control-label bold font-xs">ATM</label>
-                                            <input type="file" class="form-control" name="atm" id="atm">
+                                            <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="atm" id="atm" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                            <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                            <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                            <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                            <label class="control-label bold font-xs">Academic Year</label>
-                                            <input type="text" class="form-control" name="academic" id="academic">
+                                            <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="text" class="form-control" name="academic" id="academic" required>
                                         </div>
                                     </div>
                                 </div>
@@ -305,72 +305,72 @@ $result = mysqli_query($conn, $sql);
                                     <h3 class="header-title">1st sem (<?php echo $renew_2ndYr_1stSem; ?>)</h3>
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                            <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                            <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                            <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                            <label class="control-label bold font-xs">Certificate of Grades</label>
-                                            <input type="file" class="form-control" name="cog" id="cog">
+                                            <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="cog" id="cog" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                            <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                            <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                            <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                            <label class="control-label bold font-xs">Curriculum</label>
-                                            <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                            <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                            <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                            <input type="file" class="form-control" name="voter" id="voter">
+                                            <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="voter" id="voter" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                            <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                            <input type="file" class="form-control" name="dtr" id="dtr">
+                                            <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="dtr" id="dtr" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                            <label class="control-label bold font-xs">ATM</label>
-                                            <input type="file" class="form-control" name="atm" id="atm">
+                                            <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="atm" id="atm" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                            <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                            <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                            <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                            <label class="control-label bold font-xs">Academic Year</label>
-                                            <input type="text" class="form-control" name="academic" id="academic">
+                                            <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="text" class="form-control" name="academic" id="academic" required>
                                         </div>
                                     </div>
                                 </div>
@@ -415,72 +415,72 @@ $result = mysqli_query($conn, $sql);
                                 <h3 class="header-title">2nd sem (<?php echo $renew_2ndYr_2ndSem; ?>)</h3>
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                        <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                        <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                        <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                        <label class="control-label bold font-xs">Certificate of Grades</label>
-                                        <input type="file" class="form-control" name="cog" id="cog">
+                                        <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="cog" id="cog" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                        <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                        <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                        <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                        <label class="control-label bold font-xs">Curriculum</label>
-                                        <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                        <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                        <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                        <input type="file" class="form-control" name="voter" id="voter">
+                                        <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="voter" id="voter" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                        <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                        <input type="file" class="form-control" name="dtr" id="dtr">
+                                        <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="dtr" id="dtr" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                        <label class="control-label bold font-xs">ATM</label>
-                                        <input type="file" class="form-control" name="atm" id="atm">
+                                        <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="atm" id="atm" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                        <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                        <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                        <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                        <label class="control-label bold font-xs">Academic Year</label>
-                                        <input type="text" class="form-control" name="academic" id="academic">
+                                        <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="text" class="form-control" name="academic" id="academic" required>
                                     </div>
                                 </div>
                             </div>
@@ -529,72 +529,72 @@ $result = mysqli_query($conn, $sql);
                                 <h3 class="header-title">1st sem (<?php echo $renew_3rdYr_1stSem; ?>)</h3>
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                        <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                        <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                        <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                        <label class="control-label bold font-xs">Certificate of Grades</label>
-                                        <input type="file" class="form-control" name="cog" id="cog">
+                                        <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="cog" id="cog" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                        <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                        <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                        <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                        <label class="control-label bold font-xs">Curriculum</label>
-                                        <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                        <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                        <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                        <input type="file" class="form-control" name="voter" id="voter">
+                                        <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="voter" id="voter" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                        <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                        <input type="file" class="form-control" name="dtr" id="dtr">
+                                        <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="dtr" id="dtr" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                        <label class="control-label bold font-xs">ATM</label>
-                                        <input type="file" class="form-control" name="atm" id="atm">
+                                        <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="atm" id="atm" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                        <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                        <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                        <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                        <label class="control-label bold font-xs">Academic Year</label>
-                                        <input type="text" class="form-control" name="academic" id="academic">
+                                        <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                        <input type="text" class="form-control" name="academic" id="academic" required>
                                     </div>
                                 </div>
                             </div>
@@ -639,72 +639,72 @@ $result = mysqli_query($conn, $sql);
                             <h3 class="header-title">2nd sem (<?php echo $renew_3rdYr_2ndSem; ?>)</h3>
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                    <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                    <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                    <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                    <label class="control-label bold font-xs">Certificate of Grades</label>
-                                    <input type="file" class="form-control" name="cog" id="cog">
+                                    <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="cog" id="cog" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                    <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                    <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                    <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                    <label class="control-label bold font-xs">Curriculum</label>
-                                    <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                    <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                    <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                    <input type="file" class="form-control" name="voter" id="voter">
+                                    <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="voter" id="voter" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                    <input type="file" class="form-control" name="dtr" id="dtr">
+                                    <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="dtr" id="dtr" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">ATM</label>
-                                    <input type="file" class="form-control" name="atm" id="atm">
+                                    <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="atm" id="atm" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                    <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                    <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Academic Year</label>
-                                    <input type="text" class="form-control" name="academic" id="academic">
+                                    <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="text" class="form-control" name="academic" id="academic" required>
                                 </div>
                             </div>
                         </div>
@@ -752,72 +752,72 @@ $result = mysqli_query($conn, $sql);
                             <h3 class="header-title">1st sem (<?php echo $renew_4thYr_1stSem; ?>)</h3>
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                    <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                    <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                    <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                    <label class="control-label bold font-xs">Certificate of Grades</label>
-                                    <input type="file" class="form-control" name="cog" id="cog">
+                                    <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="cog" id="cog" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                    <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                    <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                    <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                    <label class="control-label bold font-xs">Curriculum</label>
-                                    <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                    <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                    <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                    <input type="file" class="form-control" name="voter" id="voter">
+                                    <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="voter" id="voter" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                    <input type="file" class="form-control" name="dtr" id="dtr">
+                                    <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="dtr" id="dtr" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">ATM</label>
-                                    <input type="file" class="form-control" name="atm" id="atm">
+                                    <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="atm" id="atm" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                    <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                    <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Academic Year</label>
-                                    <input type="text" class="form-control" name="academic" id="academic">
+                                    <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="text" class="form-control" name="academic" id="academic" required>
                                 </div>
                             </div>
                         </div>
@@ -862,72 +862,72 @@ $result = mysqli_query($conn, $sql);
                         <h3 class="header-title">2nd sem (<?php echo $renew_4thYr_2ndSem; ?>)</h3>
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                <label class="control-label bold font-xs">Certificate of Grades</label>
-                                <input type="file" class="form-control" name="cog" id="cog">
+                                <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="cog" id="cog" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                <label class="control-label bold font-xs">Curriculum</label>
-                                <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                <input type="file" class="form-control" name="voter" id="voter">
+                                <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="voter" id="voter" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                <input type="file" class="form-control" name="dtr" id="dtr">
+                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="dtr" id="dtr" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">ATM</label>
-                                <input type="file" class="form-control" name="atm" id="atm">
+                                <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="atm" id="atm" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Academic Year</label>
-                                <input type="text" class="form-control" name="academic" id="academic">
+                                <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                <input type="text" class="form-control" name="academic" id="academic" required>
                             </div>
                         </div>
                     </div>
@@ -975,72 +975,72 @@ $result = mysqli_query($conn, $sql);
                             <h3 class="header-title">1st sem (<?php echo $renew_5thYr_1stSem; ?>)</h3>
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                    <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                    <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                    <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                    <label class="control-label bold font-xs">Certificate of Grades</label>
-                                    <input type="file" class="form-control" name="cog" id="cog">
+                                    <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="cog" id="cog" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                    <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                    <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                    <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                    <label class="control-label bold font-xs">Curriculum</label>
-                                    <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                    <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                    <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                    <input type="file" class="form-control" name="voter" id="voter">
+                                    <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="voter" id="voter" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                    <input type="file" class="form-control" name="dtr" id="dtr">
+                                    <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="dtr" id="dtr" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">ATM</label>
-                                    <input type="file" class="form-control" name="atm" id="atm">
+                                    <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="atm" id="atm" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                    <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                    <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Academic Year</label>
-                                    <input type="text" class="form-control" name="academic" id="academic">
+                                    <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="text" class="form-control" name="academic" id="academic" required>
                                 </div>
                             </div>
                         </div>
@@ -1085,72 +1085,72 @@ $result = mysqli_query($conn, $sql);
                         <h3 class="header-title">2nd sem (<?php echo $renew_5thYr_2ndSem; ?>)</h3>
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                <label class="control-label bold font-xs">Certificate of Grades</label>
-                                <input type="file" class="form-control" name="cog" id="cog">
+                                <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="cog" id="cog" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                <label class="control-label bold font-xs">Curriculum</label>
-                                <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                <input type="file" class="form-control" name="voter" id="voter">
+                                <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="voter" id="voter" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                <input type="file" class="form-control" name="dtr" id="dtr">
+                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="dtr" id="dtr" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">ATM</label>
-                                <input type="file" class="form-control" name="atm" id="atm">
+                                <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="atm" id="atm" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Academic Year</label>
-                                <input type="text" class="form-control" name="academic" id="academic">
+                                <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                <input type="text" class="form-control" name="academic" id="academic" required>
                             </div>
                         </div>
                     </div>
@@ -1199,72 +1199,72 @@ $result = mysqli_query($conn, $sql);
                             <h3 class="header-title">1st sem (<?php echo $renew_6thYr_1stSem; ?>)</h3>
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                    <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                    <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                    <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                    <label class="control-label bold font-xs">Certificate of Grades</label>
-                                    <input type="file" class="form-control" name="cog" id="cog">
+                                    <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="cog" id="cog" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                    <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                    <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                    <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                    <label class="control-label bold font-xs">Curriculum</label>
-                                    <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                    <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                    <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                    <input type="file" class="form-control" name="voter" id="voter">
+                                    <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="voter" id="voter" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                    <input type="file" class="form-control" name="dtr" id="dtr">
+                                    <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="dtr" id="dtr" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">ATM</label>
-                                    <input type="file" class="form-control" name="atm" id="atm">
+                                    <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="atm" id="atm" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                    <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                    <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Academic Year</label>
-                                    <input type="text" class="form-control" name="academic" id="academic">
+                                    <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                    <input type="text" class="form-control" name="academic" id="academic" required>
                                 </div>
                             </div>
                         </div>
@@ -1309,72 +1309,72 @@ $result = mysqli_query($conn, $sql);
                         <h3 class="header-title">2nd sem (<?php echo $renew_6thYr_2ndSem; ?>)</h3>
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                <label class="control-label bold font-xs">Previous Registration Form (COR)</label>
-                                <input type="file" class="form-control" name="prevCor" id="prevCor">
+                                <label class="control-label bold font-xs">Previous Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="prevCor" id="prevCor" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                <label class="control-label bold font-xs">Certificate of Grades</label>
-                                <input type="file" class="form-control" name="cog" id="cog">
+                                <label class="control-label bold font-xs">Certificate of Grades <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="cog" id="cog" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                <label class="control-label bold font-xs">Current Registration Form (COR)</label>
-                                <input type="file" class="form-control" name="currentCor" id="currentCor">
+                                <label class="control-label bold font-xs">Current Registration Form (COR) <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="currentCor" id="currentCor" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                <label class="control-label bold font-xs">Curriculum</label>
-                                <input type="file" class="form-control" name="curriculum" id="curriculum">
+                                <label class="control-label bold font-xs">Curriculum <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="curriculum" id="curriculum" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                <label class="control-label bold font-xs">Voter's Stub/Certification</label>
-                                <input type="file" class="form-control" name="voter" id="voter">
+                                <label class="control-label bold font-xs">Voter's Stub/Certification <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="voter" id="voter" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form</label>
-                                <input type="file" class="form-control" name="dtr" id="dtr">
+                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="dtr" id="dtr" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">ATM</label>
-                                <input type="file" class="form-control" name="atm" id="atm">
+                                <label class="control-label bold font-xs">ATM <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="atm" id="atm" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Renewal E3 Form</label>
-                                <input type="file" class="form-control" name="e3Form" id="e3Form">
+                                <label class="control-label bold font-xs">Renewal E3 Form <strong class="text-danger ms-1">*</strong></label>
+                                <input type="file" class="form-control" name="e3Form" id="e3Form" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-sm-9 input-box">
                             <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Academic Year</label>
-                                <input type="text" class="form-control" name="academic" id="academic">
+                                <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                <input type="text" class="form-control" name="academic" id="academic" required>
                             </div>
                         </div>
                     </div>

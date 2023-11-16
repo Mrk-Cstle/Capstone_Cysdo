@@ -9,6 +9,13 @@
 
     <link rel="stylesheet" href="../../style/dashboard.css">
     <style>
+        #content main {
+            width: 100%;
+            padding: 36px 24px;
+            font-family: var(--poppins);
+            padding-right: 100px;
+        }
+
         #content main .box-info li {
             padding: 24px;
             background: #eee;
@@ -43,11 +50,6 @@
         #content main .box-info #bx-2 {
             background: #FFE0D3;
             color: #FD7238;
-        }
-
-        * {
-            padding: 0;
-            margin: 0;
         }
 
         .container-1 {
@@ -87,7 +89,7 @@
             transform: translateX(30px);
         }
 
-        input {
+        .hidebtn {
             display: none;
         }
 
@@ -125,10 +127,33 @@
         .toggle-no {
             text-align: center;
             padding: 3px;
+            font-size: 20px;
+            font-weight: 500;
         }
 
         .toggle-text {
             display: flex;
+        }
+
+        @media screen and (max-width: 779px) {
+            #content main .box-info-togglebtn li {
+                padding: 15px;
+                grid-gap: 24px;
+                margin-left: -50px;
+            }
+
+            #content main {
+                width: 100%;
+                padding-bottom: 10px;
+                padding-right: 0;
+            }
+
+            .toggle-no {
+                text-align: center;
+                padding: 3px;
+                font-size: 18px;
+                font-weight: 500;
+            }
         }
     </style>
     <title>Home</title>
