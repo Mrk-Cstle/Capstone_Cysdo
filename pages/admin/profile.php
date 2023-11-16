@@ -104,12 +104,6 @@ if ($result) {
             font-size: 14px;
         }
     }
-
-    .profile-nm {
-        padding-top: 30px;
-        padding-left: 50px;
-        margin-left: 150px;
-    }
 </style>
 
 <body>

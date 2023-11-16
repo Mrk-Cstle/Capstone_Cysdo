@@ -15,6 +15,7 @@
     form {
         margin: 10px;
         padding: 10px;
+        padding-top: 30px;
         border: 1px solid black;
         display: flex;
         width: 90%;
@@ -23,6 +24,18 @@
         background: #fff;
         border-radius: 6px;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    .uploaderName {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    @media screen and (max-width: 779px) {
+        .uploaderName {
+            font-size: 16px;
+            font-weight: 600;
+        }
     }
 </style>
 
@@ -88,10 +101,10 @@
                                     echo '<div class="postFormat scholar" style="display: none;">';
                                 }
 
-                                echo "<section>";
-                                echo "<h3>Uploader: " . $row['uploader'] . "</h3>";
-                                echo "<h3>Upload Date: " . $row['uploadDate'] . "</h3>";
-                                echo "<h3>Category: " . $row['category'] . "</h3>";
+                                echo '<section class="uploaderName">';
+                                echo "<p>Uploader: " . $row['uploader'] . "</p>";
+                                echo "<p>Upload Date: " . $row['uploadDate'] . "</p>";
+                                echo "<p>Category: " . $row['category'] . "</p>";
                                 echo "</section>";
                                 echo "<main><p>" . nl2br($row['announcement']) . "</p></main>";
                                 echo "<footer>";
@@ -130,10 +143,10 @@
                                     echo '<div class="postFormat applicant" style="display: none;">';
                                 }
 
-                                echo "<section>";
-                                echo "<h3>Uploader: " . $row['uploader'] . "</h3>";
-                                echo "<h3>Upload Date: " . $row['uploadDate'] . "</h3>";
-                                echo "<h3>Category: " . $row['category'] . "</h3>";
+                                echo '<section class="uploaderName">';
+                                echo "<p>Uploader: " . $row['uploader'] . "</p>";
+                                echo "<p>Upload Date: " . $row['uploadDate'] . "</p>";
+                                echo "<p>Category: " . $row['category'] . "</p>";
                                 echo "</section>";
                                 echo "<main><p>" . nl2br($row['announcement']) . "</p></main>";
                                 echo "<footer>";

@@ -133,14 +133,6 @@ input[type="submit"] {
 }
 
 @media screen and (max-width: 779px) {
-
-	.btnSearch {
-    	padding: 10px;
-    	height: 45px;
-    	margin-bottom: 8px;
-    	margin-left: 5px;
-	}
-
 	.searchBar {
 		padding: 5px;   
 		width: 100px;

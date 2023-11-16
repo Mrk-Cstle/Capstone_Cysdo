@@ -189,7 +189,7 @@ include 'include/session.php'; ?>
 
                 <ul class="box-info">
                     <li class="box-1">
-                        <i class='bx bxs-calendar-check' id="bx-1"></i>
+                        <i class='bx bx bi-person-check-fill' id="bx-1"></i>
                         <span class="text">
                             <h3> <?php
                                     echo $totalScholar->num_rows;
@@ -200,13 +200,13 @@ include 'include/session.php'; ?>
                     </li>
 
                     <li class="box-4">
-                        <i class="bx bx bi-person-fill-check" id="bx-1"></i>
+                        <i class="bx bx bi-people-fill" id="bx-1"></i>
                         <span class="text">
                             <h3><?php
                                 echo $totalApplicant->num_rows;
 
                                 ?></h3>
-                            <p>Number Applicants</p>
+                            <p>Number of Applicants</p>
                         </span>
                     </li>
                     <li class="box-4">
@@ -216,13 +216,13 @@ include 'include/session.php'; ?>
                                 echo $totalNewScholar->num_rows;
 
                                 ?></h3>
-                            <p>Number Of New Scholar</p>
+                            <p>Number of New Scholar</p>
                         </span>
                     </li>
                 </ul>
                 <ul class="box-info">
                     <li class="box-6">
-                        <i class="bx bx bi-person-fill-slash" id="bx-2"></i>
+                        <i class="bx bx bi-arrow-repeat" id="bx-2"></i>
                         <span class="text">
                             <h3><?php
                                 echo $totalRenewalProcess->num_rows;
@@ -232,7 +232,7 @@ include 'include/session.php'; ?>
                         </span>
                     </li>
                     <li class="box-3">
-                        <i class="bx bx bi-person-fill-exclamation" id="bx-2"></i>
+                        <i class="bx bx bi-people-fill" id="bx-2"></i>
                         <span class="text">
                             <h3><?php
                                 echo $totalExaminer->num_rows;
@@ -242,13 +242,13 @@ include 'include/session.php'; ?>
                         </span>
                     </li>
                     <li class="box-5">
-                        <i class="bx bx bi-person-fill-x" id="bx-2"></i>
+                        <i class="bx bx bi-person-fill-check" id="bx-2"></i>
                         <span class="text">
                             <h3><?php
                                 echo $totalRelease->num_rows;
 
                                 ?></h3>
-                            <p>Number Of For Release Scholar</p>
+                            <p>Number of for Release Scholar</p>
                         </span>
                     </li>
                 </ul>
@@ -290,7 +290,7 @@ include 'include/session.php'; ?>
                         ?>
                         <div class="container-1">
                             <h5 class="toggle-name">Renewal Form:</h5>
-                            <input type="checkbox" id="check" name="registrationSwitch" <?php echo ($switchStatus == 1) ? 'checked' : ''; ?>>
+                            <input type="checkbox" id="check" class="hidebtn" name="registrationSwitch" <?php echo ($switchStatus == 1) ? 'checked' : ''; ?>>
                             <label for="check" class="TG-button"></label>
                         </div>
                     </li>
