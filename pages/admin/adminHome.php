@@ -469,6 +469,32 @@
                             }
                         });
                     });
+
+                    $('#check').change(function() {
+                        // Get the checkbox state
+                        if ($(this).prop("checked")) {
+                            // Get the checkbox state
+                            var switchStatus = true;
+
+                            // Send an AJAX request to update_switch.php
+                            $.ajax({
+                                type: 'POST',
+                                url: 'action/update_switchDb.php',
+                                data: {
+                                    switchStatus: switchStatus
+                                },
+                                success: function(response) {
+                                    // Handle the response if needed
+                                    console.log(response);
+                                },
+                                error: function(error) {
+                                    // Handle errors if any
+                                    console.log(error);
+                                }
+                            });
+                        }
+
+                    });
                 });
             </script>
             <script>
