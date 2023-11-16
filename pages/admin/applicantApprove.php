@@ -16,6 +16,23 @@
         .filter-button {
             margin-right: 10px;
         }
+
+        @media screen and (max-width: 779px) {
+
+        .btnSearch {
+            padding: 10px;
+            height: 45px;
+            margin-bottom: 8px;
+            margin-left: 10px;
+        }
+
+        .searchBar {
+            margin-left: 10px;
+            margin-bottom: 10px;
+            padding: 5px;   
+            width: 250px;
+        }
+    }
     </style>
 </head>
 <?php
@@ -33,8 +50,8 @@ if ($_SESSION['role'] === 'admin') {
 <body>
 
     <section id="content" class="home-section">
-        <nav class="navbar navbar-light bg-light d-flex mt-2">
-        <h3 class="approvedList">Approved Applicant List</h3>
+        <nav class="navbar navbar-light bg-light d-flex mt-5">
+        <h3 class="approvedList ms-5">Approved Applicant List</h3>
             <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantList.php">All Applicant</a>
             <a class="btnSearch btn btn-outline-danger me-3 mb-3" href="applicantDenied.php">Denied Applicant</a>
             <form id="searchForm" class="form-inline m-lg-3">

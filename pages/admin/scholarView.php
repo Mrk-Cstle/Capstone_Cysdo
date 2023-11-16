@@ -79,6 +79,7 @@ if (isset($_GET['id'])) {
         margin-left: 70%;
         margin-bottom: 10px;
     }
+
 </style>
 
 <body>

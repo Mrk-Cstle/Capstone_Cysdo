@@ -9,6 +9,13 @@
 
     <link rel="stylesheet" href="../../style/dashboard.css">
     <style>
+
+        #content main {
+            width: 100%;
+            padding: 36px 24px;
+            font-family: var(--poppins);
+            padding-right: 100px;
+        }
         #content main .box-info li {
             padding: 24px;
             background: #eee;
@@ -44,10 +51,6 @@
             color: #FD7238;
         }
 
-        *{
-            padding: 0;
-            margin: 0;
-        }
         .container-1{
             width: 100%;
             display: inline-flex;
@@ -85,7 +88,7 @@
             transform: translateX(30px);
         }
 
-        input{
+        .hidebtn{
             display: none;
         }
 
@@ -123,11 +126,33 @@
         .toggle-no {
             text-align: center;
             padding: 3px;
+            font-size: 20px;
+            font-weight: 500;
         }
 
         .toggle-text {
             display: flex;
         }
+
+        @media screen and (max-width: 779px) {
+        #content main .box-info-togglebtn li {
+            padding: 15px;
+            grid-gap: 24px;
+            margin-left: -50px;
+        }
+        #content main {
+            width: 100%;
+            padding-bottom: 10px;
+            padding-right: 0;
+        }
+
+        .toggle-no {
+            text-align: center;
+            padding: 3px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
 
     </style>
     <title>Home</title>
@@ -208,23 +233,22 @@
                     <li>
                     <div class="container-1">
                         <h5 class="toggle-name">Renewal Form:</h5>
-                        <input type="checkbox" id="check">
+                        <input type="checkbox" id="check" class="hidebtn">
                         <label for="check" class="TG-button"></label>
                     </div>
                     </li>
                     <li>
                      <div class="container-1">
                         <span class="text">
-                            <h5 class="toggle-no">No. of Applicants : </h5>
-                            <h5 class="toggle-no">Quota Set : </h5>
-                        <div class="col-md-10 ms-2">
+                            <p class="toggle-no">No. of Applicants : </p>
+                            <p class="toggle-no">Quota Set : </p>
+                        <div class="col-sm-3 col-md-8 ms-2">
                             <div class="toggle-text form-group">
                                 <label class="control-label bold font-xs"></label>
-                                <div class="input-group ms-3">
-                                    <input type="text" class="form-control" name="quota" id="quota">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="quota" id="quota w-100">
                                 </div>
-                                <a href="" class="btn btn-outline-success ms-3">Submit</a>
-                                <a href="" class="btn btn-outline-dark ms-3">close</a>
+                                <a href="" class="btn btn-outline-success ms-1">Submit</a>
                             </div>
                         </div>
                      </div>

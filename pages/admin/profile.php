@@ -59,6 +59,7 @@ if ($result) {
             width: 250px;
             height: 250px;
             border-radius: 50% !important;
+            margin-top: 10px;
         }
         .profileBar-portlet {
             padding: 10px 0 0 0 !important;
@@ -70,6 +71,37 @@ if ($result) {
             padding-top: 30px;
             padding-left: 50px;
             margin-left: 150px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        @media screen and (max-width: 779px) {
+            .profile-nm {
+            padding-top: 20px;
+            padding-left: 20px;
+            margin-left: 0px;
+            font-size: 14px;
+        }
+        }
+
+        @media screen and (max-width: 938px) {
+            .profile-nm {
+            margin-right: 200px;
+            padding-top: 20px;
+            padding-left: 20px;
+            margin-left: 0px;
+            font-size: 14px;
+            
+        }
+        }
+
+        @media screen and (max-width: 1280px) {
+            .profile-nm {
+            padding-top: 30px;
+            padding-left: 30px;
+            margin-left: 10px;
+            font-size: 14px;
+        }
         }
 
     </style>
@@ -103,10 +135,10 @@ if ($result) {
                     </div>
                     <div class="profile-nm">
                         <div>
-                            <h4>First Name :</h4>
-                            <h4>Last Name :</h4>
-                            <h4>Middle Initial :</h4>
-                            <h4>Status :</h4>
+                            <p>First Name :</p>
+                            <p>Last Name :</p>
+                            <p>Middle Initial :</p>
+                            <p>Status :</p>
                         </div>
                     </div>
                 </div>
