@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 12:01 PM
+-- Generation Time: Nov 16, 2023 at 05:47 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -185,33 +185,8 @@ CREATE TABLE `examination` (
 --
 
 INSERT INTO `examination` (`examination_id`, `result`, `requirements_status`, `action_id`) VALUES
-(26, 'pass', 'Approve', 36),
-(29, 'pass', 'Approve', 34),
-(42, 'pass', 'Failed', 20),
-(56, 'pass', 'Approve', 59),
-(57, 'pass', 'Approve', 74),
-(58, 'pass', 'Failed', 73),
-(60, 'pass', 'Approve', 75),
-(61, 'pass', 'Failed', 76),
-(63, 'pass', 'Failed', 77),
-(76, 'failed', NULL, 85),
-(77, 'failed', NULL, 93),
-(78, 'failed', NULL, 94),
-(79, 'failed', NULL, 95),
-(80, 'failed', NULL, 96),
-(81, 'pass', 'Approve', 91),
-(82, 'pass', 'Approve', 97),
-(83, 'pass', 'Approve', 98),
-(84, 'pass', 'Approve', 99),
-(86, 'pass', 'Approve', 92),
-(87, 'pass', 'Approve', 103),
-(88, 'pass', 'Approve', 102),
-(89, 'pass', 'Approve', 104),
-(90, 'pass', 'Approve', 106),
-(91, 'pass', 'Approve', 108),
-(92, 'pass', 'Approve', 109),
-(93, 'failed', NULL, 105),
-(94, 'pass', 'Approve', 107);
+(100, 'pass', NULL, 137),
+(101, 'pass', 'Approve', 138);
 
 -- --------------------------------------------------------
 
@@ -222,7 +197,7 @@ INSERT INTO `examination` (`examination_id`, `result`, `requirements_status`, `a
 CREATE TABLE `examination_requirements` (
   `exam_action_id` int(11) NOT NULL,
   `examination_id` int(11) NOT NULL,
-  `action` varchar(255) NOT NULL
+  `requirement_actions` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -290,66 +265,12 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`applicant_id`, `fullName`, `lastName`, `firstName`, `middleName`, `status`, `gender`, `civilStatus`, `voter`, `birthDate`, `birthPlace`, `citizenship`, `fullAddress`, `houseAddress`, `streetAddress`, `barangayAddress`, `contactNum1`, `contactNum2`, `pic2x2`, `signaturePic`, `schoolName`, `schoolAddress`, `schoolType`, `course`, `yearLevel`, `fatherName`, `fatherStatus`, `fatherAddress`, `fatherContact`, `fatherOccupation`, `fatherEduc`, `motherName`, `motherStatus`, `motherAddress`, `motherContact`, `motherOccupation`, `motherEduc`, `guardianName`, `guardianAddress`, `guardianContact`, `guardianOccupation`, `guardianEduc`, `sibling1`, `sibling2`, `sibling3`, `sibling4`, `sibling5`, `sibling6`, `sizeFamily`, `annualGross`, `date`) VALUES
-(19, 'zxczxczxczxc, zxczxc zxczxc', 'zxczxczxczxc', 'zxczxc', 'zxczxc', 'done', 'male', 'single', 'yes', '2023-06-30', 'zxczxc', 'zxczxc', 'qeasdqwweqweasd', 'zxczxc', 'zxc', 'zxczxczxc', '123', 'panes741@gmail.com', '', '', 'zxczxc', 'zxczxc', 'public', 'zxczxczxc', 'als', '', 'alive', '', 0, '', '', '', 'alive', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 0, 0, '2023-11-15'),
-(27, 'eqweasdasdad, qweqwe qeqe', 'eqweasdasdad', 'qweqwe', 'qeqe', 'done', 'male', 'single', 'yes', '2023-09-04', 'qweqe', 'American-', '', 'easeqwe', 'qweqw', 'Assumption', '123123', '2147483647', 'CysdoLogo.jpg', 'callIcon.png', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', 'qwe', 'Living', 'qwe', 123, 'qwe', 'qwe', 'qwe', 'Living', 'qwe', 123, 'eqwe', 'qwe', 'qwe', 'qwe', 123, 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123, 123, '2023-11-15'),
-(33, 'qwe, qe qwe', 'qwe', 'qe', 'qwe', 'done', 'male', 'single', 'yes', '2023-09-22', 'qweqe', 'Arabic-', '', 'qweqwe', 'qweqwe', 'Assumption', '+639612479632', '123123', 'CysdoBg.jpg', 'fbIcon.png', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-15'),
-(34, 'qwe, qe qwe', 'qwe', 'qe', 'qwe', 'done', 'male', 'single', 'yes', '2023-09-22', 'qweqe', 'Arabic-', '', 'qweqwe', 'qweqwe', 'Assumption', '123123', '123123', 'CysdoBg.jpg', 'fbIcon.png', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-15'),
-(40, 'Castillo, Mark David Santos', 'Castillo', 'Mark David', 'Santos', 'done', 'male', 'single', 'yes', '2002-02-11', 'bulacan', 'Filipino-', '', '123', 'asd', 'Assumption', '+639612479632', '123123123', 'Castillo_65002f19c4057_2x2image.jpg', 'Castillo_65002f19c4057_2x2image.png', 'bsu', 'bsu', 'Public', 'bsit', '3rd Year College', 'Restituto Castillo', 'Living', 'bulacan', 123123123, 'qwe', 'qwe', 'Florelita Castillo', 'Living', 'bulacan', 123123123, '123123', '123123', 'qwe', 'qwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 123123, 123123, '2023-11-15'),
-(48, 'asdasd, sdfsdf sdfsdf', 'asdasd', 'sdfsdf', 'sdfsdf', 'done', 'male', 'single', 'yes', '2023-09-12', 'qweqe', 'American-', '', '123123', '123123', 'Bagong Buhay II', '123123', '123123', 'asdasd_650079ea3b686_2x2image.jpg', 'asdasd_650079ea3b686_Signature.png', 'asdasd', 'asdasd', 'Public', 'asdasd', 'ALS Graduate', 'asdasd', 'Living', 'asdasd', 123123, '3123', '123123', 'asdasd', 'Living', 'asdasd', 8, 'asdasdas', 'asdasdasd', 'qweqwe', 'qweqwe', 123123, 'qweqwe', 'qweqwe', 'qwe', 'qwe', 'qwe', 'qweqwe', 'qweqwe', 'qweqwe', 123123, 123123, '2023-11-15'),
-(49, 'qweewq, qweerq qawer', 'qweewq', 'qweerq', 'qawer', 'done', 'male', 'single', 'yes', '2023-09-29', 'tyrtyrtyr', 'American-', '', '34a2234a', 'fghjfghj', 'Assumption', '5634564', '5645674', 'qweewq_6516e8e98320a_2x2image.jpg', 'qweewq_6516e8e98320a_Signature.png', '67r tyrtyur', 'tyrtyr', 'Public', '6785yuty', 'ALS Graduate', '', 'Living', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123, 123, '2023-11-15'),
-(52, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c699ca7202_2x2image.jpeg', 'Castillo_651c699ca7202_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(53, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '+639957751618', '123123123', 'Castillo_651c6a56c3535_2x2image.jpeg', 'Castillo_651c6a56c3535_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(54, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '+639957751618', '123123123', 'Castillo_651c6a6f683f7_2x2image.jpeg', 'Castillo_651c6a6f683f7_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(64, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c6e3c5c80a_2x2image.jpeg', 'Castillo_651c6e3c5c80a_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(65, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c6e694af56_2x2image.jpeg', 'Castillo_651c6e694af56_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(66, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c6e8952685_2x2image.jpeg', 'Castillo_651c6e8952685_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(67, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c6ea366a90_2x2image.jpeg', 'Castillo_651c6ea366a90_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(68, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c6ed9d0866_2x2image.jpeg', 'Castillo_651c6ed9d0866_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(69, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c6f05a3b6e_2x2image.jpeg', 'Castillo_651c6f05a3b6e_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(70, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c6ff3b64fc_2x2image.jpeg', 'Castillo_651c6ff3b64fc_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(71, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c70216b0ae_2x2image.jpeg', 'Castillo_651c70216b0ae_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(72, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c7055a0687_2x2image.jpeg', 'Castillo_651c7055a0687_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(73, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c70746c920_2x2image.jpeg', 'Castillo_651c70746c920_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(74, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c70d66d763_2x2image.jpeg', 'Castillo_651c70d66d763_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(75, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c70e97b9d6_2x2image.jpeg', 'Castillo_651c70e97b9d6_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(76, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c70fbd21b9_2x2image.jpeg', 'Castillo_651c70fbd21b9_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(77, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c711046911_2x2image.jpeg', 'Castillo_651c711046911_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(78, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c711544e62_2x2image.jpeg', 'Castillo_651c711544e62_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(79, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c714345da0_2x2image.jpeg', 'Castillo_651c714345da0_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(84, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c7267c08cc_2x2image.jpeg', 'Castillo_651c7267c08cc_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(85, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c72880eb1c_2x2image.jpeg', 'Castillo_651c72880eb1c_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(86, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c72b9c0b46_2x2image.jpeg', 'Castillo_651c72b9c0b46_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(87, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c73028fc18_2x2image.jpeg', 'Castillo_651c73028fc18_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(88, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c7339c24a9_2x2image.jpeg', 'Castillo_651c7339c24a9_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(89, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c737f7191c_2x2image.jpeg', 'Castillo_651c737f7191c_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(90, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c73937e21f_2x2image.jpeg', 'Castillo_651c73937e21f_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(91, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c73eaf1626_2x2image.jpeg', 'Castillo_651c73eaf1626_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(92, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c7406712bd_2x2image.jpeg', 'Castillo_651c7406712bd_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(93, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c74529cc35_2x2image.jpeg', 'Castillo_651c74529cc35_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(94, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', NULL, 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c755466128_2x2image.jpeg', 'Castillo_651c755466128_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(95, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c7583b417d_2x2image.jpeg', 'Castillo_651c7583b417d_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(96, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 'done', 'male', 'single', 'yes', '2023-10-05', 'qwe', 'American-', '', 'qweqwe', 'asdasd', 'Assumption', '123123123', '123123123', 'Castillo_651c7589df810_2x2image.jpeg', 'Castillo_651c7589df810_Signature.png', 'qweas', 'dasdas', 'Public', 'asdasdad', 'ALS Graduate', 'asdasdasd', 'Living', 'qweqweqwe', 213123123, 'asdasdas', 'dasdasda', 'asdasdasd', 'Living', 'asdasdasd', 123123123, 'asdasdasd', 'qweqweasd', 'sadasdas', 'dasdasd', 123123123, 'asdasdasd', 'asdasd', 'qwe', 'qwe', 'qw', 'w', 'q', 'q', 123123, 1231231, '2023-11-15'),
-(97, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'eqweasdasdad', 'rdfgdrt', 'dfgdfgdfg', 'done', 'male', 'single', 'no', '2023-10-10', 'qweqe', 'American-', '', '123', 'dfgdf', 'Assumption', '345345', '345345345', 'eqweasdasdad_6525292009ba5_2x2image.jpg', 'eqweasdasdad_6525292009ba5_Signature.png', 'asd', 'asd', 'Public', 'asdad', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123, 213, '2023-11-15'),
-(98, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'eqweasdasdad', 'rdfgdrt', 'dfgdfgdfg', 'done', 'male', 'single', 'no', '2023-10-10', 'qweqe', 'American-', '123 dfgdf Assumption', '123', 'dfgdf', 'Assumption', '345345', '345345345', 'eqweasdasdad_6525303c132d1_2x2image.jpg', 'eqweasdasdad_6525303c132d1_Signature.png', 'asd', 'asd', 'Public', 'asdad', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123, 213, '2023-11-15'),
-(99, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'eqweasdasdad', 'rdfgdrt', 'dfgdfgdfg', 'done', 'male', 'single', 'no', '2023-10-10', 'qweqe', 'American-', '123 dfgdf Assumption', '123', 'dfgdf', 'Assumption', '345345', '345345345', 'eqweasdasdad_65253060b039d_2x2image.jpg', 'eqweasdasdad_65253060b039d_Signature.png', 'asd', 'asd', 'Public', 'asdad', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123, 213, '2023-11-15'),
-(104, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'eqweasdasdad', 'rdfgdrt', 'dfgdfgdfg', 'done', 'male', 'single', 'no', '2023-10-10', 'qweqe', 'American-', '123 dfgdf Assumption', '123', 'dfgdf', 'Assumption', '345345', '345345345', 'eqweasdasdad_6525310f61b24_2x2image.jpg', 'eqweasdasdad_6525310f61b24_Signature.png', 'asd', 'asd', 'Public', 'asdad', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123, 213, '2023-11-15'),
-(107, 'eqweasdasdad, rdfgdrt dfgdfgdfg', 'eqweasdasdad', 'rdfgdrt', 'dfgdfgdfg', '', 'male', 'single', 'no', '2023-10-10', 'qweqe', 'American-', '123 dfgdf Assumption', '123', 'dfgdf', 'Assumption', '345345', '345345345', 'eqweasdasdad_6525314d6e2a4_2x2image.jpg', 'eqweasdasdad_6525314d6e2a4_Signature.png', 'asd', 'asd', 'Public', 'asdad', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123, 213, '2023-11-15'),
-(108, 'qwe, qweqw eqwe', 'qwe', 'qweqw', 'eqwe', NULL, 'male', 'single', 'yes', '2023-11-03', 'qwe', 'Arabic-', 'qwe  qwe  Assumption', 'qwe', 'qwe', 'Assumption', '123123', '123123', 'qwe_6553aa54b43a9_2x2image.jpg', 'qwe_6553aa54b43a9_Signature.jpeg', 'qwe', 'qwe', 'Public', 'qwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123, '2023-11-15'),
-(109, 'qwe, qweqw eqwe', 'qwe', 'qweqw', 'eqwe', NULL, 'male', 'single', 'yes', '2023-11-03', 'qwe', 'Arabic-', 'qwe  qwe  Assumption', 'qwe', 'qwe', 'Assumption', '123123', '123123', 'qwe_6553aa632c6b6_2x2image.jpeg', 'qwe_6553aa632c6b6_Signature.jpeg', 'qwe', 'qwe', 'Public', 'qwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123, '2023-11-15'),
-(110, 'qwe, qweqw eqwe', 'qwe', 'qweqw', 'eqwe', 'done', 'male', 'single', 'yes', '2023-11-03', 'qwe', 'Arabic-', 'qwe  qwe  Assumption', 'qwe', 'qwe', 'Assumption', '123123', 'castillo.markdavid64@gmail.com', 'qwe_6553aa73788fc_2x2image.jpeg', 'qwe_6553aa73788fc_Signature.jpeg', 'qwe', 'qwe', 'Public', 'qwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123, '2023-11-15'),
-(111, 'qwe, qweqw eqwe', 'qwe', 'qweqw', 'eqwe', 'done', 'male', 'single', 'yes', '2023-11-03', 'qwe', 'Arabic-', 'qwe  qwe  Assumption', 'qwe', 'qwe', 'Assumption', '123123', 'castillo.markdavid64@gmail.com', 'qwe_6553aa74e410f_2x2image.jpeg', 'qwe_6553aa74e410f_Signature.jpeg', 'qwe', 'qwe', 'Public', 'qwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123, '2023-11-15'),
-(112, 'qwe, qweqwe qweqwe', 'qwe', 'qweqwe', 'qweqwe', 'done', 'male', 'single', 'yes', '2023-11-15', 'qweqwe', 'American-', '123123  123123  Assumption', '123123', '123123', 'Assumption', '123123', 'castillo.markdavid64@gmail.com', 'qwe_6554d3d88d2e2_2x2image.jpeg', 'qwe_6554d3d88d2e2_Signature.jpg', 'qwe', 'qwe', 'Public', 'qwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-15'),
-(113, 'qwe, qweqwe qweqwe', 'qwe', 'qweqwe', 'qweqwe', 'done', 'male', 'single', 'yes', '2023-11-15', 'qweqwe', 'American-', '123123  123123  Assumption', '123123', 'castillo.markdavid64@gmail.com', 'Assumption', '123123', 'castillo.markdavid64@gmail.com', 'qwe_6554d406a72b9_2x2image.jpeg', 'qwe_6554d406a72b9_Signature.jpg', 'qwe', 'qwe', 'Public', 'qwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-15'),
-(114, 'qwe, qweqwe qweqwe', 'qwe', 'qweqwe', 'qweqwe', 'done', 'male', 'single', 'yes', '2023-11-15', 'qweqwe', 'American-', '123123  123123  Assumption', '123123', '123123', 'Assumption', '123123', 'castillo.markdavid64@gmail.com', 'qwe_6554d43766076_2x2image.jpeg', 'qwe_6554d43766076_Signature.jpg', 'qwe', 'qwe', 'Public', 'qwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-15'),
-(115, 'qwe, qweqwe qweqwe', 'qwe', 'qweqwe', 'qweqwe', 'done', 'male', 'single', 'yes', '2023-11-15', 'qweqwe', 'American-', '123123  123123  Assumption', '123123', '123123', 'Assumption', '123123', 'castillo.markdavid64@gmail.com', 'qwe_6554d4a72096b_2x2image.jpeg', 'qwe_6554d4a72096b_Signature.jpg', 'qwe', 'qwe', 'Public', 'qwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-15'),
-(116, 'qwe, qweqwe qweqwe', 'qwe', 'qweqwe', 'qweqwe', 'done', 'male', 'single', 'yes', '2023-11-15', 'qweqwe', 'American-', '123123  123123  Assumption', '123123', '123123', 'Assumption', '123123', 'castillo.markdavid64@gmail.com', 'qwe_6554d4f99c86e_2x2image.jpeg', 'qwe_6554d4f99c86e_Signature.jpg', 'qwe', 'qwe', 'Public', 'qwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-15'),
-(117, 'qweqwe, qweqwe asd', 'qweqwe', 'qweqwe', 'asd', 'done', 'male', 'single', 'yes', '2023-11-15', 'qweqweq', 'American-', 'qweqwe  qweqwe  Assumption', 'qweqwe', 'qweqwe', 'Assumption', '12341234234234', 'castillo.markdavid64@gmail.com', 'qweqwe_6554d575af0eb_2x2image.jpg', '', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123123, 123123, '2023-11-15'),
-(118, 'qweqwe, qweqwe asd', 'qweqwe', 'qweqwe', 'asd', 'done', 'male', 'single', 'yes', '2023-11-15', 'qweqweq', 'American-', 'qweqwe  qweqwe  Assumption', 'qweqwe', 'qweqwe', 'Assumption', '12341234234234', 'castillo.markdavid64@gmail.com', 'qweqwe_6554d59b42894_2x2image.jpg', '', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123123, 123123, '2023-11-15'),
-(119, 'qweqwe, qweqwe asd', 'qweqwe', 'qweqwe', 'asd', 'done', 'male', 'single', 'yes', '2023-11-15', 'qweqweq', 'American-', 'qweqwe  qweqwe  Assumption', 'qweqwe', 'qweqwe', 'Assumption', '12341234234234', 'castillo.markdavid64@gmail.com', 'qweqwe_6554d5d0d4729_2x2image.jpg', '', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123123, 123123, '2023-11-15'),
-(120, 'qweqwe, qweqwe asd', 'qweqwe', 'qweqwe', 'asd', 'done', 'male', 'single', 'yes', '2023-11-15', 'qweqweq', 'American-', 'qweqwe  qweqwe  Assumption', 'qweqwe', 'qweqwe', 'Assumption', '12341234234234', 'castillo.markdavid64@gmail.com', 'qweqwe_6554d6328348e_2x2image.jpg', '', 'qweqwe', 'qweqwe', 'Public', 'qweqwe', 'ALS Graduate', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123123, 123123, '2023-11-15'),
-(121, 'as', '', '', '', NULL, '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 0, 0, '2023-11-16'),
-(122, 'a', '', '', '', NULL, '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 0, 0, '2023-11-16'),
-(123, 'asd', '', '', '', NULL, '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 0, 0, '2023-11-16');
+(124, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', 'done', 'male', 'single', 'yes', '2023-11-14', 'asdasd', 'American-', 'asdasd  asdasd  Bagong Buhay I', 'asdasd', 'asdasd', 'Bagong Buhay I', '1123123', 'castillo.markdavid64@gmail.com', 'qweqdasd_655640d5dc061_2x2image.jpg', '', 'qwe', 'qwe', 'Public', 'qwe', 'Grade 12', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-17'),
+(125, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', 'done', 'male', 'single', 'yes', '2023-11-14', 'asdasd', 'American-', 'asdasd  asdasd  Bagong Buhay I', 'asdasd', 'asdasd', 'Bagong Buhay I', '1123123', 'castillo.markdavid64@gmail.com', 'qweqdasd_655640dd4eb5d_2x2image.jpg', '', 'qwe', 'qwe', 'Public', 'qwe', 'Grade 12', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-17'),
+(126, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', 'done', 'male', 'single', 'yes', '2023-11-14', 'asdasd', 'American-', 'asdasd  asdasd  Bagong Buhay I', 'asdasd', 'asdasd', 'Bagong Buhay I', '1123123', 'castillo.markdavid64@gmail.com', 'qweqdasd_655640de33ec3_2x2image.jpg', '', 'qwe', 'qwe', 'Public', 'qwe', 'Grade 12', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-17'),
+(127, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', NULL, 'male', 'single', 'yes', '2023-11-14', 'asdasd', 'American-', 'asdasd  asdasd  Bagong Buhay I', 'asdasd', 'asdasd', 'Bagong Buhay I', '1123123', 'castillo.markdavid64@gmail.com', 'qweqdasd_655640df14e7f_2x2image.jpg', '', 'qwe', 'qwe', 'Public', 'qwe', 'Grade 12', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-17'),
+(128, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', NULL, 'male', 'single', 'yes', '2023-11-14', 'asdasd', 'American-', 'asdasd  asdasd  Bagong Buhay I', 'asdasd', 'asdasd', 'Bagong Buhay I', '1123123', 'castillo.markdavid64@gmail.com', 'qweqdasd_655640dfda56a_2x2image.jpg', '', 'qwe', 'qwe', 'Public', 'qwe', 'Grade 12', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-17'),
+(129, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', NULL, 'male', 'single', 'yes', '2023-11-14', 'asdasd', 'American-', 'asdasd  asdasd  Bagong Buhay I', 'asdasd', 'asdasd', 'Bagong Buhay I', '1123123', 'castillo.markdavid64@gmail.com', 'qweqdasd_655640e18d34a_2x2image.jpg', '', 'qwe', 'qwe', 'Public', 'qwe', 'Grade 12', '', '-', '', 0, '', '', '', '-', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 123123, 123123, '2023-11-17');
 
 -- --------------------------------------------------------
 
@@ -370,55 +291,9 @@ CREATE TABLE `registration_approval` (
 --
 
 INSERT INTO `registration_approval` (`action_id`, `application_id`, `action_type`, `exam_status`, `date`) VALUES
-(20, 48, 'approve', 'done', '2023-09-20 01:40:34'),
-(34, 33, 'approve', 'done', '2023-09-27 03:40:59'),
-(36, 27, 'approve', 'done', '2023-09-27 03:43:26'),
-(59, 49, 'approve', 'done', '2023-10-08 21:53:18'),
-(71, 72, 'decline', NULL, '2023-10-08 21:58:06'),
-(73, 52, 'approve', 'done', '2023-10-09 00:28:52'),
-(74, 52, 'approve', 'done', '2023-10-09 00:28:54'),
-(75, 53, 'approve', 'done', '2023-10-10 10:50:24'),
-(76, 54, 'approve', 'done', '2023-10-10 10:50:31'),
-(77, 64, 'approve', 'done', '2023-10-10 10:50:36'),
-(81, 99, 'decline', NULL, '2023-10-10 19:49:30'),
-(82, 107, 'decline', NULL, '2023-10-10 19:49:45'),
-(85, 104, 'approve', 'done', '2023-10-18 19:16:52'),
-(91, 98, 'approve', 'done', '2023-10-18 19:20:16'),
-(92, 97, 'approve', 'done', '2023-10-18 19:20:20'),
-(93, 92, 'approve', 'done', '2023-10-18 19:20:27'),
-(94, 92, 'approve', 'done', '2023-10-18 19:20:27'),
-(95, 92, 'approve', 'done', '2023-10-18 19:20:28'),
-(96, 93, 'approve', 'done', '2023-10-18 19:20:34'),
-(97, 95, 'approve', 'done', '2023-10-18 19:20:40'),
-(98, 96, 'approve', 'done', '2023-10-31 16:48:38'),
-(99, 87, 'approve', 'done', '2023-10-31 16:55:09'),
-(100, 65, 'approve', NULL, '2023-10-31 17:32:10'),
-(102, 77, 'approve', 'done', '2023-10-31 18:22:48'),
-(103, 74, 'approve', 'done', '2023-10-31 18:23:43'),
-(104, 75, 'approve', 'done', '2023-10-31 18:28:06'),
-(105, 76, 'approve', 'done', '2023-10-31 18:28:11'),
-(106, 76, 'approve', 'done', '2023-10-31 18:28:12'),
-(107, 76, 'approve', 'done', '2023-10-31 18:28:12'),
-(108, 78, 'approve', 'done', '2023-10-31 18:29:35'),
-(109, 78, 'approve', 'done', '2023-10-31 18:29:35'),
-(110, 114, 'decline', NULL, '2023-11-15 23:05:51'),
-(111, 115, 'decline', NULL, '2023-11-15 23:07:40'),
-(112, 116, 'decline', NULL, '2023-11-15 23:08:40'),
-(113, 117, 'decline', NULL, '2023-11-15 23:11:25'),
-(114, 118, 'decline', NULL, '2023-11-15 23:16:44'),
-(115, 119, 'decline', NULL, '2023-11-15 23:17:48'),
-(116, 120, 'decline', NULL, '2023-11-15 23:20:32'),
-(117, 113, 'decline', NULL, '2023-11-15 23:24:31'),
-(120, 113, 'decline', NULL, '2023-11-15 23:28:32'),
-(121, 113, 'decline', NULL, '2023-11-15 23:28:46'),
-(122, 113, 'decline', NULL, '2023-11-15 23:29:41'),
-(123, 113, 'decline', NULL, '2023-11-15 23:29:52'),
-(124, 112, 'decline', NULL, '2023-11-15 23:31:01'),
-(125, 112, 'decline', NULL, '2023-11-15 23:31:07'),
-(126, 112, 'decline', NULL, '2023-11-15 23:31:12'),
-(127, 112, 'decline', NULL, '2023-11-15 23:31:17'),
-(128, 111, 'decline', NULL, '2023-11-15 23:32:41'),
-(129, 110, 'decline', NULL, '2023-11-15 23:34:07');
+(137, 124, 'approve', 'done', '2023-11-17 00:18:54'),
+(138, 125, 'approve', 'done', '2023-11-17 00:26:30'),
+(139, 126, 'approve', NULL, '2023-11-17 00:36:15');
 
 -- --------------------------------------------------------
 
@@ -437,6 +312,26 @@ CREATE TABLE `registration_control` (
 
 INSERT INTO `registration_control` (`reg_control_id`, `quota`) VALUES
 (1, 60);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `registration_requirements`
+--
+
+CREATE TABLE `registration_requirements` (
+  `requirements_id` int(100) NOT NULL,
+  `examination_id` int(100) NOT NULL,
+  `image2x2` varchar(255) NOT NULL,
+  `req_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `registration_requirements`
+--
+
+INSERT INTO `registration_requirements` (`requirements_id`, `examination_id`, `image2x2`, `req_status`) VALUES
+(17, 101, 'applicantForm_101.jpg', 'Approve');
 
 -- --------------------------------------------------------
 
@@ -469,7 +364,10 @@ CREATE TABLE `renewal` (
 INSERT INTO `renewal` (`renewal_id`, `scholar_id`, `semester`, `academic_year`, `renewal_date`, `status`, `current_yr`, `form`, `previous_cor`, `cog`, `atm`, `current_cor`, `dtr`, `e3_form`, `curriculum`) VALUES
 (114, 14, 'renew_5thYr_1stSem', '2023', '2023-11-14 15:16:31', '', '', '', 'renew_5thYr_1stSem_ASDSDF, XCVSDF SDFXCV_14_PrevCor.jpg', '', '', '', '', '', ''),
 (115, 18, 'new_scholar', '', '2023-11-15 16:17:29', '', '', '', '', '', '', '', '', '', ''),
-(116, 14, 'renew_1stYr_1stSem', '', '2023-11-15 16:36:22', 'approve', '', '', '', '', '', '', '', '', '');
+(116, 14, 'renew_1stYr_1stSem', '', '2023-11-15 16:36:22', 'approve', '', '', '', '', '', '', '', '', ''),
+(118, 19, 'new_scholar', '', '2023-11-16 16:07:13', '', '', '', '', '', '', '', '', '', ''),
+(119, 26, 'new_scholar', '', '2023-11-16 16:07:45', '', '', '', '', '', '', '', '', '', ''),
+(120, 34, 'new_scholar', '', '2023-11-16 16:42:05', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -483,14 +381,6 @@ CREATE TABLE `renewal_award` (
   `award_status` varchar(100) DEFAULT NULL,
   `semester_year` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `renewal_award`
---
-
-INSERT INTO `renewal_award` (`award_id`, `renewal_id`, `award_status`, `semester_year`) VALUES
-(32, 115, NULL, '2023-11-16'),
-(33, 116, NULL, 'renew_1stYr_1stSem_');
 
 -- --------------------------------------------------------
 
@@ -583,7 +473,10 @@ CREATE TABLE `scholar` (
 
 INSERT INTO `scholar` (`scholar_id`, `image`, `scholar_status`, `scholar_award_status`, `status_lastsem`, `user`, `password`, `applicant_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `age`, `gender`, `voter`, `contact_num1`, `contact_num2`, `full_address`, `barangay`, `telegram`, `atm_number`, `facebook`, `email`, `course`, `years_course`, `current_yr`, `degree_or_non`, `school_name`, `school_address`, `renew_1stYr_1stSem`, `renew_1stYr_2ndSem`, `renew_2ndYr_1stSem`, `renew_2ndYr_2ndSem`, `renew_3rdYr_1stSem`, `renew_3rdYr_2ndSem`, `renew_4thYr_1stSem`, `renew_4thYr_2ndSem`, `renew_5thYr_1stSem`, `renew_5thYr_2ndSem`, `renew_6thYr_1stSem`, `renew_6thYr_2ndSem`, `c_service1st`, `c_service2nd`, `approve_date`) VALUES
 (14, 'ASDSDF_profile.jpg', '', '', 'renew_1stYr_1stSem_', 'qwe', '$2y$10$eZ1HaQ1wrws4eoYQfPnJBOX3P/226IYUV6gRrIUqRitCu8/choX2G', 0, 'ASDSDF, XCVSDF SDFXCV', 'ASDSDF', 'XCVSDF', 'SDFXCV', 1321, 'asd', 'asd', '235345', '123', 'asd', 'asd', 'qwe', '0', 'qwes', ' asd  ', '', 0, '', ' ', '', '', 'approve renewal', NULL, 'reupload renewal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10, 0, '2023-11-03'),
-(18, '', '', '', '', 'Castillo', '$2y$10$lAc8hWWd8t/i8nCo5bNcbOvIxy/G9nVWpr4ulp3o9KTdq/yJ89TRa', 76, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 0, 'male', 'yes', '123123123', '123123123', '', 'Assumption', '', '', '', '', 'asdasdad', 0, 'ALS Graduate', '', 'qweas', 'dasdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-16');
+(18, '', '', '', '', 'asd', '$2y$10$L5Amwznv595EQR9RDPrNYuO4xXN37r1EgLZEMNFhZqaWX3jt0JQem', 76, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 0, 'male', 'yes', '123123123', '123123123', '', 'Assumption', '', '', '', 'castillo.markdavid64@gmail.com', 'asdasdad', 0, 'ALS Graduate', '', 'qweas', 'dasdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-11-16'),
+(19, '', '', '', '', '', '$2y$10$MDHQKpsjtPHxCV9eHdZr5O8v0quYj4mlPSZpUr2whQl8B.8YScNL2', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-17'),
+(26, '', '', '', '', 'Castillo', '$2y$10$PZiUxHvpVUhjKoH5CDXH6eXUOLGgFljlqQ14e5eWiYU1iignSd8li', 96, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 0, 'male', 'yes', '123123123', '123123123', '', 'Assumption', '', '', '', '', 'asdasdad', 0, 'ALS Graduate', '', 'qweas', 'dasdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-17'),
+(34, '', '', '', '', 'qweqdasd', '$2y$10$K9mF37tJAR2cF8q4wcUw1OEPo45LDqYjBTmCAXVKBgCRVYMv0VxiS', 125, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', 0, 'male', 'yes', '1123123', 'castillo.markdavid64', 'asdasd  asdasd  Bagong Buhay I', 'Bagong Buhay I', '', '', '', '', 'qwe', 0, 'Grade 12', '', 'qwe', 'qwe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-17');
 
 -- --------------------------------------------------------
 
@@ -732,6 +625,7 @@ ALTER TABLE `chat_messages`
 --
 ALTER TABLE `examination`
   ADD PRIMARY KEY (`examination_id`),
+  ADD UNIQUE KEY `action_id` (`action_id`),
   ADD KEY `FK_ExaminationAction` (`action_id`);
 
 --
@@ -752,6 +646,7 @@ ALTER TABLE `registration`
 --
 ALTER TABLE `registration_approval`
   ADD PRIMARY KEY (`action_id`),
+  ADD UNIQUE KEY `application_id` (`application_id`),
   ADD KEY `registration_approval_ibfk_1` (`application_id`);
 
 --
@@ -759,6 +654,13 @@ ALTER TABLE `registration_approval`
 --
 ALTER TABLE `registration_control`
   ADD PRIMARY KEY (`reg_control_id`);
+
+--
+-- Indexes for table `registration_requirements`
+--
+ALTER TABLE `registration_requirements`
+  ADD PRIMARY KEY (`requirements_id`),
+  ADD UNIQUE KEY `applicant_id` (`examination_id`);
 
 --
 -- Indexes for table `renewal`
@@ -842,7 +744,7 @@ ALTER TABLE `chat_messages`
 -- AUTO_INCREMENT for table `examination`
 --
 ALTER TABLE `examination`
-  MODIFY `examination_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `examination_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `examination_requirements`
@@ -854,13 +756,13 @@ ALTER TABLE `examination_requirements`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT for table `registration_approval`
 --
 ALTER TABLE `registration_approval`
-  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT for table `registration_control`
@@ -869,16 +771,22 @@ ALTER TABLE `registration_control`
   MODIFY `reg_control_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `registration_requirements`
+--
+ALTER TABLE `registration_requirements`
+  MODIFY `requirements_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `renewal`
 --
 ALTER TABLE `renewal`
-  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `renewal_award`
 --
 ALTER TABLE `renewal_award`
-  MODIFY `award_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `award_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `renewal_control`
@@ -896,7 +804,7 @@ ALTER TABLE `renewal_process`
 -- AUTO_INCREMENT for table `scholar`
 --
 ALTER TABLE `scholar`
-  MODIFY `scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -931,6 +839,12 @@ ALTER TABLE `examination_requirements`
 --
 ALTER TABLE `registration_approval`
   ADD CONSTRAINT `registration_approval_ibfk_1` FOREIGN KEY (`application_id`) REFERENCES `registration` (`applicant_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `registration_requirements`
+--
+ALTER TABLE `registration_requirements`
+  ADD CONSTRAINT `FK_Examination_Requirements` FOREIGN KEY (`examination_id`) REFERENCES `examination` (`examination_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `renewal`
