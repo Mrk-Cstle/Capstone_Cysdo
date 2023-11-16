@@ -17,6 +17,4 @@ if (isset($_POST['message'])) {
 }
 
 mysqli_close($conn);
-
-// Rest of the code...
 ?>

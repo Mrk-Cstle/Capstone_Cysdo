@@ -93,8 +93,8 @@ include '../include/selectDb.php';
 
     <div class="dropdown-menu overflow-h-menu dropdown-menu-right">
     <div class="notification">
-    <div class="notification-item">New message from Scholar</div>
-    <div class="notification-item">Another message from Scholar</div>
+    <div class="notification-item">New message from Admin</div>
+    <div class="notification-item">Another message from Admin</div>
     <!-- Add more notification items dynamically -->
 </div>
 
@@ -143,7 +143,23 @@ include '../include/selectDb.php';
   <script>
         $(document).ready(function () {
 
-          function updateNotifications() {
+        // Periodically update the chat
+        setInterval(fetchMessages, 2000); // Update every 2 seconds
+    });
+
+    function markMessagesAsRead(scholarId) {
+            $.ajax({
+                url: 'mark_messages_as_read.php',
+                method: 'POST',
+                data: { scholar_id: scholarId },
+                success: function () {
+                    // Do something if needed after marking messages as read
+                }
+            });
+        }
+
+
+        function updateNotifications() {
     $.ajax({
         type: "GET",
         url: "fetch_notifications.php",
@@ -151,25 +167,42 @@ include '../include/selectDb.php';
             try {
                 var data = JSON.parse(response);
 
-                // Combine admin and staff notifications
-                var allNotifications = data.admin.notifications.concat(data.staff.notifications);
+                // Use a set to keep track of unique notifications
+                var uniqueNotifications = new Set();
 
-                // Filter notifications by sender
-                var filteredNotifications = allNotifications.filter(function (notification) {
+                // Add admin notifications to the set
+                data.admin.notifications.forEach(function (notification) {
+                    uniqueNotifications.add(JSON.stringify(notification));
+                });
+
+                // Add staff notifications to the set
+                data.staff.notifications.forEach(function (notification) {
+                    uniqueNotifications.add(JSON.stringify(notification));
+                });
+
+                // Convert the set back to an array
+                var uniqueNotificationsArray = Array.from(uniqueNotifications).map(function (notification) {
+                    return JSON.parse(notification);
+                });
+
+                // Count notifications from 'City Youth and Sports Development Office - CSJDM'
+                var cityOfficeNotifications = uniqueNotificationsArray.filter(function (notification) {
                     return notification.sender === 'City Youth and Sports Development Office - CSJDM';
                 });
 
-                // Convert unread_count values to integers and then sum
-                var totalUnreadCount = parseInt(data.admin.unread_count) + parseInt(data.staff.unread_count);
+                // Count city office notifications
+                var unreadCountCityOffice = cityOfficeNotifications.length;
 
-                // Display combined notifications
-                $('.counter').text(totalUnreadCount);
+                // Display city office unread count only
+                $('.counter').text(unreadCountCityOffice);
                 var notificationContainer = $('.notification');
                 notificationContainer.empty();
-                filteredNotifications.forEach(function (notification) {
+                cityOfficeNotifications.forEach(function (notification) {
                     notificationContainer.append('<div class="notification-item">New message from ' + notification.sender + '</div>');
                 });
 
+                // Mark messages as read
+                markMessagesAsRead();
             } catch (error) {
                 console.error('Error parsing JSON:', error);
             }
@@ -181,6 +214,17 @@ include '../include/selectDb.php';
 }
 
 
+function markNotificationsAsRead() {
+            $.ajax({
+                type: "POST",
+                url: "mark_as_read.php",
+                data: { sender: 'City Youth and Sports Development Office - CSJDM' },
+                success: function () {
+                    updateNotifications();
+                }
+            });
+        }
+
 
         $('.clickable').click(function () {
             markNotificationsAsRead();
@@ -188,9 +232,8 @@ include '../include/selectDb.php';
 
         updateNotifications();
 
-        setInterval(updateNotifications, 2000);
-        
-      });
+        setInterval(updateNotifications, 5000);
+  
     </script>
 </body>
 
