@@ -1,4 +1,10 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require '../../../vendor/autoload.php';
 session_start();
 include '../../include/dbConnection.php';
 if (isset($_POST['id']) && isset($_POST['action'])) {
@@ -44,13 +50,51 @@ if (isset($_POST['id']) && isset($_POST['action'])) {
         echo "Error: Missing parameters in the request.";
     }
 }
+function email($message, $email, $fullName)
+{
+
+
+
+    // Create a new PHPMailer instance
+    $mail = new PHPMailer(true);
+
+    try {
+        // Server settings
+        $mail->isSMTP(); // Set mailer to use SMTP
+        $mail->Host       = 'smtp.hostinger.com'; // Specify your SMTP server
+        $mail->SMTPAuth   = true; // Enable SMTP authentication
+        $mail->Username   = 'csjdm@cysdo-ceap.online'; // SMTP username
+        $mail->Password   = 'Cysdo-ceap1'; // SMTP password
+        $mail->SMTPSecure = 'tls'; // Enable TLS encryption, 'ssl' also accepted
+        $mail->Port       = 587; // TCP port to connect to
+
+        // Sender information
+        $mail->setFrom('csjdm@cysdo-ceap.online', 'City Youth and Sports Development Office');
+
+        // Recipient
+        $mail->addAddress($email, $fullName);
+
+        // Content
+        $mail->isHTML(true); // Set email format to HTML
+        $mail->Subject = 'Reset Account';
+        $mail->Body    = $message;
+
+        // Send the email
+        $mail->send();
+        echo 'Email has been sent' . ' | ';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
 
 function resetPass($row)
 {
     global $conn;
 
     $scholar_id = $row['scholar_id'];
+    $fullName = $row['full_name'];
     $contact_num1 = $row['contact_num1'];
+    $email = $row['email'];
     $hashedPassword = password_hash($contact_num1, PASSWORD_DEFAULT);
 
     try {
@@ -67,6 +111,9 @@ function resetPass($row)
                 mysqli_query($conn, "UPDATE scholar SET password = '$hashedPassword' WHERE scholar_id = '$scholar_id'");
 
                 if (mysqli_affected_rows($conn) > 0) {
+
+                    $text = 'Hello, ' . $fullName . '! Your password has been reset to ' . $contact_num1 . '. Please log in to your account and change your password as soon as possible.';
+                    email($text, $email, $fullName);
                     echo 'Reset Password Successfully';
                 } else {
                     echo 'Error occurred during password reset';
