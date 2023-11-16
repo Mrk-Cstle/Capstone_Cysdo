@@ -20,7 +20,10 @@
 	    width: 50%;
 	    position: relative;
 	    transition: all 5s ease-in-out;
-      z-index: 9999;
+    }
+
+    .overlay {
+      z-index: 99999;
     }
 
     @media screen and (max-width: 779px) {

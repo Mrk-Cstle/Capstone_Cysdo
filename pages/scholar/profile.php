@@ -68,6 +68,43 @@ if ($result) {
         display: flex;
         flex-wrap: wrap;
     }
+
+    .profile-nm {
+        padding-top: 30px;
+        padding-left: 50px;
+        margin-left: 150px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    @media screen and (max-width: 779px) {
+        .profile-nm {
+            padding-top: 10px;
+            padding-left: 0px;
+            margin-left: 0px;
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width: 938px) {
+        .profile-nm {
+            margin-right: 200px;
+            padding-top: 20px;
+            padding-left: 20px;
+            margin-left: 0px;
+            font-size: 14px;
+
+        }
+    }
+
+    @media screen and (max-width: 1280px) {
+        .profile-nm {
+            padding-top: 30px;
+            padding-left: 30px;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+    }
 </style>
 
 <body>
@@ -104,10 +141,10 @@ if ($result) {
                             <div class="profile-user-name text-uppercase">
                                 <div class="profile-nm">
                                     <div>
-                                        <h4>Name : <?php echo $full_name; ?></h4>
-                                        <h4>Community Service : <?php echo $c_service1st; ?></h4>
-                                        <h4>Status Last Sem : <?php echo $status_lastsem; ?></h4>
-                                        <h4>Approve Date : <?php echo $approve_date; ?></h4>
+                                        <p>Name : <?php echo $full_name; ?></p>
+                                        <p>Community Service : <?php echo $c_service1st; ?></p>
+                                        <p>Status Last Sem : <?php echo $status_lastsem; ?></p>
+                                        <p>Approve Date : <?php echo $approve_date; ?></p>
                                     </div>
                                 </div>
                             </div>

@@ -116,6 +116,10 @@
         margin-top: 60px;
     }
 
+    #uploaderName {
+        font-size: 14px;
+    }
+
     @media (max-width: 1015px) {
         .date {
             display: block;
@@ -131,7 +135,7 @@
         }
 
         .Post {
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .box-info li {
@@ -145,6 +149,10 @@
         .date {
             font-size: 16px;
         }
+        #uploaderName {
+            font-size: 10px;
+            padding-left: 0;
+        }
     }
 
     @media (max-width: 550px) {
@@ -152,8 +160,8 @@
             display: block;
         }
 
-        .uploaderName {
-            display: block;
+        #uploaderName {
+            font-size: 10px;
         }
 
         .textAlign {

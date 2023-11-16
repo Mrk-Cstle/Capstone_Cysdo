@@ -49,27 +49,27 @@
       <div class="row">
         <div class="col-md-4 col-sm-5">
           <div class="form-group">
-            <label class="control-label bold font-xs">Last Name</label>
+            <label class="control-label bold font-xs">Last Name <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="lastName" id="lastName" required>
           </div>
         </div>
         <div class="col-md-4 col-sm-5">
           <div class="form-group">
-            <label class="control-label bold font-xs">First Name</label>
+            <label class="control-label bold font-xs">First Name <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="firstName" id="firstName" required>
           </div>
         </div>
         <div class="col-md-4 col-sm-5">
           <div class="form-group">
             <label class="control-label bold font-xs">Middle Name</label>
-            <input type="text" class="form-control" name="middleName" id="middleName" required>
+            <input type="text" class="form-control" name="middleName" id="middleName">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-2 col-sm-3">
           <div class="form-group">
-            <label class="control-label bold font-xs">Gender</label>
+            <label class="control-label bold font-xs">Gender <strong class="text-danger">*</strong></label>
             <select class="form-control" name="gender" id="gender" required>
               <option value="blank">-</option>
               <option value="male">Male</option>
@@ -79,7 +79,7 @@
         </div>
         <div class="col-md-3 col-sm-4">
           <div class="form-group">
-            <label class="control-label bold font-xs">Civil Status</label>
+            <label class="control-label bold font-xs">Civil Status <strong class="text-danger">*</strong></label>
             <select class="form-control" name="civilStatus" id="civilStatus" required>
               <option value="blank">-</option>
               <option value="single">Single</option>
@@ -89,7 +89,7 @@
         </div>
         <div class="col-md-3">
           <div class="form-group">
-            <label class="control-label bold font-xs">Birth Date</label>
+            <label class="control-label bold font-xs">Birth Date <strong class="text-danger">*</strong></label>
             <div class="input-group">
               <input type="date" class="form-control" name="birthDate" id="birthDate" required>
             </div>
@@ -97,7 +97,7 @@
         </div>
         <div class="col-md-2 col-sm-3">
           <div class="form-group">
-            <label class="control-label bold font-xs">Registered Voter?</label>
+            <label class="control-label bold font-xs">Registered Voter? <strong class="text-danger">*</strong></label>
             <select class="form-control" name="registeredVoter" id="registeredVoter" required>
               <option value="blank">-</option>
               <option value="yes">Yes</option>
@@ -109,13 +109,13 @@
       <div class="row">
         <div class="col-md-5">
           <div class="form-group">
-            <label class="control-label bold font-xs">Place of Birth</label>
+            <label class="control-label bold font-xs">Place of Birth <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="birthPlace" id="birthPlace" required>
           </div>
         </div>
         <div class="col-md-4 col-sm-4">
           <div class="form-group">
-            <label class="control-label bold font-xs">Citizenship</label>
+            <label class="control-label bold font-xs">Citizenship <strong class="text-danger">*</strong></label>
             <select class="form-control" name="citizenship" id="citizenship" required>
               <option value="-">-</option>
               <option value="American-">American</option>
@@ -163,20 +163,20 @@
       <div class="row">
         <div class="col-md-2">
           <div class="form-group">
-            <label class="control-label bold font-xs">House No./Block/Lot</label>
+            <label class="control-label bold font-xs">House No./Block/Lot <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="addressNum" id="addressNum" required>
           </div>
         </div>
 
         <div class="col-md-4 col-sm-5">
           <div class="form-group">
-            <label class="control-label bold font-xs">Street/Phase/Section</label>
+            <label class="control-label bold font-xs">Street/Phase/Section <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="addressStreet" id="addressStreet" required>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
-            <label class="control-label bold font-xs">Barangay</label>
+            <label class="control-label bold font-xs">Barangay <strong class="text-danger">*</strong></label>
             <select class="form-control" name="addressBarangay" id="addressBarangay" required>
               <option value="-">-</option>
               <option value="Assumption">Assumption</option>
@@ -244,24 +244,24 @@
       </div>
       <div class="row">
         <div class="col-md-4 col-sm-4">
-          <label class="control-label bold font-xs">Contact Number 1</label>
+          <label class="control-label bold font-xs">Contact Number <strong class="text-danger">*</strong></label>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">+63</span>
-            <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber1" id="contactNumber1">
+            <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber1" id="contactNumber1" required>
           </div>
         </div>
         <div class="col-md-4 col-sm-4">
-          <label class="control-label bold font-xs">Email</label>
+          <label class="control-label bold font-xs">Email <strong class="text-danger">*</strong></label>
           <div class="input-group mb-3">
 
-            <input type="email" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber2" id="contactNumber2">
+            <input type="email" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber2" id="contactNumber2" required>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4 col-sm-4">
           <div class="form-group">
-            <label class="control-label bold font-xs">Upload 2x2 Picture (Jpeg/Jpg): </label>
+            <label class="control-label bold font-xs">Upload 2x2 Picture (Jpeg/Jpg): <strong class="text-danger">*</strong></label>
             <input type="file" class="form-control" id="2x2Pic" name="2x2Pic" accept="image/jpeg" required />
           </div>
         </div>
@@ -273,19 +273,19 @@
       <div class="row">
         <div class="col-md-5 col-sm-6">
           <div class="form-group">
-            <label class="control-label bold font-xs">School Name (Current School)</label>
+            <label class="control-label bold font-xs">School Name (Current School) <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="schoolName" id="schoolName" required>
           </div>
         </div>
         <div class="col-md-4 col-sm-5">
           <div class="form-group">
-            <label class="control-label bold font-xs">School Address</label>
+            <label class="control-label bold font-xs">School Address <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="schoolAddress" id="schoolAddress" required>
           </div>
         </div>
         <div class="col-md-3 col-sm-4">
           <div class="form-group">
-            <label class="control-label bold font-xs">School Type</label>
+            <label class="control-label bold font-xs">School Type <strong class="text-danger">*</strong></label>
             <select class="form-control" name="schoolType" id="schoolType" required>
               <option value="-">-</option>
               <option value="Public">Public</option>
@@ -295,16 +295,16 @@
         </div>
         <div class="col-md-4 col-sm-5">
           <div class="form-group">
-            <label class="control-label bold font-xs">Course/Strand</label>
+            <label class="control-label bold font-xs">Course/Strand <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="course" id="course" required>
           </div>
         </div>
         <div class="col-md-3 col-sm-4">
           <div class="form-group">
-            <label class="control-label bold font-xs">Current Year Level</label>
+            <label class="control-label bold font-xs">Current Year Level <strong class="text-danger">*</strong></label>
             <select class="form-control" name="currentLevel" id="currentLevel" required>
               <option value="-">-</option>
-              <option value="ALS Graduate">ALS Graduate</option>
+              <option value="ALS Graduate">ALS Graduate <strong class="text-danger">*</strong></option>
               <option value="Grade 12">Grade 12</option>
               <option value="High School Graduat">High School Graduate</option>
               <option value="1st Year College">1st Year College</option>
@@ -456,14 +456,14 @@
           <h4 class="form-section bold font">Income</h4>
           <div class="col-md-4 col-sm-5">
             <div class="form-group">
-              <label class="control-label bold font-xs">Total Parent/s or Guardian/s Annual Gross Income</label>
+              <label class="control-label bold font-xs">Total Parent/s or Guardian/s Annual Gross Income <strong class="text-danger">*</strong></label>
               <input type="text" class="form-control" name="familyIncome" id="familyIncome" required>
             </div>
           </div>
           <h4 class="form-section bold font">Family Size</h4>
           <div class="col-md-2 col-sm-3">
             <div class="form-group">
-              <label class="control-label bold font-xs">Size of the Family (person)</label>
+              <label class="control-label bold font-xs">Size of the Family (person)<strong class="text-danger">*</strong></label>
               <input type="text" class="form-control" name="sizeFamily" id="sizeFamily" required>
             </div>
           </div>

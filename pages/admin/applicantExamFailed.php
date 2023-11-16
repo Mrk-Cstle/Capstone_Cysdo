@@ -52,8 +52,8 @@ if ($_SESSION['role'] === 'admin') {
     <section id="content" class="home-section">
         <nav class="navbar navbar-light bg-light d-flex mt-5">
         <h3 class="failedList ms-5">Failed Examiner List</h3>
-            <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantExaminers.php">All Examiner</a>
-            <a class="btnSearch btn btn-outline-success me-3 mb-3" href="applicantExamPass.php">Pass Examiner</a>
+            <a class="btnSearch btn btn-outline-success mb-3" href="applicantExaminers.php">All Examiner</a>
+            <a class="btnSearch btn btn-outline-success mb-3" href="applicantExamPass.php">Pass Examiner</a>
 
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">

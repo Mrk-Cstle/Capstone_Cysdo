@@ -291,6 +291,10 @@ if ($result) {
     left: 0;
   }
 
+  .side_icon {
+    font-size: 20px;
+  }
+
   @media screen and (max-width: 779px) {
     .side-bar {
       display: block;
@@ -356,6 +360,9 @@ if ($result) {
       margin-left: 10px;
     }
 
+    .side_icon {
+      font-size: 16px;
+    }
   }
 
   @media screen and (max-width: 1831px) {
@@ -526,7 +533,7 @@ if ($result) {
     <div class="menu" id="menu-side">
       <div class="item fontWeight">
         <a href="adminHome.php">
-          <i class="fas fa-desktop side_icon"></i>
+          <i class="bx bxs-dashboard side_icon"></i>
           <span class="nav_label">Dashboard</span>
         </a>
       </div>
@@ -550,7 +557,7 @@ if ($result) {
       </div>
       <div class="item">
         <a class="sub-btn fontWeight">
-          <i class="fas fa-table side_icon"></i>
+          <i class="bi bi-person-fill-gear side_icon"></i>
           <i class="fas fa-angle-right dropdown"></i>
           <span class="nav_label">Manage Scholar</span>
 
