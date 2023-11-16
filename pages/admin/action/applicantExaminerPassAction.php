@@ -10,12 +10,12 @@ include '../../include/dbConnection.php';
 if (isset($_POST['id']) && isset($_POST['action'])) {
     $applicantId = $_POST['id'];
 
-    $sql = "SELECT registration.*, registration_approval.* ,examination.*
-FROM registration
-JOIN registration_approval ON registration.applicant_id = registration_approval.application_id
-JOIN examination ON examination.action_id = registration_approval.action_id
-
-WHERE examination_id  = $applicantId";
+    $sql = "SELECT registration.*, registration_approval.*, examination.*, registration_requirements.*
+        FROM registration
+        JOIN registration_approval ON registration.applicant_id = registration_approval.application_id
+        JOIN examination ON examination.action_id = registration_approval.action_id
+        JOIN registration_requirements ON registration_requirements.examination_id = examination.examination_id
+        WHERE registration_requirements.examination_id = '$applicantId'";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
@@ -144,6 +144,7 @@ function approve($contactNum1, $contactNum2, $applicant_id, $lastName, $firstNam
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     mysqli_query($conn, "UPDATE examination SET requirements_status = 'Approve'  WHERE examination_id = '$applicantId'");
+    mysqli_query($conn, "UPDATE registration_requirements SET req_status = 'Approve'  WHERE examination_id = '$applicantId'");
 
 
     $insertQuery = "INSERT INTO scholar (contact_num1,contact_num2, applicant_id,last_name, first_name,middle_name, full_name, user, password, gender,  voter, full_address, barangay, course, school_address, school_name, current_yr ) VALUES ('$contactNum1', '$contactnum2','$applicant_id', '$lastName', '$firstName', '$middleName', '$fullName','$user', '$hashedPassword', '$gender', '$voter', '$full_address', '$barangay' , '$course', '$school_address', '$school_name', '$current_yr')";
@@ -217,6 +218,7 @@ function decline($contactNum1, $contactNum2, $fullName, $user)
     $action = "failed";
     try {
         mysqli_query($conn, "UPDATE examination SET requirements_status = 'Failed'  WHERE examination_id = '$applicantId'");
+        mysqli_query($conn, "UPDATE registration_requirements SET req_status = 'Failed'  WHERE examination_id = '$applicantId'");
 
 
 

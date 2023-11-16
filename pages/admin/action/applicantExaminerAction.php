@@ -122,14 +122,16 @@ function approve($contactNum1, $contactNum2, $fullName, $user)
 
     $applicantId = $_POST['id'];
     $action = $_POST['action'];
-    $text = " We are delighted to inform you " . $fullName . " that you have successfully passed the scholarship examination for the CYSDO Scholarship Program! This is a significant achievement, and we are excited to have you join our scholarship recipients.Your hard work and dedication have paid off, and we believe that your academic journey will be filled with great promise. Congratulations on this remarkable accomplishment! Please stay tuned for further details and instructions regarding the next steps in the scholarship award process. You can keep yourself updated by visiting our official website and following our Facebook page.If you have any questions or need assistance, please feel free to reach out to us. We are here to support you every step of the way.Once again, congratulations on your well-deserved success!  " . "\n\n-CYSDO CSJDM-";
+
+
     $action = "pass";
     try {
         mysqli_query($conn, "UPDATE registration_approval SET exam_status = 'done'  WHERE action_id = '$applicantId'");
         $insertQuery = "INSERT INTO examination (action_id,result ) VALUES ('$applicantId', '$action')";
         $result = mysqli_query($conn, $insertQuery);
         if ($result) {
-
+            $lastInsertID = mysqli_insert_id($conn);
+            $text = "We are delighted to inform you, " . $fullName . ", that you have successfully passed the scholarship examination for the CYSDO Scholarship Program! This is a significant achievement, and we are excited to have you join our scholarship recipients. Your hard work and dedication have paid off, and we believe that your academic journey will be filled with great promise. Congratulations on this remarkable accomplishment! Please stay tuned for further details and instructions regarding the next steps in the scholarship award process. You can keep yourself updated by visiting our official website and following our Facebook page. If you have any questions or need assistance, please feel free to reach out to us. We are here to support you every step of the way. Once again, congratulations on your well-deserved success! Please upload your requirements [here](http://localhost/Capstone_Cysdo/pages/applicant/applicantForm.php?id=" . $lastInsertID . "). \n\n-CYSDO CSJDM-";
             echo "Scholar " . $fullName . " Pass";
 
 

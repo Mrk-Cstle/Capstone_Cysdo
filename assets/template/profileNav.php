@@ -151,7 +151,7 @@ if ($result) {
     margin-bottom: 70px;
   }
 
-  .scholarArchiveList{
+  .scholarArchiveList {
     margin-bottom: 70px;
   }
 
@@ -290,7 +290,7 @@ if ($result) {
   .show-menu {
     left: 0;
   }
-  
+
   @media screen and (max-width: 779px) {
     .side-bar {
       display: block;
@@ -331,7 +331,7 @@ if ($result) {
       justify-content: flex-start;
     }
 
-    #menu-side{
+    #menu-side {
       margin-top: 40px;
     }
 
@@ -419,9 +419,9 @@ if ($result) {
       margin-right: 180px;
     }
 
-    .scholarArchiveList{
-    margin-bottom: 50px;
-    margin-right: 230px;
+    .scholarArchiveList {
+      margin-bottom: 50px;
+      margin-right: 230px;
     }
   }
 
@@ -456,10 +456,10 @@ if ($result) {
       margin-right: 190px;
     }
 
-    .scholarArchiveList{
-    margin-bottom: 50px;
-    margin-right: 130px;
-  }
+    .scholarArchiveList {
+      margin-bottom: 50px;
+      margin-right: 130px;
+    }
   }
 
   @media screen and (max-width: 1527px) {
@@ -498,13 +498,13 @@ if ($result) {
 <body>
 
   <div class="navi-Bar">
-  <div class="header__toggle float-start">
+    <div class="header__toggle float-start">
       <a class="Button_toggle text-black" onclick="toggleNav()"><i class='bx bx-menu' id="header-toggle"></i></a>
     </div>
     <ul class="nav nav-pills">
       <li class="nav-item dropdown">
         <a class="navProfile nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-          <img id="profileImage" src="../../uploads/admin/<?php echo $imageData ?>"class="header__img"><?php echo $_SESSION['user']; ?></a>
+          <img id="profileImage" src="../../uploads/admin/<?php echo $imageData ?>" class="header__img"><?php echo $_SESSION['user']; ?></a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="profile.php">Profile</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -516,7 +516,7 @@ if ($result) {
         </ul>
       </li>
     </ul>
-    
+
   </div>
 
   <div class="side-bar" id="bar-side">
@@ -529,7 +529,7 @@ if ($result) {
           <i class="fas fa-desktop side_icon"></i>
           <span class="nav_label">Dashboard</span>
         </a>
-        </div>
+      </div>
       <div class="item fontWeight">
         <a href="adminChat.php">
           <i class="bi bi-chat-dots-fill side_icon"></i>
@@ -540,8 +540,8 @@ if ($result) {
         <a class="sub-btn fontWeight">
           <i class="fas fa-table side_icon"></i>
           <i class="fas fa-angle-right dropdown"></i>
-         <span class="nav_label">Manage Users</span>
-          
+          <span class="nav_label">Manage Users</span>
+
         </a>
         <div class="sub-menu">
           <a href="addStaff.php" class="sub-item">Manage Staff</a>
@@ -553,7 +553,7 @@ if ($result) {
           <i class="fas fa-table side_icon"></i>
           <i class="fas fa-angle-right dropdown"></i>
           <span class="nav_label">Manage Scholar</span>
-          
+
         </a>
         <div class="sub-menu">
           <a href="scholar.php" class="sub-item">Scholar List</a>
@@ -568,7 +568,7 @@ if ($result) {
           <i class="bi bi-person-lines-fill side_icon"></i>
           <i class="fas fa-angle-right dropdown"></i>
           <span class="nav_label">Manage Applicants</span>
-          
+
         </a>
         <div class="sub-menu">
           <a href="applicantList.php" class="sub-item">
@@ -579,9 +579,13 @@ if ($result) {
             <i class="bi bi-person-lines-fill"></i>
             Step 2 </br>List of Examiners
           </a>
+          <a href="applicantExamPass.php" class="sub-item">
+            <i class="bi bi-person-lines-fill"></i>
+            Step 3 </br>List of Pass Examiner
+          </a>
           <a href="applicantScholar.php" class="sub-item">
             <i class="bi bi-person-lines-fill"></i>
-            Step 3 </br>List of New Scholar
+            Step 4 </br>List of New Scholar
           </a>
         </div>
       </div>
@@ -611,42 +615,42 @@ if ($result) {
     });
   </script>
 
-<script>
+  <script>
     /*==================== SHOW NAVBAR ====================*/
     const showMenu = (headersToggle, navbarId) => {
       const toggleBtn = document.getElementById(headersToggle),
         nav = document.getElementById(navbarId)
 
-        // Validate that variables exist
+      // Validate that variables exist
       if (headersToggle && navbarId) {
         toggleBtn.addEventListener('click', () => {
-            // We add the show-menu class to the div tag with the nav__menu class
+          // We add the show-menu class to the div tag with the nav__menu class
           nav.classList.toggle('show-menu')
-            // change icon
+          // change icon
           toggleBtn.classList.toggle('bx-x')
-          })
-        }
+        })
+      }
     }
     showMenu('header-toggle', 'bar-side')
   </script>
 
-<script>
+  <script>
     function toggleNav() {
-    var sidenav = document.querySelector('.side-bar');
-    var content = document.querySelector('.content');
-    sidenav.style.left = (sidenav.style.left === '0px') ? '-250px' : '0';
-    content.style.marginLeft = (content.style.marginLeft === '250px') ? '0' : '250px';
+      var sidenav = document.querySelector('.side-bar');
+      var content = document.querySelector('.content');
+      sidenav.style.left = (sidenav.style.left === '0px') ? '-250px' : '0';
+      content.style.marginLeft = (content.style.marginLeft === '250px') ? '0' : '250px';
 
-    if (headersToggle && navbarId) {
+      if (headersToggle && navbarId) {
         toggleBtn.addEventListener('click', () => {
-            // We add the show-menu class to the div tag with the nav__menu class
+          // We add the show-menu class to the div tag with the nav__menu class
           nav.classList.toggle('show-menu')
-            // change icon
+          // change icon
           toggleBtn.classList.toggle('bx-x')
-          })
-        }
-}
-</script>
+        })
+      }
+    }
+  </script>
 
 </body>
 

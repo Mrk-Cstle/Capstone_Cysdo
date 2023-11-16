@@ -57,12 +57,10 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['firstName']) . '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['middleName']) . '</td>';
         $tableHTML .= '<td>';
-        if ($row['requirements_status'] == null) {
-            $tableHTML .=   '<a class="resetPassword btn btn-sm btn-success" onclick="sendAction(\'' . $row['examination_id'] . '\', \'approve\')">' . ' Approve to Scholar</a>' . ' || ' . '<a class="resetPassword btn btn-sm btn-danger" onclick="sendAction(\'' . $row['examination_id'] . '\', \'denied\')">' . ' Failed  Requirements</a>' . ' || ' .  '<a class="resetPassword btn btn-sm btn-dark" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">View Applicant Detail</a>';
-        } else {
-            $tableHTML .=   '<a class="resetPassword btn btn-sm btn-success mb-2 me-2" href="applicantView.php?id=' . htmlspecialchars($row['applicant_id']) . '">View</a>';
-            $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger mb-2" data-applicant-id="' . htmlspecialchars($row['applicant_id']) . '">Delete</button>';
-        }
+
+        $tableHTML .=   '<a class="resetPassword btn btn-sm btn-success mb-2 me-2" href="applicantRequirementsView.php?id=' . htmlspecialchars($row['examination_id']) . '">View</a>';
+        $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger mb-2" data-applicant-id="' . htmlspecialchars($row['applicant_id']) . '">Delete</button>';
+
 
         $tableHTML .= '</td>';
         $tableHTML .= '</tr>';
