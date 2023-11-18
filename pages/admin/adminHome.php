@@ -195,7 +195,7 @@ include 'include/session.php'; ?>
                                     echo $totalScholar->num_rows;
 
                                     ?></h3>
-                            <p>Total No. of Scholars</p>
+                            <p>Number of Scholars</p>
                         </span>
                     </li>
 
@@ -221,16 +221,40 @@ include 'include/session.php'; ?>
                     </li>
                 </ul>
                 <ul class="box-info">
-                    <li class="box-6">
-                        <i class="bx bx bi-arrow-repeat" id="bx-2"></i>
+                    <li class="box-1">
+                        <i class='bx bx bi-person-check-fill' id="bx-1"></i>
+                        <span class="text">
+                            <h3> <?php
+                                    echo $totalScholar->num_rows;
+
+                                    ?></h3>
+                            <p>Number of Renewed</p>
+                        </span>
+                    </li>
+
+                    <li class="box-4">
+                        <i class="bx bx bi-people-fill" id="bx-1"></i>
+                        <span class="text">
+                            <h3><?php
+                                echo $totalApplicant->num_rows;
+
+                                ?></h3>
+                            <p>Number of Unrenewed</p>
+                        </span>
+                    </li>
+                    <li class="box-4">
+                        <i class="bx bx bi-person-fill-check" id="bx-1"></i>
                         <span class="text">
                             <h3><?php
                                 echo $totalRenewalProcess->num_rows;
 
                                 ?></h3>
-                            <p>Number of Renewal</p>
+                            <p>Number of Unprocessed Renewal</p>
                         </span>
                     </li>
+                </ul>
+                <ul class="box-info">
+
                     <li class="box-3">
                         <i class="bx bx bi-people-fill" id="bx-2"></i>
                         <span class="text">
@@ -249,6 +273,16 @@ include 'include/session.php'; ?>
 
                                 ?></h3>
                             <p>Number of for Release Scholar</p>
+                        </span>
+                    </li>
+                    <li class="box-6">
+                        <i class="bx bx bi-arrow-repeat" id="bx-2"></i>
+                        <span class="text">
+                            <h3><?php
+                                echo $totalArchive->num_rows;
+
+                                ?></h3>
+                            <p>Number of Archive Scholar</p>
                         </span>
                     </li>
                 </ul>
@@ -322,7 +356,7 @@ include 'include/session.php'; ?>
                         <div class="container-1">
                             <span class="text">
 
-                                <h5 class="toggle-no quotaVal">Quota Set : <?php echo $quota ?></h5>
+                                <h5 class="toggle-no quotaVal">Applicant Quota Set : <?php echo $quota ?></h5>
                                 <div class="col-md-10 ms-2">
                                     <div class="toggle-text form-group">
                                         <label class="control-label bold font-xs"></label>

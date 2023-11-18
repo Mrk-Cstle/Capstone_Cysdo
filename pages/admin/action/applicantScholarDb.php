@@ -17,11 +17,12 @@ if (!empty($searchQuery)) {
 
 
 $query =
-    "SELECT registration.*, registration_approval.* ,examination.*
-FROM registration
-JOIN registration_approval ON registration.applicant_id = registration_approval.application_id
-JOIN examination ON examination.action_id = registration_approval.action_id
-WHERE examination.requirements_status = 'Approve'
+    "SELECT registration.*, registration_approval.*, examination.*, registration_requirements.*
+        FROM registration
+        JOIN registration_approval ON registration.applicant_id = registration_approval.application_id
+        JOIN examination ON examination.action_id = registration_approval.action_id
+        JOIN registration_requirements ON registration_requirements.examination_id = examination.examination_id
+WHERE registration_requirements.req_status = 'Approve'
   $searchCondition
     ORDER BY registration.applicant_id ASC LIMIT $offset, $pageSize";
 

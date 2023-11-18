@@ -42,7 +42,9 @@ if (mysqli_num_rows($result) > 0) {
 
         $tableHTML .= '<td>';
         if ($row['result'] === 'pass') {
-            $tableHTML .= '<span class="badge bg-success">' . $row['result'] . '</span>';
+            $tableHTML .= '<span class="badge bg-success">Passed</span>';
+        } else {
+            $tableHTML .= '<span class="badge bg-danger">' . $row['result'] . '</span>';
         }
         $tableHTML .= '</td>';
         $tableHTML .= '<td>';

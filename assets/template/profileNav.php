@@ -566,8 +566,8 @@ if ($result) {
           <a href="scholar.php" class="sub-item">Scholar List</a>
           <a href="scholarArchive.php" class="sub-item">Scholar Archive List</a>
           <a href="renewalList.php" class="sub-item">Renewal Process</a>
-          <a href="renewalAward.php" class="sub-item">Cash Allowance</a>
-
+          <a href="renewalAward.php" class="sub-item">Cash Allowance(Old)</a>
+          <a href="renewalAwardNew.php" class="sub-item">Cash Allowance(New)</a>
         </div>
       </div>
       <div class="item">

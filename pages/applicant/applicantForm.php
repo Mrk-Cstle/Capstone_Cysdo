@@ -87,7 +87,7 @@ if (isset($_GET['id'])) {
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="row">
+                                    <div class="row">
                                         <div class="col-md-8 col-sm-9 input-box">
                                             <div class="form-group"><input type="hidden" class="form-control" name="birth" id="birth" value="">
                                                 <label class="control-label bold font-xs">Birth Certificate <strong class="text-danger ms-1">*</strong></label>
@@ -216,16 +216,16 @@ if (isset($_GET['id'])) {
                                             <div class="form-group"><input type="hidden" class="form-control" name="letter-of-intent" id="letter-of-intent" value="">
                                                 <label class="control-label bold font-xs">Letter of Intent <strong class="text-danger ms-1">*</strong></label>
                                                 <input type="file" class="form-control" name="letter-of-intent" id="letter-of-intent" required>
-                                            </div> -->
-                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $examination_id ?>','applicantForm')">Submit</button>
+                                            </div>
+                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $examination_id ?>','applicantForm')">Submit</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        </form>
                     </div>
                 </div>
-                </form>
             </div>
-        </div>
-        </div>
         </div>
     </section>
 
