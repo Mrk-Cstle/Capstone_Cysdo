@@ -16,7 +16,7 @@ if (!empty($searchQuery)) {
 }
 
 $query =
-    "SELECT registration.*, registration_approval.*, examination.*
+    "SELECT registration.*, registration_approval.*, examination.*, registration_requirements.*
 FROM registration
 JOIN registration_approval ON registration.applicant_id = registration_approval.application_id
 JOIN examination ON examination.action_id = registration_approval.action_id
@@ -47,11 +47,11 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '</td>';
         $tableHTML .= '<td>';
         if ($row['req_status'] == 'Pending') {
-            $tableHTML .= '<span class="badge bg-warning">Pending Requirements</span>';
-        } else if ($row['req_status'] === 'Approve') {
-            $tableHTML .= '<span class="badge bg-success">' . $row['req_status'] . '</span>';
+            $tableHTML .= '<span class="badge bg-danger">Pending Requirements</span>';
+        } else if ($row['req_status'] === 'Uploaded') {
+            $tableHTML .= '<span class="badge bg-warning">For Review</span>';
         } else {
-            $tableHTML .= '<span class="badge bg-danger">' . $row['req_status'] . '</span>';
+            $tableHTML .= '<span class="badge bg-success">' . $row['req_status'] . '</span>';
         }
         $tableHTML .= '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['lastName']) . '</td>';
