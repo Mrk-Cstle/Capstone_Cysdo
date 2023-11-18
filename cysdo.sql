@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 05:47 PM
+-- Generation Time: Nov 18, 2023 at 03:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -185,8 +185,8 @@ CREATE TABLE `examination` (
 --
 
 INSERT INTO `examination` (`examination_id`, `result`, `requirements_status`, `action_id`) VALUES
-(100, 'pass', NULL, 137),
-(101, 'pass', 'Approve', 138);
+(101, 'pass', 'Failed', 138),
+(102, 'pass', 'Approve', 139);
 
 -- --------------------------------------------------------
 
@@ -199,6 +199,25 @@ CREATE TABLE `examination_requirements` (
   `examination_id` int(11) NOT NULL,
   `requirement_actions` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newscholar_award`
+--
+
+CREATE TABLE `newscholar_award` (
+  `scholar_release_id` int(11) NOT NULL,
+  `scholar_id` int(11) NOT NULL,
+  `newrelease_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `newscholar_award`
+--
+
+INSERT INTO `newscholar_award` (`scholar_release_id`, `scholar_id`, `newrelease_status`) VALUES
+(1, 48, 0);
 
 -- --------------------------------------------------------
 
@@ -293,7 +312,7 @@ CREATE TABLE `registration_approval` (
 INSERT INTO `registration_approval` (`action_id`, `application_id`, `action_type`, `exam_status`, `date`) VALUES
 (137, 124, 'approve', 'done', '2023-11-17 00:18:54'),
 (138, 125, 'approve', 'done', '2023-11-17 00:26:30'),
-(139, 126, 'approve', NULL, '2023-11-17 00:36:15');
+(139, 126, 'approve', 'done', '2023-11-17 00:36:15');
 
 -- --------------------------------------------------------
 
@@ -331,7 +350,8 @@ CREATE TABLE `registration_requirements` (
 --
 
 INSERT INTO `registration_requirements` (`requirements_id`, `examination_id`, `image2x2`, `req_status`) VALUES
-(17, 101, 'applicantForm_101.jpg', 'Approve');
+(17, 101, 'applicantForm_101.jpg', 'Failed'),
+(18, 102, 'applicantForm_102.jpg', 'Approve');
 
 -- --------------------------------------------------------
 
@@ -476,7 +496,8 @@ INSERT INTO `scholar` (`scholar_id`, `image`, `scholar_status`, `scholar_award_s
 (18, '', '', '', '', 'asd', '$2y$10$L5Amwznv595EQR9RDPrNYuO4xXN37r1EgLZEMNFhZqaWX3jt0JQem', 76, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 0, 'male', 'yes', '123123123', '123123123', '', 'Assumption', '', '', '', 'castillo.markdavid64@gmail.com', 'asdasdad', 0, 'ALS Graduate', '', 'qweas', 'dasdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-11-16'),
 (19, '', '', '', '', '', '$2y$10$MDHQKpsjtPHxCV9eHdZr5O8v0quYj4mlPSZpUr2whQl8B.8YScNL2', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-17'),
 (26, '', '', '', '', 'Castillo', '$2y$10$PZiUxHvpVUhjKoH5CDXH6eXUOLGgFljlqQ14e5eWiYU1iignSd8li', 96, 'Castillo, asda sdasdasdas', 'Castillo', 'asda', 'sdasdasdas', 0, 'male', 'yes', '123123123', '123123123', '', 'Assumption', '', '', '', '', 'asdasdad', 0, 'ALS Graduate', '', 'qweas', 'dasdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-17'),
-(34, '', '', '', '', 'qweqdasd', '$2y$10$K9mF37tJAR2cF8q4wcUw1OEPo45LDqYjBTmCAXVKBgCRVYMv0VxiS', 125, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', 0, 'male', 'yes', '1123123', 'castillo.markdavid64', 'asdasd  asdasd  Bagong Buhay I', 'Bagong Buhay I', '', '', '', '', 'qwe', 0, 'Grade 12', '', 'qwe', 'qwe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-17');
+(34, '', '', '', '', 'qweqdasd', '$2y$10$K9mF37tJAR2cF8q4wcUw1OEPo45LDqYjBTmCAXVKBgCRVYMv0VxiS', 125, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', 0, 'male', 'yes', '1123123', 'castillo.markdavid64', 'asdasd  asdasd  Bagong Buhay I', 'Bagong Buhay I', '', '', '', '', 'qwe', 0, 'Grade 12', '', 'qwe', 'qwe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-17'),
+(48, '', '', '', '', 'dfg', '$2y$10$JgAhRMuh5vxKTWoDUIfwW.Rff3Mg1x52up20WgS5bKdJa4hlL88LS', 126, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', 0, 'male', 'yes', '1123123', 'castillo.markdavid64', 'asdasd  asdasd  Bagong Buhay I', 'Bagong Buhay I', '', '', '', '', 'qwe', 0, 'Grade 12', '', 'qwe', 'qwe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-18');
 
 -- --------------------------------------------------------
 
@@ -636,6 +657,13 @@ ALTER TABLE `examination_requirements`
   ADD KEY `FK_Examination_Action` (`examination_id`);
 
 --
+-- Indexes for table `newscholar_award`
+--
+ALTER TABLE `newscholar_award`
+  ADD PRIMARY KEY (`scholar_release_id`),
+  ADD KEY `FK_NewScholar` (`scholar_id`);
+
+--
 -- Indexes for table `registration`
 --
 ALTER TABLE `registration`
@@ -744,13 +772,19 @@ ALTER TABLE `chat_messages`
 -- AUTO_INCREMENT for table `examination`
 --
 ALTER TABLE `examination`
-  MODIFY `examination_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `examination_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `examination_requirements`
 --
 ALTER TABLE `examination_requirements`
   MODIFY `exam_action_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `newscholar_award`
+--
+ALTER TABLE `newscholar_award`
+  MODIFY `scholar_release_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `registration`
@@ -774,7 +808,7 @@ ALTER TABLE `registration_control`
 -- AUTO_INCREMENT for table `registration_requirements`
 --
 ALTER TABLE `registration_requirements`
-  MODIFY `requirements_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `requirements_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `renewal`
@@ -804,7 +838,7 @@ ALTER TABLE `renewal_process`
 -- AUTO_INCREMENT for table `scholar`
 --
 ALTER TABLE `scholar`
-  MODIFY `scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -833,6 +867,12 @@ ALTER TABLE `examination`
 --
 ALTER TABLE `examination_requirements`
   ADD CONSTRAINT `FK_Examination_Action` FOREIGN KEY (`examination_id`) REFERENCES `examination` (`examination_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `newscholar_award`
+--
+ALTER TABLE `newscholar_award`
+  ADD CONSTRAINT `FK_NewScholar` FOREIGN KEY (`scholar_id`) REFERENCES `scholar` (`scholar_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `registration_approval`
