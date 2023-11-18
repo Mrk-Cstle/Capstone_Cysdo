@@ -50,7 +50,15 @@ if (isset($_GET['id'])) {
     <title>Application Form</title>
 
 </head>
-
+<style>
+    .profile-pic img {
+        float: none;
+        margin: 0;
+        width: 250px;
+        height: 250px;
+        border-radius: 50% !important;
+    }
+</style>
 <body>
     <div class="container">
         <div class="profileBar">
