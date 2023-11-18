@@ -88,7 +88,7 @@ if (isset($_GET['id'])) {
                                             <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog" value="">
                                                 <label class="control-label bold font-xs mt-3">Certificate of Grades</label>
                                             </div>
-                                            <a href="../uploads/applicant/<?php echo $image2x2 ?>" data-lightbox="Renewal" data-title="Certificate of Grades"> <input type="button" class="btn btn-info btn-md ms-5" name="user" id="user" value="View"></a>
+                                            <a href="../../uploads/applicant/requirements/<?php echo $image2x2 ?>" data-lightbox="Renewal" data-title="Certificate of Grades"> <input type="button" class="btn btn-info btn-md ms-5" name="user" id="user" value="View"></a>
                                         </div>
                                         </br>
                                     </div>

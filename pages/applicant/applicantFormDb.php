@@ -14,7 +14,7 @@ function handleFileUpload($fileInput,  $id, $action)
 {
     if (!empty($fileInput['tmp_name'])) {
 
-        $uploadDir = "../../uploads/scholar/renewal/";
+        $uploadDir = "../../uploads/applicant/requirements/";
 
         $extension = pathinfo($fileInput['name'], PATHINFO_EXTENSION);
         $newFileName = $action . "_"  . $id . "." . $extension;

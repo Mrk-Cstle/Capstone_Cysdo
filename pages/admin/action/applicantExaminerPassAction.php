@@ -39,7 +39,7 @@ if (isset($_POST['id']) && isset($_POST['action'])) {
 
         if ($_POST["action"] == "approve") {
 
-            approve($contactNum1, $contactNum2, $applicant_id, $lastName, $firstName, $middleName, $fullName, $user);
+            approve($contactNum1, $contactNum2, $applicant_id, $lastName, $firstName, $middleName, $fullName);
         }
         // else if ($_POST["action"] == "edit") {
         //     edit();
@@ -119,7 +119,7 @@ function email($message, $contactNum2, $fullName)
     }
 }
 
-function approve($contactNum1, $contactNum2, $applicant_id, $lastName, $firstName, $middleName, $fullName, $user)
+function approve($contactNum1, $contactNum2, $applicant_id, $lastName, $firstName, $middleName, $fullName)
 {
 
     global $conn;
@@ -135,16 +135,19 @@ function approve($contactNum1, $contactNum2, $applicant_id, $lastName, $firstNam
     $school_address = $globalData['schoolAddress'];
     $school_name = $globalData['schoolName'];
     $current_yr = $globalData['yearLevel'];
+    $email = $globalData['contactNum2'];
 
     $applicantId = $_POST['id'];
 
-    $text = " We are pleased to announce that you " . $fullName . " that you have been selected as a scholar by CYSDO. This is in recognition of your excellent academic achievements and dedication. This letter marks the beginning of your scholarship journey with us. In the upcoming weeks, we will provide you with more information about your scholarship benefits and any necessary announcement. Please bear with us as we finalize these details. If you have any questions or need assistance, please feel free to contact us . Additionally, we encourage you to connect with us on our official Facebook page: City Youth and Sports Development Office - CSJDM . You can send us a message there if you have any questions or if there is anything specific you like to discuss. Congratulations on this achievement, and we look forward to supporting your academic pursuits as an official scholar.  " . "\n\n-CYSDO CSJDM-";
-    $user = $lastName;
+
+    $user = $email;
     $password = $contactNum1;
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+    $text = " We are pleased to announce that you " . $fullName . " that you have been selected as a scholar by CYSDO. This is in recognition of your excellent academic achievements and dedication. This letter marks the beginning of your scholarship journey with us. In the upcoming weeks, we will provide you with more information about your scholarship benefits and any necessary announcement. Please bear with us as we finalize these details. If you have any questions or need assistance, please feel free to contact us . Additionally, we encourage you to connect with us on our official Facebook page: City Youth and Sports Development Office - CSJDM . You can send us a message there if you have any questions or if there is anything specific you like to discuss. Congratulations on this achievement, and we look forward to supporting your academic pursuits as an official scholar. You can now access your scholar account using the following credentials: User (" . $user . ") and Password (" . $password . ")" . "\n\n-CYSDO CSJDM-";
+
     mysqli_query($conn, "UPDATE examination SET requirements_status = 'Approve'  WHERE examination_id = '$applicantId'");
-    mysqli_query($conn, "UPDATE registration_requirements SET req_status = 'Approve'  WHERE examination_id = '$applicantId'");
+    mysqli_query($conn, "UPDATE registration_requirements SET req_status = 'Pending'  WHERE examination_id = '$applicantId'");
 
 
     $insertQuery = "INSERT INTO scholar (contact_num1,contact_num2, applicant_id,last_name, first_name,middle_name, full_name, user, password, gender,  voter, full_address, barangay, course, school_address, school_name, current_yr ) VALUES ('$contactNum1', '$contactnum2','$applicant_id', '$lastName', '$firstName', '$middleName', '$fullName','$user', '$hashedPassword', '$gender', '$voter', '$full_address', '$barangay' , '$course', '$school_address', '$school_name', '$current_yr')";
@@ -154,52 +157,18 @@ function approve($contactNum1, $contactNum2, $applicant_id, $lastName, $firstNam
     if ($result) {
         $lastInsertID = mysqli_insert_id($conn);
         $action = 'new_scholar';
-        $insertRenewalMergeQuery = "INSERT INTO renewal (scholar_id, semester) VALUES ('$lastInsertID','$action')";
+        $insertRenewalMergeQuery = "INSERT INTO newscholar_award (scholar_id) VALUES ('$lastInsertID')";
 
         $results = mysqli_query($conn, $insertRenewalMergeQuery);
         if ($results) {
 
-            $sql = "SELECT renewal.*, scholar.*
-        FROM renewal
-        JOIN scholar ON scholar.scholar_id = renewal.scholar_id
-       
-        WHERE renewal.scholar_id = '$lastInsertID'";
-
-            $result = mysqli_query($conn, $sql);
-
-            if ($result) {
-                // Step 3: Check if the row exists
-                if (mysqli_num_rows($result) > 0) {
-                    // Step 4: Fetch the row
-                    $row = mysqli_fetch_assoc($result);
-
-                    // Step 5: Access the values of the row
-                    extract($row);
-                    // ...
-
-                    // Process the retrieved row as needed
-                    // For example, you can display the values or perform any other operations
-
-                    // Free the result set
-                    mysqli_free_result($result);
-                }
-
-
-                // Process the approval/decline logic here based on the $applicantId and $action
-
-                // Respond with a success message (optional)
-
-            } else {
-                // Respond with an error message if any parameter is missing
-                echo "Error: Missing parameters in the request.";
-            }
-            $insertQuery = "INSERT INTO renewal_award (renewal_id,semester_year ) VALUES ('$renewal_id', '$approve_date')";
-            $result = mysqli_query($conn, $insertQuery);
-            echo "" . $fullName . " Official Scholar";
+            echo "Approved to New Scholar";
 
             send_sms($text, $contactNum1);
 
             email($text, $contactNum2, $fullName);
+        } else {
+            echo "Insert Failed: " . mysqli_error($conn);
         }
 
         unset($_SESSION['globalData']);
