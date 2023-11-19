@@ -47,6 +47,7 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="../../style/addStaff.css">
     <link rel="stylesheet" href="../../style/applicantForm.css">
     <link rel="stylesheet" href="../../style/lightbox.css">
+    <link rel="stylesheet" href="../../node_modules/ldloader/index.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Applicant Form</title>
 
@@ -114,7 +115,7 @@ if (isset($_GET['id'])) {
     <section id="content" class="home-section">
         <h1></h1>
         <div class="container">
-
+            <div class="ldld full z-3"></div>
             <div class="portlet light">
                 <!-- Nav tabs -->
                 <div class="portlet-title tabbable-line">
@@ -124,8 +125,14 @@ if (isset($_GET['id'])) {
                     </div>
 
                     <p id="response"></p>
-                    <a class="resetPassword btn btn-sm btn-success me-3 mt-3" onclick="sendAction('<?php echo $examination_id ?>', 'approve')">Approve to Scholar</a>
-                    <a class="resetPassword btn btn-sm btn-danger mt-3" onclick="sendAction('<?php echo $examination_id ?>', 'denied')">Failed Requirements</a>
+                    <?php
+                    if ($req_status !== 'Pending') {
+                    } else { ?>
+                        <a class="resetPassword btn btn-sm btn-success me-3 mt-3" onclick="sendAction('<?php echo $examination_id ?>', 'approve')">Approve to Scholar</a>
+                        <a class="resetPassword btn btn-sm btn-danger mt-3" onclick="sendAction('<?php echo $examination_id ?>', 'denied')">Failed Requirements</a>
+                    <?php }
+                    ?>
+
                     <ul class="portletNavi nav nav-tabs justify-content-end" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="applicant" data-bs-toggle="tab" data-bs-target="#applicant" type="button" role="tab" aria-controls="ap-1" aria-selected="true">Applicant Form</button>
@@ -291,12 +298,16 @@ if (isset($_GET['id'])) {
     </section>
 
     <script src="./script/lightbox-plus-jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js"></script>
+    <script src="../../node_modules/ldloader/index.js"></script>
     <script script script script script script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function sendAction(applicantId, action) {
-            // Create an AJAX request
+            new ldLoader({
+                root: ".ldld.full"
+            }).on();
             $.ajax({
                 type: 'POST', // You can use 'GET' if preferred
                 url: 'action/applicantExaminerPassAction.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
@@ -305,7 +316,9 @@ if (isset($_GET['id'])) {
                     action: action
                 },
                 success: function(response) {
-                    // Handle the response from the server if needed
+                    new ldLoader({
+                        root: ".ldld.full"
+                    }).off();
                     $('#response').text(response);
                     setTimeout(function() {
                         $('#response').text('');

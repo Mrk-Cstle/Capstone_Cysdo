@@ -49,6 +49,7 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="../../style/addStaff.css">
     <link rel="stylesheet" href="../../style/scholarProfile.css">
     <link rel="stylesheet" href="../../style/lightbox.css">
+    <link rel="stylesheet" href="../../node_modules/ldloader/index.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Application Form</title>
 
@@ -106,9 +107,10 @@ if (isset($_GET['id'])) {
             margin-left: 0px;
             font-size: 14px;
         }
+
         .actionBtn {
-        margin-left: 0;
-        margin-bottom: 10px;
+            margin-left: 0;
+            margin-bottom: 10px;
         }
     }
 
@@ -123,8 +125,8 @@ if (isset($_GET['id'])) {
 
     @media screen and (max-width: 1333px) {
         .actionBtn {
-        margin-left: 50%;
-        margin-bottom: 10px;
+            margin-left: 50%;
+            margin-bottom: 10px;
         }
     }
 
@@ -134,7 +136,6 @@ if (isset($_GET['id'])) {
             margin-bottom: 10px;
         }
     }
-
 </style>
 
 <body>
@@ -148,6 +149,7 @@ if (isset($_GET['id'])) {
     <section id="content" class="home-section">
 
         <div class="container">
+            <div class="ldld full z-3"></div>
             <div class="profileBar">
                 <div class="portlet light profileBar-portlet">
                     <div class="profile-pic">
@@ -1700,6 +1702,8 @@ if (isset($_GET['id'])) {
         </div>
     </section>
     <script src="./script/lightbox-plus-jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js"></script>
+    <script src="../../node_modules/ldloader/index.js"></script>
     <!--script for image update-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -1768,7 +1772,9 @@ if (isset($_GET['id'])) {
         $(document).ready(function() {
             $("#updateAccount").submit(function(event) {
                 event.preventDefault(); // Prevent the default form submission
-
+                new ldLoader({
+                    root: ".ldld.full"
+                }).on();
                 var formData = new FormData(this); // Create a FormData object to handle file upload
 
                 $.ajax({
@@ -1780,6 +1786,9 @@ if (isset($_GET['id'])) {
                     success: function(response) {
                         // Handle the success response here
                         $('#response').text(response);
+                        new ldLoader({
+                            root: ".ldld.full"
+                        }).off();
 
 
 
@@ -1843,6 +1852,9 @@ if (isset($_GET['id'])) {
     <script>
         function sendAction(applicantId, action) {
             // Create an AJAX request
+            new ldLoader({
+                root: ".ldld.full"
+            }).on();
             $.ajax({
                 type: 'POST', // You can use 'GET' if preferred
                 url: 'action/scholarViewAction.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
@@ -1853,6 +1865,9 @@ if (isset($_GET['id'])) {
                 success: function(response) {
                     // Handle the response from the server if needed
                     $('#response').text(response);
+                    new ldLoader({
+                        root: ".ldld.full"
+                    }).off();
                     // For example, you can display a success message or update the UI
                     if (action === 'approve') {
                         alert('Applicant approved successfully!');

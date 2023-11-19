@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style/managePost.css">
     <title>Manage Post</title>
-
+    <link rel="stylesheet" href="../../node_modules/ldloader/index.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
@@ -50,6 +50,7 @@
     }
     ?>
     <section class="home-section">
+        <div class="ldld full z-3"></div>
         <form id="postForm" method="POST" action="postUpdateDb.php">
             <label for="postText" class="bold">Post Announcements</label><br>
             <textarea id="postText" name="postText" rows="5" cols="50"></textarea><br>
@@ -190,6 +191,8 @@
 
 
     </section>
+    <script src="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js"></script>
+    <script src="../../node_modules/ldloader/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
@@ -198,7 +201,9 @@
                 e.preventDefault();
                 var postText = $('#postText').val();
                 var category = $('#category').val();
-
+                new ldLoader({
+                    root: ".ldld.full"
+                }).on();
                 // Perform your Ajax request here to handle the submit functionality
                 $.ajax({
                     type: 'POST',
@@ -211,7 +216,9 @@
                     success: function(response) {
                         // Handle the response from the server
                         console.log('Post submitted successfully');
-
+                        new ldLoader({
+                            root: ".ldld.full"
+                        }).off();
                         // Add the new post to the DOM dynamically
                         var postFormat = '<div class="postFormat ' + category + '"><section><h3>Uploader: ' + response.uploader + '</h3><h3>Upload Date: ' + response.uploadDate + '</h3><h3>Category: ' + response.category + '</h3></section><main><p>' + response.announcement + '</p></main><footer><a class="aBtn edit-btn btn btn-primary" href="#" data-id="' + response.uploadId + '">Edit</a><a class="aBtn delete-btn btn btn-danger" href="#" data-id="' + response.uploadId + '">Delete</a></footer></div>';
                         $('#' + category + 'AnnouncementsContainer').prepend(postFormat);

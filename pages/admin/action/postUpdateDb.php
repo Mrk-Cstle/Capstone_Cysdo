@@ -8,6 +8,44 @@ use PHPMailer\PHPMailer\Exception;
 
 require '../../../vendor/autoload.php';
 
+function email($message, $contactNum2, $fullName)
+{
+
+
+
+    // Create a new PHPMailer instance
+    $mail = new PHPMailer(true);
+
+    try {
+        // Server settings
+        $mail->isSMTP(); // Set mailer to use SMTP
+        $mail->Host       = 'smtp.hostinger.com'; // Specify your SMTP server
+        $mail->SMTPAuth   = true; // Enable SMTP authentication
+        $mail->Username   = 'csjdm@cysdo-ceap.online'; // SMTP username
+        $mail->Password   = 'Cysdo-ceap1'; // SMTP password
+        $mail->SMTPSecure = 'tls'; // Enable TLS encryption, 'ssl' also accepted
+        $mail->Port       = 587; // TCP port to connect to
+
+        // Sender information
+        $mail->setFrom('csjdm@cysdo-ceap.online', 'City Youth and Sports Development Office');
+
+        // Recipient
+        $mail->addAddress($contactNum2, $fullName);
+
+        // Content
+        $mail->isHTML(true); // Set email format to HTML
+        $mail->Subject = 'Announcement';
+        $mail->Body    = $message;
+
+        // Send the email
+        $mail->send();
+        echo 'Email has been sent</br>';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}</br>";
+    }
+}
+
+
 $newPost = $_POST['postText'];
 $uploader = $_SESSION['user'];
 $category = $_POST['category']; // Retrieve the category value from the $_POST array
@@ -54,42 +92,4 @@ if (mysqli_query($conn, $uploadQuery)) {
 } else {
     // Handle the case where the insertion fails
     echo "Error inserting post: " . mysqli_error($conn);
-}
-
-
-function email($message, $contactNum2, $fullName)
-{
-
-
-
-    // Create a new PHPMailer instance
-    $mail = new PHPMailer(true);
-
-    try {
-        // Server settings
-        $mail->isSMTP(); // Set mailer to use SMTP
-        $mail->Host       = 'smtp.hostinger.com'; // Specify your SMTP server
-        $mail->SMTPAuth   = true; // Enable SMTP authentication
-        $mail->Username   = 'csjdm@cysdo-ceap.online'; // SMTP username
-        $mail->Password   = 'Cysdo-ceap1'; // SMTP password
-        $mail->SMTPSecure = 'tls'; // Enable TLS encryption, 'ssl' also accepted
-        $mail->Port       = 587; // TCP port to connect to
-
-        // Sender information
-        $mail->setFrom('csjdm@cysdo-ceap.online', 'City Youth and Sports Development Office');
-
-        // Recipient
-        $mail->addAddress($contactNum2, $fullName);
-
-        // Content
-        $mail->isHTML(true); // Set email format to HTML
-        $mail->Subject = 'Announcement';
-        $mail->Body    = $message;
-
-        // Send the email
-        $mail->send();
-        echo 'Email has been sent</br>';
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}</br>";
-    }
 }

@@ -102,7 +102,7 @@
                         </div>
 
                         <div class="input-group mb-3">
-                            <button class="btn btn-lg btn-light w-100 fs-6" href="../../index.php"><small>Go Back</small></button>
+                            <a class="btn btn-lg btn-light w-100 fs-6" href="../../index.php"><small>Go Back</small></a>
                         </div>
                         <?php
                         if (isset($_GET['error']) && $_GET['error'] == 1) {

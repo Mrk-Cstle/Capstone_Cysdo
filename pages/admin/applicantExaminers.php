@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style/addStaff.css">
+    <link rel="stylesheet" href="../../node_modules/ldloader/index.css" />
     <title>Approve Applicants</title>
     <style>
         .hidden-cell {
@@ -19,20 +20,20 @@
 
         @media screen and (max-width: 779px) {
 
-        .btnSearch {
-            padding: 10px;
-            height: 45px;
-            margin-bottom: 8px;
-            margin-left: 10px;
-        }
+            .btnSearch {
+                padding: 10px;
+                height: 45px;
+                margin-bottom: 8px;
+                margin-left: 10px;
+            }
 
-        .searchBar {
-            margin-left: 10px;
-            margin-bottom: 10px;
-            padding: 5px;   
-            width: 250px;
+            .searchBar {
+                margin-left: 10px;
+                margin-bottom: 10px;
+                padding: 5px;
+                width: 250px;
+            }
         }
-    }
     </style>
 </head>
 <?php
@@ -48,10 +49,10 @@ if ($_SESSION['role'] === 'admin') {
 
 
 <body>
-
+    <div class="ldld full z-3"></div>
     <section id="content" class="home-section">
         <nav class="navbar navbar-light bg-light d-flex mt-5">
-        <h3 class="examinersList ms-5">Examiners List</h3>
+            <h3 class="examinersList ms-5">Examiners List</h3>
             <a class="btnSearch btn btn-outline-success mb-3" href="applicantExamPass.php">Pass Examiner</a>
             <a class="btnSearch btn btn-outline-danger mb-3" href="applicantExamFailed.php">Failed Examiner</a>
             <form id="searchForm" class="form-inline m-lg-3">
@@ -86,9 +87,14 @@ if ($_SESSION['role'] === 'admin') {
         <div id="paginationButtons">
             <!-- Pagination buttons will be dynamically populated here -->
         </div>
+        <script src="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js"></script>
+        <script src="../../node_modules/ldloader/index.js"></script>
         <script>
             function sendAction(applicantId, action) {
                 // Create an AJAX request
+                new ldLoader({
+                    root: ".ldld.full"
+                }).on();
                 $.ajax({
                     type: 'POST', // You can use 'GET' if preferred
                     url: 'action/applicantExaminerAction.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
@@ -98,6 +104,9 @@ if ($_SESSION['role'] === 'admin') {
                     },
                     success: function(response) {
                         // Handle the response from the server if needed
+                        new ldLoader({
+                            root: ".ldld.full"
+                        }).off();
                         $('#response').text(response);
                         setTimeout(function() {
                             $('#response').text('');
@@ -105,11 +114,11 @@ if ($_SESSION['role'] === 'admin') {
                         loadTableData(currentPage);
                         // For example, you can display a success message or update the UI
                         if (action === 'pass') {
-                            alert(response);
+                            // alert(response);
                             $('#approveBtn').hide();
                             $('#declineBtn').hide();
                         } else if (action === 'failed') {
-                            alert(response);
+                            // alert(response);
                             $('#approveBtn').hide();
                             $('#declineBtn').hide();
                         }

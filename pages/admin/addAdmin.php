@@ -12,14 +12,15 @@
         .hidden-cell {
             display: none;
         }
+
         .wrapper {
-	        margin: 100px auto;
-	        padding: 30px;
-	        background: #e7e7e7;
-	        border-radius: 5px;
-	        width: 50%;
-	        position: relative;
-	        transition: all 5s ease-in-out;
+            margin: 100px auto;
+            padding: 30px;
+            background: #e7e7e7;
+            border-radius: 5px;
+            width: 50%;
+            position: relative;
+            transition: all 5s ease-in-out;
         }
 
         .overlay {
@@ -28,18 +29,18 @@
 
         @media screen and (max-width: 779px) {
 
-        .btnSearch {
-            padding: 10px;
-            height: 45px;
-            margin-bottom: 8px;
-            margin-left: 10px;
-        }
+            .btnSearch {
+                padding: 10px;
+                height: 45px;
+                margin-bottom: 8px;
+                margin-left: 10px;
+            }
 
-        .searchBar {
-            margin-left: 10px;
-            margin-bottom: 10px;
-            padding: 5px;   
-            width: 250px;
+            .searchBar {
+                margin-left: 10px;
+                margin-bottom: 10px;
+                padding: 5px;
+                width: 250px;
             }
         }
     </style>
@@ -57,7 +58,7 @@ if ($_SESSION['role'] === 'admin') {
 <body>
     <section id="content" class="home-section">
         <nav class="navbar navbar-light bg-light d-flex mt-5">
-        <h3 class="adminList ms-5">Admins</h3>
+            <h3 class="adminList ms-5">Admins</h3>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
@@ -303,270 +304,272 @@ if ($_SESSION['role'] === 'admin') {
                 };
 
                 $.ajax({
-    url: 'action/addAdminDb.php',
-    type: 'POST',
-    data: data,
-    success: function(response) {
+                    url: 'action/addAdminDb.php',
+                    type: 'POST',
+                    data: data,
+                    success: function(response) {
 
-        if (response === 'Inserted Successfully') {
-            $('#response').text(response);
-            addData();
+                        if (response === 'Inserted Successfully') {
+                            $('#response').text(response);
+                            addData();
 
-            $('#btnAdd').prop('disabled', true); // Disable the button temporarily
-            swal({
-                title: "Success!",
-                text: "Inserted Successfully",
-                icon: "success",
-                button: "OK",
-            }).then(function() {
-                $('#btnAdd').prop('disabled', false);
-                $("#lastName").val("");
-                $("#firstName").val("");
-                $("#middleName").val("");
-                $("#position").val("");
-                $("#contactNumber").val("");
-                $("#email").val("");
-                // Enable the button again
+                            $('#btnAdd').prop('disabled', true); // Disable the button temporarily
+                            swal({
+                                title: "Success!",
+                                text: "Inserted Successfully",
+                                icon: "success",
+                                button: "OK",
+                            }).then(function() {
+                                $('#btnAdd').prop('disabled', false);
+                                $("#lastName").val("");
+                                $("#firstName").val("");
+                                $("#middleName").val("");
+                                $("#position").val("");
+                                $("#contactNumber").val("");
+                                $("#email").val("");
+                                // Enable the button again
 
-                // Additional code if needed
-            });
-        } 
-    }
-});
+                                // Additional code if needed
+                            });
+                        }
+                    }
+                });
 
             }
 
 
             function deleteAdmin(adminId, searchQuery) {
-    if (confirm("Are you sure you want to delete this admin record?")) {
-        $.ajax({
-            type: "POST",
-            url: "action/deleteAdmin.php", // Adjust the path to your delete script
-            data: { admin_id: adminId },
-            success: function (data) {
-                // Handle the response from the server
-                alert(data); // You can replace this with your preferred handling method
+                if (confirm("Are you sure you want to delete this admin record?")) {
+                    $.ajax({
+                        type: "POST",
+                        url: "action/deleteAdmin.php", // Adjust the path to your delete script
+                        data: {
+                            admin_id: adminId
+                        },
+                        success: function(data) {
+                            // Handle the response from the server
+                            alert(data); // You can replace this with your preferred handling method
 
-                if (data === "Admin record deleted successfully.") {
-                    // Remove the row from the table without a page refresh
-                    $("#row_" + adminId).remove();
+                            if (data === "Admin record deleted successfully.") {
+                                // Remove the row from the table without a page refresh
+                                $("#row_" + adminId).remove();
 
-                    // Refresh the table data with the current search query
-                    refreshTable(searchQuery);
+                                // Refresh the table data with the current search query
+                                refreshTable(searchQuery);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("AJAX request failed: " + error);
+                        }
+                    });
                 }
-            },
-            error: function (xhr, status, error) {
-                console.error("AJAX request failed: " + error);
             }
-        });
-    }
-}
 
 
             function addData() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
-          }
-        };
-        xhttp.open("GET", "action/addAdminList.php", true);
-        xhttp.send();
-      }
-
-      function loadDoc() {
-        var searchInput = document.getElementById("searchInput");
-        if (searchInput.value === "") {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("tableData").innerHTML = this.responseText;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "action/addAdminList.php", true);
+                xhttp.send();
             }
-          };
-          xhttp.open("GET", "action/addAdminList.php", true);
-          xhttp.send();
-        }
-      }
-      loadDoc();
+
+            function loadDoc() {
+                var searchInput = document.getElementById("searchInput");
+                if (searchInput.value === "") {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("tableData").innerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open("GET", "action/addAdminList.php", true);
+                    xhttp.send();
+                }
+            }
+            loadDoc();
 
 
-function filterTable(searchQuery) {
-  var rows = document.querySelectorAll("#tableData tr");
-  searchQuery = searchQuery.toLowerCase();
+            function filterTable(searchQuery) {
+                var rows = document.querySelectorAll("#tableData tr");
+                searchQuery = searchQuery.toLowerCase();
 
-  rows.forEach(function(row) {
-          var fullName = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
-          if (fullName.includes(searchQuery)) {
-            row.style.display = "table-row";
-          } else {
-            row.style.display = "none";
-          }
-        });
+                rows.forEach(function(row) {
+                    var fullName = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+                    if (fullName.includes(searchQuery)) {
+                        row.style.display = "table-row";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
 
-  // Call loadPage with the search query
-  loadPage(1);
-}
-
-
-function refreshTable(searchQuery = "") {
-    var searchInput = document.getElementById("searchInput").value;
-    var currentPage = getCurrentPage(); // Get the current page from session storage
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
-            // Update the search input with the provided query
-            document.getElementById("searchInput").value = searchQuery;
-
-            // Load the current page after refreshing the table
-            loadPage(currentPage);
-        }
-    };
-    xhttp.open("GET", "action/addAdminList.php?page=" + currentPage + "&searchQuery=" + searchQuery, true);
-    xhttp.send();
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Initialize the table and pagination on page load
-    refreshTable(); // Initially, no search query
-
-    // Event handler for the search form submission
-    var searchForm = document.getElementById("searchForm");
-    searchForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        var searchInput = document.getElementById("searchInput");
-        var searchQuery = searchInput.value;
-        refreshTable(searchQuery); // Refresh the table with the search query
-    });
-
-    // Event handler for the refresh button
-    var refreshButton = document.getElementById("refreshButton");
-    refreshButton.addEventListener("click", function () {
-        refreshTable(); // Refresh the table without clearing the search query
-    });
-});
+                // Call loadPage with the search query
+                loadPage(1);
+            }
 
 
-      function refreshList() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
+            function refreshTable(searchQuery = "") {
+                var searchInput = document.getElementById("searchInput").value;
+                var currentPage = getCurrentPage(); // Get the current page from session storage
 
-            // Reset the pagination to page 1
-            loadPage(1);
-        }
-    };
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+                        // Update the search input with the provided query
+                        document.getElementById("searchInput").value = searchQuery;
 
-    xhttp.open("GET", "action/addAdminList.php", true);
-    xhttp.send();
-}
+                        // Load the current page after refreshing the table
+                        loadPage(currentPage);
+                    }
+                };
+                xhttp.open("GET", "action/addAdminList.php?page=" + currentPage + "&searchQuery=" + searchQuery, true);
+                xhttp.send();
+            }
 
-// Modify the loadPage function to include the search query and page number
-function loadPage(page) {
-  var searchInput = document.getElementById("searchInput");
-  var searchQuery = searchInput.value;
+            document.addEventListener("DOMContentLoaded", function() {
+                // Initialize the table and pagination on page load
+                refreshTable(); // Initially, no search query
 
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("tableData").innerHTML = this.responseText;
-      // Store the current page in localStorage
-      setCurrentPage(page);
-    }
-  };
-  xhttp.open("GET", "action/addAdminList.php?page=" + page + "&searchQuery=" + searchQuery, true);
-  xhttp.send();
-}
+                // Event handler for the search form submission
+                var searchForm = document.getElementById("searchForm");
+                searchForm.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    var searchInput = document.getElementById("searchInput");
+                    var searchQuery = searchInput.value;
+                    refreshTable(searchQuery); // Refresh the table with the search query
+                });
 
-
-
-document.addEventListener("click", function (e) {
-  if (e.target && e.target.classList.contains("pagination-button")) {
-    e.preventDefault();
-    var page = e.target.getAttribute("data-page");
-    loadPage(page); // Load the page
-
-    // Store the current page in localStorage
-    setCurrentPage(page);
-  }
-});
+                // Event handler for the refresh button
+                var refreshButton = document.getElementById("refreshButton");
+                refreshButton.addEventListener("click", function() {
+                    refreshTable(); // Refresh the table without clearing the search query
+                });
+            });
 
 
-// Add this function to initialize pagination when the page loads
-function initializePagination() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("tableData").innerHTML = this.responseText;
-      // Initialize pagination links
-      loadPage(1);
-    }
-  };
-  xhttp.open("GET", "action/addAdminList.php", true);
-  xhttp.send();
-}
+            function refreshList() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
 
-// Call the initializePagination function when the page loads
-document.addEventListener("DOMContentLoaded", function () {
-  initializePagination();
-});
+                        // Reset the pagination to page 1
+                        loadPage(1);
+                    }
+                };
 
-var myNamespace = 'addAdmin';
+                xhttp.open("GET", "action/addAdminList.php", true);
+                xhttp.send();
+            }
 
-// Function to get the current page from session storage
-function getCurrentPage() {
-    var currentPage = sessionStorage.getItem(myNamespace + 'currentPage');
-    return currentPage ? parseInt(currentPage) : 1;
-}
+            // Modify the loadPage function to include the search query and page number
+            function loadPage(page) {
+                var searchInput = document.getElementById("searchInput");
+                var searchQuery = searchInput.value;
 
-// Function to save the current page to session storage
-function setCurrentPage(page) {
-    sessionStorage.setItem(myNamespace + 'currentPage', page);
-}
-
-
-// Add this function to load the current page from localStorage
-function loadCurrentPage() {
-  var currentPage = getCurrentPage();
-  loadPage(currentPage);
-}
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+                        // Store the current page in localStorage
+                        setCurrentPage(page);
+                    }
+                };
+                xhttp.open("GET", "action/addAdminList.php?page=" + page + "&searchQuery=" + searchQuery, true);
+                xhttp.send();
+            }
 
 
-// Add this event listener to handle pagination button clicks and store the current page
-document.addEventListener("click", function (e) {
-  if (e.target && e.target.classList.contains("pagination-button")) {
-    e.preventDefault();
-    var page = e.target.getAttribute("data-page");
-    loadPage(page);
 
-    // Store the current page in localStorage
-    setCurrentPage(page);
-  }
-});
+            document.addEventListener("click", function(e) {
+                if (e.target && e.target.classList.contains("pagination-button")) {
+                    e.preventDefault();
+                    var page = e.target.getAttribute("data-page");
+                    loadPage(page); // Load the page
 
-// Call the loadCurrentPage function to load the current page from localStorage
-loadCurrentPage();
+                    // Store the current page in localStorage
+                    setCurrentPage(page);
+                }
+            });
 
-// Add this function to initialize pagination when the page loads
-function initializePagination() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("tableData").innerHTML = this.responseText;
-      // Initialize pagination links
-      loadCurrentPage(); // Load the current page from localStorage
-    }
-  };
-  xhttp.open("GET", "action/addAdminList.php", true);
-  xhttp.send();
-}
 
-// Call the initializePagination function when the page loads
-document.addEventListener("DOMContentLoaded", function() {
-  initializePagination();
-});
+            // Add this function to initialize pagination when the page loads
+            function initializePagination() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+                        // Initialize pagination links
+                        loadPage(1);
+                    }
+                };
+                xhttp.open("GET", "action/addAdminList.php", true);
+                xhttp.send();
+            }
+
+            // Call the initializePagination function when the page loads
+            document.addEventListener("DOMContentLoaded", function() {
+                initializePagination();
+            });
+
+            var myNamespace = 'addAdmin';
+
+            // Function to get the current page from session storage
+            function getCurrentPage() {
+                var currentPage = sessionStorage.getItem(myNamespace + 'currentPage');
+                return currentPage ? parseInt(currentPage) : 1;
+            }
+
+            // Function to save the current page to session storage
+            function setCurrentPage(page) {
+                sessionStorage.setItem(myNamespace + 'currentPage', page);
+            }
+
+
+            // Add this function to load the current page from localStorage
+            function loadCurrentPage() {
+                var currentPage = getCurrentPage();
+                loadPage(currentPage);
+            }
+
+
+            // Add this event listener to handle pagination button clicks and store the current page
+            document.addEventListener("click", function(e) {
+                if (e.target && e.target.classList.contains("pagination-button")) {
+                    e.preventDefault();
+                    var page = e.target.getAttribute("data-page");
+                    loadPage(page);
+
+                    // Store the current page in localStorage
+                    setCurrentPage(page);
+                }
+            });
+
+            // Call the loadCurrentPage function to load the current page from localStorage
+            loadCurrentPage();
+
+            // Add this function to initialize pagination when the page loads
+            function initializePagination() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+                        // Initialize pagination links
+                        loadCurrentPage(); // Load the current page from localStorage
+                    }
+                };
+                xhttp.open("GET", "action/addAdminList.php", true);
+                xhttp.send();
+            }
+
+            // Call the initializePagination function when the page loads
+            document.addEventListener("DOMContentLoaded", function() {
+                initializePagination();
+            });
         </script>
     </section>
 </body>
