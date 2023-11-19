@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="/node_modules/ldloader/index.css">
+    <title>Loader</title>
+</head>
+<body>
+
+  <div class="ldld full z-3">
+    
+  </div>
+  <!--yung loader dapat nasa pinaka taas yung div para pag nag appear di ka pwede mag click sa labas or di mag eexit hanggat di tapos -->
+  <div class="container mt-5">
+    <button class="load btn btn-info">Example Btn</button>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js"></script>
+<script> src="/node_modules/ldloader/index.js"</script>
+    <script>
+    
+        (new ldLoader({root: ".ldld.full"})).off();
+        
+    </script>
+</body>
+</html>
