@@ -133,6 +133,7 @@ if ($result) {
                         }
                         ?>
                     </div>
+                    <!-- 
                     <div class="profile-nm">
                         <div>
                             <p>First Name :</p>
@@ -140,7 +141,7 @@ if ($result) {
                             <p>Middle Initial :</p>
                             <p>Status :</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="portlet light">
