@@ -584,9 +584,6 @@ include '../include/selectDb.php';
             });
         });
 
-        // Periodically update the chat
-        setInterval(fetchMessages, 2000); // Update every 2 seconds
-    });
 
     function markMessagesAsRead(scholarId) {
     $.ajax({
@@ -677,9 +674,6 @@ function markNotificationsAsRead() {
 }
 
 
-
-
-
         $('.clickable').click(function () {
     markNotificationsAsRead();
     $('.counter').text('0'); // Update counter to 0 after marking as read
@@ -688,9 +682,12 @@ function markNotificationsAsRead() {
 
         updateNotifications();
 
-        setInterval(updateNotifications, 5000);
+        setInterval(updateNotifications, 10000);
   
-    
+            // Periodically update the chat
+            setInterval(fetchMessages, 2000); // Update every 2 seconds
+    });
+
 </script>
 </body>
 </html>

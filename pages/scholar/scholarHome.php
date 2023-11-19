@@ -143,20 +143,17 @@ include '../include/selectDb.php';
   <script>
         $(document).ready(function () {
 
-        // Periodically update the chat
-        setInterval(fetchMessages, 2000); // Update every 2 seconds
-    });
-
     function markMessagesAsRead(scholarId) {
-            $.ajax({
-                url: 'mark_messages_as_read.php',
-                method: 'POST',
-                data: { scholar_id: scholarId },
-                success: function () {
-                    // Do something if needed after marking messages as read
-                }
-            });
+    $.ajax({
+        url: 'mark_messages_as_read.php',
+        method: 'POST',
+        data: { scholar_id: scholarId },
+        success: function () {
+            // Do something if needed after marking messages as read
         }
+    });
+}
+
 
 
         function updateNotifications() {
@@ -215,24 +212,46 @@ include '../include/selectDb.php';
 
 
 function markNotificationsAsRead() {
-            $.ajax({
-                type: "POST",
-                url: "mark_as_read.php",
-                data: { sender: 'City Youth and Sports Development Office - CSJDM' },
-                success: function () {
-                    updateNotifications();
-                }
-            });
+    // Get the relevant information from notifications
+    var notificationsToMarkRead = cityOfficeNotifications.map(function (notification) {
+        return notification.message_id; // Adjust this based on the actual structure of your notification object
+    });
+
+    // Send the array of message IDs to mark as read
+    $.ajax({
+        type: "POST",
+        url: "mark_as_read.php",
+        data: { message_ids: notificationsToMarkRead },
+        success: function (response) {
+            if (response === 'success') {
+                updateNotifications();
+                $('.counter').text('0');
+            } else {
+                console.error('Failed to mark notifications as read. Server response:', response);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('AJAX Error:', status, error);
         }
+    });
+}
+
+
+
+
 
 
         $('.clickable').click(function () {
-            markNotificationsAsRead();
-        });
+    markNotificationsAsRead();
+    $('.counter').text('0'); // Update counter to 0 after marking as read
+});
+
 
         updateNotifications();
 
-        setInterval(updateNotifications, 5000);
+        setInterval(updateNotifications, 20000);
+
+      });
   
     </script>
 </body>
