@@ -2,7 +2,7 @@
 include '../../include/selectDb.php';
 include '../../include/dbConnection.php';
 
-$recordsPerPage = 5; // Change this to your desired value
+$recordsPerPage = 50; // Change this to your desired value
 
 // Initialize page number
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        ?>
+?>
         <tr>
             <th class="user_id" scope="row"><?php echo $row['staffId']; ?></th>
             <td><?php echo $row['fullName']; ?></td>
@@ -32,7 +32,7 @@ if (mysqli_num_rows($result) > 0) {
                 <a class="resetPassword btn btn-sm btn-dark" data-id="<?php echo $row['staffId']; ?>" href="">Reset Password</a>
             </td>
         </tr>
-        <?php
+<?php
     }
 
     // Calculate total number of rows for the search query
@@ -45,7 +45,7 @@ if (mysqli_num_rows($result) > 0) {
     if ($totalPages > 1) {
         $paginationHTML .= '<ul class="pagination">';
         $paginationHTML .= '<li class="page-item ' . ($page == 1 ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page - 1) . '"> < </a></li>';
-        
+
         // Add the current page count
 
         for ($i = 1; $i <= $totalPages; $i++) {
