@@ -188,103 +188,119 @@ include 'include/session.php'; ?>
                 </div>
 
                 <ul class="box-info">
-                    <li class="box-1">
-                        <i class='bx bx bi-person-check-fill' id="bx-1"></i>
-                        <span class="text">
-                            <h3> <?php
-                                    echo $totalScholar->num_rows;
+                    <a href="scholar.php">
+                        <li class="box-1">
+                            <i class='bx bx bi-person-check-fill' id="bx-1"></i>
+                            <span class="text">
+                                <h3> <?php
+                                        echo $totalScholar->num_rows;
+
+                                        ?></h3>
+                                <p>Number of Scholars</p>
+                            </span>
+                        </li>
+                    </a>
+
+                    <a href="applicantList.php">
+                        <li class="box-4">
+                            <i class="bx bx bi-people-fill" id="bx-1"></i>
+                            <span class="text">
+                                <h3><?php
+                                    echo $totalApplicant->num_rows;
 
                                     ?></h3>
-                            <p>Number of Scholars</p>
-                        </span>
-                    </li>
+                                <p>Number of Applicants</p>
+                            </span>
+                        </li>
+                    </a>
 
-                    <li class="box-4">
-                        <i class="bx bx bi-people-fill" id="bx-1"></i>
-                        <span class="text">
-                            <h3><?php
-                                echo $totalApplicant->num_rows;
+                    <a href="applicantScholar.php">
+                        <li class="box-4">
+                            <i class="bx bx bi-person-fill-check" id="bx-1"></i>
+                            <span class="text">
+                                <h3><?php
+                                    echo $totalNewScholar->num_rows;
 
-                                ?></h3>
-                            <p>Number of Applicants</p>
-                        </span>
-                    </li>
-                    <li class="box-4">
-                        <i class="bx bx bi-person-fill-check" id="bx-1"></i>
-                        <span class="text">
-                            <h3><?php
-                                echo $totalNewScholar->num_rows;
-
-                                ?></h3>
-                            <p>Number of New Scholar</p>
-                        </span>
-                    </li>
+                                    ?></h3>
+                                <p>Number of New Scholar</p>
+                            </span>
+                        </li>
+                    </a>
                 </ul>
-                <ul class="box-info">
-                    <li class="box-1">
-                        <i class='bx bx bi-person-check-fill' id="bx-1"></i>
-                        <span class="text">
-                            <h3> <?php
-                                    echo $totalScholar->num_rows;
+                <!-- asdas -->
+                <a href="dashboardRenewed.php">
+                    <ul class="box-info">
+                        <li class="box-1">
+                            <i class='bx bx bi-person-check-fill' id="bx-1"></i>
+                            <span class="text">
+                                <h3> <?php
+                                        echo $totalRenewed->num_rows;
 
-                                    ?></h3>
-                            <p>Number of Renewed</p>
-                        </span>
-                    </li>
-
+                                        ?></h3>
+                                <p>Number of Renewed</p>
+                            </span>
+                        </li>
+                </a>
+                <a href="dashboardUnrenewed.php">
                     <li class="box-4">
                         <i class="bx bx bi-people-fill" id="bx-1"></i>
                         <span class="text">
                             <h3><?php
-                                echo $totalApplicant->num_rows;
+                                echo $totalUnrenewed->num_rows;
 
                                 ?></h3>
                             <p>Number of Unrenewed</p>
                         </span>
                     </li>
+                </a>
+                <a href="dashboardUnprocessed.php">
                     <li class="box-4">
                         <i class="bx bx bi-person-fill-check" id="bx-1"></i>
                         <span class="text">
                             <h3><?php
-                                echo $totalRenewalProcess->num_rows;
+                                echo $totalUnprocessed->num_rows;
 
                                 ?></h3>
                             <p>Number of Unprocessed Renewal</p>
                         </span>
                     </li>
+                </a>
                 </ul>
                 <ul class="box-info">
+                    <a href="applicantExaminers.php">
+                        <li class="box-3">
+                            <i class="bx bx bi-people-fill" id="bx-2"></i>
+                            <span class="text">
+                                <h3><?php
+                                    echo $totalExaminer->num_rows;
 
-                    <li class="box-3">
-                        <i class="bx bx bi-people-fill" id="bx-2"></i>
-                        <span class="text">
-                            <h3><?php
-                                echo $totalExaminer->num_rows;
-
-                                ?></h3>
-                            <p>Number of Examiner</p>
-                        </span>
-                    </li>
+                                    ?></h3>
+                                <p>Number of Examiner</p>
+                            </span>
+                        </li>
+                    </a>
                     <li class="box-5">
                         <i class="bx bx bi-person-fill-check" id="bx-2"></i>
                         <span class="text">
                             <h3><?php
-                                echo $totalRelease->num_rows;
+                                echo $totalCombinedCount;
 
                                 ?></h3>
-                            <p>Number of for Release Scholar</p>
+                            <p>Number of Cash Release Scholar</p>
                         </span>
                     </li>
-                    <li class="box-6">
-                        <i class="bx bx bi-arrow-repeat" id="bx-2"></i>
-                        <span class="text">
-                            <h3><?php
-                                echo $totalArchive->num_rows;
+                    <a href="scholarArchive.php">
+                        <li class="box-6">
+                            <i class="bx bx bi-arrow-repeat" id="bx-2"></i>
+                            <span class="text">
+                                <h3><?php
+                                    echo $totalArchive->num_rows;
 
-                                ?></h3>
-                            <p>Number of Archive Scholar</p>
-                        </span>
-                    </li>
+                                    ?></h3>
+                                <p>Number of Archive Scholar</p>
+                            </span>
+                        </li>
+                    </a>
                 </ul>
 
 

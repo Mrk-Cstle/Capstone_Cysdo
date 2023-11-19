@@ -70,7 +70,7 @@ function approve($row, $semesterYear, $full_name, $contact_num1)
         mysqli_query($conn, "UPDATE renewal_process SET process_status = 'approve'  WHERE process_id = '$applicantId'");
         // send_sms("Hello " . $full_name . ", " . $commentValue, $contact_num1);
         mysqli_query($conn, "UPDATE renewal SET status = 'approve'  WHERE renewal_id = '$renewal_id'");
-        mysqli_query($conn, "UPDATE scholar SET status_lastsem = '$semesterYear' , c_service1st = '$serviceValue' , $semester = 'approve renewal'  WHERE scholar_id = '$scholar_id'");
+        mysqli_query($conn, "UPDATE scholar SET status_lastsem = '$semesterYear' , c_service1st = '$serviceValue' , $semester = 'approve renewal', scholar_status = 'Approve' WHERE scholar_id = '$scholar_id'");
         $insertQuery = "INSERT INTO renewal_award (renewal_id,semester_year ) VALUES ('$renewal_id', '$semesterYear')";
         $result = mysqli_query($conn, $insertQuery);
         if ($result) {

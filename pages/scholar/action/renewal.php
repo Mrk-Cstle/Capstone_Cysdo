@@ -73,7 +73,7 @@ if (
                 $queryresult = mysqli_query($conn, $Query);
                 if ($queryresult) {
 
-                    mysqli_query($conn, "UPDATE scholar SET $action = 'uploaded'  WHERE scholar_id = '$id'");
+                    mysqli_query($conn, "UPDATE scholar SET $action = 'uploaded', scholar_status = 'Uploaded'  WHERE scholar_id = '$id'");
                 } else {
 
                     echo "Error: Missing parameters in the request.";

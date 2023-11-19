@@ -71,6 +71,7 @@ if ($_SESSION['role'] === 'admin') {
                         <th scope="col">Contact 1</th>
 
 
+                        <th scope="col">Type</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -184,7 +185,7 @@ if ($_SESSION['role'] === 'admin') {
         </script>
         <script>
             document.getElementById('deleteAllButton').addEventListener('click', function() {
-                var confirmation = confirm('Are you sure you want to delete all examinees? This action cannot be undone.');
+                var confirmation = confirm('Are you sure you want to delete all list? This action cannot be undone.');
                 if (confirmation) {
                     // Perform the delete all operation here, for example, using AJAX
                     var xhr = new XMLHttpRequest();
@@ -197,29 +198,29 @@ if ($_SESSION['role'] === 'admin') {
                                 alert(xhr.responseText);
                             } else {
                                 // Handle errors, e.g., show an error message
-                                alert("Error deleting all examinees: " + xhr.status);
+                                alert("Error deleting all List: " + xhr.status);
                             }
                         }
                     };
 
-                    xhr.open("GET", "action/renewalDeleteAward.php", true); // Replace "path/to/deleteAllExamineesPass.php" with the correct URL
+                    xhr.open("GET", "action/renewalDeleteAwardNew.php", true); // Replace "path/to/deleteAllExamineesPass.php" with the correct URL
                     xhr.send();
                 }
             });
 
-            function sendAction(applicantId, action, semesterYear) {
+            function sendAction(applicantId, action) {
                 // Create an AJAX request
                 $.ajax({
                     type: 'POST', // You can use 'GET' if preferred
-                    url: 'action/renewalAwardAction.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
+                    url: 'action/renewalAwardActionNew.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
                     data: {
                         id: applicantId,
-                        action: action,
-                        semesterYear: semesterYear
+                        action: action
+
                     },
                     success: function(response) {
                         // Handle the response from the server if needed
-                        // $('h1').text("response");
+                        $('h1').text("response");
                         loadTableData(currentPage);
                         // For example, you can display a success message or update the UI
                         if (action === 'approve') {

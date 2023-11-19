@@ -41,35 +41,33 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
+
+
+
+        $tableHTML .= '<td><span class="badge bg-success text-capitalize" >New Scholar</span></td>';
+
+
+
         $tableHTML .= '<td>';
+        if ($row['newrelease_status'] == null) {
 
 
-        $tableHTML .= '<span class="badge bg-success text-capitalize" >New Scholar</span>';
-
+            $tableHTML .= '<span class="badge bg-danger text-capitalize" >Pending</span>';
+        } else {
+            $tableHTML .= '<span class="badge bg-success text-capitalize" >Done</span>';
+        }
         $tableHTML .= '</td>';
-        // $tableHTML .= '<td>';
-        // if ($row['semester'] == 'new_scholar') {
-        //     if ($row['award_status'] == null) {
-        //         $tableHTML .= '<button class="resetPassword btn btn-sm btn-success" onclick="sendAction(\'' .  $row['award_id'] . '\', \'done\', \'' . $row['semester_year'] . '\')">Done</button> | ';
+        $tableHTML .= '<td>';
+        if ($row['newrelease_status'] == null) {
+            $tableHTML .= '<button class="resetPassword btn btn-sm btn-success" onclick="sendAction(\'' .  $row['scholar_release_id'] . '\', \'done\' )">Done</button> | ';
 
-        //         $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatusNew.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=award">View</a>';
-        //     } else {
-        //         $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatusNew.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=award">View</a> | ';
-        //         $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" onclick="sendAction(\'' .  $row['award_id'] . '\', \'delete\', \'' . $row['semester_year'] . '\')">Delete</button>';
-        //     }
-        // } else {
-        //     if ($row['award_status'] == null) {
-        //         $tableHTML .= '<button class="resetPassword btn btn-sm btn-success" onclick="sendAction(\'' .  $row['award_id'] . '\', \'done\', \'' . $row['semester_year'] . '\')">Done</button> | ';
-
-        //         $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=award">View</a>';
-        //     } else {
-        //         $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=award">View</a> | ';
-        //         $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" onclick="sendAction(\'' .  $row['award_id'] . '\', \'delete\', \'' . $row['semester_year'] . '\')">Delete</button>';
-        //     }
-        // }
-
-
+            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="scholarView.php?id=' . htmlspecialchars($row['scholar_id']) . '">View</a>';
+        } else {
+            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['scholar_release_id']) . '">View</a> | ';
+            $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" onclick="sendAction(\'' .  $row['scholar_release_id'] . '\', \'delete\')">Delete</button>';
+        }
         $tableHTML .= '</td>';
+
         $tableHTML .= '</tr>';
     }
 

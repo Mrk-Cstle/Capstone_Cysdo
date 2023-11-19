@@ -4,10 +4,11 @@ if (isset($_GET['id'])) {
     $scholarId = $_GET['id'];
 
     // Step 2: Construct and execute the SQL query to select the row with the specified ID
-    $sql = "SELECT registration.*, registration_approval.*, examination.*
+    $sql = "SELECT registration.*, registration_approval.*, examination.*, registration_requirements.*
         FROM registration
         JOIN registration_approval ON registration.applicant_id = registration_approval.application_id
         JOIN examination ON examination.action_id = registration_approval.action_id
+        JOIN registration_requirements ON registration_requirements.examination_id = examination.examination_id
         WHERE examination.examination_id = '$scholarId'";
     $result = mysqli_query($conn, $sql);
 
@@ -61,6 +62,7 @@ if (isset($_GET['id'])) {
                     <div class="caption caption-md">
                         <label class="d-block fs-5 fw-bold mb-2">Name : <?php echo $fullName ?></label>
                         <span class="caption-name font-color bold text-uppercase">Applicant Requirements</span>
+                        <?php echo $req_status ?>
                     </div>
 
                     <p id="response"></p>
@@ -217,7 +219,17 @@ if (isset($_GET['id'])) {
                                                 <label class="control-label bold font-xs">Letter of Intent <strong class="text-danger ms-1">*</strong></label>
                                                 <input type="file" class="form-control" name="letter-of-intent" id="letter-of-intent" required>
                                             </div>
-                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $examination_id ?>','applicantForm')">Submit</button>
+                                            <?php
+                                            if ($req_status == 'Pending') { ?>
+                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $examination_id ?>','applicantForm')">Submit</button>
+
+                                            <?php
+                                            } else { ?>
+                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $examination_id ?>','applicantForm')">Submit
+                                                </button>
+                                            <?php }
+                                            ?>
+
                                         </div>
                                     </div>
                                 </div>

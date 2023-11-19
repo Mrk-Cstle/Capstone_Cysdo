@@ -77,8 +77,29 @@ if (
 ) {
     // Both files were successfully uploaded and saved with the new names
 
-    $insertRenewalMergeQuery = "INSERT INTO registration_requirements (examination_id, image2x2,birth,bir,cedula,health,curriculum,residency,map,house,moral,cor,cog,coe,stub,landbank,photocopy,letter,req_status) VALUES ('$id', '$newFileName2x2','$newFileNameBirth','$newFileNameBir','$newFileNameCedula','$newFileNameHealth','$newFileNameCurriculum','$newFileNameResidency','$newFileNameMap','$newFileNamePhoto','$newFileNameMoral','$newFileNamePrevCor','$newFileNamePrevCog','$newFileNamePrevCoe','$newFileNameStub','$newFileNameLandbank','$newFileNamePhotocopy','$newFileNameLetter','Uploaded')";
-    $result = mysqli_query($conn, $insertRenewalMergeQuery);
+    $updateRenewalMergeQuery = "UPDATE registration_requirements 
+                            SET image2x2 = '$newFileName2x2',
+                                birth = '$newFileNameBirth',
+                                bir = '$newFileNameBir',
+                                cedula = '$newFileNameCedula',
+                                health = '$newFileNameHealth',
+                                curriculum = '$newFileNameCurriculum',
+                                residency = '$newFileNameResidency',
+                                map = '$newFileNameMap',
+                                house = '$newFileNamePhoto',
+                                moral = '$newFileNameMoral',
+                                cor = '$newFileNamePrevCor',
+                                cog = '$newFileNamePrevCog',
+                                coe = '$newFileNamePrevCoe',
+                                stub = '$newFileNameStub',
+                                landbank = '$newFileNameLandbank',
+                                photocopy = '$newFileNamePhotocopy',
+                                letter = '$newFileNameLetter',
+                                req_status = 'Uploaded'
+                            WHERE examination_id = '$id'";
+
+    $result = mysqli_query($conn, $updateRenewalMergeQuery);
+
 
     if ($result) {
         echo "Upload Successful";
