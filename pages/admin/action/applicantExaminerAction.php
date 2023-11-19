@@ -138,7 +138,7 @@ function approve($contactNum1, $contactNum2, $fullName, $user)
                 echo "Scholar " . $fullName . " Pass";
 
 
-                send_sms($text, $contactNum1);
+                send_sms($text, '+63' . $contactNum1);
 
                 email($text, $contactNum2, $fullName);
             } else {
@@ -169,7 +169,7 @@ function decline($contactNum1, $contactNum2, $fullName, $user)
         if ($result) {
 
 
-            send_sms($text, $contactNum1);
+            send_sms($text, '+63' . $contactNum1);
 
             email($text, $contactNum2, $fullName);
             echo "Scholar " . $fullName . " Failed";

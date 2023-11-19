@@ -164,7 +164,7 @@ function approve($contactNum1, $contactNum2, $applicant_id, $lastName, $firstNam
 
             echo "Approved to New Scholar";
 
-            send_sms($text, $contactNum1);
+            send_sms($text, '+63' . $contactNum1);
 
             email($text, $contactNum2, $fullName);
         } else {
@@ -191,7 +191,7 @@ function decline($contactNum1, $contactNum2, $fullName, $user)
 
 
 
-        send_sms($text, $contactNum1);
+        send_sms($text, '+63' . $contactNum1);
 
         email($text, $contactNum2, $fullName);
         echo "" . $fullName . " Declined Scholar";

@@ -128,7 +128,7 @@ function approve($contactNum1, $contactNum2, $fullName, $user)
         if ($result) {
 
             echo "Scholar Approve";
-            send_sms($text, $contactNum1);
+            send_sms($text, '+63' . $contactNum1);
             email($text, $contactNum2, $fullName);
         } else {
             echo "Insert Failed: " . mysqli_error($conn);
@@ -152,7 +152,7 @@ function decline($contactNum1, $contactNum2, $fullName, $user)
         $insertQuery = "INSERT INTO registration_approval (application_id,action_type ) VALUES ('$applicantId', '$action')";
         $result = mysqli_query($conn, $insertQuery);
         if ($result) {
-            send_sms($text, $contactNum1);
+            send_sms($text, '+63' . $contactNum1);
 
             email($text, $contactNum2, $fullName);
             echo "Scholar Declined";
