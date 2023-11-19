@@ -68,7 +68,6 @@ if ($_SESSION['role'] === 'admin') {
                     <tr>
                         <th scope="col">Image</th>
                         <th scope="col">Applicant Id</th>
-
                         <th scope="col">Full Name</th>
                         <th scope="col">Contact 1</th>
                         <th scope="col">Contact 2</th>
