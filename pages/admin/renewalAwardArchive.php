@@ -52,7 +52,6 @@ if ($_SESSION['role'] === 'admin') {
 
         <nav class="navbar navbar-light bg-light d-flex mt-5">
             <h3 class="cashAllowance ms-5">Cash Allowance Recipients</h3>
-            <a class="btnSearch btn btn-outline-success mb-3" href="renewalAwardArchive.php">Archive</a>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
@@ -117,7 +116,7 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     }
                 };
-                xhr.open('GET', 'action/renewalAwardDb.php?page=' + page, true);
+                xhr.open('GET', 'action/renewalAwardArchiveDb.php?page=' + page, true);
                 xhr.send();
             }
 
@@ -133,7 +132,7 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     }
                 };
-                xhr.open('GET', 'action/renewalAwardDb.php?search=' + searchValue + '&page=' + page, true);
+                xhr.open('GET', 'action/renewalAwardArchiveDb.php?search=' + searchValue + '&page=' + page, true);
                 xhr.send();
             }
 
@@ -148,7 +147,7 @@ if ($_SESSION['role'] === 'admin') {
                     }
                 };
 
-                xhttp.open("GET", "action/renewalAwardDb.php", true);
+                xhttp.open("GET", "action/renewalAwardArchiveDb.php", true);
                 xhttp.send();
             }
 

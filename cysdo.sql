@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2023 at 07:11 PM
+-- Generation Time: Nov 20, 2023 at 08:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -136,7 +136,9 @@ INSERT INTO `chat_messages` (`id`, `sender`, `staffId`, `message`, `timestamp`, 
 (209, 'City Youth and Sports Development Office - CSJDM', NULL, 'asdasd', '2023-11-14 14:53:30', 24, 14, 1),
 (210, 'ASDSDF, XCVSDF SDFXCV', 183, 'asd', '2023-11-14 15:19:58', 24, 14, 1),
 (211, 'City Youth and Sports Development Office - CSJDM', 168, 'asd', '2023-11-14 16:18:18', NULL, 14, 1),
-(212, 'City Youth and Sports Development Office - CSJDM', NULL, 'hi', '2023-11-19 18:09:48', 24, 56, 1);
+(212, 'City Youth and Sports Development Office - CSJDM', NULL, 'hi', '2023-11-19 18:09:48', 24, 56, 1),
+(213, 'City Youth and Sports Development Office - CSJDM', NULL, 'hi', '2023-11-19 19:00:53', 24, 56, 1),
+(214, 'asdasdasdasdasdasd', 183, 'hi', '2023-11-19 19:01:36', 24, 56, 0);
 
 -- --------------------------------------------------------
 
@@ -150,6 +152,15 @@ CREATE TABLE `examination` (
   `requirements_status` varchar(100) DEFAULT NULL,
   `action_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `examination`
+--
+
+INSERT INTO `examination` (`examination_id`, `result`, `requirements_status`, `action_id`) VALUES
+(117, 'pass', 'Approve', 158),
+(118, 'pass', 'Approve', 159),
+(119, 'pass', 'Approve', 160);
 
 -- --------------------------------------------------------
 
@@ -170,10 +181,32 @@ CREATE TABLE `examination_requirements` (
 --
 
 CREATE TABLE `newscholar_award` (
-  `scholar_release_id` int(11) NOT NULL,
-  `scholar_id` int(11) NOT NULL,
-  `newrelease_status` varchar(100) DEFAULT NULL
+  `scholar_release_id` int(100) NOT NULL,
+  `scholar_id` int(100) NOT NULL,
+  `newrelease_status` varchar(100) DEFAULT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newscholar_award_archive`
+--
+
+CREATE TABLE `newscholar_award_archive` (
+  `newscholar_award_archive_id` int(100) NOT NULL,
+  `scholar_release_id` int(100) NOT NULL,
+  `scholar_id` int(100) NOT NULL,
+  `newrelease_status` varchar(100) DEFAULT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `newscholar_award_archive`
+--
+
+INSERT INTO `newscholar_award_archive` (`newscholar_award_archive_id`, `scholar_release_id`, `scholar_id`, `newrelease_status`, `date`) VALUES
+(5, 13, 70, '', '2023-11-21');
 
 -- --------------------------------------------------------
 
@@ -235,6 +268,36 @@ CREATE TABLE `registration` (
   `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`applicant_id`, `fullName`, `lastName`, `firstName`, `middleName`, `status`, `gender`, `civilStatus`, `voter`, `birthDate`, `birthPlace`, `citizenship`, `fullAddress`, `houseAddress`, `streetAddress`, `barangayAddress`, `contactNum1`, `contactNum2`, `pic2x2`, `signaturePic`, `schoolName`, `schoolAddress`, `schoolType`, `course`, `yearLevel`, `fatherName`, `fatherStatus`, `fatherAddress`, `fatherContact`, `fatherOccupation`, `fatherEduc`, `motherName`, `motherStatus`, `motherAddress`, `motherContact`, `motherOccupation`, `motherEduc`, `guardianName`, `guardianAddress`, `guardianContact`, `guardianOccupation`, `guardianEduc`, `sibling1`, `sibling2`, `sibling3`, `sibling4`, `sibling5`, `sibling6`, `sizeFamily`, `annualGross`, `date`) VALUES
+(134, 'asd, asdas dasdasdasd', 'asd', 'asdas', 'dasdasdasd', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'asd_655b783cdd66d_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(135, 'asdq2we, qeweqasd asdqweqwe', 'asdq2we', 'qeweqasd', 'asdqweqwe', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'asdq2we_655b78547797b_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(138, 'asdqwe, qweasdqw asdqweqwe', 'asdqwe', 'qweasdqw', 'asdqweqwe', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'asdqwe_655b78753d4c6_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(149, 'jkluioui, jkluiouio jkluiouio', 'jkluioui', 'jkluiouio', 'jkluiouio', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'jkluioui_655b78fb7e71a_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(150, 'asdqwe, asdqweqwe asdqweqe', 'asdqwe', 'asdqweqwe', 'asdqweqe', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'asdqwe_655b79177acf5_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(152, 'asdqwedr, yuiyu fghfghrt', 'asdqwedr', 'yuiyu', 'fghfghrt', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'asdqwedr_655b792fce40e_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(153, 'werwer, sdfwer dfwerwer', 'werwer', 'sdfwer', 'dfwerwer', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'werwer_655b793c41239_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(154, 'sdfsdfwer, dfswers sdfwerw', 'sdfsdfwer', 'dfswers', 'sdfwerw', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'sdfsdfwer_655b7945e693e_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(155, 'asdqwe, asdqweqwe asdqweqwe', 'asdqwe', 'asdqweqwe', 'asdqweqwe', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'asdqwe_655b7951ca0b5_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(156, 'asdqwew, asdqwe asdqweq', 'asdqwew', 'asdqwe', 'asdqweq', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'asdqwew_655b795c805cb_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(157, 'dasdqwe, asdasdqwe asdqweqwe', 'dasdqwe', 'asdasdqwe', 'asdqweqwe', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'dasdqwe_655b79663655b_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(158, 'asdqwe, dasd qweasdqwe', 'asdqwe', 'dasd', 'qweasdqwe', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'asdqwe_655b796fc5a11_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(159, 'asdasdqwe, asdqwweasd qwesdf', 'asdasdqwe', 'asdqwweasd', 'qwesdf', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'asdasdqwe_655b7979cba98_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(160, 'zxczxc, zxczxczxc zxczxcz', 'zxczxc', 'zxczxczxc', 'zxczxcz', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'zxczxc_655b7981c1b1a_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(161, 'rwersdfwer, dfwersdf sdfwerwer', 'rwersdfwer', 'dfwersdf', 'sdfwerwer', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'rwersdfwer_655b798f001e2_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(162, 'sdfwersd, wersdfwer sdfwerfsdf', 'sdfwersd', 'wersdfwer', 'sdfwerfsdf', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'sdfwersd_655b799713b8b_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(163, 'dfwersdf, sdfewrwr wersdfqw', 'dfwersdf', 'sdfewrwr', 'wersdfqw', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'dfwersdf_655b79a056f29_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(164, 'sdfwersd, sdfwer sdfwer', 'sdfwersd', 'sdfwer', 'sdfwer', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'sdfwersd_655b79ac2feb9_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(165, 'sdfwer, sdfwer fwerwer', 'sdfwer', 'sdfwer', 'fwerwer', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'sdfwer_655b79b4a0177_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(166, 'weasdqw, asdqwe sdqweqwe', 'weasdqw', 'asdqwe', 'sdqweqwe', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'weasdqw_655b79bebe03e_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(167, 'zxcasd, asdxc dasdzxca', 'zxcasd', 'asdxc', 'dasdzxca', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'zxcasd_655b79cf29e70_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(168, 'zcxcasd, asdzxca asdasdzx', 'zcxcasd', 'asdzxca', 'asdasdzx', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'zcxcasd_655b79da06cfb_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(169, 'zxcasddfg, gdfgcvb fgdfgdfg', 'zxcasddfg', 'gdfgcvb', 'fgdfgdfg', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'zxcasddfg_655b79e27f3b8_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20'),
+(170, 'cvbcvbdf, cvbcfbdfg cvbdfgdfg', 'cvbcvbdf', 'cvbcfbdfg', 'cvbdfgdfg', NULL, 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 'cvbcvbdf_655b79ede6f3b_2x2image.jpeg', '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 'ALS Graduate', 'qweqweqwe', 'Living', 'qweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', 2147483647, 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', 2147483647, 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 123123123, '2023-11-20');
+
 -- --------------------------------------------------------
 
 --
@@ -248,6 +311,100 @@ CREATE TABLE `registration_approval` (
   `exam_status` varchar(100) DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `registration_approval`
+--
+
+INSERT INTO `registration_approval` (`action_id`, `application_id`, `action_type`, `exam_status`, `date`) VALUES
+(148, 138, 'approve', 'done', '2023-11-21 00:12:34'),
+(158, 149, 'approve', 'done', '2023-11-21 01:44:35'),
+(159, 150, 'approve', 'done', '2023-11-21 01:48:25'),
+(160, 152, 'approve', 'done', '2023-11-21 02:37:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `registration_archive`
+--
+
+CREATE TABLE `registration_archive` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `applicant_id` int(11) DEFAULT NULL,
+  `fullName` varchar(255) DEFAULT NULL,
+  `lastName` varchar(255) DEFAULT NULL,
+  `firstName` varchar(255) DEFAULT NULL,
+  `middleName` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `civilStatus` varchar(255) DEFAULT NULL,
+  `voter` varchar(255) DEFAULT NULL,
+  `birthDate` date DEFAULT NULL,
+  `birthPlace` varchar(255) DEFAULT NULL,
+  `citizenship` varchar(255) DEFAULT NULL,
+  `fullAddress` varchar(255) DEFAULT NULL,
+  `houseAddress` varchar(255) DEFAULT NULL,
+  `streetAddress` varchar(255) DEFAULT NULL,
+  `barangayAddress` varchar(255) DEFAULT NULL,
+  `contactNum1` varchar(255) DEFAULT NULL,
+  `contactNum2` varchar(255) DEFAULT NULL,
+  `pic2x2` blob DEFAULT NULL,
+  `signaturePic` blob DEFAULT NULL,
+  `schoolName` varchar(255) DEFAULT NULL,
+  `schoolAddress` varchar(255) DEFAULT NULL,
+  `schoolType` varchar(255) DEFAULT NULL,
+  `course` varchar(255) DEFAULT NULL,
+  `yearLevel` int(11) DEFAULT NULL,
+  `fatherName` varchar(255) DEFAULT NULL,
+  `fatherStatus` varchar(255) DEFAULT NULL,
+  `fatherAddress` varchar(255) DEFAULT NULL,
+  `fatherContact` varchar(255) DEFAULT NULL,
+  `fatherOccupation` varchar(255) DEFAULT NULL,
+  `fatherEduc` varchar(255) DEFAULT NULL,
+  `motherName` varchar(255) DEFAULT NULL,
+  `motherStatus` varchar(255) DEFAULT NULL,
+  `motherAddress` varchar(255) DEFAULT NULL,
+  `motherContact` varchar(255) DEFAULT NULL,
+  `motherOccupation` varchar(255) DEFAULT NULL,
+  `motherEduc` varchar(255) DEFAULT NULL,
+  `guardianName` varchar(255) DEFAULT NULL,
+  `guardianAddress` varchar(255) DEFAULT NULL,
+  `guardianContact` varchar(255) DEFAULT NULL,
+  `guardianOccupation` varchar(255) DEFAULT NULL,
+  `guardianEduc` varchar(255) DEFAULT NULL,
+  `sibling1` varchar(255) DEFAULT NULL,
+  `sibling2` varchar(255) DEFAULT NULL,
+  `sibling3` varchar(255) DEFAULT NULL,
+  `sibling4` varchar(255) DEFAULT NULL,
+  `sibling5` varchar(255) DEFAULT NULL,
+  `sibling6` varchar(255) DEFAULT NULL,
+  `sizeFamily` int(11) DEFAULT NULL,
+  `annualGross` decimal(10,2) DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `registration_archive`
+--
+
+INSERT INTO `registration_archive` (`id`, `type`, `applicant_id`, `fullName`, `lastName`, `firstName`, `middleName`, `status`, `gender`, `civilStatus`, `voter`, `birthDate`, `birthPlace`, `citizenship`, `fullAddress`, `houseAddress`, `streetAddress`, `barangayAddress`, `contactNum1`, `contactNum2`, `pic2x2`, `signaturePic`, `schoolName`, `schoolAddress`, `schoolType`, `course`, `yearLevel`, `fatherName`, `fatherStatus`, `fatherAddress`, `fatherContact`, `fatherOccupation`, `fatherEduc`, `motherName`, `motherStatus`, `motherAddress`, `motherContact`, `motherOccupation`, `motherEduc`, `guardianName`, `guardianAddress`, `guardianContact`, `guardianOccupation`, `guardianEduc`, `sibling1`, `sibling2`, `sibling3`, `sibling4`, `sibling5`, `sibling6`, `sizeFamily`, `annualGross`, `date`) VALUES
+(1, '', 136, 'asdqweasd, qweqweasd qweasd', 'asdqweasd', 'qweqweasd', 'qweasd', '', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x6173647177656173645f363535623738363263616464375f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-19 16:00:00'),
+(2, 'Declined', 137, 'eqweasdqw, dasdqwesa asdweq', 'eqweasdqw', 'dasdqwesa', 'asdweq', '', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x6571776561736471775f363535623738366334333566655f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-19 16:00:00'),
+(3, 'Failed', 138, 'asdqwe, qweasdqw asdqweqwe', 'asdqwe', 'qweasdqw', 'asdqweqwe', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x6173647177655f363535623738373533643463365f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-19 16:00:00'),
+(4, 'Failed', 139, 'sdqweqw, qweqdasdqw sdqweqwe', 'sdqweqw', 'qweqdasdqw', 'sdqweqwe', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x736471776571775f363535623738383730363035355f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-19 16:00:00'),
+(5, 'Failed', 140, 'asdaweq, asdqweqe qweqweasd', 'asdaweq', 'asdqweqe', 'qweqweasd', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x617364617765715f363535623738393032636435315f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-19 16:00:00'),
+(6, 'Failed Requirements', 141, 'dqweqwesa, qweqweasdq qweasd', 'dqweqwesa', 'qweqweasdq', 'qweasd', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x6471776571776573615f363535623738393864393236395f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-20 16:26:15'),
+(7, '', 0, '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0.00, '0000-00-00 00:00:00'),
+(8, '', 143, 'hgbhfghvbn, ghvbnvbn nvbnghf', 'hgbhfghvbn', 'ghvbnvbn', 'nvbnghf', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'castillo.markdavid64@gmail.com', 0x6867626866676876626e5f363535623738616535613561375f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-20 16:37:30'),
+(9, 'New Scholar', 143, 'hgbhfghvbn, ghvbnvbn nvbnghf', 'hgbhfghvbn', 'ghvbnvbn', 'nvbnghf', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'castillo.markdavid64@gmail.com', 0x6867626866676876626e5f363535623738616535613561375f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-20 16:37:30'),
+(10, 'New Scholar', 143, 'hgbhfghvbn, ghvbnvbn nvbnghf', 'hgbhfghvbn', 'ghvbnvbn', 'nvbnghf', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'castillo.markdavid64@gmail.com', 0x6867626866676876626e5f363535623738616535613561375f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-20 16:37:30'),
+(11, 'New Scholar', 142, 'qweasdqwe, asdqweqwe asdqweqasd', 'qweasdqwe', 'asdqweqwe', 'asdqweqasd', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x7177656173647177655f363535623738613537613363325f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-20 17:06:30'),
+(12, 'New Scholar', 144, 'hjkljklj, jklmn,. lm,.jkljkl', 'hjkljklj', 'jklmn,.', 'lm,.jkljkl', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x686a6b6c6a6b6c6a5f363535623738623865373931315f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-20 17:35:43'),
+(13, 'New Scholar', 146, 'kluio uio, uiojklui jkljkluio', 'kluio uio', 'uiojklui', 'jkljkluio', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x6b6c75696f2075696f5f363535623738643262653730345f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-20 17:35:57'),
+(14, 'New Scholar', 147, 'jkluiouio, jkluiojkl; piopjkl;', 'jkluiouio', 'jkluiojkl;', 'piopjkl;', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x6a6b6c75696f75696f5f363535623738646335333333305f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-20 17:36:06'),
+(15, 'New Scholar', 145, 'm,.jkljluiol, luiouio iojkluio', 'm,.jkljluiol', 'luiouio', 'iojkluio', 'done', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x6d2c2e6a6b6c6a6c75696f6c5f363535623738633533653539635f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-20 17:35:51'),
+(16, 'Declined', 151, 'asdqweq, qweqweasd qweasdasdqw', 'asdqweq', 'qweqweasd', 'qweasdasdqw', '', 'male', 'single', 'yes', '2023-11-20', 'zxczxczxc', 'American-', '123123123  asdasdasd  F. Homes Mulawin', '123123123', 'asdasdasd', 'F. Homes Mulawin', '123123123123', 'asdasdasd@asdasd', 0x617364717765715f363535623739323533386263345f327832696d6167652e6a706567, '', 'qweqwe', 'asdasdas', 'Public', 'qweqweqwe', 0, 'qweqweqwe', 'Living', 'qweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Living', 'asdasdasdasd', '2147483647', 'qweqweqwe', 'qweqweqweqw', 'qweqweqweqwe', 'qweqweqweqwe', '2147483647', 'asdasdasd', 'asdasdasd', 'qsd', 'asd', 'asd', 'asdasd', 'asdasd', 'asdasdasd', 2147483647, 99999999.99, '2023-11-19 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -296,6 +453,15 @@ CREATE TABLE `registration_requirements` (
   `req_status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `registration_requirements`
+--
+
+INSERT INTO `registration_requirements` (`requirements_id`, `examination_id`, `image2x2`, `birth`, `bir`, `cedula`, `health`, `curriculum`, `residency`, `map`, `house`, `moral`, `cor`, `cog`, `coe`, `stub`, `landbank`, `photocopy`, `letter`, `req_status`) VALUES
+(49, 117, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Approve'),
+(50, 118, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Approve'),
+(51, 119, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Approve');
+
 -- --------------------------------------------------------
 
 --
@@ -320,6 +486,14 @@ CREATE TABLE `renewal` (
   `curriculum` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `renewal`
+--
+
+INSERT INTO `renewal` (`renewal_id`, `scholar_id`, `semester`, `academic_year`, `renewal_date`, `status`, `current_yr`, `form`, `previous_cor`, `cog`, `atm`, `current_cor`, `dtr`, `e3_form`, `curriculum`) VALUES
+(124, 56, 'renew_1stYr_1stSem', '', '2023-11-20 18:50:34', 'approve', '', '', '', '', '', '', '', '', ''),
+(125, 56, 'renew_1stYr_2ndSem', '', '2023-11-20 18:57:53', 'approve', '', '', '', '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -332,6 +506,29 @@ CREATE TABLE `renewal_award` (
   `award_status` varchar(100) DEFAULT NULL,
   `semester_year` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `renewal_award_archive`
+--
+
+CREATE TABLE `renewal_award_archive` (
+  `renewal_award_archive_id` int(100) NOT NULL,
+  `award_id` int(100) NOT NULL,
+  `renewal_id` int(100) NOT NULL,
+  `award_status` varchar(100) DEFAULT NULL,
+  `semester_year` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `renewal_award_archive`
+--
+
+INSERT INTO `renewal_award_archive` (`renewal_award_archive_id`, `award_id`, `renewal_id`, `award_status`, `semester_year`) VALUES
+(1, 40, 124, '', ''),
+(2, 40, 124, '', ''),
+(3, 41, 125, '', '');
 
 -- --------------------------------------------------------
 
@@ -349,7 +546,7 @@ CREATE TABLE `renewal_control` (
 --
 
 INSERT INTO `renewal_control` (`renew_control_id`, `switch_status`) VALUES
-(1, 0);
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -364,6 +561,13 @@ CREATE TABLE `renewal_process` (
   `comment` varchar(255) NOT NULL,
   `uploader` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `renewal_process`
+--
+
+INSERT INTO `renewal_process` (`process_id`, `renewal_id`, `process_status`, `comment`, `uploader`) VALUES
+(100, 125, 'approve', '', '56');
 
 -- --------------------------------------------------------
 
@@ -423,7 +627,9 @@ CREATE TABLE `scholar` (
 --
 
 INSERT INTO `scholar` (`scholar_id`, `image`, `scholar_status`, `scholar_award_status`, `status_lastsem`, `user`, `password`, `applicant_id`, `full_name`, `last_name`, `first_name`, `middle_name`, `age`, `gender`, `voter`, `contact_num1`, `contact_num2`, `full_address`, `barangay`, `telegram`, `atm_number`, `facebook`, `email`, `course`, `years_course`, `current_yr`, `degree_or_non`, `school_name`, `school_address`, `renew_1stYr_1stSem`, `renew_1stYr_2ndSem`, `renew_2ndYr_1stSem`, `renew_2ndYr_2ndSem`, `renew_3rdYr_1stSem`, `renew_3rdYr_2ndSem`, `renew_4thYr_1stSem`, `renew_4thYr_2ndSem`, `renew_5thYr_1stSem`, `renew_5thYr_2ndSem`, `renew_6thYr_1stSem`, `renew_6thYr_2ndSem`, `c_service1st`, `c_service2nd`, `approve_date`) VALUES
-(56, '', NULL, '', '', '', '$2y$10$mV2X27DVTi8BMK789cl4XOFnwwTry2iQ1mpN8ctW/oTNXsXFYAvym', 131, 'asdasdasdasdasdasd', 'asdasd', 'asdas', 'dasdasd', 0, '', '', '9612479632', '', '', '', '', '', '', '', '', 0, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-20');
+(56, '', 'Approve', '', 'renew_1stYr_2ndSem_', 'qwe', '$2y$10$EFwrWywsWIIQlsPbpxElf.UnPtFVIafT..w92YZJ2dRERwCObxF8.', 131, 'asdasdasdasdasdasd', 'asdasd', 'asdas', 'dasdasd', 0, '', '', '9612479632', '', '', '', '', '', '', '', '', 0, '', '', '', '', 'approve renewal', 'approve renewal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-11-20'),
+(59, '', NULL, '', '', 'castillo.markdavid64@gmail.com', '$2y$10$NoJsSW2TFsH9JvjT/ia5Pu9qjYEFzNbnN4t.jaDs/E1HHitO6JhtK', 143, 'hgbhfghvbn, ghvbnvbn nvbnghf', 'hgbhfghvbn', 'ghvbnvbn', 'nvbnghf', 0, 'male', 'yes', '123123123123', 'castillo.markdavid64', '123123123  asdasdasd  F. Homes Mulawin', 'F. Homes Mulawin', '', '', '', '', 'qweqweqwe', 0, 'ALS Graduate', '', 'qweqwe', 'asdasdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-21'),
+(70, '', NULL, '', '', 'asdasdasd@asdasd', '$2y$10$qNLcDbN25.oCa5EmG0KMweXzqtQPH/l4tRHKWkvi0ovUnbYBj7ZXG', 152, 'asdqwedr, yuiyu fghfghrt', 'asdqwedr', 'yuiyu', 'fghfghrt', 0, 'male', 'yes', '123123123123', 'asdasdasd@asdasd', '123123123  asdasdasd  F. Homes Mulawin', 'F. Homes Mulawin', '', '', '', '', 'qweqweqwe', 0, 'ALS Graduate', '', 'qweqwe', 'asdasdas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-21');
 
 -- --------------------------------------------------------
 
@@ -491,7 +697,8 @@ INSERT INTO `scholar_archive` (`scholar_id`, `type`, `image`, `scholar_award_sta
 (34, 'remove', '', '', '', 'qweqdasd', '$2y$10$K9mF37tJAR2cF8q4wcUw1OEPo45LDqYjBTmCAXVKBgCRVYMv0VxiS', 125, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', 0, 'male', 'yes', '1123123', 'castillo.markdavid64', 'asdasd  asdasd  Bagong Buhay I', 'Bagong Buhay I', '', '', '', '', 'qwe', 0, 'Grade 12', '', 'qwe', 'qwe', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '2023-11-17', '2023-11-20'),
 (48, 'remove', '', '', '', 'dfg', '$2y$10$JgAhRMuh5vxKTWoDUIfwW.Rff3Mg1x52up20WgS5bKdJa4hlL88LS', 126, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', 0, 'male', 'yes', '1123123', 'castillo.markdavid64', 'asdasd  asdasd  Bagong Buhay I', 'Bagong Buhay I', '', '', '', '', 'qwe', 0, 'Grade 12', '', 'qwe', 'qwe', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '2023-11-18', '2023-11-19'),
 (54, 'remove', '', 'New Scholar', '', 'castillo.markdavid64@gmail.com', '$2y$10$042PNHhGwgY2HOKGvC4iUeWpgt.FCKuTFjP7d.p3abXn1K1jGskgq', 128, 'qweqdasd, asdasd asdasdasd', 'qweqdasd', 'asdasd', 'asdasdasd', 0, 'male', 'yes', '1123123', 'castillo.markdavid64', 'asdasd  asdasd  Bagong Buhay I', 'Bagong Buhay I', '', '', '', '', 'qwe', 0, 'Grade 12', '', 'qwe', 'qwe', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '2023-11-19', '2023-11-20'),
-(55, 'remove', '', '', '', 'martinmendoza03.mm@gmail.com', '$2y$10$EIaNEseqysjpdJzrFPVVUO5qlaJ6wzUsMCuLxRIBjUt.xa.Yyn.Qq', 132, 'asdasdasdasd', '', '', '', 0, '', '', '9164983650', 'martinmendoza03.mm@g', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '2023-11-20', '2023-11-20');
+(55, 'remove', '', '', '', 'martinmendoza03.mm@gmail.com', '$2y$10$EIaNEseqysjpdJzrFPVVUO5qlaJ6wzUsMCuLxRIBjUt.xa.Yyn.Qq', 132, 'asdasdasdasd', '', '', '', 0, '', '', '9164983650', 'martinmendoza03.mm@g', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '2023-11-20', '2023-11-20'),
+(69, 'remove', '', '', '', 'asdasdasd@asdasd', '$2y$10$djg5Uk6gxn.XxB1mYcUDxeGUrBETkcu9u024X0cvVLVZf4M8IR8yO', 150, 'asdqwe, asdqweqwe asdqweqe', 'asdqwe', 'asdqweqwe', 'asdqweqe', 0, 'male', 'yes', '123123123123', 'asdasdasd@asdasd', '123123123  asdasdasd  F. Homes Mulawin', 'F. Homes Mulawin', '', '', '', '', 'qweqweqwe', 0, 'ALS Graduate', '', 'qweqwe', 'asdasdas', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '2023-11-21', '2023-11-21');
 
 -- --------------------------------------------------------
 
@@ -588,6 +795,13 @@ ALTER TABLE `newscholar_award`
   ADD KEY `FK_NewScholar` (`scholar_id`);
 
 --
+-- Indexes for table `newscholar_award_archive`
+--
+ALTER TABLE `newscholar_award_archive`
+  ADD PRIMARY KEY (`newscholar_award_archive_id`),
+  ADD KEY `FK_New_Award_Archive` (`scholar_id`);
+
+--
 -- Indexes for table `registration`
 --
 ALTER TABLE `registration`
@@ -600,6 +814,12 @@ ALTER TABLE `registration_approval`
   ADD PRIMARY KEY (`action_id`),
   ADD UNIQUE KEY `application_id` (`application_id`),
   ADD KEY `registration_approval_ibfk_1` (`application_id`);
+
+--
+-- Indexes for table `registration_archive`
+--
+ALTER TABLE `registration_archive`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `registration_control`
@@ -627,6 +847,13 @@ ALTER TABLE `renewal`
 ALTER TABLE `renewal_award`
   ADD PRIMARY KEY (`award_id`),
   ADD KEY `FK_Renewal_Award` (`renewal_id`);
+
+--
+-- Indexes for table `renewal_award_archive`
+--
+ALTER TABLE `renewal_award_archive`
+  ADD PRIMARY KEY (`renewal_award_archive_id`),
+  ADD KEY `FK_Renewal_Award_Archive` (`renewal_id`);
 
 --
 -- Indexes for table `renewal_control`
@@ -690,13 +917,13 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `chat_messages`
 --
 ALTER TABLE `chat_messages`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=215;
 
 --
 -- AUTO_INCREMENT for table `examination`
 --
 ALTER TABLE `examination`
-  MODIFY `examination_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `examination_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `examination_requirements`
@@ -708,19 +935,31 @@ ALTER TABLE `examination_requirements`
 -- AUTO_INCREMENT for table `newscholar_award`
 --
 ALTER TABLE `newscholar_award`
-  MODIFY `scholar_release_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `scholar_release_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `newscholar_award_archive`
+--
+ALTER TABLE `newscholar_award_archive`
+  MODIFY `newscholar_award_archive_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- AUTO_INCREMENT for table `registration_approval`
 --
 ALTER TABLE `registration_approval`
-  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+
+--
+-- AUTO_INCREMENT for table `registration_archive`
+--
+ALTER TABLE `registration_archive`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `registration_control`
@@ -732,19 +971,25 @@ ALTER TABLE `registration_control`
 -- AUTO_INCREMENT for table `registration_requirements`
 --
 ALTER TABLE `registration_requirements`
-  MODIFY `requirements_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `requirements_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `renewal`
 --
 ALTER TABLE `renewal`
-  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `renewal_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT for table `renewal_award`
 --
 ALTER TABLE `renewal_award`
-  MODIFY `award_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `award_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `renewal_award_archive`
+--
+ALTER TABLE `renewal_award_archive`
+  MODIFY `renewal_award_archive_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `renewal_control`
@@ -756,13 +1001,13 @@ ALTER TABLE `renewal_control`
 -- AUTO_INCREMENT for table `renewal_process`
 --
 ALTER TABLE `renewal_process`
-  MODIFY `process_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `process_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `scholar`
 --
 ALTER TABLE `scholar`
-  MODIFY `scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -799,6 +1044,12 @@ ALTER TABLE `newscholar_award`
   ADD CONSTRAINT `FK_NewScholar` FOREIGN KEY (`scholar_id`) REFERENCES `scholar` (`scholar_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `newscholar_award_archive`
+--
+ALTER TABLE `newscholar_award_archive`
+  ADD CONSTRAINT `FK_New_Award_Archive` FOREIGN KEY (`scholar_id`) REFERENCES `scholar` (`scholar_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `registration_approval`
 --
 ALTER TABLE `registration_approval`
@@ -822,6 +1073,12 @@ ALTER TABLE `renewal`
 --
 ALTER TABLE `renewal_award`
   ADD CONSTRAINT `FK_Renewal_Award` FOREIGN KEY (`renewal_id`) REFERENCES `renewal` (`renewal_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `renewal_award_archive`
+--
+ALTER TABLE `renewal_award_archive`
+  ADD CONSTRAINT `FK_Renewal_Award_Archive` FOREIGN KEY (`renewal_id`) REFERENCES `renewal` (`renewal_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `renewal_process`

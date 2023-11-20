@@ -1,38 +1,49 @@
 <?php
+// Assuming you have a valid database connection named $conn
 include '../../include/selectDb.php';
 include '../../include/dbConnection.php';
 
-// Start a database transaction
-mysqli_begin_transaction($conn);
+// SELECT query
+$selectQuery = "SELECT renewal_award.*, renewal.*, scholar.*
+          FROM renewal
+          JOIN scholar ON scholar.scholar_id = renewal.scholar_id
+          JOIN renewal_award ON renewal_award.renewal_id = renewal.renewal_id";
 
-$success = true;
+// Execute the SELECT query
+$selectResult = mysqli_query($conn, $selectQuery);
 
-// Get a list of applicant_ids from registration_approval with action_type = 'decline'
-$applicantIdsToDelete = [];
-$deleteApprovalQuery = "SELECT award_id FROM renewal_award ";
-
-$result = mysqli_query($conn, $deleteApprovalQuery);
-
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $applicantIdsToDelete[] = $row['award_id'];
-    }
-
-    // Delete records from registration_approval with action_type = 'decline'
-    $deleteApprovalQuery = "DELETE FROM renewal_award ";
-    if (!mysqli_query($conn, $deleteApprovalQuery)) {
-        $success = false;
-    }
+// Check if the SELECT query was successful
+if (!$selectResult) {
+    echo "Error selecting data: " . mysqli_error($conn);
+    exit;
 }
 
+// Check if there are rows to insert
+if (mysqli_num_rows($selectResult) > 0) {
+    // Loop through the result set
+    while ($row = mysqli_fetch_assoc($selectResult)) {
+        // Access the values of the row
+        extract($row);
 
-// Commit the transaction if all delete queries were successful, otherwise, roll back
-if ($success) {
-    mysqli_commit($conn);
-    echo "All Renewal deleted successfully .";
+
+        // INSERT INTO ... SELECT query for each row
+        $insertQuery = "INSERT INTO renewal_award_archive (award_id, renewal_id, award_status) 
+                VALUES ('$award_id', '$renewal_id', '$award_status')";
+
+        $resultss = mysqli_query($conn, $insertQuery);
+
+        // Check if the INSERT INTO ... SELECT query was successful for each row
+        if ($resultss) {
+            // Delete the inserted row from the original table
+            mysqli_query($conn, "DELETE FROM renewal_award WHERE award_id = '$award_id'");
+        } else {
+            echo "Error inserting data: " . mysqli_error($conn);
+        }
+    }
+
+    echo "Data successfully inserted into archive.";
 } else {
-    mysqli_rollback($conn);
-    echo "Error deleting Renewal: " . mysqli_error($conn);
+    echo "No data to insert.";
 }
 
 // Close the database connection

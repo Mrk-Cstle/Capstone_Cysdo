@@ -51,13 +51,13 @@ if ($_SESSION['role'] === 'admin') {
     <section id="content" class="home-section">
 
         <nav class="navbar navbar-light bg-light d-flex mt-5">
-            <h3 class="cashAllowance ms-5">Cash Allowance Recipients</h3>
-            <a class="btnSearch btn btn-outline-success mb-3" href="renewalAwardArchive.php">Archive</a>
+            <h3 class="cashAllowance ms-5">Cash Allowance For New Scholar Archive</h3>
+
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
                 <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
-                <button id="deleteAllButton" class="btnSearch btn btn-danger">Delete All</button>
+
                 <p id="response"></p>
             </form>
         </nav>
@@ -70,8 +70,9 @@ if ($_SESSION['role'] === 'admin') {
                         <th scope="col">Scholar Id</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Contact 1</th>
-                        <th scope="col">Atm Account</th>
-                        <th scope="col">Renewal</th>
+
+
+                        <th scope="col">Type</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -117,7 +118,7 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     }
                 };
-                xhr.open('GET', 'action/renewalAwardDb.php?page=' + page, true);
+                xhr.open('GET', 'action/renewalAwardNewArchiveDb.php?page=' + page, true);
                 xhr.send();
             }
 
@@ -133,7 +134,7 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     }
                 };
-                xhr.open('GET', 'action/renewalAwardDb.php?search=' + searchValue + '&page=' + page, true);
+                xhr.open('GET', 'action/renewalAwardNewArchiveDb.php?search=' + searchValue + '&page=' + page, true);
                 xhr.send();
             }
 
@@ -148,7 +149,7 @@ if ($_SESSION['role'] === 'admin') {
                     }
                 };
 
-                xhttp.open("GET", "action/renewalAwardDb.php", true);
+                xhttp.open("GET", "action/renewalAwardNewArchiveDb.php", true);
                 xhttp.send();
             }
 
@@ -185,7 +186,7 @@ if ($_SESSION['role'] === 'admin') {
         </script>
         <script>
             document.getElementById('deleteAllButton').addEventListener('click', function() {
-                var confirmation = confirm('Are you sure you want to delete all examinees? This action cannot be undone.');
+                var confirmation = confirm('Are you sure you want to delete all list? This action cannot be undone.');
                 if (confirmation) {
                     // Perform the delete all operation here, for example, using AJAX
                     var xhr = new XMLHttpRequest();
@@ -198,29 +199,29 @@ if ($_SESSION['role'] === 'admin') {
                                 alert(xhr.responseText);
                             } else {
                                 // Handle errors, e.g., show an error message
-                                alert("Error deleting all examinees: " + xhr.status);
+                                alert("Error deleting all List: " + xhr.status);
                             }
                         }
                     };
 
-                    xhr.open("GET", "action/renewalDeleteAward.php", true); // Replace "path/to/deleteAllExamineesPass.php" with the correct URL
+                    xhr.open("GET", "action/renewalDeleteAwardNew.php", true); // Replace "path/to/deleteAllExamineesPass.php" with the correct URL
                     xhr.send();
                 }
             });
 
-            function sendAction(applicantId, action, semesterYear) {
+            function sendAction(applicantId, action) {
                 // Create an AJAX request
                 $.ajax({
                     type: 'POST', // You can use 'GET' if preferred
-                    url: 'action/renewalAwardAction.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
+                    url: 'action/renewalAwardActionNew.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
                     data: {
                         id: applicantId,
-                        action: action,
-                        semesterYear: semesterYear
+                        action: action
+
                     },
                     success: function(response) {
                         // Handle the response from the server if needed
-                        // $('h1').text("response");
+                        $('h1').text("response");
                         loadTableData(currentPage);
                         // For example, you can display a success message or update the UI
                         if (action === 'approve') {

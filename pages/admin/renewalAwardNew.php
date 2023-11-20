@@ -52,6 +52,7 @@ if ($_SESSION['role'] === 'admin') {
 
         <nav class="navbar navbar-light bg-light d-flex mt-5">
             <h3 class="cashAllowance ms-5">Cash Allowance For New Scholar</h3>
+            <a class="btnSearch btn btn-outline-success mb-3" href="renewalAwardNewArchive.php">Archive</a>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
