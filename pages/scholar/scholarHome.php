@@ -87,25 +87,6 @@ include 'include/session.php';
             </div>
           </div>
           <div class="card-4">
-            <h2>Message:</h2>
-            <div class="card-body">
-              <div class="bell-container">
-                <i class="icon fa fa-bell dropdown-toggle" aria-hidden="true" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span class="counter clickable">0</span>
-                </i>
-
-                <div class="dropdown-menu overflow-h-menu dropdown-menu-right">
-                  <div class="notification">
-                    <div class="notification-item">New message from Scholar</div>
-                    <div class="notification-item">Another message from Scholar</div>
-                    <!-- Add more notification items dynamically -->
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-5">
             <h2>Cash Allowance</h2>
             <div class="card-body">
               <p class="text-success"><?php echo $status_lastsem ?></p>

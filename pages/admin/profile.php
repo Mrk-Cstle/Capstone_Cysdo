@@ -206,7 +206,7 @@ if ($result) {
                                     </div>
                                     <h4 class="form-section bold font">Complete Address</h4>
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="control-label bold font-xs">Address</label>
                                                 <input type="text" class="form-control" name="add-ress" id="add-ress" value="<?php echo $address ?> ">
@@ -288,13 +288,13 @@ if ($result) {
                                         <div class="col-md-3 col-sm-4">
                                             <div class="form-group">
                                                 <label class="control-label bold font-xs">Contact Number</label>
-                                                <input type="text" class="form-control" name="contactNum" id="contactNum" title="Please enter a valid numeric contact number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="<?php echo $contact_number ?>">
+                                                <input type="number" class="form-control" name="contactNum" id="contactNum" title="Please enter a valid numeric contact number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="<?php echo $contact_number ?>">
                                             </div>
                                         </div>
                                         <div class=" col-md-3 col-sm-4">
                                             <div class="form-group">
                                                 <label class="control-label bold font-xs">Email</label>
-                                                <input type="text" class="form-control" name="email" id="email" value="<?php echo $email ?> ">
+                                                <input type="email" class="form-control" name="email" id="email" value="<?php echo $email ?> ">
                                             </div>
                                         </div>
 
@@ -363,9 +363,9 @@ if ($result) {
                                                     <div class="row">
                                                         <div class="col-md-5 col-sm-6">
                                                             <div class="form-group">
-                                                                <label class="control-label bold font-xs">Image</label>
-                                                                <input type="file" class="form-control" name="imageUpdate" id="imageUpdate" accept="image/jpeg">
-                                                                <input type="hidden" class="form-control" name="userid" id="userid" value="<?php echo $_SESSION['user_id']; ?> ">
+                                                                <label class="control-label bold font-xs">Image (.jpeg)</label>
+                                                                <input type="file" accept=".jpeg" class="form-control" name="imageUpdate" id="imageUpdate" accept="image/jpeg">
+                                                                <input type="hidden" class="form-control" accept=".jpeg" name="userid" id="userid" value="<?php echo $_SESSION['user_id']; ?> ">
                                                             </div>
                                                         </div>
                                                     </div>

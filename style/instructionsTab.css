@@ -2,29 +2,6 @@ body {
     background-color: aliceblue;
 }
 
-.header {
-    text-align: center;
-    margin-top: 100px;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-    text-decoration: solid black;
-}
-
-.appli {
-    font-size: 30px;
-    font-family: sans-serif;
-    color: dodgerblue;
-}
-
-.steps {
-    font-weight: 600;
-    font-size: 22px;
-}
-
-.btnIndicator {
-    top: 700px;
-}
-
 .proceed {
     margin-top: 150px;
     font-weight: 600px;

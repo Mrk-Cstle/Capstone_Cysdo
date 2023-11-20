@@ -5,10 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <title>CYSDO Scholar</title>
 </head>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
     /* Main */
     *{
       margin: 0;
@@ -26,68 +28,27 @@
       margin-top: 65px;
     }
 
-    #about {
-      display: flex;
-      flex-direction: row;
-      padding: 10px 10px;
-      background-color: whitesmoke;
+    .steps {
+      margin-top: 60px;
+      font-weight: 600;
+      font-size: 22px;
     }
 
-    #aboutPic {
-      width: 40%;
-      display: flex;
-      justify-items: center;
+    .car-body {
+      width: 100%;
+      height: 400px;
     }
 
-    #aboutInfo {
-      width: 60%;
-      display: flex;
-      flex-direction: column;
-      margin-left: 60px;
-    }
-
-    .aboutFormat {
-      margin: 40px 5px;
-    }
-
-    .aboutFormat p,
-    li {
+    .car-text {
       font-size: 20px;
-      line-height: 1.8;
-    }
-
-    .aboutFormat h3 {
-      font-size: 40px;
-      margin-bottom: 20px;
+      word-wrap: break-word;
+      list-style: square;
     }
 
     #FontSize {
-      font-size: 40px;
+      font-size: 24px;
       font-weight: 600px;
       text-align: justify;
-    }
-
-    @media (max-width: 850px){
-      #aboutPic {
-        display: none;
-      }
-      .aboutFormat {
-        border: 1px solid black;
-        border-radius: 5px;
-        padding-bottom: 10px;
-        padding-right: 15px;
-        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
-      }
-      .aboutFormat li, h3 {
-      font-size: 14px;
-      margin-left: 50px;
-    }
-    }
-
-    #aboutPic img {
-      width: 100%;
-      height: auto;
-
     }
 
     #faqs {
@@ -95,8 +56,8 @@
       display: flex;
       background-color: #e6e6e6;
       flex-direction: column;
-      padding: 0px 80px;
-      margin: 0px;
+      padding: 0 20px;
+      margin-left: 0;
       line-height: 1.8;
     }
 
@@ -105,7 +66,7 @@
     }
 
     #collapseThree p {
-      font-size: 18px;
+      font-size: 16px;
     }
 
     #collapseSix p {
@@ -116,12 +77,15 @@
       font-size: 18px;
     }
 
-    #faqs h3 {
-      font-size: 40px;
-    }
-
     #faqsHeader {
       width: 100%;
+    }
+
+    .faqsBody {
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 10px;
+      text-transform: uppercase;
     }
 
     strong {
@@ -143,21 +107,22 @@
     #contact {
       width: 100%;
       display: flex;
+      flex-wrap: wrap;
       flex-direction: column;
-      padding: 0px 80px;
-      margin: auto;
+      padding: 0px 20px;
       line-height: 1.8;
     }
 
     #Fontsizes {
-      font-size: 40px;
+      font-size: 24px;
       font-weight: 600px;
       text-align: justify;
+      margin-left: 10px;
     }
 
     @media (max-width: 850px){
       #Fontsizes {
-      font-size: 30px;
+      font-size: 20px;
       text-align: center;
       margin-top: 10px;
       }
@@ -173,13 +138,15 @@
     }
 
     #contactHeader p {
-      font-size: 20px;
+      margin-left: 30px;
+      font-size: 18px;
     }
 
     #contactDetails {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
       width: 100%;
-      margin-bottom: 100px;
-
     }
 
     .contactText {
@@ -195,39 +162,56 @@
       font-size: 15px;
     }
 
-    .contactText a,
-    .ConNm, .Add-ress, .Con-Icon {
+    .contactText a, .Con-Icon {
+      font-size: 16px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .Con-Icon {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 0;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+
+    .ConNm, .Add-ress {
       font-size: 18px;
-      padding: 20px;
+      padding: 0;
+      margin: 0;
+      text-align: center;
     }
 
     .contactFormat {
       display: flex;
-      flex-direction: row;
-      gap: 10px;
-      margin-top: 50px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+      gap: 30px;
+      justify-content: center;
     }
 
     .contactIcon {
-      height: 100px;
-      width: 5%;
-      margin-right: 20px;
+      height: 80px;
+      width: 80px;
       height: auto;
       display: flex;
-      justify-content: center;
-      align-items: center;
       padding: 10px;
     }
 
     .contactIcon img {
-      height: 70px;
-      width: auto;
+      flex-direction: column;
+      height: 60px;
+      width: 60px;
     }
 
     .contactText {
       display: flex;
+      flex-wrap: wrap;
+      align-content: space-around;
       height: 100px;
-      width: 95%;
+      width: 40%;
       border: 1px solid black;
       border-radius: 100px;
       box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
@@ -235,7 +219,7 @@
     }
 
     #FontSize {
-      font-size: 40px;
+      font-size: 24px;
       font-weight: 600px;
       text-align: justify;
     }
@@ -248,98 +232,258 @@
       font-size: 16px;
     }
 
+    @media (max-width: 2000px) {
+      .Con-Icon {
+        display: none;
+      }
+
+      .conNm {
+        display: flex;
+        font-weight: 500;
+        margin-left: 250px;
+      }
+      .contactText .gmail {
+        margin-left: 250px;
+      }
+    }
+
+    @media (max-width: 1533px) {
+      .conNm {
+        margin-left: 200px;
+      }
+      .contactText .gmail {
+        margin-left: 200px;
+      }
+    }
+
+    @media (max-width: 1374px) {
+      .conNm {
+        margin-left: 160px;
+      }
+      .contactText .gmail {
+        margin-left: 160px;
+      }
+    }
+
+    @media (max-width: 1303px) {
+      .contactFormat {
+        flex-direction: row;
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      .conNm {
+      font-size: 14px;
+      margin-top: 5px;
+      margin-left: 80px;
+      }
+
+      .contactText .gmail {
+        margin-top: 0;
+        margin-left: 80px;
+      }
+      
+    }
+
+    @media (max-width: 961px) {
+      .contactFormat {
+        flex-direction: column;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .contactIcon {
+        display: none;
+      }
+
+      .contactText {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        height: 80px;
+        width: 50%;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .Con-Icon {
+        display: flex;
+      }
+
+      .ConNm, .Add-ress {
+        font-size: 16px;
+      }
+
+      .conNm {
+      font-size: 14px;
+      margin-top: 5px;
+      margin-left: 0;
+      }
+
+      .contactText .gmail {
+        margin-top: 0;
+        margin-left: 0;
+      }
+    }
+
     @media (max-width: 879px) {
-      .contactText a,
-      .ConNm, .Add-ress, .Con-Icon {
-      font-size: 18px;
-      padding: 5px;
+        a, .Con-Icon {
+      margin-left: 20px;
+      font-size: 16px;
     }
-    .conNm, .Con-Icon {
-      margin-top: 6px;
+      .contactText a {
+        font-size: 14px;
+      }
+    .ConNm {
+      font-size: 14px;
+      margin-top: 5px;
+      
     }
-    .gmail {
-      margin-top: 0px;
+
+    .Add-ress {
+      font-size: 14px;
     }
+
+    .conNm {
+      font-size: 14px;
+      margin-top: 5px;
+      margin-left: 0;
+      }
+
+      .contactText .gmail {
+        margin-top: 0;
+        margin-left: 0;
+      }
     }
 
     @media (max-width: 850px) {
       #FontSize {
-      font-size: 30px;
+      font-size: 20px;
       text-align: center;
       margin-top: 10px;
-      font-size: 22px;
-      }
-      .aboutFormat .abt {
-        font-size: 16px;
       }
       .fonty {
+        font-size: 14px;
+      }
+      #contactHeader p {
+        text-align: center;
+        font-size: 14px;
+        margin-right: 20px;
+      }
+      .contactFormat {
+        margin-bottom: 10px;
+      }
+
+      .car-text {
+        font-size: 16px;
+        padding: 20px;
+      }
+      .steps {
+        font-size: 18px;
+      }
+      .conNm {
       font-size: 14px;
-    }
+      margin-top: 5px;
+      margin-left: 0;
+      }
+
+      .contactText .gmail {
+        margin-left: 0;
+      }
+
     }
     @media (max-width: 724px) {
       .contactText {
       display: flex;
-      height: 200px;
+      height: 80px;
       width: 100%;
-      border: 1px solid black;
-      border-radius: 40px;
-      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
       padding: 15px;
       margin-bottom: 10px;
       }
 
-      .Con-Icon{
-        display: none;
+      .Con-Icon {
+        display: flex;
       }
 
-      .contactText a,
-      .ConNm, .Add-ress {
-      font-size: 18px;
-      padding: 30px;
+      a, .Con-Icon {
+      margin-left: 5px;
+      font-size: 16px;
     }
-    .contactIcon img {
+
+    .conNm {
+      font-size: 14px;
+      margin-top: 5px;
+      font-weight: 500;
+      margin-left: 0;
+    }
+
+    .contactText .gmail {
+      margin-left: 0;
+    }
+
+    .Add-ress {
+      font-size: 14px;
+    }
+
+    .contactFormat {
       margin-bottom: 10px;
     }
+
+    .faqsBody {
+      font-size: 16px;
+      font-weight: 600;
     }
+
+  }
     @media (max-width: 497px) {
       .contactText {
       display: flex;
-      height: 200px;
+      height: 85px;
       width: 100%;
-      border: 1px solid black;
-      border-radius: 40px;
-      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
       padding: 15px;
       margin-bottom: 10px;
       }
       #FontSize {
         font-size: 16px;
-        font-weight: 400;
+        font-weight: 500;
       }
-      .aboutFormat .abt {
-        font-size: 12px;
+
+      .contactFormat {
+        margin-bottom: 10px;
       }
-      .Con-Icon{
-        display: none;
+
+      .Con-Icon {
+        display: flex;
+        font-weight: 600;
       }
-      .contactText a,
-      .ConNm, .Add-ress {
+
+      a, .Con-Icon {
+      margin-left: 5px;
       font-size: 14px;
-      padding: 5px;
     }
-    .contactIcon img {
-      margin-bottom: 10px;
-    }
+
     .conNm {
-      margin-top: 50px;
-    }
-    .gmail {
-      margin-top: 40px;
-    }
-    .fb1 {
+      font-size: 14px;
       margin-top: 5px;
+      font-weight: 500;
+      margin-left: 0;
+      }
+
+      .contactText .gmail {
+        margin-left: 0;
+      }
+
+    .Add-ress {
+      font-size: 14px;
     }
+
+    .faqsBody {
+      font-size: 14px;
+      font-weight: 600;
     }
+  }
 
   </style>
 
@@ -354,7 +498,49 @@
 
     <div id="2"></div>
   </main>
-  <div id="about">
+
+  <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-touch="true">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+    <div class="container">
+      <div class="carousel-inner">
+        <div class="car-body carousel-item active" data-bs-interval="8000">
+          <li class="d-block w-100 text-center">
+            <p class="steps">MANDATE</p>
+            <li class="car-text text-center">Assist the City Mayor in the implementation of the Constitutional Provisions
+              relative to youth development through promotion of its youth welfare
+              enhancement, sport, and education programs and become a progressive
+              community with competent youth thriving in a vibrant economy.</li>
+              </li>
+        </div>
+    
+      <div class="car-body carousel-item" data-bs-interval="8000">
+        <li class="d-block w-100 text-center">
+          <p class="steps">MISSION</p>
+          <li class="car-text text-center p-1">Provide quality service to young clientele.</li>
+          <li class="car-text text-center p-1">Promote holistic development both in-school and out-of-school youth.</li>
+          <li class="car-text text-center p-1">Strengthen the capacity level of young people to make them competitive in the
+            National and Global Market.
+          </li>
+          <li class="car-text text-center p-1">Empower the youth sector to become dynamic leaders.</li>
+            </li>
+      </div>
+      <div class="car-body carousel-item" data-bs-interval="8000">
+        <li class="d-block w-100 text-center">
+          <p class="steps">VISION</p>
+          <li class="car-text text-center">A highly efficient office who caters comprehensively to the needs of the youth
+            sector integral to the over-all enhancement and relevant social transformation of
+            San Joseños.</li>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <!--<div id="about">
     <div id="aboutPic" class="img-fluid">
       <img src="assets/image/CysdoLogo.png" />
     </div>
@@ -383,17 +569,17 @@
           San Joseños.</li>
       </div>
     </div>
-  </div>
+  </div> -->
   <div id="faqs">
     <div id="faqsHeader">
-    <p id="FontSize">Frequently Asked Questions</p>
+    <p id="FontSizes">Frequently Asked Questions</p>
 
     <div class="container-sm mb-5">
       <div class="accordion accordion-flush" id="accordionFaqs">
         <div class="accordion-item" id="accordItem">
           <h2 class="accordion-header">
             <button class="accordion-button" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <strong>Who Can Apply?</strong>
+                <p class="faqsBody">Who Can Apply?</p>
             </button>
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFaqs">
@@ -409,7 +595,7 @@
         <div class="accordion-item" id="accordItem">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <strong>When To Apply?</strong>
+                <p class="faqsBody">When To Apply?</p>
             </button>
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
@@ -422,12 +608,12 @@
         <div class="accordion-item" id="accordItem">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <strong>What are the Qualifications?</strong>
+                <p class="faqsBody">What are the Qualifications?</p>
             </button>
           </h2>
           <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
             <div class="accordion-body">
-                <p class="fonty ms-3">Ang lokal na pamahalaan ng Lungsod ng San Jose Del Monte ay patuloy na naghahatid ng programang pang-edukasyon sa mga kabataang San Joseños na mas kilala bilang City Educational Assistance Program (CEAP). Itinataguyod nito ang layunin na makapagbigay ng tulong pinansiyal sa mga kabataan upang makapagtapos ng pag-aaral.</p>
+                <p class="fonty">Ang lokal na pamahalaan ng Lungsod ng San Jose Del Monte ay patuloy na naghahatid ng programang pang-edukasyon sa mga kabataang San Joseños na mas kilala bilang City Educational Assistance Program (CEAP). Itinataguyod nito ang layunin na makapagbigay ng tulong pinansiyal sa mga kabataan upang makapagtapos ng pag-aaral.</p>
 
                 <li class="fonty-1"><strong>QUALIFICATIONS:</strong></li>
                 <ol>
@@ -455,12 +641,12 @@
         <div class="accordion-item" id="accordItem">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                <strong>Initial Requirements</strong>
+                <p class="faqsBody">Initial Requirements</p>
               </button>
             </h2>
             <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
               <div class="accordion-body">
-                <p class="fs-5"><strong>PAALALA:</strong></p>
+                <h6>PAALALA:</h6>
                 <ul>
                   <li class="fonty">Ang LAHAT NG REQUIREMENTS na ito ay IPAPALIWANAG SA ARAW NG ORIENTATION.</li>
                   <li class="fonty">Kung hindi makakarating sa araw ng orientation ang aplikante, maaaring ang PARENT O GUARDIAN ang dumalo.</li>
@@ -486,7 +672,7 @@
                     <li class="fonty">Notarized Guardianship Certificate from Barangay</li>
                   </ol>
                 </ol>
-                <p class="fs-5"> Kung kayo ay MAKAKAPASA sa QUALIFYING EXAMINATION, narito ang FINAL REQUIREMENTS na kailangang asikasuhin:</p>
+                <p> Kung kayo ay MAKAKAPASA sa QUALIFYING EXAMINATION, narito ang FINAL REQUIREMENTS na kailangang asikasuhin:</p>
                 <ol>
                   <li class="fonty">Katunayan ng taunang pinagsamang kita ng magulang:</li>
                   <ol>
@@ -525,7 +711,7 @@
         <div class="accordion-item" id="accordItem">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                <strong>Filing of Application</strong>
+                <p class="faqsBody">Filing of Application</p>
               </button>
             </h2>
             <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
@@ -539,11 +725,11 @@
                 </details>
                 <details>
                   <summary class="dropdown-toggle"><strong>Issuance of Examination Stub</strong></summary>
-                  <p class="fs-5">Upon submission of the Application Form during the Orientation, Examination Stub will be released to the applicants.</p>
+                  <p>Upon submission of the Application Form during the Orientation, Examination Stub will be released to the applicants.</p>
                 </details>
                 <details>
                   <summary class="dropdown-toggle"><strong>Announcement of Qualifiers</strong></summary>
-                  <p class="fs-5">List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>              
+                  <p>List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>              
               </div>
             </div>
         </div>
@@ -551,7 +737,7 @@
         <div class="accordion-item" id="accordItem">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                <strong>Issuance of Examination Stub</strong>
+                <p class="faqsBody">Issuance of Examination Stub</p>
               </button>
             </h2>
             <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
@@ -564,7 +750,7 @@
         <div class="accordion-item" id="accordItem">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                <strong>Announcement of Qualifiers</strong>
+                <p class="faqsBody">Announcement of Qualifiers</p>
               </button>
             </h2>
             <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
@@ -588,34 +774,32 @@
           <img src="assets/image/fbIcon.png" />
         </div>
         <div class="contactText">
-          <h5 class="Con-Icon">Facebook Page</h5>
+        <p class="Con-Icon">Facebook Page</p>
           <a class="text-break lh-sm text-decoration-underline fb1" href="https://www.facebook.com/CEAP.CYSDO">https://www.facebook.com/CEAP.CYSDO(City Youth and Sports Development Office – CSJDM)</a>
         </div>
-      </div>
-      <div class="contactFormat">
         <div class="contactIcon">
           <img src="assets/image/gmailIcon.png" />
         </div>
         <div class="contactText">
-          <h5 class="Con-Icon">Email</h5>
-          <a class="text-break text-decoration-underline gmail" href="csjdm.cysdo1@gmail.com">csjdm.cysdo1@gmail.com</a>
+        <p class="Con-Icon">Email</p>
+          <a class="gmail text-break text-decoration-underline" href="csjdm.cysdo1@gmail.com">csjdm.cysdo1@gmail.com</a>
         </div>
       </div>
+  <div id="contactDetails">
       <div class="contactFormat">
         <div class="contactIcon">
-          <img src="assets/image/callIcon.png" />
+          <img src="assets/image/phone.png" />
         </div>
         <div class="contactText">
-          <h5 class="Con-Icon">Contact No.</h5>
+        <p class="Con-Icon">Phone</p>
           <li class="text-break lh-sm conNm">(639)905-603-7218</li>
         </div>
-      </div>
-      <div class="contactFormat">
         <div class="contactIcon">
           <img src="assets/image/locationIcon.png" />
         </div>
+        
         <div class="contactText">
-          <h5 class="Con-Icon">Address</h5>
+        <p class="Con-Icon">Address</p>
           <li class="text-break lh-sm Add-ress">Productivity Complex, Barangay Sapang Palay Proper, City of San Jose del Monte, Bulacan</li>
         </div>
       </div>

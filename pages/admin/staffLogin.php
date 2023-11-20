@@ -77,7 +77,7 @@ body{
                      <h2>Staff Login</h2>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" id="UserName" name="userName" placeholder="Username / Email">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" id="UserName" name="userName" placeholder="Username">
                 </div>
 
                 <div class="input-group mb-1">
