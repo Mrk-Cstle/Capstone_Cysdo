@@ -19,20 +19,20 @@
 
         @media screen and (max-width: 779px) {
 
-        .btnSearch {
-            padding: 10px;
-            height: 45px;
-            margin-bottom: 8px;
-            margin-left: 10px;
-        }
+            .btnSearch {
+                padding: 10px;
+                height: 45px;
+                margin-bottom: 8px;
+                margin-left: 10px;
+            }
 
-        .searchBar {
-            margin-left: 10px;
-            margin-bottom: 10px;
-            padding: 5px;   
-            width: 250px;
+            .searchBar {
+                margin-left: 10px;
+                margin-bottom: 10px;
+                padding: 5px;
+                width: 250px;
+            }
         }
-    }
     </style>
 </head>
 <?php
@@ -51,9 +51,9 @@ if ($_SESSION['role'] === 'admin') {
 
     <section id="content" class="home-section">
         <nav class="navbar navbar-light bg-light d-flex mt-5">
-        <h3 class="approvedList ms-5">Approved Applicant List</h3>
+            <h3 class="approvedList ms-5">Approved Applicant List</h3>
             <a class="btnSearch btn btn-outline-success mb-3" href="applicantList.php">All Applicant</a>
-            <a class="btnSearch btn btn-outline-danger mb-3" href="applicantDenied.php">Denied Applicant</a>
+
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
@@ -138,19 +138,19 @@ if ($_SESSION['role'] === 'admin') {
             }
 
             function refreshList() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableData").innerHTML = this.responseText;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
 
-            // Reset the pagination to page 1
-            loadPage(1);
-        }
-    };
+                        // Reset the pagination to page 1
+                        loadPage(1);
+                    }
+                };
 
-    xhttp.open("GET", "action/applicantApproveDb.php", true);
-    xhttp.send();
-}
+                xhttp.open("GET", "action/applicantApproveDb.php", true);
+                xhttp.send();
+            }
 
             document.addEventListener('DOMContentLoaded', function() {
                 loadTableData(currentPage);

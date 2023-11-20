@@ -7,8 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style/addStaff.css">
-    <link rel="stylesheet" href="../../node_modules/ldloader/index.css" />
-    <title>Approve Applicants</title>
+    <title>Applicant Archive List</title>
     <style>
         .hidden-cell {
             display: none;
@@ -49,12 +48,10 @@ if ($_SESSION['role'] === 'admin') {
 
 
 <body>
-    <div class="ldld full z-3"></div>
     <section id="content" class="home-section">
         <nav class="navbar navbar-light bg-light d-flex mt-5">
-            <h3 class="examinersList ms-5">Examiners List</h3>
-            <!-- <a class="btnSearch btn btn-outline-success mb-3" href="applicantExamPass.php">List of Pass Examiner</a> -->
-            <!-- <a class="btnSearch btn btn-outline-danger mb-3" href="applicantExamFailed.php">Failed Examiner</a> -->
+            <h3 class="applicantList ms-5">Applicant List</h3>
+
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
@@ -67,14 +64,13 @@ if ($_SESSION['role'] === 'admin') {
             <table class="table table-bordered">
                 <thead>
                     <tr>
-
                         <th scope="col">Image</th>
                         <th scope="col">Applicant Id</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Contact 1</th>
                         <th scope="col">Contact 2</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Exam Status</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -87,63 +83,22 @@ if ($_SESSION['role'] === 'admin') {
         <div id="paginationButtons">
             <!-- Pagination buttons will be dynamically populated here -->
         </div>
-        <script src="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js"></script>
-        <script src="../../node_modules/ldloader/index.js"></script>
-        <script>
-            function sendAction(applicantId, action) {
-                // Create an AJAX request
-                new ldLoader({
-                    root: ".ldld.full"
-                }).on();
-                $.ajax({
-                    type: 'POST', // You can use 'GET' if preferred
-                    url: 'action/applicantExaminerAction.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
-                    data: {
-                        id: applicantId,
-                        action: action
-                    },
-                    success: function(response) {
-                        // Handle the response from the server if needed
-                        new ldLoader({
-                            root: ".ldld.full"
-                        }).off();
-                        $('#response').text(response);
-                        setTimeout(function() {
-                            $('#response').text('');
-                        }, 5000);
-                        loadTableData(currentPage);
-                        // For example, you can display a success message or update the UI
-                        if (action === 'pass') {
-                            // alert(response);
-                            $('#approveBtn').hide();
-                            $('#declineBtn').hide();
-                        } else if (action === 'failed') {
-                            // alert(response);
-                            $('#approveBtn').hide();
-                            $('#declineBtn').hide();
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle the error if the request fails
-                        console.error('Error sending action:', error);
-                    }
-                });
-            }
-        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            // Function to get the current page from local storage
+            var myNamespace = 'appList';
+
+            // Function to get the current page from session storage
             function getCurrentPage() {
-                var currentPage = localStorage.getItem('currentPage');
+                var currentPage = sessionStorage.getItem(myNamespace + 'currentPage');
                 return currentPage ? parseInt(currentPage) : 1;
             }
 
-            // Function to save the current page to local storage
+            // Function to save the current page to session storage
             function setCurrentPage(page) {
-                localStorage.setItem('currentPage', page);
+                sessionStorage.setItem(myNamespace + 'currentPage', page);
             }
 
             var currentPage = getCurrentPage(); // Get the current page from local storage
@@ -160,7 +115,7 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     }
                 };
-                xhr.open('GET', 'action/applicantExaminerDb.php?page=' + page, true);
+                xhr.open('GET', 'action/applicantArchiveList.php?page=' + page, true);
                 xhr.send();
             }
 
@@ -176,21 +131,23 @@ if ($_SESSION['role'] === 'admin') {
                         }
                     }
                 };
-                xhr.open('GET', 'action/applicantExaminerDb.php?search=' + searchValue + '&page=' + page, true);
+                xhr.open('GET', 'action/applicantArchiveList.php?search=' + searchValue + '&page=' + page, true);
                 xhr.send();
             }
 
             function refreshList() {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById("tableData").innerHTML = xhr.responseText;
-                        setCurrentPage(currentPage); // Save the current page to local storage
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("tableData").innerHTML = this.responseText;
+
+                        // Reset the pagination to page 1
+                        loadPage(1);
                     }
                 };
 
-                xhr.open("GET", "action/applicantExaminerDb.php?page=" + currentPage, true); // Pass the current page
-                xhr.send();
+                xhttp.open("GET", "action/applicantArchiveList.php", true);
+                xhttp.send();
             }
 
             document.addEventListener('DOMContentLoaded', function() {
@@ -226,6 +183,7 @@ if ($_SESSION['role'] === 'admin') {
         </script>
     </section>
 </body>
+
 
 
 </html>

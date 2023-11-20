@@ -45,7 +45,7 @@ if (isset($_POST['id']) && isset($_POST['action'])) {
         //     edit();
         // } 
         else if ($_POST["action"] == "denied") {
-            decline($contactNum1, $contactNum2, $fullName, $user);
+            decline($contactNum1, $contactNum2, $fullName, $user, $row);
         } else {
             echo "error";
         }
@@ -177,7 +177,7 @@ function approve($contactNum1, $contactNum2, $applicant_id, $lastName, $firstNam
     }
 }
 
-function decline($contactNum1, $contactNum2, $fullName, $user)
+function decline($contactNum1, $contactNum2, $fullName, $user, $rowData)
 {
     global $conn;
 
@@ -188,13 +188,70 @@ function decline($contactNum1, $contactNum2, $fullName, $user)
     try {
         mysqli_query($conn, "UPDATE examination SET requirements_status = 'Failed'  WHERE examination_id = '$applicantId'");
         mysqli_query($conn, "UPDATE registration_requirements SET req_status = 'Failed'  WHERE examination_id = '$applicantId'");
+        $applicant_id = $rowData['applicant_id'];
+        $fullName = $rowData['fullName'];
+        $lastName = $rowData['lastName'];
+        $firstName = $rowData['firstName'];
+        $middleName = $rowData['middleName'];
+        $status = $rowData['status'];
+        $gender = $rowData['gender'];
+        $civilStatus = $rowData['civilStatus'];
+        $voter = $rowData['voter'];
+        $birthDate = $rowData['birthDate'];
+        $birthPlace = $rowData['birthPlace'];
+        $citizenship = $rowData['citizenship'];
+        $fullAddress = $rowData['fullAddress'];
+        $houseAddress = $rowData['houseAddress'];
+        $streetAddress = $rowData['streetAddress'];
+        $barangayAddress = $rowData['barangayAddress'];
+        $contactNum1 = $rowData['contactNum1'];
+        $contactNum2 = $rowData['contactNum2'];
+        $pic2x2 = $rowData['pic2x2'];
+        $signaturePic = $rowData['signaturePic'];
+        $schoolName = $rowData['schoolName'];
+        $schoolAddress = $rowData['schoolAddress'];
+        $schoolType = $rowData['schoolType'];
+        $course = $rowData['course'];
+        $yearLevel = $rowData['yearLevel'];
+        $fatherName = $rowData['fatherName'];
+        $fatherStatus = $rowData['fatherStatus'];
+        $fatherAddress = $rowData['fatherAddress'];
+        $fatherContact = $rowData['fatherContact'];
+        $fatherOccupation = $rowData['fatherOccupation'];
+        $fatherEduc = $rowData['fatherEduc'];
+        $motherName = $rowData['motherName'];
+        $motherStatus = $rowData['motherStatus'];
+        $motherAddress = $rowData['motherAddress'];
+        $motherContact = $rowData['motherContact'];
+        $motherOccupation = $rowData['motherOccupation'];
+        $motherEduc = $rowData['motherEduc'];
+        $guardianName = $rowData['guardianName'];
+        $guardianAddress = $rowData['guardianAddress'];
+        $guardianContact = $rowData['guardianContact'];
+        $guardianOccupation = $rowData['guardianOccupation'];
+        $guardianEduc = $rowData['guardianEduc'];
+        $sibling1 = $rowData['sibling1'];
+        $sibling2 = $rowData['sibling2'];
+        $sibling3 = $rowData['sibling3'];
+        $sibling4 = $rowData['sibling4'];
+        $sibling5 = $rowData['sibling5'];
+        $sibling6 = $rowData['sibling6'];
+        $sizeFamily = $rowData['sizeFamily'];
+        $annualGross = $rowData['annualGross'];
+        $date = $rowData['date'];
 
+        $type = 'Failed Requirements';
+        $insertQuery = "INSERT INTO registration_archive (applicant_id,type, fullName, lastName, firstName, middleName, status, gender, civilStatus, voter, birthDate, birthPlace, citizenship, fullAddress, houseAddress, streetAddress, barangayAddress, contactNum1, contactNum2, pic2x2, signaturePic, schoolName, schoolAddress, schoolType, course, yearLevel, fatherName, fatherStatus, fatherAddress, fatherContact, fatherOccupation, fatherEduc, motherName, motherStatus, motherAddress, motherContact, motherOccupation, motherEduc, guardianName, guardianAddress, guardianContact, guardianOccupation, guardianEduc, sibling1, sibling2, sibling3, sibling4, sibling5, sibling6, sizeFamily, annualGross, date) VALUES ('$applicant_id','$type','$fullName','$lastName','$firstName','$middleName','$status','$gender','$civilStatus','$voter','$birthDate','$birthPlace','$citizenship','$fullAddress','$houseAddress','$streetAddress','$barangayAddress','$contactNum1','$contactNum2','$pic2x2','$signaturePic','$schoolName','$schoolAddress','$schoolType','$course','$yearLevel','$fatherName','$fatherStatus','$fatherAddress','$fatherContact','$fatherOccupation','$fatherEduc','$motherName','$motherStatus','$motherAddress','$motherContact','$motherOccupation','$motherEduc','$guardianName','$guardianAddress','$guardianContact','$guardianOccupation','$guardianEduc','$sibling1','$sibling2','$sibling3','$sibling4','$sibling5','$sibling6','$sizeFamily','$annualGross','$date')";
+        $result = mysqli_query($conn, $insertQuery);
+        if ($result) {
 
+            send_sms($text, '+63' . $contactNum1);
 
-        send_sms($text, '+63' . $contactNum1);
+            email($text, $contactNum2, $fullName);
+            echo "" . $fullName . " Declined Scholar";
 
-        email($text, $contactNum2, $fullName);
-        echo "" . $fullName . " Declined Scholar";
+            mysqli_query($conn, "DELETE FROM registration WHERE applicant_id = '$applicant_id'");
+        }
     } catch (mysqli_sql_exception $e) {
         // Hide the error message from the frontend
         echo "An error occurred";

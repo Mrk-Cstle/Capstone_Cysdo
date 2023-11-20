@@ -576,21 +576,25 @@ if ($result) {
 
         </a>
         <div class="sub-menu">
+          <a href="applicantArchive.php" class="sub-item">
+
+            Applicant Archive
+          </a>
           <a href="applicantList.php" class="sub-item">
             <i class="bi bi-person-lines-fill"></i>
-            Step 1 </br>List of Applicants
+            Step 1 </br>Applicants
           </a>
           <a href="applicantExaminers.php" class="sub-item">
             <i class="bi bi-person-lines-fill"></i>
-            Step 2 </br>List of Examiners
+            Step 2 </br>Examiners
           </a>
           <a href="applicantExamPass.php" class="sub-item">
             <i class="bi bi-person-lines-fill"></i>
-            Step 3 </br>List of Pass Examiner
+            Step 3 </br>Pass Examiners
           </a>
           <a href="applicantScholar.php" class="sub-item">
             <i class="bi bi-person-lines-fill"></i>
-            Step 4 </br>List of New Scholar
+            List </br>New Scholars
           </a>
         </div>
       </div>

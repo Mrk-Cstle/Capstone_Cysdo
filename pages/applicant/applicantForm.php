@@ -61,8 +61,19 @@ if (isset($_GET['id'])) {
                 <div class="portlet-title tabbable-line">
                     <div class="caption caption-md">
                         <label class="d-block fs-5 fw-bold mb-2">Name : <?php echo $fullName ?></label>
+                        <?php
+                        if ($req_status == 'Pending') {
+                        ?> <label class="d-block fs-5 fw-bold mb-2">Status : Not Uploaded</label>
+                        <?php
+                        } else {
+                        ?> <label class="d-block fs-5 fw-bold mb-2">Status : <?php echo $req_status ?></label>
+                        <?php
+                        }
+                        ?>
+
                         <span class="caption-name font-color bold text-uppercase">Applicant Requirements</span>
-                        <?php echo $req_status ?>
+
+
                     </div>
 
                     <p id="response"></p>

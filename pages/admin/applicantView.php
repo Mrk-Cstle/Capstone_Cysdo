@@ -570,8 +570,10 @@ if (isset($_GET['id'])) {
                         alert('Applicant approved successfully!');
                         $('#approveBtn').hide();
                         $('#declineBtn').hide();
+                        window.location.href = 'applicantList.php';
                     } else if (action === 'decline') {
                         alert('Applicant declined successfully!');
+                        window.location.href = 'applicantList.php';
                         $('#approveBtn').hide();
                         $('#declineBtn').hide();
                     }

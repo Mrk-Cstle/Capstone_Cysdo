@@ -19,7 +19,7 @@ $query =
     "SELECT registration_approval.*, registration.*
     FROM registration_approval
     JOIN registration ON registration.applicant_id = registration_approval.application_id
-    WHERE registration_approval.action_type = 'approve'
+    WHERE registration_approval.action_type = 'approve' AND registration_approval.exam_status IS NULL
     $searchCondition
     ORDER BY registration.applicant_id ASC LIMIT $offset, $pageSize";
 

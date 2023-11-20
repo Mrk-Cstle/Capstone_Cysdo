@@ -21,7 +21,7 @@ FROM registration
 JOIN registration_approval ON registration.applicant_id = registration_approval.application_id
 JOIN examination ON examination.action_id = registration_approval.action_id
 JOIN registration_requirements ON registration_requirements.examination_id = examination.examination_id
-WHERE examination.result = 'pass' $searchCondition
+WHERE examination.result = 'pass'  AND registration_requirements.req_status != 'Approve' $searchCondition
 ORDER BY registration.applicant_id ASC LIMIT $offset, $pageSize";
 
 // Execute the SQL query for data retrieval
@@ -62,7 +62,7 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '<td>';
 
         $tableHTML .=   '<a class="resetPassword btn btn-sm btn-success mb-2 me-2" href="applicantRequirementsView.php?id=' . htmlspecialchars($row['examination_id']) . '">View</a>';
-        $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger mb-2" data-applicant-id="' . htmlspecialchars($row['applicant_id']) . '">Delete</button>';
+
 
 
         $tableHTML .= '</td>';

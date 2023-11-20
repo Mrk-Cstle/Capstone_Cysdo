@@ -16,7 +16,7 @@ if (!empty($searchQuery)) {
 }
 
 // Construct the query to fetch data with or without search
-$query = "SELECT * FROM registration $searchCondition WHERE status IS NULL ORDER BY applicant_id ASC LIMIT $offset, $pageSize";
+$query = "SELECT * FROM registration_archive $searchCondition ORDER BY id ASC LIMIT $offset, $pageSize";
 
 $result = mysqli_query($conn, $query);
 
@@ -31,13 +31,8 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum1']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum2']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['fullAddress']) . '</td>';
-        $tableHTML .= '<td>';
-        if ($row['status'] === 'done') {
-            $tableHTML .= '<span class="badge bg-success">Done</span>';
-        } else {
-            $tableHTML .= '<span class="badge bg-danger">For Review</span>';
-        }
-        $tableHTML .= '</td>';
+        $tableHTML .= '<td>' . htmlspecialchars($row['type']) . '</td>';
+
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['lastName']) . '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['firstName']) . '</td>';
         $tableHTML .= '<td class="hidden-cell">' . htmlspecialchars($row['middleName']) . '</td>';
@@ -48,7 +43,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 
     // Calculate total number of rows based on the search
-    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM registration $searchCondition"));
+    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM registration_archive $searchCondition"));
 
     // Calculate total number of pages
     $totalPages = ceil($totalRows / $pageSize);

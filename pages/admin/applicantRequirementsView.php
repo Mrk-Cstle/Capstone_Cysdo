@@ -122,14 +122,16 @@ if (isset($_GET['id'])) {
                     <div class="caption caption-md">
                         <span class="caption-name font-color bold text-uppercase">Applicant Requirements</span>
                         <label class="aName d-block mb-3 mt-3">Name : <?php echo $fullName ?></label>
+                        <label class="aName d-block mb-3 mt-3">Status : <?php echo $req_status ?></label>
                     </div>
 
                     <p id="response"></p>
                     <?php
-                    if ($req_status !== 'Pending') {
-                    } else { ?>
+                    if ($req_status == 'Uploaded') { ?>
                         <a class="resetPassword btn btn-sm btn-success me-3 mt-3" onclick="sendAction('<?php echo $examination_id ?>', 'approve')">Approve to Scholar</a>
                         <a class="resetPassword btn btn-sm btn-danger mt-3" onclick="sendAction('<?php echo $examination_id ?>', 'denied')">Failed Requirements</a>
+                    <?php } else { ?>
+
                     <?php }
                     ?>
 

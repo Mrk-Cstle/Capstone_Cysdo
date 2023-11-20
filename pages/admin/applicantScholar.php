@@ -19,20 +19,20 @@
 
         @media screen and (max-width: 779px) {
 
-        .btnSearch {
-            padding: 10px;
-            height: 45px;
-            margin-bottom: 8px;
-            margin-left: 10px;
-        }
+            .btnSearch {
+                padding: 10px;
+                height: 45px;
+                margin-bottom: 8px;
+                margin-left: 10px;
+            }
 
-        .searchBar {
-            margin-left: 10px;
-            margin-bottom: 10px;
-            padding: 5px;   
-            width: 250px;
+            .searchBar {
+                margin-left: 10px;
+                margin-bottom: 10px;
+                padding: 5px;
+                width: 250px;
+            }
         }
-    }
     </style>
 </head>
 <?php
@@ -51,10 +51,11 @@ if ($_SESSION['role'] === 'admin') {
 
     <section id="content" class="home-section">
         <nav class="navbar navbar-light bg-light d-flex mt-5">
-        <h3 class="newscholarsList ms-5">New Approved Scholar List</h3>
+            <h3 class="newscholarsList ms-5">New Approved Scholar List</h3>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
+                <button id="deleteAllButton" class="btnSearch btn btn-outline-danger">Clear Table</button>
                 <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
                 <p id="response"></p>
             </form>
@@ -88,6 +89,29 @@ if ($_SESSION['role'] === 'admin') {
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
+            document.getElementById('deleteAllButton').addEventListener('click', function() {
+                var confirmation = confirm('Are you sure you want to clear the table? This action cannot be undone.');
+                if (confirmation) {
+                    // Perform the delete all operation here, for example, using AJAX
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4) {
+                            if (xhr.status == 200) {
+                                // Refresh the table after successful deletion
+                                refreshList();
+                                // Show a success message (you can customize this)
+                                alert(xhr.responseText);
+                            } else {
+                                // Handle errors, e.g., show an error message
+                                alert("Error deleting all examinees: " + xhr.status);
+                            }
+                        }
+                    };
+
+                    xhr.open("GET", "action/applicantScholarAction.php", true); // Replace "path/to/deleteAllExamineesPass.php" with the correct URL
+                    xhr.send();
+                }
+            });
             // Function to get the current page from local storage
             var myNamespace = 'appScholar';
 
