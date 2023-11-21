@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 03:52 PM
+-- Generation Time: Nov 21, 2023 at 04:25 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -83,6 +83,13 @@ CREATE TABLE `chat_messages` (
   `is_read` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `chat_messages`
+--
+
+INSERT INTO `chat_messages` (`id`, `sender`, `staffId`, `message`, `timestamp`, `admin_id`, `scholar_id`, `is_read`) VALUES
+(215, 'City Youth and Sports Development Office - CSJDM', 187, 'hi', '2023-11-21 06:00:02', NULL, 56, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +101,18 @@ CREATE TABLE `examination` (
   `result` varchar(255) NOT NULL,
   `requirements_status` varchar(100) DEFAULT NULL,
   `action_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `examination_requirements`
+--
+
+CREATE TABLE `examination_requirements` (
+  `exam_action_id` int(11) NOT NULL,
+  `examination_id` int(11) NOT NULL,
+  `requirement_actions` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -529,8 +548,21 @@ INSERT INTO `staff` (`staffId`, `fullName`, `last_name`, `first_name`, `middle_n
 --
 -- Table structure for table `todos`
 --
--- Error reading structure for table cysdo.todos: #1932 - Table &#039;cysdo.todos&#039; doesn&#039;t exist in engine
--- Error reading data for table cysdo.todos: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `cysdo`.`todos`&#039; at line 1
+
+CREATE TABLE `todos` (
+  `id` int(11) NOT NULL,
+  `todo_text` varchar(255) NOT NULL,
+  `completed` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `todos`
+--
+
+INSERT INTO `todos` (`id`, `todo_text`, `completed`, `created_at`) VALUES
+(36, 'asdasd', 1, '2023-10-08 13:47:17'),
+(49, 'asdasdas', 0, '2023-11-21 06:07:07');
 
 --
 -- Indexes for dumped tables
@@ -563,6 +595,13 @@ ALTER TABLE `examination`
   ADD PRIMARY KEY (`examination_id`),
   ADD UNIQUE KEY `action_id` (`action_id`),
   ADD KEY `FK_ExaminationAction` (`action_id`);
+
+--
+-- Indexes for table `examination_requirements`
+--
+ALTER TABLE `examination_requirements`
+  ADD PRIMARY KEY (`exam_action_id`),
+  ADD KEY `FK_Examination_Action` (`examination_id`);
 
 --
 -- Indexes for table `newscholar_award`
