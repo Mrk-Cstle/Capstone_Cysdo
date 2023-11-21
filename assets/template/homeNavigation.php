@@ -232,74 +232,80 @@
         <div class="menuToggle"></div>
         <nav>
             <ul>
+                <?php
+
+                if (!function_exists('getSwitchStatus')) {
+                    function getSwitchStatus()
+                    {
+                        // Establish a database connection
+                        $server = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $db = "cysdo";
+
+                        $conn = mysqli_connect($server, $username, $password, $db);
+
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+
+                        if (!$conn) {
+                            die('Could not connect: ' . mysqli_connect_error());
+                        }
+
+                        // Initialize variables
+                        $switchStatus = 0; // Default value
+                        $count = 0;
+
+                        // Query to retrieve the switch status
+                        $switchStatusQuery = "SELECT quota FROM registration_control WHERE reg_control_id = 1";
+                        $switchStatusResult = mysqli_query($conn, $switchStatusQuery);
+
+                        if ($switchStatusResult) {
+                            // Fetch the switch status
+                            $row = mysqli_fetch_assoc($switchStatusResult);
+                            $switchStatus = $row['quota'];
+                        } else {
+                            die('Error retrieving switch status: ' . mysqli_error($conn));
+                        }
+
+                        // Query to count total applicants
+                        $totalApplicantQuery = "SELECT COUNT(*) AS count FROM registration";
+                        $totalApplicantResult = mysqli_query($conn, $totalApplicantQuery);
+
+                        if ($totalApplicantResult) {
+                            // Fetch the count
+                            $row = mysqli_fetch_assoc($totalApplicantResult);
+                            $count = $row['count'];
+                        } else {
+                            die('Error counting applicants: ' . mysqli_error($conn));
+                        }
+
+                        // Close the database connection
+                        mysqli_close($conn);
+
+                        return array('switchStatus' => $switchStatus, 'count' => $count);
+                    }
+                }
+
+                // Get the switch status from the database
+                $switchStatusInfo = getSwitchStatus();
+                $switchStatus = $switchStatusInfo['switchStatus'];
+                $count = $switchStatusInfo['count'];
+                ?>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="index.php#about">About</a></li>
                 <li><a href="index.php#faqs">FAQs</a></li>
                 <li><a href="index.php#contact">Contact</a></li>
                 <li><a href="newsTab.php">News & Updates</a></li>
-                <li><a class="log" href="pages/applicant/termsRegistration.php">Registration</a></li>
+                <?php if ($count >=  $switchStatus) { ?>
+                    <li><a class="log" href="#" style="pointer-events: none; cursor: not-allowed;opacity: 0.5;">Registration</a></li>
+                <?php } else { ?>
+                    <li><a class="log" href="pages/applicant/termsRegistration.php">Registration</a></li>
+                <?php } ?>
+
                 <li><a href="#">Login</a>
-                    <?php
 
-                    if (!function_exists('getSwitchStatus')) {
-                        function getSwitchStatus()
-                        {
-                            // Establish a database connection
-                            $server = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $db = "cysdo";
-
-                            $conn = mysqli_connect($server, $username, $password, $db);
-
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            }
-
-                            if (!$conn) {
-                                die('Could not connect: ' . mysqli_connect_error());
-                            }
-
-                            // Initialize variables
-                            $switchStatus = 0; // Default value
-                            $count = 0;
-
-                            // Query to retrieve the switch status
-                            $switchStatusQuery = "SELECT quota FROM registration_control WHERE reg_control_id = 1";
-                            $switchStatusResult = mysqli_query($conn, $switchStatusQuery);
-
-                            if ($switchStatusResult) {
-                                // Fetch the switch status
-                                $row = mysqli_fetch_assoc($switchStatusResult);
-                                $switchStatus = $row['quota'];
-                            } else {
-                                die('Error retrieving switch status: ' . mysqli_error($conn));
-                            }
-
-                            // Query to count total applicants
-                            $totalApplicantQuery = "SELECT COUNT(*) AS count FROM registration";
-                            $totalApplicantResult = mysqli_query($conn, $totalApplicantQuery);
-
-                            if ($totalApplicantResult) {
-                                // Fetch the count
-                                $row = mysqli_fetch_assoc($totalApplicantResult);
-                                $count = $row['count'];
-                            } else {
-                                die('Error counting applicants: ' . mysqli_error($conn));
-                            }
-
-                            // Close the database connection
-                            mysqli_close($conn);
-
-                            return array('switchStatus' => $switchStatus, 'count' => $count);
-                        }
-                    }
-
-                    // Get the switch status from the database
-                    $switchStatusInfo = getSwitchStatus();
-                    $switchStatus = $switchStatusInfo['switchStatus'];
-                    $count = $switchStatusInfo['count'];
-                    ?>
 
 
                     <ul>
@@ -312,18 +318,18 @@
 
 
 
-</ul>
-</li>
-</ul>
-</nav>
-</header>
-<script>
-    let menuToggle = document.querySelector('.menuToggle');
-    let header = document.querySelector('header');
-    menuToggle.onclick = function() {
-        header.classList.toggle('active');
-    }
-</script>
+            </ul>
+            </li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+        let menuToggle = document.querySelector('.menuToggle');
+        let header = document.querySelector('header');
+        menuToggle.onclick = function() {
+            header.classList.toggle('active');
+        }
+    </script>
 </body>
 
 </html>
