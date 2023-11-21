@@ -52,6 +52,7 @@ if ($_SESSION['role'] === 'admin') {
         <nav class="navbar navbar-light bg-light d-flex mt-5">
             <h3 class="applicantList ms-5">Applicant List</h3>
             <a class="btnSearch btn btn-outline-success mb-3" href="applicantApprove.php">List of Approve Applicant</a>
+            <a class="btnSearch btn btn-outline-success mb-3" href="applicantArchive.php">Archive</a>
             <!-- <a class="btnSearch btn btn-outline-danger mb-3" href="applicantDenied.php">Denied Applicant</a> -->
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">

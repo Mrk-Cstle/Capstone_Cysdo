@@ -562,7 +562,7 @@ if ($result) {
         </a>
         <div class="sub-menu">
           <a href="scholar.php" class="sub-item">Scholar List</a>
-          <a href="scholarArchive.php" class="sub-item">Scholar Archive List</a>
+
           <a href="renewalList.php" class="sub-item">Renewal Process</a>
           <a href="renewalAward.php" class="sub-item">Cash Allowance(Old)</a>
           <a href="renewalAwardNew.php" class="sub-item">Cash Allowance(New)</a>
@@ -576,10 +576,7 @@ if ($result) {
 
         </a>
         <div class="sub-menu">
-          <a href="applicantArchive.php" class="sub-item">
 
-            Applicant Archive
-          </a>
           <a href="applicantList.php" class="sub-item">
             <i class="bi bi-person-lines-fill"></i>
             Step 1 </br>Applicants
