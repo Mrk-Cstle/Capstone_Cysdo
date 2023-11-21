@@ -83,9 +83,10 @@
         header ul li ul {
             position: absolute;
             left: 0;
-            width: 250px;
+            width: 140px;
             background: #FEA1BF;
             display: none;
+            overflow-x: hidden;
         }
 
         header ul li:hover>ul {
@@ -95,7 +96,8 @@
 
         header ul li ul li {
             position: relative;
-            width: 320px;
+            width: 190px;
+            overflow-y: hidden;
         }
 
         #pic {

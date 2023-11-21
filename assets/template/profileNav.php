@@ -295,6 +295,16 @@ if ($result) {
     font-size: 20px;
   }
 
+  .applicant-menu {
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+  }
+
+  .side-bar .menu .item .sub-menu .applicant-menu  {
+    line-height: 2.3;
+  }
+
   @media screen and (max-width: 779px) {
     .side-bar {
       display: block;
@@ -577,19 +587,19 @@ if ($result) {
         </a>
         <div class="sub-menu">
 
-          <a href="applicantList.php" class="sub-item">
+          <a href="applicantList.php" class="sub-item applicant-menu">
             <i class="bi bi-person-lines-fill"></i>
             Step 1 </br>Applicants
           </a>
-          <a href="applicantExaminers.php" class="sub-item">
+          <a href="applicantExaminers.php" class="sub-item applicant-menu">
             <i class="bi bi-person-lines-fill"></i>
             Step 2 </br>Examiners
           </a>
-          <a href="applicantExamPass.php" class="sub-item">
+          <a href="applicantExamPass.php" class="sub-item applicant-menu">
             <i class="bi bi-person-lines-fill"></i>
             Step 3 </br>Pass Examiners
           </a>
-          <a href="applicantScholar.php" class="sub-item">
+          <a href="applicantScholar.php" class="sub-item applicant-menu">
             <i class="bi bi-person-lines-fill"></i>
             List </br>New Scholars
           </a>

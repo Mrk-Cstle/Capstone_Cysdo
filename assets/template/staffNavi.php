@@ -296,6 +296,10 @@ if ($result) {
   .side_icon {
     font-size: 20px;
   }
+
+  .side-bar .menu .item .sub-menu .applicant-menu  {
+    line-height: 2.3;
+  }
   
   @media screen and (max-width: 779px) {
     .side-bar {
@@ -567,9 +571,9 @@ if ($result) {
       </a>
         <div class="sub-menu">
 
-          <a href="applicantList.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 1 </br>List of Applicants</a>
-          <a href="applicantExaminers.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 2 </br>List of Examiners</a>
-          <a href="applicantScholar.php" class="sub-item"><i class="bi bi-person-lines-fill"></i>Step 3 </br>List of New Scholar</a>
+          <a href="applicantList.php" class="sub-item applicant-menu"><i class="bi bi-person-lines-fill"></i>Step 1 </br>List of Applicants</a>
+          <a href="applicantExaminers.php" class="sub-item applicant-menu"><i class="bi bi-person-lines-fill"></i>Step 2 </br>List of Examiners</a>
+          <a href="applicantScholar.php" class="sub-item applicant-menu"><i class="bi bi-person-lines-fill"></i>Step 3 </br>List of New Scholar</a>
         </div>
       </div>
       <div class="item fontWeight">
