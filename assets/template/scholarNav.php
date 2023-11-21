@@ -148,8 +148,17 @@ if ($result) {
     }
 
     .sideLogo {
+        display: flex;
         margin-right: 10px;
-        display: none;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .sideLogo img {
+        margin-top: 10px;
+        display: flex;
+        margin-right: 10px;
+        
     }
 
     .header__logo {
@@ -209,6 +218,10 @@ if ($result) {
     .nav__logo {
         font-weight: var(--font-semi-bold);
         margin-bottom: 2.5rem;
+    }
+
+    .nav__logo-name {
+        margin-left: 30px;
     }
 
     .nav__list,
@@ -306,7 +319,6 @@ if ($result) {
         left: 0;
     }
 
-
     /* ========== MEDIA QUERIES ==========*/
     @media screen and (min-width: 768px) {
         body {
@@ -349,6 +361,8 @@ if ($result) {
             row-gap: 1.7rem;
         }
 
+       
+
         .nav__icon {
             font-size: 1.3rem;
         }
@@ -386,11 +400,6 @@ if ($result) {
 
         .Navi:hover .nav__dropdown-icon {
             opacity: 1;
-            text-decoration: none;
-        }
-
-        .Navi:hover .nav1__link.nav__logo .sideLogo {
-            display: flex;
             text-decoration: none;
         }
     }
@@ -500,7 +509,10 @@ if ($result) {
         .content-section {
             flex-direction: column;
             margin-right: 25px;
+        }
 
+        .sideLogo img {
+            display: none;
         }
     }
 
@@ -533,8 +545,10 @@ if ($result) {
                 </li>
                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
             </ul>
-            <a class="header__logo">CYSDO</a>
-
+            <div  class="sideLogo">
+                <img src="../../assets/image/CysdoLogo.png" style="height: 50px; width: 50px;">
+                <a class="header__logo">CYSDO</a>
+            </div>
             <div class="header__toggle">
                 <i class='bx bx-menu' id="header-toggle"></i>
             </div>
@@ -547,8 +561,7 @@ if ($result) {
     <div class="Navi" id="navbar">
         <nav class="nav__container">
             <div>
-                <a href="#" class="nav1__link nav__logo">
-                    <img src="../../assets/image/CysdoLogo.png" style="height: 50px; width: 50px;" class="sideLogo">
+                <a class="nav1__link nav__logo">
                     <span class="nav__logo-name">CYSDO</span>
                 </a>
 

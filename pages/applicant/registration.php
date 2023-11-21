@@ -247,7 +247,7 @@
           <label class="control-label bold font-xs">Contact Number <strong class="text-danger">*</strong></label>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">+63</span>
-            <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber1" id="contactNumber1" required>
+            <input type="number" class="noscroll form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber1" id="contactNumber1" required>
           </div>
         </div>
         <div class="col-md-4 col-sm-4">
@@ -322,23 +322,13 @@
       <div class="row">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-2 col-sm-3">
-              <div class="form-group">
-                <label class="control-label bold font-xs">Father Status</label>
-                <select class="form-control" name="father" id="father">
-                  <option value="-">-</option>
-                  <option value="Living">Living</option>
-                  <option value="Deceased">Deceased</option>
-                </select>
-              </div>
-            </div>
             <div class="col-md-3 col-sm-4">
               <div class="form-group">
                 <label class="control-label bold font-xs">Father Name</label>
                 <input type="text" class="form-control" name="fatherName" id="fatherName">
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
               <div class="form-group">
                 <label class="control-label bold font-xs">Full Address</label>
                 <input type="text" class="form-control" name="fatherAddress" id="fatherAddress">
@@ -350,7 +340,7 @@
               <label class="control-label bold font-xs">Contact Number</label>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">+63</span>
-                <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="fatherNumber" id="fatherNumber">
+                <input type="number" class="noscroll form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="fatherNumber" id="fatherNumber">
               </div>
             </div>
             <div class="col-md-3 col-sm-4">
@@ -365,19 +355,19 @@
                 <input type="text" class="form-control" name="fEducAttainment" id="fEducAttainment">
               </div>
             </div>
-          </div>
-          <h4 class="form-section bold font">Mother</h4>
-          <div class="row">
             <div class="col-md-2 col-sm-3">
               <div class="form-group">
-                <label class="control-label bold font-xs">Mother Status</label>
-                <select class="form-control" name="mother" id="mother">
+                <label class="control-label bold font-xs">Father Status</label>
+                <select class="form-control" name="father" id="father">
                   <option value="-">-</option>
                   <option value="Living">Living</option>
                   <option value="Deceased">Deceased</option>
                 </select>
               </div>
             </div>
+          </div>
+          <h4 class="form-section bold font">Mother</h4>
+          <div class="row">
             <div class="col-md-3 col-sm-4">
               <div class="form-group">
                 <label class="control-label bold font-xs"> Mother Name</label>
@@ -385,22 +375,18 @@
               </div>
             </div>
 
-
-            <div class="col-md-2">
+            <div class="col-md-4">
               <div class="form-group">
                 <label class="control-label bold font-xs">Full Address</label>
                 <input type="text" class="form-control" name="motherAddress" id="motherAddress">
               </div>
             </div>
 
-
-
-
             <div class="col-md-4 col-sm-4">
               <label class="control-label bold font-xs">Contact Number</label>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">+63</span>
-                <input type="number" class="form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="motherNumber" id="motherNumber">
+                <input type="number" class="noscroll form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="motherNumber" id="motherNumber">
               </div>
             </div>
             <div class="col-md-3 col-sm-4">
@@ -415,6 +401,16 @@
                 <input type="text" class="form-control" name="mEducAttainment" id="mEducAttainment">
               </div>
             </div>
+            <div class="col-md-2 col-sm-3">
+              <div class="form-group">
+                <label class="control-label bold font-xs">Mother Status</label>
+                <select class="form-control" name="mother" id="mother">
+                  <option value="-">-</option>
+                  <option value="Living">Living</option>
+                  <option value="Deceased">Deceased</option>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
         <h4 class="form-section bold font">Guardian (if not living with parent/s)</h4>
@@ -426,7 +422,7 @@
             </div>
           </div>
 
-          <div class="col-md-2">
+          <div class="col-md-4">
             <div class="form-group">
               <label class="control-label bold font-xs">Full Address</label>
               <input type="text" class="form-control" name="guardianAddress" id="guardianAddress">
@@ -435,12 +431,13 @@
 
 
 
-          <div class="col-md-3 col-sm-4">
-            <div class="form-group">
+          <div class="col-md-4 col-sm-4">
               <label class="control-label bold font-xs">Contact Number</label>
-              <input type="number" class="form-control" name="guardianNumber" id="guardianNumber">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">+63</span>
+                <input type="number" class="noscroll form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="guardianNumber" id="guardianNumber">
+              </div>
             </div>
-          </div>
           <div class="col-md-3 col-sm-4">
             <div class="form-group">
               <label class="control-label bold font-xs">Occupation</label>
@@ -470,7 +467,7 @@
           <h4 class="form-section bold font">Name of Siblings (if any)</h4>
           <div class="col-md-3 col-sm-4">
             <div class="form-group">
-              <label class="control-label bold font-xs"></label>
+              <label class="control-label bold font-xs">Full Name (All Siblings)</label>
               <input type="text" class="form-control" name="sibling1" id="sibling1">
             </div>
           </div>
@@ -517,6 +514,15 @@
   </form>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("wheel", function(event){
+    if(document.activeElement.type === "number" &&
+       document.activeElement.classList.contains("noscroll"))
+    {
+        document.activeElement.blur();
+    }
+});
+</script>
 </body>
 
 </html>

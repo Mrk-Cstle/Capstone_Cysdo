@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Document</title>
 
@@ -31,7 +32,7 @@
             width: 100%;
             min-height: 66px;
             background-color: #F875AA;
-            padding: 0 20px;
+            padding: 0 8px;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -47,6 +48,13 @@
             text-decoration: none;
         }
 
+        .headText {
+            margin-top: 12px;
+            margin-left: 10px;
+            font-size: 24px;
+            font-weight: 400;
+        }
+
         header ul {
             position: relative;
         }
@@ -55,7 +63,7 @@
             position: relative;
             list-style: none;
             float: left;
-            padding-right: 70px;
+            padding-right: 50px;
         }
 
         header ul li a {
@@ -108,6 +116,12 @@
             margin-bottom: 10px;
         }
 
+        @media (max-width: 1500px) {
+            #headImg {
+                display: none;
+            }
+        }
+
         @media (max-width: 1002px) {
             .log {
                 padding: 15px 90px;
@@ -122,9 +136,9 @@
 
         }
 
-        @media (max-width: 931px) {
+        @media (max-width: 1202px) {
             header {
-                padding: 10px 20px;
+                padding: 3px 20px;
             }
 
             header nav {
@@ -132,7 +146,7 @@
                 z-index: 10;
                 width: 300px;
                 right: 0;
-                top: 80px;
+                top: 70px;
                 background: #FEA1BF;
                 display: none;
             }
@@ -199,11 +213,6 @@
         }
 
         @media(max-width: 700px) {
-
-            #headImg {
-                display: none;
-            }
-
             #pic {
                 margin-left: 20px;
             }
@@ -218,17 +227,17 @@
     <header>
         <div id="pic">
             <img src="assets/image/CysdoLogo.png" class="img-fluid" />
-            <img id="headImg" src="assets/image/CYSDOHeader.png" class="img-fluid" />
+            <p class="headText">CYSDO</p>
         </div>
         <div class="menuToggle"></div>
         <nav>
             <ul>
-
                 <li><a href="index.php">Home</a></li>
                 <li><a href="index.php#about">About</a></li>
                 <li><a href="index.php#faqs">FAQs</a></li>
                 <li><a href="index.php#contact">Contact</a></li>
                 <li><a href="newsTab.php">News & Updates</a></li>
+                <li><a class="log" href="pages/applicant/termsRegistration.php">Registration</a></li>
                 <li><a href="#">Login</a>
                     <?php
 
@@ -297,20 +306,11 @@
                         <li><a class="log" href="pages/admin/adminLogin.php">Admin</a></li>
                         <li><a class="log" href="pages/admin/staffLogin.php">Staff</a></li>
                         <li><a class="log" href="pages/scholar/ScholarLogin.php">Scholar</a></li>
-
-                        <?php if ($count >=  $switchStatus) { ?>
-                            <li><a class="log" href="#" style="pointer-events: none; cursor: not-allowed;opacity: 0.5;">Registration</a></li>
-                        <?php } else { ?>
-                            <li><a class="log" href="pages/applicant/termsRegistration.php">Registration</a></li>
-
-                        <?php } ?>
                     </ul>
 
                     <!-- Your page content goes here -->
 
-</body>
 
-</html>
 
 </ul>
 </li>
@@ -324,6 +324,9 @@
         header.classList.toggle('active');
     }
 </script>
+</body>
+
+</html>
 <!--
     <header>
     <div class="header">

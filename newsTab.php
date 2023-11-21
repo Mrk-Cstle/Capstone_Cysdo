@@ -21,7 +21,7 @@
 
  .textAlign {
     display: flex;
-    padding-top: 120px;
+    padding-top: 100px;
     padding-left: 50px;
     font-size: 28px;
  }
@@ -41,11 +41,11 @@
   align-items: center;
   text-align: center;
   margin-top: 30px;
-  width: 60%;
+  width: 100%;
  }
 
  .content-section .card {
-  flex: 1;
+  width: 30%;
   margin: 20px 20px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -68,11 +68,16 @@
     margin-top: 10px;
     flex-direction: column;
   }
+
+  .textAlign {
+    padding-left: 10px;
+    font-size: 28px;
+ }
  }
 
  @media screen and (max-width: 992px) {
-  .content-section {
-    width: 100%;
+  .content-section .card {
+    width: 60%;
   }
  }
   
