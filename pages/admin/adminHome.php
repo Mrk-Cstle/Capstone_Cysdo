@@ -395,7 +395,14 @@ include 'include/session.php'; ?>
                 <div class="todo">
                     <div class="head">
                         <h3>Todos</h3>
-                        <a class="btnAddTodo bx bx-plus dropdown-toggle-split text-black" type="button" data-bs-target="#addTodo" data-bs-toggle="modal" data-bs-whatever="@addTo-do"></a>
+                        <?php
+
+                        if ($_SESSION['role'] === 'admin') { ?>
+                            <a class="btnAddTodo bx bx-plus dropdown-toggle-split text-black" type="button" data-bs-target="#addTodo" data-bs-toggle="modal" data-bs-whatever="@addTo-do"></a>
+                        <?php } elseif ($_SESSION['role'] === 'staff') {
+                        }
+                        ?>
+
                         <div class="modal fade" id="addTodo" aria-labelledby="addTodoLabel" aria-expanded="false">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -442,7 +449,7 @@ include 'include/session.php'; ?>
                             </div>
                         </div>
 
-                        <i class="bx bx-filter" onclick="toggleTodoList()"></i>
+
                     </div>
                     <ul class="todo-list">
                         <?php

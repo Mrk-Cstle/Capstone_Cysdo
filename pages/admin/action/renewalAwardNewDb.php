@@ -63,8 +63,7 @@ if (mysqli_num_rows($result) > 0) {
 
             $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="scholarView.php?id=' . htmlspecialchars($row['scholar_id']) . '">View</a>';
         } else {
-            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['scholar_release_id']) . '">View</a> | ';
-            $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" onclick="sendAction(\'' .  $row['scholar_release_id'] . '\', \'delete\')">Delete</button>';
+            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['scholar_release_id']) . '">View</a>';
         }
         $tableHTML .= '</td>';
 

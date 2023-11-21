@@ -11,6 +11,7 @@ try {
     $contact_num2 = $_POST['contactNum2'];
     $facebook = $_POST['facebook'];
     $telegram = $_POST['telegram'];
+    $atm = $_POST['atm'];
 
 
 
@@ -23,12 +24,13 @@ try {
         $row['barangay'] === $barangay && $row['contact_num1'] === $contact_num1 && $row['contact_num2'] === $contact_num2
         && $row['facebook'] === $facebook
         && $row['telegram'] === $telegram
+        && $row['atm_number'] === $atm
     ) {
         // No changes were made
         echo 'No changes were made';
     } else {
         // Changes were made, execute the UPDATE query
-        mysqli_query($conn, "UPDATE scholar SET age = '$age', full_address ='$address', barangay='$barangay', email = '$email', contact_num1 = '$contact_num1', contact_num2= '$contact_num2', facebook = '$facebook', telegram= '$telegram'  WHERE scholar_id = '$user_id'");
+        mysqli_query($conn, "UPDATE scholar SET age = '$age', full_address ='$address', barangay='$barangay', email = '$email', contact_num1 = '$contact_num1', contact_num2= '$contact_num2', facebook = '$facebook', telegram= '$telegram', atm_number= '$atm'  WHERE scholar_id = '$user_id'");
 
         if (mysqli_affected_rows($conn) > 0) {
             echo 'Save Changes Successfully';

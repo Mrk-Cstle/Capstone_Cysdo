@@ -226,7 +226,7 @@ include 'include/session.php'; ?>
       
             <ul class='box-info justify-content-center'>
                 <li class='responsive'>
-                    <img src='./assets/image/CysdoLogo.png' style='height: 50px; width: 50px;' class='sideLogo'><i class='caption'>City Youth Sports Development Office</i></a>
+                    <img src='../../assets/image/CysdoLogo.png' style='height: 50px; width: 50px;' class='sideLogo'><i class='caption'>City Youth Sports Development Office</i></a>
                     <i id='uploadDate' class='date p-3'>" . $row['uploadDate'] . "</i>
                     <div>
                         <i id='uploaderName' class='textCap text-black-50 ms-5'>" . $row['uploader'] . "</i>

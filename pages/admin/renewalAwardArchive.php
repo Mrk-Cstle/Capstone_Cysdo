@@ -51,12 +51,12 @@ if ($_SESSION['role'] === 'admin') {
     <section id="content" class="home-section">
 
         <nav class="navbar navbar-light bg-light d-flex mt-5">
-            <h3 class="cashAllowance ms-5">Cash Allowance Recipients</h3>
+            <h3 class="cashAllowance ms-5">Cash Allowance Recipients Archive</h3>
             <form id="searchForm" class="form-inline m-lg-3">
                 <input id="searchInput" class="searchBar form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
                 <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
-                <button id="deleteAllButton" class="btnSearch btn btn-danger">Delete All</button>
+
                 <p id="response"></p>
             </form>
         </nav>
@@ -211,7 +211,7 @@ if ($_SESSION['role'] === 'admin') {
                 // Create an AJAX request
                 $.ajax({
                     type: 'POST', // You can use 'GET' if preferred
-                    url: 'action/renewalAwardAction.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
+                    url: 'action/renewalAwardActionArchive.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
                     data: {
                         id: applicantId,
                         action: action,
@@ -220,16 +220,15 @@ if ($_SESSION['role'] === 'admin') {
                     success: function(response) {
                         // Handle the response from the server if needed
                         // $('h1').text("response");
+                        console.log(response);
                         loadTableData(currentPage);
                         // For example, you can display a success message or update the UI
-                        if (action === 'approve') {
-                            alert('Applicant approved successfully!');
-                            $('#approveBtn').hide();
-                            $('#declineBtn').hide();
-                        } else if (action === 'decline') {
-                            alert('Applicant declined successfully!');
-                            $('#approveBtn').hide();
-                            $('#declineBtn').hide();
+                        if (response === 'Restore') {
+                            alert('Data Restored Successfully!');
+
+                        } else if (response === 'Delete') {
+                            alert('Data Deleted Permanently!');
+
                         }
                     },
                     error: function(xhr, status, error) {

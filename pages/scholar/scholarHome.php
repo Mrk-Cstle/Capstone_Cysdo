@@ -89,7 +89,7 @@ include 'include/session.php';
           <div class="card-4">
             <h2>Cash Allowance</h2>
             <div class="card-body">
-              <p class="text-success"><?php echo $status_lastsem ?></p>
+              <p class="text-success"><?php echo $scholar_award_status ?></p>
             </div>
           </div>
         </div>

@@ -27,6 +27,7 @@ if (mysqli_num_rows($result) == 1) {
                 $_SESSION['user_id'] = $row['scholar_id'];
                 $_SESSION['scholar_id'] = $row['scholar_id'];
                 $_SESSION['user'] = $row['full_name'];
+                $_SESSION['user_name'] = $row['user'];
                 $_SESSION['logged_in'] = true;
 
                 // Redirect to the appropriate page

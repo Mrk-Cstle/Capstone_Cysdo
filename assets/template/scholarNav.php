@@ -158,7 +158,7 @@ if ($result) {
         margin-top: 10px;
         display: flex;
         margin-right: 10px;
-        
+
     }
 
     .header__logo {
@@ -361,7 +361,7 @@ if ($result) {
             row-gap: 1.7rem;
         }
 
-       
+
 
         .nav__icon {
             font-size: 1.3rem;
@@ -537,7 +537,7 @@ if ($result) {
     <header class="header">
         <div class="header__container">
             <a class="navProfile nav-link dropdown-toggle text-black" type="button" data-bs-toggle="dropdown" href="#" aria-expanded="false">
-                <img src="../../uploads/scholar/<?php echo $image ?>" class="header__img"><?php echo $_SESSION['user']; ?></a>
+                <img src="../../uploads/scholar/<?php echo $image ?>" class="header__img"><?php echo $_SESSION['user_name']; ?></a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                 <li>
@@ -545,7 +545,7 @@ if ($result) {
                 </li>
                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
             </ul>
-            <div  class="sideLogo">
+            <div class="sideLogo">
                 <img src="../../assets/image/CysdoLogo.png" style="height: 50px; width: 50px;">
                 <a class="header__logo">CYSDO</a>
             </div>

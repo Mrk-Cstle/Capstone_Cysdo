@@ -54,14 +54,9 @@ if (mysqli_num_rows($result) > 0) {
         $tableHTML .= '</td>';
         $tableHTML .= '<td>';
 
-        if ($row['award_status'] == null) {
 
-
-            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=award">View</a>';
-        } else {
-            $tableHTML .= '<a class="resetPassword btn btn-sm btn-dark" href="renewalStatus.php?id=' . htmlspecialchars($row['renewal_id']) . '&action=' . htmlspecialchars($row['semester']) .  '&page=award">View</a> | ';
-            $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" onclick="sendAction(\'' .  $row['award_id'] . '\', \'delete\', \'' . $row['semester_year'] . '\')">Delete</button>';
-        }
+        $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-success" onclick="sendAction(\'' .  $row['award_id'] . '\', \'done\')">Restore</button> | ';
+        $tableHTML .= '<button class="deleteApplicant btn btn-sm btn-danger" onclick="sendAction(\'' .  $row['award_id'] . '\', \'delete\')">Delete</button>';
 
 
 
@@ -71,8 +66,8 @@ if (mysqli_num_rows($result) > 0) {
 
     // Calculate the total count of "pass" results
     $countQuery = "SELECT COUNT(*) AS totalRows
-              FROM renewal_award
-              JOIN renewal ON renewal.renewal_id = renewal_award.renewal_id
+              FROM renewal_award_archive
+              JOIN renewal ON renewal.renewal_id = renewal_award_archive.renewal_id
               JOIN scholar ON scholar.scholar_id = renewal.scholar_id
               $searchCondition";
 

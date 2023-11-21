@@ -72,7 +72,7 @@ if ($_SESSION['role'] === 'admin') {
                         <th scope="col">Contact 1</th>
 
 
-                        <th scope="col">Type</th>
+                        <th scope="col">Date</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -213,7 +213,7 @@ if ($_SESSION['role'] === 'admin') {
                 // Create an AJAX request
                 $.ajax({
                     type: 'POST', // You can use 'GET' if preferred
-                    url: 'action/renewalAwardActionNew.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
+                    url: 'action/renewalAwardActionNewArchive.php', // Replace 'process_action.php' with the server-side script that will handle the approval/decline
                     data: {
                         id: applicantId,
                         action: action
@@ -223,15 +223,14 @@ if ($_SESSION['role'] === 'admin') {
                         // Handle the response from the server if needed
                         $('h1').text("response");
                         loadTableData(currentPage);
+
                         // For example, you can display a success message or update the UI
-                        if (action === 'approve') {
-                            alert('Applicant approved successfully!');
-                            $('#approveBtn').hide();
-                            $('#declineBtn').hide();
-                        } else if (action === 'decline') {
-                            alert('Applicant declined successfully!');
-                            $('#approveBtn').hide();
-                            $('#declineBtn').hide();
+                        if (response === 'Restore') {
+                            alert('Data Restored Successfully!');
+                        } else if (response === 'Delete') {
+                            alert('Data Deleted Successfully!');
+                        } else {
+                            alert('Unknown response: ' + response);
                         }
                     },
                     error: function(xhr, status, error) {

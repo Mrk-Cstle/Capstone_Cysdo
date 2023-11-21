@@ -291,6 +291,12 @@ if ($result) {
                                                     <input type="text" class="form-control" name="telegram" id="telegram" value="<?php echo $telegram ?>">
                                                 </div>
                                             </div>
+                                            <div class=" col-md-3 col-sm-4">
+                                                <div class="form-group">
+                                                    <label class="control-label bold font-xs">ATM Account</label>
+                                                    <input type="text" class="form-control" name="atm" id="atm" value="<?php echo $atm_number ?>">
+                                                </div>
+                                            </div>
 
 
                                         </div>
