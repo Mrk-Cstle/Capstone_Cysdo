@@ -77,7 +77,7 @@
         }
 
         header ul li a:hover {
-            background: #F875AA;
+            background: #FF8FB1;
         }
 
         header ul li ul {
@@ -118,6 +118,37 @@
             margin-bottom: 10px;
         }
 
+        .q {
+            margin-top: 17px;
+            font-size: 18px;
+            -webkit-text-fill-color: #7743DB;
+            font-weight: 600;
+        }
+        .w {
+            margin-top: 17px;
+            font-size: 18px;
+            -webkit-text-fill-color: #79AC78;
+            font-weight: 600;
+        }
+        .e {
+            margin-top: 17px;
+            font-size: 18px;
+            -webkit-text-fill-color: #F4CE14;
+            font-weight: 600;
+        }
+        .r {
+            margin-top: 17px;
+            font-size: 18px;
+            -webkit-text-fill-color: #CD1818;
+            font-weight: 600;
+        }
+        .t {
+            margin-top: 17px;
+            font-size: 18px;
+            -webkit-text-fill-color: #F05941;
+            font-weight: 600;
+        }
+        
         @media (max-width: 1500px) {
             #headImg {
                 display: none;
@@ -229,7 +260,7 @@
     <header>
         <div id="pic">
             <img src="assets/image/CysdoLogo.png" class="img-fluid" />
-            <p class="headText">CYSDO</p>
+            <p class="headText"><p class="q">C</p><p class="w">Y</p><p class="e">S</p><p class="r">D</p><p class="t">O</p></p>
         </div>
         <div class="menuToggle"></div>
         <nav>

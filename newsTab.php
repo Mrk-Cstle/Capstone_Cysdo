@@ -93,14 +93,14 @@
     <div class="container">
       <div class="content-section">
         <div class="card">
-          <img src="./assets/image/1x1.jpg" alt="No img">
+          <img src="./assets/image/CysdoLogo.jpg" alt="No img">
          <div class="card-body">
           <h2>Scholar Announcement</h2>
           <a href="scholarAnnouncement.php?page=scholar" class="btn btn-outline-primary mb-4">View</a>
          </div>
         </div>
         <div class="card">
-          <img src="./assets/image/1x1.jpg" alt="No img">
+          <img src="./assets/image/CysdoLogo.jpg" alt="No img">
          <div class="card-body">
           <h2>Applicant Announcement</h2>
           <a href="scholarAnnouncement.php?page=applicant" class="btn btn-outline-primary mb-4">View</a>

@@ -32,6 +32,7 @@
       margin-top: 60px;
       font-weight: 600;
       font-size: 22px;
+      -webkit-text-fill-color: #F05941;
     }
 
     .car-body {

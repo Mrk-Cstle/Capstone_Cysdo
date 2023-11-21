@@ -520,8 +520,6 @@ if ($result) {
           <img src="../../uploads/admin/<?php echo $image ?>"class="header__img"><?php echo $_SESSION['user']; ?></a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="profileStaff.php">Profile</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
