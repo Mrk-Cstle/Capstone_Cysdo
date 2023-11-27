@@ -23,14 +23,12 @@
         }
 
         body {
-            min-height: 100vh;
             background: #eee;
         }
 
         header {
             position: absolute;
             width: 100%;
-            min-height: 66px;
             background-color: #F875AA;
             padding: 0 8px;
             display: flex;
@@ -334,7 +332,7 @@
                 <?php if ($count >=  $switchStatus) { ?>
                     <li><a class="log" href="#" style="pointer-events: none; cursor: not-allowed;opacity: 0.5;">Registration</a></li>
                 <?php } else { ?>
-                    <li><a class="log" href="pages/applicant/termsRegistration.php">Registration</a></li>
+                    <li><a class="log" href="termsRegistration.php">Registration</a></li>
                 <?php } ?>
 
                 <li><a href="#">Login</a>

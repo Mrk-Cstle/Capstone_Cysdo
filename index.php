@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <title>CYSDO Scholar</title>
+  <title>CYSDO Portal</title>
 </head>
 
   <style>
@@ -24,8 +24,21 @@
       width: 100%;
     }
 
-    .homeimg {
-      margin-top: 65px;
+    .car-header {
+      padding-top: 80px;
+    }
+
+    .announcer {
+      width: 100%;
+      max-width: 1500px;
+      height: auto;
+      max-height: 650px;
+      object-fit: contain;
+      
+    }
+
+    .car-about {
+      background-color: #e6e6e6;
     }
 
     .steps {
@@ -94,13 +107,12 @@
     }
     
     #accordItem {
-      border: 0.2px solid black;
       border-radius: 3px;
       box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
     }
 
     #AccordBtn {
-      background-color: #FFACC7;
+      background-color: #D0BFFF;
       box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
       border-radius: 3px;
     }
@@ -493,18 +505,40 @@
   include 'assets/template/homeNavigation.php';
   ?>
   <main>
-    <div class="1">
-    <img src="assets/image/s.jpg" class="img-fluid homeimg">
+  <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide car-header" data-bs-ride="carousel" data-bs-touch="true">
+    <div class="container-fluid">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="4000">
+          <img src="././assets/image/announcement-atm.jpg" class="announcer d-block mx-auto" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+          <img src="././assets/image/announcement-renew.jpg" class="announcer d-block mx-auto" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+          <img src="././assets/image/1x1.jpg" class="announcer d-block mx-auto" alt="...">
+        </div>
+      </div>
+    <div class="car-btn">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
     </div>
+      </button>
+    </div>
+  </div>
 
     <div id="2"></div>
   </main>
-
-  <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-touch="true">
+<div id="about">
+  <div id="carouselExampleRide" class="car-about carousel carousel-dark slide" data-bs-ride="true" data-bs-touch="true">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleRide" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleRide" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleRide" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
     <div class="container">
       <div class="carousel-inner">
@@ -539,7 +573,7 @@
     </div>
   </div>
   </div>
-
+</div>
 
   <!--<div id="about">
     <div id="aboutPic" class="img-fluid">
