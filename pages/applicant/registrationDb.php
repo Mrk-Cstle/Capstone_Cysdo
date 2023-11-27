@@ -76,18 +76,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Check if the file uploads were successful
-    if (
-        move_uploaded_file($_FILES["2x2Pic"]["tmp_name"], $picturePath)
-    ) {
-        // Both images were successfully uploaded
-        echo "";
+
+    $switchStatus = 0; // Default value
+    $count = 0;
+    // Both images were successfully uploaded
+    $switchStatusQuery = "SELECT quota FROM registration_control WHERE reg_control_id = 1";
+    $switchStatusResult = mysqli_query($conn, $switchStatusQuery);
+    if ($switchStatusResult) {
+        // Fetch the switch status
+        $row = mysqli_fetch_assoc($switchStatusResult);
+        $switchStatus = $row['quota'];
 
 
-        $query = "INSERT INTO registration (fullName, lastName, firstName,middleName,gender, civilStatus, voter, birthDate,birthPlace, citizenship,fullAddress, houseAddress, streetAddress, barangayAddress, contactNum1, contactNum2, pic2x2,  schoolName, schoolAddress, schoolType, course, yearLevel, fatherName, fatherStatus,fatherAddress, fatherContact, fatherOccupation, fatherEduc, motherName, motherStatus, motherAddress, motherContact, motherOccupation, motherEduc, guardianName, guardianAddress, guardianContact, guardianOccupation, guardianEduc, sizeFamily, annualGross,  sibling1,sibling2,sibling3,sibling4,sibling5,sibling6 ) VALUES ( '$fullName','$lastName' , '$firstName', '$middleName', '$gender', '$civilStatus', '$registeredVoter', '$birthDate','$birthPlace', '$citizenship','$fullAddress', '$addressNum', '$addressStreet', '$addressBarangay', '$contactNumber1', '$contactNumber2', '$imageName',  '$schoolName', '$schoolAddress', '$schoolType', '$course', '$currentLevel', '$fatherName', '$father', '$fatherAddress', '$fatherNumber', '$fatherOccupation',  '$fEducAttainment', '$motherName', '$mother', '$motherAddress', '$motherNumber', '$motherOccupation', '$mEducAttainment', '$guardianName', '$guardianAddress', '$guardianNumber', '$guardianOccupation', '$gEducAttainment', '$sizeFamily', '$familyIncome', '$sibling1', '$sibling2', '$sibling3', '$sibling4', '$sibling5', '$sibling6')";
 
-        $insert = mysqli_query($conn, $query);
+        # code...
+
+        $totalApplicantQuery = "SELECT COUNT(*) AS count FROM registration";
+        $totalApplicantResult = mysqli_query($conn, $totalApplicantQuery);
+
+        if ($totalApplicantResult) {
+            // Fetch the count
+            $row = mysqli_fetch_assoc($totalApplicantResult);
+            $count = $row['count'];
+            $count = $count + 1;
+
+            if ($switchStatus >=  $count) {
+                if (
+                    move_uploaded_file($_FILES["2x2Pic"]["tmp_name"], $picturePath)
+                ) {
+
+                    $query = "INSERT INTO registration (fullName, lastName, firstName,middleName,gender, civilStatus, voter, birthDate,birthPlace, citizenship,fullAddress, houseAddress, streetAddress, barangayAddress, contactNum1, contactNum2, pic2x2,  schoolName, schoolAddress, schoolType, course, yearLevel, fatherName, fatherStatus,fatherAddress, fatherContact, fatherOccupation, fatherEduc, motherName, motherStatus, motherAddress, motherContact, motherOccupation, motherEduc, guardianName, guardianAddress, guardianContact, guardianOccupation, guardianEduc, sizeFamily, annualGross,  sibling1,sibling2,sibling3,sibling4,sibling5,sibling6 ) VALUES ( '$fullName','$lastName' , '$firstName', '$middleName', '$gender', '$civilStatus', '$registeredVoter', '$birthDate','$birthPlace', '$citizenship','$fullAddress', '$addressNum', '$addressStreet', '$addressBarangay', '$contactNumber1', '$contactNumber2', '$imageName',  '$schoolName', '$schoolAddress', '$schoolType', '$course', '$currentLevel', '$fatherName', '$father', '$fatherAddress', '$fatherNumber', '$fatherOccupation',  '$fEducAttainment', '$motherName', '$mother', '$motherAddress', '$motherNumber', '$motherOccupation', '$mEducAttainment', '$guardianName', '$guardianAddress', '$guardianNumber', '$guardianOccupation', '$gEducAttainment', '$sizeFamily', '$familyIncome', '$sibling1', '$sibling2', '$sibling3', '$sibling4', '$sibling5', '$sibling6')";
+
+                    $insert = mysqli_query($conn, $query);
+                } else {
+                    echo "Sorry, there was an error uploading your images.";
+                }
+            } else {
+                echo '<script>
+            alert("The registration quota limit has been reached.");
+
+            // Redirect to a specific page regardless of the button clicked
+            window.location.href = "../../index.php";
+          </script>';
+            }
+        } else {
+            die('Error counting applicants: ' . mysqli_error($conn));
+        }
     } else {
-        echo "Sorry, there was an error uploading your images.";
+        die('Error retrieving switch status: ' . mysqli_error($conn));
     }
 }
 
