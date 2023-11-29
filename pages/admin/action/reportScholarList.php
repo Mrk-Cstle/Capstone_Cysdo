@@ -2,7 +2,7 @@
 include '../../include/selectDb.php';
 include '../../include/dbConnection.php';
 
-$recordsPerPage = 50; // Change this to your desired value
+$recordsPerPage = 1; // Change this to your desired value
 
 // Initialize page number
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -42,7 +42,7 @@ if (mysqli_num_rows($result) > 0) {
         $paginationHTML .= '<li class="page-item ' . ($page == 1 ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page - 1) . '"> < </a></li>';
 
         // Add the current page count
-        $paginationHTML .= '<li class="page-item disabled"><span class="page-link">Page ' . $page . ' of ' . $totalPages . '</span></li>';
+        $paginationHTML .= '<li class="page-item disabled"><span class="pageNumber page-link">Page ' . $page . ' of ' . $totalPages . '</span></li>';
 
         for ($i = 1; $i <= $totalPages; $i++) {
             $activeClass = ($i === $page) ? 'active' : '';

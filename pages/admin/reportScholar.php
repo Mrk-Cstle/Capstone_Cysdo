@@ -55,7 +55,8 @@ if ($_SESSION['role'] === 'admin') {
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
                 <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
                 <button class="btnAddStaff btn btn-outline-primary" id="btnPrint">Print</button>
-                
+
+
             </form>
         </nav>
 
@@ -71,8 +72,10 @@ if ($_SESSION['role'] === 'admin') {
                     <th scope="col">Approve Date</th>
                 </tr>
                 <tbody id="tableData">
+
                     <!-- Data will be populated here -->
                 </tbody>
+
             </table>
             <p id="response"></p>
         </div>
@@ -93,7 +96,7 @@ if ($_SESSION['role'] === 'admin') {
                             <label class="entCont d-flex">Contact #</label>
                             <input class="entContact d-flex" placeholder="Enter Contact no." type="number" id="contactNumber">
 
-                            <p id="response"></p>
+
                             <input class="btn btn-success" value="Submit" onclick="submitData('insert')">
                         </form>
                     </div>
@@ -378,7 +381,7 @@ if ($_SESSION['role'] === 'admin') {
                     xhttp.send();
                 }
             }
-            loadDoc();
+            loadDoc(loadCurrentPage);
 
 
             function filterTable(searchQuery) {
@@ -436,6 +439,7 @@ if ($_SESSION['role'] === 'admin') {
                 refreshButton.addEventListener("click", function() {
                     refreshTable(); // Refresh the table without clearing the search query
                 });
+
             });
 
 
@@ -465,6 +469,8 @@ if ($_SESSION['role'] === 'admin') {
                         document.getElementById("tableData").innerHTML = this.responseText;
                         // Store the current page in localStorage
                         setCurrentPage(page);
+
+
                     }
                 };
                 xhttp.open("GET", "action/reportScholarList.php?page=" + page + "&searchQuery=" + searchQuery, true);
@@ -482,6 +488,7 @@ if ($_SESSION['role'] === 'admin') {
                     // Store the current page in localStorage
                     setCurrentPage(page);
                 }
+
             });
 
 
@@ -493,7 +500,9 @@ if ($_SESSION['role'] === 'admin') {
                         document.getElementById("tableData").innerHTML = this.responseText;
                         // Initialize pagination links
                         loadPage(1);
+
                     }
+
                 };
                 xhttp.open("GET", "action/reportScholarList.php", true);
                 xhttp.send();
@@ -502,6 +511,7 @@ if ($_SESSION['role'] === 'admin') {
             // Call the initializePagination function when the page loads
             document.addEventListener("DOMContentLoaded", function() {
                 initializePagination();
+
             });
 
             var myNamespace = 'reportScholarList';
@@ -521,9 +531,10 @@ if ($_SESSION['role'] === 'admin') {
             // Add this function to load the current page from localStorage
             function loadCurrentPage() {
                 var currentPage = getCurrentPage();
+
                 loadPage(currentPage);
             }
-
+            var currentPage = getCurrentPage();
 
             // Add this event listener to handle pagination button clicks and store the current page
             document.addEventListener("click", function(e) {
@@ -548,6 +559,7 @@ if ($_SESSION['role'] === 'admin') {
                         document.getElementById("tableData").innerHTML = this.responseText;
                         // Initialize pagination links
                         loadCurrentPage(); // Load the current page from localStorage
+
                     }
                 };
                 xhttp.open("GET", "action/reportScholarList.php", true);
@@ -559,48 +571,53 @@ if ($_SESSION['role'] === 'admin') {
                 initializePagination();
             });
         </script>
-    <script>
-    // Function to print only the table element with class "table"
-    function printTable() {
-        // Check if the pagination element exists
-        var paginationElement = document.querySelector(".pagination");
+        <script>
+            // Function to print only the table element with class "table"
+            function printTable() {
+                // Check if the pagination element exists
+                var paginationElement = document.querySelector(".pagination");
 
-        // Add a class to hide the pagination container if it exists
-        if (paginationElement) {
-            paginationElement.classList.add("hide-for-print");
-        }
+                // Add a class to hide the pagination container if it exists
+                if (paginationElement) {
+                    paginationElement.classList.add("hide-for-print");
+                }
 
-        var tableElement = document.querySelector(".table");
-        var clonedTable = tableElement.cloneNode(true);
+                var tableElement = document.querySelector(".table");
+                var tableElements = document.querySelector(".pageNumber");
+                var clonedTable = tableElement.cloneNode(true);
+                var clonedTables = tableElements.cloneNode(true);
 
-        var tableContent = clonedTable.outerHTML;
 
-        // Create a new window or HTML document
-        var printWindow = window.open('', '_blank');
+                var tableContent = clonedTable.outerHTML;
+                var tableContents = clonedTables.outerHTML;
 
-        // Set the content of the new window or document
-        printWindow.document.write('<html><head><title>Table</title>');
-        printWindow.document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">');
-        printWindow.document.write('<style>body{margin: 20px;} table{width: 100%; border-collapse: collapse; margin-bottom: 20px;} th, td{border: 1px solid black; padding: 8px; text-align: left;} th{background-color: #f2f2f2;} .hide-for-print { display: none; }</style>');
-        printWindow.document.write('</head><body>');
-        printWindow.document.write(tableContent);
-        printWindow.document.write('</body></html>');
+                // Create a new window or HTML document
+                var printWindow = window.open('', '_blank');
 
-        // Close the document after printing
-        printWindow.document.close();
+                // Set the content of the new window or document
+                printWindow.document.write('<html><head><title>Table</title>');
+                printWindow.document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">');
+                printWindow.document.write('<style>body{margin: 20px;} table{width: 100%; border-collapse: collapse; margin-bottom: 20px;} th, td{border: 1px solid black; padding: 8px; text-align: left;} th{background-color: #f2f2f2;} .hide-for-print { display: none; }</style>');
+                printWindow.document.write('</head><body>');
+                printWindow.document.write(tableContent);
+                printWindow.document.write(tableContents);
+                printWindow.document.write('</body></html>');
 
-        // Remove the class to show the pagination container again if it exists
-        if (paginationElement) {
-            paginationElement.classList.remove("hide-for-print");
-        }
+                // Close the document after printing
+                printWindow.document.close();
 
-        // Print the content
-        printWindow.print();
-    }
+                // Remove the class to show the pagination container again if it exists
+                if (paginationElement) {
+                    paginationElement.classList.remove("hide-for-print");
+                }
 
-    // Bind the function to the print button
-    document.getElementById("btnPrint").addEventListener("click", printTable);
-</script>
+                // Print the content
+                printWindow.print();
+            }
+
+            // Bind the function to the print button
+            document.getElementById("btnPrint").addEventListener("click", printTable);
+        </script>
     </section>
 </body>
 
