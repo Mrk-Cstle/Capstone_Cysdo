@@ -340,7 +340,7 @@
                 <li><a href="index.php#about">About</a></li>
                 <li><a href="index.php#faqs">FAQs</a></li>
                 <li><a href="index.php#contact">Contact</a></li>
-                <li><a href="newsTab.php">News & Updates</a></li>
+                <li><a href="scholarAnnouncement.php">News & Updates</a></li>
                 <?php if ($count >=  $switchStatus) { ?>
                     <li><a class="log" href="#" style="pointer-events: none; cursor: not-allowed;opacity: 0.5;">Registration</a></li>
                 <?php } else { ?>

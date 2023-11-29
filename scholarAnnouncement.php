@@ -124,6 +124,7 @@
         .date {
             display: block;
         }
+
         .box-info li {
             width: 100%;
         }
@@ -149,6 +150,7 @@
         .date {
             font-size: 16px;
         }
+
         #uploaderName {
             font-size: 10px;
             padding-left: 0;
@@ -181,7 +183,6 @@
             font-size: 12px;
         }
     }
-
 </style>
 
 <body>
@@ -222,42 +223,44 @@
       </div> -->
     <?php
     include 'pages/include/dbConnection.php';
-    if (isset($_GET['page'])) {
-
-        $pageCheck = $_GET['page'];
 
 
-        $query = "SELECT * FROM announcements WHERE category = '$pageCheck' ORDER BY uploadDate DESC ";
-        $resultGetPost = mysqli_query($conn, $query);
-        $postCounter = 0;
+
+
+
+    $query = "SELECT * FROM announcements ORDER BY uploadId DESC ";
+    $resultGetPost = mysqli_query($conn, $query);
+    $postCounter = 0;
 
     ?>
-        <div class='textAlign'>
-            <p style="text-transform: capitalize;" class='bold d-block w-auto mt-3'><a href='newsTab.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a>
-                <?php echo $pageCheck; ?> Announcements
-            </p>
-        </div>
+    <div class='textAlign'>
+        <p style="text-transform: capitalize;" class='bold d-block w-auto mt-3'><a href='index.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a>
+            Announcements
+        </p>
+    </div>
     <?php
-        if ($resultGetPost) {
-            if ($resultGetPost->num_rows > 0) {
-                while ($row = $resultGetPost->fetch_assoc()) {
-                    $postCounter++;
+    if ($resultGetPost) {
+        if ($resultGetPost->num_rows > 0) {
+            while ($row = $resultGetPost->fetch_assoc()) {
+                $postCounter++;
 
-                    if ($postCounter <= 5) {
-                        echo '<div class="textBody">';
-                    } else {
-                        echo '<div class="textBody" style="display: none;">';
-                    }
-                    echo "
+                if ($postCounter <= 5) {
+                    echo '<div class="textBody">';
+                } else {
+                    echo '<div class="textBody" style="display: none;">';
+                }
+                echo "
       
             <ul class='box-info justify-content-center'>
                 <li class='responsive'>
                     <img src='./assets/image/CysdoLogo.png' style='height: 50px; width: 50px;' class='sideLogo'><i class='caption'>City Youth Sports Development Office</i></a>
                     <i id='uploadDate' class='date p-3 text-success'>" . $row['uploadDate'] . "</i>
+                     <i id='uploadDate' class='date p-3 text-success'>" . $row['category'] . "</i>
                     <div>
                         <i id='uploaderName' class='textCap text-black-50 ms-5'>" . $row['uploader'] . "</i>
+                       
                     </div>
-
+                        
                     <hr class='mb-3 mt-4'>
 
                     <div class='content w-100'>
@@ -268,18 +271,18 @@
             </ul>
              </div>
        ";
-                }
-                if ($postCounter > 5) {
-                    echo '<div class="see-more-container float-end me-5 mb-3"><a class="see-more-btn btn btn-primary">See more</a></div>';
-                }
-            } else {
-                echo "No announcements found.";
+            }
+            if ($postCounter > 5) {
+                echo '<div class="see-more-container float-end me-5 mb-3"><a class="see-more-btn btn btn-primary">See more</a></div>';
             }
         } else {
-            echo "An error occurred while retrieving announcements.";
+            echo "No announcements found.";
         }
+    } else {
+        echo "An error occurred while retrieving announcements.";
     }
-    
+
+
     ?>
 
 
