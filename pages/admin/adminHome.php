@@ -7,6 +7,9 @@ include 'include/session.php'; ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-straight/css/uicons-bold-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-straight/css/uicons-bold-straight.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Home</title>
 
@@ -53,6 +56,11 @@ include 'include/session.php'; ?>
         #content main .box-info #bx-2 {
             background: #FFE0D3;
             color: #FD7238;
+        }
+
+        #content main .box-info #bx-3 {
+            background: #B0D9B1;
+            color: #618264;
         }
 
         .container-1 {
@@ -216,7 +224,7 @@ include 'include/session.php'; ?>
 
                     <a href="applicantScholar.php">
                         <li class="box-4">
-                            <i class="bx bx bi-person-fill-check" id="bx-1"></i>
+                            <i class="bx bx bi-person-plus-fill" id="bx-1"></i>
                             <span class="text">
                                 <h3><?php
                                     echo $totalNewScholar->num_rows;
@@ -231,7 +239,7 @@ include 'include/session.php'; ?>
                 <a href="dashboardRenewed.php">
                     <ul class="box-info">
                         <li class="box-1">
-                            <i class='bx bx bi-person-check-fill' id="bx-1"></i>
+                            <i class='bx bx fi-bs-refresh' id="bx-3"></i>
                             <span class="text">
                                 <h3> <?php
                                         echo $totalRenewed->num_rows;
@@ -241,35 +249,9 @@ include 'include/session.php'; ?>
                             </span>
                         </li>
                 </a>
-                <a href="dashboardUnrenewed.php">
-                    <li class="box-4">
-                        <i class="bx bx bi-people-fill" id="bx-1"></i>
-                        <span class="text">
-                            <h3><?php
-                                echo $totalUnrenewed->num_rows;
-
-                                ?></h3>
-                            <p>Number of Unrenewed</p>
-                        </span>
-                    </li>
-                </a>
-                <a href="dashboardUnprocessed.php">
-                    <li class="box-4">
-                        <i class="bx bx bi-person-fill-check" id="bx-1"></i>
-                        <span class="text">
-                            <h3><?php
-                                echo $totalUnprocessed->num_rows;
-
-                                ?></h3>
-                            <p>Number of Unprocessed Renewal</p>
-                        </span>
-                    </li>
-                </a>
-                </ul>
-                <ul class="box-info">
-                    <a href="applicantExaminers.php">
+                <a href="applicantExaminers.php">
                         <li class="box-3">
-                            <i class="bx bx bi-people-fill" id="bx-2"></i>
+                            <i class="bx bx bi-file-text-fill" id="bx-3"></i>
                             <span class="text">
                                 <h3><?php
                                     echo $totalExaminer->num_rows;
@@ -278,9 +260,9 @@ include 'include/session.php'; ?>
                                 <p>Number of Examiner</p>
                             </span>
                         </li>
-                    </a>
-                    <li class="box-5">
-                        <i class="bx bx bi-person-fill-check" id="bx-2"></i>
+                </a>
+                <li class="box-5">
+                        <i class="bx bx bi-cash-stack" id="bx-3"></i>
                         <span class="text">
                             <h3><?php
                                 echo $totalCombinedCount;
@@ -288,10 +270,37 @@ include 'include/session.php'; ?>
                                 ?></h3>
                             <p>Number of Cash Release Scholar</p>
                         </span>
+                </li>
+                </ul>
+                <ul class="box-info">
+                    <a href="dashboardUnrenewed.php">
+                        <li class="box-4">
+                            <i class="bx bx fi-bs-rotate-exclamation" id="bx-2"></i>
+                            <span class="text">
+                            <h3><?php
+                                echo $totalUnrenewed->num_rows;
+
+                                ?></h3>
+                            <p>Number of Unrenewed</p>
+                        </span>
                     </li>
+                    </a>
+                    
+                    <a href="dashboardUnprocessed.php">
+                    <li class="box-4">
+                        <i class="bx bx bi-person-fill-exclamation" id="bx-2"></i>
+                        <span class="text">
+                            <h3><?php
+                                echo $totalUnprocessed->num_rows;
+
+                                ?></h3>
+                            <p>Number of Unprocessed Renewal</p>
+                        </span>
+                    </li>
+                    </a>
                     <a href="scholarArchive.php">
                         <li class="box-6">
-                            <i class="bx bx bi-arrow-repeat" id="bx-2"></i>
+                            <i class="bx bx bi-archive-fill" id="bx-2"></i>
                             <span class="text">
                                 <h3><?php
                                     echo $totalArchive->num_rows;

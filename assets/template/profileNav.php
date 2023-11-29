@@ -305,6 +305,14 @@ if ($result) {
     line-height: 2.3;
   }
 
+  .side-bar .menu .item .up-announcement  {
+    line-height: 2.3;
+  }
+
+  .up-announcement {
+    line-height: 60px;
+  }
+
   @media screen and (max-width: 779px) {
     .side-bar {
       display: block;
@@ -609,6 +617,12 @@ if ($result) {
         <a href="postUpdate.php">
           <i class="bi bi-file-earmark-ppt-fill side_icon"></i>
           <span class="nav_label">Manage Post</span>
+        </a>
+      </div>
+      <div class="item fontWeight">
+        <a href="postAnnouncement.php" class="up-announcement">
+          <i class="bi bi-upload side_icon"></i>
+          <span class="nav_label">Upload Announcement</span>
         </a>
       </div>
     </div>

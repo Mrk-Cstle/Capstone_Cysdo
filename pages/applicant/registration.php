@@ -41,22 +41,28 @@
 </style>
 
 <body>
-  <form method="POST" action="registrationDb.php" enctype="multipart/form-data">
+  <form method="POST" action="registrationDb.php" enctype="multipart/form-data" onsubmit="return validateForm()">
     <div class="container mt-4">
       <h1>APPLICATION FORM</h1>
       <h2 class="form-section bold font">Personal Information</h2>
 
       <div class="row">
-        <div class="col-md-4 col-sm-5">
+        <div class="col-md-4 col-sm-5 was-validated">
           <div class="form-group">
-            <label class="control-label bold font-xs">Last Name <strong class="text-danger">*</strong></label>
+            <label class="control-label bold font-xs">Last Name<strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="lastName" id="lastName" required>
+            <div class="invalid-feedback">
+              Input Last Name.
+            </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-5">
+        <div class="col-md-4 col-sm-5 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">First Name <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="firstName" id="firstName" required>
+            <div class="invalid-feedback">
+              Input First Name.
+            </div>
           </div>
         </div>
         <div class="col-md-4 col-sm-5">
@@ -67,57 +73,72 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2 col-sm-3">
+        <div class="col-md-2 col-sm-3 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">Gender <strong class="text-danger">*</strong></label>
             <select class="form-control" name="gender" id="gender" required>
-              <option value="blank">-</option>
+              <option selected disabled value value="blank">-</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
+            <div class="invalid-feedback">
+              Selection Required.
+            </div>
           </div>
         </div>
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-3 col-sm-4 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">Civil Status <strong class="text-danger">*</strong></label>
             <select class="form-control" name="civilStatus" id="civilStatus" required>
-              <option value="blank">-</option>
+              <option selected disabled value value="blank">-</option>
               <option value="single">Single</option>
               <option value="married">Married</option>
             </select>
+            <div class="invalid-feedback">
+              Selection Required.
+            </div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">Birth Date <strong class="text-danger">*</strong></label>
             <div class="input-group">
               <input type="date" class="form-control" name="birthDate" id="birthDate" required>
+              <div class="invalid-feedback">
+                Selection Required.
+            </div>
             </div>
           </div>
         </div>
-        <div class="col-md-2 col-sm-3">
+        <div class="col-md-2 col-sm-3 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">Registered Voter? <strong class="text-danger">*</strong></label>
             <select class="form-control" name="registeredVoter" id="registeredVoter" required>
-              <option value="blank">-</option>
+              <option selected disabled value value="blank">-</option>
               <option value="yes">Yes</option>
               <option value="no">No</option>
             </select>
+            <div class="invalid-feedback">
+              Selection Required.
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-5 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">Place of Birth <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="birthPlace" id="birthPlace" required>
+            <div class="invalid-feedback">
+              Input Place of Birth.
+            </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-4 col-sm-4 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">Citizenship <strong class="text-danger">*</strong></label>
             <select class="form-control" name="citizenship" id="citizenship" required>
-              <option value="-">-</option>
+              <option selected disabled value value="-">-</option>
               <option value="American-">American</option>
               <option value="Arabic-">Arabic</option>
               <option value="Australian-">Australian</option>
@@ -157,28 +178,37 @@
               <option value="Turkish-">Turkish</option>
 
             </select>
+            <div class="invalid-feedback">
+              Selection Required.
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">House No./Block/Lot <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="addressNum" id="addressNum" required>
+            <div class="invalid-feedback">
+              Input House No./Block/Lot.
+            </div>
           </div>
         </div>
 
-        <div class="col-md-4 col-sm-5">
+        <div class="col-md-4 col-sm-5 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">Street/Phase/Section <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="addressStreet" id="addressStreet" required>
+            <div class="invalid-feedback">
+              Input Street/Phase/Section.
+            </div>
           </div>
         </div>
         <div class="col-md-3">
-          <div class="form-group">
+          <div class="form-group was-validated">
             <label class="control-label bold font-xs">Barangay <strong class="text-danger">*</strong></label>
             <select class="form-control" name="addressBarangay" id="addressBarangay" required>
-              <option value="-">-</option>
+              <option selected disabled value value="-">-</option>
               <option value="Assumption">Assumption</option>
               <option value="Bagong Buhay I">Bagong Buhay I</option>
               <option value="Bagong Buhay II">Bagong Buhay II</option>
@@ -239,30 +269,41 @@
               <option value="Sapang Palay">Sapang Palay</option>
               <option value="Tungkong Mangga">Tungkong Mangga</option>
             </select>
+            <div class="invalid-feedback">
+              Selection Required.
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-4 col-sm-4 was-validated">
           <label class="control-label bold font-xs">Contact Number <strong class="text-danger">*</strong></label>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">+63</span>
             <input type="number" class="noscroll form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber1" id="contactNumber1" required>
+            <div class="invalid-feedback">
+              Input Valid Contact Number.
+            </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-4 col-sm-4 was-validated">
           <label class="control-label bold font-xs">Email <strong class="text-danger">*</strong></label>
           <div class="input-group mb-3">
-
             <input type="email" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="contactNumber2" id="contactNumber2" required>
+            <div class="invalid-feedback">
+              Input Valid Email Address.
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-4 col-sm-4 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">Upload 2x2 Picture (Jpeg/Jpg): <strong class="text-danger">*</strong></label>
             <input type="file" class="form-control" id="2x2Pic" name="2x2Pic" accept="image/jpeg" required />
+            <div class="invalid-feedback">
+              Picture Required.
+            </div>
           </div>
         </div>
 
@@ -271,46 +312,61 @@
 
       <h2 class="form-section bold font">Educational Background</h2>
       <div class="row">
-        <div class="col-md-5 col-sm-6">
+        <div class="col-md-5 col-sm-6 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">School Name (Current School) <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="schoolName" id="schoolName" required>
+            <div class="invalid-feedback">
+              Input School Name.
+            </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-5">
+        <div class="col-md-4 col-sm-5 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">School Address <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="schoolAddress" id="schoolAddress" required>
+            <div class="invalid-feedback">
+              Input School Address.
+            </div>
           </div>
         </div>
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-3 col-sm-4 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">School Type <strong class="text-danger">*</strong></label>
             <select class="form-control" name="schoolType" id="schoolType" required>
-              <option value="-">-</option>
+              <option selected disabled value value="-">-</option>
               <option value="Public">Public</option>
               <option value="Private">Private</option>
             </select>
+            <div class="invalid-feedback">
+              Selection Required.
+            </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-5">
+        <div class="col-md-4 col-sm-5 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">Course/Strand <strong class="text-danger">*</strong></label>
             <input type="text" class="form-control" name="course" id="course" required>
+            <div class="invalid-feedback">
+              Input Course/Strand.
+            </div>
           </div>
         </div>
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-3 col-sm-4 was-validated">
           <div class="form-group">
             <label class="control-label bold font-xs">Current Year Level <strong class="text-danger">*</strong></label>
             <select class="form-control" name="currentLevel" id="currentLevel" required>
-              <option value="-">-</option>
-              <option value="ALS Graduate">ALS Graduate <strong class="text-danger">*</strong></option>
+              <option selected disabled value value="-">-</option>
+              <option value="ALS Graduate">ALS Graduate</option>
               <option value="Grade 12">Grade 12</option>
               <option value="High School Graduat">High School Graduate</option>
               <option value="1st Year College">1st Year College</option>
               <option value="2nd Year College">2nd Year College</option>
               <option value="3rd Year College">3rd Year College</option>
             </select>
+            <div class="invalid-feedback">
+              Selection Required.
+            </div>
           </div>
         </div>
       </div>
@@ -318,14 +374,17 @@
       <!-- Family Background -->
 
       <h2 class="form-section bold font">Family Background</h2>
-      <h4 class="form-section bold font">Father</h4>
+      <h4 class="bold font mb-3">Father</h4>
       <div class="row">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-3 col-sm-4">
+            <div class="col-md-3 col-sm-4 was-validated">
               <div class="form-group">
                 <label class="control-label bold font-xs">Father Name</label>
-                <input type="text" class="form-control" name="fatherName" id="fatherName">
+                <input type="text" class="form-control" name="fatherName" id="fatherName" required>
+                <div class="invalid-feedback">
+                  Input Father Name.
+                </div>
               </div>
             </div>
             <div class="col-md-4">
@@ -343,10 +402,13 @@
                 <input type="number" class="noscroll form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="fatherNumber" id="fatherNumber">
               </div>
             </div>
-            <div class="col-md-3 col-sm-4">
+            <div class="col-md-3 col-sm-4 was-validated">
               <div class="form-group">
                 <label class="control-label bold font-xs">Occupation</label>
-                <input type="text" class="form-control" name="fatherOccupation" id="fatherOccupation">
+                <input type="text" class="form-control" name="fatherOccupation" id="fatherOccupation" required>
+                <div class="invalid-feedback">
+                Father Occupation Required.
+                </div>
               </div>
             </div>
             <div class="col-md-3 col-sm-4">
@@ -366,12 +428,15 @@
               </div>
             </div>
           </div>
-          <h4 class="form-section bold font">Mother</h4>
+          <h4 class="bold font mb-3 mt-4">Mother</h4>
           <div class="row">
-            <div class="col-md-3 col-sm-4">
+            <div class="col-md-3 col-sm-4 was-validated">
               <div class="form-group">
-                <label class="control-label bold font-xs"> Mother Name</label>
-                <input type="text" class="form-control" name="motherName" id="motherName">
+                <label class="control-label bold font-xs">Mother Name</label>
+                <input type="text" class="form-control" name="motherName" id="motherName" required>
+                <div class="invalid-feedback">
+                  Input Mother Name.
+                </div>
               </div>
             </div>
 
@@ -389,10 +454,13 @@
                 <input type="number" class="noscroll form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="motherNumber" id="motherNumber">
               </div>
             </div>
-            <div class="col-md-3 col-sm-4">
+            <div class="col-md-3 col-sm-4 was-validated">
               <div class="form-group">
                 <label class="control-label bold font-xs">Occupation</label>
-                <input type="text" class="form-control" name="motherOccupation" id="motherOccupation">
+                <input type="text" class="form-control" name="motherOccupation" id="motherOccupation" required>
+                <div class="invalid-feedback">
+                  Mother Occupation Required.
+                </div>
               </div>
             </div>
             <div class="col-md-3 col-sm-4">
@@ -413,7 +481,7 @@
             </div>
           </div>
         </div>
-        <h4 class="form-section bold font">Guardian (if not living with parent/s)</h4>
+        <h4 class="bold font mb-3 mt-4">Guardian (if not living with parent/s)</h4>
         <div class="row">
           <div class="col-md-3 col-sm-4">
             <div class="form-group">
@@ -451,17 +519,29 @@
             </div>
           </div>
           <h4 class="form-section bold font">Income</h4>
-          <div class="col-md-4 col-sm-5">
+          <div class="col-md-2 col-sm-3 was-validated">
             <div class="form-group">
               <label class="control-label bold font-xs">Total Parent/s or Guardian/s Annual Gross Income <strong class="text-danger">*</strong></label>
-              <input type="text" class="form-control" name="familyIncome" id="familyIncome" required>
+              <select class="form-control" name="familyIncome" id="familyIncome" required>
+              <option selected disabled value value="-">-</option>
+              <option value="10-20k">10,000 - 20,000</option>
+              <option value="20-40k">20,000 - 40,000</option>
+              <option value="40-80k">40,000 - 80,000</option>
+              <option value="80-160k">80,000 - 160,000</option>
+            </select>
+            <div class="invalid-feedback">
+              Selection Required.
+            </div>
             </div>
           </div>
           <h4 class="form-section bold font">Family Size</h4>
-          <div class="col-md-2 col-sm-3">
+          <div class="col-md-2 col-sm-3 was-validated">
             <div class="form-group">
               <label class="control-label bold font-xs">Size of the Family (person)<strong class="text-danger">*</strong></label>
-              <input type="text" class="form-control" name="sizeFamily" id="sizeFamily" required>
+              <input type="number" class="form-control" name="sizeFamily" id="sizeFamily" required>
+              <div class="invalid-feedback">
+              Input Size of the Family.
+            </div>
             </div>
           </div>
           <h4 class="form-section bold font">Name of Siblings (if any)</h4>
@@ -522,6 +602,75 @@
         document.activeElement.blur();
     }
 });
+</script>
+<script>
+  // Function to validate the form
+  function validateForm() {
+    // Personal Information
+    var lastName = document.getElementById("lastName").value;
+    var firstName = document.getElementById("firstName").value;
+    var gender = document.getElementById("gender").value;
+    var civilStatus = document.getElementById("civilStatus").value;
+    var birthDate = document.getElementById("birthDate").value;
+    var registeredVoter = document.getElementById("registeredVoter").value;
+    var birthPlace = document.getElementById("birthPlace").value;
+    var citizenship = document.getElementById("citizenship").value;
+    var addressNum = document.getElementById("addressNum").value;
+    var addressStreet = document.getElementById("addressStreet").value;
+    var addressBarangay = document.getElementById("addressBarangay").value;
+    var contactNumber1 = document.getElementById("contactNumber1").value;
+    var contactNumber2 = document.getElementById("contactNumber2").value;
+
+    // Educational Background
+    var schoolName = document.getElementById("schoolName").value;
+    var schoolAddress = document.getElementById("schoolAddress").value;
+    var schoolType = document.getElementById("schoolType").value;
+    var course = document.getElementById("course").value;
+    var currentLevel = document.getElementById("currentLevel").value;
+
+    // Check if required fields are not empty
+    if (
+      lastName === "" ||
+      firstName === "" ||
+      gender === "blank" ||
+      civilStatus === "blank" ||
+      birthDate === "" ||
+      registeredVoter === "blank" ||
+      birthPlace === "" ||
+      citizenship === "-" ||
+      addressNum === "" ||
+      addressStreet === "" ||
+      addressBarangay === "-" ||
+      contactNumber1 === "" ||
+      contactNumber2 === "" ||
+      schoolName === "" ||
+      schoolAddress === "" ||
+      schoolType === "-" ||
+      course === "" ||
+      currentLevel === "-"
+    ) {
+      alert("Please fill in all required fields.");
+      return false;
+    }
+
+    // Check if contactNumber1 is a valid number
+    if (isNaN(contactNumber1) || contactNumber1.length !== 10) {
+      alert("Please enter a valid Contact Number.");
+      return false;
+    }
+
+    // Check if contactNumber2 is a valid email
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(contactNumber2)) {
+      alert("Please enter a valid Email Address.");
+      return false;
+    }
+
+    // Additional custom validations can be added here
+
+    // If all validations pass, return true to submit the form
+    return true;
+  }
 </script>
 </body>
 

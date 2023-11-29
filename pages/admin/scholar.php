@@ -13,6 +13,10 @@
             display: none;
         }
 
+        .overlay {
+            z-index: 9999;
+        }
+
         @media screen and (max-width: 779px) {
 
             .btnSearch {
