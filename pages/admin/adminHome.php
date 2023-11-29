@@ -196,7 +196,7 @@ include 'include/session.php'; ?>
                 </div>
 
                 <ul class="box-info">
-                    <a href="scholar.php">
+                    <a href="reportScholar.php">
                         <li class="box-1">
                             <i class='bx bx bi-person-check-fill' id="bx-1"></i>
                             <span class="text">
@@ -250,26 +250,26 @@ include 'include/session.php'; ?>
                         </li>
                 </a>
                 <a href="applicantExaminers.php">
-                        <li class="box-3">
-                            <i class="bx bx bi-file-text-fill" id="bx-3"></i>
-                            <span class="text">
-                                <h3><?php
-                                    echo $totalExaminer->num_rows;
-
-                                    ?></h3>
-                                <p>Number of Examiner</p>
-                            </span>
-                        </li>
-                </a>
-                <li class="box-5">
-                        <i class="bx bx bi-cash-stack" id="bx-3"></i>
+                    <li class="box-3">
+                        <i class="bx bx bi-file-text-fill" id="bx-3"></i>
                         <span class="text">
                             <h3><?php
-                                echo $totalCombinedCount;
+                                echo $totalExaminer->num_rows;
 
                                 ?></h3>
-                            <p>Number of Cash Release Scholar</p>
+                            <p>Number of Examiner</p>
                         </span>
+                    </li>
+                </a>
+                <li class="box-5">
+                    <i class="bx bx bi-cash-stack" id="bx-3"></i>
+                    <span class="text">
+                        <h3><?php
+                            echo $totalCombinedCount;
+
+                            ?></h3>
+                        <p>Number of Cash Release Scholar</p>
+                    </span>
                 </li>
                 </ul>
                 <ul class="box-info">
@@ -277,26 +277,26 @@ include 'include/session.php'; ?>
                         <li class="box-4">
                             <i class="bx bx fi-bs-rotate-exclamation" id="bx-2"></i>
                             <span class="text">
-                            <h3><?php
-                                echo $totalUnrenewed->num_rows;
+                                <h3><?php
+                                    echo $totalUnrenewed->num_rows;
 
-                                ?></h3>
-                            <p>Number of Unrenewed</p>
-                        </span>
-                    </li>
+                                    ?></h3>
+                                <p>Number of Unrenewed</p>
+                            </span>
+                        </li>
                     </a>
-                    
-                    <a href="dashboardUnprocessed.php">
-                    <li class="box-4">
-                        <i class="bx bx bi-person-fill-exclamation" id="bx-2"></i>
-                        <span class="text">
-                            <h3><?php
-                                echo $totalUnprocessed->num_rows;
 
-                                ?></h3>
-                            <p>Number of Unprocessed Renewal</p>
-                        </span>
-                    </li>
+                    <a href="dashboardUnprocessed.php">
+                        <li class="box-4">
+                            <i class="bx bx bi-person-fill-exclamation" id="bx-2"></i>
+                            <span class="text">
+                                <h3><?php
+                                    echo $totalUnprocessed->num_rows;
+
+                                    ?></h3>
+                                <p>Number of Unprocessed Renewal</p>
+                            </span>
+                        </li>
                     </a>
                     <a href="scholarArchive.php">
                         <li class="box-6">
