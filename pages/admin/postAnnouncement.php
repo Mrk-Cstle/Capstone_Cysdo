@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../style/addStaff.css"> 
+    <link rel="stylesheet" href="../../style/addStaff.css">
     <title>Post Announcement</title>
 </head>
 
@@ -27,9 +28,9 @@
     }
 
     .container {
-	    border-radius: 5px;
-	    background-color: #ddd;
-	    padding: 20px 0;
+        border-radius: 5px;
+        background-color: #ddd;
+        padding: 20px 0;
     }
 
     .rotate {
@@ -121,6 +122,7 @@
         .date {
             display: block;
         }
+
         .box-info li {
             width: 100%;
         }
@@ -178,7 +180,6 @@
             font-size: 10px;
         }
     }
-
 </style>
 
 <body>
@@ -190,100 +191,143 @@
         include '../../assets/template/staffNavi.php';
     }
     ?>
-<section id="content" class="home-section">
-    <div class="container">
-        
-        <div class='textAlign'>
-            <p class='bold d-block w-auto'>Upload Announcements</p>
+    <section id="content" class="home-section">
+        <div class="container">
+
+            <div class='textAlign'>
+                <p class='bold d-block w-auto'>Upload Announcements</p>
+            </div>
+            <div class="post-img">
+                <ul class='box-info justify-content-center'>
+                    <li class='responsive'>
+                        <form class="announcementForm" role="form" autocomplete="off" enctype="multipart/form-data" id="form1">
+                            <i class="caption">Announcement #1</i></a>
+                            <i id='uploadDate' class='date text-danger-emphasis'>2023</i>
+
+                            <hr class='mb-3 mt-3'>
+                            <div class=v>
+                                <img src="../../uploads/announcement/form1.jpeg" id='uploadAnnouncement-1' class='Post lh-base'></img>
+                            </div>
+                            <hr class='mb-3 mt-4'>
+                            <div class="post-btn">
+                                <input type="file" name="announcement1" accept=".jpeg, image/jpeg">
+                                <button onclick="submitForm('form1')" class="btn btn-success">Edit</button>
+                        </form>
+            </div>
+            </li>
+            </ul>
         </div>
         <div class="post-img">
             <ul class='box-info justify-content-center'>
                 <li class='responsive'>
-                    <i class="caption">Announcement #1</i></a>
-                    <i id='uploadDate' class='date text-danger-emphasis'>2023</i>
+                    <form class="announcementForm" role="form" autocomplete="off" enctype="multipart/form-data" id="form2">
+                        <i class="caption">Announcement #2</i></a>
+                        <i id='uploadDate' class='date text-danger-emphasis'>2023</i>
 
-                    <hr class='mb-3 mt-3'>
-                    <div class=v>
-                        <img src="../../assets/image/announcement-renew.jpg" id='uploadAnnouncement-1' class='Post lh-base'></img>
-                    </div>
-                    <hr class='mb-3 mt-4'>
-                    <div class="post-btn">
-                        <a href="" class="btn btn-success">Edit</a>
-                    </div>
+                        <hr class='mb-3 mt-3'>
+                        <div class="">
+                            <img src="../../uploads/announcement/form2.jpeg" id='uploadAnnouncement-2' class='Post lh-base'></img>
+                        </div>
+                        <hr class='mb-3 mt-4'>
+                        <div class="post-btn">
+                            <input type="file" name="announcement1" accept=".jpeg, image/jpeg">
+                            <button onclick="submitForm('form2')" type="submit" class="btn btn-success">Edit</button>
+                        </div>
+                    </form>
                 </li>
             </ul>
         </div>
         <div class="post-img">
             <ul class='box-info justify-content-center'>
                 <li class='responsive'>
-                    <i class="caption">Announcement #2</i></a>
-                    <i id='uploadDate' class='date text-danger-emphasis'>2023</i>
+                    <form role="form" autocomplete="off" enctype="multipart/form-data" id="form3">
+                        <i class="caption">Announcement #3</i></a>
+                        <i id='uploadDate' class='date text-danger-emphasis'>2023</i>
 
-                    <hr class='mb-3 mt-3'>
-                    <div class="">
-                        <img src="../../assets/image/announcement-atm.jpg" id='uploadAnnouncement-2' class='Post lh-base'></img>
-                    </div>
-                    <hr class='mb-3 mt-4'>
-                    <div class="post-btn">
-                        <a href="" class="btn btn-success">Edit</a>
-                    </div>
+                        <hr class='mb-3 mt-3'>
+                        <div class="">
+                            <img src="../../uploads/announcement/form3.jpeg" id='uploadAnnouncement-3' class='Post lh-base'></img>
+                        </div>
+                        <hr class='mb-3 mt-4'>
+                        <div class="post-btn">
+                            <input type="file" name="announcement1" accept=".jpeg, image/jpeg">
+                            <button onclick="submitForm('form3')" type="submit" class="btn btn-success">Edit</button>
+
+                        </div>
+                    </form>
                 </li>
             </ul>
         </div>
         <div class="post-img">
             <ul class='box-info justify-content-center'>
                 <li class='responsive'>
-                    <i class="caption">Announcement #3</i></a>
-                    <i id='uploadDate' class='date text-danger-emphasis'>2023</i>
+                    <form role="form" autocomplete="off" enctype="multipart/form-data" id="form4">
+                        <i class="caption">Announcement #4</i></a>
+                        <form>
+                            <i id='uploadDate' class='date text-danger-emphasis'>2023</i>
 
-                    <hr class='mb-3 mt-3'>
-                    <div class="">
-                        <img src="../../assets/image/announcement-renew.jpg" id='uploadAnnouncement-3' class='Post lh-base'></img>
-                    </div>
-                    <hr class='mb-3 mt-4'>
-                    <div class="post-btn">
-                        <a href="" class="btn btn-success">Edit</a>
-                    </div>
-                </li>
-            </ul>
+                            <hr class='mb-3 mt-3'>
+                            <div class="">
+                                <img src="../../uploads/announcement/form4.jpeg" id='uploadAnnouncement-4' class='Post lh-base'></img>
+                            </div>
+                            <hr class='mb-3 mt-4'>
+                            <div class="post-btn">
+                                <input type="file" name="announcement1" accept=".jpeg, image/jpeg">
+                                <button onclick="submitForm('form4')" type="submit" class="btn btn-success">Edit</button>
+                        </form>
+                    </form>
+        </div>
+        </li>
+        </ul>
         </div>
         <div class="post-img">
             <ul class='box-info justify-content-center'>
                 <li class='responsive'>
-                    <i class="caption">Announcement #4</i></a>
-                    <i id='uploadDate' class='date text-danger-emphasis'>2023</i>
+                    <form role="form" autocomplete="off" enctype="multipart/form-data" id="form5">
+                        <i class="caption">Announcement #5</i></a>
+                        <i id='uploadDate' class='date text-danger-emphasis'>2023</i>
 
-                    <hr class='mb-3 mt-3'>
-                    <div class="">
-                        <img src="../../assets/image/announcement-renew.jpg" id='uploadAnnouncement-4' class='Post lh-base'></img>
-                    </div>
-                    <hr class='mb-3 mt-4'>
-                    <div class="post-btn">
-                        <a href="" class="btn btn-success">Edit</a>
-                    </div>
+                        <hr class='mb-3 mt-3'>
+                        <div class="">
+                            <img src="../../uploads/announcement/form5.jpeg" id='uploadAnnouncement-5' class='Post lh-base'></img>
+                        </div>
+                        <hr class='mb-3 mt-4'>
+                        <div class="post-btn">
+                            <input type="file" name="announcement1" accept=".jpeg, image/jpeg">
+
+                            <button onclick="submitForm('form5')" type="submit" class="btn btn-success">Edit</button>
+                        </div>
+                    </form>
                 </li>
             </ul>
         </div>
-        <div class="post-img">
-            <ul class='box-info justify-content-center'>
-                <li class='responsive'>
-                    <i class="caption">Announcement #5</i></a>
-                    <i id='uploadDate' class='date text-danger-emphasis'>2023</i>
-
-                    <hr class='mb-3 mt-3'>
-                    <div class="">
-                        <img src="../../assets/image/announcement-renew.jpg" id='uploadAnnouncement-5' class='Post lh-base'></img>
-                    </div>
-                    <hr class='mb-3 mt-4'>
-                    <div class="post-btn">
-                        <a href="" class="btn btn-success">Edit</a>
-                    </div>
-                </li>
-            </ul>
         </div>
-    </div>
-</section>
-    
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function submitForm(formId) {
+            event.preventDefault();
+            var formData = new FormData($("#" + formId)[0]);
+            formData.append("formID", formId);
+
+            $.ajax({
+                type: "POST",
+                url: "action/postAnnouncementDb.php", // Change this to your server endpoint
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    // Handle success response
+                    console.log(response);
+                },
+                error: function(error) {
+                    // Handle error response
+                    console.log(error);
+                }
+            });
+        }
+    </script>
 
 </body>
+
 </html>

@@ -9,350 +9,363 @@
   <title>CYSDO Portal</title>
 </head>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-    /* Main */
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-    main {
-      display: block;
-      width: 100%;
-    }
+  /* Main */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
 
-    .car-header {
-      padding-top: 80px;
-    }
+  main {
+    display: block;
+    width: 100%;
+  }
 
-    .announcer {
-      width: 100%;
-      max-width: 1500px;
-      height: auto;
-      max-height: 650px;
-      object-fit: contain;
-      
-    }
+  .car-header {
+    padding-top: 80px;
+  }
 
-    .car-about {
-      background-color: #e6e6e6;
-    }
+  .announcer {
+    width: 100%;
+    max-width: 1500px;
+    height: auto;
+    max-height: 650px;
+    object-fit: contain;
 
-    .steps {
-      margin-top: 60px;
-      font-weight: 600;
-      font-size: 22px;
-      -webkit-text-fill-color: #F05941;
-    }
+  }
 
-    .car-body {
-      width: 100%;
-      height: 400px;
-    }
+  .car-about {
+    background-color: #e6e6e6;
+  }
 
-    .car-text {
-      font-size: 20px;
-      word-wrap: break-word;
-      list-style: square;
-    }
+  .steps {
+    margin-top: 60px;
+    font-weight: 600;
+    font-size: 22px;
+    -webkit-text-fill-color: #F05941;
+  }
 
-    #FontSize {
-      font-size: 24px;
-      font-weight: 600px;
-      text-align: justify;
-    }
+  .car-body {
+    width: 100%;
+    height: 400px;
+  }
 
-    #faqs {
-      width: 100%;
-      display: flex;
-      background-color: #e6e6e6;
-      flex-direction: column;
-      padding: 0 20px;
-      margin-left: 0;
-      line-height: 1.8;
-    }
+  .car-text {
+    font-size: 20px;
+    word-wrap: break-word;
+    list-style: square;
+  }
 
-    #collapseTwo p {
-      font-size: 18px;
-    }
+  #FontSize {
+    font-size: 24px;
+    font-weight: 600px;
+    text-align: justify;
+  }
 
-    #collapseThree p {
-      font-size: 16px;
-    }
+  #faqs {
+    width: 100%;
+    display: flex;
+    background-color: #e6e6e6;
+    flex-direction: column;
+    padding: 0 20px;
+    margin-left: 0;
+    line-height: 1.8;
+  }
 
-    #collapseSix p {
-      font-size: 18px;
-    }
+  #collapseTwo p {
+    font-size: 18px;
+  }
 
-    #collapseSeven p {
-      font-size: 18px;
-    }
+  #collapseThree p {
+    font-size: 16px;
+  }
 
-    #faqsHeader {
-      width: 100%;
-    }
+  #collapseSix p {
+    font-size: 18px;
+  }
 
-    .faqsBody {
-      font-size: 16px;
-      font-weight: 600;
-      margin-top: 10px;
-      text-transform: uppercase;
-    }
+  #collapseSeven p {
+    font-size: 18px;
+  }
 
-    strong {
-      text-transform: uppercase;
-    }
-    
-    #accordItem {
-      border-radius: 3px;
-      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
-    }
+  #faqsHeader {
+    width: 100%;
+  }
 
-    #AccordBtn {
-      background-color: #D0BFFF;
-      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
-      border-radius: 3px;
-    }
+  .faqsBody {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
 
-    #contact {
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      padding: 0px 20px;
-      line-height: 1.8;
-    }
+  strong {
+    text-transform: uppercase;
+  }
 
+  #accordItem {
+    border-radius: 3px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  #AccordBtn {
+    background-color: #D0BFFF;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+  }
+
+  #contact {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0px 20px;
+    line-height: 1.8;
+  }
+
+  #Fontsizes {
+    font-size: 24px;
+    font-weight: 600px;
+    text-align: justify;
+    margin-left: 10px;
+  }
+
+  @media (max-width: 850px) {
     #Fontsizes {
-      font-size: 24px;
-      font-weight: 600px;
-      text-align: justify;
-      margin-left: 10px;
-    }
-
-    @media (max-width: 850px){
-      #Fontsizes {
       font-size: 20px;
       text-align: center;
       margin-top: 10px;
-      }
     }
+  }
 
-    #contactHeader {
-      width: 100%;
-      margin-top: 0px;
-    }
+  #contactHeader {
+    width: 100%;
+    margin-top: 0px;
+  }
 
-    #contactHeader h3 {
-      font-size: 40px;
-    }
+  #contactHeader h3 {
+    font-size: 40px;
+  }
 
-    #contactHeader p {
-      margin-left: 30px;
-      font-size: 18px;
-    }
+  #contactHeader p {
+    margin-left: 30px;
+    font-size: 18px;
+  }
 
-    #contactDetails {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      width: 100%;
-    }
+  #contactDetails {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+  }
 
-    .contactText {
-      background-color: #FFACC7;
-    }
+  .contactText {
+    background-color: #FFACC7;
+  }
 
-    .contactText h5, a, .text-break {
-      padding-left: 30px;
-    }
+  .contactText h5,
+  a,
+  .text-break {
+    padding-left: 30px;
+  }
 
-    .contactText a,
-    p {
-      font-size: 15px;
-    }
+  .contactText a,
+  p {
+    font-size: 15px;
+  }
 
-    .contactText a, .Con-Icon {
-      font-size: 16px;
-      padding: 0;
-      margin: 0;
-    }
+  .contactText a,
+  .Con-Icon {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+  }
 
+  .Con-Icon {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .ConNm,
+  .Add-ress {
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .contactFormat {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .contactIcon {
+    height: 80px;
+    width: 80px;
+    height: auto;
+    display: flex;
+    padding: 10px;
+  }
+
+  .contactIcon img {
+    flex-direction: column;
+    height: 60px;
+    width: 60px;
+  }
+
+  .contactText {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    height: 100px;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 100px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+  }
+
+  #FontSize {
+    font-size: 24px;
+    font-weight: 600px;
+    text-align: justify;
+  }
+
+  .fonty {
+    font-size: 16px;
+  }
+
+  .fonty-1 {
+    font-size: 16px;
+  }
+
+  @media (max-width: 2000px) {
     .Con-Icon {
-      display: block;
-      font-size: 16px;
-      font-weight: 500;
-      padding: 0;
-      margin-right: 10px;
-      margin-left: 10px;
+      display: none;
     }
 
-    .ConNm, .Add-ress {
-      font-size: 18px;
-      padding: 0;
-      margin: 0;
-      text-align: center;
-    }
-
-    .contactFormat {
+    .conNm {
       display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 50px;
-      gap: 30px;
-      justify-content: center;
+      font-weight: 500;
+      margin-left: 250px;
+    }
+
+    .contactText .gmail {
+      margin-left: 250px;
+    }
+  }
+
+  @media (max-width: 1533px) {
+    .conNm {
+      margin-left: 200px;
+    }
+
+    .contactText .gmail {
+      margin-left: 200px;
+    }
+  }
+
+  @media (max-width: 1374px) {
+    .conNm {
+      margin-left: 160px;
+    }
+
+    .contactText .gmail {
+      margin-left: 160px;
+    }
+  }
+
+  @media (max-width: 1303px) {
+    .contactFormat {
+      flex-direction: row;
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    .conNm {
+      font-size: 14px;
+      margin-top: 5px;
+      margin-left: 80px;
+    }
+
+    .contactText .gmail {
+      margin-top: 0;
+      margin-left: 80px;
+    }
+
+  }
+
+  @media (max-width: 961px) {
+    .contactFormat {
+      flex-direction: column;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 10px;
     }
 
     .contactIcon {
-      height: 80px;
-      width: 80px;
-      height: auto;
-      display: flex;
-      padding: 10px;
-    }
-
-    .contactIcon img {
-      flex-direction: column;
-      height: 60px;
-      width: 60px;
+      display: none;
     }
 
     .contactText {
       display: flex;
       flex-wrap: wrap;
       align-content: space-around;
-      height: 100px;
-      width: 40%;
-      border: 1px solid black;
-      border-radius: 100px;
-      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
-      padding: 15px;
+      height: 80px;
+      width: 50%;
+      padding: 20px;
+      text-align: center;
     }
 
-    #FontSize {
-      font-size: 24px;
-      font-weight: 600px;
-      text-align: justify;
+    .Con-Icon {
+      display: flex;
     }
 
-    .fonty {
+    .ConNm,
+    .Add-ress {
       font-size: 16px;
     }
 
-    .fonty-1 {
-      font-size: 16px;
-    }
-
-    @media (max-width: 2000px) {
-      .Con-Icon {
-        display: none;
-      }
-
-      .conNm {
-        display: flex;
-        font-weight: 500;
-        margin-left: 250px;
-      }
-      .contactText .gmail {
-        margin-left: 250px;
-      }
-    }
-
-    @media (max-width: 1533px) {
-      .conNm {
-        margin-left: 200px;
-      }
-      .contactText .gmail {
-        margin-left: 200px;
-      }
-    }
-
-    @media (max-width: 1374px) {
-      .conNm {
-        margin-left: 160px;
-      }
-      .contactText .gmail {
-        margin-left: 160px;
-      }
-    }
-
-    @media (max-width: 1303px) {
-      .contactFormat {
-        flex-direction: row;
-        display: flex;
-        flex-wrap: nowrap;
-      }
-
-      .conNm {
-      font-size: 14px;
-      margin-top: 5px;
-      margin-left: 80px;
-      }
-
-      .contactText .gmail {
-        margin-top: 0;
-        margin-left: 80px;
-      }
-      
-    }
-
-    @media (max-width: 961px) {
-      .contactFormat {
-        flex-direction: column;
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .contactIcon {
-        display: none;
-      }
-
-      .contactText {
-        display: flex;
-        flex-wrap: wrap;
-        align-content: space-around;
-        height: 80px;
-        width: 50%;
-        padding: 20px;
-        text-align: center;
-      }
-
-      .Con-Icon {
-        display: flex;
-      }
-
-      .ConNm, .Add-ress {
-        font-size: 16px;
-      }
-
-      .conNm {
+    .conNm {
       font-size: 14px;
       margin-top: 5px;
       margin-left: 0;
-      }
-
-      .contactText .gmail {
-        margin-top: 0;
-        margin-left: 0;
-      }
     }
 
-    @media (max-width: 879px) {
-        a, .Con-Icon {
+    .contactText .gmail {
+      margin-top: 0;
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 879px) {
+
+    a,
+    .Con-Icon {
       margin-left: 20px;
       font-size: 16px;
     }
-      .contactText a {
-        font-size: 14px;
-      }
+
+    .contactText a {
+      font-size: 14px;
+    }
+
     .ConNm {
       font-size: 14px;
       margin-top: 5px;
-      
+
     }
 
     .Add-ress {
@@ -363,64 +376,71 @@
       font-size: 14px;
       margin-top: 5px;
       margin-left: 0;
-      }
-
-      .contactText .gmail {
-        margin-top: 0;
-        margin-left: 0;
-      }
     }
 
-    @media (max-width: 850px) {
-      #FontSize {
+    .contactText .gmail {
+      margin-top: 0;
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 850px) {
+    #FontSize {
       font-size: 20px;
       text-align: center;
       margin-top: 10px;
-      }
-      .fonty {
-        font-size: 14px;
-      }
-      #contactHeader p {
-        text-align: center;
-        font-size: 14px;
-        margin-right: 20px;
-      }
-      .contactFormat {
-        margin-bottom: 10px;
-      }
+    }
 
-      .car-text {
-        font-size: 16px;
-        padding: 20px;
-      }
-      .steps {
-        font-size: 18px;
-      }
-      .conNm {
+    .fonty {
+      font-size: 14px;
+    }
+
+    #contactHeader p {
+      text-align: center;
+      font-size: 14px;
+      margin-right: 20px;
+    }
+
+    .contactFormat {
+      margin-bottom: 10px;
+    }
+
+    .car-text {
+      font-size: 16px;
+      padding: 20px;
+    }
+
+    .steps {
+      font-size: 18px;
+    }
+
+    .conNm {
       font-size: 14px;
       margin-top: 5px;
       margin-left: 0;
-      }
-
-      .contactText .gmail {
-        margin-left: 0;
-      }
-
     }
-    @media (max-width: 724px) {
-      .contactText {
+
+    .contactText .gmail {
+      margin-left: 0;
+    }
+
+  }
+
+  @media (max-width: 724px) {
+    .contactText {
       display: flex;
       height: 80px;
       width: 100%;
       padding: 15px;
       margin-bottom: 10px;
-      }
+    }
 
-      .Con-Icon {
-        display: flex;
-      }
+    .Con-Icon {
+      display: flex;
+    }
 
-      a, .Con-Icon {
+    a,
+    .Con-Icon {
       margin-left: 5px;
       font-size: 16px;
     }
@@ -450,29 +470,32 @@
     }
 
   }
-    @media (max-width: 497px) {
-      .contactText {
+
+  @media (max-width: 497px) {
+    .contactText {
       display: flex;
       height: 85px;
       width: 100%;
       padding: 15px;
       margin-bottom: 10px;
-      }
-      #FontSize {
-        font-size: 16px;
-        font-weight: 500;
-      }
+    }
 
-      .contactFormat {
-        margin-bottom: 10px;
-      }
+    #FontSize {
+      font-size: 16px;
+      font-weight: 500;
+    }
 
-      .Con-Icon {
-        display: flex;
-        font-weight: 600;
-      }
+    .contactFormat {
+      margin-bottom: 10px;
+    }
 
-      a, .Con-Icon {
+    .Con-Icon {
+      display: flex;
+      font-weight: 600;
+    }
+
+    a,
+    .Con-Icon {
       margin-left: 5px;
       font-size: 14px;
     }
@@ -482,11 +505,11 @@
       margin-top: 5px;
       font-weight: 500;
       margin-left: 0;
-      }
+    }
 
-      .contactText .gmail {
-        margin-left: 0;
-      }
+    .contactText .gmail {
+      margin-left: 0;
+    }
 
     .Add-ress {
       font-size: 14px;
@@ -497,89 +520,88 @@
       font-weight: 600;
     }
   }
-
-  </style>
+</style>
 
 <body>
   <?php
   include 'assets/template/homeNavigation.php';
   ?>
   <main>
-  <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide car-header" data-bs-ride="carousel" data-bs-touch="true">
-    <div class="container-fluid">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="4000">
-          <img src="././assets/image/announcement-atm.jpg" class="announcer d-block mx-auto" alt="...">
+    <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide car-header" data-bs-ride="carousel" data-bs-touch="true">
+      <div class="container-fluid">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="4000">
+            <img src="uploads/announcement/form1.jpeg" class="announcer d-block mx-auto" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="uploads/announcement/form2.jpeg" class="announcer d-block mx-auto" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="uploads/announcement/form3.jpeg" class="announcer d-block mx-auto" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="uploads/announcement/form4.jpeg" class="announcer d-block mx-auto" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="uploads/announcement/form5.jpeg" class="announcer d-block mx-auto" alt="...">
+          </div>
         </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img src="././assets/image/announcement-renew.jpg" class="announcer d-block mx-auto" alt="...">
+        <div class="car-btn">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
         </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img src="././assets/image/1x1.jpg" class="announcer d-block mx-auto" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img src="././assets/image/CysdoLogo.jpg" class="announcer d-block mx-auto" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img src="././assets/image/SanjoseBg.jpg" class="announcer d-block mx-auto" alt="...">
-        </div>
+        </button>
       </div>
-    <div class="car-btn">
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
     </div>
-      </button>
-    </div>
-  </div>
 
     <div id="2"></div>
   </main>
-<div id="about">
-  <div id="carouselExampleRide" class="car-about carousel carousel-dark slide" data-bs-ride="true" data-bs-touch="true">
+  <div id="about">
+    <div id="carouselExampleRide" class="car-about carousel carousel-dark slide" data-bs-ride="true" data-bs-touch="true">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleRide" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleRide" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleRide" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-    <div class="container">
-      <div class="carousel-inner">
-        <div class="car-body carousel-item active" data-bs-interval="8000">
-          <li class="d-block w-100 text-center">
-            <p class="steps">MANDATE</p>
+      <div class="container">
+        <div class="carousel-inner">
+          <div class="car-body carousel-item active" data-bs-interval="8000">
+            <li class="d-block w-100 text-center">
+              <p class="steps">MANDATE</p>
             <li class="car-text text-center">Assist the City Mayor in the implementation of the Constitutional Provisions
               relative to youth development through promotion of its youth welfare
               enhancement, sport, and education programs and become a progressive
               community with competent youth thriving in a vibrant economy.</li>
-              </li>
-        </div>
-    
-      <div class="car-body carousel-item" data-bs-interval="8000">
-        <li class="d-block w-100 text-center">
-          <p class="steps">MISSION</p>
-          <li class="car-text text-center p-1">Provide quality service to young clientele.</li>
-          <li class="car-text text-center p-1">Promote holistic development both in-school and out-of-school youth.</li>
-          <li class="car-text text-center p-1">Strengthen the capacity level of young people to make them competitive in the
-            National and Global Market.
-          </li>
-          <li class="car-text text-center p-1">Empower the youth sector to become dynamic leaders.</li>
             </li>
-      </div>
-      <div class="car-body carousel-item" data-bs-interval="8000">
-        <li class="d-block w-100 text-center">
-          <p class="steps">VISION</p>
-          <li class="car-text text-center">A highly efficient office who caters comprehensively to the needs of the youth
-            sector integral to the over-all enhancement and relevant social transformation of
-            San Joseños.</li>
+          </div>
+
+          <div class="car-body carousel-item" data-bs-interval="8000">
+            <li class="d-block w-100 text-center">
+              <p class="steps">MISSION</p>
+            <li class="car-text text-center p-1">Provide quality service to young clientele.</li>
+            <li class="car-text text-center p-1">Promote holistic development both in-school and out-of-school youth.</li>
+            <li class="car-text text-center p-1">Strengthen the capacity level of young people to make them competitive in the
+              National and Global Market.
+            </li>
+            <li class="car-text text-center p-1">Empower the youth sector to become dynamic leaders.</li>
+            </li>
+          </div>
+          <div class="car-body carousel-item" data-bs-interval="8000">
+            <li class="d-block w-100 text-center">
+              <p class="steps">VISION</p>
+            <li class="car-text text-center">A highly efficient office who caters comprehensively to the needs of the youth
+              sector integral to the over-all enhancement and relevant social transformation of
+              San Joseños.</li>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  </div>
-</div>
 
   <!--<div id="about">
     <div id="aboutPic" class="img-fluid">
@@ -613,47 +635,47 @@
   </div> -->
   <div id="faqs">
     <div id="faqsHeader">
-    <p id="FontSizes">Frequently Asked Questions</p>
+      <p id="FontSizes">Frequently Asked Questions</p>
 
-    <div class="container-sm mb-5">
-      <div class="accordion accordion-flush" id="accordionFaqs">
-        <div class="accordion-item" id="accordItem">
-          <h2 class="accordion-header">
-            <button class="accordion-button" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <div class="container-sm mb-5">
+        <div class="accordion accordion-flush" id="accordionFaqs">
+          <div class="accordion-item" id="accordItem">
+            <h2 class="accordion-header">
+              <button class="accordion-button" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 <p class="faqsBody">Who Can Apply?</p>
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFaqs">
-            <div class="accordion-body">
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFaqs">
+              <div class="accordion-body">
                 <ul>
-                    <li class="fonty">Incoming college students/ Current college students (30 years old andbelow only)</li>
-                    <li  class="fonty">Bonafide resident of the City of San Jose Del Monte, Bulacan</li>
+                  <li class="fonty">Incoming college students/ Current college students (30 years old andbelow only)</li>
+                  <li class="fonty">Bonafide resident of the City of San Jose Del Monte, Bulacan</li>
                 </ul>
-            </div>         
-          </div>
-        </div>
-        
-        <div class="accordion-item" id="accordItem">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <p class="faqsBody">When To Apply?</p>
-            </button>
-          </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
-            <div class="accordion-body">
-                <p class="fs-6 ms-4">Online application usually happens on the 1st quarter of every year. The online application will be posted on our FB Page: <strong> City Youth and Sports Development Office - CSJDM.</strong></p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="accordion-item" id="accordItem">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <div class="accordion-item" id="accordItem">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <p class="faqsBody">When To Apply?</p>
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
+              <div class="accordion-body">
+                <p class="fs-6 ms-4">Online application usually happens on the 1st quarter of every year. The online application will be posted on our FB Page: <strong> City Youth and Sports Development Office - CSJDM.</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" id="accordItem">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 <p class="faqsBody">What are the Qualifications?</p>
-            </button>
-          </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
-            <div class="accordion-body">
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
+              <div class="accordion-body">
                 <p class="fonty">Ang lokal na pamahalaan ng Lungsod ng San Jose Del Monte ay patuloy na naghahatid ng programang pang-edukasyon sa mga kabataang San Joseños na mas kilala bilang City Educational Assistance Program (CEAP). Itinataguyod nito ang layunin na makapagbigay ng tulong pinansiyal sa mga kabataan upang makapagtapos ng pag-aaral.</p>
 
                 <li class="fonty-1"><strong>QUALIFICATIONS:</strong></li>
@@ -674,12 +696,12 @@
                   <li class="fonty">Isa lamang sa bawat pamilya ang maaaring mabigyan ng Educational Assistance, sa pasubali na kung nakatapos na sa kolehiyo ang isang iskolar ay doon pa lang maaaring magkaroon ng pagkakataon na maging iskolar ang isa sa kanyang kapatid, maliban din naman kung kambal o triplet o quadruplet ay bibigyan ng exemption sa aytem na ito.</li>
                   <li class="fonty">Walang tinatanggap na educational assistance o scholarship sa kahit anong ahensya o organisasyon ng Gobyerno at iba pang Lokal na Pamahalaan.</li>
                   <li class="fonty">Ang mga mag-aaral ng City College of San Jose Del Monte <strong>(CCSJDM)</strong> at Bulacan State University-Sarmiento Campus <strong>(BSU-SC)</strong> o kahit anong State University o College sa loob ng Lungsod ng San Jose Del Monte na sumasailalim sa <strong>UNIFAST</strong> – Free Higher Education Program ay HINDI NA maaring maging benepisyaryo ng City Educational Assistance Program (CEAP).</li>
-                </ol>            
+                </ol>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="accordion-item" id="accordItem">
+          <div class="accordion-item" id="accordItem">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 <p class="faqsBody">Initial Requirements</p>
@@ -744,12 +766,12 @@
                     <li class="fonty">Photocopy ng Valid ID o School ID;</li>
                     <li class="fonty">2x2 ID Picture;</li>
                   </ul>
-                </ol>              
+                </ol>
               </div>
             </div>
           </div>
 
-        <div class="accordion-item" id="accordItem">
+          <div class="accordion-item" id="accordItem">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                 <p class="faqsBody">Filing of Application</p>
@@ -758,11 +780,11 @@
             <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
               <div class="accordion-body">
                 <ol>
-                    <li class="fonty">Like and follow the Official Facebook Page of the City Youth and Sports Development Office.</li>
-                    <li class="fonty">Wait for the post regarding the Opening of the Online Application.</li>
-                    <li class="fonty">Fill out the Google Form/Online Application Form.</li>
-                    <li class="fonty">After the successful registration, wait for the schedule of orientation to be posted on the FB Page.</li>
-                  </ol>
+                  <li class="fonty">Like and follow the Official Facebook Page of the City Youth and Sports Development Office.</li>
+                  <li class="fonty">Wait for the post regarding the Opening of the Online Application.</li>
+                  <li class="fonty">Fill out the Google Form/Online Application Form.</li>
+                  <li class="fonty">After the successful registration, wait for the schedule of orientation to be posted on the FB Page.</li>
+                </ol>
                 </details>
                 <details>
                   <summary class="dropdown-toggle"><strong>Issuance of Examination Stub</strong></summary>
@@ -770,12 +792,12 @@
                 </details>
                 <details>
                   <summary class="dropdown-toggle"><strong>Announcement of Qualifiers</strong></summary>
-                  <p>List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>              
+                  <p>List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>
               </div>
             </div>
-        </div>
+          </div>
 
-        <div class="accordion-item" id="accordItem">
+          <div class="accordion-item" id="accordItem">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                 <p class="faqsBody">Issuance of Examination Stub</p>
@@ -783,12 +805,12 @@
             </h2>
             <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
               <div class="accordion-body">
-                <p class="fonty fs-6 ms-4">Upon submission of the Application Form during the Orientation, Examination Stub will be released to the applicants.</p>   
+                <p class="fonty fs-6 ms-4">Upon submission of the Application Form during the Orientation, Examination Stub will be released to the applicants.</p>
               </div>
             </div>
-        </div>
+          </div>
 
-        <div class="accordion-item" id="accordItem">
+          <div class="accordion-item" id="accordItem">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" id="AccordBtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                 <p class="faqsBody">Announcement of Qualifiers</p>
@@ -796,16 +818,16 @@
             </h2>
             <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionFaqs">
               <div class="accordion-body">
-                <p class="fonty fs-6 ms-4">List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>              
+                <p class="fonty fs-6 ms-4">List of all the CEAP Qualifiers will be posted at the Official Facebook Page of the City Youth and Sports Development Office.</p>
               </div>
             </div>
+          </div>
         </div>
       </div>
-     </div>
     </div>
   </div>
   <div id="contact">
-  <p id="Fontsizes">Contact & Address</p>
+    <p id="Fontsizes">Contact & Address</p>
     <div id="contactHeader">
       <p>You can contact us through the following:</p>
     </div>
@@ -815,37 +837,37 @@
           <img src="assets/image/fbIcon.png" />
         </div>
         <div class="contactText">
-        <p class="Con-Icon">Facebook Page</p>
+          <p class="Con-Icon">Facebook Page</p>
           <a class="text-break lh-sm text-decoration-underline fb1" href="https://www.facebook.com/CEAP.CYSDO">https://www.facebook.com/CEAP.CYSDO(City Youth and Sports Development Office – CSJDM)</a>
         </div>
         <div class="contactIcon">
           <img src="assets/image/gmailIcon.png" />
         </div>
         <div class="contactText">
-        <p class="Con-Icon">Email</p>
+          <p class="Con-Icon">Email</p>
           <a class="gmail text-break text-decoration-underline" href="csjdm.cysdo1@gmail.com">csjdm.cysdo1@gmail.com</a>
         </div>
       </div>
-  <div id="contactDetails">
-      <div class="contactFormat">
-        <div class="contactIcon">
-          <img src="assets/image/phone.png" />
-        </div>
-        <div class="contactText">
-        <p class="Con-Icon">Phone</p>
-          <li class="text-break lh-sm conNm">(639)905-603-7218</li>
-        </div>
-        <div class="contactIcon">
-          <img src="assets/image/locationIcon.png" />
-        </div>
-        
-        <div class="contactText">
-        <p class="Con-Icon">Address</p>
-          <li class="text-break lh-sm Add-ress">Productivity Complex, Barangay Sapang Palay Proper, City of San Jose del Monte, Bulacan</li>
+      <div id="contactDetails">
+        <div class="contactFormat">
+          <div class="contactIcon">
+            <img src="assets/image/phone.png" />
+          </div>
+          <div class="contactText">
+            <p class="Con-Icon">Phone</p>
+            <li class="text-break lh-sm conNm">(639)905-603-7218</li>
+          </div>
+          <div class="contactIcon">
+            <img src="assets/image/locationIcon.png" />
+          </div>
+
+          <div class="contactText">
+            <p class="Con-Icon">Address</p>
+            <li class="text-break lh-sm Add-ress">Productivity Complex, Barangay Sapang Palay Proper, City of San Jose del Monte, Bulacan</li>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
 </body>
 
