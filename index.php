@@ -517,6 +517,12 @@
         <div class="carousel-item" data-bs-interval="4000">
           <img src="././assets/image/1x1.jpg" class="announcer d-block mx-auto" alt="...">
         </div>
+        <div class="carousel-item" data-bs-interval="4000">
+          <img src="././assets/image/CysdoLogo.jpg" class="announcer d-block mx-auto" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+          <img src="././assets/image/SanjoseBg.jpg" class="announcer d-block mx-auto" alt="...">
+        </div>
       </div>
     <div class="car-btn">
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
