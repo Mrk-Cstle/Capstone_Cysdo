@@ -69,7 +69,7 @@ if (mysqli_num_rows($result) > 0) {
         $paginationHTML .= '<li class="page-item ' . ($page == 1 ? 'disabled' : '') . '"><a class="page-link pagination-button" href="#" data-page="' . ($page - 1) . '"> < </a></li>';
 
         // Add the current page count
-
+        $paginationHTML .= '<li class="page-item disabled"><span class="pageNumber page-link">Page ' . $page . ' of ' . $totalPages . '</span></li>';
         for ($i = 1; $i <= $totalPages; $i++) {
             $activeClass = ($i === $page) ? 'active' : '';
             $paginationHTML .= '<li class="page-item ' . $activeClass . '"><a class="page-link pagination-button" href="#" data-page="' . $i . '">' . $i . '</a></li>';

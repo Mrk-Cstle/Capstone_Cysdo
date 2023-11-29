@@ -57,7 +57,8 @@ if ($_SESSION['role'] === 'admin') {
                 <button class="btnSearch btn btn-outline-success" type="submit">Search</button>
                 <button style="display: none;" id="deleteAllButton" class="btnSearch btn btn-outline-danger">Clear Table</button>
                 <button id="refreshButton" class="btnSearch btn btn-outline-secondary" type="button">Refresh</button>
-                <p id="response"></p>
+                <button class="btnAddStaff btn btn-outline-primary" id="btnPrint">Print</button>
+                
             </form>
         </nav>
 
@@ -77,6 +78,7 @@ if ($_SESSION['role'] === 'admin') {
                     <!-- Table rows will be dynamically populated here -->
                 </tbody>
             </table>
+            <p id="response"></p>
         </div>
 
         <div id="paginationButtons">
@@ -265,6 +267,56 @@ if ($_SESSION['role'] === 'admin') {
             //     }
             // });
         </script>
+       <script>
+    // Function to print only the table element with class "table"
+    function printTable() {
+        // Check if the pagination element exists
+        var paginationElement = document.querySelector(".pagination");
+
+        // Check if there is at least one pagination button
+        var paginationButtons = document.querySelectorAll(".pagination-button");
+        var hasPagination = paginationButtons.length > 0;
+
+        // Add a class to hide the pagination container if it exists and there is at least one pagination button
+        if (paginationElement && hasPagination) {
+            paginationElement.classList.add("hide-for-print");
+        }
+
+        var tableElement = document.querySelector(".table");
+        var tableElements = document.querySelector(".pageNumber");
+        var clonedTable = tableElement.cloneNode(true);
+        var clonedTables = tableElements ? tableElements.cloneNode(true) : null;
+
+        var tableContent = clonedTable.outerHTML;
+        var tableContents = clonedTables ? clonedTables.outerHTML : '';
+
+        // Create a new window or HTML document
+        var printWindow = window.open('', '_blank');
+
+        // Set the content of the new window or document
+        printWindow.document.write('<html><head><title>Table</title>');
+        printWindow.document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">');
+        printWindow.document.write('<style>body{margin: 20px;} table{width: 100%; border-collapse: collapse; margin-bottom: 20px;} th, td{border: 1px solid black; padding: 8px; text-align: left;} th{background-color: #f2f2f2;} .hide-for-print { display: none; }</style>');
+        printWindow.document.write('</head><body>');
+        printWindow.document.write(tableContent);
+        printWindow.document.write(tableContents);
+        printWindow.document.write('</body></html>');
+
+        // Close the document after printing
+        printWindow.document.close();
+
+        // Remove the class to show the pagination container again if it exists and there is at least one pagination button
+        if (paginationElement && hasPagination) {
+            paginationElement.classList.remove("hide-for-print");
+        }
+
+        // Print the content
+        printWindow.print();
+    }
+
+    // Bind the function to the print button
+    document.getElementById("btnPrint").addEventListener("click", printTable);
+</script>
     </section>
 </body>
 
