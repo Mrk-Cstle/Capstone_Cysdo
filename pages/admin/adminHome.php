@@ -209,7 +209,7 @@ include 'include/session.php'; ?>
                         </li>
                     </a>
 
-                    <a href="applicantList.php">
+                    <a href="reportApplicant.php">
                         <li class="box-4">
                             <i class="bx bx bi-people-fill" id="bx-1"></i>
                             <span class="text">
@@ -222,7 +222,7 @@ include 'include/session.php'; ?>
                         </li>
                     </a>
 
-                    <a href="applicantScholar.php">
+                    <a href="reportNew.php">
                         <li class="box-4">
                             <i class="bx bx bi-person-plus-fill" id="bx-1"></i>
                             <span class="text">
@@ -249,7 +249,7 @@ include 'include/session.php'; ?>
                             </span>
                         </li>
                 </a>
-                <a href="applicantExaminers.php">
+                <a href="reportExaminer.php">
                     <li class="box-3">
                         <i class="bx bx bi-file-text-fill" id="bx-3"></i>
                         <span class="text">

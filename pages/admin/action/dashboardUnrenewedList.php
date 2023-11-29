@@ -17,21 +17,14 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
 ?>
         <tr>
-            <th class="user_id" scope="row"><?php echo $row['scholar_id']; ?></th>
+
             <td><?php echo $row['full_name']; ?></td>
             <td><?php echo $row['contact_num1']; ?></td>
             <td><?php echo $row['contact_num2']; ?></td>
             <td><?php echo $row['approve_date']; ?></td>
 
 
-            <td class="hidden-cell"><?php echo $row['last_name']; ?></td>
-            <td class="hidden-cell"><?php echo $row['first_name']; ?></td>
-            <td class="hidden-cell"><?php echo $row['middle_name']; ?></td>
 
-            <td>
-                <a class="btn btn-sm btn-success" href="scholarView.php?id=<?php echo htmlspecialchars($row['scholar_id']); ?>">View</a>
-
-            </td>
         </tr>
 <?php
     }
