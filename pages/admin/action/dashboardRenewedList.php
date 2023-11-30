@@ -2,7 +2,7 @@
 include '../../include/selectDb.php';
 include '../../include/dbConnection.php';
 
-$recordsPerPage = 50; // Change this to your desired value
+$recordsPerPage = 15; // Change this to your desired value
 
 // Initialize page number
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;

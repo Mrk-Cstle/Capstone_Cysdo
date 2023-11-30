@@ -12,6 +12,7 @@
   * {
     margin: 0px;
     padding: 0px;
+    scroll-behavior: smooth;
  }
 
  h1 {
@@ -21,6 +22,10 @@
 
  .alignment{
     text-align: center;
+ }
+
+ .text-break {
+    text-align: justify;
  }
 
  .btnDiv{
@@ -56,7 +61,22 @@
     margin-top: 6px;
     margin-bottom: 10px;
  }
- 
+
+ .container {
+    padding-top: 80px;
+ }
+    @media (max-width: 1321px){
+      .container{
+        padding-top: 140px;
+      
+      }
+    }
+
+    @media (max-width: 1202px){
+      .container{
+        padding-top: 90px;
+      }
+    }
      @media (max-width: 990px){
     li{
       font-size: 16px;
@@ -90,8 +110,11 @@
   }
   </style>
   <body>
-  <div class="container mt-5">
-    <form>
+  <?php
+  include 'assets/template/homeNavigation.php';
+  ?>
+  <div class="container">
+    <form class="terms">
       <h1>Mga Paalala:</h1>
       <strong><ol>
         <li>

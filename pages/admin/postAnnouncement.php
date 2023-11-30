@@ -209,11 +209,14 @@
                                 <img src="../../uploads/announcement/form1.jpeg" id='uploadAnnouncement-1' class='Post lh-base'></img>
                             </div>
                             <hr class='mb-3 mt-4'>
-                            <div class="post-btn">
-                                <input type="file" name="announcement1" accept=".jpeg, image/jpeg">
-                                <button onclick="submitForm('form1')" class="btn btn-success">Edit</button>
+                            <div class="row g-3 justify-content-end">
+                                <div class="post-btn col-auto">
+                                    <input type="file" name="announcement1" class="form-control col-sm-2" accept=".jpeg, image/jpeg">
+                                    <button onclick="submitForm('form1')" class="btn btn-success mt-2">Upload</button>
+                                </div>
+                            </div>
                         </form>
-            </div>
+                        
             </li>
             </ul>
         </div>
@@ -229,9 +232,11 @@
                             <img src="../../uploads/announcement/form2.jpeg" id='uploadAnnouncement-2' class='Post lh-base'></img>
                         </div>
                         <hr class='mb-3 mt-4'>
-                        <div class="post-btn">
-                            <input type="file" name="announcement1" accept=".jpeg, image/jpeg">
-                            <button onclick="submitForm('form2')" type="submit" class="btn btn-success">Edit</button>
+                        <div class="row g-3 justify-content-end">
+                            <div class="post-btn col-auto">
+                                <input type="file" name="announcement1" class="form-control col-sm-2" accept=".jpeg, image/jpeg">
+                                <button onclick="submitForm('form2')" type="submit" class="btn btn-success mt-2">Upload</button>
+                            </div>
                         </div>
                     </form>
                 </li>
@@ -249,10 +254,11 @@
                             <img src="../../uploads/announcement/form3.jpeg" id='uploadAnnouncement-3' class='Post lh-base'></img>
                         </div>
                         <hr class='mb-3 mt-4'>
-                        <div class="post-btn">
-                            <input type="file" name="announcement1" accept=".jpeg, image/jpeg">
-                            <button onclick="submitForm('form3')" type="submit" class="btn btn-success">Edit</button>
-
+                        <div class="row g-3 justify-content-end">
+                            <div class="post-btn col-auto">
+                                <input type="file" class="form-control" name="announcement1" accept=".jpeg, image/jpeg">
+                                <button onclick="submitForm('form3')" type="submit" class="btn btn-success mt-2">Upload</button>
+                            </div>
                         </div>
                     </form>
                 </li>
@@ -271,14 +277,16 @@
                                 <img src="../../uploads/announcement/form4.jpeg" id='uploadAnnouncement-4' class='Post lh-base'></img>
                             </div>
                             <hr class='mb-3 mt-4'>
-                            <div class="post-btn">
-                                <input type="file" name="announcement1" accept=".jpeg, image/jpeg">
-                                <button onclick="submitForm('form4')" type="submit" class="btn btn-success">Edit</button>
+                            <div class="row g-3 justify-content-end">
+                                <div class="post-btn col-auto">
+                                    <input type="file" name="announcement1" class="form-control" accept=".jpeg, image/jpeg">
+                                    <button onclick="submitForm('form4')" type="submit" class="btn btn-success mt-2">Upload</button>
+                                </div>
+                            </div>
                         </form>
                     </form>
-        </div>
-        </li>
-        </ul>
+                </li>
+            </ul>
         </div>
         <div class="post-img">
             <ul class='box-info justify-content-center'>
@@ -292,17 +300,19 @@
                             <img src="../../uploads/announcement/form5.jpeg" id='uploadAnnouncement-5' class='Post lh-base'></img>
                         </div>
                         <hr class='mb-3 mt-4'>
-                        <div class="post-btn">
-                            <input type="file" name="announcement1" accept=".jpeg, image/jpeg">
-
-                            <button onclick="submitForm('form5')" type="submit" class="btn btn-success">Edit</button>
+                        <div class="row g-3 justify-content-end">
+                            <div class="post-btn col-auto">
+                                <input type="file" name="announcement1" class="form-control" accept=".jpeg, image/jpeg">
+                                <button onclick="submitForm('form5')" type="submit" class="btn btn-success mt-2">Upload</button>
+                            </div>
                         </div>
                     </form>
                 </li>
             </ul>
         </div>
-        </div>
+    </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function submitForm(formId) {

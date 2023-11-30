@@ -26,7 +26,6 @@ if (mysqli_num_rows($result) > 0) {
         // Build table rows dynamically
         $tableHTML .= '<tr>';
         $tableHTML .= '<td>' . '<img src="../../uploads/applicant/2x2/' . $row['pic2x2']  . '"alt="image"style="height: 80px; width: 80px;"><?></td>';
-        $tableHTML .= '<td>' . htmlspecialchars($row['applicant_id']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['fullName']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum1']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contactNum2']) . '</td>';

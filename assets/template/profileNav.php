@@ -309,6 +309,10 @@ if ($result) {
     line-height: 2.3;
   }
 
+  .side-bar .menu .item .cash-menu  {
+    line-height: 3.6;
+  }
+
   .up-announcement {
     line-height: 60px;
   }
@@ -448,6 +452,9 @@ if ($result) {
       margin-bottom: 50px;
       margin-right: 230px;
     }
+    .side-bar .menu .item .cash-menu  {
+      line-height: 2.3;
+    }
   }
 
   @media screen and (max-width: 1631px) {
@@ -582,8 +589,8 @@ if ($result) {
           <a href="scholar.php" class="sub-item">Scholar List</a>
 
           <a href="renewalList.php" class="sub-item">Renewal Process</a>
-          <a href="renewalAward.php" class="sub-item">Cash Allowance(Old)</a>
-          <a href="renewalAwardNew.php" class="sub-item">Cash Allowance(New)</a>
+          <a href="renewalAward.php" class="sub-item cash-menu">Cash Allowance(Old)</a>
+          <a href="renewalAwardNew.php" class="sub-item cash-menu">Cash Allowance(New)</a>
         </div>
       </div>
       <div class="item">
