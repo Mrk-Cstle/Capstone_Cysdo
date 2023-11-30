@@ -110,9 +110,9 @@ function email($message, $contactNum2, $fullName)
 
         // Send the email
         $mail->send();
-        echo 'Email has been sent</br>';
+        // echo 'Email has been sent</br>';
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}</br>";
+        // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}</br>";
     }
 }
 function approve($contactNum1, $contactNum2, $fullName, $user)
@@ -129,7 +129,7 @@ function approve($contactNum1, $contactNum2, $fullName, $user)
         $result = mysqli_query($conn, $insertQuery);
         if ($result) {
 
-            echo "Scholar Approve";
+            echo "approve";
             send_sms($text, '+63' . $contactNum1);
             email($text, $contactNum2, $fullName);
         } else {
@@ -214,7 +214,7 @@ function decline($contactNum1, $contactNum2, $fullName, $user, $rowData)
             email($text, $contactNum2, $fullName);
             mysqli_query($conn, "DELETE FROM registration WHERE applicant_id = '$applicantId'");
 
-            echo "Scholar Declined";
+            echo "decline";
         } else {
             echo "Insert Failed: " . mysqli_error($conn);
         }

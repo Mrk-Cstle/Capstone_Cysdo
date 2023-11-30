@@ -255,6 +255,7 @@ if (isset($_GET['id'])) {
     <!--script for image update-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function sendAction(scholar_id, action) {
             // Create an AJAX request
@@ -271,7 +272,27 @@ if (isset($_GET['id'])) {
                 contentType: false,
                 success: function(response) {
                     // Handle the response from the server if needed
+                    if (response === 'Successful') {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success!",
+                            text: "Requirements uploaded successfully!",
+                            showConfirmButton: true,
+                        }).then(function() {
+                            // Redirect to 'applicantList.php' after the user clicks the confirmation button
 
+
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error!",
+                            text: "An error occurred. Please try again later.",
+                            showConfirmButton: true,
+                        }).then(function() {
+
+                        });
+                    }
                     var actions = action;
                     var form = document.getElementById(actions);
                     console.log(response);

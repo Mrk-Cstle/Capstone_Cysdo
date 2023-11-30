@@ -305,6 +305,7 @@ if (isset($_GET['id'])) {
     <script script script script script script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function sendAction(applicantId, action) {
             new ldLoader({
@@ -325,16 +326,45 @@ if (isset($_GET['id'])) {
                     setTimeout(function() {
                         $('#response').text('');
                     }, 5000);
-                    loadTableData(currentPage);
+                    console.log(response)
                     // For example, you can display a success message or update the UI
-                    if (action === 'pass') {
-                        alert(response);
-                        $('#approveBtn').hide();
-                        $('#declineBtn').hide();
-                    } else if (action === 'failed') {
-                        alert(response);
-                        $('#approveBtn').hide();
-                        $('#declineBtn').hide();
+                    if (response == 'pass') {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success!",
+                            text: "Applicant approved to scholar successfully!",
+                            showConfirmButton: true,
+                        }).then(function() {
+                            // Redirect to 'applicantList.php' after the user clicks the confirmation button
+                            $('#approveBtn').hide();
+                            $('#declineBtn').hide();
+                            window.location.href = "applicantExamPass.php";
+                        });
+
+
+                    } else if (response == 'failed') {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success!",
+                            text: "Applicant failed requirements successfully!",
+                            showConfirmButton: true,
+                        }).then(function() {
+                            // Redirect to 'applicantList.php' after the user clicks the confirmation button
+                            window.location.href = "applicantExamPass.php";
+
+                            // Hide elements with IDs 'approveBtn' and 'declineBtn'
+                            $("#approveBtn").hide();
+                            $("#declineBtn").hide();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error!",
+                            text: "An error occurred. Please try again later.",
+                            showConfirmButton: true,
+                        }).then(function() {
+
+                        });
                     }
                 },
                 error: function(xhr, status, error) {

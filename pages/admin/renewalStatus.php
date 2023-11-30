@@ -353,6 +353,7 @@ if (isset($_GET['id'])) {
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const triggerTabList = document.querySelectorAll('#myTab button')
         triggerTabList.forEach(triggerEl => {
@@ -397,15 +398,41 @@ if (isset($_GET['id'])) {
                     // Handle the response from the server if needed
                     $('#approveBtn').prop('disabled', true);
                     $('#declineBtn').prop('disabled', true);
+                    console.log(response);
                     // For example, you can display a success message or update the UI
-                    if (action === 'approve') {
-                        alert('Applicant approved successfully!');
-                        $('#approveBtn').hide();
-                        $('#declineBtn').hide();
-                    } else if (action === 'decline') {
-                        alert('Applicant declined successfully!');
-                        $('#approveBtn').hide();
-                        $('#declineBtn').hide();
+                    if (response === 'pass') {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success!",
+                            text: "Scholar Approve Renewal successfully!",
+                            showConfirmButton: true,
+                        }).then(function() {
+                            // Redirect to 'applicantList.php' after the user clicks the confirmation button
+                            $('#approveBtn').hide();
+                            $('#declineBtn').hide();
+                            window.location.href = "renewalList.php";
+                        });
+                    } else if (response === 'failed') {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success!",
+                            text: "Scholar Declined Renewal successfully!",
+                            showConfirmButton: true,
+                        }).then(function() {
+                            // Redirect to 'applicantList.php' after the user clicks the confirmation button
+                            $('#approveBtn').hide();
+                            $('#declineBtn').hide();
+                            window.location.href = "renewalList.php";
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error!",
+                            text: "An error occurred. Please try again later.",
+                            showConfirmButton: true,
+                        }).then(function() {
+
+                        });
                     }
                 },
                 error: function(xhr, status, error) {

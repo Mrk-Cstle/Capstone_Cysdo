@@ -74,12 +74,11 @@ if (
                 if ($queryresult) {
 
                     mysqli_query($conn, "UPDATE scholar SET $action = 'uploaded', scholar_status = 'Uploaded'  WHERE scholar_id = '$id'");
+                    echo "uploaded";
                 } else {
 
                     echo "Error: Missing parameters in the request.";
                 }
-
-                echo "uploaded ";
             } else {
                 echo "failed to upload due to duplicate entry ";
             }

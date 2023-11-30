@@ -113,7 +113,7 @@ function email($message, $contactNum2, $fullName)
 
         // Send the email
         $mail->send();
-        echo 'Email has been sent</br>';
+        // echo 'Email has been sent</br>';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}</br>";
     }
@@ -162,7 +162,7 @@ function approve($contactNum1, $contactNum2, $applicant_id, $lastName, $firstNam
         $results = mysqli_query($conn, $insertRenewalMergeQuery);
         if ($results) {
 
-            echo "Approved to New Scholar";
+            echo "pass";
 
             send_sms($text, '+63' . $contactNum1);
 
@@ -248,7 +248,7 @@ function decline($contactNum1, $contactNum2, $fullName, $user, $rowData)
             send_sms($text, '+63' . $contactNum1);
 
             email($text, $contactNum2, $fullName);
-            echo "" . $fullName . " Declined Scholar";
+            echo "failed";
 
             mysqli_query($conn, "DELETE FROM registration WHERE applicant_id = '$applicant_id'");
         }

@@ -546,6 +546,7 @@ if (isset($_GET['id'])) {
             console.log($applicantId);
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function sendAction(applicantId, action) {
             // Create an AJAX request
@@ -564,18 +565,45 @@ if (isset($_GET['id'])) {
                     (new ldLoader({
                         root: ".ldld.full"
                     })).off();
-
+                    console.log(response)
                     // For example, you can display a success message or update the UI
-                    if (action === 'approve') {
-                        alert('Applicant approved successfully!');
-                        $('#approveBtn').hide();
-                        $('#declineBtn').hide();
-                        window.location.href = 'applicantList.php';
-                    } else if (action === 'decline') {
-                        alert('Applicant declined successfully!');
-                        window.location.href = 'applicantList.php';
-                        $('#approveBtn').hide();
-                        $('#declineBtn').hide();
+                    if (response == 'approve') {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success!",
+                            text: "Applicant approved successfully!",
+                            showConfirmButton: true,
+                        }).then(function() {
+                            // Redirect to 'applicantList.php' after the user clicks the confirmation button
+                            $('#approveBtn').hide();
+                            $('#declineBtn').hide();
+                            window.location.href = "applicantList.php";
+                        });
+
+
+                    } else if (response == 'decline') {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success!",
+                            text: "Applicant declined successfully!",
+                            showConfirmButton: true,
+                        }).then(function() {
+                            // Redirect to 'applicantList.php' after the user clicks the confirmation button
+                            window.location.href = "applicantList.php";
+
+                            // Hide elements with IDs 'approveBtn' and 'declineBtn'
+                            $("#approveBtn").hide();
+                            $("#declineBtn").hide();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error!",
+                            text: "An error occurred. Please try again later.",
+                            showConfirmButton: true,
+                        }).then(function() {
+
+                        });
                     }
                 },
                 error: function(xhr, status, error) {

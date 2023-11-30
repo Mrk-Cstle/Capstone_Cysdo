@@ -111,7 +111,7 @@ function email($message, $contactNum2, $fullName)
 
         // Send the email
         $mail->send();
-        echo 'Email has been sent</br>';
+        // echo 'Email has been sent</br>';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}</br>";
     }
@@ -135,12 +135,13 @@ function approve($contactNum1, $contactNum2, $fullName, $user)
             $results = mysqli_query($conn, $insertQuery);
             if ($results) {
                 $text = "We are delighted to inform you, " . $fullName . ", that you have successfully passed the scholarship examination for the CYSDO Scholarship Program! This is a significant achievement, and we are excited to have you join our scholarship recipients. Your hard work and dedication have paid off, and we believe that your academic journey will be filled with great promise. Congratulations on this remarkable accomplishment! Please stay tuned for further details and instructions regarding the next steps in the scholarship award process. You can keep yourself updated by visiting our official website and following our Facebook page. If you have any questions or need assistance, please feel free to reach out to us. We are here to support you every step of the way. Once again, congratulations on your well-deserved success! Please upload your requirements [here](http://localhost/Capstone_Cysdo/pages/applicant/applicantForm.php?id=" . $lastInsertID . "). \n\n-CYSDO CSJDM-";
-                echo "Scholar " . $fullName . " Pass";
+
 
 
                 send_sms($text, '+63' . $contactNum1);
 
                 email($text, $contactNum2, $fullName);
+                echo "pass";
             } else {
                 echo "An error occurred";
             }
@@ -226,7 +227,7 @@ function decline($contactNum1, $contactNum2, $fullName, $user, $rowData)
 
             email($text, $contactNum2, $fullName);
             mysqli_query($conn, "DELETE FROM registration WHERE applicant_id = '$applicant_id'");
-            echo "Scholar " . $fullName . " Failed";
+            echo "failed";
         } else {
             echo "Insert Failed: " . mysqli_error($conn);
         }

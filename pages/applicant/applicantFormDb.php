@@ -102,7 +102,7 @@ if (
 
 
     if ($result) {
-        echo "Upload Successful";
+        echo "Successful";
         // try {
 
         //     $lastInsertID = mysqli_insert_id($conn);

@@ -71,119 +71,7 @@ $result = mysqli_query($conn, $sql);
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane active" id="year-1st">
-                        <form id="renew_1stYr_1stSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
-                            <div class="portletForm light bg-inverse">
-                                <div class="portlet-body form">
-                                    <div class="row">
-                                        <h3 class="header-title">1st sem (<?php echo $renew_1stYr_1stSem; ?>)</h3>
-                                        </h3>
 
-                                        <div class="col-md-8 col-sm-9 input-box">
-
-                                            <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                                <label class="control-label bold font-xs">Previous Registration Form (COR) (.jpeg)<strong class="text-danger ms-1">*</strong></label>
-                                                <input type="file" class="form-control" accept=".jpeg" name="prevCor" id="prevCor" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 col-sm-9 input-box">
-                                            <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                                <label class="control-label bold font-xs">Certificate of Grades (.jpeg)<strong class="text-danger ms-1">*</strong></label>
-                                                <input type="file" class="form-control" accept=".jpeg" name="cog" id="cog" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 col-sm-9 input-box">
-                                            <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                                <label class="control-label bold font-xs">Current Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                                <input type="file" class="form-control" accept=".jpeg" name="currentCor" id="currentCor">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 col-sm-9 input-box">
-                                            <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                                <label class="control-label bold font-xs">Curriculum (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                                <input type="file" class="form-control" accept=".jpeg" name="curriculum" id="curriculum" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 col-sm-9 input-box">
-                                            <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                                <label class="control-label bold font-xs">Voter's Stub/Certification (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                                <input type="file" class="form-control" accept=".jpeg" name="voter" id="voter" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 col-sm-9 input-box">
-                                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                                <input type="file" class="form-control" accept=".jpeg" name="dtr" id="dtr" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 col-sm-9 input-box">
-                                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                                <label class="control-label bold font-xs">ATM (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                                <input type="file" class="form-control" accept=".jpeg" name="atm" id="atm" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 col-sm-9 input-box">
-                                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                                <label class="control-label bold font-xs">Renewal E3 Form (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                                <input type="file" class="form-control" accept=".jpeg" name="e3Form" id="e3Form" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8 col-sm-9 input-box">
-                                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                                <label class="control-label bold font-xs">Academic Year<strong class="text-danger ms-1">*</strong></label>
-                                                <input type="text" class="form-control" name="academic" id="academic" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <?php if ($renew_1stYr_1stSem == 'uploaded' || $renew_1stYr_1stSem == 'approve renewal') { ?>
-                                                <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_1stYr_1stSem; ?></button>
-                                                <?php
-                                            } elseif ($renew_1stYr_1stSem == 'reupload renewal') {
-                                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
-                                                $queryresult = mysqli_query($conn, $sqlSELECT);
-
-                                                if (mysqli_num_rows($queryresult) > 0) { ?>
-                                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                                <?php } else { ?>
-                                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                                <?php }
-                                            } else {
-                                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
-                                                $queryresult = mysqli_query($conn, $sqlSELECT);
-
-
-
-                                                if (mysqli_num_rows($queryresult) > 0) { ?>
-                                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                                <?php } else { ?>
-                                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_1stYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                                <?php } ?>
-
-                                            <?php }
-                                            ?>
-
-                                        </div>
-                                    </div>
-                                </div>
-                        </form>
                         <div class="portlet-body form">
                             <form id="renew_1stYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                                 <div class="row">
@@ -293,16 +181,126 @@ $result = mysqli_query($conn, $sql);
                                     </div>
                                 </div>
                             </form>
-                        </div>
 
+
+                        </div>
                     </div>
-                </div>
-                <div class="tab-pane" id="year-2nd">
-                    <form id="renew_2ndYr_1stSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
-                        <div class="portletForm light bg-inverse">
-                            <div class="portlet-body form">
+                    <div class="tab-pane" id="year-2nd">
+                        <form id="renew_2ndYr_1stSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
+                            <div class="portletForm light bg-inverse">
+                                <div class="portlet-body form">
+                                    <div class="row">
+                                        <h3 class="header-title">1st sem (<?php echo $renew_2ndYr_1stSem; ?>)</h3>
+                                        <div class="col-md-8 col-sm-9 input-box">
+                                            <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
+                                                <label class="control-label bold font-xs">Previous Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" accept=".jpeg" name="prevCor" id="prevCor" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-9 input-box">
+                                            <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
+                                                <label class="control-label bold font-xs">Certificate of Grades (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" accept=".jpeg" name="cog" id="cog" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-9 input-box">
+                                            <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
+                                                <label class="control-label bold font-xs">Current Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" accept=".jpeg" name="currentCor" id="currentCor" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-9 input-box">
+                                            <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
+                                                <label class="control-label bold font-xs">Curriculum (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" accept=".jpeg" name="curriculum" id="curriculum" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-9 input-box">
+                                            <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
+                                                <label class="control-label bold font-xs">Voter's Stub/Certification (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" accept=".jpeg" name="voter" id="voter" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-9 input-box">
+                                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
+                                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" accept=".jpeg" name="dtr" id="dtr" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-9 input-box">
+                                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
+                                                <label class="control-label bold font-xs">ATM (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" accept=".jpeg" name="atm" id="atm" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-9 input-box">
+                                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
+                                                <label class="control-label bold font-xs">Renewal E3 Form (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                                <input type="file" class="form-control" accept=".jpeg" name="e3Form" id="e3Form" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-9 input-box">
+                                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
+                                                <label class="control-label bold font-xs">Academic Year<strong class="text-danger ms-1">*</strong></label>
+                                                <input type="text" class="form-control" name="academic" id="academic" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <?php if ($renew_2ndYr_1stSem == 'uploaded' || $renew_2ndYr_1stSem == 'approve renewal') { ?>
+                                                <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_2ndYr_1stSem; ?></button>
+                                                <?php
+                                            } elseif ($renew_2ndYr_1stSem == 'reupload renewal') {
+                                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                                $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                                if (mysqli_num_rows($queryresult) > 0) { ?>
+                                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <?php } else { ?>
+                                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <?php }
+                                            } else {
+                                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                                $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                                if (mysqli_num_rows($queryresult) > 0) { ?>
+                                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <?php } else { ?>
+                                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <?php } ?>
+
+                                            <?php }
+                                            ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                        </form>
+                        <div class="portlet-body form">
+                            <form id="renew_2ndYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                                 <div class="row">
-                                    <h3 class="header-title">1st sem (<?php echo $renew_2ndYr_1stSem; ?>)</h3>
+
+                                    <h3 class="header-title">2nd sem (<?php echo $renew_2ndYr_2ndSem; ?>)</h3>
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                             <label class="control-label bold font-xs">Previous Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
@@ -369,7 +367,7 @@ $result = mysqli_query($conn, $sql);
                                 <div class="row">
                                     <div class="col-md-8 col-sm-9 input-box">
                                         <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                            <label class="control-label bold font-xs">Academic Year<strong class="text-danger ms-1">*</strong></label>
+                                            <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
                                             <input type="text" class="form-control" name="academic" id="academic" required>
                                         </div>
                                     </div>
@@ -377,17 +375,17 @@ $result = mysqli_query($conn, $sql);
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <?php if ($renew_2ndYr_1stSem == 'uploaded' || $renew_2ndYr_1stSem == 'approve renewal') { ?>
-                                            <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_2ndYr_1stSem; ?></button>
+                                        <?php if ($renew_2ndYr_2ndSem == 'uploaded' || $renew_2ndYr_2ndSem == 'approve renewal') { ?>
+                                            <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_2ndYr_2ndSem; ?></button>
                                             <?php
-                                        } elseif ($renew_2ndYr_1stSem == 'reupload renewal') {
+                                        } elseif ($renew_2ndYr_2ndSem == 'reupload renewal') {
                                             $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                             $queryresult = mysqli_query($conn, $sqlSELECT);
 
                                             if (mysqli_num_rows($queryresult) > 0) { ?>
-                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                             <?php } else { ?>
-                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                             <?php }
                                         } else {
                                             $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
@@ -396,9 +394,123 @@ $result = mysqli_query($conn, $sql);
 
 
                                             if (mysqli_num_rows($queryresult) > 0) { ?>
-                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                             <?php } else { ?>
-                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php } ?>
+
+                                        <?php }
+                                        ?>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="year-3rd">
+                    <form id="renew_3rdYr_1stSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
+                        <div class="portletForm light bg-inverse">
+                            <div class="portlet-body form">
+                                <div class="row">
+                                    <h3 class="header-title">1st sem (<?php echo $renew_3rdYr_1stSem; ?>)</h3>
+                                    <div class="col-md-8 col-sm-9 input-box">
+                                        <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
+                                            <label class="control-label bold font-xs">Previous Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" accept=".jpeg" name="prevCor" id="prevCor" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-9 input-box">
+                                        <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
+                                            <label class="control-label bold font-xs">Certificate of Grades (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" accept=".jpeg" name="cog" id="cog" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-9 input-box">
+                                        <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
+                                            <label class="control-label bold font-xs">Current Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" accept=".jpeg" name="currentCor" id="currentCor" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-9 input-box">
+                                        <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
+                                            <label class="control-label bold font-xs">Curriculum (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" accept=".jpeg" name="curriculum" id="curriculum" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-9 input-box">
+                                        <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
+                                            <label class="control-label bold font-xs">Voter's Stub/Certification (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" accept=".jpeg" name="voter" id="voter" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-9 input-box">
+                                        <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
+                                            <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" accept=".jpeg" name="dtr" id="dtr" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-9 input-box">
+                                        <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
+                                            <label class="control-label bold font-xs">ATM (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" accept=".jpeg" name="atm" id="atm" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-9 input-box">
+                                        <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
+                                            <label class="control-label bold font-xs">Renewal E3 Form (.jpeg) <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="file" class="form-control" accept=".jpeg" name="e3Form" id="e3Form" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-9 input-box">
+                                        <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
+                                            <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
+                                            <input type="text" class="form-control" name="academic" id="academic" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <?php if ($renew_3rdYr_1stSem == 'uploaded' || $renew_3rdYr_1stSem == 'approve renewal') { ?>
+                                            <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_3rdYr_1stSem; ?></button>
+                                            <?php
+                                        } elseif ($renew_3rdYr_1stSem == 'reupload renewal') {
+                                            $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                            $queryresult = mysqli_query($conn, $sqlSELECT);
+
+                                            if (mysqli_num_rows($queryresult) > 0) { ?>
+                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php } else { ?>
+                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php }
+                                        } else {
+                                            $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
+                                            $queryresult = mysqli_query($conn, $sqlSELECT);
+
+
+
+                                            if (mysqli_num_rows($queryresult) > 0) { ?>
+                                                <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <?php } else { ?>
+                                                <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                             <?php } ?>
 
                                         <?php }
@@ -409,10 +521,10 @@ $result = mysqli_query($conn, $sql);
                             </div>
                     </form>
                     <div class="portlet-body form">
-                        <form id="renew_2ndYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
+                        <form id="renew_3rdYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                             <div class="row">
 
-                                <h3 class="header-title">2nd sem (<?php echo $renew_2ndYr_2ndSem; ?>)</h3>
+                                <h3 class="header-title">2nd sem (<?php echo $renew_3rdYr_2ndSem; ?>)</h3>
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                         <label class="control-label bold font-xs">Previous Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
@@ -487,17 +599,17 @@ $result = mysqli_query($conn, $sql);
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <?php if ($renew_2ndYr_2ndSem == 'uploaded' || $renew_2ndYr_2ndSem == 'approve renewal') { ?>
-                                        <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_2ndYr_2ndSem; ?></button>
+                                    <?php if ($renew_3rdYr_2ndSem == 'uploaded' || $renew_3rdYr_2ndSem == 'approve renewal') { ?>
+                                        <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_3rdYr_2ndSem; ?></button>
                                         <?php
-                                    } elseif ($renew_2ndYr_2ndSem == 'reupload renewal') {
+                                    } elseif ($renew_3rdYr_2ndSem == 'reupload renewal') {
                                         $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                         $queryresult = mysqli_query($conn, $sqlSELECT);
 
                                         if (mysqli_num_rows($queryresult) > 0) { ?>
-                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                         <?php } else { ?>
-                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                         <?php }
                                     } else {
                                         $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
@@ -506,9 +618,9 @@ $result = mysqli_query($conn, $sql);
 
 
                                         if (mysqli_num_rows($queryresult) > 0) { ?>
-                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                         <?php } else { ?>
-                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_2ndYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                         <?php } ?>
 
                                     <?php }
@@ -518,15 +630,14 @@ $result = mysqli_query($conn, $sql);
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
-            <div class="tab-pane" id="year-3rd">
-                <form id="renew_3rdYr_1stSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
+            <div class="tab-pane" id="year-4th">
+                <form id="renew_4thYr_1stSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                     <div class="portletForm light bg-inverse">
                         <div class="portlet-body form">
                             <div class="row">
-                                <h3 class="header-title">1st sem (<?php echo $renew_3rdYr_1stSem; ?>)</h3>
+                                <h3 class="header-title">1st sem (<?php echo $renew_4thYr_1stSem; ?>)</h3>
                                 <div class="col-md-8 col-sm-9 input-box">
                                     <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                         <label class="control-label bold font-xs">Previous Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
@@ -601,17 +712,17 @@ $result = mysqli_query($conn, $sql);
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <?php if ($renew_3rdYr_1stSem == 'uploaded' || $renew_3rdYr_1stSem == 'approve renewal') { ?>
-                                        <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_3rdYr_1stSem; ?></button>
+                                    <?php if ($renew_4thYr_1stSem == 'uploaded' || $renew_4thYr_1stSem == 'approve renewal') { ?>
+                                        <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_4thYr_1stSem; ?></button>
                                         <?php
-                                    } elseif ($renew_3rdYr_1stSem == 'reupload renewal') {
+                                    } elseif ($renew_4thYr_1stSem == 'reupload renewal') {
                                         $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                         $queryresult = mysqli_query($conn, $sqlSELECT);
 
                                         if (mysqli_num_rows($queryresult) > 0) { ?>
-                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                         <?php } else { ?>
-                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                         <?php }
                                     } else {
                                         $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
@@ -620,9 +731,9 @@ $result = mysqli_query($conn, $sql);
 
 
                                         if (mysqli_num_rows($queryresult) > 0) { ?>
-                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                         <?php } else { ?>
-                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                            <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                         <?php } ?>
 
                                     <?php }
@@ -633,10 +744,10 @@ $result = mysqli_query($conn, $sql);
                         </div>
                 </form>
                 <div class="portlet-body form">
-                    <form id="renew_3rdYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
+                    <form id="renew_4thYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
                         <div class="row">
 
-                            <h3 class="header-title">2nd sem (<?php echo $renew_3rdYr_2ndSem; ?>)</h3>
+                            <h3 class="header-title">2nd sem (<?php echo $renew_4thYr_2ndSem; ?>)</h3>
                             <div class="col-md-8 col-sm-9 input-box">
                                 <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
                                     <label class="control-label bold font-xs">Previous Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
@@ -711,17 +822,17 @@ $result = mysqli_query($conn, $sql);
 
                         <div class="row">
                             <div class="col-md-12">
-                                <?php if ($renew_3rdYr_2ndSem == 'uploaded' || $renew_3rdYr_2ndSem == 'approve renewal') { ?>
-                                    <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_3rdYr_2ndSem; ?></button>
+                                <?php if ($renew_4thYr_2ndSem == 'uploaded' || $renew_4thYr_2ndSem == 'approve renewal') { ?>
+                                    <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_4thYr_2ndSem; ?></button>
                                     <?php
-                                } elseif ($renew_3rdYr_2ndSem == 'reupload renewal') {
+                                } elseif ($renew_4thYr_2ndSem == 'reupload renewal') {
                                     $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
                                     $queryresult = mysqli_query($conn, $sqlSELECT);
 
                                     if (mysqli_num_rows($queryresult) > 0) { ?>
-                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                     <?php } else { ?>
-                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                     <?php }
                                 } else {
                                     $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
@@ -730,9 +841,9 @@ $result = mysqli_query($conn, $sql);
 
 
                                     if (mysqli_num_rows($queryresult) > 0) { ?>
-                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                     <?php } else { ?>
-                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_3rdYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
+                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
                                     <?php } ?>
 
                                 <?php }
@@ -743,229 +854,6 @@ $result = mysqli_query($conn, $sql);
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="tab-pane" id="year-4th">
-            <form id="renew_4thYr_1stSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
-                <div class="portletForm light bg-inverse">
-                    <div class="portlet-body form">
-                        <div class="row">
-                            <h3 class="header-title">1st sem (<?php echo $renew_4thYr_1stSem; ?>)</h3>
-                            <div class="col-md-8 col-sm-9 input-box">
-                                <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                    <label class="control-label bold font-xs">Previous Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                    <input type="file" class="form-control" accept=".jpeg" name="prevCor" id="prevCor" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-sm-9 input-box">
-                                <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                    <label class="control-label bold font-xs">Certificate of Grades (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                    <input type="file" class="form-control" accept=".jpeg" name="cog" id="cog" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-sm-9 input-box">
-                                <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                    <label class="control-label bold font-xs">Current Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                    <input type="file" class="form-control" accept=".jpeg" name="currentCor" id="currentCor" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-sm-9 input-box">
-                                <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                    <label class="control-label bold font-xs">Curriculum (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                    <input type="file" class="form-control" accept=".jpeg" name="curriculum" id="curriculum" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-sm-9 input-box">
-                                <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                    <label class="control-label bold font-xs">Voter's Stub/Certification (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                    <input type="file" class="form-control" accept=".jpeg" name="voter" id="voter" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-sm-9 input-box">
-                                <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                    <input type="file" class="form-control" accept=".jpeg" name="dtr" id="dtr" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-sm-9 input-box">
-                                <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">ATM (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                    <input type="file" class="form-control" accept=".jpeg" name="atm" id="atm" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-sm-9 input-box">
-                                <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Renewal E3 Form (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                    <input type="file" class="form-control" accept=".jpeg" name="e3Form" id="e3Form" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-sm-9 input-box">
-                                <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                    <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
-                                    <input type="text" class="form-control" name="academic" id="academic" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <?php if ($renew_4thYr_1stSem == 'uploaded' || $renew_4thYr_1stSem == 'approve renewal') { ?>
-                                    <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_4thYr_1stSem; ?></button>
-                                    <?php
-                                } elseif ($renew_4thYr_1stSem == 'reupload renewal') {
-                                    $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
-                                    $queryresult = mysqli_query($conn, $sqlSELECT);
-
-                                    if (mysqli_num_rows($queryresult) > 0) { ?>
-                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                    <?php } else { ?>
-                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                    <?php }
-                                } else {
-                                    $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
-                                    $queryresult = mysqli_query($conn, $sqlSELECT);
-
-
-
-                                    if (mysqli_num_rows($queryresult) > 0) { ?>
-                                        <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                    <?php } else { ?>
-                                        <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_1stSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                    <?php } ?>
-
-                                <?php }
-                                ?>
-
-                            </div>
-                        </div>
-                    </div>
-            </form>
-            <div class="portlet-body form">
-                <form id="renew_4thYr_2ndSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
-                    <div class="row">
-
-                        <h3 class="header-title">2nd sem (<?php echo $renew_4thYr_2ndSem; ?>)</h3>
-                        <div class="col-md-8 col-sm-9 input-box">
-                            <div class="form-group"><input type="hidden" class="form-control" name="prev-form" id="prev-form" value="">
-                                <label class="control-label bold font-xs">Previous Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                <input type="file" class="form-control" accept=".jpeg" name="prevCor" id="prevCor" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-9 input-box">
-                            <div class="form-group"><input type="hidden" class="form-control" name="cog" id="cog">
-                                <label class="control-label bold font-xs">Certificate of Grades (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                <input type="file" class="form-control" accept=".jpeg" name="cog" id="cog" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-9 input-box">
-                            <div class="form-group"><input type="hidden" class="form-control" name="c-reg-form" id="c-reg-form" value="">
-                                <label class="control-label bold font-xs">Current Registration Form (COR) (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                <input type="file" class="form-control" accept=".jpeg" name="currentCor" id="currentCor" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-9 input-box">
-                            <div class="form-group"><input type="hidden" class="form-control" name="curriculum" id="curriculum" value="">
-                                <label class="control-label bold font-xs">Curriculum (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                <input type="file" class="form-control" accept=".jpeg" name="curriculum" id="curriculum" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-9 input-box">
-                            <div class="form-group"><input type="hidden" class="form-control" name="v-stub" id="v-stub" value="">
-                                <label class="control-label bold font-xs">Voter's Stub/Certification (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                <input type="file" class="form-control" accept=".jpeg" name="voter" id="voter" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-9 input-box">
-                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Fully Accomplished Community Service DTR Form (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                <input type="file" class="form-control" accept=".jpeg" name="dtr" id="dtr" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-9 input-box">
-                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">ATM (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                <input type="file" class="form-control" accept=".jpeg" name="atm" id="atm" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-9 input-box">
-                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Renewal E3 Form (.jpeg) <strong class="text-danger ms-1">*</strong></label>
-                                <input type="file" class="form-control" accept=".jpeg" name="e3Form" id="e3Form" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-9 input-box">
-                            <div class="form-group"><input type="hidden" class="form-control" name="DTR-form" id="DTR-form" value="">
-                                <label class="control-label bold font-xs">Academic Year <strong class="text-danger ms-1">*</strong></label>
-                                <input type="text" class="form-control" name="academic" id="academic" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <?php if ($renew_4thYr_2ndSem == 'uploaded' || $renew_4thYr_2ndSem == 'approve renewal') { ?>
-                                <button disabled style="margin-left: 60%;" class=" btn btn-success btn-sm"><?php echo $renew_4thYr_2ndSem; ?></button>
-                                <?php
-                            } elseif ($renew_4thYr_2ndSem == 'reupload renewal') {
-                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
-                                $queryresult = mysqli_query($conn, $sqlSELECT);
-
-                                if (mysqli_num_rows($queryresult) > 0) { ?>
-                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                <?php } else { ?>
-                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                <?php }
-                            } else {
-                                $sqlSELECT = "SELECT * FROM renewal_process WHERE uploader = '$scholar_id'";
-                                $queryresult = mysqli_query($conn, $sqlSELECT);
-
-
-
-                                if (mysqli_num_rows($queryresult) > 0) { ?>
-                                    <button disabled style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                <?php } else { ?>
-                                    <button style="margin-left: 60%;" class="btnUpdate-peronalInfo btn btn-success btn-sm" onclick="sendAction('<?php echo $scholar_id; ?>', 'renew_4thYr_2ndSem', '<?php echo $_SESSION['user']; ?>')">Submit</button>
-                                <?php } ?>
-
-                            <?php }
-                            ?>
-
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
         </div>
         <div class="tab-pane" id="year-5th">
             <form id="renew_5thYr_1stSem" class="renewal-form" role="form" autocomplete="off" enctype="multipart/form-data">
@@ -1419,6 +1307,7 @@ $result = mysqli_query($conn, $sql);
 
     <!--script for image update-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -1450,6 +1339,27 @@ $result = mysqli_query($conn, $sql);
                     if (button) {
                         button.textContent = response;
                         button.disabled = true;
+                    }
+                    // For example, you can display a success message or update the UI
+
+                    if (response === 'uploaded') {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success!",
+                            text: "Renewal uploaded successfully!",
+                            showConfirmButton: true,
+                        }).then(function() {
+
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error!",
+                            text: "An error occurred. Please try again later.",
+                            showConfirmButton: true,
+                        }).then(function() {
+
+                        });
                     }
                     const buttonsToUpdatePersonalInfo = document.querySelectorAll('.btnUpdate-peronalInfo');
 

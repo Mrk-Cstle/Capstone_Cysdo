@@ -89,6 +89,7 @@ if ($_SESSION['role'] === 'admin') {
         </div>
         <script src="https://cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js"></script>
         <script src="../../node_modules/ldloader/index.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             function sendAction(applicantId, action) {
                 // Create an AJAX request
@@ -107,20 +108,42 @@ if ($_SESSION['role'] === 'admin') {
                         new ldLoader({
                             root: ".ldld.full"
                         }).off();
-                        $('#response').text(response);
-                        setTimeout(function() {
-                            $('#response').text('');
-                        }, 5000);
+                        console.log(response)
                         loadTableData(currentPage);
                         // For example, you can display a success message or update the UI
-                        if (action === 'pass') {
-                            // alert(response);
-                            $('#approveBtn').hide();
-                            $('#declineBtn').hide();
-                        } else if (action === 'failed') {
-                            // alert(response);
-                            $('#approveBtn').hide();
-                            $('#declineBtn').hide();
+                        if (response === 'pass') {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Success!",
+                                text: "Applicant pass successfully!",
+                                showConfirmButton: true,
+                            }).then(function() {
+                                // Redirect to 'applicantList.php' after the user clicks the confirmation button
+                                $('#approveBtn').hide();
+                                $('#declineBtn').hide();
+                                window.location.href = "applicantExaminers.php";
+                            });
+                        } else if (response === 'failed') {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Success!",
+                                text: "Applicant failed successfully!",
+                                showConfirmButton: true,
+                            }).then(function() {
+                                // Redirect to 'applicantList.php' after the user clicks the confirmation button
+                                $('#approveBtn').hide();
+                                $('#declineBtn').hide();
+                                window.location.href = "applicantExaminers.php";
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Error!",
+                                text: "An error occurred. Please try again later.",
+                                showConfirmButton: true,
+                            }).then(function() {
+
+                            });
                         }
                     },
                     error: function(xhr, status, error) {

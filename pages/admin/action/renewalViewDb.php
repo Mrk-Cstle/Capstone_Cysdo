@@ -74,7 +74,7 @@ function approve($row, $semesterYear, $full_name, $contact_num1)
         $insertQuery = "INSERT INTO renewal_award (renewal_id,semester_year ) VALUES ('$renewal_id', '$semesterYear')";
         $result = mysqli_query($conn, $insertQuery);
         if ($result) {
-            echo "Scholar Approve";
+            echo "pass";
         } else {
             echo "Insert Failed: " . mysqli_error($conn);
         }
@@ -109,7 +109,7 @@ function decline($row, $semesterYear, $full_name, $contact_num1)
 
 
 
-    echo "Scholar Declined";
+    echo "failed";
 }
 
 
