@@ -64,6 +64,7 @@
     }
 
     .bold {
+        padding-top: 80px;
         font-weight: 600;
     }
 
@@ -120,6 +121,17 @@
         font-size: 14px;
     }
 
+    @media (max-width: 1330px) {
+    
+        .box-info li {
+            width: 100%;
+        }
+        .bold {
+            padding-top: 120px;
+        }
+    }
+
+
     @media (max-width: 1015px) {
         .date {
             display: block;
@@ -127,6 +139,10 @@
 
         .box-info li {
             width: 100%;
+        }
+
+        .bold {
+            padding-top: 80px;
         }
     }
 
@@ -168,7 +184,6 @@
 
         .textAlign {
             font-size: 18px;
-            background-color: whitesmoke;
         }
 
         .box-info li {
@@ -186,6 +201,9 @@
 </style>
 
 <body>
+<?php
+  include 'assets/template/homeNavigation.php';
+  ?>
     <!--<div class="navBar">
 
         <ul class="navProfile nav nav-pills justify-content-start">
@@ -234,7 +252,7 @@
 
     ?>
     <div class='textAlign'>
-        <p style="text-transform: capitalize;" class='bold d-block w-auto mt-3'><a href='index.php' class='mouse bi bi-chevron-left text-black float-start ms-5'></a>
+        <p style="text-transform: capitalize;" class='bold d-block w-auto'>
             Announcements
         </p>
     </div>

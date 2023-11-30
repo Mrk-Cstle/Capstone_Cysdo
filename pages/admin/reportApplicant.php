@@ -213,6 +213,7 @@ if ($_SESSION['role'] === 'admin') {
         // Set the content of the new window or document
         printWindow.document.write('<html><head><title>Table</title>');
         printWindow.document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">');
+        printWindow.document.write('<h2>Applicant List</h2> <style> h2 {text-align: center; margin-bottom: 20px;}</style>');
         printWindow.document.write('<style>body{margin: 20px;} table{width: 100%; border-collapse: collapse; margin-bottom: 20px;} th, td{border: 1px solid black; padding: 8px; text-align: left;} th{background-color: #f2f2f2;} .hide-for-print { display: none; }</style>');
         printWindow.document.write('</head><body>');
         printWindow.document.write(tableContent);

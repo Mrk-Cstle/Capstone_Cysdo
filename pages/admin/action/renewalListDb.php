@@ -32,9 +32,6 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         // Build table rows dynamically
         $tableHTML .= '<tr>';
-
-        $tableHTML .= '<td>' . htmlspecialchars($row['scholar_id']) . '</td>';
-
         $tableHTML .= '<td>' . htmlspecialchars($row['full_name']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contact_num1']) . '</td>';
         $tableHTML .= '<td>' . htmlspecialchars($row['contact_num2']) . '</td>';

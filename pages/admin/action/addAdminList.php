@@ -17,7 +17,6 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
 ?>
         <tr>
-            <th class="user_id" scope="row"><?php echo $row['admin_id']; ?></th>
             <td><?php echo $row['full_name']; ?></td>
             <td><?php echo $row['contact_number']; ?></td>
             <td><?php echo $row['address']; ?></td>

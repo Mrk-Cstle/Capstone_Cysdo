@@ -1,7 +1,7 @@
 <?php
 include '../../include/dbConnection.php';
 
-$pageSize = 16; // Number of rows to display per page
+$pageSize = 15; // Number of rows to display per page
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; // Get current page number
 
 $offset = ($page - 1) * $pageSize; // Calculate the offset for the query

@@ -66,8 +66,6 @@ if ($_SESSION['role'] === 'admin') {
             <table class="table table-bordered">
                 <thead>
                     <tr>
-
-                        <th scope="col">Scholar Id</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Contact 1</th>
 
