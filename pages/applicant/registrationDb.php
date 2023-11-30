@@ -112,12 +112,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo "Sorry, there was an error uploading your images.";
                 }
             } else {
-                echo '<script>
-            alert("The registration quota limit has been reached.");
-
-            // Redirect to a specific page regardless of the button clicked
-            window.location.href = "../../index.php";
-          </script>';
+                echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Swal.fire({
+                icon: "error",
+                title: "Registration Quota Exceeded",
+                text: "The registration quota limit has been reached.",
+                showConfirmButton: true,
+            }).then(function() {
+                // Redirect to a specific page
+                window.location.href = "../../index.php";
+            });
+        });
+        </script>';
             }
         } else {
             die('Error counting applicants: ' . mysqli_error($conn));
