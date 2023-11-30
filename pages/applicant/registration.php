@@ -378,13 +378,10 @@
       <div class="row">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-3 col-sm-4 was-validated">
+            <div class="col-md-3 col-sm-4">
               <div class="form-group">
                 <label class="control-label bold font-xs">Father Name</label>
-                <input type="text" class="form-control" name="fatherName" id="fatherName" required>
-                <div class="invalid-feedback">
-                  Input Father Name.
-                </div>
+                <input type="text" class="form-control" name="fatherName" id="fatherName">
               </div>
             </div>
             <div class="col-md-4">
@@ -402,13 +399,10 @@
                 <input type="number" class="noscroll form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="fatherNumber" id="fatherNumber">
               </div>
             </div>
-            <div class="col-md-3 col-sm-4 was-validated">
+            <div class="col-md-3 col-sm-4">
               <div class="form-group">
                 <label class="control-label bold font-xs">Occupation</label>
-                <input type="text" class="form-control" name="fatherOccupation" id="fatherOccupation" required>
-                <div class="invalid-feedback">
-                Father Occupation Required.
-                </div>
+                <input type="text" class="form-control" name="fatherOccupation" id="fatherOccupation">
               </div>
             </div>
             <div class="col-md-3 col-sm-4">
@@ -430,13 +424,10 @@
           </div>
           <h4 class="bold font mb-3 mt-4">Mother</h4>
           <div class="row">
-            <div class="col-md-3 col-sm-4 was-validated">
+            <div class="col-md-3 col-sm-4">
               <div class="form-group">
                 <label class="control-label bold font-xs">Mother Name</label>
-                <input type="text" class="form-control" name="motherName" id="motherName" required>
-                <div class="invalid-feedback">
-                  Input Mother Name.
-                </div>
+                <input type="text" class="form-control" name="motherName" id="motherName">
               </div>
             </div>
 
@@ -454,13 +445,10 @@
                 <input type="number" class="noscroll form-control" placeholder="Enter Number" aria-label="Username" aria-describedby="basic-addon1" name="motherNumber" id="motherNumber">
               </div>
             </div>
-            <div class="col-md-3 col-sm-4 was-validated">
+            <div class="col-md-3 col-sm-4">
               <div class="form-group">
                 <label class="control-label bold font-xs">Occupation</label>
-                <input type="text" class="form-control" name="motherOccupation" id="motherOccupation" required>
-                <div class="invalid-feedback">
-                  Mother Occupation Required.
-                </div>
+                <input type="text" class="form-control" name="motherOccupation" id="motherOccupation">
               </div>
             </div>
             <div class="col-md-3 col-sm-4">
